@@ -1,0 +1,19 @@
+---
+title: "WebR-enabled code cell"
+format: html
+filters:
+- webr
+---
+
+## Demo
+
+This is a webr-enabled code cell in a Quarto HTML document.
+
+```{webr}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+
+```{webr}
+1 + 1 
+```
