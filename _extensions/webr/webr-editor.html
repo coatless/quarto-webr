@@ -33,7 +33,7 @@
       await webR.evalRVoid("dev.off()");
       const out = result.output.filter(
         evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\\n");
+      ).map((evt) => evt.data).join("\n");
 
       const msgs = await webR.flush();
       msgs.forEach(msg => {
@@ -71,8 +71,4 @@
       runButton.disabled = false;
     }
   }
-
-  await globalThis.webR.init();
-  runButton.innerText = "Run code";
-  runButton.disabled = false;
 </script>
