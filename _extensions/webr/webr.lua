@@ -83,7 +83,8 @@ return {
       
       -- Ensure that the {webr} tag is present and the document type is HTML
       -- not sure if this will work with an epub (may need html:js)
-      if el.attr and el.attr.classes:includes("{webr}") and quarto.doc.is_format("html") then
+      -- Right now, we're using `{webr}` if engine is jupyter and `webr` if engine is `knitr` since the later dislikes custom engines
+      if el.attr and (el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")) and quarto.doc.is_format("html") then
         
         -- Make sure we've initialized the code block
         ensureWebRSetup()
