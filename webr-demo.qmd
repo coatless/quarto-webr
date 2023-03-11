@@ -1,0 +1,16 @@
+---
+title: "Testing"
+format: html
+filters:
+- webr
+---
+
+## Heading
+
+```{webr}
+1 + 1 
+```
+
+```{webr}
+message("hello")
+```
