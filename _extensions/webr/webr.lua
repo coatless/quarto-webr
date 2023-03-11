@@ -52,6 +52,11 @@ function ensureWebRSetup()
   -- Insert the web initialization
   -- https://quarto.org/docs/extensions/lua-api.html#includes
   quarto.doc.include_file("in-header", "webr-init.html")
+
+  -- Copy the two web workers into the directory
+  -- https://quarto.org/docs/extensions/lua-api.html#dependencies
+  quarto.doc.add_format_resource("webr-worker.js")	
+  quarto.doc.add_format_resource("webr-serviceworker.js")	
 end
 
 -- Define a function to replace keywords given by {{ WORD }}
