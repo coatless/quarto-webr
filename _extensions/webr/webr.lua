@@ -93,13 +93,14 @@ return {
         -- unique code cells
         counter = counter + 1
         
-        -- 7 is the default height and width for knitr.
+        -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
+        -- So, we have 504 and 360 respectively.
         -- Should we check the attributes for this value? Seems odd.
         -- https://yihui.org/knitr/options/
         local substitutions = {
           ["WEBRCOUNTER"] = counter, 
-          ["WIDTH"] = 7,
-          ["HEIGHT"] = 7,
+          ["WIDTH"] = 504,
+          ["HEIGHT"] = 360,
           ["WEBRCODE"] = el.text
         }
         
