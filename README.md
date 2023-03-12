@@ -2,7 +2,7 @@
 
 This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell in a Quarto HTML document. 
 
-![`quarto-webr` Filter in Action](https://i.imgur.com/WLFHcQE.gif)
+![`quarto-webr` Filter in Action](https://i.imgur.com/NCTDwUk.gif)
 
 The goal of [webR](https://docs.r-wasm.org/webr/latest/) is to: 
 
