@@ -16,13 +16,10 @@
 
   import { WebR } from "https://webr.r-wasm.org/v0.1.0/webr.mjs";
   
-  /* This is a hack to get around the preview policy */
-  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    globalThis.webR = new WebR({SW_URL: '/'});
-  } else {
-    globalThis.webR = new WebR();
-  }
   
+  // Maybe return the `/` if needed in SW_URL?
+  globalThis.webR = new WebR();
+
   await globalThis.webR.init();
   globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
   document.querySelectorAll(".btn-webr").forEach((btn) => {
