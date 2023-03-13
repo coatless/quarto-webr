@@ -50,6 +50,30 @@ summary(fit)
 
 When quarto render or preview is called, the filter will add two files to the working directory `webr-worker.js` and `webr-serviceworker.js`. These files allow for the webR session to be started.
 
+### Packages
+
+By default, the `quarto-webr` extension avoids loading or requesting additional packages. Additional packages can be added by including:
+
+```r
+webr::install("package")
+```
+
+For example, to install `ggplot2`, you would need to use: 
+
+```r
+webr::install("ggplot2")
+```
+
+You can view what packages are available by either executing the following R code (either with WebR or just R):
+
+```r
+available.packages(repos="https://repo.r-wasm.org/", type="source")
+```
+
+Or, by navigating to the WebR repository:
+
+<https://github.com/r-wasm/webr-repo/blob/main/repo-packages>
+
 ## Known Hiccups
 
 As this is an exciting new frontier, we're learning as we go. Or as my friend [Lawrence](https://cs.illinois.edu/about/people/faculty/angrave) says, ["I like to build airplanes in the air-"](https://www.youtube.com/watch?v=L2zqTYgcpfg). Please take note of the following issues:
@@ -65,6 +89,16 @@ If `webr-worker.js` or `webr-serviceworker.js` are not found when the document l
 ├── webr-serviceworker.js
 └── webr-worker.js
 ```
+
+### Problems using WebR by directly accessing the HTML.
+
+When using  `quarto preview` or `quarto render`, the rendered HTML document is being shown by mimicking a server running under `https://localhost/`. Usually, everything works in this context assuming the above directory structure is followed. However, if you **directly** open the rendered HTML document, e.g. `demo-quarto-web.html`, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this [StackOverflow answer](https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683).
+
+There are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file: 
+
+- [Use Chrome's `--allow-file-access-from-files` access](https://stackoverflow.com/questions/18586921/how-to-launch-html-using-chrome-at-allow-file-access-from-files-mode)
+- [Use the WebServer for Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en)
+- Or, [use NPM to obtain `local-web-server`](https://github.com/lwsjs/local-web-server)
 
 ### Speed up webR
 
