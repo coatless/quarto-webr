@@ -15,11 +15,13 @@ For more details on [webR](https://docs.r-wasm.org/webr/latest/), please see:
 
 ## Installation 
 
-To use this extension in a Quarto project, install it from within the project's working directory:
+To use this extension in a Quarto project, install it from within the project's working directory by typing into **Terminal**:
 
 ``` bash
-quarto install extension coatless/quarto-webr
+quarto add coatless/quarto-webr
 ```
+
+![Demonstration of using the Terminal tab to install the extension.](https://i.imgur.com/aVuBdyN.png)
 
 ## Usage
 
@@ -36,6 +38,7 @@ Then, place the code for `webr` in a code block marked with `{webr}`
 ---
 title: WebR in Quarto HTML Documents
 format: html
+engine: knitr
 filters:
   - webr
 ---
@@ -48,7 +51,10 @@ summary(fit)
 ```
 ````
 
-When quarto render or preview is called, the filter will add two files to the working directory `webr-worker.js` and `webr-serviceworker.js`. These files allow for the webR session to be started.
+
+When `quarto render` or `quarto preview` is called, the filter will execute under the `jupyter` compute engine if `engine: knitr` is not specified. 
+During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
+webR session to be started and must be present with the rendered output.
 
 ### Packages
 
@@ -85,6 +91,7 @@ If `webr-worker.js` or `webr-serviceworker.js` are not found when the document l
 
 ```
 .
+├── demo-quarto-webr.html
 ├── demo-quarto-webr.qmd
 ├── webr-serviceworker.js
 └── webr-worker.js
@@ -109,8 +116,36 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 
-For more details, please see: <https://docs.r-wasm.org/webr/latest/serving.html>
-Note, this requires a "hack" for GitHub Pages.
+For users who host their website with **[Netlify](https://www.netlify.com/)**, add to the [netlify.toml configuration file](https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file):
+
+```
+[[headers]]
+  for = "/directory/with/webr/content/*"
+
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+```
+
+For users who deploy their site with **[GitHub Pages](https://pages.github.com/)**, please hang tight! By default, [GitHub Pages does not allow for headers to be modified](https://github.com/community/community/discussions/13309). There have been notable efforts by the GitHub Pages community to circumvent this limitation by using 
+[`coi-servicworker`](https://github.com/gzuidhof/coi-serviceworker). We're currently testing it out.
+
+For users who administer a server with `nginx`, the [`add_header`](http://nginx.org/en/docs/http/ngx_http_headers_module.html) directive
+can be used to add headers into the configuration file at `/etc/nginx/nginx.conf`.
+
+```
+server {
+  # Enable headers for the webr directory
+  location ^~ /directory/with/webr/content {
+    add_header "Cross-Origin-Opener-Policy" "same-origin";
+    add_header "Cross-Origin-Embedder-Policy" "require-corp";
+  }
+}
+```
+
+More information may be found in `nginx`'s [Serving Static Content](http://nginx.org/en/docs/beginners_guide.html#static).
+
+For additional justificaiton on why the headers are required, please see [webR's](https://docs.r-wasm.org/webr/latest) documentation page for [Serving Pages with WebR](https://docs.r-wasm.org/webr/latest/serving.html).
 
 ### Engine Registration
 
@@ -151,3 +186,5 @@ For the extension, we greatly appreciated insights from:
 - Pandoc Documentation
   - [Example Filters](https://pandoc.org/lua-filters.html#examples)
   - [CodeBlock](https://pandoc.org/lua-filters.html#type-codeblock)
+
+We also appreciate the early testing feedback from [Eli E. Holmes](https://eeholmes.github.io/) and [Bob Rudis](https://rud.is/).
