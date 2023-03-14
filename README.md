@@ -91,13 +91,12 @@ If `webr-worker.js` or `webr-serviceworker.js` are not found when the document l
 
 ```
 .
-├── demo-quarto-webr.html
 ├── demo-quarto-webr.qmd
 ├── webr-serviceworker.js
 └── webr-worker.js
 ```
 
-### Problems using WebR by directly accessing the HTML.
+### Directly accessing rendered HTML
 
 When using  `quarto preview` or `quarto render`, the rendered HTML document is being shown by mimicking a server running under `https://localhost/`. Usually, everything works in this context assuming the above directory structure is followed. However, if you **directly** open the rendered HTML document, e.g. `demo-quarto-web.html`, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this [StackOverflow answer](https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683).
 
