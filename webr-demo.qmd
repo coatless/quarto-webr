@@ -1,6 +1,7 @@
 ---
 title: "WebR-enabled code cell"
 format: html
+engine: knitr
 filters:
 - webr
 ---
