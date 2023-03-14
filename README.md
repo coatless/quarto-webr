@@ -164,6 +164,8 @@ Though, we would like to address it at some point since it is not aesthetically 
 
 ## Acknowledgements
 
+We appreciate the early testing feedback from [Eli E. Holmes](https://eeholmes.github.io/) and [Bob Rudis](https://rud.is/).
+
 This repository builds ontop of the initial proof of concept for a standalone Quarto HTML document in:
 
 <https://github.com/coatless-r-n-d/webR-quarto-demos>
@@ -187,4 +189,3 @@ For the extension, we greatly appreciated insights from:
   - [Example Filters](https://pandoc.org/lua-filters.html#examples)
   - [CodeBlock](https://pandoc.org/lua-filters.html#type-codeblock)
 
-We also appreciate the early testing feedback from [Eli E. Holmes](https://eeholmes.github.io/) and [Bob Rudis](https://rud.is/).
