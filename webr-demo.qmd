@@ -1,5 +1,5 @@
 ---
-title: "WebR-enabled code cell"
+title: "WebR-enabled code cells"
 format: html
 engine: knitr
 filters:
@@ -14,11 +14,86 @@ This is a webr-enabled code cell in a Quarto HTML document.
 1 + 1 
 ```
 
+## Sample cases
+
+### Fit a linear regression model
+
 ```{webr}
 fit = lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
 
+### Create a graph with base R
+
 ```{webr}
 plot(pressure)
+```
+
+
+### Packages
+
+#### Available Packages
+
+You can view what packages are available for webR by either executing the following R code (either with WebR or just R):
+
+```{webr}
+available.packages(
+    repos="https://repo.r-wasm.org/", 
+    type="source")[,c("Package", "Version")]
+```
+
+Or, by navigating to the WebR repository:
+
+<https://github.com/r-wasm/webr-repo/blob/main/repo-packages>
+
+#### Installing a Package
+
+Installing `ggplot2` may take at least 2 minutes to run. 
+
+```{webr}
+webr::install("ggplot2")
+```
+
+#### Using a Package
+
+Once `ggplot2` is loaded, then use the package as normal.
+
+```{webr}
+library(ggplot2)
+
+p = ggplot(mpg, aes(class, hwy))
+p + geom_boxplot()
+```
+
+### Define variables and re-use them in later cells
+
+```{webr}
+name = "James"
+age = 42
+```
+
+
+```{webr}
+message(name, " is ", age, " years old!")
+```
+
+
+### Escape characters in a string
+
+```{webr}
+seven_seas = "Ahoy, matey!\nLet's set sail for adventure!\n"
+seven_seas
+```
+
+### Anonymous function definition
+
+```{webr}
+add_one <- \(x) x + 1
+add_one(2)
+```
+
+### Empty code cell
+
+```{webr}
+
 ```
