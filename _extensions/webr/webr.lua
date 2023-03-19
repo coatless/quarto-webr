@@ -37,6 +37,18 @@ editor_template = editorTemplateFile()
 
 ----
 
+-- Define a function that escape control sequence
+function escapeControlSequences(str)
+  -- Perform a global replacement on the control sequence character
+  return str:gsub("[\\%c]", function(c)
+    if c == "\\" then
+      -- Escape backslash
+      return "\\\\"
+    end
+  end)
+end
+
+----
 
 -- Setup WebR's pre-requisites once per document.
 function ensureWebRSetup()
@@ -70,7 +82,6 @@ function substitute_in_file(contents, substitutions)
   return contents
 end
 
-
 return {
   {
     CodeBlock = function(el)
@@ -101,7 +112,7 @@ return {
           ["WEBRCOUNTER"] = counter, 
           ["WIDTH"] = 504,
           ["HEIGHT"] = 360,
-          ["WEBRCODE"] = el.text
+          ["WEBRCODE"] = escapeControlSequences(el.text)
         }
         
         -- Make sure we perform a copy
