@@ -92,39 +92,54 @@ return {
       -- Should display the following elements:
       -- https://pandoc.org/lua-filters.html#type-codeblock
       
-      -- Ensure that the {webr} tag is present and the document type is HTML
+      -- Verify the element has attributes and the document type is HTML
       -- not sure if this will work with an epub (may need html:js)
-      -- Right now, we're using `{webr}` if engine is jupyter and `webr` if engine is `knitr` since the later dislikes custom engines
-      if el.attr and (el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")) and quarto.doc.is_format("html") then
-        
-        -- Make sure we've initialized the code block
-        ensureWebRSetup()
+      if el.attr and quarto.doc.is_format("html") then
 
-        -- Modify the counter variable each time this is run to create
-        -- unique code cells
-        counter = counter + 1
-        
-        -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
-        -- So, we have 504 and 360 respectively.
-        -- Should we check the attributes for this value? Seems odd.
-        -- https://yihui.org/knitr/options/
-        local substitutions = {
-          ["WEBRCOUNTER"] = counter, 
-          ["WIDTH"] = 504,
-          ["HEIGHT"] = 360,
-          ["WEBRCODE"] = escapeControlSequences(el.text)
-        }
-        
-        -- Make sure we perform a copy
-        local copied_editor_template = editor_template
+        -- Check to see if any form of the {webr} tag is present 
 
-        -- Make the necessary substitutions
-        local webr_enabled_code_cell = substitute_in_file(copied_editor_template, substitutions)
+        -- Look for the original compute cell type `{webr}` 
+        -- If the compute engine is:
+        -- - jupyter: this appears as `{webr}` 
+        -- - knitr: this appears as `webr`
+        --  since the later dislikes custom engines
+        local originalEngine = el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")
 
-        -- Return the modified HTML template as a raw cell
-        return pandoc.RawInline('html', webr_enabled_code_cell)
+        -- Check for the new engine syntax that allows for the cell to be 
+        -- evaluated in VS Code or RStudio editor views, c.f.
+        -- https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636
+        local newEngine = el.attr.classes:includes("{webr-r}")
+        
+        if (originalEngine or newEngine) then
+          
+          -- Make sure we've initialized the code block
+          ensureWebRSetup()
+
+          -- Modify the counter variable each time this is run to create
+          -- unique code cells
+          counter = counter + 1
+          
+          -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
+          -- So, we have 504 and 360 respectively.
+          -- Should we check the attributes for this value? Seems odd.
+          -- https://yihui.org/knitr/options/
+          local substitutions = {
+            ["WEBRCOUNTER"] = counter, 
+            ["WIDTH"] = 504,
+            ["HEIGHT"] = 360,
+            ["WEBRCODE"] = escapeControlSequences(el.text)
+          }
+          
+          -- Make sure we perform a copy
+          local copied_editor_template = editor_template
+
+          -- Make the necessary substitutions
+          local webr_enabled_code_cell = substitute_in_file(copied_editor_template, substitutions)
+
+          -- Return the modified HTML template as a raw cell
+          return pandoc.RawInline('html', webr_enabled_code_cell)
+        end
       end
-      
       -- Allow for a pass through in other languages
       return el
     end

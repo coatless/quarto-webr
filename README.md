@@ -45,7 +45,7 @@ filters:
 
 This is a webr-enabled code cell in a Quarto HTML document.
 
-```{webr}
+```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
@@ -148,8 +148,8 @@ For additional justificaiton on why the headers are required, please see [webR's
 
 ### Engine Registration
 
-If using the `knitr` engine instead of the `jupyter` engine, there is a known warning
-that will appear in the render processing output of:
+If using the `knitr` engine instead of the `jupyter` engine and you are using the original tag of `{webr}` instead of `{webr-r}`, 
+there is a known warning that will appear in the render processing output of:
 
 ```r
 Warning message:
@@ -160,10 +160,11 @@ In get_engine(options$engine) :
 This warning does not prevent or impact the ability of the `webr` filter to function. 
 Though, we would like to address it at some point since it is not aesthetically pleasing.
 
-
 ## Acknowledgements
 
 We appreciate the early testing feedback from [Eli E. Holmes](https://eeholmes.github.io/) and [Bob Rudis](https://rud.is/).
+
+We also appreciate the Quarto team assisting with [setting up a new code cell type](https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636).
 
 This repository builds ontop of the initial proof of concept for a standalone Quarto HTML document in:
 
