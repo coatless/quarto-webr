@@ -96,13 +96,16 @@ webr::install("ggplot2")
 
 The `quarto-webr` extension supports specifying the following `WebROptions` options:
 
-- `show-startup-message`: Display in the document header the state of WebR initialization. Default: `true`
-- `show-header-message`: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: `false`
 - `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
-- `base-url`: The base URL used for downloading R WebAssembly binaries. ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
+- `base-url`: The base URL used for downloading R WebAssembly binaries. ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
 - `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
 
-Place these options underneath the `webr` entry in the documentation header, e.g.
+The extension also has native options for:
+
+- `show-startup-message`: Display in the document header the state of WebR initialization. Default: `true`
+- `show-header-message`: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: `false`
+
+For these options to be active, they must be placed underneath the `webr` entry in the documentation header, e.g.
 
 ```markdown
 ---
