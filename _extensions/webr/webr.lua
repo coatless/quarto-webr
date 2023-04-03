@@ -112,9 +112,6 @@ function setWebRInitializationOptions(meta)
       table.insert(package_list, "'" .. pandoc.utils.stringify(package_name) .. "'")
     end
 
-    quarto.log.output(package_list)
-    quarto.log.output(table.concat(package_list, ', '))
-
     installRPackagesList = table.concat(package_list, ", ")
   end
 
