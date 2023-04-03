@@ -32,7 +32,7 @@ filters:
   - webr
 ```
 
-Then, place the code for `webr` in a code block marked with `{webr}`
+Then, place the R code for `webR` in a code block marked with `{webr-r}`
 
 ````markdown
 ---
@@ -52,9 +52,11 @@ summary(fit)
 ````
 
 
-When `quarto render` or `quarto preview` is called, the filter will execute under the `jupyter` compute engine if `engine: knitr` is not specified. 
+When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
 During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
-webR session to be started and must be present with the rendered output.
+`webR` session to be started and must be present with the rendered output. 
+
+**Note:** If `engine: knitr` is not specified, then the `jupyter` compute engine will be used by default.
 
 ### Packages
 
