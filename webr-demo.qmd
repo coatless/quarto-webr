@@ -98,6 +98,13 @@ add_one(2)
 
 ```
 
+### Prior code cell
+
+```{webr}
+
+```
+
+
 ### Pre-rendered code cell
 
 ```{r}

@@ -32,7 +32,7 @@ filters:
   - webr
 ```
 
-Then, place the code for `webr` in a code block marked with `{webr}`
+Then, place the R code for `webR` in a code block marked with `{webr-r}`
 
 ````markdown
 ---
@@ -52,25 +52,17 @@ summary(fit)
 ````
 
 
-When `quarto render` or `quarto preview` is called, the filter will execute under the `jupyter` compute engine if `engine: knitr` is not specified. 
+When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
 During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
-webR session to be started and must be present with the rendered output.
+`webR` session to be started and must be present with the rendered output. 
+
+**Note:** If `engine: knitr` is not specified, then the `jupyter` compute engine will be used by default.
 
 ### Packages
 
-By default, the `quarto-webr` extension avoids loading or requesting additional packages. Additional packages can be added by including:
-
-```r
-webr::install("package")
-```
-
-For example, to install `ggplot2`, you would need to use: 
-
-```r
-webr::install("ggplot2")
-```
-
-You can view what packages are available by either executing the following R code (either with WebR or just R):
+By default, the `quarto-webr` extension avoids loading or requesting additional packages. Additional packages can be added 
+when the document is first opened or on per-code cell basis. You can view what packages are available by either executing 
+the following R code (either with WebR or just R):
 
 ```r
 available.packages(repos="https://repo.r-wasm.org/", type="source")
@@ -79,6 +71,56 @@ available.packages(repos="https://repo.r-wasm.org/", type="source")
 Or, by navigating to the WebR repository:
 
 <https://github.com/r-wasm/webr-repo/blob/main/repo-packages>
+
+
+#### Install on document open
+
+Add to the document header YAML the `packages` key under `webr` with each package listed using an array, e.g. 
+
+```yaml
+---
+webr:
+  packages: ['ggplot2', 'dplyr']
+---
+```
+
+#### Install on an as needed basis
+
+Packages may also be installed inside of a code cell through the built-in [`webr::install()` function](https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package). For example, to install `ggplot2`, you would need to use: 
+
+```r
+webr::install("ggplot2")
+```
+
+### Customizing webR from the Quarto Extension
+
+The `quarto-webr` extension supports specifying the following `WebROptions` options:
+
+- `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
+- `base-url`: The base URL used for downloading R WebAssembly binaries. ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
+- `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
+
+The extension also has native options for:
+
+- `show-startup-message`: Display in the document header the state of WebR initialization. Default: `true`
+- `show-header-message`: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: `false`
+
+For these options to be active, they must be placed underneath the `webr` entry in the documentation header, e.g.
+
+```markdown
+---
+title: WebR in Quarto HTML Documents
+format: html
+engine: knitr
+webr: 
+  show-startup-message: false
+  show-header-message: false
+  home-dir: '/home/r-user/'
+  packages: ['ggplot2', 'dplyr']
+filters:
+  - webr
+---
+```
 
 ## Known Hiccups
 
@@ -95,6 +137,8 @@ If `webr-worker.js` or `webr-serviceworker.js` are not found when the document l
 ├── webr-serviceworker.js
 └── webr-worker.js
 ```
+
+Still having trouble? Try specifying where the worker files are located using the `service-worker-url` option in the document's YAML header.
 
 ### Directly accessing rendered HTML
 
