@@ -1,29 +1,34 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+<link rel="stylesheet" data-name="vs/editor/editor.main"
+  href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.min.css">
 <style>
-  .CodeMirror pre {
+  .monaco-editor pre {
     background-color: unset !important;
   }
+
   .btn-webr {
     background-color: #EEEEEE;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/r/r.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.min.js"></script>
 <script type="module">
+
+  // Configure the Monaco Editor's loader
+  require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs' } });
+
 
   // Start a timer
   const initializeWebRTimerStart = performance.now();
 
   // Determine if we need to install R packages
-  var installRPackagesList = [{{INSTALLRPACKAGESLIST}}];
+  var installRPackagesList = [{{ INSTALLRPACKAGESLIST }}];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
 
   // Display a startup message?
-  var showStartupMessage = {{SHOWSTARTUPMESSAGE}};
-  var showHeaderMessage = {{SHOWHEADERMESSAGE}};
+  var showStartupMessage = {{ SHOWSTARTUPMESSAGE }};
+  var showHeaderMessage = {{ SHOWHEADERMESSAGE }};
   if (showStartupMessage) {
 
     // Create the outermost div element
@@ -70,7 +75,7 @@
 
   // Retrieve the webr.mjs
   import { WebR } from "https://webr.r-wasm.org/v0.1.1/webr.mjs";
-  
+
   // Populate WebR options with defaults or new values based on 
   // webr meta
   globalThis.webR = new WebR({
@@ -106,4 +111,4 @@
     // If initialized, switch to a green light
     startupMessageWebR.innerText = "🟢 Ready!"
   }
-</script>  
+</script>

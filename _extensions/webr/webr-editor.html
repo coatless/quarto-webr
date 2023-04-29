@@ -1,29 +1,46 @@
-<button class="btn btn-default btn-webr" disabled type="button"  id="webr-run-button-{{WEBRCOUNTER}}">Loading webR...</button>
-<div id="webr-editor-{{WEBRCOUNTER}}"></div>
-<div id="webr-code-output-{{WEBRCOUNTER}}"><pre style="visibility: hidden"></pre></div>
+<button class="btn btn-default btn-webr" disabled type="button" id="webr-run-button-{{WEBRCOUNTER}}">Loading
+  webR...</button>
+<div id="webr-editor-{{WEBRCOUNTER}}" style="height: 400px;"></div>
+<div id="webr-code-output-{{WEBRCOUNTER}}" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
 <script type="module">
   const runButton = document.getElementById("webr-run-button-{{WEBRCOUNTER}}");
   const outputDiv = document.getElementById("webr-code-output-{{WEBRCOUNTER}}");
   const editorDiv = document.getElementById("webr-editor-{{WEBRCOUNTER}}");
 
-  const editor = CodeMirror((elt) => {
-    elt.style.border = "1px solid #eee";
-    elt.style.height = "auto";
-    editorDiv.append(elt);
-  },{
-    value: `{{WEBRCODE}}`,
-    lineNumbers: true,
-    mode: "r",
-    theme: "light default",
-    viewportMargin: Infinity,
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
+      value: `{{WEBRCODE}}`,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,
+    });
+
+    // Add a keydown event listener for Shift+Enter using the addCommand method
+    editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, function () {
+      // Code to run when Shift+Enter is pressed
+      executeCode(editor.getValue());
+    });
+
+    // Add a keydown event listener for Ctrl+Enter to run selected code
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, function () {
+      // Get the selected text from the editor
+      const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+      // Code to run when Ctrl+Enter is pressed (run selected code)
+      executeCode(selectedText);
+    });
   });
 
-  runButton.onclick = async () => {
+  // Function to execute the code (accepts code as an argument)
+  async function executeCode(codeToRun) {
     runButton.disabled = true;
     let canvas = undefined;
     await globalThis.webR.init();
     await webR.evalRVoid("canvas(width={{WIDTH}}, height={{HEIGHT}})");
-    const result = await webRCodeShelter.captureR(editor.getValue(), {
+    const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
       captureConditions: false,
@@ -37,38 +54,43 @@
 
       const msgs = await webR.flush();
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec"){
+        if (msg.type === "canvasExec") {
           if (!canvas) {
             canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * {{WIDTH}});
-            canvas.setAttribute("height", 2 * {{HEIGHT}});
-            canvas.style.width="700px";
-            canvas.style.display="block";
-            canvas.style.margin="auto";
-          }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
+            canvas.setAttribute("width", 2 * {{ WIDTH }});
+      canvas.setAttribute("height", 2 * {{ HEIGHT }});
+    canvas.style.width = "700px";
+    canvas.style.display = "block";
+    canvas.style.margin = "auto";
+  }
+  Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
-      outputDiv.innerHTML = "";
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
+  outputDiv.innerHTML = "";
+  const pre = document.createElement("pre");
+  if (/\S/.test(out)) {
+    const code = document.createElement("code");
+    code.innerText = out;
+    pre.appendChild(code);
+  } else {
+    pre.style.visibility = "hidden";
   }
+  outputDiv.appendChild(pre);
+
+  if (canvas) {
+    const p = document.createElement("p");
+    p
+      .appendChild(canvas);
+    outputDiv.appendChild(p);
+  }
+} finally {
+    webRCodeShelter.purge();
+    runButton.disabled = false;
+  }
+}
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    executeCode(editor.getValue());
+  };
 </script>
