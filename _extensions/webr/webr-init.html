@@ -55,6 +55,8 @@
     var startupMessageWebR = document.createElement("p");
     startupMessageWebR.innerText = "🟡 Loading...";
     startupMessageWebR.setAttribute("id", "startup");
+    // Add `aria-live` to auto-announce the startup status to screen readers
+    startupMessageWebR.setAttribute("aria-live", "assertive");
 
     // Put everything together
     secondInnerDivContents.appendChild(startupMessageWebR);
