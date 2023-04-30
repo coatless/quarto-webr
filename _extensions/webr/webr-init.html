@@ -25,13 +25,13 @@
   const initializeWebRTimerStart = performance.now();
 
   // Determine if we need to install R packages
-  var installRPackagesList = [{{ INSTALLRPACKAGESLIST }}];
+  var installRPackagesList = [{{INSTALLRPACKAGESLIST}}];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
 
   // Display a startup message?
-  var showStartupMessage = {{ SHOWSTARTUPMESSAGE }};
-  var showHeaderMessage = {{ SHOWHEADERMESSAGE }};
+  var showStartupMessage = {{SHOWSTARTUPMESSAGE}};
+  var showHeaderMessage = {{SHOWHEADERMESSAGE}};
   if (showStartupMessage) {
 
     // Create the outermost div element
