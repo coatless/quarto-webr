@@ -1,6 +1,6 @@
 <button class="btn btn-default btn-webr" disabled type="button" id="webr-run-button-{{WEBRCOUNTER}}">Loading
   webR...</button>
-<div id="webr-editor-{{WEBRCOUNTER}}" style="height: 400px;"></div>
+<div id="webr-editor-{{WEBRCOUNTER}}"></div>
 <div id="webr-code-output-{{WEBRCOUNTER}}" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
@@ -57,8 +57,8 @@
         if (msg.type === "canvasExec") {
           if (!canvas) {
             canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * {{ WIDTH }});
-      canvas.setAttribute("height", 2 * {{ HEIGHT }});
+            canvas.setAttribute("width", 2 * {{WIDTH}});
+            canvas.setAttribute("height", 2 * {{HEIGHT}});
     canvas.style.width = "700px";
     canvas.style.display = "block";
     canvas.style.margin = "auto";
@@ -80,8 +80,7 @@
 
   if (canvas) {
     const p = document.createElement("p");
-    p
-      .appendChild(canvas);
+        p.appendChild(canvas);
     outputDiv.appendChild(p);
   }
 } finally {
