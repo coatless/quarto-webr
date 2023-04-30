@@ -18,6 +18,9 @@
       theme: 'vs-light',
       automaticLayout: true,
       scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      }
     });
 
     // Add a keydown event listener for Shift+Enter using the addCommand method
@@ -63,6 +66,7 @@
       captureConditions: false,
       env: webR.objs.emptyEnv,
     });
+
     try {
       await webR.evalRVoid("dev.off()");
       const out = result.output.filter(
@@ -76,35 +80,35 @@
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * {{WIDTH}});
             canvas.setAttribute("height", 2 * {{HEIGHT}});
-    canvas.style.width = "700px";
-    canvas.style.display = "block";
-    canvas.style.margin = "auto";
-  }
-  Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
-  outputDiv.innerHTML = "";
-  const pre = document.createElement("pre");
-  if (/\S/.test(out)) {
-    const code = document.createElement("code");
-    code.innerText = out;
-    pre.appendChild(code);
-  } else {
-    pre.style.visibility = "hidden";
-  }
-  outputDiv.appendChild(pre);
+      outputDiv.innerHTML = "";
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
 
-  if (canvas) {
-    const p = document.createElement("p");
+      if (canvas) {
+        const p = document.createElement("p");
         p.appendChild(canvas);
-    outputDiv.appendChild(p);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
   }
-} finally {
-    webRCodeShelter.purge();
-    runButton.disabled = false;
-  }
-}
   // Add a click event listener to the run button
   runButton.onclick = function () {
     executeCode(editor.getValue());
