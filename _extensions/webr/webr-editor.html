@@ -32,6 +32,22 @@
       // Code to run when Ctrl+Enter is pressed (run selected code)
       executeCode(selectedText);
     });
+
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      const contentHeight = editor.getContentHeight();
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${contentHeight}px`;
+      try {
+        ignoreEvent = true;
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+    editor.onDidContentSizeChange(updateHeight);
+    updateHeight();
+
   });
 
   // Function to execute the code (accepts code as an argument)
