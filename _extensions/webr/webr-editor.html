@@ -10,6 +10,9 @@
   const outputDiv = document.getElementById("webr-code-output-{{WEBRCOUNTER}}");
   const editorDiv = document.getElementById("webr-editor-{{WEBRCOUNTER}}");
 
+  // Add a light grey outline around the code editor
+  editorDiv.style.border = "1px solid #eee";
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -17,11 +20,14 @@
       value: `{{WEBRCODE}}`,
       language: 'r',
       theme: 'vs-light',
-      automaticLayout: true, // TODO: Could be problematic for other slide decks
+      automaticLayout: true,           // TODO: Could be problematic for slide decks
       scrollBeyondLastLine: false,
       minimap: {
         enabled: false
-      }
+      },
+      fontSize: '17.5rem',               // Bootstrap is 1 rem
+      renderLineHighlight: "none",     // Disable current line highlighting
+      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
     });
 
     // Add a keydown event listener for Shift+Enter using the addCommand method
