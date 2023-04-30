@@ -5,6 +5,7 @@
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
+  // Retrieve webR code cell information
   const runButton = document.getElementById("webr-run-button-{{WEBRCOUNTER}}");
   const outputDiv = document.getElementById("webr-code-output-{{WEBRCOUNTER}}");
   const editorDiv = document.getElementById("webr-editor-{{WEBRCOUNTER}}");
@@ -16,7 +17,7 @@
       value: `{{WEBRCODE}}`,
       language: 'r',
       theme: 'vs-light',
-      automaticLayout: true,
+      automaticLayout: true, // TODO: Could be problematic for other slide decks
       scrollBeyondLastLine: false,
       minimap: {
         enabled: false
@@ -37,29 +38,45 @@
       executeCode(selectedText);
     });
 
+    // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
       const contentHeight = editor.getContentHeight();
+      // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
       editorDiv.style.height = `${contentHeight}px`;
       try {
         ignoreEvent = true;
+
+        // The key to resizing is this call
         editor.layout();
       } finally {
         ignoreEvent = false;
       }
     };
-    editor.onDidContentSizeChange(updateHeight);
-    updateHeight();
 
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
   });
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
+    // Disable run button for code cell active
     runButton.disabled = true;
+
+    // Create a canvas variable for graphics
     let canvas = undefined;
+
+    // Initialize webR
     await globalThis.webR.init();
+
+    // Setup a webR canvas
     await webR.evalRVoid("canvas(width={{WIDTH}}, height={{HEIGHT}})");
+
+    // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
@@ -67,13 +84,21 @@
       env: webR.objs.emptyEnv,
     });
 
+    // Start attempting to parse the result data
     try {
+
+      // Stop creating images
       await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
       const out = result.output.filter(
         evt => evt.type == "stdout" || evt.type == "stderr"
       ).map((evt) => evt.data).join("\n");
 
+      // Clean the state
       const msgs = await webR.flush();
+
+      // Output each image stored
       msgs.forEach(msg => {
         if (msg.type === "canvasExec") {
           if (!canvas) {
@@ -88,27 +113,35 @@
         }
       });
 
+      // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
+
+      // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
+        // Display results as text
         const code = document.createElement("code");
         code.innerText = out;
         pre.appendChild(code);
       } else {
+        // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
       outputDiv.appendChild(pre);
 
+      // Place the graphics on the canvas
       if (canvas) {
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
       }
     } finally {
+      // Clean up the remaining code
       webRCodeShelter.purge();
       runButton.disabled = false;
     }
   }
+
   // Add a click event listener to the run button
   runButton.onclick = function () {
     executeCode(editor.getValue());
