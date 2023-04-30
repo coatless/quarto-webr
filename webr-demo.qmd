@@ -1,5 +1,5 @@
 ---
-title: "WebR-enabled code cells"
+title: "webR-enabled code cells"
 format: html
 engine: knitr
 filters:
