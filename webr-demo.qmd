@@ -11,7 +11,7 @@ filters:
 webR-enabled code cell are established by using `{webr-r}` in a Quarto HTML document.
 
 ```{webr-r}
-1 + 1 
+1 + 1
 ```
 
 ## Sample cases
@@ -19,7 +19,7 @@ webR-enabled code cell are established by using `{webr-r}` in a Quarto HTML docu
 ### Fit a linear regression model
 
 ```{webr-r}
-fit = lm(mpg ~ am, data = mtcars)
+fit <- lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
 
@@ -38,8 +38,9 @@ You can view what packages are available for webR by either executing the follow
 
 ```{webr-r}
 available.packages(
-    repos="https://repo.r-wasm.org/", 
-    type="source")[,c("Package", "Version")]
+  repos = "https://repo.r-wasm.org/",
+  type = "source"
+)[, c("Package", "Version")]
 ```
 
 Or, by navigating to the WebR repository:
@@ -61,15 +62,15 @@ Once `ggplot2` is loaded, then use the package as normal.
 ```{webr-r}
 library(ggplot2)
 
-p = ggplot(mpg, aes(class, hwy))
+p <- ggplot(mpg, aes(class, hwy))
 p + geom_boxplot()
 ```
 
 ### Define variables and re-use them in later cells
 
 ```{webr-r}
-name = "James"
-age = 42
+name <- "James"
+age <- 42
 ```
 
 
@@ -81,7 +82,7 @@ message(name, " is ", age, " years old!")
 ### Escape characters in a string
 
 ```{webr-r}
-seven_seas = "Ahoy, matey!\nLet's set sail for adventure!\n"
+seven_seas <- "Ahoy, matey!\nLet's set sail for adventure!\n"
 seven_seas
 ```
 
