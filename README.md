@@ -25,7 +25,7 @@ quarto add coatless/quarto-webr
 
 ## Usage
 
-For each document, place the the `webr` filter in the document's header:
+For each document, place the `webr` filter in the document's header:
 
 ```yaml
 filters:
@@ -97,7 +97,7 @@ webr::install("ggplot2")
 The `quarto-webr` extension supports specifying the following `WebROptions` options:
 
 - `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
-- `base-url`: The base URL used for downloading R WebAssembly binaries. ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
+- `base-url`: The base URL used for downloading R WebAssembly binaries ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
 - `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
 
 The extension also has native options for:

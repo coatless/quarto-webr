@@ -8,7 +8,7 @@ filters:
 
 ## Demo
 
-WebR-enabled code cell are established by using `{webr-r}` in a Quarto HTML document.
+webR-enabled code cell are established by using `{webr-r}` in a Quarto HTML document.
 
 ```{webr-r}
 1 + 1 
