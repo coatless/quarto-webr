@@ -1,17 +1,25 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.0/min/vs/editor/editor.main.css" />
 <style>
-  .CodeMirror pre {
+  .monaco-editor pre {
     background-color: unset !important;
   }
+
   .btn-webr {
     background-color: #EEEEEE;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/r/r.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.31.0/min/vs/loader.js"></script>
 <script type="module">
+
+  // Configure the Monaco Editor's loader
+  require.config({
+    paths: {
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.31.0/min/vs'
+    }
+  });
+
 
   // Start a timer
   const initializeWebRTimerStart = performance.now();
@@ -47,6 +55,8 @@
     var startupMessageWebR = document.createElement("p");
     startupMessageWebR.innerText = "🟡 Loading...";
     startupMessageWebR.setAttribute("id", "startup");
+    // Add `aria-live` to auto-announce the startup status to screen readers
+    startupMessageWebR.setAttribute("aria-live", "assertive");
 
     // Put everything together
     secondInnerDivContents.appendChild(startupMessageWebR);
@@ -70,7 +80,7 @@
 
   // Retrieve the webr.mjs
   import { WebR } from "https://webr.r-wasm.org/v0.1.1/webr.mjs";
-  
+
   // Populate WebR options with defaults or new values based on 
   // webr meta
   globalThis.webR = new WebR({
@@ -106,4 +116,4 @@
     // If initialized, switch to a green light
     startupMessageWebR.innerText = "🟢 Ready!"
   }
-</script>  
+</script>
