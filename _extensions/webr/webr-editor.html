@@ -1,5 +1,6 @@
 <button class="btn btn-default btn-webr" disabled type="button" id="webr-run-button-{{WEBRCOUNTER}}">Loading
-  webR...</button>
+  webR...</button><button class="btn btn-default btn-webr-stop" disabled type="button" id="webr-stop-button-{{WEBRCOUNTER}}">Loading
+    webR...</button>
 <div id="webr-editor-{{WEBRCOUNTER}}"></div>
 <div id="webr-code-output-{{WEBRCOUNTER}}" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
@@ -7,6 +8,7 @@
 <script type="module">
   // Retrieve webR code cell information
   const runButton = document.getElementById("webr-run-button-{{WEBRCOUNTER}}");
+  const stopButton = document.getElementById("webr-stop-button-{{WEBRCOUNTER}}");
   const outputDiv = document.getElementById("webr-code-output-{{WEBRCOUNTER}}");
   const editorDiv = document.getElementById("webr-editor-{{WEBRCOUNTER}}");
 
@@ -152,4 +154,10 @@
   runButton.onclick = function () {
     executeCode(editor.getValue());
   };
+
+  // Add a click event listener to the stop button
+  // terminates the active code run
+  stopButton.onclick = async function () {
+  await globalThis.webR.interrupt();
+};
 </script>

@@ -109,9 +109,16 @@
     btn.disabled = false;
   });
 
+  // Switch stop buttons to being active
+  document.querySelectorAll(".btn-webr-stop").forEach((btn) => {
+    btn.innerText = "🛑 Stop";
+    btn.disabled = false;
+  });
+
   // Stop timer
   const initializeWebRTimerEnd = performance.now();
 
+  // Display startup message as completed.
   if (showStartupMessage) {
     // If initialized, switch to a green light
     startupMessageWebR.innerText = "🟢 Ready!"
