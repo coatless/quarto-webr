@@ -1,0 +1,27 @@
+// Config options: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+{
+	"name": "R (rocker/r-ver base)",
+	"image": "ghcr.io/rocker-org/devcontainer/r-ver:4.3",
+
+	// Add software
+	"features": {
+		// R package config: https://github.com/rocker-org/devcontainer-features/blob/main/src/r-packages/README.md
+	  "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+           "packages": "cli,rlang",
+            "installSystemRequirements": true
+        },
+	  // Quarto configuration : https://github.com/rocker-org/devcontainer-features/blob/main/src/quarto-cli/README.md
+	  "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+		  "installTinyTex": true,
+      "version": "prerelease" 
+	  }
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"quarto.quarto",
+				"peakchen90.open-html-in-browser"
+			]
+		}
+	} 
+}
