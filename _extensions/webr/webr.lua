@@ -195,7 +195,7 @@ function checkMajorMinorPatchVersionFormat(version_string)
       error("Invalid version string: " .. version_string)
   end
   -- Empty return to use as enforcement
-  return 
+  return false
 end
 
 -- Compare versions
@@ -272,8 +272,20 @@ function ensureWebRSetup()
 
   -- Copy the two web workers into the directory
   -- https://quarto.org/docs/extensions/lua-api.html#dependencies
-  quarto.doc.add_format_resource("webr-worker.js")	
-  quarto.doc.add_format_resource("webr-serviceworker.js")	
+
+  quarto.doc.add_html_dependency({
+    name = "webr-worker",
+    version = baseVersionWebR,
+    seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
+    serviceworkers = {"webr-worker.js"}
+  })
+
+  quarto.doc.add_html_dependency({
+    name = "webr-serviceworker",
+    version = baseVersionWebR,
+    seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
+    serviceworkers = {"webr-serviceworker.js"}
+  })
 end
 
 -- Define a function to replace keywords given by {{ WORD }}
