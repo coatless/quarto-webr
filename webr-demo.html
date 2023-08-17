@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 
   // Retrieve the webr.mjs
-  import { WebR } from "https://webr.r-wasm.org/v0.1.1/webr.mjs";
+  import { WebR } from "https://webr.r-wasm.org/v0.2.0/webr.mjs";
 
   // Populate WebR options with defaults or new values based on 
   // webr meta
@@ -378,15 +378,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -405,8 +405,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -414,7 +419,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -539,15 +543,15 @@ summary(fit)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -566,8 +570,13 @@ summary(fit)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -575,7 +584,6 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -697,15 +705,15 @@ summary(fit)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -724,8 +732,13 @@ summary(fit)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -733,7 +746,6 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -861,15 +873,15 @@ summary(fit)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -888,8 +900,13 @@ summary(fit)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -897,7 +914,6 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -940,7 +956,8 @@ summary(fit)`,
 </section>
 <section id="installing-a-package" class="level4">
 <h4 class="anchored" data-anchor-id="installing-a-package">Installing a Package</h4>
-<p>Installing <code>ggplot2</code> may take at least 2 minutes to run.</p>
+<p>Installing a package interactively is done using <code>webr::install()</code> inside of a <code>{webr-r}</code> code cell.</p>
+<p><strong>Note:</strong> Installing <code>ggplot2</code> may take at least 2 minutes if COEP &amp; COOP headers are not set.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-5">Loading
   webR...</button>
 <div id="webr-editor-5"></div>
@@ -1022,15 +1039,15 @@ summary(fit)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1049,8 +1066,13 @@ summary(fit)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1058,7 +1080,6 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1184,15 +1205,15 @@ p + geom_boxplot()`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1211,8 +1232,13 @@ p + geom_boxplot()`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1220,7 +1246,6 @@ p + geom_boxplot()`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1344,15 +1369,15 @@ age <- 42`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1371,8 +1396,13 @@ age <- 42`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1380,7 +1410,6 @@ age <- 42`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1499,15 +1528,15 @@ age <- 42`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1526,8 +1555,13 @@ age <- 42`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1535,7 +1569,6 @@ age <- 42`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1658,15 +1691,15 @@ seven_seas`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1685,8 +1718,13 @@ seven_seas`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1694,7 +1732,6 @@ seven_seas`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1817,15 +1854,15 @@ add_one(2)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -1844,8 +1881,13 @@ add_one(2)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -1853,7 +1895,6 @@ add_one(2)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -1975,15 +2016,15 @@ add_one(2)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -2002,8 +2043,13 @@ add_one(2)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -2011,7 +2057,6 @@ add_one(2)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
@@ -2134,15 +2179,15 @@ add_one(2)`,
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width=504, height=360)");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -2161,8 +2206,13 @@ add_one(2)`,
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * 504);
             canvas.setAttribute("height", 2 * 360);
@@ -2170,7 +2220,6 @@ add_one(2)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
