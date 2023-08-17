@@ -36,7 +36,7 @@ Then, place the R code for `webR` in a code block marked with `{webr-r}`
 
 ````markdown
 ---
-title: WebR in Quarto HTML Documents
+title: webR in Quarto HTML Documents
 format: html
 engine: knitr
 filters:
