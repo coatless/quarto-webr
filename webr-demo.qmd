@@ -51,11 +51,14 @@ Or, by navigating to the WebR repository:
 
 #### Installing a Package
 
-Installing `ggplot2` may take at least 2 minutes to run. 
+Installing a package interactively is done using `webr::install()` inside of a `{webr-r}` code cell. 
+
+**Note:** Installing `ggplot2` may take at least 2 minutes if COEP & COOP headers are not set.
 
 ```{webr-r}
 webr::install("ggplot2")
 ```
+
 
 #### Using a Package
 

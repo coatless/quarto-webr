@@ -79,15 +79,15 @@
     // Initialize webR
     await globalThis.webR.init();
 
-    // Setup a webR canvas
-    await webR.evalRVoid("canvas(width={{WIDTH}}, height={{HEIGHT}})");
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width={{WIDTH}}, height={{HEIGHT}})");
 
     // Capture output data from evaluating the code
     const result = await webRCodeShelter.captureR(codeToRun, {
       withAutoprint: true,
       captureStreams: true,
-      captureConditions: false,
-      env: webR.objs.emptyEnv,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
     });
 
     // Start attempting to parse the result data
@@ -106,8 +106,13 @@
 
       // Output each image stored
       msgs.forEach(msg => {
-        if (msg.type === "canvasExec") {
-          if (!canvas) {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
             canvas = document.createElement("canvas");
             canvas.setAttribute("width", 2 * {{WIDTH}});
             canvas.setAttribute("height", 2 * {{HEIGHT}});
@@ -115,7 +120,6 @@
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-          Function(`this.getContext("2d").${msg.data}`).bind(canvas)();
         }
       });
 
