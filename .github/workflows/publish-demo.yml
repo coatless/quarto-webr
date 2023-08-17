@@ -1,0 +1,35 @@
+on:
+  push:
+    branches: [main, master]
+  release:
+      types: [published]
+  workflow_dispatch:
+    
+name: demo-website
+
+jobs:
+  demo-website:
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    permissions:
+      contents: write
+    steps:
+      - name: "Check out repository"
+        uses: actions/checkout@v3
+
+      - name: "Set up Quarto"
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: "Initialize a quarto project"
+        run: |
+          quarto create project website .
+        shell: bash
+
+      - name: "Render and Publish"
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
