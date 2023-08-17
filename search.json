@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": ".",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "webr-readme-example.html",
+    "href": "webr-readme-example.html",
+    "title": "webR in Quarto HTML Documents",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR..."
+  },
+  {
+    "objectID": "webr-demo.html",
+    "href": "webr-demo.html",
+    "title": "webR-enabled code cells",
+    "section": "",
+    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR..."
+  },
+  {
+    "objectID": "webr-demo.html#demo",
+    "href": "webr-demo.html#demo",
+    "title": "webR-enabled code cells",
+    "section": "",
+    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR..."
+  },
+  {
+    "objectID": "webr-demo.html#sample-cases",
+    "href": "webr-demo.html#sample-cases",
+    "title": "webR-enabled code cells",
+    "section": "Sample cases",
+    "text": "Sample cases\n\nFit a linear regression model\nLoading\n  webR...\n\n\n  \n\n\n\n\nCreate a graph with base R\nLoading\n  webR...\n\n\n  \n\n\n\n\nPackages\n\nAvailable Packages\nYou can view what packages are available for webR by either executing the following R code (either with WebR or just R):\nLoading\n  webR...\n\n\n  \n\n\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages\n\n\nInstalling a Package\nInstalling ggplot2 may take at least 2 minutes to run.\nLoading\n  webR...\n\n\n  \n\n\n\n\nUsing a Package\nOnce ggplot2 is loaded, then use the package as normal.\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nDefine variables and re-use them in later cells\nLoading\n  webR...\n\n\n  \n\n\nLoading\n  webR...\n\n\n  \n\n\n\n\nEscape characters in a string\nLoading\n  webR...\n\n\n  \n\n\n\n\nAnonymous function definition\nLoading\n  webR...\n\n\n  \n\n\n\n\nEmpty code cell\nLoading\n  webR...\n\n\n  \n\n\n\n\nPrior code cell\n\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nPre-rendered code cell\n\nmessage(\"Hello!\")\n\nHello!"
+  }
+]
