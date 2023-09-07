@@ -1,0 +1,4 @@
+- source: webr-demo.qmd
+  quarto-pub:
+    - id: 2ae0a31d-b315-4617-a8a4-cda96a9abd3c
+      url: 'https://coatless.quarto.pub/webr-enabled-code-cells'
