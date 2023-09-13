@@ -9,7 +9,7 @@ local hasDoneWebRSetup = false
 -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html
 
 -- Define a base compatibile version
-local baseVersionWebR = "0.1.1"
+local baseVersionWebR = "0.2.1"
 
 -- Define where WebR can be found
 local baseUrl = ""
@@ -276,14 +276,14 @@ function ensureWebRSetup()
   quarto.doc.add_html_dependency({
     name = "webr-worker",
     version = baseVersionWebR,
-    seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
+    --seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
     serviceworkers = {"webr-worker.js"}
   })
 
   quarto.doc.add_html_dependency({
     name = "webr-serviceworker",
     version = baseVersionWebR,
-    seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
+    --seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
     serviceworkers = {"webr-serviceworker.js"}
   })
 end
