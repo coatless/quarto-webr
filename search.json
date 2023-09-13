@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "webr-readme-example.html",
+    "href": "webr-readme-example.html",
+    "title": "webR in Quarto HTML Documents",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR..."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -12,13 +19,6 @@
     "title": ".",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "webr-readme-example.html",
-    "href": "webr-readme-example.html",
-    "title": "webR in Quarto HTML Documents",
-    "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR..."
   },
   {
     "objectID": "webr-demo.html",
