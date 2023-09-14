@@ -153,13 +153,20 @@ function editorTemplateFile()
   return readTemplateFile("webr-editor.html")
 end
 
+-- Obtain the internal template file at webr-context-internal.html
+function internalTemplateFile()
+  return readTemplateFile("webr-context-internal.html")
+end
+
 -- Obtain the initialization template file at webr-init.html
 function initializationTemplateFile()
   return readTemplateFile("webr-init.html")
 end
 
--- Cache a copy of the template to avoid multiple read/writes.
+-- Cache a copy of each public-facing templates to avoid multiple read/writes.
 editor_template = editorTemplateFile()
+
+internal_template = internalTemplateFile()
 ----
 
 -- Define a function that escape control sequence
@@ -302,6 +309,44 @@ function substitute_in_file(contents, substitutions)
   return contents
 end
 
+-- Extract Quarto code cell options from the block's text
+function extractCodeBlockOptions(block)
+  
+  -- Access the text aspect of the code block
+  local code = block.text
+
+  -- Define two local tables:
+  --  the block's attributes
+  --  the block's code lines
+  local newAttributes = {}
+  local newCodeLines = {}
+
+  -- Iterate over each line in the code block 
+  for line in code:gmatch("[^\r\n]+") do
+    -- Check if the line starts with "#|" and extract the key-value pairing
+    -- e.g. #| key: value goes to newAttributes[key] -> value
+    local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
+
+    -- If a special comment is found, then add the key-value pairing to the newAttributes table
+    if key and value then
+      newAttributes[key] = value
+    else
+      -- Otherwise, it's not a special comment, keep the code line
+      table.insert(newCodeLines, line)
+    end
+  end
+
+  -- Set the new attributes for the code block
+  block.attributes = newAttributes
+
+  -- Set the codeblock text to exclude the special comments.
+  block.text = table.concat(newCodeLines, '\n')
+
+  -- Return the full block
+  return block
+end
+
+-- Replace the code cell with a webR editor
 function enableWebRCodeCell(el)
       
   -- Let's see what's going on here:
@@ -336,6 +381,9 @@ function enableWebRCodeCell(el)
       -- Modify the counter variable each time this is run to create
       -- unique code cells
       counter = counter + 1
+
+      -- Convert webr-specific option commands into attributes
+      el = extractCodeBlockOptions(el)
       
       -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
       -- So, we have 504 and 360 respectively.
@@ -348,14 +396,24 @@ function enableWebRCodeCell(el)
         ["WEBRCODE"] = escapeControlSequences(el.text)
       }
       
-      -- Make sure we perform a copy
-      local copied_editor_template = editor_template
+      -- Retrieve the newly defined attributes
+      local cell_context = el.attributes.context
 
-      -- Make the necessary substitutions
-      local webr_enabled_code_cell = substitute_in_file(copied_editor_template, substitutions)
+      -- Decide the correct template
+        -- Make sure we perform a copy of each template
+      local copied_code_template = nil
+      if is_variable_empty(cell_context) then
+        copied_code_template = editor_template
+      else 
+        copied_code_template = internal_template
+      end
+
+      -- Make the necessary substitutions into the template
+      local webr_enabled_code_cell = substitute_in_file(copied_code_template, substitutions)
 
       -- Return the modified HTML template as a raw cell
       return pandoc.RawInline('html', webr_enabled_code_cell)
+
     end
   end
   -- Allow for a pass through in other languages
