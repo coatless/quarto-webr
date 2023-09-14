@@ -3,3 +3,4 @@
 webr-worker.js
 webr-serviceworker.js
 /webr-*.html
+*.csv
