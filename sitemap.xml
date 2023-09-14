@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/coatless/quarto-webr/webr-readme-example.html</loc>
-    <lastmod>2023-09-14T00:48:41.862Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/coatless/quarto-webr/about.html</loc>
-    <lastmod>2023-09-14T00:48:38.874Z</lastmod>
+    <lastmod>2023-09-14T00:56:18.854Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/coatless/quarto-webr/index.html</loc>
-    <lastmod>2023-09-14T00:48:38.082Z</lastmod>
+    <lastmod>2023-09-14T00:56:16.685Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/coatless/quarto-webr/webr-readme-example.html</loc>
+    <lastmod>2023-09-14T00:56:15.937Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/coatless/quarto-webr/webr-demo.html</loc>
-    <lastmod>2023-09-14T00:48:40.802Z</lastmod>
+    <lastmod>2023-09-14T00:56:18.522Z</lastmod>
   </url>
 </urlset>
