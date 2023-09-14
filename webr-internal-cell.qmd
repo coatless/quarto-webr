@@ -90,7 +90,7 @@ Lastly, the webR document can be used to check student answers. We can make avai
 For instance, the solution data frame might look a bit like:
 
 ```{{webr-r}}
-#| context: hidden
+#| context: setup
 answer_frame <- data.frame(
   problem = c("1a", "1b", "2"),
   answer = c(10, 2, 3/16),
@@ -101,7 +101,7 @@ answer_frame <- data.frame(
 Next, we can define an internal check function like so:
 
 ```{{webr-r}}
-#| context: hidden
+#| context: setup
 check <- function(problem, answer) {
   aframe <- answer_frame
   if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
@@ -116,7 +116,7 @@ check <- function(problem, answer) {
 ```
 
 ```{webr-r}
-#| context: hidden
+#| context: setup
 answer_frame <- data.frame(
   problem = c("1a", "1b", "2"),
   answer = c(10, 2, 3/16),
