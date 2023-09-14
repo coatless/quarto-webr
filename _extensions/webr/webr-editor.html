@@ -30,21 +30,6 @@
       hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
     });
 
-    // Add a keydown event listener for Shift+Enter using the addCommand method
-    editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, function () {
-      // Code to run when Shift+Enter is pressed
-      console.log(editor.getValue().length)
-      executeCode(editor.getValue());
-    });
-
-    // Add a keydown event listener for Ctrl+Enter to run selected code
-    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, function () {
-      // Get the selected text from the editor
-      const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-      // Code to run when Ctrl+Enter is pressed (run selected code)
-      executeCode(selectedText);
-    });
-
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -61,6 +46,32 @@
         ignoreEvent = false;
       }
     };
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        executeCode(editor.getValue());
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
 
     // Register an on change event for when new code is added to the editor window
     editor.onDidContentSizeChange(updateHeight);
