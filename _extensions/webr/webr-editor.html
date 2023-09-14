@@ -33,6 +33,7 @@
     // Add a keydown event listener for Shift+Enter using the addCommand method
     editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, function () {
       // Code to run when Shift+Enter is pressed
+      console.log(editor.getValue().length)
       executeCode(editor.getValue());
     });
 
