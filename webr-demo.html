@@ -471,6 +471,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     executeCode(editor.getValue());
   };
 </script>
+<p>For instance, the above <code>webr</code>-enabled code cell was created by typing into the Quarto document:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sample-cases" class="level2">
 <h2 class="anchored" data-anchor-id="sample-cases">Sample cases</h2>
@@ -1204,7 +1208,6 @@ summary(fit)`,
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `library(ggplot2)
-
 p <- ggplot(mpg, aes(class, hwy))
 p + geom_boxplot()`,
       language: 'r',
@@ -2409,7 +2412,7 @@ add_one(2)`,
 <section id="pre-rendered-code-cell" class="level3">
 <h3 class="anchored" data-anchor-id="pre-rendered-code-cell">Pre-rendered code cell</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hello!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hello!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Hello!</code></pre>
 </div>
