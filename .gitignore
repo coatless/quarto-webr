@@ -1,1 +1,5 @@
 /.luarc.json
+*_files
+webr-worker.js
+webr-serviceworker.js
+webr-*.html

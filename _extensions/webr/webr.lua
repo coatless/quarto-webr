@@ -270,6 +270,9 @@ function ensureWebRSetup()
   -- https://quarto.org/docs/extensions/lua-api.html#includes
   quarto.doc.include_text("in-header", initializedConfigurationWebR)
 
+  -- Insert the monaco editor initialization
+  quarto.doc.include_file("before-body", "monaco-editor-init.html")
+
   -- Copy the two web workers into the directory
   -- https://quarto.org/docs/extensions/lua-api.html#dependencies
 
