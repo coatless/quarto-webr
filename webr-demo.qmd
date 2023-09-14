@@ -16,6 +16,12 @@ webR-enabled code cell are established by using `{webr-r}` in a Quarto HTML docu
 1 + 1
 ```
 
+For instance, the above `webr`-enabled code cell was created by typing into the Quarto document:
+
+```{{webr-r}}
+1 + 1
+```
+
 ## Sample cases
 
 ### Fit a linear regression model
@@ -98,11 +104,14 @@ add_one <- \(x) x + 1
 add_one(2)
 ```
 
+
+
 ### Empty code cell
 
 ```{webr-r}
 
 ```
+
 
 ### Prior code cell
 
