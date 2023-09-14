@@ -1,0 +1,149 @@
+---
+title: "Hidden webR code cells"
+format: 
+  html:
+    toc: true
+engine: knitr
+filters:
+- webr
+---
+
+## Hidden Evaluation without Output
+
+In this example, we create a hidden setup code cell within the document by using the special comment of `#| context: setup`. The setup code cell executes code in the background and _does not_ display the code or its output.
+
+```{{webr-r}}
+#| context: setup
+meaning_of_life = 42
+```
+
+Thus, we have pre-loaded the `meaning_of_life` variable. So, if we run the next code cell, then we will see the value of `meaning_of_life` being displayed as `42` instead of an error.
+
+```{webr-r}
+#| context: setup
+meaning_of_life = 42
+```
+
+
+```{webr-r}
+meaning_of_life
+```
+
+::: {.callout-caution}
+Be advised that the contents of the hidden code cell is displayed if the web page's source is viewed.
+:::
+
+## Hidden Loading of a Dataset
+
+Outside of just specifying a single variable, we can use the setup hidden code cell to pre-load and wrangle an entire data set. This allows for students to directly interact with a loaded data set.
+
+```{{webr-r}}
+#| context: hidden
+
+# Download a data set
+download.file(
+  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
+  'penguins.csv'
+)
+
+# Read data
+df = read.csv("penguins.csv")
+```
+
+```{webr-r}
+#| context: setup
+
+# Download a data set
+download.file(
+  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
+  'penguins.csv'
+)
+
+# Read data
+df = read.csv("penguins.csv")
+```
+
+```{webr-r}
+# Show the head of the data
+head(df)
+```
+
+::: {.callout-note}
+If the setup code needs the present of R packages, we suggest specifying the required packages in the document's YAML. This option communicates to the end user that the webpage is not yet ready to explore through a clear status update at the top. For example, we could add `dplyr` and `ggplot2` using:
+
+```yaml
+---
+webr:
+  packages: ['ggplot2', 'dplyr']
+---
+```
+:::
+
+## Hidden Solution Checking of Student Work
+
+:::{.callout-warning}
+Be advised that any solution written into a webR hidden code cell can be obtained by viewing the document's HTML source. **Please _avoid_ using this option for formal assessment (exams, quizzes, homework, ...).**
+:::
+
+Lastly, the webR document can be used to check student answers. We can make available an answer key and a comparison function within the document.
+
+For instance, the solution data frame might look a bit like:
+
+```{{webr-r}}
+#| context: hidden
+answer_frame <- data.frame(
+  problem = c("1a", "1b", "2"),
+  answer = c(10, 2, 3/16),
+  tol = c(0.001, 0, 1/32)
+)
+```
+
+Next, we can define an internal check function like so:
+
+```{{webr-r}}
+#| context: hidden
+check <- function(problem, answer) {
+  aframe <- answer_frame
+  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
+
+  solution <- aframe[which(aframe$problem == problem), "answer"]
+
+  ifelse(
+    all.equal(answer, solution, tolerance = 0.001) == TRUE,
+              "Correct! Well done.",
+              "Incorrect! Good attempt. Let's try again?")
+}
+```
+
+```{webr-r}
+#| context: hidden
+answer_frame <- data.frame(
+  problem = c("1a", "1b", "2"),
+  answer = c(10, 2, 3/16),
+  tol = c(0.001, 0, 1/32)
+)
+
+check <- function(problem, answer) {
+  aframe <- answer_frame
+  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
+
+  solution <- aframe[which(aframe$problem == problem), "answer"]
+
+  ifelse(
+    all.equal(answer, solution, tolerance = 0.001) == TRUE,
+              "Correct! Well done.",
+              "Incorrect! Good attempt. Let's try again?")
+}
+```
+
+Students can then compare their answers to the answer key by using the `check()` function.
+
+Consider the question: 
+
+> What is 9 + 1? 
+
+```{webr-r}
+student_solution = 11
+
+check(problem = "1a", answer = student_solution)
+```
