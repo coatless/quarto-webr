@@ -32,7 +32,7 @@ website:
             text: Exploring Interactive Code Cells
       - section: "Deployment"
         contents:
-          - href: webr-channel-type.qmd
+          - href: webr-communication-channels.qmd
             text: Communication Channels
       - section: "Extra"
         contents:
