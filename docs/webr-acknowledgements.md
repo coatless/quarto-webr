@@ -1,5 +1,6 @@
 ---
-title: "Acknowledgments and Collaborations: Bringing webR to Life with Quarto"
+title: "Acknowledgments and Collaborations"
+subtitle: "Bringing webR to Life with Quarto"
 ---
 
 We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing [`quarto-webR`](https://github.com/coatless/quarto-webr) to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.
@@ -40,23 +41,6 @@ Additionally, we were inspired by the following public-facing examples from the 
 - [Source of Tidyverse Blog Post](https://github.com/tidyverse/tidyverse.org/pull/617/files) and [Minor fix](https://github.com/tidyverse/tidyverse.org/commit/72bb2dd7ca0b2f211498a891aa54f55ddcad5014)
 - [webR documentation landing page](https://github.com/r-wasm/webr/blob/53acd8861c44f1f167941d0a40f62b0cc23852da/src/docs/index.qmd#L23-L68) ([Live page](https://docs.r-wasm.org/webr/latest/))
 
-### Insights:
-We greatly appreciate insights from the following projects and resources:
-
-- Extensions:
-  - [`quarto-ext/shinylive`](https://github.com/quarto-ext/shinylive)
-  - [`mcanouil/quarto-elevator`](https://github.com/mcanouil/quarto-elevator)
-  - [`shafayetShafee/downloadthis`](https://github.com/shafayetShafee/downloadthis/tree/main)
-
-- Quarto Documentation:
-  - [Filters Documentation](https://quarto.org/docs/extensions/filters.html)
-  - [Lua Development Tips](https://quarto.org/docs/extensions/lua.html)
-  - [Lua API](https://quarto.org/docs/extensions/lua-api.html)
-
-- Pandoc Documentation:
-  - [Example Filters](https://pandoc.org/lua-filters.html#examples)
-  - [CodeBlock](https://pandoc.org/lua-filters.html#type-codeblock)
-
-These resources have played a vital role in shaping and enhancing the capabilities of our extension, and we are grateful for the knowledge and inspiration they provided.
+# Fin
 
 Once again, thank you to everyone who contributed, collaborated, and provided support throughout this project. Your dedication and expertise have made this achievement possible.
