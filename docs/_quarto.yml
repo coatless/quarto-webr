@@ -36,6 +36,8 @@ website:
         contents:
           - href: webr-troubleshooting.md
             text: Troubleshooting
+          - href: webr-developer-resources.qmd
+            text: Developer Resources
           - href: webr-acknowledgements.md
             text: Acknowledgements
 
