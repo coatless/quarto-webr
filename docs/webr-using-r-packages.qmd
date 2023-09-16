@@ -28,9 +28,9 @@ webr_pkgs = available.packages(
 )[, c("Package", "Version")]
 
 # Number of R packages available to webR
-nrow(webr_pkgs)
+cat("There are current ", nrow(webr_pkgs), " available to webR!")
 
-# Only view the first 5, there's a lot available!
+# Only view the first 6, there's a lot available!
 head(webr_pkgs)
 ```
 
