@@ -7,6 +7,37 @@
     "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR..."
   },
   {
+    "objectID": "webr-demo.html",
+    "href": "webr-demo.html",
+    "title": "webR-enabled code cells",
+    "section": "",
+    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```"
+  },
+  {
+    "objectID": "webr-demo.html#demo",
+    "href": "webr-demo.html#demo",
+    "title": "webR-enabled code cells",
+    "section": "",
+    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```"
+  },
+  {
+    "objectID": "webr-demo.html#sample-cases",
+    "href": "webr-demo.html#sample-cases",
+    "title": "webR-enabled code cells",
+    "section": "Sample cases",
+    "text": "Sample cases\n\nFit a linear regression model\nLoading\n  webR...\n\n\n  \n\n\n\n\nCreate a graph with base R\nLoading\n  webR...\n\n\n  \n\n\n\n\nPackages\n\nAvailable Packages\nYou can view what packages are available for webR by either executing the following R code (either with WebR or just R):\nLoading\n  webR...\n\n\n  \n\n\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages\n\n\nInstalling a Package\nInstalling a package interactively is done using webr::install() inside of a {webr-r} code cell.\nNote: Installing ggplot2 may take at least 2 minutes if COEP & COOP headers are not set.\nLoading\n  webR...\n\n\n  \n\n\n\n\nUsing a Package\nOnce ggplot2 is loaded, then use the package as normal.\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nDefine variables and re-use them in later cells\nLoading\n  webR...\n\n\n  \n\n\nLoading\n  webR...\n\n\n  \n\n\n\n\nEscape characters in a string\nLoading\n  webR...\n\n\n  \n\n\n\n\nAnonymous function definition\nLoading\n  webR...\n\n\n  \n\n\n\n\nEmpty code cell\nLoading\n  webR...\n\n\n  \n\n\n\n\nPrior code cell\n\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nPre-rendered code cell\n\nmessage(\"Hello!\")\n\nHello!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": ".",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
     "objectID": "webr-internal-cell.html",
     "href": "webr-internal-cell.html",
     "title": "Hidden webR code cells",
@@ -33,41 +64,6 @@
     "title": "Hidden webR code cells",
     "section": "Hidden Solution Checking of Student Work",
     "text": "Hidden Solution Checking of Student Work\n\n\n\n\n\n\nWarning\n\n\n\nBe advised that any solution written into a webR hidden code cell can be obtained by viewing the document’s HTML source. Please avoid using this option for formal assessment (exams, quizzes, homework, …).\n\n\nLastly, the webR document can be used to check student answers. We can make available an answer key and a comparison function within the document.\nFor instance, the solution data frame might look a bit like:\n```{webr-r}\n#| context: setup\nanswer_frame &lt;- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n```\nNext, we can define an internal check function like so:\n```{webr-r}\n#| context: setup\ncheck &lt;- function(problem, answer) {\n  aframe &lt;- answer_frame\n  if(!problem %in% aframe$problem) stop(paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\"))\n\n  solution &lt;- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n              \"Correct! Well done.\",\n              \"Incorrect! Good attempt. Let's try again?\")\n}\n```\n\t\nStudents can then compare their answers to the answer key by using the check() function.\nConsider the question:\n\nWhat is 9 + 1?\n\nLoading\n  webR..."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": ".",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "webr-demo.html",
-    "href": "webr-demo.html",
-    "title": "webR-enabled code cells",
-    "section": "",
-    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```"
-  },
-  {
-    "objectID": "webr-demo.html#demo",
-    "href": "webr-demo.html#demo",
-    "title": "webR-enabled code cells",
-    "section": "",
-    "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```"
-  },
-  {
-    "objectID": "webr-demo.html#sample-cases",
-    "href": "webr-demo.html#sample-cases",
-    "title": "webR-enabled code cells",
-    "section": "Sample cases",
-    "text": "Sample cases\n\nFit a linear regression model\nLoading\n  webR...\n\n\n  \n\n\n\n\nCreate a graph with base R\nLoading\n  webR...\n\n\n  \n\n\n\n\nPackages\n\nAvailable Packages\nYou can view what packages are available for webR by either executing the following R code (either with WebR or just R):\nLoading\n  webR...\n\n\n  \n\n\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages\n\n\nInstalling a Package\nInstalling a package interactively is done using webr::install() inside of a {webr-r} code cell.\nNote: Installing ggplot2 may take at least 2 minutes if COEP & COOP headers are not set.\nLoading\n  webR...\n\n\n  \n\n\n\n\nUsing a Package\nOnce ggplot2 is loaded, then use the package as normal.\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nDefine variables and re-use them in later cells\nLoading\n  webR...\n\n\n  \n\n\nLoading\n  webR...\n\n\n  \n\n\n\n\nEscape characters in a string\nLoading\n  webR...\n\n\n  \n\n\n\n\nAnonymous function definition\nLoading\n  webR...\n\n\n  \n\n\n\n\nEmpty code cell\nLoading\n  webR...\n\n\n  \n\n\n\n\nPrior code cell\n\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nPre-rendered code cell\n\nmessage(\"Hello!\")\n\nHello!"
   },
   {
     "objectID": "webr-channel-type.html",
