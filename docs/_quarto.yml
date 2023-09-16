@@ -1,0 +1,46 @@
+project:
+  type: website
+
+website:
+  title: "quarto-webr: A Quarto Extension for webR"
+  reader-mode: true
+  repo-url: https://github.com/coatless/quarto-webr
+  repo-actions: [edit, issue]
+  repo-subdir: "docs"
+  sidebar:
+    style: "floating"
+    search: true
+    tools:
+      - icon: github
+        href: https://github.com/coatless/quarto-webr/
+    contents:
+      - section: "Getting Started"
+        contents:
+          - href: webr-first-steps.qmd
+            text: Your first webR-powered Quarto document
+          - href: webr-meta-options.qmd
+            text: Customization Options
+          - href: webr-internal-cell.qmd
+            text: Hiding and Executing Code
+      - section: "Demos"
+        contents:
+          - href: webr-readme-example.qmd
+            text: README example      
+          - href: webr-demo.qmd
+            text: Possibilities with Interactive Code Cells
+      - section: "Deployment"
+        contents:
+          - href: webr-channel-type.qmd
+            text: Web Hosting & Communication Channels
+      - section: "Extra"
+        contents:
+          - href: webr-troubleshooting.md
+            text: Troubleshooting
+          - href: webr-acknowledgements.md
+            text: Acknowledgements
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
