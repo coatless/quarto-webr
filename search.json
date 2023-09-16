@@ -4,7 +4,11 @@
     "href": "webr-readme-example.html",
     "title": "webR in Quarto HTML Documents",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR..."
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\nLoading\n  webR...",
+    "crumbs": [
+      "Demos",
+      "README example"
+    ]
   },
   {
     "objectID": "webr-troubleshooting.html",
@@ -24,8 +28,8 @@
     "section": "",
     "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```",
     "crumbs": [
-      "Getting Started",
-      "Interactive Code Cells"
+      "Demos",
+      "Possibilities with Interactive Code Cells"
     ]
   },
   {
@@ -35,8 +39,8 @@
     "section": "",
     "text": "webR-enabled code cell are established by using {webr-r} in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nFor instance, the above webr-enabled code cell was created by typing into the Quarto document:\n```{webr-r}\n1 + 1\n```",
     "crumbs": [
-      "Getting Started",
-      "Interactive Code Cells"
+      "Demos",
+      "Possibilities with Interactive Code Cells"
     ]
   },
   {
@@ -46,8 +50,8 @@
     "section": "Sample cases",
     "text": "Sample cases\n\nFit a linear regression model\nLoading\n  webR...\n\n\n  \n\n\n\n\nCreate a graph with base R\nLoading\n  webR...\n\n\n  \n\n\n\n\nPackages\n\nAvailable Packages\nYou can view what packages are available for webR by either executing the following R code (either with WebR or just R):\nLoading\n  webR...\n\n\n  \n\n\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages\n\n\nInstalling a Package\nInstalling a package interactively is done using webr::install() inside of a {webr-r} code cell.\nNote: Installing ggplot2 may take at least 2 minutes if COEP & COOP headers are not set.\nLoading\n  webR...\n\n\n  \n\n\n\n\nUsing a Package\nOnce ggplot2 is loaded, then use the package as normal.\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nDefine variables and re-use them in later cells\nLoading\n  webR...\n\n\n  \n\n\nLoading\n  webR...\n\n\n  \n\n\n\n\nEscape characters in a string\nLoading\n  webR...\n\n\n  \n\n\n\n\nAnonymous function definition\nLoading\n  webR...\n\n\n  \n\n\n\n\nEmpty code cell\nLoading\n  webR...\n\n\n  \n\n\n\n\nPrior code cell\n\nLoading\n  webR...\n\n\n  \n\n\n\n\n\nPre-rendered code cell\n\nmessage(\"Hello!\")\n\nHello!",
     "crumbs": [
-      "Getting Started",
-      "Interactive Code Cells"
+      "Demos",
+      "Possibilities with Interactive Code Cells"
     ]
   },
   {
@@ -60,23 +64,35 @@
   {
     "objectID": "webr-first-steps.html",
     "href": "webr-first-steps.html",
-    "title": "Making your first webR-powered document",
+    "title": "Making your first webR-powered Quarto document",
     "section": "",
-    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
     "objectID": "webr-first-steps.html#installation",
     "href": "webr-first-steps.html#installation",
-    "title": "Making your first webR-powered document",
+    "title": "Making your first webR-powered Quarto document",
     "section": "",
-    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
     "objectID": "webr-first-steps.html#usage",
     "href": "webr-first-steps.html#usage",
-    "title": "Making your first webR-powered document",
+    "title": "Making your first webR-powered Quarto document",
     "section": "Usage",
-    "text": "Usage\nFor each document, place the webr filter in the document’s header:\nfilters:\n  - webr\nThen, place the R code for webR in a code block marked with {webr-r}\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\nThe rendered document can be viewed online here.\nWhen quarto render or quarto preview is called, the filter will execute under engine: knitr. During the execution, the filter adds two files to the working directory: webr-worker.js and webr-serviceworker.js. These files allow for the webR session to be started and must be present with the rendered output.\nNote: If engine: knitr is not specified, then the jupyter compute engine will be used by default."
+    "text": "Usage\nFor each document, place the webr filter in the document’s header:\nfilters:\n  - webr\nThen, place the R code for webR in a code block marked with {webr-r}\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\nThe rendered document can be viewed online here.\nWhen quarto render or quarto preview is called, the filter will execute under engine: knitr. During the execution, the filter adds two files to the working directory: webr-worker.js and webr-serviceworker.js. These files allow for the webR session to be started and must be present with the rendered output.\nNote: If engine: knitr is not specified, then the jupyter compute engine will be used by default.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
     "objectID": "index.html",
@@ -93,7 +109,7 @@
     "text": "In this example, we create a hidden setup code cell within the document by using the special comment of #| context: setup. The setup code cell executes code in the background and does not display the code or its output.\n```{webr-r}\n#| context: setup\nmeaning_of_life = 42\n```\nThus, we have pre-loaded the meaning_of_life variable. So, if we run the next code cell, then we will see the value of meaning_of_life being displayed as 42 instead of an error.\n\t\nLoading\n  webR...\n\n\n  \n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe advised that the contents of the hidden code cell is displayed if the web page’s source is viewed.",
     "crumbs": [
       "Getting Started",
-      "Hidden Code Cells"
+      "Hiding and Executing Code"
     ]
   },
   {
@@ -104,7 +120,7 @@
     "text": "In this example, we create a hidden setup code cell within the document by using the special comment of #| context: setup. The setup code cell executes code in the background and does not display the code or its output.\n```{webr-r}\n#| context: setup\nmeaning_of_life = 42\n```\nThus, we have pre-loaded the meaning_of_life variable. So, if we run the next code cell, then we will see the value of meaning_of_life being displayed as 42 instead of an error.\n\t\nLoading\n  webR...\n\n\n  \n\n\n\n\n\n\n\n\nCaution\n\n\n\nBe advised that the contents of the hidden code cell is displayed if the web page’s source is viewed.",
     "crumbs": [
       "Getting Started",
-      "Hidden Code Cells"
+      "Hiding and Executing Code"
     ]
   },
   {
@@ -115,7 +131,7 @@
     "text": "Hidden Loading of a Dataset\nOutside of just specifying a single variable, we can use the setup hidden code cell to pre-load and wrangle an entire data set. This allows for students to directly interact with a loaded data set.\n```{webr-r}\n#| context: hidden\n\n# Download a data set\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read data\ndf = read.csv(\"penguins.csv\")\n```\n\t\nLoading\n  webR...\n\n\n  \n\n\n\n\n\n\n\n\nNote\n\n\n\nIf the setup code needs the present of R packages, we suggest specifying the required packages in the document’s YAML. This option communicates to the end user that the webpage is not yet ready to explore through a clear status update at the top. For example, we could add dplyr and ggplot2 using:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---",
     "crumbs": [
       "Getting Started",
-      "Hidden Code Cells"
+      "Hiding and Executing Code"
     ]
   },
   {
@@ -126,7 +142,7 @@
     "text": "Hidden Solution Checking of Student Work\n\n\n\n\n\n\nWarning\n\n\n\nBe advised that any solution written into a webR hidden code cell can be obtained by viewing the document’s HTML source. Please avoid using this option for formal assessment (exams, quizzes, homework, …).\n\n\nLastly, the webR document can be used to check student answers. We can make available an answer key and a comparison function within the document.\nFor instance, the solution data frame might look a bit like:\n```{webr-r}\n#| context: setup\nanswer_frame &lt;- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n```\nNext, we can define an internal check function like so:\n```{webr-r}\n#| context: setup\ncheck &lt;- function(problem, answer) {\n  aframe &lt;- answer_frame\n  if(!problem %in% aframe$problem) stop(paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\"))\n\n  solution &lt;- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n              \"Correct! Well done.\",\n              \"Incorrect! Good attempt. Let's try again?\")\n}\n```\n\t\nStudents can then compare their answers to the answer key by using the check() function.\nConsider the question:\n\nWhat is 9 + 1?\n\nLoading\n  webR...",
     "crumbs": [
       "Getting Started",
-      "Hidden Code Cells"
+      "Hiding and Executing Code"
     ]
   },
   {
@@ -200,27 +216,43 @@
     "href": "webr-meta-options.html",
     "title": "Customizing webR from the Quarto Extension",
     "section": "",
-    "text": "The quarto-webr extension supports specifying the following WebROptions options:\nThe extension also has native options for:\nFor these options to be active, they must be placed underneath the webr entry in the documentation header, e.g."
+    "text": "The quarto-webr extension supports specifying the following WebROptions options:\nThe extension also has native options for:\nFor these options to be active, they must be placed underneath the webr entry in the documentation header, e.g.",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
   },
   {
     "objectID": "webr-meta-options.html#packages",
     "href": "webr-meta-options.html#packages",
     "title": "Customizing webR from the Quarto Extension",
     "section": "Packages",
-    "text": "Packages\nBy default, the quarto-webr extension avoids loading or requesting additional packages. Additional packages can be added when the document is first opened or on per-code cell basis. You can view what packages are available by either executing the following R code (either with WebR or just R):\navailable.packages(repos=\"https://repo.r-wasm.org/\", type=\"source\")\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages"
+    "text": "Packages\nBy default, the quarto-webr extension avoids loading or requesting additional packages. Additional packages can be added when the document is first opened or on per-code cell basis. You can view what packages are available by either executing the following R code (either with WebR or just R):\navailable.packages(repos=\"https://repo.r-wasm.org/\", type=\"source\")\nOr, by navigating to the WebR repository:\nhttps://github.com/r-wasm/webr-repo/blob/main/repo-packages",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
   },
   {
     "objectID": "webr-meta-options.html#install-on-document-open",
     "href": "webr-meta-options.html#install-on-document-open",
     "title": "Customizing webR from the Quarto Extension",
     "section": "Install on document open",
-    "text": "Install on document open\nAdd to the document header YAML the packages key under webr with each package listed using an array, e.g. \n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---"
+    "text": "Install on document open\nAdd to the document header YAML the packages key under webr with each package listed using an array, e.g. \n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
   },
   {
     "objectID": "webr-meta-options.html#install-on-an-as-needed-basis",
     "href": "webr-meta-options.html#install-on-an-as-needed-basis",
     "title": "Customizing webR from the Quarto Extension",
     "section": "Install on an as needed basis",
-    "text": "Install on an as needed basis\nPackages may also be installed inside of a code cell through the built-in webr::install() function. For example, to install ggplot2, you would need to use:\n```{webr-r}\nwebr::install(\"ggplot2\")\n```\nThis would generate\nLoading\n  webR..."
+    "text": "Install on an as needed basis\nPackages may also be installed inside of a code cell through the built-in webr::install() function. For example, to install ggplot2, you would need to use:\n```{webr-r}\nwebr::install(\"ggplot2\")\n```\nThis would generate\nLoading\n  webR...",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
   }
 ]
