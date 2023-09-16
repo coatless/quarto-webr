@@ -41,6 +41,8 @@ For those intrigued by the broader world of extension development, we suggest th
 
 - **[`shafayetShafee/downloadthis`](https://github.com/shafayetShafee/downloadthis/tree/main)**: Investigate the `downloadthis` extension to see how it facilitates downloads within Quarto documents.
 
+There are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: <https://quarto.org/docs/extensions/>
+
 
 ### Pandoc Essentials
 
