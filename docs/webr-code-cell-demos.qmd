@@ -1,0 +1,151 @@
+---
+title: "Exploring Interactive Code Cells"
+subtitle: "Unleash the Power of Interactive R Code in Your Quarto Documents"
+format: 
+  html:
+    toc: true
+engine: knitr
+filters:
+- webr
+---
+
+In this web page, we'll dive into the exciting world of interactive code cells enabled by the `quarto-webr` extension. These cells empower you to run R code directly within your Quarto HTML documents, allowing for real-time computations, visualizations, and much more. Let's explore some of the powerful features webR offers.
+
+# Creating webR-Enabled Code Cells
+
+To establish a webR-enabled code cell, use the `{webr-r}` tag in your Quarto HTML document, like this:
+
+```{webr-r}
+1 + 1
+```
+
+For instance, the above `webr`-enabled code cell was created by typing into the Quarto document:
+
+```{quarto}
+{{webr-r}}
+1 + 1
+```
+
+# Sample Use Cases
+
+Let's delve into some practical scenarios where interactive code cells shine:
+
+## Fit a Linear Regression Model
+
+```{webr-r}
+fit <- lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+
+Here, we use webR to fit a linear regression model and display its summary.
+
+## Create a Graph with Base R
+
+```{webr-r}
+plot(pressure)
+```
+
+In this example, webR empowers us to create and visualize data plots interactively.
+
+## Working with R Packages
+
+Unlock the full potential of R by seamlessly integrating packages into your interactive Quarto HTML documents with webR. 
+Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality,
+you can harness the rich ecosystem of R packages directly within your documents.
+
+Here's a guide on how to navigate and utilize packages with webR:
+
+### Available R Packages
+
+You can explore the available packages for webR by executing the following R code, either with webR or just R:
+
+```{webr-r}
+pkgs = available.packages(
+  repos = "https://repo.r-wasm.org/",
+  type = "source"
+)[, c("Package", "Version")]
+
+# Number of R packages available to webR
+nrow(pkgs)
+
+# Only view the first 5, there's a lot available!
+head(pkgs)
+```
+
+Alternatively, you can navigate to the WebR repository [here](https://github.com/r-wasm/webr-repo/blob/main/repo-packages) for package listings.
+
+### Installing an R Package
+
+Need a specific package for your analysis or visualization? Installing a package interactively is a breeze with webR. Just use `webr::install()` within a `{webr-r}` code cell. 
+
+:::callout-note
+Installing certain packages like `ggplot2` may take some time depending on the [communication channel](webr-channel-type.qmd) being used.
+:::
+
+Let's take ggplot2 as an example:
+
+```{webr-r}
+webr::install("ggplot2")
+```
+
+You can also install packages at install time by using the `packages` option]().
+
+### Using an R Package
+
+Once you've installed a package, you can harness its power just like you would in a traditional R environment. 
+
+Let's use the newly installed `ggplot2` to create a graph.
+
+```{webr-r}
+library(ggplot2)
+
+p <- ggplot(mpg, aes(class, hwy))
+p + geom_boxplot()
+```
+
+## Variable Definitions and Reuse
+
+Define variables in one code cell and reuse them in subsequent cells:
+
+```{webr-r}
+name <- "James"
+age <- 42
+```
+
+```{webr-r}
+message(name, " is ", age, " years old!")
+```
+
+## Escaping Characters in a String
+
+Handle special characters in strings with ease:
+
+```{webr-r}
+seven_seas <- "Ahoy, matey!\nLet's set sail for adventure!\n"
+seven_seas
+```
+
+## Anonymous Function Definition
+
+Define and use anonymous functions seamlessly:
+
+```{webr-r}
+add_one <- \(x) x + 1
+add_one(2)
+```
+
+### Empty code cell
+
+Define an empty code cell by simply leaving it blank.
+
+```{webr-r}
+
+```
+
+### Pre-rendered code cell
+
+Any code using the usual `{r}` tag will be run and its output saved, just like if you rendered a Quarto document without the webR extension:
+
+```{r}
+message("Hello!")
+```
