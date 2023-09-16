@@ -167,14 +167,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 
   // Retrieve the webr.mjs
-  import { WebR } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
+  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
 
   // Populate WebR options with defaults or new values based on 
   // webr meta
   globalThis.webR = new WebR({
     "baseURL": "",
     "serviceWorkerUrl": "",
-    "homedir": "/home/web_user"
+    "homedir": "/home/web_user", 
+    "channelType": ChannelType.Automatic
   });
 
   // Initialization WebR

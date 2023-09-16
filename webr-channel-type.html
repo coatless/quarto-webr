@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>. - Hidden webR code cells</title>
+<title>. - webR Communication Channel Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -252,9 +252,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hidden-evaluation-without-output" id="toc-hidden-evaluation-without-output" class="nav-link active" data-scroll-target="#hidden-evaluation-without-output">Hidden Evaluation without Output</a></li>
-  <li><a href="#hidden-loading-of-a-dataset" id="toc-hidden-loading-of-a-dataset" class="nav-link" data-scroll-target="#hidden-loading-of-a-dataset">Hidden Loading of a Dataset</a></li>
-  <li><a href="#hidden-solution-checking-of-student-work" id="toc-hidden-solution-checking-of-student-work" class="nav-link" data-scroll-target="#hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</a></li>
+  <li><a href="#making-r-computations-run-smoothly" id="toc-making-r-computations-run-smoothly" class="nav-link active" data-scroll-target="#making-r-computations-run-smoothly">Making R Computations Run Smoothly</a></li>
+  <li><a href="#communication-channels-how-web-browser-and-webr-talk" id="toc-communication-channels-how-web-browser-and-webr-talk" class="nav-link" data-scroll-target="#communication-channels-how-web-browser-and-webr-talk">Communication Channels: How Web Browser and webR Talk</a>
+  <ul class="collapse">
+  <li><a href="#choosing-how-webr-communicates" id="toc-choosing-how-webr-communicates" class="nav-link" data-scroll-target="#choosing-how-webr-communicates">Choosing How WebR Communicates</a></li>
+  </ul></li>
+  <li><a href="#your-communication-channel-choices" id="toc-your-communication-channel-choices" class="nav-link" data-scroll-target="#your-communication-channel-choices">Your Communication Channel Choices</a>
+  <ul class="collapse">
+  <li><a href="#using-automatic-for-communication-default" id="toc-using-automatic-for-communication-default" class="nav-link" data-scroll-target="#using-automatic-for-communication-default">Using “automatic” for Communication (Default)</a></li>
+  <li><a href="#using-shared-array-buffer-for-communication" id="toc-using-shared-array-buffer-for-communication" class="nav-link" data-scroll-target="#using-shared-array-buffer-for-communication">Using “shared-array-buffer” for Communication</a></li>
+  <li><a href="#using-service-worker-for-communication" id="toc-using-service-worker-for-communication" class="nav-link" data-scroll-target="#using-service-worker-for-communication">Using “service-worker” for Communication</a></li>
+  <li><a href="#using-post-message-for-communication" id="toc-using-post-message-for-communication" class="nav-link" data-scroll-target="#using-post-message-for-communication">Using “post-message” for Communication</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hidden webR code cells</h1>
+<h1 class="title">webR Communication Channel Options</h1>
+<p class="subtitle lead">Using the <code>channel-type</code> meta variable of the <code>webr</code> filter</p>
 </div>
 
 
@@ -288,402 +298,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="hidden-evaluation-without-output" class="level2">
-<h2 class="anchored" data-anchor-id="hidden-evaluation-without-output">Hidden Evaluation without Output</h2>
-<p>In this example, we create a hidden setup code cell within the document by using the special comment of <code>#| context: setup</code>. The setup code cell executes code in the background and <em>does not</em> display the code or its output.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">meaning_of_life = 42</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Thus, we have pre-loaded the <code>meaning_of_life</code> variable. So, if we run the next code cell, then we will see the value of <code>meaning_of_life</code> being displayed as <code>42</code> instead of an error.</p>
-<script type="module">
-await globalThis.webR.evalRVoid(`
-meaning_of_life = 42
-`)
-</script>	
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-2">Loading
-  webR...</button>
-<div id="webr-editor-2"></div>
-<div id="webr-code-output-2" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
-</div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-2");
-  const outputDiv = document.getElementById("webr-code-output-2");
-  const editorDiv = document.getElementById("webr-editor-2");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `meaning_of_life`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image stored
-      msgs.forEach(msg => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        }
-      });
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Be advised that the contents of the hidden code cell is displayed if the web page’s source is viewed.</p>
-</div>
-</div>
+<section id="making-r-computations-run-smoothly" class="level1">
+<h1>Making R Computations Run Smoothly</h1>
+<p>As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:</p>
+<ol type="1">
+<li><strong>Web Browser</strong>: This is your web browser, like Chrome or Firefox, which you use to surf the internet and interact with web pages.</li>
+<li><strong>webR</strong>: This is like a dedicated helper that specializes in running R code. It operates separately from your main web browser.</li>
+</ol>
+<p>Now, here’s why this separation is so important: webR’s special version of R can tackle complicated and time-consuming calculations without causing your web browser to freeze or become unresponsive when you’re on a web page that uses webR.</p>
+<p>Imagine trying to watch a video online while your computer is running a heavy software update. Without separating them, your video might start buffering, freeze, or even crash. But by putting the update in the background (on a separate worker, like webR), your video can continue to play smoothly. It’s the same concept with webR and your web browser – keeping things running smoothly without hiccups.</p>
+<p>For more details, please see the <a href="https://docs.r-wasm.org/webr/latest/">official webR documentation</a> on <a href="https://docs.r-wasm.org/webr/latest/communication.html#webr-channels">Worker Communication</a> and <a href="https://docs.r-wasm.org/webr/latest/serving.html">Serving Web Pages with webR</a>.</p>
 </section>
-<section id="hidden-loading-of-a-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="hidden-loading-of-a-dataset">Hidden Loading of a Dataset</h2>
-<p>Outside of just specifying a single variable, we can use the setup hidden code cell to pre-load and wrangle an entire data set. This allows for students to directly interact with a loaded data set.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: hidden</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Download a data set</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">download.file(</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">  'penguins.csv'</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in"># Read data</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">df = read.csv("penguins.csv")</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<script type="module">
-await globalThis.webR.evalRVoid(`
-# Download a data set
-download.file(
-  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
-  'penguins.csv'
-)
-# Read data
-df = read.csv("penguins.csv")
-`)
-</script>	
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-4">Loading
-  webR...</button>
-<div id="webr-editor-4"></div>
-<div id="webr-code-output-4" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
-</div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-4");
-  const outputDiv = document.getElementById("webr-code-output-4");
-  const editorDiv = document.getElementById("webr-editor-4");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `# Show the head of the data
-head(df)`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image stored
-      msgs.forEach(msg => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        }
-      });
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
+<section id="communication-channels-how-web-browser-and-webr-talk" class="level1">
+<h1>Communication Channels: How Web Browser and webR Talk</h1>
+<p>Now, let’s explore how your main web browser and the webR worker thread communicate with each other. They use what we call “communication channels” to swap information. Think of it like like passing notes between two people, but in a high-tech way.</p>
+<p>There are a few different types of communication channels available:</p>
+<ol type="1">
+<li><strong>“automatic” or <code>0</code> (Default):</strong>
+<ul>
+<li><strong>Requirements:</strong> Your setup should be prepared for either <code>"shared-array-buffer"</code> or <code>"service-worker"</code>.</li>
+<li><strong>Limitations:</strong> It’s not clear which option is being used.</li>
+</ul></li>
+<li><strong>“shared-array-buffer” or <code>1</code>:</strong>
+<ul>
+<li><strong>Requirements:</strong> This option requires something called “cross-origin isolation,” which you can read more about <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">here</a>.</li>
+<li><strong>Limitations:</strong> There aren’t any significant limitations to worry about.</li>
+</ul></li>
+<li><strong>“service-worker” or <code>2</code>:</strong>
+<ul>
+<li><strong>Requirements:</strong> You need to have JavaScript service workers set up, like <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>.</li>
+<li><strong>Limitations:</strong> The script for the service worker must be on the same website as the one using WebR.</li>
+</ul></li>
+<li><strong>“post-message” or <code>3</code>:</strong>
+<ul>
+<li><strong>Requirements:</strong> No special requirements are needed for this option.</li>
+<li><strong>Limitations:</strong> R code can’t be interrupted easily. Some advanced R features, like nested R REPLs, might not work as expected.</li>
+</ul></li>
+</ol>
+<p>When you start using WebR, it usually picks the best communication channel for you. However, you can manually choose a channel type if needed. Just remember that each option comes with its own set of requirements and limitations, so pick the one that suits your project best.</p>
+<p>In simpler terms, it’s like choosing the right tool for the job. Depending on what you’re doing, you might use different methods to pass messages between your web browser and webR.</p>
+<section id="choosing-how-webr-communicates" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-how-webr-communicates">Choosing How WebR Communicates</h2>
+<p>In a Quarto document’s YAML header, you can tell webR which communication channel to use by setting the <code>channel-type</code> option. It’s like telling webR how you want it to talk with your web browser. For example, if you want to use the <code>"post-message"</code> channel, you can do it like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Setting Up webR to use the PostMessage Channel"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">channel-type</span><span class="kw">:</span><span class="at"> </span><span class="st">"post-message"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> webr</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="your-communication-channel-choices" class="level1">
+<h1>Your Communication Channel Choices</h1>
+<p>The remainder of the document describes the different communication methods alongside ways to satisfy the requirements.</p>
+<section id="using-automatic-for-communication-default" class="level2">
+<h2 class="anchored" data-anchor-id="using-automatic-for-communication-default">Using “automatic” for Communication (Default)</h2>
+<p>By default, the <code>quarto-webr</code> extension guides webR to use the <code>"automatic"</code> option for <code>channel-type</code>, if you don’t specify the <code>channel-type</code> in your document’s YAML header. Let’s break down how this default setting works:</p>
+<ol type="1">
+<li><strong>Communication Attempts:</strong> webR will try two different communication channels in order:
+<ul>
+<li>First, it attempts to establish a communication channel using <code>"shared-array-buffer"</code>.</li>
+<li>If that doesn’t work, it will then try to use <code>"service-worker"</code>.</li>
+</ul></li>
+<li><strong>Fallback Behavior:</strong> If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -694,16 +374,9 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the setup code needs the present of R packages, we suggest specifying the required packages in the document’s YAML. This option communicates to the end user that the webpage is not yet ready to explore through a clear status update at the top. For example, we could add <code>dplyr</code> and <code>ggplot2</code> using:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It’s important to note that the <code>"automatic"</code> option doesn’t try to use the <code>"post-message"</code> option for communication.</p>
 </div>
 </div>
-</section>
-<section id="hidden-solution-checking-of-student-work" class="level2">
-<h2 class="anchored" data-anchor-id="hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -714,68 +387,103 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Be advised that any solution written into a webR hidden code cell can be obtained by viewing the document’s HTML source. <strong>Please <em>avoid</em> using this option for formal assessment (exams, quizzes, homework, …).</strong></p>
+<p>One thing to be aware of is that when the <code>"automatic"</code> option is used, it adds two additional files, <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the <code>"service-worker"</code> option. For more details on this, please refer to the <code>"service-worker"</code> section of the documentation.</p>
 </div>
 </div>
-<p>Lastly, the webR document can be used to check student answers. We can make available an answer key and a comparison function within the document.</p>
-<p>For instance, the solution data frame might look a bit like:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">answer_frame &lt;- data.frame(</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">  problem = c("1a", "1b", "2"),</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">  answer = c(10, 2, 3/16),</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">  tol = c(0.001, 0, 1/32)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Next, we can define an internal check function like so:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">check &lt;- function(problem, answer) {</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">  aframe &lt;- answer_frame</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">  solution &lt;- aframe[which(aframe$problem == problem), "answer"]</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">  ifelse(</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">    all.equal(answer, solution, tolerance = 0.001) == TRUE,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">              "Correct! Well done.",</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">              "Incorrect! Good attempt. Let's try again?")</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<script type="module">
-await globalThis.webR.evalRVoid(`
-answer_frame <- data.frame(
-  problem = c("1a", "1b", "2"),
-  answer = c(10, 2, 3/16),
-  tol = c(0.001, 0, 1/32)
-)
-check <- function(problem, answer) {
-  aframe <- answer_frame
-  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
-  solution <- aframe[which(aframe$problem == problem), "answer"]
-  ifelse(
-    all.equal(answer, solution, tolerance = 0.001) == TRUE,
-              "Correct! Well done.",
-              "Incorrect! Good attempt. Let's try again?")
-}
-`)
-</script>	
-<p>Students can then compare their answers to the answer key by using the <code>check()</code> function.</p>
-<p>Consider the question:</p>
-<blockquote class="blockquote">
-<p>What is 9 + 1?</p>
-</blockquote>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-6">Loading
+<p>In summary, when you leave the <code>channel-type</code> unspecified, webR will follow the <code>"automatic"</code> option, attempting to use <code>"shared-array-buffer"</code> and then <code>"service-worker"</code>. If both attempts fail, your webR code cells will be inactive.</p>
+</section>
+<section id="using-shared-array-buffer-for-communication" class="level2">
+<h2 class="anchored" data-anchor-id="using-shared-array-buffer-for-communication">Using “shared-array-buffer” for Communication</h2>
+<p>Now, let’s explore the <code>"shared-array-buffer"</code> option for communication. When you specify <code>channel-type</code> as <code>"shared-array-buffer"</code>, webR aims to use something called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code>SharedArrayBuffer</code></a>. This choice, however, comes with some specific requirements and benefits:</p>
+<p><strong>Requirements:</strong> - Your web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">cross-origin isolated</a>. In simple terms, your server should be set up to allow this kind of communication.</p>
+<p><strong>Benefits:</strong> - The benefit of using this approach is that webR runs notably faster. It’s like giving webR a high-speed lane for its operations.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s important to note that the <code>"shared-array-buffer"</code> option isn’t currently available on platforms like <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a>. If you’re using these services, we recommend using the <code>channel-type: "post-message"</code> option instead. There’s a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed <a href="https://github.com/community/community/discussions/13309">here</a>.</p>
+</div>
+</div>
+<p>To help you set up the necessary headers for cross-origin isolation, we provide some guidance for both Netlify and nginx web server administrators:</p>
+<p><strong>For Netlify Configuration:</strong></p>
+<p>If you’re hosting your website with <a href="https://www.netlify.com/">Netlify</a>, you can add the following code to your <a href="https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file">netlify.toml configuration file</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">headers</span><span class="kw">]]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">for</span> <span class="op">=</span> <span class="st">"/directory/with/webr/content/*"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">[</span><span class="dt">headers</span><span class="kw">.</span><span class="dt">values</span><span class="kw">]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Opener-Policy</span> <span class="op">=</span> <span class="st">"same-origin"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Embedder-Policy</span> <span class="op">=</span> <span class="st">"require-corp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>For nginx Web Server Administrators:</strong></p>
+<p>If you’re managing a server with <code>nginx</code>, you can use the <a href="http://nginx.org/en/docs/http/ngx_http_headers_module.html"><code>add_header</code></a> directive in your server’s configuration file, which is usually found at <code>/etc/nginx/nginx.conf</code>. Here’s an example:</p>
+<pre class="nginx"><code>server {
+  # Enable headers for the webr directory
+  location ^~ /directory/with/webr/content {
+    add_header "Cross-Origin-Opener-Policy" "same-origin";
+    add_header "Cross-Origin-Embedder-Policy" "require-corp";
+  }
+}</code></pre>
+<p>By following these instructions, you’ll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the <code>"shared-array-buffer"</code> option effectively.</p>
+</section>
+<section id="using-service-worker-for-communication" class="level2">
+<h2 class="anchored" data-anchor-id="using-service-worker-for-communication">Using “service-worker” for Communication</h2>
+<p>Here, we’ll dive into the <code>"service-worker"</code> option for communication.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>"service-worker"</code> option doesn’t work with <a href="https://quartopub.com/">Quarto Pub</a>. If you’re hosting documents with Quarto Pub, please use the <code>channel-type: "post-message"</code> option instead. There’s an ongoing effort to address the service worker upload issue with the Quarto team, which you can track <a href="https://github.com/quarto-dev/quarto-cli/issues/6828">here</a>.</p>
+</div>
+</div>
+<p>When you set <code>channel-type</code> to <code>"service-worker"</code>, webR changes its communication channel to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker API</a>. This means you need two worker scripts, <code>webr-worker.js</code> and <code>webr-serviceworker.js</code>, hosted on the same website as the page using webR.</p>
+<p>Here’s what you need to ensure:</p>
+<p><strong>1. Worker Scripts:</strong> The <code>quarto-webr</code> extension will automatically create and register these workers when your Quarto document is rendered.</p>
+<p><strong>2. Directory Structure:</strong> Your initial directory structure should include these files:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> demo-quarto-webr.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After rendering the Quarto document with the <code>"service-worker"</code> option, your directory will look like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.qmd</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>3. Hosting:</strong> When hosting your rendered document, you need to make sure the rendered HTML document and the service worker files (<code>webr-serviceworker.js</code> and <code>webr-worker.js</code>) are present on the server. This is important for everything to work correctly:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to change where the service workers are located, you can set the <code>service-worker-url</code> option in the document YAML. By default, the rendered document will search for the service workers in its current directory.</p>
+<p>In a nutshell, the “service-worker” option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.</p>
+</section>
+<section id="using-post-message-for-communication" class="level2">
+<h2 class="anchored" data-anchor-id="using-post-message-for-communication">Using “post-message” for Communication</h2>
+<p>Now, let’s delve into the <code>"post-message"</code> option. This sets up a communication channel using something called <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage">Post Message</a>. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.</p>
+<p>However, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) won’t work as expected. Instead, they’ll return empty values like <code>""</code> or <code>c('', '')</code>. Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.</p>
+<p>Feel free to experiment with the <code>"post-message"</code> interface in this webR code cell:</p>
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
   webR...</button>
-<div id="webr-editor-6"></div>
-<div id="webr-code-output-6" aria-live="assertive">
+<div id="webr-editor-1"></div>
+<div id="webr-code-output-1" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-6");
-  const outputDiv = document.getElementById("webr-code-output-6");
-  const editorDiv = document.getElementById("webr-editor-6");
+  const runButton = document.getElementById("webr-run-button-1");
+  const outputDiv = document.getElementById("webr-code-output-1");
+  const editorDiv = document.getElementById("webr-editor-1");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -784,8 +492,10 @@ check <- function(problem, answer) {
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `student_solution = 11
-check(problem = "1a", answer = student_solution)`,
+      value: `# Attempt to used an input-blocked function
+x = readline("What is your favorite color?")
+## View the value of x
+# print(x)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -939,6 +649,7 @@ check(problem = "1a", answer = student_solution)`,
 </script>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
