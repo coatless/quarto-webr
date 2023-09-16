@@ -59,7 +59,11 @@
     "href": "webr-acknowledgements.html",
     "title": "Acknowledgements",
     "section": "",
-    "text": "We appreciate the early testing feedback from Eli E. Holmes and Bob Rudis.\nWe also appreciate the Quarto team assisting with setting up a new code cell type.\nThis repository builds ontop of the initial proof of concept for a standalone Quarto HTML document in:\nhttps://github.com/coatless-r-n-d/webR-quarto-demos\nThe proof of concept leaned heavily on the webR developers public-facing examples:\n\nSource of Tidyverse Blog Post and Minor fix\nwebR documentation landing page (Live page)\n\nFor the extension, we greatly appreciated insights from:\n\nExtensions\n\nquarto-ext/shinylive\nmcanouil/quarto-elevator\nshafayetShafee/downloadthis\n\nQuarto Documentation\n\nFilters Documentation\nLua Development Tips\nLua API\n\nPandoc Documentation\n\nExample Filters\nCodeBlock"
+    "text": "We appreciate the early testing feedback from Eli E. Holmes and Bob Rudis.\nWe also appreciate the Quarto team assisting with setting up a new code cell type.\nThis repository builds ontop of the initial proof of concept for a standalone Quarto HTML document in:\nhttps://github.com/coatless-r-n-d/webR-quarto-demos\nThe proof of concept leaned heavily on the webR developers public-facing examples:\n\nSource of Tidyverse Blog Post and Minor fix\nwebR documentation landing page (Live page)\n\nFor the extension, we greatly appreciated insights from:\n\nExtensions\n\nquarto-ext/shinylive\nmcanouil/quarto-elevator\nshafayetShafee/downloadthis\n\nQuarto Documentation\n\nFilters Documentation\nLua Development Tips\nLua API\n\nPandoc Documentation\n\nExample Filters\nCodeBlock",
+    "crumbs": [
+      "Extra",
+      "Acknowledgements"
+    ]
   },
   {
     "objectID": "webr-first-steps.html",
@@ -97,9 +101,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "quarto-webr: A Quarto Extension for webR",
+    "title": "Welcome!",
     "section": "",
-    "text": "This extension enables the webR code cell in a Quarto HTML document.\n\n\n\nquarto-webr Filter in Action\n\n\nThe goal of webR is to:\n\nrun R code in the browser without the need for an R server to execute the code\n\nFor more details on webR, please see:\n\nwebR Documentation\nwebR Source Code"
+    "text": "This extension enables the webR code cell in a Quarto HTML document.\nLoading\n  webR...\n\n\n  \n\n\nThe goal of webR is to:\n\nrun R code in the browser without the need for an R server to execute the code\n\nFor more details on webR, please see:\n\nwebR Documentation\nwebR Source Code"
   },
   {
     "objectID": "webr-internal-cell.html",
