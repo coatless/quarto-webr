@@ -25,9 +25,9 @@ website:
       - section: "Demos"
         contents:
           - href: webr-readme-example.qmd
-            text: README example      
-          - href: webr-demo.qmd
-            text: Possibilities with Interactive Code Cells
+            text: README Example      
+          - href: webr-code-cell-demos.qmd
+            text: Exploring Interactive Code Cells
       - section: "Deployment"
         contents:
           - href: webr-channel-type.qmd
