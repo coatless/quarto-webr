@@ -357,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-channel-type.html" class="sidebar-item-text sidebar-link">
+  <a href="./webr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
   </div>
 </li>
@@ -474,8 +474,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   type = "source"
 )[, c("Package", "Version")]
 # Number of R packages available to webR
-nrow(webr_pkgs)
-# Only view the first 5, there's a lot available!
+cat("There are current ", nrow(webr_pkgs), " available to webR!")
+# Only view the first 6, there's a lot available!
 head(webr_pkgs)`,
       language: 'r',
       theme: 'vs-light',
@@ -652,7 +652,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the <a href="./webr-channel-type.html">communication channel</a> being used.</p>
+<p>Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the <a href="webr-channel-type.qmd">communication channel</a> being used.</p>
 </div>
 </div>
 <p>Let’s take ggplot2 as an example:</p>

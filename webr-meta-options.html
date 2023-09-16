@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James Joseph Balamuta">
+<meta name="dcterms.date" content="2023-09-14">
 
 <title>quarto-webr: A Quarto Extension for webR - Customization Options</title>
 <style>
@@ -99,148 +101,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
-
-<style>
-  .monaco-editor pre {
-    background-color: unset !important;
-  }
-
-  .btn-webr {
-    background-color: #EEEEEE;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0; /* Extra styling for consistency */
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    -webkit-text-decoration: none;
-    -moz-text-decoration: none;
-    -ms-text-decoration: none;
-    -o-text-decoration: none;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    border-color: #dee2e6;
-    border: 1px solid rgba(0,0,0,0);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-
-  .btn-webr:hover {
-    color: #000;
-    background-color: #e3e6ea;
-    border-color: #e1e5e9;
-  }
-
-  .btn-webr:disabled,.btn-webr.disabled,fieldset:disabled .btn-webr {
-    pointer-events: none;
-    opacity: .65
-  }
-</style>
-
-<script type="module">
-
-  // Start a timer
-  const initializeWebRTimerStart = performance.now();
-
-  // Determine if we need to install R packages
-  var installRPackagesList = [''];
-  // Check to see if we have an empty array, if we do set to skip the installation.
-  var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
-
-  // Display a startup message?
-  var showStartupMessage = true;
-  var showHeaderMessage = false;
-  if (showStartupMessage) {
-
-    // Create the outermost div element
-    var quartoTitleMeta = document.createElement("div");
-    quartoTitleMeta.classList.add("quarto-title-meta");
-
-    // Create the first inner div element
-    var firstInnerDiv = document.createElement("div");
-
-    // Create the second inner div element with "WebR Status" heading 
-    // and contents
-    var secondInnerDiv = document.createElement("div");
-    secondInnerDiv.classList.add("quarto-title-meta-heading");
-    secondInnerDiv.innerText = "WebR Status";
-
-    // Add another inner div
-    var secondInnerDivContents = document.createElement("div");
-    secondInnerDivContents.classList.add("quarto-title-meta-contents");
-
-    // Describe the WebR state
-    var startupMessageWebR = document.createElement("p");
-    startupMessageWebR.innerText = "🟡 Loading...";
-    startupMessageWebR.setAttribute("id", "startup");
-    // Add `aria-live` to auto-announce the startup status to screen readers
-    startupMessageWebR.setAttribute("aria-live", "assertive");
-
-    // Put everything together
-    secondInnerDivContents.appendChild(startupMessageWebR);
-
-    // Add a status indicator for COOP and COEP Headers
-    if (showHeaderMessage) {
-      var crossOriginMessage = document.createElement("p");
-      crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
-      crossOriginMessage.setAttribute("id", "coop-coep-header");
-      secondInnerDivContents.appendChild(crossOriginMessage);
-    }
-
-    firstInnerDiv.appendChild(secondInnerDiv);
-    firstInnerDiv.appendChild(secondInnerDivContents);
-    quartoTitleMeta.appendChild(firstInnerDiv);
-
-    // Add new element as last child in header element
-    var header = document.getElementById("title-block-header");
-    header.appendChild(quartoTitleMeta);
-  }
-
-  // Retrieve the webr.mjs
-  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
-
-  // Populate WebR options with defaults or new values based on 
-  // webr meta
-  globalThis.webR = new WebR({
-    "baseURL": "",
-    "serviceWorkerUrl": "",
-    "homedir": "/home/web_user", 
-    "channelType": ChannelType.PostMessage
-  });
-
-  // Initialization WebR
-  await globalThis.webR.init();
-
-  // Setup a shelter
-  globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
-
-  // Installing Packages
-  if (showStartupMessage && setupRPackages) {
-    // If initialized, but we have packages to install switch status
-    startupMessageWebR.innerText = "🟡 Installing package dependencies..."
-    // Install packages
-    await globalThis.webR.installPackages(installRPackagesList)
-  }
-
-  // Switch to allowing code to be executed
-  document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerText = "Run code";
-    btn.disabled = false;
-  });
-
-  // Stop timer
-  const initializeWebRTimerEnd = performance.now();
-
-  if (showStartupMessage) {
-    // If initialized, switch to a green light
-    startupMessageWebR.innerText = "🟢 Ready!"
-  }
-</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -357,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-channel-type.html" class="sidebar-item-text sidebar-link">
+  <a href="./webr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
   </div>
 </li>
@@ -418,26 +278,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#managing-packages" id="toc-managing-packages" class="nav-link" data-scroll-target="#managing-packages">Managing Packages</a>
-  <ul class="collapse">
-  <li><a href="#install-on-document-open" id="toc-install-on-document-open" class="nav-link" data-scroll-target="#install-on-document-open">Install on Document Open</a></li>
-  <li><a href="#install-on-an-as-needed-basis" id="toc-install-on-an-as-needed-basis" class="nav-link" data-scroll-target="#install-on-an-as-needed-basis">Install on an As-Needed Basis</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-meta-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
-<script type="module">
-
-  // Configure the Monaco Editor's loader
-  require.config({
-    paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs'
-    }
-  });
-</script>
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./webr-meta-options.html">Customization Options</a></li></ol></nav>
 <div class="quarto-title">
@@ -449,8 +294,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>James Joseph Balamuta </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 14, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">September 16, 2023</p>
+    </div>
+  </div>
     
   </div>
   
@@ -462,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="customization-options" class="level1">
 <h1>Customization Options</h1>
 <p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">engine</span><span class="kw">:</span><span class="at"> knitr</span></span>
@@ -509,7 +372,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.).</p>
+<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.). For more details, please see <a href="webr-channel-type.qmd">Communication Channels</a></p>
 </div>
 </div>
 </section>
@@ -545,368 +408,9 @@ Note
 <li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
 <li><strong>Default Value</strong>: <code>[]</code></li>
 </ul>
+
+
 </section>
-</section>
-</section>
-<section id="managing-packages" class="level1">
-<h1>Managing Packages</h1>
-<p>By default, <code>quarto-webr</code> avoids loading additional packages. However, you can install packages when the document opens or on a per-code cell basis.</p>
-<section id="install-on-document-open" class="level2">
-<h2 class="anchored" data-anchor-id="install-on-document-open">Install on Document Open</h2>
-<p>To automatically install packages when the document opens, add the <code>packages</code> key under <code>webr</code> in the YAML header, listing the packages in an array:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="install-on-an-as-needed-basis" class="level2">
-<h2 class="anchored" data-anchor-id="install-on-an-as-needed-basis">Install on an As-Needed Basis</h2>
-<p>You can also install packages within a code cell using the built-in <a href="https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package"><code>webr::install()</code> function</a>. For example, to install <code>ggplot2</code>, use:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
-  webR...</button>
-<div id="webr-editor-1"></div>
-<div id="webr-code-output-1" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
-</div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-1");
-  const outputDiv = document.getElementById("webr-code-output-1");
-  const editorDiv = document.getElementById("webr-editor-1");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `webr::install("ggplot2")`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image stored
-      msgs.forEach(msg => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        }
-      });
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
-<p>This generates the following code cell:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-2">Loading
-  webR...</button>
-<div id="webr-editor-2"></div>
-<div id="webr-code-output-2" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
-</div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-2");
-  const outputDiv = document.getElementById("webr-code-output-2");
-  const editorDiv = document.getElementById("webr-editor-2");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `webr::install("ggplot2")`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image stored
-      msgs.forEach(msg => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        }
-      });
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
-
-
 </section>
 </section>
 
