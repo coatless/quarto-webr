@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr: A Quarto Extension for webR - webR Communication Channel Options</title>
+<title>quarto-webr: A Quarto Extension for webR - Customizing webR from the Quarto Extension</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -226,7 +226,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-channel-type.html">Deployment</a></li><li class="breadcrumb-item"><a href="./webr-channel-type.html">Web Hosting &amp; Communication Channels</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      quarto-webr: A Quarto Extension for webR
+      </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -293,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-channel-type.html" class="sidebar-item-text sidebar-link active">
+  <a href="./webr-channel-type.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Web Hosting &amp; Communication Channels</span></a>
   </div>
 </li>
@@ -332,20 +334,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#making-r-computations-run-smoothly" id="toc-making-r-computations-run-smoothly" class="nav-link active" data-scroll-target="#making-r-computations-run-smoothly">Making R Computations Run Smoothly</a></li>
-  <li><a href="#communication-channels-how-web-browser-and-webr-talk" id="toc-communication-channels-how-web-browser-and-webr-talk" class="nav-link" data-scroll-target="#communication-channels-how-web-browser-and-webr-talk">Communication Channels: How Web Browser and webR Talk</a>
-  <ul class="collapse">
-  <li><a href="#choosing-how-webr-communicates" id="toc-choosing-how-webr-communicates" class="nav-link" data-scroll-target="#choosing-how-webr-communicates">Choosing How WebR Communicates</a></li>
-  </ul></li>
-  <li><a href="#your-communication-channel-choices" id="toc-your-communication-channel-choices" class="nav-link" data-scroll-target="#your-communication-channel-choices">Your Communication Channel Choices</a>
-  <ul class="collapse">
-  <li><a href="#using-automatic-for-communication-default" id="toc-using-automatic-for-communication-default" class="nav-link" data-scroll-target="#using-automatic-for-communication-default">Using “automatic” for Communication (Default)</a></li>
-  <li><a href="#using-shared-array-buffer-for-communication" id="toc-using-shared-array-buffer-for-communication" class="nav-link" data-scroll-target="#using-shared-array-buffer-for-communication">Using “shared-array-buffer” for Communication</a></li>
-  <li><a href="#using-service-worker-for-communication" id="toc-using-service-worker-for-communication" class="nav-link" data-scroll-target="#using-service-worker-for-communication">Using “service-worker” for Communication</a></li>
-  <li><a href="#using-post-message-for-communication" id="toc-using-post-message-for-communication" class="nav-link" data-scroll-target="#using-post-message-for-communication">Using “post-message” for Communication</a></li>
-  </ul></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#install-on-document-open" id="toc-install-on-document-open" class="nav-link" data-scroll-target="#install-on-document-open">Install on document open</a></li>
+  <li><a href="#install-on-an-as-needed-basis" id="toc-install-on-an-as-needed-basis" class="nav-link" data-scroll-target="#install-on-an-as-needed-basis">Install on an as needed basis</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-channel-type.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-meta-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -360,10 +353,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-channel-type.html">Deployment</a></li><li class="breadcrumb-item"><a href="./webr-channel-type.html">Web Hosting &amp; Communication Channels</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">webR Communication Channel Options</h1>
-<p class="subtitle lead">Using the <code>channel-type</code> meta variable of the <code>webr</code> filter</p>
+<h1 class="title">Customizing webR from the Quarto Extension</h1>
 </div>
 
 
@@ -379,181 +371,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="making-r-computations-run-smoothly" class="level1">
-<h1>Making R Computations Run Smoothly</h1>
-<p>As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:</p>
-<ol type="1">
-<li><strong>Web Browser</strong>: This is your web browser, like Chrome or Firefox, which you use to surf the internet and interact with web pages.</li>
-<li><strong>webR</strong>: This is like a dedicated helper that specializes in running R code. It operates separately from your main web browser.</li>
-</ol>
-<p>Now, here’s why this separation is so important: webR’s special version of R can tackle complicated and time-consuming calculations without causing your web browser to freeze or become unresponsive when you’re on a web page that uses webR.</p>
-<p>Imagine trying to watch a video online while your computer is running a heavy software update. Without separating them, your video might start buffering, freeze, or even crash. But by putting the update in the background (on a separate worker, like webR), your video can continue to play smoothly. It’s the same concept with webR and your web browser – keeping things running smoothly without hiccups.</p>
-<p>For more details, please see the <a href="https://docs.r-wasm.org/webr/latest/">official webR documentation</a> on <a href="https://docs.r-wasm.org/webr/latest/communication.html#webr-channels">Worker Communication</a> and <a href="https://docs.r-wasm.org/webr/latest/serving.html">Serving Web Pages with webR</a>.</p>
-</section>
-<section id="communication-channels-how-web-browser-and-webr-talk" class="level1">
-<h1>Communication Channels: How Web Browser and webR Talk</h1>
-<p>Now, let’s explore how your main web browser and the webR worker thread communicate with each other. They use what we call “communication channels” to swap information. Think of it like like passing notes between two people, but in a high-tech way.</p>
-<p>There are a few different types of communication channels available:</p>
-<ol type="1">
-<li><strong>“automatic” or <code>0</code> (Default):</strong>
+<p>The <code>quarto-webr</code> extension supports specifying the following <code>WebROptions</code> options:</p>
 <ul>
-<li><strong>Requirements:</strong> Your setup should be prepared for either <code>"shared-array-buffer"</code> or <code>"service-worker"</code>.</li>
-<li><strong>Limitations:</strong> It’s not clear which option is being used.</li>
-</ul></li>
-<li><strong>“shared-array-buffer” or <code>1</code>:</strong>
+<li><code>home-dir</code>: The WebAssembly user’s home directory and initial working directory (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir"><code>Documentation</code></a>). Default: <code>'/home/web_user'</code>.</li>
+<li><code>base-url</code>: The base URL used for downloading R WebAssembly binaries (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl"><code>Documentation</code></a>). Default: <code>'https://webr.r-wasm.org/[version]/'</code>.</li>
+<li><code>channel-type</code>: The communication channel type to interact with webR (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype"><code>Documentation</code></a>). Default: <code>"automatic"</code> (0). Alternative options are: <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).
 <ul>
-<li><strong>Requirements:</strong> This option requires something called “cross-origin isolation,” which you can read more about <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">here</a>.</li>
-<li><strong>Limitations:</strong> There aren’t any significant limitations to worry about.</li>
+<li>We recommend using <code>"post-message"</code> option if GitHub Pages or Quarto Pub are serving the webR-enabled document.</li>
+<li>However, this option prevents the interruption of running <em>R</em> code and prevents the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.)</li>
 </ul></li>
-<li><strong>“service-worker” or <code>2</code>:</strong>
+<li><code>service-worker-url</code>: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl"><code>Documentation</code></a>). Default: <code>''</code>.</li>
+</ul>
+<p>The extension also has native options for:</p>
 <ul>
-<li><strong>Requirements:</strong> You need to have JavaScript service workers set up, like <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>.</li>
-<li><strong>Limitations:</strong> The script for the service worker must be on the same website as the one using WebR.</li>
-</ul></li>
-<li><strong>“post-message” or <code>3</code>:</strong>
-<ul>
-<li><strong>Requirements:</strong> No special requirements are needed for this option.</li>
-<li><strong>Limitations:</strong> R code can’t be interrupted easily. Some advanced R features, like nested R REPLs, might not work as expected.</li>
-</ul></li>
-</ol>
-<p>When you start using WebR, it usually picks the best communication channel for you. However, you can manually choose a channel type if needed. Just remember that each option comes with its own set of requirements and limitations, so pick the one that suits your project best.</p>
-<p>In simpler terms, it’s like choosing the right tool for the job. Depending on what you’re doing, you might use different methods to pass messages between your web browser and webR.</p>
-<section id="choosing-how-webr-communicates" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-how-webr-communicates">Choosing How WebR Communicates</h2>
-<p>In a Quarto document’s YAML header, you can tell webR which communication channel to use by setting the <code>channel-type</code> option. It’s like telling webR how you want it to talk with your web browser. For example, if you want to use the <code>"post-message"</code> channel, you can do it like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Setting Up webR to use the PostMessage Channel"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">channel-type</span><span class="kw">:</span><span class="at"> </span><span class="st">"post-message"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> webr</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><code>show-startup-message</code>: Display in the document header the state of WebR initialization. Default: <code>true</code></li>
+<li><code>show-header-message</code>: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: <code>false</code></li>
+</ul>
+<p>For these options to be active, they must be placed underneath the <code>webr</code> entry in the documentation header, e.g.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> WebR in Quarto HTML Documents</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">webr:</span><span class="co"> </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  show-startup-message: false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  show-header-message: false</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  home-dir: '/home/r-user/'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: ['ggplot2', 'dplyr']</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>By default, the <code>quarto-webr</code> extension avoids loading or requesting additional packages. Additional packages can be added when the document is first opened or on per-code cell basis. You can view what packages are available by either executing the following R code (either with WebR or just R):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">available.packages</span>(<span class="at">repos=</span><span class="st">"https://repo.r-wasm.org/"</span>, <span class="at">type=</span><span class="st">"source"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or, by navigating to the WebR repository:</p>
+<p><a href="https://github.com/r-wasm/webr-repo/blob/main/repo-packages" class="uri">https://github.com/r-wasm/webr-repo/blob/main/repo-packages</a></p>
 </section>
+<section id="install-on-document-open" class="level2">
+<h2 class="anchored" data-anchor-id="install-on-document-open">Install on document open</h2>
+<p>Add to the document header YAML the <code>packages</code> key under <code>webr</code> with each package listed using an array, e.g.&nbsp;</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="your-communication-channel-choices" class="level1">
-<h1>Your Communication Channel Choices</h1>
-<p>The remainder of the document describes the different communication methods alongside ways to satisfy the requirements.</p>
-<section id="using-automatic-for-communication-default" class="level2">
-<h2 class="anchored" data-anchor-id="using-automatic-for-communication-default">Using “automatic” for Communication (Default)</h2>
-<p>By default, the <code>quarto-webr</code> extension guides webR to use the <code>"automatic"</code> option for <code>channel-type</code>, if you don’t specify the <code>channel-type</code> in your document’s YAML header. Let’s break down how this default setting works:</p>
-<ol type="1">
-<li><strong>Communication Attempts:</strong> webR will try two different communication channels in order:
-<ul>
-<li>First, it attempts to establish a communication channel using <code>"shared-array-buffer"</code>.</li>
-<li>If that doesn’t work, it will then try to use <code>"service-worker"</code>.</li>
-</ul></li>
-<li><strong>Fallback Behavior:</strong> If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It’s important to note that the <code>"automatic"</code> option doesn’t try to use the <code>"post-message"</code> option for communication.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One thing to be aware of is that when the <code>"automatic"</code> option is used, it adds two additional files, <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the <code>"service-worker"</code> option. For more details on this, please refer to the <code>"service-worker"</code> section of the documentation.</p>
-</div>
-</div>
-<p>In summary, when you leave the <code>channel-type</code> unspecified, webR will follow the <code>"automatic"</code> option, attempting to use <code>"shared-array-buffer"</code> and then <code>"service-worker"</code>. If both attempts fail, your webR code cells will be inactive.</p>
-</section>
-<section id="using-shared-array-buffer-for-communication" class="level2">
-<h2 class="anchored" data-anchor-id="using-shared-array-buffer-for-communication">Using “shared-array-buffer” for Communication</h2>
-<p>Now, let’s explore the <code>"shared-array-buffer"</code> option for communication. When you specify <code>channel-type</code> as <code>"shared-array-buffer"</code>, webR aims to use something called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code>SharedArrayBuffer</code></a>. This choice, however, comes with some specific requirements and benefits:</p>
-<p><strong>Requirements:</strong> - Your web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">cross-origin isolated</a>. In simple terms, your server should be set up to allow this kind of communication.</p>
-<p><strong>Benefits:</strong> - The benefit of using this approach is that webR runs notably faster. It’s like giving webR a high-speed lane for its operations.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It’s important to note that the <code>"shared-array-buffer"</code> option isn’t currently available on platforms like <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a>. If you’re using these services, we recommend using the <code>channel-type: "post-message"</code> option instead. There’s a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed <a href="https://github.com/community/community/discussions/13309">here</a>.</p>
-</div>
-</div>
-<p>To help you set up the necessary headers for cross-origin isolation, we provide some guidance for both Netlify and nginx web server administrators:</p>
-<p><strong>For Netlify Configuration:</strong></p>
-<p>If you’re hosting your website with <a href="https://www.netlify.com/">Netlify</a>, you can add the following code to your <a href="https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file">netlify.toml configuration file</a>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[[headers]]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">for</span> <span class="op">=</span> <span class="st">"/directory/with/webr/content/*"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">[headers.values]</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Opener-Policy</span> <span class="op">=</span> <span class="st">"same-origin"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Embedder-Policy</span> <span class="op">=</span> <span class="st">"require-corp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>For nginx Web Server Administrators:</strong></p>
-<p>If you’re managing a server with <code>nginx</code>, you can use the <a href="http://nginx.org/en/docs/http/ngx_http_headers_module.html"><code>add_header</code></a> directive in your server’s configuration file, which is usually found at <code>/etc/nginx/nginx.conf</code>. Here’s an example:</p>
-<pre class="nginx"><code>server {
-  # Enable headers for the webr directory
-  location ^~ /directory/with/webr/content {
-    add_header "Cross-Origin-Opener-Policy" "same-origin";
-    add_header "Cross-Origin-Embedder-Policy" "require-corp";
-  }
-}</code></pre>
-<p>By following these instructions, you’ll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the <code>"shared-array-buffer"</code> option effectively.</p>
-</section>
-<section id="using-service-worker-for-communication" class="level2">
-<h2 class="anchored" data-anchor-id="using-service-worker-for-communication">Using “service-worker” for Communication</h2>
-<p>Here, we’ll dive into the <code>"service-worker"</code> option for communication.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <code>"service-worker"</code> option doesn’t work with <a href="https://quartopub.com/">Quarto Pub</a>. If you’re hosting documents with Quarto Pub, please use the <code>channel-type: "post-message"</code> option instead. There’s an ongoing effort to address the service worker upload issue with the Quarto team, which you can track <a href="https://github.com/quarto-dev/quarto-cli/issues/6828">here</a>.</p>
-</div>
-</div>
-<p>When you set <code>channel-type</code> to <code>"service-worker"</code>, webR changes its communication channel to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker API</a>. This means you need two worker scripts, <code>webr-worker.js</code> and <code>webr-serviceworker.js</code>, hosted on the same website as the page using webR.</p>
-<p>Here’s what you need to ensure:</p>
-<p><strong>1. Worker Scripts:</strong> The <code>quarto-webr</code> extension will automatically create and register these workers when your Quarto document is rendered.</p>
-<p><strong>2. Directory Structure:</strong> Your initial directory structure should include these files:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> demo-quarto-webr.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After rendering the Quarto document with the <code>"service-worker"</code> option, your directory will look like this:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.qmd</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>3. Hosting:</strong> When hosting your rendered document, you need to make sure the rendered HTML document and the service worker files (<code>webr-serviceworker.js</code> and <code>webr-worker.js</code>) are present on the server. This is important for everything to work correctly:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you want to change where the service workers are located, you can set the <code>service-worker-url</code> option in the document YAML. By default, the rendered document will search for the service workers in its current directory.</p>
-<p>In a nutshell, the “service-worker” option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.</p>
-</section>
-<section id="using-post-message-for-communication" class="level2">
-<h2 class="anchored" data-anchor-id="using-post-message-for-communication">Using “post-message” for Communication</h2>
-<p>Now, let’s delve into the <code>"post-message"</code> option. This sets up a communication channel using something called <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage">Post Message</a>. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.</p>
-<p>However, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) won’t work as expected. Instead, they’ll return empty values like <code>""</code> or <code>c('', '')</code>. Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.</p>
-<p>Feel free to experiment with the <code>"post-message"</code> interface in this webR code cell:</p>
+<section id="install-on-an-as-needed-basis" class="level2">
+<h2 class="anchored" data-anchor-id="install-on-an-as-needed-basis">Install on an as needed basis</h2>
+<p>Packages may also be installed inside of a code cell through the built-in <a href="https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package"><code>webr::install()</code> function</a>. For example, to install <code>ggplot2</code>, you would need to use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">webr::install("ggplot2")</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This would generate</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
   webR...</button>
 <div id="webr-editor-1"></div>
@@ -573,10 +441,7 @@ Warning
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `# Attempt to used an input-blocked function
-x = readline("What is your favorite color?")
-## View the value of x
-# print(x)`,
+      value: `webr::install("ggplot2")`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -730,7 +595,6 @@ x = readline("What is your favorite color?")
 </script>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
