@@ -1,24 +1,23 @@
 ---
-title: Welcome!
+title: Greetings and Salutations from the quarto-webr Wonderland!
+subtitle: Empower Your Quarto Documents with R through webR
 format: html
 engine: knitr
 filters:
   - webr
 ---
 
-This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell in a Quarto HTML document. 
+Welcome to the documentation website for the [`quarto-webr`](https://github.com/coatless/quarto-webr) extension, your portal to unlocking the boundless potential of [webR](https://docs.r-wasm.org/webr/latest/) within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). To embark on an exciting journey into the capabilities of the webR code cell, we invite you to dive right in with an interactive code cell experience:
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
 
-The goal of [webR](https://docs.r-wasm.org/webr/latest/) is to: 
+The primary mission of [webR](https://docs.r-wasm.org/webr/latest/) is to empower users to run R code directly within their web browsers, eliminating the need for an external R server to execute code. Notably, this capability extends beyond its integration with the Quarto extension, allowing you to harness the power of webR independently. To delve deeper into the intricacies of the [webR](https://docs.r-wasm.org/webr/latest/) project and explore its versatile applications, we invite you to explore the following resources:
 
-> run R code in the browser without the need for an R server to execute the code
+- **[webR Documentation](https://docs.r-wasm.org/webr/latest/)**: This comprehensive documentation offers profound insights into webR's features, usage, and capabilities. It includes practical examples, guides, and everything you need to leverage webR effectively.
 
-For more details on [webR](https://docs.r-wasm.org/webr/latest/), please see: 
+- **[webR Source Code](https://github.com/r-wasm/webr/)**: For those interested in the technical underpinnings of webR, the GitHub source code repository provides transparency into its development process. You can review, contribute, and engage with the project's vibrant community to further enhance its capabilities.
 
-- [webR Documentation](https://docs.r-wasm.org/webr/latest/)
-- [webR Source Code](https://github.com/r-wasm/webr/)
-
+These resources empower you to gain a comprehensive understanding of webR, whether you wish to explore its functionalities as a novice or contribute to its evolution as a developer. Remember, webR is a versatile tool that can be used independently or in conjunction with the Quarto extension to unlock interactive code cells in your documents.
