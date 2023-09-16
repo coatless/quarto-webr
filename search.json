@@ -11,51 +11,7 @@
     "href": "webr-troubleshooting.html",
     "title": "Troubleshooting quarto-webr hiccups",
     "section": "",
-    "text": "As this is an exciting new frontier, we’re learning as we go. Or as my friend Lawrence says, “I like to build airplanes in the air-”. Please take note of the following issues:\n\n\nIf webr-worker.js or webr-serviceworker.js are not found when the document loads either at the root / or relative directory, then Loading webR... will appear above the code cell instead of Run code. Please make sure the files are at the same location as the quarto document. For example, the following structure will work:\n.\n├── demo-quarto-webr.qmd\n├── webr-serviceworker.js\n└── webr-worker.js\nStill having trouble? Try specifying where the worker files are located using the service-worker-url option in the document’s YAML header.\n\n\n\nWhen using quarto preview or quarto render, the rendered HTML document is being shown by mimicking a server running under https://localhost/. Usually, everything works in this context assuming the above directory structure is followed. However, if you directly open the rendered HTML document, e.g. demo-quarto-web.html, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this StackOverflow answer.\nThere are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file:\n\nUse Chrome’s --allow-file-access-from-files access\nUse the WebServer for Chrome extension\nOr, use NPM to obtain local-web-server\n\n\n\n\nWhen serving webR documents, please try to ensure the COOP and COEP HTTP headers are set to speed up the process:\nCross-Origin-Opener-Policy: same-origin\nCross-Origin-Embedder-Policy: require-corp\nWe describe how to setup this option in \"shared-array-buffer\" channel type documentation.\n\n\n\nIf using the knitr engine instead of the jupyter engine and you are using the original tag of {webr} instead of {webr-r}, there is a known warning that will appear in the render processing output of:\nWarning message:\nIn get_engine(options$engine) :\n  Unknown language engine 'webr' (must be registered via knit_engines$set()).\nThis warning does not prevent or impact the ability of the webr filter to function. Though, we would like to address it at some point since it is not aesthetically pleasing.",
-    "crumbs": [
-      "Extra",
-      "Troubleshooting"
-    ]
-  },
-  {
-    "objectID": "webr-troubleshooting.html#stuck-at-loading-webr",
-    "href": "webr-troubleshooting.html#stuck-at-loading-webr",
-    "title": "Troubleshooting quarto-webr hiccups",
-    "section": "",
-    "text": "If webr-worker.js or webr-serviceworker.js are not found when the document loads either at the root / or relative directory, then Loading webR... will appear above the code cell instead of Run code. Please make sure the files are at the same location as the quarto document. For example, the following structure will work:\n.\n├── demo-quarto-webr.qmd\n├── webr-serviceworker.js\n└── webr-worker.js\nStill having trouble? Try specifying where the worker files are located using the service-worker-url option in the document’s YAML header.",
-    "crumbs": [
-      "Extra",
-      "Troubleshooting"
-    ]
-  },
-  {
-    "objectID": "webr-troubleshooting.html#directly-accessing-rendered-html",
-    "href": "webr-troubleshooting.html#directly-accessing-rendered-html",
-    "title": "Troubleshooting quarto-webr hiccups",
-    "section": "",
-    "text": "When using quarto preview or quarto render, the rendered HTML document is being shown by mimicking a server running under https://localhost/. Usually, everything works in this context assuming the above directory structure is followed. However, if you directly open the rendered HTML document, e.g. demo-quarto-web.html, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this StackOverflow answer.\nThere are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file:\n\nUse Chrome’s --allow-file-access-from-files access\nUse the WebServer for Chrome extension\nOr, use NPM to obtain local-web-server",
-    "crumbs": [
-      "Extra",
-      "Troubleshooting"
-    ]
-  },
-  {
-    "objectID": "webr-troubleshooting.html#speed-up-webr",
-    "href": "webr-troubleshooting.html#speed-up-webr",
-    "title": "Troubleshooting quarto-webr hiccups",
-    "section": "",
-    "text": "When serving webR documents, please try to ensure the COOP and COEP HTTP headers are set to speed up the process:\nCross-Origin-Opener-Policy: same-origin\nCross-Origin-Embedder-Policy: require-corp\nWe describe how to setup this option in \"shared-array-buffer\" channel type documentation.",
-    "crumbs": [
-      "Extra",
-      "Troubleshooting"
-    ]
-  },
-  {
-    "objectID": "webr-troubleshooting.html#engine-registration",
-    "href": "webr-troubleshooting.html#engine-registration",
-    "title": "Troubleshooting quarto-webr hiccups",
-    "section": "",
-    "text": "If using the knitr engine instead of the jupyter engine and you are using the original tag of {webr} instead of {webr-r}, there is a known warning that will appear in the render processing output of:\nWarning message:\nIn get_engine(options$engine) :\n  Unknown language engine 'webr' (must be registered via knit_engines$set()).\nThis warning does not prevent or impact the ability of the webr filter to function. Though, we would like to address it at some point since it is not aesthetically pleasing.",
+    "text": "As this is an exciting new frontier, we’re learning as we go. Or as my friend Lawrence says, “I like to build airplanes in the air-”. Please take note of the following issues:\n\nStuck at Loading webR…\nIf webr-worker.js or webr-serviceworker.js are not found when the document loads either at the root / or relative directory, then Loading webR... will appear above the code cell instead of Run code. Please make sure the files are at the same location as the quarto document. For example, the following structure will work:\n.\n├── demo-quarto-webr.qmd\n├── webr-serviceworker.js\n└── webr-worker.js\nStill having trouble? Try specifying where the worker files are located using the service-worker-url option in the document’s YAML header.\n\n\nDirectly accessing rendered HTML\nWhen using quarto preview or quarto render, the rendered HTML document is being shown by mimicking a server running under https://localhost/. Usually, everything works in this context assuming the above directory structure is followed. However, if you directly open the rendered HTML document, e.g. demo-quarto-web.html, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this StackOverflow answer.\nThere are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file:\n\nUse Chrome’s --allow-file-access-from-files access\nUse the WebServer for Chrome extension\nOr, use NPM to obtain local-web-server\n\n\n\nSpeed up webR\nWhen serving webR documents, please try to ensure the COOP and COEP HTTP headers are set to speed up the process:\nCross-Origin-Opener-Policy: same-origin\nCross-Origin-Embedder-Policy: require-corp\nWe describe how to setup this option in \"shared-array-buffer\" channel type documentation.\n\n\nEngine Registration\nIf using the knitr engine instead of the jupyter engine and you are using the original tag of {webr} instead of {webr-r}, there is a known warning that will appear in the render processing output of:\nWarning message:\nIn get_engine(options$engine) :\n  Unknown language engine 'webr' (must be registered via knit_engines$set()).\nThis warning does not prevent or impact the ability of the webr filter to function. Though, we would like to address it at some point since it is not aesthetically pleasing.",
     "crumbs": [
       "Extra",
       "Troubleshooting"
@@ -100,6 +56,34 @@
     "title": "Acknowledgements",
     "section": "",
     "text": "We appreciate the early testing feedback from Eli E. Holmes and Bob Rudis.\nWe also appreciate the Quarto team assisting with setting up a new code cell type.\nThis repository builds ontop of the initial proof of concept for a standalone Quarto HTML document in:\nhttps://github.com/coatless-r-n-d/webR-quarto-demos\nThe proof of concept leaned heavily on the webR developers public-facing examples:\n\nSource of Tidyverse Blog Post and Minor fix\nwebR documentation landing page (Live page)\n\nFor the extension, we greatly appreciated insights from:\n\nExtensions\n\nquarto-ext/shinylive\nmcanouil/quarto-elevator\nshafayetShafee/downloadthis\n\nQuarto Documentation\n\nFilters Documentation\nLua Development Tips\nLua API\n\nPandoc Documentation\n\nExample Filters\nCodeBlock"
+  },
+  {
+    "objectID": "webr-first-steps.html",
+    "href": "webr-first-steps.html",
+    "title": "Making your first webR-powered document",
+    "section": "",
+    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+  },
+  {
+    "objectID": "webr-first-steps.html#installation",
+    "href": "webr-first-steps.html#installation",
+    "title": "Making your first webR-powered document",
+    "section": "",
+    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+  },
+  {
+    "objectID": "webr-first-steps.html#usage",
+    "href": "webr-first-steps.html#usage",
+    "title": "Making your first webR-powered document",
+    "section": "Usage",
+    "text": "Usage\nFor each document, place the webr filter in the document’s header:\nfilters:\n  - webr\nThen, place the R code for webR in a code block marked with {webr-r}\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\nThe rendered document can be viewed online here.\nWhen quarto render or quarto preview is called, the filter will execute under engine: knitr. During the execution, the filter adds two files to the working directory: webr-worker.js and webr-serviceworker.js. These files allow for the webR session to be started and must be present with the rendered output.\nNote: If engine: knitr is not specified, then the jupyter compute engine will be used by default."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quarto-webr: A Quarto Extension for webR",
+    "section": "",
+    "text": "This extension enables the webR code cell in a Quarto HTML document.\n\n\n\nquarto-webr Filter in Action\n\n\nThe goal of webR is to:\n\nrun R code in the browser without the need for an R server to execute the code\n\nFor more details on webR, please see:\n\nwebR Documentation\nwebR Source Code"
   },
   {
     "objectID": "webr-internal-cell.html",

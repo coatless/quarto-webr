@@ -219,13 +219,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#known-hiccups" id="toc-known-hiccups" class="nav-link active" data-scroll-target="#known-hiccups">Known Hiccups</a>
-  <ul class="collapse">
-  <li><a href="#stuck-at-loading-webr" id="toc-stuck-at-loading-webr" class="nav-link" data-scroll-target="#stuck-at-loading-webr">Stuck at Loading webR…</a></li>
+  <li><a href="#stuck-at-loading-webr" id="toc-stuck-at-loading-webr" class="nav-link active" data-scroll-target="#stuck-at-loading-webr">Stuck at Loading webR…</a></li>
   <li><a href="#directly-accessing-rendered-html" id="toc-directly-accessing-rendered-html" class="nav-link" data-scroll-target="#directly-accessing-rendered-html">Directly accessing rendered HTML</a></li>
   <li><a href="#speed-up-webr" id="toc-speed-up-webr" class="nav-link" data-scroll-target="#speed-up-webr">Speed up webR</a></li>
   <li><a href="#engine-registration" id="toc-engine-registration" class="nav-link" data-scroll-target="#engine-registration">Engine Registration</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-troubleshooting.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -250,11 +247,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="known-hiccups" class="level1">
-<h1>Known Hiccups</h1>
 <p>As this is an exciting new frontier, we’re learning as we go. Or as my friend <a href="https://cs.illinois.edu/about/people/faculty/angrave">Lawrence</a> says, <a href="https://www.youtube.com/watch?v=L2zqTYgcpfg">“I like to build airplanes in the air-”</a>. Please take note of the following issues:</p>
-<section id="stuck-at-loading-webr" class="level2">
-<h2 class="anchored" data-anchor-id="stuck-at-loading-webr">Stuck at Loading webR…</h2>
+<section id="stuck-at-loading-webr" class="level1">
+<h1>Stuck at Loading webR…</h1>
 <p>If <code>webr-worker.js</code> or <code>webr-serviceworker.js</code> are not found when the document loads either at the root <code>/</code> or relative directory, then <code>Loading webR...</code> will appear above the code cell instead of <code>Run code</code>. Please make sure the files are at the same location as the quarto document. For example, the following structure will work:</p>
 <pre><code>.
 ├── demo-quarto-webr.qmd
@@ -262,8 +257,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └── webr-worker.js</code></pre>
 <p>Still having trouble? Try specifying where the worker files are located using the <code>service-worker-url</code> option in the document’s YAML header.</p>
 </section>
-<section id="directly-accessing-rendered-html" class="level2">
-<h2 class="anchored" data-anchor-id="directly-accessing-rendered-html">Directly accessing rendered HTML</h2>
+<section id="directly-accessing-rendered-html" class="level1">
+<h1>Directly accessing rendered HTML</h1>
 <p>When using <code>quarto preview</code> or <code>quarto render</code>, the rendered HTML document is being shown by mimicking a server running under <code>https://localhost/</code>. Usually, everything works in this context assuming the above directory structure is followed. However, if you <strong>directly</strong> open the rendered HTML document, e.g.&nbsp;<code>demo-quarto-web.html</code>, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this <a href="https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683">StackOverflow answer</a>.</p>
 <p>There are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file:</p>
 <ul>
@@ -272,15 +267,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Or, <a href="https://github.com/lwsjs/local-web-server">use NPM to obtain <code>local-web-server</code></a></li>
 </ul>
 </section>
-<section id="speed-up-webr" class="level2">
-<h2 class="anchored" data-anchor-id="speed-up-webr">Speed up webR</h2>
+<section id="speed-up-webr" class="level1">
+<h1>Speed up webR</h1>
 <p>When serving webR documents, please try to ensure the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">COOP</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">COEP</a> HTTP headers are set to speed up the process:</p>
 <pre><code>Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp</code></pre>
 <p>We describe how to setup this option in <a href="./webr-channel-type.html"><code>"shared-array-buffer"</code></a> channel type documentation.</p>
 </section>
-<section id="engine-registration" class="level2">
-<h2 class="anchored" data-anchor-id="engine-registration">Engine Registration</h2>
+<section id="engine-registration" class="level1">
+<h1>Engine Registration</h1>
 <p>If using the <code>knitr</code> engine instead of the <code>jupyter</code> engine and you are using the original tag of <code>{webr}</code> instead of <code>{webr-r}</code>, there is a known warning that will appear in the render processing output of:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>In <span class="fu">get_engine</span>(options<span class="sc">$</span>engine) <span class="sc">:</span></span>
@@ -288,7 +283,6 @@ Cross-Origin-Embedder-Policy: require-corp</code></pre>
 <p>This warning does not prevent or impact the ability of the <code>webr</code> filter to function. Though, we would like to address it at some point since it is not aesthetically pleasing.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
