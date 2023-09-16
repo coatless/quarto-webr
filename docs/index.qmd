@@ -1,0 +1,24 @@
+---
+title: Welcome!
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell in a Quarto HTML document. 
+
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+
+The goal of [webR](https://docs.r-wasm.org/webr/latest/) is to: 
+
+> run R code in the browser without the need for an R server to execute the code
+
+For more details on [webR](https://docs.r-wasm.org/webr/latest/), please see: 
+
+- [webR Documentation](https://docs.r-wasm.org/webr/latest/)
+- [webR Source Code](https://github.com/r-wasm/webr/)
+
