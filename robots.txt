@@ -1,1 +1,1 @@
-Sitemap: https://coatless.github.io/quarto-webr/sitemap.xml
+Sitemap: https://github.com/coatless/quarto-webr/sitemap.xml
