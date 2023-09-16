@@ -11,8 +11,6 @@ filters:
 - webr
 ---
 
-# Making R Computations Run Smoothly
-
 As you dive deeper into using webR, it's crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or "threads":
 
 1. **Web Browser**: This is your web browser, like Chrome or Firefox, which you use to surf the internet and interact with web pages.
@@ -93,16 +91,18 @@ In summary, when you leave the `channel-type` unspecified, webR will follow the 
 Now, let's explore the `"shared-array-buffer"` option for communication. When you specify `channel-type` as `"shared-array-buffer"`, webR aims to use something called [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer). This choice, however, comes with some specific requirements and benefits:
 
 **Requirements:**
-- Your web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is [cross-origin isolated](https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated). In simple terms, your server should be set up to allow this kind of communication.
+
+- Your web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is [cross-origin isolated](https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated). In simple terms, your server must be set up to allow this kind of communication otherwise webR will not work.
 
 **Benefits:**
+
 - The benefit of using this approach is that webR runs notably faster. It's like giving webR a high-speed lane for its operations.
 
 ::: callout-note
 It's important to note that the `"shared-array-buffer"` option isn't currently available on platforms like [GitHub Pages](https://pages.github.com/) or [Quarto Pub](https://quartopub.com/). If you're using these services, we recommend using the `channel-type: "post-message"` option instead. There's a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed [here](https://github.com/community/community/discussions/13309).
 :::
 
-To help you set up the necessary headers for cross-origin isolation, we provide some guidance for both Netlify and nginx web server administrators:
+To help you set up the necessary headers for cross-origin isolation, we provide some guidance for both [Netlify](https://www.netlify.com/) and [nginx](http://nginx.org/) web server administrators:
 
 **For Netlify Configuration:**
 
