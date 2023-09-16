@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.358">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr: A Quarto Extension for webR - Customizing webR from the Quarto Extension</title>
+<title>quarto-webr: A Quarto Extension for webR - Customization Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,6 +80,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "start",
   "type": "textbox",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -249,9 +255,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./webr-meta-options.html">Customization Options</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./webr-meta-options.html">Customization Options</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -266,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">quarto-webr: A Quarto Extension for webR</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/coatless/quarto-webr/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/coatless/quarto-webr/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -305,6 +311,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./webr-using-r-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using R Packages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./webr-internal-cell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hiding and Executing Code</span></a>
   </div>
@@ -323,13 +335,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./webr-readme-example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README example</span></a>
+ <span class="menu-text">README Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Possibilities with Interactive Code Cells</span></a>
+  <a href="./webr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring Interactive Code Cells</span></a>
   </div>
 </li>
       </ul>
@@ -368,6 +380,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./webr-developer-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developer Resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./webr-acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
@@ -384,11 +402,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#install-on-document-open" id="toc-install-on-document-open" class="nav-link" data-scroll-target="#install-on-document-open">Install on document open</a></li>
-  <li><a href="#install-on-an-as-needed-basis" id="toc-install-on-an-as-needed-basis" class="nav-link" data-scroll-target="#install-on-an-as-needed-basis">Install on an as needed basis</a></li>
+  <li><a href="#customization-options" id="toc-customization-options" class="nav-link active" data-scroll-target="#customization-options">Customization Options</a>
+  <ul class="collapse">
+  <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
+  <ul class="collapse">
+  <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
+  <li><a href="#base-url" id="toc-base-url" class="nav-link" data-scroll-target="#base-url"><code>base-url</code></a></li>
+  <li><a href="#channel-type" id="toc-channel-type" class="nav-link" data-scroll-target="#channel-type"><code>channel-type</code></a></li>
+  <li><a href="#service-worker-url" id="toc-service-worker-url" class="nav-link" data-scroll-target="#service-worker-url"><code>service-worker-url</code></a></li>
+  </ul></li>
+  <li><a href="#native-extension-options" id="toc-native-extension-options" class="nav-link" data-scroll-target="#native-extension-options">Native Extension Options</a>
+  <ul class="collapse">
+  <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
+  <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#managing-packages" id="toc-managing-packages" class="nav-link" data-scroll-target="#managing-packages">Managing Packages</a>
+  <ul class="collapse">
+  <li><a href="#install-on-document-open" id="toc-install-on-document-open" class="nav-link" data-scroll-target="#install-on-document-open">Install on Document Open</a></li>
+  <li><a href="#install-on-an-as-needed-basis" id="toc-install-on-an-as-needed-basis" class="nav-link" data-scroll-target="#install-on-an-as-needed-basis">Install on an As-Needed Basis</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-meta-options.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-meta-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -403,9 +439,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./webr-meta-options.html">Customization Options</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Customizing webR from the Quarto Extension</h1>
+<h1 class="title">Customization Options</h1>
+<p class="subtitle lead">Fine-Tuning <code>quarto-webr</code> with Powerful Configuration Options</p>
 </div>
 
 
@@ -418,59 +455,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>The <code>quarto-webr</code> extension supports specifying the following <code>WebROptions</code> options:</p>
+<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.</p>
+<section id="customization-options" class="level1">
+<h1>Customization Options</h1>
+<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">engine</span><span class="kw">:</span><span class="at"> knitr</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">show-startup-message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="webr-options" class="level2">
+<h2 class="anchored" data-anchor-id="webr-options">webR options</h2>
+<p>By specifying various <code>WebROptions</code> options in the document YAML, you can create a personalized webR experience</p>
+<section id="home-dir" class="level3">
+<h3 class="anchored" data-anchor-id="home-dir"><code>home-dir</code></h3>
 <ul>
-<li><code>home-dir</code>: The WebAssembly user’s home directory and initial working directory (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir"><code>Documentation</code></a>). Default: <code>'/home/web_user'</code>.</li>
-<li><code>base-url</code>: The base URL used for downloading R WebAssembly binaries (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl"><code>Documentation</code></a>). Default: <code>'https://webr.r-wasm.org/[version]/'</code>.</li>
-<li><code>channel-type</code>: The communication channel type to interact with webR (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype"><code>Documentation</code></a>). Default: <code>"automatic"</code> (0). Alternative options are: <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).
-<ul>
-<li>We recommend using <code>"post-message"</code> option if GitHub Pages or Quarto Pub are serving the webR-enabled document.</li>
-<li>However, this option prevents the interruption of running <em>R</em> code and prevents the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.)</li>
-</ul></li>
-<li><code>service-worker-url</code>: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl"><code>Documentation</code></a>). Default: <code>''</code>.</li>
+<li><strong>Description</strong>: Set the WebAssembly user’s home directory and initial working directory.</li>
+<li><strong>Default Value</strong>: <code>'/home/web_user'</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir">homeDir</a></li>
 </ul>
-<p>The extension also has native options for:</p>
-<ul>
-<li><code>show-startup-message</code>: Display in the document header the state of WebR initialization. Default: <code>true</code></li>
-<li><code>show-header-message</code>: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: <code>false</code></li>
-</ul>
-<p>For these options to be active, they must be placed underneath the <code>webr</code> entry in the documentation header, e.g.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> WebR in Quarto HTML Documents</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">webr:</span><span class="co"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  show-startup-message: false</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  show-header-message: false</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  home-dir: '/home/r-user/'</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  packages: ['ggplot2', 'dplyr']</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>By default, the <code>quarto-webr</code> extension avoids loading or requesting additional packages. Additional packages can be added when the document is first opened or on per-code cell basis. You can view what packages are available by either executing the following R code (either with WebR or just R):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">available.packages</span>(<span class="at">repos=</span><span class="st">"https://repo.r-wasm.org/"</span>, <span class="at">type=</span><span class="st">"source"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or, by navigating to the WebR repository:</p>
-<p><a href="https://github.com/r-wasm/webr-repo/blob/main/repo-packages" class="uri">https://github.com/r-wasm/webr-repo/blob/main/repo-packages</a></p>
 </section>
+<section id="base-url" class="level3">
+<h3 class="anchored" data-anchor-id="base-url"><code>base-url</code></h3>
+<ul>
+<li><strong>Description</strong>: Define the base URL for downloading R WebAssembly binaries.</li>
+<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/[version]/'</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl">baseUrl</a></li>
+</ul>
+</section>
+<section id="channel-type" class="level3">
+<h3 class="anchored" data-anchor-id="channel-type"><code>channel-type</code></h3>
+<ul>
+<li><strong>Description</strong>: Specify the communication channel type to interact with webR.</li>
+<li><strong>Default Value</strong>: <code>"automatic"</code> (0)</li>
+<li><strong>Possible Values</strong>: <code>"automatic"</code> (0), <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).</li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype">channelType</a></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.).</p>
+</div>
+</div>
+</section>
+<section id="service-worker-url" class="level3">
+<h3 class="anchored" data-anchor-id="service-worker-url"><code>service-worker-url</code></h3>
+<ul>
+<li><strong>Description</strong>: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.</li>
+<li><strong>Default Value</strong>: <code>''</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl">serviceWorkerUrl</a></li>
+</ul>
+</section>
+</section>
+<section id="native-extension-options" class="level2">
+<h2 class="anchored" data-anchor-id="native-extension-options">Native Extension Options</h2>
+<p>The extension also provides native options that affect its behavior:</p>
+<section id="show-startup-message" class="level3">
+<h3 class="anchored" data-anchor-id="show-startup-message"><code>show-startup-message</code></h3>
+<ul>
+<li><strong>Description</strong>: Controls the display of the WebR initialization state in the document header.</li>
+<li><strong>Default Value</strong>: <code>true</code></li>
+</ul>
+</section>
+<section id="show-header-message" class="level3">
+<h3 class="anchored" data-anchor-id="show-header-message"><code>show-header-message</code></h3>
+<ul>
+<li><strong>Description</strong>: Determines whether COOP and COEP headers are in use for faster page loads.</li>
+<li><strong>Default Value</strong>: <code>false</code></li>
+</ul>
+</section>
+<section id="packages" class="level3">
+<h3 class="anchored" data-anchor-id="packages"><code>packages</code></h3>
+<ul>
+<li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
+<li><strong>Default Value</strong>: <code>[]</code></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="managing-packages" class="level1">
+<h1>Managing Packages</h1>
+<p>By default, <code>quarto-webr</code> avoids loading additional packages. However, you can install packages when the document opens or on a per-code cell basis.</p>
 <section id="install-on-document-open" class="level2">
-<h2 class="anchored" data-anchor-id="install-on-document-open">Install on document open</h2>
-<p>Add to the document header YAML the <code>packages</code> key under <code>webr</code> with each package listed using an array, e.g.&nbsp;</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h2 class="anchored" data-anchor-id="install-on-document-open">Install on Document Open</h2>
+<p>To automatically install packages when the document opens, add the <code>packages</code> key under <code>webr</code> in the YAML header, listing the packages in an array:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-on-an-as-needed-basis" class="level2">
-<h2 class="anchored" data-anchor-id="install-on-an-as-needed-basis">Install on an as needed basis</h2>
-<p>Packages may also be installed inside of a code cell through the built-in <a href="https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package"><code>webr::install()</code> function</a>. For example, to install <code>ggplot2</code>, you would need to use:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">webr::install("ggplot2")</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This would generate</p>
+<h2 class="anchored" data-anchor-id="install-on-an-as-needed-basis">Install on an As-Needed Basis</h2>
+<p>You can also install packages within a code cell using the built-in <a href="https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package"><code>webr::install()</code> function</a>. For example, to install <code>ggplot2</code>, use:</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
   webR...</button>
 <div id="webr-editor-1"></div>
@@ -642,8 +733,181 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     executeCode(editor.getValue());
   };
 </script>
+<p>This generates the following code cell:</p>
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-2">Loading
+  webR...</button>
+<div id="webr-editor-2"></div>
+<div id="webr-code-output-2" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const runButton = document.getElementById("webr-run-button-2");
+  const outputDiv = document.getElementById("webr-code-output-2");
+  const editorDiv = document.getElementById("webr-editor-2");
+
+  // Add a light grey outline around the code editor
+  editorDiv.style.border = "1px solid #eee";
+
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
+      value: `webr::install("ggplot2")`,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,           // TODO: Could be problematic for slide decks
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      fontSize: '17.5rem',               // Bootstrap is 1 rem
+      renderLineHighlight: "none",     // Disable current line highlighting
+      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+    });
+
+    // Dynamically modify the height of the editor window if new lines are added.
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      const contentHeight = editor.getContentHeight();
+      // We're avoiding a width change
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${contentHeight}px`;
+      try {
+        ignoreEvent = true;
+
+        // The key to resizing is this call
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        executeCode(editor.getValue());
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
+
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
+  });
+
+  // Function to execute the code (accepts code as an argument)
+  async function executeCode(codeToRun) {
+    // Disable run button for code cell active
+    runButton.disabled = true;
+
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    executeCode(editor.getValue());
+  };
+</script>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -726,10 +990,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -739,8 +1002,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -753,6 +1025,81 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -796,6 +1143,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -821,6 +1169,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -881,6 +1256,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
