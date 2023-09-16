@@ -31,7 +31,7 @@ website:
       - section: "Deployment"
         contents:
           - href: webr-channel-type.qmd
-            text: Web Hosting & Communication Channels
+            text: Communication Channels
       - section: "Extra"
         contents:
           - href: webr-troubleshooting.md
