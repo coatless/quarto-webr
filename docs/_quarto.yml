@@ -20,6 +20,8 @@ website:
             text: Your first webR-powered Quarto document
           - href: webr-meta-options.qmd
             text: Customization Options
+          - href: webr-using-r-packages.qmd
+            text: Using R Packages
           - href: webr-internal-cell.qmd
             text: Hiding and Executing Code
       - section: "Demos"
