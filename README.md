@@ -98,6 +98,9 @@ The `quarto-webr` extension supports specifying the following `WebROptions` opti
 
 - `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
 - `base-url`: The base URL used for downloading R WebAssembly binaries ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
+- `channel-type`: The communication channel type to interact with webR ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype)). Default: `"automatic"` (0). Alternative options are: `"shared-array-buffer"` (1), `"service-worker"` (2), `"post-message"` (3).
+   - We recommend using `"post-message"` option if GitHub Pages or Quarto Pub are serving the webR-enabled document.
+   - However, this option prevents the interruption of running _R_ code and prevents the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.) 
 - `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
 
 The extension also has native options for:

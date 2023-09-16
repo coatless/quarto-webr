@@ -15,6 +15,13 @@ local baseVersionWebR = "0.2.1"
 local baseUrl = ""
 local serviceWorkerUrl = ""
 
+-- Define the webR communication protocol
+local channelType = "ChannelType.Automatic"
+
+-- Define a variable to suppress exporting service workers if not required.
+-- (e.g. skipped for PostMessage or SharedArrayBuffer)
+local hasServiceWorkerFiles = true
+
 -- Define user directory
 local homeDir = "/home/web_user"
 
@@ -40,6 +47,25 @@ local counter = 0
 function is_variable_empty(s)
   return s == nil or s == ''
 end
+
+-- Convert the communication channel meta option into a WebROptions.channelType option
+function convertMetaChannelTypeToWebROption(input)
+  -- Create a table of conditions
+  local conditions = {
+    ["automatic"] = "ChannelType.Automatic",
+    [0] = "ChannelType.Automatic",
+    ["shared-array-buffer"] = "ChannelType.SharedArrayBuffer",
+    [1] = "ChannelType.SharedArrayBuffer",
+    ["service-worker"] = "ChannelType.ServiceWorker",
+    [2] = "ChannelType.ServiceWorker",
+    ["post-message"] = "ChannelType.PostMessage",
+    [3] = "ChannelType.PostMessage",
+  }
+  -- Subset the table to obtain the communication channel.
+  -- If the option isn't found, return automatic.
+  return conditions[input] or "ChannelType.Automatic"
+end
+
 
 -- Parse the different webr options set in the YAML frontmatter, e.g.
 --
@@ -71,6 +97,17 @@ function setWebRInitializationOptions(meta)
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
   if not is_variable_empty(webr["base-url"]) then
     baseUrl = pandoc.utils.stringify(webr["base-url"])
+  end
+
+  -- The communication channel mode webR uses to connect R with the web browser 
+  -- Default: "ChannelType.Automatic"
+  -- Documentation:
+  -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype
+  if not is_variable_empty(webr["channel-type"]) then
+    channelType = convertMetaChannelTypeToWebROption(pandoc.utils.stringify(webr["channel-type"]))
+    if not (channelType == "ChannelType.Automatic" and channelType == "ChannelType.ServiceWorker") then
+      hasServiceWorkerFiles = false
+    end
   end
 
   -- The base URL from where to load JavaScript worker scripts when loading webR
@@ -245,6 +282,7 @@ function initializationWebR()
     ["SHOWSTARTUPMESSAGE"] = showStartUpMessage, -- tostring()
     ["SHOWHEADERMESSAGE"] = showHeaderMessage,
     ["BASEURL"] = baseUrl, 
+    ["CHANNELTYPE"] = channelType,
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList
@@ -280,22 +318,26 @@ function ensureWebRSetup()
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "monaco-editor-init.html")
 
-  -- Copy the two web workers into the directory
-  -- https://quarto.org/docs/extensions/lua-api.html#dependencies
+  -- If the ChannelType requires service workers, register and copy them into the 
+  -- output directory.
+  if hasServiceWorkerFiles then 
+    -- Copy the two web workers into the directory
+    -- https://quarto.org/docs/extensions/lua-api.html#dependencies
+    quarto.doc.add_html_dependency({
+      name = "webr-worker",
+      version = baseVersionWebR,
+      seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
+      serviceworkers = {"webr-worker.js"}
+    })
 
-  quarto.doc.add_html_dependency({
-    name = "webr-worker",
-    version = baseVersionWebR,
-    --seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
-    serviceworkers = {"webr-worker.js"}
-  })
+    quarto.doc.add_html_dependency({
+      name = "webr-serviceworker",
+      version = baseVersionWebR,
+      seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
+      serviceworkers = {"webr-serviceworker.js"}
+    })
+  end
 
-  quarto.doc.add_html_dependency({
-    name = "webr-serviceworker",
-    version = baseVersionWebR,
-    --seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
-    serviceworkers = {"webr-serviceworker.js"}
-  })
 end
 
 -- Define a function to replace keywords given by {{ WORD }}

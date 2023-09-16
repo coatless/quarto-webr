@@ -2,3 +2,11 @@
   quarto-pub:
     - id: 2ae0a31d-b315-4617-a8a4-cda96a9abd3c
       url: 'https://coatless.quarto.pub/webr-enabled-code-cells'
+- source: webr-channel-type.qmd
+  quarto-pub:
+    - id: 9a6782cc-7f9a-4773-a43b-ddeae9944dfb
+      url: 'https://coatless.quarto.pub/webr-communication-channel-options'
+- source: webr-internal-cell.qmd
+  quarto-pub:
+    - id: 9a086f67-3a62-4ac6-bd63-a5987751855a
+      url: 'https://coatless.quarto.pub/hidden-webr-code-cells'
