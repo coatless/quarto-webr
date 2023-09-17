@@ -1,6 +1,6 @@
 ---
-title: Greetings and Salutations from the quarto-webr Wonderland!
-subtitle: Empower Your Quarto Documents with R through webR
+title: Greetings from quarto-webr Wonderland!
+subtitle: Empowering Your Quarto Documents with R through webR
 format: html
 engine: knitr
 filters:
