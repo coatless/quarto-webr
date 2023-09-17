@@ -98,7 +98,7 @@ In webR, you can check student answers by providing an answer key and a comparis
 
 For instance, you can create a solution data frame like this:
 
-```{webr-r}
+```{{webr-r}}
 #| context: setup
 answer_frame <- data.frame(
   problem = c("1a", "1b", "2"),
@@ -109,11 +109,39 @@ answer_frame <- data.frame(
 
 Next, define an internal check function:
 
-```{webr-r}
+```{{webr-r}}
 #| context: setup
 check <- function(problem, answer) {
   aframe <- answer_frame
-  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
+  if(!problem %in% aframe$problem) {
+    error_msg <- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")
+    stop(error_msg)
+  }
+
+  solution <- aframe[which(aframe$problem == problem), "answer"]
+
+  ifelse(
+    all.equal(answer, solution, tolerance = 0.001) == TRUE,
+    "Correct! Well done.",
+    "Incorrect! Good attempt. Let's try again?"
+  )
+}
+```
+
+```{webr-r}
+#| context: setup
+answer_frame <- data.frame(
+  problem = c("1a", "1b", "2"),
+  answer = c(10, 2, 3/16),
+  tol = c(0.001, 0, 1/32)
+)
+
+check <- function(problem, answer) {
+  aframe <- answer_frame
+  if(!problem %in% aframe$problem) {
+    error_msg <- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")
+    stop(error_msg)
+  }
 
   solution <- aframe[which(aframe$problem == problem), "answer"]
 
@@ -136,5 +164,7 @@ student_solution = 11
 
 check(problem = "1a", answer = student_solution)
 ```
+
+# Fin
 
 With hidden code execution and solution checking, webR provides a powerful tool for creating interactive and educational content within your Quarto HTML documents.
