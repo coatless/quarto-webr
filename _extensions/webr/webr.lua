@@ -185,14 +185,19 @@ function readTemplateFile(template)
   return content
 end
 
--- Obtain the editor template file at webr-editor.html
-function editorTemplateFile()
-  return readTemplateFile("webr-editor.html")
+-- Obtain the editor template file at webr-context-interactive.html
+function interactiveTemplateFile()
+  return readTemplateFile("webr-context-interactive.html")
 end
 
--- Obtain the internal template file at webr-context-internal.html
-function internalTemplateFile()
-  return readTemplateFile("webr-context-internal.html")
+-- Obtain the output template file at webr-context-output.html
+function outputTemplateFile()
+  return readTemplateFile("webr-context-output.html")
+end
+
+-- Obtain the setup template file at webr-context-setup.html
+function setupTemplateFile()
+  return readTemplateFile("webr-context-setup.html")
 end
 
 -- Obtain the initialization template file at webr-init.html
@@ -201,9 +206,11 @@ function initializationTemplateFile()
 end
 
 -- Cache a copy of each public-facing templates to avoid multiple read/writes.
-editor_template = editorTemplateFile()
+interactive_template = interactiveTemplateFile()
 
-internal_template = internalTemplateFile()
+output_template = outputTemplateFile()
+
+setup_template = setupTemplateFile()
 ----
 
 -- Define a function that escape control sequence
@@ -442,12 +449,16 @@ function enableWebRCodeCell(el)
       local cell_context = el.attributes.context
 
       -- Decide the correct template
-        -- Make sure we perform a copy of each template
+      -- Make sure we perform a copy of each template
       local copied_code_template = nil
-      if is_variable_empty(cell_context) then
-        copied_code_template = editor_template
-      else 
-        copied_code_template = internal_template
+      if is_variable_empty(cell_context) or cell_context == "interactive" then
+        copied_code_template = interactive_template
+      elseif cell_context == "setup" then
+        copied_code_template = setup_template
+      elseif cell_context == "output" then
+        copied_code_template = output_template
+      else
+        error("The `context` option must contain either: `interactive`, `setup`, or `output`.")
       end
 
       -- Make the necessary substitutions into the template
