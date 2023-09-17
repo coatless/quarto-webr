@@ -47,7 +47,7 @@ Please note that the contents of the hidden code cell can be viewed if the web p
 You can use the setup hidden code cell to pre-load and manipulate an entire dataset. This allows users to directly interact with the loaded data.
 
 ```{webr-r}
-#| context: hidden
+#| context: setup
 
 # Download a dataset
 download.file(
