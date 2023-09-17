@@ -1,0 +1,9 @@
+<script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
+await globalThis.webR.evalRVoid(`
+{{WEBRCODE}}
+`)
+</script>	
