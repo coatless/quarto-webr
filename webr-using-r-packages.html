@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James Joseph Balamuta">
+<meta name="dcterms.date" content="2023-09-14">
 
 <title>quarto-webr: A Quarto Extension for webR - Using R Packages</title>
 <style>
@@ -405,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#working-with-r-packages" id="toc-working-with-r-packages" class="nav-link active" data-scroll-target="#working-with-r-packages">Working with R Packages</a>
   <ul class="collapse">
   <li><a href="#available-r-packages" id="toc-available-r-packages" class="nav-link" data-scroll-target="#available-r-packages">Available R Packages</a></li>
-  <li><a href="#install-on-document-open" id="toc-install-on-document-open" class="nav-link" data-scroll-target="#install-on-document-open">Install on Document Open</a></li>
+  <li><a href="#install-r-packages-on-document-open" id="toc-install-r-packages-on-document-open" class="nav-link" data-scroll-target="#install-r-packages-on-document-open">Install R Packages on Document Open</a></li>
   <li><a href="#installing-an-r-package-interactively" id="toc-installing-an-r-package-interactively" class="nav-link" data-scroll-target="#installing-an-r-package-interactively">Installing an R Package Interactively</a></li>
   </ul></li>
   </ul>
@@ -434,8 +436,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>James Joseph Balamuta </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 14, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">September 16, 2023</p>
+    </div>
+  </div>
     
   </div>
   
@@ -443,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Unlock the full potential of R by seamlessly integrating packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.</p>
+<p>Unlock the full potential of R by seamlessly integrating R packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.</p>
 <section id="working-with-r-packages" class="level1">
 <h1>Working with R Packages</h1>
 <p>By default, <code>quarto-webr</code> avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.</p>
@@ -474,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   type = "source"
 )[, c("Package", "Version")]
 # Number of R packages available to webR
-cat("There are current ", nrow(webr_pkgs), " available to webR!")
+cat("There are current", nrow(webr_pkgs), "available to webR!\\n")
 # Only view the first 6, there's a lot available!
 head(webr_pkgs)`,
       language: 'r',
@@ -630,8 +650,8 @@ head(webr_pkgs)`,
 </script>
 <p>Alternatively, you can navigate to the WebR repository <a href="https://github.com/r-wasm/webr-repo/blob/main/repo-packages">here</a> for package listings.</p>
 </section>
-<section id="install-on-document-open" class="level2">
-<h2 class="anchored" data-anchor-id="install-on-document-open">Install on Document Open</h2>
+<section id="install-r-packages-on-document-open" class="level2">
+<h2 class="anchored" data-anchor-id="install-r-packages-on-document-open">Install R Packages on Document Open</h2>
 <p>To automatically install packages when the document opens, add the <code>packages</code> key under <code>webr</code> in the YAML header, listing the packages in an array:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>

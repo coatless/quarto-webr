@@ -279,7 +279,7 @@
     "href": "webr-using-r-packages.html",
     "title": "Using R Packages",
     "section": "",
-    "text": "Unlock the full potential of R by seamlessly integrating packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.",
+    "text": "Unlock the full potential of R by seamlessly integrating R packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.",
     "crumbs": [
       "Getting Started",
       "Using R Packages"
@@ -297,11 +297,11 @@
     ]
   },
   {
-    "objectID": "webr-using-r-packages.html#install-on-document-open",
-    "href": "webr-using-r-packages.html#install-on-document-open",
+    "objectID": "webr-using-r-packages.html#install-r-packages-on-document-open",
+    "href": "webr-using-r-packages.html#install-r-packages-on-document-open",
     "title": "Using R Packages",
-    "section": "Install on Document Open",
-    "text": "Install on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.",
+    "section": "Install R Packages on Document Open",
+    "text": "Install R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.",
     "crumbs": [
       "Getting Started",
       "Using R Packages"
