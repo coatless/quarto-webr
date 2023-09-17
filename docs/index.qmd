@@ -16,6 +16,6 @@ fit = lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
 
-At its core, [webR](https://docs.r-wasm.org/webr/latest/) is all about empowering you to run R code directly in your web browser, completely bypassing the need for an external R server. The best part? This incredible capability extends far beyond its integration with the [Quarto extension](https://github.com/coatless/quarto-webr), giving you the freedom to harness the power of webR independently.
+At its core, the [quarto-webr extension](https://github.com/coatless/quarto-webr) is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server.  Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it's worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using [webR's JavaScript API](https://docs.r-wasm.org/webr/latest/evaluating.html), granting you unparalleled freedom to harness the power of R in innovative ways.
 
-Let's dive in and kickstart your journey with interactive code cells by creating your very first [webR-powered Quarto document](webr-first-steps.qmd)!
+With this in mind, let's dive in and kickstart your journey with interactive code cells by creating our very first [webR-powered Quarto document](webr-first-steps.qmd)!
