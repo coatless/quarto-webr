@@ -1,12 +1,16 @@
 name: Bug report
 description: Report an error or unexpected behavior
-labels: [bug]
+labels: [bug, triage-needed]
 
 body:
   - type: markdown
     attributes:
       value: |
         Welcome to the quarto-webr Extension GitHub repository!
+
+        We're sorry to hear that you might have encounter a bug; 
+        we're happy that you want to let us know so that we can
+        make the extension even better.
 
         Thank you in advance for your feedback.
 

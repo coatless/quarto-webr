@@ -1,0 +1,28 @@
+name: Feature request
+description: Ask for a feature to be added
+labels: [feature-request]
+
+body:
+  - type: markdown
+    attributes: 
+      value: |
+        First, please check [`quarto-webr` Issue Tracker](https://github.com/coatless/quarto-webr/issues) to see if your feature request has already been discussed.
+        If it has, please consider adding a comment to the existing issue instead of creating a new one.
+
+        After checking, if you are not sure if your feature request has already been discussed, please create a new issue.
+        We look forward to hearing from you.
+
+        Finally, try to describe the best you can what you want to achieve and why you think it is important.
+        This will help us to understand your request and prioritise it.
+
+        _Thank you for opening this feature request!_
+  - type: textarea
+    attributes:
+      label: Feature Description
+      description: Please discuss your feature request here!
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        _Thank you for opening this feature request!_
