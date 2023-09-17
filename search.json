@@ -279,40 +279,7 @@
     "href": "webr-using-r-packages.html",
     "title": "Using R Packages",
     "section": "",
-    "text": "Unlock the full potential of R by seamlessly integrating R packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
-    "objectID": "webr-using-r-packages.html#available-r-packages",
-    "href": "webr-using-r-packages.html#available-r-packages",
-    "title": "Using R Packages",
-    "section": "Available R Packages",
-    "text": "Available R Packages\nBefore you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:\nLoading\n  webR...\n\n\n  \n\n\nAlternatively, you can navigate to the WebR repository here for package listings.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
-    "objectID": "webr-using-r-packages.html#install-r-packages-on-document-open",
-    "href": "webr-using-r-packages.html#install-r-packages-on-document-open",
-    "title": "Using R Packages",
-    "section": "Install R Packages on Document Open",
-    "text": "Install R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
-    "objectID": "webr-using-r-packages.html#installing-an-r-package-interactively",
-    "href": "webr-using-r-packages.html#installing-an-r-package-interactively",
-    "title": "Using R Packages",
-    "section": "Installing an R Package Interactively",
-    "text": "Installing an R Package Interactively\nIf you need to install a package interactively within specific code cells, you can do so using the webr::install() function. This method allows you to install packages on-the-fly when needed.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\nLoading\n  webR...\n\n\n  \n\n\nUsing this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.",
+    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.\n\nAvailable R Packages\nBefore you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:\nLoading\n  webR...\n\n\n  \n\n\nAlternatively, you can navigate to the WebR repository here for package listings.\n\n\nInstall R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.\n\n\nInstalling an R Package Interactively\nIf you need to install a package interactively within specific code cells, you can do so using the webr::install() function. This method allows you to install packages on-the-fly when needed.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\nLoading\n  webR...\n\n\n  \n\n\nUsing this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.",
     "crumbs": [
       "Getting Started",
       "Using R Packages"
@@ -334,7 +301,7 @@
     "href": "index.html",
     "title": "Greetings and Salutations from the quarto-webr Wonderland!",
     "section": "",
-    "text": "Welcome to the documentation portal for the quarto-webr extension – your key to unlocking the endless possibilities of webR within various Quarto formats, including HTML, Websites, and Books.\nReady for an exciting journey into the world of webR’s interactive code cells? Dive right in and experience it for yourself:\nLoading\n  webR...\n\n\n  \n\n\nAt its core, webR is all about empowering you to run R code directly in your web browser, completely bypassing the need for an external R server. The best part? This incredible capability extends far beyond its integration with the Quarto extension, giving you the freedom to harness the power of webR independently.\nLet’s dive in and kickstart your journey with interactive code cells by creating your very first webR-powered Quarto document!"
+    "text": "Welcome to the documentation portal for the quarto-webr extension – your key to unlocking the endless possibilities of webR within various Quarto formats, including HTML, Websites, and Books.\nReady for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:\nLoading\n  webR...\n\n\n  \n\n\nAt its core, webR is all about empowering you to run R code directly in your web browser, completely bypassing the need for an external R server. The best part? This incredible capability extends far beyond its integration with the Quarto extension, giving you the freedom to harness the power of webR independently.\nLet’s dive in and kickstart your journey with interactive code cells by creating your very first webR-powered Quarto document!"
   },
   {
     "objectID": "webr-internal-cell.html",
