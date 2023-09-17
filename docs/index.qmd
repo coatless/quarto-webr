@@ -9,7 +9,7 @@ filters:
 
 Welcome to the documentation portal for the [`quarto-webr`](https://github.com/coatless/quarto-webr) extension – your key to unlocking the endless possibilities of [webR](https://docs.r-wasm.org/webr/latest/) within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
 
-Ready for an exciting journey into the world of webR's interactive code cells? Dive right in and experience it for yourself:
+Ready for an exciting journey into the world of webR's interactive code cells? Click the "Run Code" button below to experience it firsthand:
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
