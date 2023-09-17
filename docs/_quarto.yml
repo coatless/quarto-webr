@@ -36,7 +36,7 @@ website:
             text: Communication Channels
       - section: "Extra"
         contents:
-          - href: webr-troubleshooting.md
+          - href: webr-troubleshooting.qmd
             text: Troubleshooting
           - href: webr-developer-resources.qmd
             text: Developer Resources

@@ -36,7 +36,7 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 
-We describe how to setup this option in [`"shared-array-buffer"`](webr-channel-type.qmd) channel type documentation.
+We describe how to setup this option in [`"shared-array-buffer"`](webr-communication-channels.qmd#sec-shared-array-buffer) channel type documentation.
 
 # Engine Registration
 
