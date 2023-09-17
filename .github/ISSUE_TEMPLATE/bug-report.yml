@@ -1,0 +1,72 @@
+name: Bug report
+description: Report an error or unexpected behavior
+labels: [bug, triage-needed]
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Welcome to the quarto-webr Extension GitHub repository!
+
+        We're sorry to hear that you might have encounter a bug; 
+        we're happy that you want to let us know so that we can
+        make the extension even better.
+
+        Thank you in advance for your feedback.
+
+  - type: textarea
+    attributes:
+      label: Bug description
+      description: Description of the bug and why you think its a bug.
+      placeholder: Please describe the bug here.
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Tell us how to reproduce this bug.  
+        Please include a minimal, fully reproducible example as a self-contained Quarto document or a link to a Git repository.
+      placeholder: |
+        You can share a Quarto document using the following syntax, _i.e._, using more backticks than you have in your document (usually four ` ```` `).
+
+        ````qmd
+        ---
+        title: "Reproducible webR powered Quarto Document"
+        format: html
+        filter:
+        - webr
+        ---
+
+        This is a reproducible Quarto document using `format: html` with 
+        the `webr` filter active. It contains a webr code cell that
+        should create a plot using the cars data.
+
+        ```{webr-r}
+        plot(cars)
+        ```
+
+        The end.
+        ````
+
+  - type: textarea
+    attributes:
+      label: Your environment
+      description: |
+        Please document the IDE (_e.g._ RStudio, VSCode, NVim), its version, and the operating system you're running (_e.g., MacOS Ventura 13.4, Windows 11, Linux Debian 11, _etc._).
+      placeholder: |
+        - IDE: RStudio 2023.06.2+561
+        - OS: MacOS Ventura 13.4
+
+  - type: textarea
+    attributes:
+      label: Quarto check output
+      description: |
+        Please provide the output of `quarto check` so we know which version of quarto and its dependencies you're running.
+      placeholder: |
+        ```bash
+        quarto check
+        ```
+  
+  - type: markdown
+    attributes:
+      value: "_Thanks for submitting this bug report!_"

@@ -1,5 +1,7 @@
 project:
   type: website
+  resources: 
+    - CNAME
 
 website:
   title: "quarto-webr: A Quarto Extension for webR"
@@ -20,22 +22,26 @@ website:
             text: Your first webR-powered Quarto document
           - href: webr-meta-options.qmd
             text: Customization Options
+          - href: webr-using-r-packages.qmd
+            text: Using R Packages
           - href: webr-internal-cell.qmd
             text: Hiding and Executing Code
       - section: "Demos"
         contents:
           - href: webr-readme-example.qmd
-            text: README example      
-          - href: webr-demo.qmd
-            text: Possibilities with Interactive Code Cells
+            text: README Example      
+          - href: webr-code-cell-demos.qmd
+            text: Exploring Interactive Code Cells
       - section: "Deployment"
         contents:
-          - href: webr-channel-type.qmd
+          - href: webr-communication-channels.qmd
             text: Communication Channels
       - section: "Extra"
         contents:
-          - href: webr-troubleshooting.md
+          - href: webr-troubleshooting.qmd
             text: Troubleshooting
+          - href: webr-developer-resources.qmd
+            text: Developer Resources
           - href: webr-acknowledgements.md
             text: Acknowledgements
 

@@ -1,4 +1,4 @@
-/.luarc.json
+*.luarc.json
 *_files
 webr-worker.js
 webr-serviceworker.js

@@ -1,6 +1,9 @@
 ---
-title: "webR Communication Channel Options"
+title: "Communication Channels"
 subtitle: "Using the `channel-type` meta variable of the `webr` filter"
+author: "James Joseph Balamuta"
+date: "09-15-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
@@ -48,7 +51,7 @@ When you start using WebR, it usually picks the best communication channel for y
 
 In simpler terms, it's like choosing the right tool for the job. Depending on what you're doing, you might use different methods to pass messages between your web browser and webR.
 
-## Choosing How WebR Communicates
+## Specifying How webR Communicates
 
 In a Quarto document's YAML header, you can tell webR which communication channel to use by setting the `channel-type` option. It's like telling webR how you want it to talk with your web browser. For example, if you want to use the `"post-message"` channel, you can do it like this:
 
@@ -67,7 +70,7 @@ filters:
 
 The remainder of the document describes the different communication methods alongside ways to satisfy the requirements.
 
-## Using "automatic" for Communication (Default)
+## Using "automatic" for Communication (Default) {#sec-automatic}
 
 By default, the `quarto-webr` extension guides webR to use the `"automatic"` option for `channel-type`, if you don't specify the `channel-type` in your document's YAML header. Let's break down how this default setting works:
 
@@ -81,12 +84,12 @@ It's important to note that the `"automatic"` option doesn't try to use the `"po
 :::
 
 :::callout-warning
-One thing to be aware of is that when the `"automatic"` option is used, it adds two additional files, `webr-serviceworker.js` and `webr-worker.js`, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the `"service-worker"` option. For more details on this, please refer to the `"service-worker"` section of the documentation.
+One thing to be aware of is that when the `"automatic"` option is used, it adds two additional files, `webr-serviceworker.js` and `webr-worker.js`, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the `"service-worker"` option. For more details on this, please refer to the @sec-service-worker section of the documentation.
 :::
 
 In summary, when you leave the `channel-type` unspecified, webR will follow the `"automatic"` option, attempting to use `"shared-array-buffer"` and then `"service-worker"`. If both attempts fail, your webR code cells will be inactive.
 
-## Using "shared-array-buffer" for Communication
+## Using "shared-array-buffer" for Communication {#sec-shared-array-buffer}
 
 Now, let's explore the `"shared-array-buffer"` option for communication. When you specify `channel-type` as `"shared-array-buffer"`, webR aims to use something called [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer). This choice, however, comes with some specific requirements and benefits:
 
@@ -121,7 +124,7 @@ If you're hosting your website with [Netlify](https://www.netlify.com/), you can
 
 If you're managing a server with `nginx`, you can use the [`add_header`](http://nginx.org/en/docs/http/ngx_http_headers_module.html) directive in your server's configuration file, which is usually found at `/etc/nginx/nginx.conf`. Here's an example:
 
-```nginx
+```
 server {
   # Enable headers for the webr directory
   location ^~ /directory/with/webr/content {
@@ -133,7 +136,7 @@ server {
 
 By following these instructions, you'll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the `"shared-array-buffer"` option effectively.
 
-## Using "service-worker" for Communication
+## Using "service-worker" for Communication {#sec-service-worker}
 
 Here, we'll dive into the `"service-worker"` option for communication.
 
@@ -180,7 +183,7 @@ If you want to change where the service workers are located, you can set the `se
 In a nutshell, the "service-worker" option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.
 
 
-## Using "post-message" for Communication
+## Using "post-message" for Communication {#sec-post-message}
 
 Now, let's delve into the `"post-message"` option. This sets up a communication channel using something called [Post Message](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage). It's a good choice when you can't use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio's preview pane or the built-in browser in VSCode.
 

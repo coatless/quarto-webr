@@ -1,24 +1,21 @@
 ---
-title: Welcome!
+title: Greetings and Salutations from the quarto-webr Wonderland!
+subtitle: Empower Your Quarto Documents with R through webR
 format: html
 engine: knitr
 filters:
   - webr
 ---
 
-This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell in a Quarto HTML document. 
+Welcome to the documentation portal for the [`quarto-webr`](https://github.com/coatless/quarto-webr) extension – your key to unlocking the endless possibilities of [webR](https://docs.r-wasm.org/webr/latest/) within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
+
+Ready for an exciting journey into the world of webR's interactive code cells? Click the "Run Code" button below to experience it firsthand:
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
 summary(fit)
 ```
 
-The goal of [webR](https://docs.r-wasm.org/webr/latest/) is to: 
+At its core, [webR](https://docs.r-wasm.org/webr/latest/) is all about empowering you to run R code directly in your web browser, completely bypassing the need for an external R server. The best part? This incredible capability extends far beyond its integration with the [Quarto extension](https://github.com/coatless/quarto-webr), giving you the freedom to harness the power of webR independently.
 
-> run R code in the browser without the need for an R server to execute the code
-
-For more details on [webR](https://docs.r-wasm.org/webr/latest/), please see: 
-
-- [webR Documentation](https://docs.r-wasm.org/webr/latest/)
-- [webR Source Code](https://github.com/r-wasm/webr/)
-
+Let's dive in and kickstart your journey with interactive code cells by creating your very first [webR-powered Quarto document](webr-first-steps.qmd)!

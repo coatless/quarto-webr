@@ -1,5 +1,9 @@
 ---
-title: "Customizing webR from the Quarto Extension"
+title: "Customization Options"
+subtitle: "Fine-Tuning `quarto-webr` with Powerful Configuration Options"
+author: "James Joseph Balamuta"
+date: "09-14-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
@@ -10,73 +14,74 @@ filters:
 - webr
 ---
 
-The `quarto-webr` extension supports specifying the following `WebROptions` options:
+The `quarto-webr` extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document's YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.
 
-- `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
-- `base-url`: The base URL used for downloading R WebAssembly binaries ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
-- `channel-type`: The communication channel type to interact with webR ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype)). Default: `"automatic"` (0). Alternative options are: `"shared-array-buffer"` (1), `"service-worker"` (2), `"post-message"` (3).
-   - We recommend using `"post-message"` option if GitHub Pages or Quarto Pub are serving the webR-enabled document.
-   - However, this option prevents the interruption of running _R_ code and prevents the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.) 
-- `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
+# Customization Options
 
-The extension also has native options for:
+Enhance your webR experience by customizing its behavior through the `webr` key in your document's YAML header. These options allow you to fine-tune webR according to your specific needs.
 
-- `show-startup-message`: Display in the document header the state of WebR initialization. Default: `true`
-- `show-header-message`: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: `false`
-
-For these options to be active, they must be placed underneath the `webr` entry in the documentation header, e.g.
-
-```markdown
+```yaml
 ---
 title: WebR in Quarto HTML Documents
 format: html
 engine: knitr
 webr: 
   show-startup-message: false
-  show-header-message: false
-  home-dir: '/home/r-user/'
   packages: ['ggplot2', 'dplyr']
 filters:
   - webr
 ---
 ```
 
-## Packages
+## webR options
 
-By default, the `quarto-webr` extension avoids loading or requesting additional packages. Additional packages can be added 
-when the document is first opened or on per-code cell basis. You can view what packages are available by either executing 
-the following R code (either with WebR or just R):
+By specifying various `WebROptions` options in the document YAML, you can create a personalized webR experience
 
-```r
-available.packages(repos="https://repo.r-wasm.org/", type="source")
-```
+### `home-dir`
 
-Or, by navigating to the WebR repository:
+- **Description**: Set the WebAssembly user's home directory and initial working directory.
+- **Default Value**: `'/home/web_user'`
+- **Documentation**: [homeDir](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)
 
-<https://github.com/r-wasm/webr-repo/blob/main/repo-packages>
+### `base-url`
 
+- **Description**: Define the base URL for downloading R WebAssembly binaries.
+- **Default Value**: `'https://webr.r-wasm.org/[version]/'`
+- **Documentation**: [baseUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)
 
-## Install on document open
+### `channel-type`
 
-Add to the document header YAML the `packages` key under `webr` with each package listed using an array, e.g. 
+- **Description**: Specify the communication channel type to interact with webR.
+- **Default Value**: `"automatic"` (0)
+- **Possible Values**: `"automatic"` (0), `"shared-array-buffer"` (1), `"service-worker"` (2), `"post-message"` (3).
+- **Documentation**: [channelType](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype)
 
-```yaml
----
-webr:
-  packages: ['ggplot2', 'dplyr']
----
-```
+:::callout-note
+We recommend using the `"post-message"` channel when [GitHub Pages](https://pages.github.com/) or [Quarto Pub](https://quartopub.com/) serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.).
+For more details, please see [Communication Channels](webr-communication-channels.qmd#sec-post-message)
+:::
 
-## Install on an as needed basis
+### `service-worker-url`
 
-Packages may also be installed inside of a code cell through the built-in [`webr::install()` function](https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package). For example, to install `ggplot2`, you would need to use: 
+- **Description**: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.
+- **Default Value**: `''`
+- **Documentation**: [serviceWorkerUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)
 
-```{{webr-r}}
-webr::install("ggplot2")
-```
+## Native Extension Options
 
-This would generate
+The extension also provides native options that affect its behavior:
 
-```{webr-r}
-webr::install("ggplot2")
-```
+### `show-startup-message`
+
+- **Description**: Controls the display of the WebR initialization state in the document header.
+- **Default Value**: `true`
+
+### `show-header-message`
+
+- **Description**: Determines whether COOP and COEP headers are in use for faster page loads.
+- **Default Value**: `false`
+
+### `packages`
+
+- **Description**: Specifies R packages to install automatically when the document opens.
+- **Default Value**: `[]`
