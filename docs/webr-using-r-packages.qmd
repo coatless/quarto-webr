@@ -1,6 +1,9 @@
 ---
 title: "Using R Packages"
 subtitle: "Seamlessly integrate R packages into your interactive Quarto HTML documents"
+author: "James Joseph Balamuta"
+date: "09-14-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
@@ -11,7 +14,7 @@ filters:
 - webr
 ---
 
-Unlock the full potential of R by seamlessly integrating packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.
+Unlock the full potential of R by seamlessly integrating R packages into your interactive Quarto HTML documents with webR. Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents.
 
 # Working with R Packages
 
@@ -28,7 +31,7 @@ webr_pkgs = available.packages(
 )[, c("Package", "Version")]
 
 # Number of R packages available to webR
-cat("There are current ", nrow(webr_pkgs), " available to webR!")
+cat("There are current", nrow(webr_pkgs), "available to webR!\n")
 
 # Only view the first 6, there's a lot available!
 head(webr_pkgs)
@@ -36,7 +39,7 @@ head(webr_pkgs)
 
 Alternatively, you can navigate to the WebR repository [here](https://github.com/r-wasm/webr-repo/blob/main/repo-packages) for package listings.
 
-## Install on Document Open
+## Install R Packages on Document Open
 
 To automatically install packages when the document opens, add the `packages` key under `webr` in the YAML header, listing the packages in an array:
 
@@ -54,7 +57,7 @@ By using this approach, you ensure that necessary packages are available right f
 If you need to install a package interactively within specific code cells, you can do so using the `webr::install()` function. This method allows you to install packages on-the-fly when needed.
 
 :::callout-note
-Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the [communication channel](webr-channel-type.qmd) being used.
+Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the [communication channel](webr-communication-channels.qmd#sec-service-worker) being used.
 :::
 
 Let's take ggplot2 as an example:

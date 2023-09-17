@@ -1,6 +1,9 @@
 ---
 title: "Customization Options"
 subtitle: "Fine-Tuning `quarto-webr` with Powerful Configuration Options"
+author: "James Joseph Balamuta"
+date: "09-14-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
@@ -17,7 +20,7 @@ The `quarto-webr` extension empowers you to tailor your webR environment to meet
 
 Enhance your webR experience by customizing its behavior through the `webr` key in your document's YAML header. These options allow you to fine-tune webR according to your specific needs.
 
-```yml
+```yaml
 ---
 title: WebR in Quarto HTML Documents
 format: html
@@ -55,6 +58,7 @@ By specifying various `WebROptions` options in the document YAML, you can create
 
 :::callout-note
 We recommend using the `"post-message"` channel when [GitHub Pages](https://pages.github.com/) or [Quarto Pub](https://quartopub.com/) serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.).
+For more details, please see [Communication Channels](webr-communication-channels.qmd#sec-post-message)
 :::
 
 ### `service-worker-url`
@@ -81,33 +85,3 @@ The extension also provides native options that affect its behavior:
 
 - **Description**: Specifies R packages to install automatically when the document opens.
 - **Default Value**: `[]`
-
-
-# Managing Packages
-
-By default, `quarto-webr` avoids loading additional packages. However, you can install packages when the document opens or on a per-code cell basis.
-
-## Install on Document Open
-
-To automatically install packages when the document opens, add the `packages` key under `webr` in the YAML header, listing the packages in an array:
-
-```yaml
----
-webr:
-  packages: ['ggplot2', 'dplyr']
----
-```
-
-## Install on an As-Needed Basis
-
-You can also install packages within a code cell using the built-in [`webr::install()` function](https://docs.r-wasm.org/webr/latest/packages.html#example-installing-the-matrix-package). For example, to install `ggplot2`, use:
-
-```{webr-r}
-webr::install("ggplot2")
-```
-
-This generates the following code cell:
-
-```{webr-r}
-webr::install("ggplot2")
-```

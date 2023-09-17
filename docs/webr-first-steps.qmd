@@ -1,5 +1,8 @@
 ---
 title: "Making your first webR-powered Quarto document"
+author: "James Joseph Balamuta"
+date: "03-20-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
