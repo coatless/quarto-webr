@@ -458,7 +458,7 @@ function enableWebRCodeCell(el)
       elseif cell_context == "output" then
         copied_code_template = output_template
       else
-        error("The `context` option must contain either: `interactive`, `setup`, or `output`.")
+        error("The `context` option must contain either: `interactive`, `setup`, or `output`. Not the value of `".. cell_context .."`")
       end
 
       -- Make the necessary substitutions into the template
