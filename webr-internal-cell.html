@@ -398,10 +398,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hidden-code-execution" id="toc-hidden-code-execution" class="nav-link active" data-scroll-target="#hidden-code-execution">Hidden Code Execution</a>
+  <li><a href="#using-the-context-option" id="toc-using-the-context-option" class="nav-link active" data-scroll-target="#using-the-context-option">Using the <code>context</code> Option</a>
   <ul class="collapse">
   <li><a href="#hidden-evaluation-without-output" id="toc-hidden-evaluation-without-output" class="nav-link" data-scroll-target="#hidden-evaluation-without-output">Hidden Evaluation without Output</a></li>
-  <li><a href="#hidden-loading-of-a-dataset" id="toc-hidden-loading-of-a-dataset" class="nav-link" data-scroll-target="#hidden-loading-of-a-dataset">Hidden Loading of a Dataset</a></li>
+  <li><a href="#hidden-evaluation-without-output-1" id="toc-hidden-evaluation-without-output-1" class="nav-link" data-scroll-target="#hidden-evaluation-without-output-1">Hidden Evaluation without Output</a></li>
+  <li><a href="#hidden-evaluation-with-output" id="toc-hidden-evaluation-with-output" class="nav-link" data-scroll-target="#hidden-evaluation-with-output">Hidden Evaluation with Output</a></li>
+  </ul></li>
+  <li><a href="#sample-cases" id="toc-sample-cases" class="nav-link" data-scroll-target="#sample-cases">Sample Cases</a>
+  <ul class="collapse">
+  <li><a href="#hidden-loading-of-a-dataset" id="toc-hidden-loading-of-a-dataset" class="nav-link" data-scroll-target="#hidden-loading-of-a-dataset">Hidden Loading of a Dataset</a>
+  <ul class="collapse">
+  <li><a href="#hidden-summarization" id="toc-hidden-summarization" class="nav-link" data-scroll-target="#hidden-summarization">Hidden Summarization</a></li>
+  </ul></li>
   <li><a href="#hidden-solution-checking-of-student-work" id="toc-hidden-solution-checking-of-student-work" class="nav-link" data-scroll-target="#hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</a></li>
   </ul></li>
   <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
@@ -457,11 +465,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="hidden-code-execution" class="level2">
-<h2 class="anchored" data-anchor-id="hidden-code-execution">Hidden Code Execution</h2>
-<p>In <code>quarto-webr</code>, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, or checking student solutions without revealing the code to end users. Unfortunately, this feature is native</p>
-<section id="hidden-evaluation-without-output" class="level3">
-<h3 class="anchored" data-anchor-id="hidden-evaluation-without-output">Hidden Evaluation without Output</h3>
+<p>In <code>quarto-webr</code>, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, creating visualizations, or checking student solutions without revealing the code to end users.</p>
+<section id="using-the-context-option" class="level1">
+<h1>Using the <code>context</code> Option</h1>
+<p>Withholding code from the user requires the use of a custom <code>quarto-webr</code> cell option called <code>context</code>. The <code>context</code> option is unique to <code>quarto-webr</code> as it extends the capabilities beyond Quarto’s built-in cell options.</p>
+<p>There are three different contexts supported by <code>quarto-webr</code>. By default, the <code>interactive</code> context is used if the <code>context</code> option is not specified in the code cell. These options are summarized in the table below:</p>
+<table class="table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 35%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><code>quarto-webr</code> Context</th>
+<th>Quarto Cell Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>interactive</code> (default)</td>
+<td><code>include: true</code></td>
+<td>Show both code and results</td>
+</tr>
+<tr class="even">
+<td><code>output</code></td>
+<td><code>echo: false</code></td>
+<td>Suppress showing code, but display the results</td>
+</tr>
+<tr class="odd">
+<td><code>setup</code></td>
+<td><code>include: false</code></td>
+<td>Suppress showing both code and results</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that the contents of the hidden code cell can be viewed if the web page’s source code is inspected.</p>
+</div>
+</div>
+<section id="hidden-evaluation-without-output" class="level2">
+<h2 class="anchored" data-anchor-id="hidden-evaluation-without-output">Hidden Evaluation without Output</h2>
 <p>You can create a hidden setup code cell within the document by using the special comment <code>#| context: setup</code>. The code in this cell executes in the background without displaying the code or its output.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
@@ -469,6 +523,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the above example, we’ve pre-loaded the <code>meaning_of_life</code> variable. If we run the next code cell, you will see the value of <code>meaning_of_life</code> displayed as <code>42</code>.</p>
 <script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
 await globalThis.webR.evalRVoid(`
 meaning_of_life = 42
 `)
@@ -644,43 +702,27 @@ meaning_of_life = 42
     executeCode(editor.getValue());
   };
 </script>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please note that the contents of the hidden code cell can be viewed if the web page’s source code is inspected.</p>
-</div>
-</div>
 </section>
-<section id="hidden-loading-of-a-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="hidden-loading-of-a-dataset">Hidden Loading of a Dataset</h3>
-<p>You can use the setup hidden code cell to pre-load and manipulate an entire dataset. This allows users to directly interact with the loaded data.</p>
+<section id="hidden-evaluation-without-output-1" class="level2">
+<h2 class="anchored" data-anchor-id="hidden-evaluation-without-output-1">Hidden Evaluation without Output</h2>
+<p>In <code>quarto-webr</code>, you have the capability to create hidden setup code cells within your document using the special comment <code>#| context: setup</code>. The code within these cells executes discreetly in the background without displaying the code or its output.</p>
 <script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
 await globalThis.webR.evalRVoid(`
-# Download a dataset
-download.file(
-  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
-  'penguins.csv'
-)
-# Read the data
-df = read.csv("penguins.csv")
+meaning_of_life = 42
 `)
 </script>	
+<p>In the example above, we’ve pre-loaded the <code>meaning_of_life</code> variable with a value of <code>42</code>. If you proceed to run the subsequent code cell, you’ll observe the value of <code>meaning_of_life</code> being displayed as <code>42</code>.</p>
 <script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
 await globalThis.webR.evalRVoid(`
-# Download a dataset
-download.file(
-  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
-  'penguins.csv'
-)
-# Read the data
-df = read.csv("penguins.csv")
+meaning_of_life = 42
 `)
 </script>	
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-5">Loading
@@ -702,8 +744,428 @@ df = read.csv("penguins.csv")
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
+      value: `meaning_of_life`,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,           // TODO: Could be problematic for slide decks
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      fontSize: '17.5rem',               // Bootstrap is 1 rem
+      renderLineHighlight: "none",     // Disable current line highlighting
+      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+    });
+
+    // Dynamically modify the height of the editor window if new lines are added.
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      const contentHeight = editor.getContentHeight();
+      // We're avoiding a width change
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${contentHeight}px`;
+      try {
+        ignoreEvent = true;
+
+        // The key to resizing is this call
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        executeCode(editor.getValue());
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
+
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
+  });
+
+  // Function to execute the code (accepts code as an argument)
+  async function executeCode(codeToRun) {
+    // Disable run button for code cell active
+    runButton.disabled = true;
+
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    executeCode(editor.getValue());
+  };
+</script>
+<p>By incorporating the <code>setup</code> hidden code cell for data loading and preprocessing, you enhance the user experience by providing them with an accessible and interactive environment for working with the data while maintaining a clutter-free and organized document structure.</p>
+</section>
+<section id="hidden-evaluation-with-output" class="level2">
+<h2 class="anchored" data-anchor-id="hidden-evaluation-with-output">Hidden Evaluation with Output</h2>
+<p>You also have the choice of crafting an output-only code cell within your <code>quarto-webr</code> document, achieved by incorporating the special comment <code>#| context: output</code>. The code inside this cell executes quietly in the background and reveals its output when the execution is complete. The output can take the form of either text or graphics.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: output</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">  mpg ~ wt,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">  data = mtcars,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">  col = "blue", </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab = "Miles/(US) gallon",</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">  ylab = "Weight (1000 lbs)",</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">  main = "Miles per Gallon and Weight of Cars",</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">  sub = "Source: 1974 Motor Trend US magazine."</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="webr-code-output-6" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const outputDiv = document.getElementById("webr-code-output-6");
+  
+  // Function to execute the code (accepts code as an argument)
+  async function executeOutputOnlyCode(codeToRun) {  
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+    }
+  }
+
+  // Run the code
+  executeOutputOnlyCode(`plot(
+  mpg ~ wt,
+  data = mtcars,
+  col = "blue", 
+  xlab = "Miles/(US) gallon",
+  ylab = "Weight (1000 lbs)",
+  main = "Miles per Gallon and Weight of Cars",
+  sub = "Source: 1974 Motor Trend US magazine."
+)`)
+</script>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: output</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">matrix(c(1, 2, 3, 4), nrow = 2)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="webr-code-output-7" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const outputDiv = document.getElementById("webr-code-output-7");
+  
+  // Function to execute the code (accepts code as an argument)
+  async function executeOutputOnlyCode(codeToRun) {  
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+    }
+  }
+
+  // Run the code
+  executeOutputOnlyCode(`matrix(c(1, 2, 3, 4), nrow = 2)`)
+</script>
+<p>By using <code>output</code> code cells, you maintain a streamlined and comprehensible document, focusing on the outcome rather than the intricate data processing steps. This approach will enhance the readability and clarity of your content, making it more accessible and informative to your audience.</p>
+</section>
+</section>
+<section id="sample-cases" class="level1">
+<h1>Sample Cases</h1>
+<p>Let’s explore some sample cases to see practical applications of the <code>quarto-webr</code> extension’s <code>context</code> option. These examples demonstrate how to effectively hide code and output in your Quarto documents, enhancing readability and interactivity. Each case showcases a different use of the <code>context</code> option, offering valuable insights into its versatility.</p>
+<section id="hidden-loading-of-a-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="hidden-loading-of-a-dataset">Hidden Loading of a Dataset</h2>
+<p>The <code>setup</code> hidden code cell is a powerful tool for seamlessly pre-loading and preprocessing an entire dataset within your <code>quarto-webr</code> document. This capability enables users to work directly with the loaded data without any distracting code or output.</p>
+<p>In the following example, we demonstrate the process of loading and preprocessing a dataset. First, we download the dataset from an external source and save it as <code>'penguins.csv'</code> in the virtual webR file system. Next, we read the data into a data frame named <code>df_penguins</code>. All these operations occur silently in the background, ensuring that your document remains clean and focused on the data’s application.</p>
+<script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
+await globalThis.webR.evalRVoid(`
+# Download a dataset
+download.file(
+  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
+  'penguins.csv'
+)
+# Read the data
+df_penguins = read.csv("penguins.csv")
+`)
+</script>	
+<script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
+await globalThis.webR.evalRVoid(`
+# Download a dataset
+download.file(
+  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
+  'penguins.csv'
+)
+# Read the data
+df_penguins = read.csv("penguins.csv")
+`)
+</script>	
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-10">Loading
+  webR...</button>
+<div id="webr-editor-10"></div>
+<div id="webr-code-output-10" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const runButton = document.getElementById("webr-run-button-10");
+  const outputDiv = document.getElementById("webr-code-output-10");
+  const editorDiv = document.getElementById("webr-editor-10");
+
+  // Add a light grey outline around the code editor
+  editorDiv.style.border = "1px solid #eee";
+
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
       value: `# Display the head of the data
-head(df)`,
+head(df_penguins)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -865,16 +1327,130 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the setup code relies on specific R packages, we recommend specifying the required packages in the document’s YAML. This approach informs users that the webpage is not yet ready and communicates a clear status update at the top. For example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the setup code relies on specific R packages, we <strong>strongly</strong> recommend specifying the required packages in the document’s YAML. This approach informs users that the webpage is not yet ready and communicates a clear status update at the top. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Learn more on the <a href="./webr-using-r-packages.html">Using R Packages</a> documentation page.</p>
 </div>
 </div>
+<section id="hidden-summarization" class="level3">
+<h3 class="anchored" data-anchor-id="hidden-summarization">Hidden Summarization</h3>
+<p>You can use the output hidden code cell to generate summarized information about retrieved or manipulated data. This powerful feature enables you to process and summarize data without displaying the intermediary steps or code, keeping your document clean and focused on the results.</p>
+<p>For instance, in the code cell below, we transform the <code>mtcars</code> dataset, converting variables, and then promptly produce a summary of the modified data.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: output</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars2 &lt;- within(mtcars, {</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">   vs &lt;- factor(vs, labels = c("V", "S"))</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">   am &lt;- factor(am, labels = c("automatic", "manual"))</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">   cyl  &lt;- ordered(cyl)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">   gear &lt;- ordered(gear)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">   carb &lt;- ordered(carb)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">summary(mtcars2)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="webr-code-output-11" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const outputDiv = document.getElementById("webr-code-output-11");
+  
+  // Function to execute the code (accepts code as an argument)
+  async function executeOutputOnlyCode(codeToRun) {  
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+    }
+  }
+
+  // Run the code
+  executeOutputOnlyCode(`mtcars2 <- within(mtcars, {
+   vs <- factor(vs, labels = c("V", "S"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+})
+summary(mtcars2)`)
+</script>
 </section>
-<section id="hidden-solution-checking-of-student-work" class="level3">
-<h3 class="anchored" data-anchor-id="hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</h3>
+</section>
+<section id="hidden-solution-checking-of-student-work" class="level2">
+<h2 class="anchored" data-anchor-id="hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -890,34 +1466,38 @@ Warning
 </div>
 <p>In webR, you can check student answers by providing an answer key and a comparison function within the document.</p>
 <p>For instance, you can create a solution data frame like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">answer_frame &lt;- data.frame(</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">  problem = c("1a", "1b", "2"),</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">  answer = c(10, 2, 3/16),</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">  tol = c(0.001, 0, 1/32)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">answer_frame &lt;- data.frame(</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">  problem = c("1a", "1b", "2"),</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">  answer = c(10, 2, 3/16),</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">  tol = c(0.001, 0, 1/32)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Next, define an internal check function:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">check &lt;- function(problem, answer) {</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">  aframe &lt;- answer_frame</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">  if(!problem %in% aframe$problem) {</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">    error_msg &lt;- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">    stop(error_msg)</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">  solution &lt;- aframe[which(aframe$problem == problem), "answer"]</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">  ifelse(</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">    all.equal(answer, solution, tolerance = 0.001) == TRUE,</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">    "Correct! Well done.",</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="in">    "Incorrect! Good attempt. Let's try again?"</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">check &lt;- function(problem, answer) {</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">  aframe &lt;- answer_frame</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">  if(!problem %in% aframe$problem) {</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">    error_msg &lt;- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">    stop(error_msg)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">  solution &lt;- aframe[which(aframe$problem == problem), "answer"]</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="in">  ifelse(</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">    all.equal(answer, solution, tolerance = 0.001) == TRUE,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">    "Correct! Well done.",</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">    "Incorrect! Good attempt. Let's try again?"</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="module">
+// Initialization WebR
+await globalThis.webR.init();
+
+// Run R code without focusing on storing data.
 await globalThis.webR.evalRVoid(`
 answer_frame <- data.frame(
   problem = c("1a", "1b", "2"),
@@ -944,17 +1524,17 @@ check <- function(problem, answer) {
 <blockquote class="blockquote">
 <p>What is 9 + 1?</p>
 </blockquote>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-7">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-13">Loading
   webR...</button>
-<div id="webr-editor-7"></div>
-<div id="webr-code-output-7" aria-live="assertive">
+<div id="webr-editor-13"></div>
+<div id="webr-code-output-13" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-7");
-  const outputDiv = document.getElementById("webr-code-output-7");
-  const editorDiv = document.getElementById("webr-editor-7");
+  const runButton = document.getElementById("webr-run-button-13");
+  const outputDiv = document.getElementById("webr-code-output-13");
+  const editorDiv = document.getElementById("webr-editor-13");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
