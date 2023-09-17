@@ -410,6 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hidden-loading-of-a-dataset" id="toc-hidden-loading-of-a-dataset" class="nav-link" data-scroll-target="#hidden-loading-of-a-dataset">Hidden Loading of a Dataset</a></li>
   <li><a href="#hidden-solution-checking-of-student-work" id="toc-hidden-solution-checking-of-student-work" class="nav-link" data-scroll-target="#hidden-solution-checking-of-student-work">Hidden Solution Checking of Student Work</a></li>
   </ul></li>
+  <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-internal-cell.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 16, 2023</p>
+      <p class="date-modified">September 17, 2023</p>
     </div>
   </div>
     
@@ -896,6 +897,33 @@ Warning
 </div>
 <p>In webR, you can check student answers by providing an answer key and a comparison function within the document.</p>
 <p>For instance, you can create a solution data frame like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">answer_frame &lt;- data.frame(</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">  problem = c("1a", "1b", "2"),</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">  answer = c(10, 2, 3/16),</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">  tol = c(0.001, 0, 1/32)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, define an internal check function:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">check &lt;- function(problem, answer) {</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">  aframe &lt;- answer_frame</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">  if(!problem %in% aframe$problem) {</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">    error_msg &lt;- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">    stop(error_msg)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">  solution &lt;- aframe[which(aframe$problem == problem), "answer"]</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">  ifelse(</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">    all.equal(answer, solution, tolerance = 0.001) == TRUE,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">    "Correct! Well done.",</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="in">    "Incorrect! Good attempt. Let's try again?"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <script type="module">
 await globalThis.webR.evalRVoid(`
 answer_frame <- data.frame(
@@ -903,14 +931,12 @@ answer_frame <- data.frame(
   answer = c(10, 2, 3/16),
   tol = c(0.001, 0, 1/32)
 )
-`)
-</script>	
-<p>Next, define an internal check function:</p>
-<script type="module">
-await globalThis.webR.evalRVoid(`
 check <- function(problem, answer) {
   aframe <- answer_frame
-  if(!problem %in% aframe$problem) stop(paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")"))
+  if(!problem %in% aframe$problem) {
+    error_msg <- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")
+    stop(error_msg)
+  }
   solution <- aframe[which(aframe$problem == problem), "answer"]
   ifelse(
     all.equal(answer, solution, tolerance = 0.001) == TRUE,
@@ -925,17 +951,17 @@ check <- function(problem, answer) {
 <blockquote class="blockquote">
 <p>What is 9 + 1?</p>
 </blockquote>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-8">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-7">Loading
   webR...</button>
-<div id="webr-editor-8"></div>
-<div id="webr-code-output-8" aria-live="assertive">
+<div id="webr-editor-7"></div>
+<div id="webr-code-output-7" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-8");
-  const outputDiv = document.getElementById("webr-code-output-8");
-  const editorDiv = document.getElementById("webr-editor-8");
+  const runButton = document.getElementById("webr-run-button-7");
+  const outputDiv = document.getElementById("webr-code-output-7");
+  const editorDiv = document.getElementById("webr-editor-7");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1097,10 +1123,13 @@ check(problem = "1a", answer = student_solution)`,
     executeCode(editor.getValue());
   };
 </script>
+</section>
+</section>
+<section id="fin" class="level1">
+<h1>Fin</h1>
 <p>With hidden code execution and solution checking, webR provides a powerful tool for creating interactive and educational content within your Quarto HTML documents.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
