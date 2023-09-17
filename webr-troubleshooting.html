@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-03-20">
 
-<title>quarto-webr: A Quarto Extension for webR - Troubleshooting quarto-webr hiccups</title>
+<title>quarto-webr: A Quarto Extension for webR - Troubleshooting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -261,8 +262,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#stuck-at-loading-webr" id="toc-stuck-at-loading-webr" class="nav-link active" data-scroll-target="#stuck-at-loading-webr">Stuck at Loading webR…</a></li>
-  <li><a href="#directly-accessing-rendered-html" id="toc-directly-accessing-rendered-html" class="nav-link" data-scroll-target="#directly-accessing-rendered-html">Directly accessing rendered HTML</a></li>
-  <li><a href="#speed-up-webr" id="toc-speed-up-webr" class="nav-link" data-scroll-target="#speed-up-webr">Speed up webR</a></li>
+  <li><a href="#unable-to-render-the-quarto-file" id="toc-unable-to-render-the-quarto-file" class="nav-link" data-scroll-target="#unable-to-render-the-quarto-file">Unable to Render the Quarto File</a></li>
+  <li><a href="#directly-accessing-rendered-html" id="toc-directly-accessing-rendered-html" class="nav-link" data-scroll-target="#directly-accessing-rendered-html">Directly Accessing Rendered HTML</a></li>
+  <li><a href="#speed-up-webr" id="toc-speed-up-webr" class="nav-link" data-scroll-target="#speed-up-webr">Speed Up webR</a></li>
   <li><a href="#engine-registration" id="toc-engine-registration" class="nav-link" data-scroll-target="#engine-registration">Engine Registration</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-troubleshooting.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -272,7 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-troubleshooting.html">Extra</a></li><li class="breadcrumb-item"><a href="./webr-troubleshooting.html">Troubleshooting</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Troubleshooting quarto-webr hiccups</h1>
+<h1 class="title">Troubleshooting</h1>
+<p class="subtitle lead">Common Problems and Fixes in quarto-webR</p>
 </div>
 
 
@@ -280,7 +283,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 20, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">September 17, 2023</p>
+    </div>
+  </div>
     
   </div>
   
@@ -288,40 +303,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>As this is an exciting new frontier, we’re learning as we go. Or as my friend <a href="https://cs.illinois.edu/about/people/faculty/angrave">Lawrence</a> says, <a href="https://www.youtube.com/watch?v=L2zqTYgcpfg">“I like to build airplanes in the air-”</a>. Please take note of the following issues:</p>
+<p>As this is an exciting new frontier, we’re learning as we go. Or as my friend <a href="https://cs.illinois.edu/about/people/faculty/angrave">Lawrence</a> says, <a href="https://www.youtube.com/watch?v=L2zqTYgcpfg">“I like to build airplanes in the air-”</a>. In the spirit of learning, let’s address some common issues you may come across…</p>
 <section id="stuck-at-loading-webr" class="level1">
 <h1>Stuck at Loading webR…</h1>
-<p>If <code>webr-worker.js</code> or <code>webr-serviceworker.js</code> are not found when the document loads either at the root <code>/</code> or relative directory, then <code>Loading webR...</code> will appear above the code cell instead of <code>Run code</code>. Please make sure the files are at the same location as the quarto document. For example, the following structure will work:</p>
-<pre><code>.
-├── demo-quarto-webr.qmd
-├── webr-serviceworker.js
-└── webr-worker.js</code></pre>
-<p>Still having trouble? Try specifying where the worker files are located using the <code>service-worker-url</code> option in the document’s YAML header.</p>
+<p><strong>Problem</strong>: If you see the message <code>Loading webR...</code> above your code cell instead of <code>Run code</code>, it might be due to missing worker files (<code>webr-worker.js</code> and <code>webr-serviceworker.js</code>) at the document’s root or a relative directory.</p>
+<p><strong>Solution</strong>: Ensure that these worker files are located in the same directory as your Quarto document. For instance, the following directory structure is recommended:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.qmd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the issue persists, specify the worker files’ location using the <a href="./webr-meta-options.html"><code>service-worker-url</code> option</a> in the document’s YAML header or set the <a href="./webr-communication-channels.html#sec-post-message"><code>channel-type</code> option to <code>"post-message"</code></a>.</p>
+</section>
+<section id="unable-to-render-the-quarto-file" class="level1">
+<h1>Unable to Render the Quarto File</h1>
+<p><strong>Problem</strong>: When I add the <code>webr</code> value to the <code>filter</code> section, my Quarto document fails to render and displays a lengthy error message.</p>
+<p><strong>Solution</strong>: Quarto extensions are project-specific, which means you must install the extension for each new project you create. To resolve this issue, ensure that your project directory structure includes an <code>_extensions</code> directory with the appropriate extension files, as shown below:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── coatless</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       └── webr</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           ├── _extension.yml</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           ├── ...</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           └── webr.lua</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> test-document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If your directory is missing the <code>_extensions/</code> folder, please install the <code>webr</code> extension by following the instructions in <a href="./webr-first-steps.html">Install the quarto-webr extension</a>.</p>
+<p>Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension’s absence from your current working directory.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Missing extension error for Quarto v1.4 and later"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> <span class="er">(</span><span class="ex">/Applications/quarto/share/filters/main.lua:129</span><span class="kw">)</span> <span class="ex">An</span> error occurred:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not run /Users/jjb/github/demo-webr/webr as a JSON filter.</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> make sure the file exists and is executable.</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Did</span> you intend <span class="st">'webr'</span> as a Lua filter in an extension<span class="pp">?</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">If</span> so, make sure you<span class="st">'ve spelled the name of the extension correctly.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">The original Pandoc error follows below.</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">Error running filter /Users/jjb/github/demo-webr/webr:</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">Could not find executable /Users/jjb/github/demo-webr/webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Missing extension error for Quarto v1.3 and earlier"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Applications/quarto/share/filters/main.lua:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Users/jjb/github/demo-webr/webr:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not find executable /Users/jjb/github/demo-webr/webr</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:4030:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:4009<span class="op">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in <span class="pp">?</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in method <span class="st">'walk'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="directly-accessing-rendered-html" class="level1">
-<h1>Directly accessing rendered HTML</h1>
-<p>When using <code>quarto preview</code> or <code>quarto render</code>, the rendered HTML document is being shown by mimicking a server running under <code>https://localhost/</code>. Usually, everything works in this context assuming the above directory structure is followed. However, if you <strong>directly</strong> open the rendered HTML document, e.g.&nbsp;<code>demo-quarto-web.html</code>, inside of a Web Browser, then the required WebR components cannot be loaded for security reasons. You can read a bit more about the problem in this <a href="https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683">StackOverflow answer</a>.</p>
-<p>There are a few possible solutions to avoid requiring quarto on a local computer to directly open the rendered file:</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/18586921/how-to-launch-html-using-chrome-at-allow-file-access-from-files-mode">Use Chrome’s <code>--allow-file-access-from-files</code> access</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en">Use the WebServer for Chrome extension</a></li>
-<li>Or, <a href="https://github.com/lwsjs/local-web-server">use NPM to obtain <code>local-web-server</code></a></li>
-</ul>
+<h1>Directly Accessing Rendered HTML</h1>
+<p><strong>Problem</strong>: When I directly open the rendered HTML document in a web browser, webR components are not loaded due to security reasons.</p>
+<p><strong>Solution</strong>: When you use <code>quarto preview</code> or <code>quarto render</code>, the rendered HTML document is served by mimicking a server running under <code>https://localhost/</code>. In this context, everything usually works fine if you follow the directory structure mentioned above.</p>
+<p>However, if you directly open the rendered HTML document (e.g., <code>demo-quarto-web.html</code>) in a web browser, you may encounter issues with WebR components not loading due to security restrictions. This behavior is explained further in this <a href="https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683">StackOverflow answer</a>.</p>
+<p>To address this problem and avoid the need for a local Quarto installation to open the rendered file directly, you have a few options:</p>
+<ol type="1">
+<li><p><strong>Use Chrome’s <code>--allow-file-access-from-files</code> access</strong>: You can modify your Chrome shortcut to include the <a href="https://stackoverflow.com/questions/18586921/how-to-launch-html-using-chrome-at-allow-file-access-from-files-mode"><code>--allow-file-access-from-files</code> flag</a>. This allows local files to access other local files, potentially resolving the issue.</p></li>
+<li><p><strong>Use the WebServer for Chrome Extension</strong>: Install the <a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en">WebServer for Chrome extension</a> to serve your HTML files. This extension sets up a local web server that doesn’t have the same security restrictions as directly opening files.</p></li>
+<li><p><strong>Use NPM to Obtain <code>local-web-server</code></strong>: Install the <a href="https://github.com/lwsjs/local-web-server"><code>local-web-server</code> package from npm</a>, which is a lightweight, no-configuration-required HTTP server. You can use it to serve your HTML files without encountering security restrictions.</p></li>
+</ol>
 </section>
 <section id="speed-up-webr" class="level1">
-<h1>Speed up webR</h1>
-<p>When serving webR documents, please try to ensure the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">COOP</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">COEP</a> HTTP headers are set to speed up the process:</p>
-<pre><code>Cross-Origin-Opener-Policy: same-origin
+<h1>Speed Up webR</h1>
+<p><strong>Problem</strong>: WebR documents are not performing as efficiently as expected.</p>
+<p><strong>Solution</strong>: To optimize the performance of webR documents, it’s essential to set appropriate HTTP headers for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">COOP</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">COEP</a>. These headers help speed up the process and ensure a smoother user experience.</p>
+<p>Here are the recommended COOP and COEP headers to use:</p>
+<pre class="http"><code>Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp</code></pre>
-<p>We describe how to setup this option in <a href="./webr-communication-channels.html#sec-shared-array-buffer"><code>"shared-array-buffer"</code></a> channel type documentation.</p>
+<p>By configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the <a href="./webr-communication-channels.html#sec-shared-array-buffer"><code>"shared-array-buffer"</code></a> channel type documentation.</p>
 </section>
 <section id="engine-registration" class="level1">
 <h1>Engine Registration</h1>
-<p>If using the <code>knitr</code> engine instead of the <code>jupyter</code> engine and you are using the original tag of <code>{webr}</code> instead of <code>{webr-r}</code>, there is a known warning that will appear in the render processing output of:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>In <span class="fu">get_engine</span>(options<span class="sc">$</span>engine) <span class="sc">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  Unknown language engine <span class="st">'webr'</span> (must be registered via knit_engines<span class="sc">$</span><span class="fu">set</span>()).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This warning does not prevent or impact the ability of the <code>webr</code> filter to function. Though, we would like to address it at some point since it is not aesthetically pleasing.</p>
+<p><strong>Problem</strong>: When using the <code>knitr</code> engine instead of the <code>jupyter</code> engine and the original tag <code>{webr}</code> instead of <code>{webr-r}</code>, a warning message may appear in the render processing output:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>In <span class="fu">get_engine</span>(options<span class="sc">$</span>engine) <span class="sc">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  Unknown language engine <span class="st">'webr'</span> (must be registered via knit_engines<span class="sc">$</span><span class="fu">set</span>()).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Solution</strong>: The warning message about the unknown language engine ‘webr’ is purely cosmetic and does not affect the functionality of the <code>webr</code> filter. It is merely an aesthetic issue and does not impact the execution of code cells.</p>
+<p>This warning occurs because the <code>knitr</code> engine is not initially aware of the <code>webr</code> engine. However, this lack of awareness does not cause any functional problems. The <code>webr</code> filter will operate as expected despite this warning.</p>
+<p>While the warning is not critical, it may be addressed in future updates for aesthetic reasons. Nevertheless, you can safely disregard this warning message as it does not interfere with the functionality of your webR documents.</p>
 
 
 </section>
