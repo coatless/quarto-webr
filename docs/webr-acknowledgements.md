@@ -1,13 +1,15 @@
 ---
 title: "Acknowledgments and Collaborations"
 subtitle: "Bringing webR to Quarto"
+date: "03-11-2023"
+date-modified: last-modified
 ---
 
 We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing [`quarto-webR`](https://github.com/coatless/quarto-webr) to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.
 
 ## quarto-webr Extension Core Developers
 
-- [James Balamuta](https://github.com/coatless)
+- [James Joseph Balamuta](https://github.com/coatless)
 - [JooYoung Seo](https://github.com/jooyoungseo) for accessibility improvements.
 
 Their tireless efforts and expertise have been instrumental in the development of this extension, and we are immensely grateful for their invaluable contributions.

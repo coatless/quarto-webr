@@ -1,6 +1,9 @@
 ---
 title: "Communication Channels"
 subtitle: "Using the `channel-type` meta variable of the `webr` filter"
+author: "James Joseph Balamuta"
+date: "09-15-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true

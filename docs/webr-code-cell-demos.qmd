@@ -1,6 +1,9 @@
 ---
 title: "Exploring Interactive Code Cells"
 subtitle: "Unleash the Power of Interactive R Code in Your Quarto Documents"
+author: "James Joseph Balamuta"
+date: "03-14-2023"
+date-modified: last-modified
 format: 
   html:
     toc: true
