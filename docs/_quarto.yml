@@ -42,6 +42,8 @@ website:
             text: Troubleshooting
           - href: webr-developer-resources.qmd
             text: Developer Resources
+          - href: webr-extension-website.qmd
+            text: Setting up the Extension Website
           - href: webr-acknowledgements.md
             text: Acknowledgements
 

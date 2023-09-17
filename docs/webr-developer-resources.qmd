@@ -16,7 +16,9 @@ Before diving into extension development, it's essential to understand the core 
 
 - **[webR Documentation](https://docs.r-wasm.org/webr/latest/)**: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR's features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.
 
-- **[webR Source Code](https://github.com/r-wasm/webr/)**: For the technically curious, our GitHub source code repository offers transparency into the development process of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.
+- **[webR Source Code](https://github.com/r-wasm/webr/)**: For the technically curious, webR's GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.
+
+- **[Bob Rudis' Experiments with webR](https://rud.is/webr-experiments/)**: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.
 
 These resources empower you to master webR, whether you're just starting out or you're a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.
 
