@@ -299,7 +299,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Greetings and Salutations from the quarto-webr Wonderland!",
+    "title": "Greetings from quarto-webr Wonderland!",
     "section": "",
     "text": "Welcome to the documentation portal for the quarto-webr extension – your key to unlocking the endless possibilities of webR within various Quarto formats, including HTML, Websites, and Books.\nReady for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:\nLoading\n  webR...\n\n\n  \n\n\nAt its core, webR is all about empowering you to run R code directly in your web browser, completely bypassing the need for an external R server. The best part? This incredible capability extends far beyond its integration with the Quarto extension, giving you the freedom to harness the power of webR independently.\nLet’s dive in and kickstart your journey with interactive code cells by creating your very first webR-powered Quarto document!"
   },
