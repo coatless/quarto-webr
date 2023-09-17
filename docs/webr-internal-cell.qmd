@@ -14,11 +14,25 @@ filters:
 - webr
 ---
 
-## Hidden Code Execution
+In `quarto-webr`, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, creating visualizations, or checking student solutions without revealing the code to end users.
 
-In `quarto-webr`, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, or checking student solutions without revealing the code to end users. Unfortunately, this feature is native 
+# Using the `context` Option
 
-### Hidden Evaluation without Output
+Withholding code from the user requires the use of a custom `quarto-webr` cell option called `context`. The `context` option is unique to `quarto-webr` as it extends the capabilities beyond Quarto's built-in cell options.
+
+There are three different contexts supported by `quarto-webr`. By default, the `interactive` context is used if the `context` option is not specified in the code cell. These options are summarized in the table below:
+
+| `quarto-webr` Context | Quarto Cell Option | Description |
+|-----------------------|--------------------|-------------|
+| `interactive` (default) | `include: true` | Show both code and results |
+| `output` | `echo: false` | Suppress showing code, but display the results |
+| `setup` | `include: false` | Suppress showing both code and results |
+
+::: {.callout-caution}
+Please note that the contents of the hidden code cell can be viewed if the web page's source code is inspected.
+:::
+
+## Hidden Evaluation without Output
 
 You can create a hidden setup code cell within the document by using the special comment `#| context: setup`. The code in this cell executes in the background without displaying the code or its output.
 
@@ -38,13 +52,80 @@ meaning_of_life = 42
 meaning_of_life
 ```
 
-::: {.callout-caution}
-Please note that the contents of the hidden code cell can be viewed if the web page's source code is inspected.
-:::
+## Hidden Evaluation without Output
 
-### Hidden Loading of a Dataset
+In `quarto-webr`, you have the capability to create hidden setup code cells within your document using the special comment `#| context: setup`. The code within these cells executes discreetly in the background without displaying the code or its output.
 
-You can use the setup hidden code cell to pre-load and manipulate an entire dataset. This allows users to directly interact with the loaded data.
+```{webr-r}
+#| context: setup
+meaning_of_life = 42
+```
+
+In the example above, we've pre-loaded the `meaning_of_life` variable with a value of `42`. If you proceed to run the subsequent code cell, you'll observe the value of `meaning_of_life` being displayed as `42`.
+
+```{webr-r}
+#| context: setup
+meaning_of_life = 42
+```
+
+```{webr-r}
+meaning_of_life
+```
+
+By incorporating the `setup` hidden code cell for data loading and preprocessing, you enhance the user experience by providing them with an accessible and interactive environment for working with the data while maintaining a clutter-free and organized document structure.
+
+
+## Hidden Evaluation with Output
+
+You also have the choice of crafting an output-only code cell within your `quarto-webr` document, achieved by incorporating the special comment `#| context: output`. The code inside this cell executes quietly in the background and reveals its output when the execution is complete. The output can take the form of either text or graphics.
+
+```{{webr-r}}
+#| context: output
+plot(
+  mpg ~ wt,
+  data = mtcars,
+  col = "blue", 
+  xlab = "Miles/(US) gallon",
+  ylab = "Weight (1000 lbs)",
+  main = "Miles per Gallon and Weight of Cars",
+  sub = "Source: 1974 Motor Trend US magazine."
+)
+```
+
+```{webr-r}
+#| context: output
+plot(
+  mpg ~ wt,
+  data = mtcars,
+  col = "blue", 
+  xlab = "Miles/(US) gallon",
+  ylab = "Weight (1000 lbs)",
+  main = "Miles per Gallon and Weight of Cars",
+  sub = "Source: 1974 Motor Trend US magazine."
+)
+```
+
+```{{webr-r}}
+#| context: output
+matrix(c(1, 2, 3, 4), nrow = 2)
+```
+
+```{webr-r}
+#| context: output
+matrix(c(1, 2, 3, 4), nrow = 2)
+```
+
+By using `output` code cells, you maintain a streamlined and comprehensible document, focusing on the outcome rather than the intricate data processing steps. This approach will enhance the readability and clarity of your content, making it more accessible and informative to your audience.
+
+# Sample Cases
+
+Let's explore some sample cases to see practical applications of the `quarto-webr` extension's `context` option. These examples demonstrate how to effectively hide code and output in your Quarto documents, enhancing readability and interactivity. Each case showcases a different use of the `context` option, offering valuable insights into its versatility. 
+
+## Hidden Loading of a Dataset
+
+The `setup` hidden code cell is a powerful tool for seamlessly pre-loading and preprocessing an entire dataset within your `quarto-webr` document. This capability enables users to work directly with the loaded data without any distracting code or output.
+
+In the following example, we demonstrate the process of loading and preprocessing a dataset. First, we download the dataset from an external source and save it as `'penguins.csv'` in the virtual webR file system. Next, we read the data into a data frame named `df_penguins`. All these operations occur silently in the background, ensuring that your document remains clean and focused on the data's application.
 
 ```{webr-r}
 #| context: setup
@@ -56,7 +137,7 @@ download.file(
 )
 
 # Read the data
-df = read.csv("penguins.csv")
+df_penguins = read.csv("penguins.csv")
 ```
 
 ```{webr-r}
@@ -69,16 +150,16 @@ download.file(
 )
 
 # Read the data
-df = read.csv("penguins.csv")
+df_penguins = read.csv("penguins.csv")
 ```
 
 ```{webr-r}
 # Display the head of the data
-head(df)
+head(df_penguins)
 ```
 
 ::: {.callout-note}
-If the setup code relies on specific R packages, we recommend specifying the required packages in the document's YAML. This approach informs users that the webpage is not yet ready and communicates a clear status update at the top. For example:
+If the setup code relies on specific R packages, we **strongly** recommend specifying the required packages in the document's YAML. This approach informs users that the webpage is not yet ready and communicates a clear status update at the top. For example:
 
 ```yaml
 ---
@@ -86,9 +167,44 @@ webr:
   packages: ['ggplot2', 'dplyr']
 ---
 ```
+
+Learn more on the [Using R Packages](webr-using-r-packages.qmd) documentation page.
 :::
 
-### Hidden Solution Checking of Student Work
+### Hidden Summarization
+
+You can use the output hidden code cell to generate summarized information about retrieved or manipulated data. This powerful feature enables you to process and summarize data without displaying the intermediary steps or code, keeping your document clean and focused on the results.
+
+For instance, in the code cell below, we transform the `mtcars` dataset, converting variables, and then promptly produce a summary of the modified data. 
+
+```{{webr-r}}
+#| context: output
+mtcars2 <- within(mtcars, {
+   vs <- factor(vs, labels = c("V", "S"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+})
+summary(mtcars2)
+```
+
+```{webr-r}
+#| context: output
+
+mtcars2 <- within(mtcars, {
+   vs <- factor(vs, labels = c("V", "S"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+})
+
+summary(mtcars2)
+```
+
+
+## Hidden Solution Checking of Student Work
 
 :::{.callout-warning}
 Please be aware that any solution written in a webR hidden code cell can be obtained by viewing the document's HTML source code. It is not recommended for formal assessments such as exams, quizzes, or homework.
@@ -168,3 +284,4 @@ check(problem = "1a", answer = student_solution)
 # Fin
 
 With hidden code execution and solution checking, webR provides a powerful tool for creating interactive and educational content within your Quarto HTML documents.
+
