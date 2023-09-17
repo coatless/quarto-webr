@@ -53,7 +53,6 @@ plot(
   mpg ~ wt,
   data = mtcars,
   col = "blue", 
-  panel.first = grid(8, 8),
   xlab = "Miles/(US) gallon",
   ylab = "Weight (1000 lbs)",
   main = "Miles per Gallon and Weight of Cars",
