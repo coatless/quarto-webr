@@ -3,6 +3,7 @@ title: "Troubleshooting"
 subtitle: "Common Problems and Fixes in quarto-webR"
 date: "03-20-2023"
 date-modified: last-modified
+engine: knitr
 ---
 
 As this is an exciting new frontier, we're learning as we go. Or as my friend [Lawrence](https://cs.illinois.edu/about/people/faculty/angrave) says, ["I like to build airplanes in the air-"](https://www.youtube.com/watch?v=L2zqTYgcpfg). In the spirit of learning, let's address some common issues you may come across...
@@ -43,7 +44,8 @@ If your directory is missing the `_extensions/` folder, please install the `webr
 
 Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension's absence from your current working directory.
 
-```{.sh}
+```{sh}
+#| eval: false
 #| code-fold: true
 #| code-summary: "Missing extension error for Quarto v1.4 and later"
 
@@ -61,7 +63,8 @@ Could not find executable /Users/jjb/github/demo-webr/webr
 
 In versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.
 
-```{.sh}
+```{sh}
+#| eval: false
 #| code-fold: true
 #| code-summary: "Missing extension error for Quarto v1.3 and earlier"
 

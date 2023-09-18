@@ -76,7 +76,7 @@ modified_vs_data = data.frame(
   "modified_vs" = mtcars2$vs
 )
 
-modified_vs_data
+head(modified_vs_data)
 ```
 
 

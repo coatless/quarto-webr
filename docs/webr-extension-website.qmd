@@ -1,5 +1,5 @@
 ---
-title: "Quarto Extension Website Guide"
+title: "Extension Website"
 subtitle: "Development notes for the quarto-webr website"
 author: "James Joseph Balamuta"
 date: "09-17-2023"

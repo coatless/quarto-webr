@@ -9,6 +9,7 @@ website:
   repo-url: https://github.com/coatless/quarto-webr
   repo-actions: [edit, issue]
   repo-subdir: "docs"
+  google-analytics: "G-S8CXP9TZG0"
   sidebar:
     style: "floating"
     search: true
@@ -38,14 +39,14 @@ website:
             text: Communication Channels
       - section: "Extra"
         contents:
+          - href: webr-acknowledgements.md
+            text: Acknowledgements
           - href: webr-troubleshooting.qmd
             text: Troubleshooting
           - href: webr-developer-resources.qmd
             text: Developer Resources
           - href: webr-extension-website.qmd
-            text: Setting up the Extension Website
-          - href: webr-acknowledgements.md
-            text: Acknowledgements
+            text: Extension Website Notes
 
 format:
   html:
