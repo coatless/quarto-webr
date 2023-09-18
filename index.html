@@ -436,8 +436,15 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `fit = lm(mpg ~ am, data = mtcars)
-summary(fit)`,
+      value: `model = lm(mpg ~ wt, data = mtcars)
+summary(model)
+plot(
+  mpg ~ wt, data = mtcars, col = "navy", pch = 16, cex = .9,
+  main = "Motor Trend Car Road Tests of Weight vs. MPG",
+  sub = "Source: 1974 Motor Trend US magazine", 
+  xlab = "Weight (1000 lbs)", ylab = "Miles/(US) gallon"
+)
+grid(); abline(model, col = "orange", lwd = 2)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks

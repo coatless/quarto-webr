@@ -308,7 +308,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 17, 2023</p>
+      <p class="date-modified">September 18, 2023</p>
     </div>
   </div>
     
@@ -343,39 +343,43 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> test-document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If your directory is missing the <code>_extensions/</code> folder, please install the <code>webr</code> extension by following the instructions in <a href="./webr-first-steps.html">Install the quarto-webr extension</a>.</p>
 <p>Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension’s absence from your current working directory.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Missing extension error for Quarto v1.4 and later"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> <span class="er">(</span><span class="ex">/Applications/quarto/share/filters/main.lua:129</span><span class="kw">)</span> <span class="ex">An</span> error occurred:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not run /Users/jjb/github/demo-webr/webr as a JSON filter.</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> make sure the file exists and is executable.</span>
+<div class="cell">
+<details>
+<summary>Missing extension error for Quarto v1.4 and later</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> <span class="er">(</span><span class="ex">/Applications/quarto/share/filters/main.lua:129</span><span class="kw">)</span> <span class="ex">An</span> error occurred:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not run /Users/jjb/github/demo-webr/webr as a JSON filter.</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> make sure the file exists and is executable.</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Did</span> you intend <span class="st">'webr'</span> as a Lua filter in an extension<span class="pp">?</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">If</span> so, make sure you<span class="st">'ve spelled the name of the extension correctly.</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Did</span> you intend <span class="st">'webr'</span> as a Lua filter in an extension<span class="pp">?</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">If</span> so, make sure you<span class="st">'ve spelled the name of the extension correctly.</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">The original Pandoc error follows below.</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">Error running filter /Users/jjb/github/demo-webr/webr:</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">Could not find executable /Users/jjb/github/demo-webr/webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">The original Pandoc error follows below.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">Error running filter /Users/jjb/github/demo-webr/webr:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">Could not find executable /Users/jjb/github/demo-webr/webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>In versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Missing extension error for Quarto v1.3 and earlier"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Applications/quarto/share/filters/main.lua:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Users/jjb/github/demo-webr/webr:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not find executable /Users/jjb/github/demo-webr/webr</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:4030:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:4009<span class="op">&gt;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in <span class="pp">?</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in method <span class="st">'walk'</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<details>
+<summary>Missing extension error for Quarto v1.3 and earlier</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Applications/quarto/share/filters/main.lua:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Users/jjb/github/demo-webr/webr:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not find executable /Users/jjb/github/demo-webr/webr</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:4030:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:4009<span class="op">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in <span class="pp">?</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in method <span class="st">'walk'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="directly-accessing-rendered-html" class="level1">
 <h1>Directly Accessing Rendered HTML</h1>
