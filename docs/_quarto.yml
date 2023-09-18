@@ -27,6 +27,8 @@ website:
             text: Using R Packages
           - href: webr-internal-cell.qmd
             text: Hiding and Executing Code
+          - href: webr-troubleshooting.qmd
+            text: Troubleshooting
       - section: "Demos"
         contents:
           - href: webr-readme-example.qmd
@@ -41,8 +43,6 @@ website:
         contents:
           - href: webr-acknowledgements.md
             text: Acknowledgements
-          - href: webr-troubleshooting.qmd
-            text: Troubleshooting
           - href: webr-developer-resources.qmd
             text: Developer Resources
           - href: webr-extension-website.qmd
