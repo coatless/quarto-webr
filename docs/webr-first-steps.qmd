@@ -10,26 +10,38 @@ filters:
   - webr
 ---
 
-## Installation 
+To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like `quarto-webr` within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.
+
+## Workflow Video
+
+[![Creating your first webR-powered Quarto Document inside of RStudio](http://img.youtube.com/vi/DoRR2S5lLvk/0.jpg)](https://youtu.be/DoRR2S5lLvk "Creating your first webR-powered Quarto Document inside of RStudio")
+
+## Installation
 
 To use this extension in a Quarto project, install it from within the project's working directory by typing into **Terminal**:
 
-``` bash
+```bash
 quarto add coatless/quarto-webr
 ```
 
 ![Demonstration of using the Terminal tab to install the extension.](https://i.imgur.com/aVuBdyN.png)
 
+:::callout-note
+Quarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you'll need to install the extension again.
+:::
+
 ## Usage
 
-For each document, place the `webr` filter in the document's header:
+Once the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the `_extensions` folder. To activate the `webR` functionality in those documents, follow these steps:
+
+1. **Add `webr` Filter**: In the header of your Quarto document, add the `webr` filter to the list of filters:
 
 ```yaml
 filters:
   - webr
 ```
 
-Then, place the R code for `webR` in a code block marked with `{webr-r}`
+2. **Use `{webr-r}` Code Blocks**: Write your R code within code blocks marked with `{webr-r}`. Here's an example:
 
 ````markdown
 ---
@@ -48,10 +60,18 @@ summary(fit)
 ```
 ````
 
-The rendered document can be viewed online [here](https://coatless.github.io/quarto-webr/webr-readme-example.html).
+3. **Render Your Document**: You can now render your Quarto document by clicking on <kbd>![](images/rstudio-render-button.png){width="25" height="20"}</kbd> **Render** (or use the keyboard shortcut <kbd>⇧⌘K</kbd> on macOS or <kbd>Ctrl+Shift+K</kbd> on Windows/Linux). The document will execute under `engine: knitr` by default, but you can specify a different engine if needed. 
 
-When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
-During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
-`webR` session to be started and must be present with the rendered output. 
+:::callout-note
+If an engine is not specified, Quarto will attempt to use the `jupyter` compute engine by default. This may cause an error if `jupyter` is not installed on your computer.
+:::
 
-**Note:** If `engine: knitr` is not specified, then the `jupyter` compute engine will be used by default.
+During execution, the filter will generate two essential files, `webr-worker.js` and `webr-serviceworker.js`, in your working directory. These files are required for the `webR` session to function properly under the default options and must be present alongside your rendered output.
+
+# Fin
+
+In summary, this guide has provided an overview of how to incorporate the `quarto-webr` extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.
+
+For your next steps consider looking at different use cases for [interactive options](webr-code-cell-demos.qmd).
+
+If you're eager to delve even deeper, explore topics like [setting document-level customizations inside the document header](webr-meta-options.qmd), [using R packages inside webR](webr-using-r-packages.qmd), or [hiding and executing code](webr-internal-cell.qmd). These resources will further empower you to make the most of `quarto-webr` and `webR` to elevate your Quarto documents to new heights.
