@@ -418,6 +418,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
   <li><a href="#create-a-graph-with-base-r" id="toc-create-a-graph-with-base-r" class="nav-link" data-scroll-target="#create-a-graph-with-base-r">Create a Graph with Base R</a></li>
+  <li><a href="#fill-in-the-blanks" id="toc-fill-in-the-blanks" class="nav-link" data-scroll-target="#fill-in-the-blanks">Fill in the Blanks</a></li>
+  <li><a href="#fill-in-the-blanks-1" id="toc-fill-in-the-blanks-1" class="nav-link" data-scroll-target="#fill-in-the-blanks-1">Fill in the Blanks</a></li>
   <li><a href="#data-wrangle-in-real-time" id="toc-data-wrangle-in-real-time" class="nav-link" data-scroll-target="#data-wrangle-in-real-time">Data Wrangle in Real Time</a></li>
   <li><a href="#working-with-r-packages" id="toc-working-with-r-packages" class="nav-link" data-scroll-target="#working-with-r-packages">Working with R Packages</a></li>
   <li><a href="#variable-definitions-and-reuse" id="toc-variable-definitions-and-reuse" class="nav-link" data-scroll-target="#variable-definitions-and-reuse">Variable Definitions and Reuse</a></li>
@@ -842,7 +844,7 @@ summary(fit)`,
 </section>
 <section id="create-a-graph-with-base-r" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-graph-with-base-r">Create a Graph with Base R</h2>
-<p>For this example, webR empowers us to create and visualize data plots interactively. For example, try changing the color from <code>blue</code> to <code>orange</code> and run the code again.</p>
+<p>For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value <code>blue</code> to <code>orange</code> and run the code again.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-3">Loading
   webR...</button>
 <div id="webr-editor-3"></div>
@@ -1023,9 +1025,12 @@ summary(fit)`,
   };
 </script>
 </section>
-<section id="data-wrangle-in-real-time" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangle-in-real-time">Data Wrangle in Real Time</h2>
-<p>Data manipulation is a crucial part of data analysis. In this example, we’ll modify a data set in real-time and view the results. It’s like changing ingredients while cooking to get the perfect dish!</p>
+<section id="fill-in-the-blanks" class="level2">
+<h2 class="anchored" data-anchor-id="fill-in-the-blanks">Fill in the Blanks</h2>
+<p>Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:</p>
+<blockquote class="blockquote">
+<p>Fill in the blank to create an expression that adds up to <strong>42</strong>.</p>
+</blockquote>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-4">Loading
   webR...</button>
 <div id="webr-editor-4"></div>
@@ -1037,6 +1042,359 @@ summary(fit)`,
   const runButton = document.getElementById("webr-run-button-4");
   const outputDiv = document.getElementById("webr-code-output-4");
   const editorDiv = document.getElementById("webr-editor-4");
+
+  // Add a light grey outline around the code editor
+  editorDiv.style.border = "1px solid #eee";
+
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
+      value: `35 + ________`,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,           // TODO: Could be problematic for slide decks
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      fontSize: '17.5rem',               // Bootstrap is 1 rem
+      renderLineHighlight: "none",     // Disable current line highlighting
+      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+    });
+
+    // Dynamically modify the height of the editor window if new lines are added.
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      const contentHeight = editor.getContentHeight();
+      // We're avoiding a width change
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${contentHeight}px`;
+      try {
+        ignoreEvent = true;
+
+        // The key to resizing is this call
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        executeCode(editor.getValue());
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
+
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
+  });
+
+  // Function to execute the code (accepts code as an argument)
+  async function executeCode(codeToRun) {
+    // Disable run button for code cell active
+    runButton.disabled = true;
+
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    executeCode(editor.getValue());
+  };
+</script>
+</section>
+<section id="fill-in-the-blanks-1" class="level2">
+<h2 class="anchored" data-anchor-id="fill-in-the-blanks-1">Fill in the Blanks</h2>
+<p>Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:</p>
+<blockquote class="blockquote">
+<p>Fill in the blank to have the following expression add up to <strong>42</strong>.</p>
+</blockquote>
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-5">Loading
+  webR...</button>
+<div id="webr-editor-5"></div>
+<div id="webr-code-output-5" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const runButton = document.getElementById("webr-run-button-5");
+  const outputDiv = document.getElementById("webr-code-output-5");
+  const editorDiv = document.getElementById("webr-editor-5");
+
+  // Add a light grey outline around the code editor
+  editorDiv.style.border = "1px solid #eee";
+
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
+      value: `35 + ________`,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,           // TODO: Could be problematic for slide decks
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      fontSize: '17.5rem',               // Bootstrap is 1 rem
+      renderLineHighlight: "none",     // Disable current line highlighting
+      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+    });
+
+    // Dynamically modify the height of the editor window if new lines are added.
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      const contentHeight = editor.getContentHeight();
+      // We're avoiding a width change
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${contentHeight}px`;
+      try {
+        ignoreEvent = true;
+
+        // The key to resizing is this call
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        executeCode(editor.getValue());
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
+
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
+  });
+
+  // Function to execute the code (accepts code as an argument)
+  async function executeCode(codeToRun) {
+    // Disable run button for code cell active
+    runButton.disabled = true;
+
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Initialize webR
+    await globalThis.webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid("webr::canvas(width=504, height=360)");
+
+    // Capture output data from evaluating the code
+    const result = await webRCodeShelter.captureR(codeToRun, {
+      withAutoprint: true,
+      captureStreams: true,
+      captureConditions: false//,
+      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // Start attempting to parse the result data
+    try {
+
+      // Stop creating images
+      await webR.evalRVoid("dev.off()");
+
+      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+      const out = result.output.filter(
+        evt => evt.type == "stdout" || evt.type == "stderr"
+      ).map((evt) => evt.data).join("\n");
+
+      // Clean the state
+      const msgs = await webR.flush();
+
+      // Output each image stored
+      msgs.forEach(msg => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+          // Add image to the current canvas
+          if (msg.data.event === 'canvasImage') {
+            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+          } else if (msg.data.event === 'canvasNewPage') {
+            // Generate a new canvas element
+            canvas = document.createElement("canvas");
+            canvas.setAttribute("width", 2 * 504);
+            canvas.setAttribute("height", 2 * 360);
+            canvas.style.width = "700px";
+            canvas.style.display = "block";
+            canvas.style.margin = "auto";
+          }
+        }
+      });
+
+      // Nullify the outputDiv of content
+      outputDiv.innerHTML = "";
+
+      // Design an output object for messages
+      const pre = document.createElement("pre");
+      if (/\S/.test(out)) {
+        // Display results as text
+        const code = document.createElement("code");
+        code.innerText = out;
+        pre.appendChild(code);
+      } else {
+        // If nothing is present, hide the element.
+        pre.style.visibility = "hidden";
+      }
+      outputDiv.appendChild(pre);
+
+      // Place the graphics on the canvas
+      if (canvas) {
+        const p = document.createElement("p");
+        p.appendChild(canvas);
+        outputDiv.appendChild(p);
+      }
+    } finally {
+      // Clean up the remaining code
+      webRCodeShelter.purge();
+      runButton.disabled = false;
+    }
+  }
+
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    executeCode(editor.getValue());
+  };
+</script>
+</section>
+<section id="data-wrangle-in-real-time" class="level2">
+<h2 class="anchored" data-anchor-id="data-wrangle-in-real-time">Data Wrangle in Real Time</h2>
+<p>Data manipulation is a crucial part of data analysis. In this example, we’ll modify a data set in real-time and view the results. It’s like changing ingredients while cooking to get the perfect dish!</p>
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-6">Loading
+  webR...</button>
+<div id="webr-editor-6"></div>
+<div id="webr-code-output-6" aria-live="assertive">
+  <pre style="visibility: hidden"></pre>
+</div>
+<script type="module">
+  // Retrieve webR code cell information
+  const runButton = document.getElementById("webr-run-button-6");
+  const outputDiv = document.getElementById("webr-code-output-6");
+  const editorDiv = document.getElementById("webr-editor-6");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1223,17 +1581,17 @@ Note
 </div>
 </div>
 <p>Let’s take <code>ggplot2</code> as an example:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-5">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-7">Loading
   webR...</button>
-<div id="webr-editor-5"></div>
-<div id="webr-code-output-5" aria-live="assertive">
+<div id="webr-editor-7"></div>
+<div id="webr-code-output-7" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-5");
-  const outputDiv = document.getElementById("webr-code-output-5");
-  const editorDiv = document.getElementById("webr-editor-5");
+  const runButton = document.getElementById("webr-run-button-7");
+  const outputDiv = document.getElementById("webr-code-output-7");
+  const editorDiv = document.getElementById("webr-editor-7");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1395,17 +1753,17 @@ Note
   };
 </script>
 <p>With <code>ggplot2</code> now installed, let’s create a graph with it!</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-6">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-8">Loading
   webR...</button>
-<div id="webr-editor-6"></div>
-<div id="webr-code-output-6" aria-live="assertive">
+<div id="webr-editor-8"></div>
+<div id="webr-code-output-8" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-6");
-  const outputDiv = document.getElementById("webr-code-output-6");
-  const editorDiv = document.getElementById("webr-editor-6");
+  const runButton = document.getElementById("webr-run-button-8");
+  const outputDiv = document.getElementById("webr-code-output-8");
+  const editorDiv = document.getElementById("webr-editor-8");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1572,17 +1930,17 @@ p + geom_boxplot()`,
 <section id="variable-definitions-and-reuse" class="level2">
 <h2 class="anchored" data-anchor-id="variable-definitions-and-reuse">Variable Definitions and Reuse</h2>
 <p>Define variables in one code cell and reuse them in subsequent cells:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-7">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-9">Loading
   webR...</button>
-<div id="webr-editor-7"></div>
-<div id="webr-code-output-7" aria-live="assertive">
+<div id="webr-editor-9"></div>
+<div id="webr-code-output-9" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-7");
-  const outputDiv = document.getElementById("webr-code-output-7");
-  const editorDiv = document.getElementById("webr-editor-7");
+  const runButton = document.getElementById("webr-run-button-9");
+  const outputDiv = document.getElementById("webr-code-output-9");
+  const editorDiv = document.getElementById("webr-editor-9");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1744,17 +2102,17 @@ age <- 42`,
     executeCode(editor.getValue());
   };
 </script>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-8">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-10">Loading
   webR...</button>
-<div id="webr-editor-8"></div>
-<div id="webr-code-output-8" aria-live="assertive">
+<div id="webr-editor-10"></div>
+<div id="webr-code-output-10" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-8");
-  const outputDiv = document.getElementById("webr-code-output-8");
-  const editorDiv = document.getElementById("webr-editor-8");
+  const runButton = document.getElementById("webr-run-button-10");
+  const outputDiv = document.getElementById("webr-code-output-10");
+  const editorDiv = document.getElementById("webr-editor-10");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1919,17 +2277,17 @@ age <- 42`,
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <p>Functions can similarly be defined and used in one code cell or multiple code cells.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-9">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-11">Loading
   webR...</button>
-<div id="webr-editor-9"></div>
-<div id="webr-code-output-9" aria-live="assertive">
+<div id="webr-editor-11"></div>
+<div id="webr-code-output-11" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-9");
-  const outputDiv = document.getElementById("webr-code-output-9");
-  const editorDiv = document.getElementById("webr-editor-9");
+  const runButton = document.getElementById("webr-run-button-11");
+  const outputDiv = document.getElementById("webr-code-output-11");
+  const editorDiv = document.getElementById("webr-editor-11");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2094,17 +2452,17 @@ say_hello("James")`,
     executeCode(editor.getValue());
   };
 </script>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-10">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-12">Loading
   webR...</button>
-<div id="webr-editor-10"></div>
-<div id="webr-code-output-10" aria-live="assertive">
+<div id="webr-editor-12"></div>
+<div id="webr-code-output-12" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-10");
-  const outputDiv = document.getElementById("webr-code-output-10");
-  const editorDiv = document.getElementById("webr-editor-10");
+  const runButton = document.getElementById("webr-run-button-12");
+  const outputDiv = document.getElementById("webr-code-output-12");
+  const editorDiv = document.getElementById("webr-editor-12");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2283,17 +2641,17 @@ Note
 <h2 class="anchored" data-anchor-id="handling-errors-and-warnings">Handling Errors and Warnings</h2>
 <p>When webR encounters an error while running R code, the error and warning messages are displayed to the user.</p>
 <p>For example, if the routine has a hard stop, the execution immediately ends, and the message is shared.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-11">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-13">Loading
   webR...</button>
-<div id="webr-editor-11"></div>
-<div id="webr-code-output-11" aria-live="assertive">
+<div id="webr-editor-13"></div>
+<div id="webr-code-output-13" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-11");
-  const outputDiv = document.getElementById("webr-code-output-11");
-  const editorDiv = document.getElementById("webr-editor-11");
+  const runButton = document.getElementById("webr-run-button-13");
+  const outputDiv = document.getElementById("webr-code-output-13");
+  const editorDiv = document.getElementById("webr-editor-13");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2455,17 +2813,17 @@ Note
   };
 </script>
 <p>Similarly, if a variable is not found, then the code stops being evaluated and returns an error.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-12">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-14">Loading
   webR...</button>
-<div id="webr-editor-12"></div>
-<div id="webr-code-output-12" aria-live="assertive">
+<div id="webr-editor-14"></div>
+<div id="webr-code-output-14" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-12");
-  const outputDiv = document.getElementById("webr-code-output-12");
-  const editorDiv = document.getElementById("webr-editor-12");
+  const runButton = document.getElementById("webr-run-button-14");
+  const outputDiv = document.getElementById("webr-code-output-14");
+  const editorDiv = document.getElementById("webr-editor-14");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2627,17 +2985,17 @@ Note
   };
 </script>
 <p>Unlike errors, warning messages are allowed to propagate into the output without stopping the computation.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-13">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-15">Loading
   webR...</button>
-<div id="webr-editor-13"></div>
-<div id="webr-code-output-13" aria-live="assertive">
+<div id="webr-editor-15"></div>
+<div id="webr-code-output-15" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-13");
-  const outputDiv = document.getElementById("webr-code-output-13");
-  const editorDiv = document.getElementById("webr-editor-13");
+  const runButton = document.getElementById("webr-run-button-15");
+  const outputDiv = document.getElementById("webr-code-output-15");
+  const editorDiv = document.getElementById("webr-editor-15");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2801,17 +3159,17 @@ Note
   };
 </script>
 <p>This is even the case inside of complex functions.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-14">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-16">Loading
   webR...</button>
-<div id="webr-editor-14"></div>
-<div id="webr-code-output-14" aria-live="assertive">
+<div id="webr-editor-16"></div>
+<div id="webr-code-output-16" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-14");
-  const outputDiv = document.getElementById("webr-code-output-14");
-  const editorDiv = document.getElementById("webr-editor-14");
+  const runButton = document.getElementById("webr-run-button-16");
+  const outputDiv = document.getElementById("webr-code-output-16");
+  const editorDiv = document.getElementById("webr-editor-16");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -2995,17 +3353,17 @@ quadratic_roots(1, 3, 7)`,
 <section id="escaping-characters-in-a-string" class="level2">
 <h2 class="anchored" data-anchor-id="escaping-characters-in-a-string">Escaping Characters in a String</h2>
 <p>Handle special characters in strings with ease:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-15">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-17">Loading
   webR...</button>
-<div id="webr-editor-15"></div>
-<div id="webr-code-output-15" aria-live="assertive">
+<div id="webr-editor-17"></div>
+<div id="webr-code-output-17" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-15");
-  const outputDiv = document.getElementById("webr-code-output-15");
-  const editorDiv = document.getElementById("webr-editor-15");
+  const runButton = document.getElementById("webr-run-button-17");
+  const outputDiv = document.getElementById("webr-code-output-17");
+  const editorDiv = document.getElementById("webr-editor-17");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -3171,17 +3529,17 @@ seven_seas`,
 <section id="anonymous-function-definition" class="level2">
 <h2 class="anchored" data-anchor-id="anonymous-function-definition">Anonymous Function Definition</h2>
 <p>Define and use anonymous functions seamlessly:</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-16">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-18">Loading
   webR...</button>
-<div id="webr-editor-16"></div>
-<div id="webr-code-output-16" aria-live="assertive">
+<div id="webr-editor-18"></div>
+<div id="webr-code-output-18" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-16");
-  const outputDiv = document.getElementById("webr-code-output-16");
-  const editorDiv = document.getElementById("webr-editor-16");
+  const runButton = document.getElementById("webr-run-button-18");
+  const outputDiv = document.getElementById("webr-code-output-18");
+  const editorDiv = document.getElementById("webr-editor-18");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -3347,17 +3705,17 @@ add_one(2)`,
 <section id="empty-code-cell" class="level2">
 <h2 class="anchored" data-anchor-id="empty-code-cell">Empty Code Cell</h2>
 <p>Define an empty code cell by simply leaving it blank.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-17">Loading
+<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-19">Loading
   webR...</button>
-<div id="webr-editor-17"></div>
-<div id="webr-code-output-17" aria-live="assertive">
+<div id="webr-editor-19"></div>
+<div id="webr-code-output-19" aria-live="assertive">
   <pre style="visibility: hidden"></pre>
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-17");
-  const outputDiv = document.getElementById("webr-code-output-17");
-  const editorDiv = document.getElementById("webr-editor-17");
+  const runButton = document.getElementById("webr-run-button-19");
+  const outputDiv = document.getElementById("webr-code-output-19");
+  const editorDiv = document.getElementById("webr-editor-19");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
