@@ -46,7 +46,7 @@ summary(fit)
 
 ## Create a Graph with Base R
 
-For this example, webR empowers us to create and visualize data plots interactively. For example, try changing the color from `blue` to `orange` and run the code again.
+For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore "What if ..." scenarios. For instance, what if we try changing the value `blue` to `orange` and run the code again.
 
 ```{webr-r}
 plot(
@@ -58,6 +58,26 @@ plot(
   main = "Miles per Gallon and Weight of Cars",
   sub = "Source: 1974 Motor Trend US magazine."
 )
+```
+
+## Fill in the Blanks
+
+Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:
+
+> Fill in the blank to create an expression that adds up to **42**.
+
+```{webr-r}
+35 + ________
+```
+
+## Fill in the Blanks
+
+Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:
+
+> Fill in the blank to have the following expression add up to **42**.
+
+```{webr-r}
+35 + ________
 ```
 
 ## Data Wrangle in Real Time
