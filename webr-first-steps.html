@@ -271,8 +271,10 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#workflow-video" id="toc-workflow-video" class="nav-link active" data-scroll-target="#workflow-video">Workflow Video</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-first-steps.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -305,7 +307,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 18, 2023</p>
+      <p class="date-modified">September 19, 2023</p>
     </div>
   </div>
     
@@ -314,6 +316,16 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 </header>
 
+<p>To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like <code>quarto-webr</code> within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.</p>
+<section id="workflow-video" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-video">Workflow Video</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://youtu.be/DoRR2S5lLvk" title="Creating your first webR-powered Quarto Document inside of RStudio"><img src="http://img.youtube.com/vi/DoRR2S5lLvk/0.jpg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Creating your first webR-powered Quarto Document inside of RStudio</figcaption>
+</figure>
+</div>
+</section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>To use this extension in a Quarto project, install it from within the project’s working directory by typing into <strong>Terminal</strong>:</p>
@@ -324,13 +336,31 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <figcaption class="figure-caption">Demonstration of using the Terminal tab to install the extension.</figcaption>
 </figure>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again.</p>
+</div>
+</div>
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<p>For each document, place the <code>webr</code> filter in the document’s header:</p>
+<p>Once the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the <code>_extensions</code> folder. To activate the <code>webR</code> functionality in those documents, follow these steps:</p>
+<ol type="1">
+<li><strong>Add <code>webr</code> Filter</strong>: In the header of your Quarto document, add the <code>webr</code> filter to the list of filters:</li>
+</ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then, place the R code for <code>webR</code> in a code block marked with <code>{webr-r}</code></p>
+<ol start="2" type="1">
+<li><strong>Use <code>{webr-r}</code> Code Blocks</strong>: Write your R code within code blocks marked with <code>{webr-r}</code>. Here’s an example:</li>
+</ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> webR in Quarto HTML Documents</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
@@ -345,9 +375,29 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">summary(fit)</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The rendered document can be viewed online <a href="https://coatless.github.io/quarto-webr/webr-readme-example.html">here</a>.</p>
-<p>When <code>quarto render</code> or <code>quarto preview</code> is called, the filter will execute under <code>engine: knitr</code>. During the execution, the filter adds two files to the working directory: <code>webr-worker.js</code> and <code>webr-serviceworker.js</code>. These files allow for the <code>webR</code> session to be started and must be present with the rendered output.</p>
-<p><strong>Note:</strong> If <code>engine: knitr</code> is not specified, then the <code>jupyter</code> compute engine will be used by default.</p>
+<ol start="3" type="1">
+<li><strong>Render Your Document</strong>: You can now render your Quarto document by clicking on <kbd><img src="images/rstudio-render-button.png" width="25" height="20"></kbd> <strong>Render</strong> (or use the keyboard shortcut <kbd>⇧⌘K</kbd> on macOS or <kbd>Ctrl+Shift+K</kbd> on Windows/Linux). The document will execute under <code>engine: knitr</code> by default, but you can specify a different engine if needed.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If an engine is not specified, Quarto will attempt to use the <code>jupyter</code> compute engine by default. This may cause an error if <code>jupyter</code> is not installed on your computer.</p>
+</div>
+</div>
+<p>During execution, the filter will generate two essential files, <code>webr-worker.js</code> and <code>webr-serviceworker.js</code>, in your working directory. These files are required for the <code>webR</code> session to function properly under the default options and must be present alongside your rendered output.</p>
+</section>
+<section id="fin" class="level1">
+<h1>Fin</h1>
+<p>In summary, this guide has provided an overview of how to incorporate the <code>quarto-webr</code> extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.</p>
+<p>For your next steps consider looking at different use cases for <a href="./webr-code-cell-demos.html">interactive options</a>.</p>
+<p>If you’re eager to delve even deeper, explore topics like <a href="./webr-meta-options.html">setting document-level customizations inside the document header</a>, <a href="./webr-using-r-packages.html">using R packages inside webR</a>, or <a href="./webr-internal-cell.html">hiding and executing code</a>. These resources will further empower you to make the most of <code>quarto-webr</code> and <code>webR</code> to elevate your Quarto documents to new heights.</p>
 
 
 </section>

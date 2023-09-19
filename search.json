@@ -74,21 +74,28 @@
     "href": "webr-first-steps.html",
     "title": "Making your first webR-powered Quarto document",
     "section": "",
-    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+    "text": "To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like quarto-webr within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels."
+  },
+  {
+    "objectID": "webr-first-steps.html#workflow-video",
+    "href": "webr-first-steps.html#workflow-video",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Workflow Video",
+    "text": "Workflow Video\n\n\n\nCreating your first webR-powered Quarto Document inside of RStudio"
   },
   {
     "objectID": "webr-first-steps.html#installation",
     "href": "webr-first-steps.html#installation",
     "title": "Making your first webR-powered Quarto document",
-    "section": "",
-    "text": "To use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension."
+    "section": "Installation",
+    "text": "Installation\nTo use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again."
   },
   {
     "objectID": "webr-first-steps.html#usage",
     "href": "webr-first-steps.html#usage",
     "title": "Making your first webR-powered Quarto document",
     "section": "Usage",
-    "text": "Usage\nFor each document, place the webr filter in the document’s header:\nfilters:\n  - webr\nThen, place the R code for webR in a code block marked with {webr-r}\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\nThe rendered document can be viewed online here.\nWhen quarto render or quarto preview is called, the filter will execute under engine: knitr. During the execution, the filter adds two files to the working directory: webr-worker.js and webr-serviceworker.js. These files allow for the webR session to be started and must be present with the rendered output.\nNote: If engine: knitr is not specified, then the jupyter compute engine will be used by default."
+    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.\n\n\nDuring execution, the filter will generate two essential files, webr-worker.js and webr-serviceworker.js, in your working directory. These files are required for the webR session to function properly under the default options and must be present alongside your rendered output."
   },
   {
     "objectID": "webr-troubleshooting.html",
