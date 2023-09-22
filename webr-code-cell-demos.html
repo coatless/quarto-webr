@@ -1419,12 +1419,15 @@ summary(fit)`,
     editor = monaco.editor.create(editorDiv, {
       value: `# Create a copy of the data
 mtcars2 <- mtcars
+
 # Change variable to a factor
 mtcars2$vs <- factor(mtcars2$vs, labels = c("V", "S"))
+
 modified_vs_data = data.frame(
   "original_vs" = mtcars$vs,
   "modified_vs" = mtcars2$vs
 )
+
 head(modified_vs_data)`,
       language: 'r',
       theme: 'vs-light',
@@ -1787,6 +1790,7 @@ Note
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `library(ggplot2)
+
 p <- ggplot(mpg, aes(class, hwy))
 p + geom_boxplot()`,
       language: 'r',
@@ -2314,6 +2318,7 @@ age <- 42`,
   msg = paste0("Hello ", name, "! Welcome to webR :)")
   return(msg)
 }
+
 say_hello("James")`,
       language: 'r',
       theme: 'vs-light',
@@ -3019,6 +3024,7 @@ Note
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `warning("Uh-oh, there's a warning!")
+
 # Compute a value
 1 + 1`,
       language: 'r',
@@ -3193,10 +3199,14 @@ Note
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `quadratic_roots <- function(a, b, c) {
+
   cat(paste0("Analyzing the quadratic equation: ", a, "x^2 + ", b, "x + ", c, "."))
+
   discriminant <- (b^2) - (4*a*c)
+
   # Check if there are 2 solutions
   if(discriminant != 0) {
+
     # Are the solutions imaginary?
     if(discriminant < 0) {
       warning("There are no real-numbered roots for this quadratic equation.")
@@ -3205,12 +3215,16 @@ Note
     
     # Compute the solutions
     x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)
+
     return(x_intercepts)
   } 
+
   # When the discriminant is 0, compute a single solution.
   x_intercept <- (-b) / (2*a)
+
   return(x_intercept)
 }
+
 quadratic_roots(1, 3, 7)`,
       language: 'r',
       theme: 'vs-light',

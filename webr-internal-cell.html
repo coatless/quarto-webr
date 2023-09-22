@@ -969,11 +969,13 @@ await globalThis.webR.init();
 
 // Run R code without focusing on storing data.
 await globalThis.webR.evalRVoid(`
+
 # Download a dataset
 download.file(
   'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
   'penguins.csv'
 )
+
 # Read the data
 df_penguins = read.csv("penguins.csv")
 `)
@@ -1272,13 +1274,15 @@ Note
   }
 
   // Run the code
-  executeOutputOnlyCode(`mtcars2 <- within(mtcars, {
+  executeOutputOnlyCode(`
+mtcars2 <- within(mtcars, {
    vs <- factor(vs, labels = c("V", "S"))
    am <- factor(am, labels = c("automatic", "manual"))
    cyl  <- ordered(cyl)
    gear <- ordered(gear)
    carb <- ordered(carb)
 })
+
 summary(mtcars2)`)
 </script>
 </section>
@@ -1337,13 +1341,16 @@ answer_frame <- data.frame(
   answer = c(10, 2, 3/16),
   tol = c(0.001, 0, 1/32)
 )
+
 check <- function(problem, answer) {
   aframe <- answer_frame
   if(!problem %in% aframe$problem) {
     error_msg <- paste0("Please enter a valid problem. (", paste0(aframe$problem, collapse = ","), ")")
     stop(error_msg)
   }
+
   solution <- aframe[which(aframe$problem == problem), "answer"]
+
   ifelse(
     all.equal(answer, solution, tolerance = 0.001) == TRUE,
     "Correct! Well done.",
@@ -1377,6 +1384,7 @@ check <- function(problem, answer) {
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `student_solution = 11
+
 check(problem = "1a", answer = student_solution)`,
       language: 'r',
       theme: 'vs-light',

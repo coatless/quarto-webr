@@ -509,9 +509,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   repos = "https://repo.r-wasm.org/",
   type = "source"
 )[, c("Package", "Version")]
+
 # Number of R packages available to webR
 cat("There are current", nrow(webr_pkgs), 
     "available to use with webR!\\n")
+
 # Only view the first 6, there's a lot available!
 head(webr_pkgs)`,
       language: 'r',
