@@ -371,7 +371,7 @@ function extractCodeBlockOptions(block)
   local newCodeLines = {}
 
   -- Iterate over each line in the code block 
-  for line in code:gmatch("[^\r\n]+") do
+  for line in code:gmatch("([^\r\n]*)[\r\n]?") do
     -- Check if the line starts with "#|" and extract the key-value pairing
     -- e.g. #| key: value goes to newAttributes[key] -> value
     local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
