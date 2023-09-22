@@ -167,7 +167,21 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
     // Add new element as last child in header element
     var header = document.getElementById("title-block-header");
-    header.appendChild(quartoTitleMeta);
+
+    // Check if the header option is present or missing
+    if(header) {
+      // If present, directly append the child element.
+      header.appendChild(quartoTitleMeta);
+    } else {
+      // Attempt to place the new element inside a header _after_ the Monaco initialization
+      var monacoScript = document.getElementById("webr-monaco-editor-init");
+      var header = document.createElement("header");
+      header.setAttribute("id", "title-block-header");
+      // Now attempt to add the webR area to the title
+      header.appendChild(quartoTitleMeta);
+      // Include the header after the script tag
+      monacoScript.after(header);
+    }
   }
 
   // Retrieve the webr.mjs
@@ -380,7 +394,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
-<script type="module">
+<script type="module" id="webr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
