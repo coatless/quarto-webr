@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes: 
       value: |
-        First, please check [`quarto-webr` Issue Tracker](https://github.com/coatless/quarto-webr/issues) to see if your feature request has already been discussed.
+        First, please check [`quarto-webr` Issue Tracker](https://github.com/coatless/quarto-webr/issues?q=is%3Aissue+) to see if your feature request has already been discussed.
         If it has, please consider adding a comment to the existing issue instead of creating a new one.
 
         After checking, if you are not sure if your feature request has already been discussed, please create a new issue.
