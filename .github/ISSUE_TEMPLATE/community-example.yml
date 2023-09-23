@@ -1,0 +1,23 @@
+name: Example
+description: Contribute an Example
+labels: [community-example]
+title: "[Example]: "
+body:
+  - type: markdown
+    attributes: 
+      value: |
+        We appreciate you taking the time out of your day to let us know about the example!
+        We love to include links to videos, talks, notebooks, course websites, workshops, blog posts, and so on!
+
+        **Thank you for letting us know!**
+  - type: textarea
+    attributes:
+      label: What's your question?
+      description: |
+        Feel free to just start writing about the example!
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        _Thank you for opening this issue to let us know about the example!_
