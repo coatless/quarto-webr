@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James Joseph Balamuta">
-<meta name="dcterms.date" content="2023-09-14">
+<meta name="dcterms.date" content="2023-09-22">
 
-<title>quarto-webr: A Quarto Extension for webR - Customization Options</title>
+<title>quarto-webr: A Quarto Extension for webR - Community Example Gallery</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -118,7 +83,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./webr-meta-options.html">Customization Options</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-readme-example.html">Demos</a></li><li class="breadcrumb-item"><a href="./webr-community-example-gallery.html">Community Example Gallery</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,7 +133,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-meta-options.html" class="sidebar-item-text sidebar-link active">
+  <a href="./webr-meta-options.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Customization Options</span></a>
   </div>
 </li>
@@ -215,7 +180,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-community-example-gallery.html" class="sidebar-item-text sidebar-link">
+  <a href="./webr-community-example-gallery.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Community Example Gallery</span></a>
   </div>
 </li>
@@ -277,49 +242,35 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#customization-options" id="toc-customization-options" class="nav-link active" data-scroll-target="#customization-options">Customization Options</a>
-  <ul class="collapse">
-  <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
-  <ul class="collapse">
-  <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
-  <li><a href="#base-url" id="toc-base-url" class="nav-link" data-scroll-target="#base-url"><code>base-url</code></a></li>
-  <li><a href="#channel-type" id="toc-channel-type" class="nav-link" data-scroll-target="#channel-type"><code>channel-type</code></a></li>
-  <li><a href="#service-worker-url" id="toc-service-worker-url" class="nav-link" data-scroll-target="#service-worker-url"><code>service-worker-url</code></a></li>
-  </ul></li>
-  <li><a href="#native-extension-options" id="toc-native-extension-options" class="nav-link" data-scroll-target="#native-extension-options">Native Extension Options</a>
-  <ul class="collapse">
-  <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
-  <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link active" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#teaching-workshops" id="toc-teaching-workshops" class="nav-link" data-scroll-target="#teaching-workshops">Teaching Workshops</a></li>
+  <li><a href="#talks" id="toc-talks" class="nav-link" data-scroll-target="#talks">Talks</a></li>
+  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
+  <li><a href="#notebooks" id="toc-notebooks" class="nav-link" data-scroll-target="#notebooks">Notebooks</a></li>
+  <li><a href="#social-media-posts" id="toc-social-media-posts" class="nav-link" data-scroll-target="#social-media-posts">Social media posts</a></li>
+  <li><a href="#blog-posts" id="toc-blog-posts" class="nav-link" data-scroll-target="#blog-posts">Blog posts</a></li>
+  <li><a href="#press" id="toc-press" class="nav-link" data-scroll-target="#press">Press</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-meta-options.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-community-example-gallery.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Customization Options</h1>
-<p class="subtitle lead">Fine-Tuning <code>quarto-webr</code> with Powerful Configuration Options</p>
+<h1 class="title">Community Example Gallery</h1>
+<p class="subtitle lead">Explore Real-world Use Cases and Projects Using the <code>quarto-webr</code> Extension</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James Joseph Balamuta </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 14, 2023</p>
+      <p class="date">September 22, 2023</p>
     </div>
   </div>
   
@@ -335,97 +286,98 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 </header>
 
-<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.</p>
-<section id="customization-options" class="level1">
-<h1>Customization Options</h1>
-<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">engine</span><span class="kw">:</span><span class="at"> knitr</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">show-startup-message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="webr-options" class="level2">
-<h2 class="anchored" data-anchor-id="webr-options">webR options</h2>
-<p>By specifying various <code>WebROptions</code> options in the document YAML, you can create a personalized webR experience</p>
-<section id="home-dir" class="level3">
-<h3 class="anchored" data-anchor-id="home-dir"><code>home-dir</code></h3>
+<p>Welcome to the Community Examples page for the <code>quarto-webr</code> extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the <code>quarto-webr</code> extension. These examples showcase real-world use cases, highlighting the extension’s adaptability and functionality across various fields. You may also find references to examples from the <a href="https://webr.r-wasm.org/">main webR project</a> here as well.</p>
+<p>Explore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community’s contributions and discover how you can leverage the full potential of quarto-webr in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you’ll find valuable insights and ideas within the community’s projects.</p>
+<p>Do you have your own project or example that incorporates <code>quarto-webr</code>? We <a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-community-example-gallery.qmd">invite you to contribute</a> to this growing collection of community-driven projects by submitting a <a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-community-example-gallery.qmd">pull request</a> or <a href="https://github.com/coatless/quarto-webr/issues/new?assignees=&amp;labels=community-example&amp;projects=&amp;template=community-example.yml&amp;title=%5BExample%5D%3A+">creating an issue</a>. Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of <code>quarto-webr</code>.</p>
+<section id="videos" class="level1">
+<h1>Videos</h1>
 <ul>
-<li><strong>Description</strong>: Set the WebAssembly user’s home directory and initial working directory.</li>
-<li><strong>Default Value</strong>: <code>'/home/web_user'</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir">homeDir</a></li>
+<li><a href="https://www.youtube.com/watch?v=DoRR2S5lLvk">quarto-webr: Your first webR-powered Quarto Document (RStudio)</a></li>
+<li><a href="https://eeholmes.github.io/">Eli E. Holmes</a>’ coverage of webR + Quarto on her <a href="https://www.youtube.com/@eeholmes-datascience4849">EEHolmes-DataScience</a> YouTube channel
+<ul>
+<li><a href="https://www.youtube.com/watch?v=hVLF98HP6Sw">Demo of webR quarto extension along with Codespaces</a> on Mar 14, 2023 and her <a href="https://github.com/eeholmes/test-webr">test repository</a></li>
+<li><a href="https://www.youtube.com/watch?v=g_2ogFn2XrY">WebR + Quarto Demo: Running R right in the browser!</a> on Mar 10, 2023 (<strong>Note:</strong> This uses an earlier Proof of Concept document. Not the quarto extension!)</li>
+</ul></li>
 </ul>
 </section>
-<section id="base-url" class="level3">
-<h3 class="anchored" data-anchor-id="base-url"><code>base-url</code></h3>
+<section id="teaching-workshops" class="level1">
+<h1>Teaching Workshops</h1>
 <ul>
-<li><strong>Description</strong>: Define the base URL for downloading R WebAssembly binaries.</li>
-<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/[version]/'</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl">baseUrl</a></li>
+<li><a href="https://mine-cr.com/">Mine Çetinkaya-Rundel</a>’s <a href="https://posit-conf-2023.github.io/teach-ds-masterclass/materials/course-materials">Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials</a>. Sept 18, 2023 @ posit::conf(2023)
+<ul>
+<li><a href="https://data-sci-101.github.io/ae/ae-01-unvotes.html">Ex 1.1: UN Votes</a>, <a href="https://github.com/data-sci-101/data-sci-101.github.io/blob/main/ae/ae-01-unvotes.qmd">Page Source</a></li>
+<li>Full workshop materials at <a href="https://github.com/posit-conf-2023/teach-ds-masterclass">source repository</a> and deployed website example’s <a href="https://github.com/data-sci-101/data-sci-101.github.io">source repository</a></li>
+</ul></li>
 </ul>
 </section>
-<section id="channel-type" class="level3">
-<h3 class="anchored" data-anchor-id="channel-type"><code>channel-type</code></h3>
+<section id="talks" class="level1">
+<h1>Talks</h1>
 <ul>
-<li><strong>Description</strong>: Specify the communication channel type to interact with webR.</li>
-<li><strong>Default Value</strong>: <code>"automatic"</code> (0)</li>
-<li><strong>Possible Values</strong>: <code>"automatic"</code> (0), <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).</li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype">channelType</a></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.). For more details, please see <a href="./webr-communication-channels.html#sec-post-message">Communication Channels</a></p>
-</div>
-</div>
-</section>
-<section id="service-worker-url" class="level3">
-<h3 class="anchored" data-anchor-id="service-worker-url"><code>service-worker-url</code></h3>
+<li><a href="https://gws.phd">George Stagg</a>’s talk on the <a href="https://gws.quarto.pub/magic-with-wasm-and-webr/#/title-slide">Magic with WebAssembly and webR</a> mentioning <code>quarto-webr</code> as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)</li>
+<li><a href="http://thecoatlessprofessor.com/">James Balamuta</a>’s talk on <a href="https://assets.thecoatlessprofessor.com/talks/quarto-webr-posit-conf-23-talk.pdf">Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR</a>. Sep 19, 2023 @ posit::conf(2023)</li>
+<li><a href="https://gws.phd">George Stagg</a>’s talk on the <a href="https://gws.quarto.pub/introduction-to-webr-2023/#/title-slide">Introduction to webR</a> mentioning <code>quarto-webr</code> as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)</li>
+<li><a href="https://rud.is/">bob Rudis</a>’ talk on <a href="https://github.com/hrbrmstr/2023-nyr-webr">🕸️ Into the WebR-Verse</a> incorporating a demo of the <code>quarto-webr</code> extension. Jul 13 @ New York R Conference 2023
 <ul>
-<li><strong>Description</strong>: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.</li>
-<li><strong>Default Value</strong>: <code>''</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl">serviceWorkerUrl</a></li>
+<li><a href="https://www.youtube.com/watch?v=inpwcTUmBDY&amp;list=PLlzRFZmxVl9RYNkA-lRUxloDYrd1Bhln9&amp;index=8">Video</a> and <a href="https://github.com/hrbrmstr/2023-nyr-webr">Source code</a></li>
+<li>boB used a <a href="https://github.com/coatless/quarto-webr/issues/14#issuecomment-1634944155">cool trick to embed the demo</a> in his revealjs slides.</li>
+</ul></li>
+<li><a href="https://maria-tackett.netlify.app/">Maria Tackett</a>’s talk on <a href="https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/">Using Quarto for Making and Organizing Teaching Materials</a> during the <a href="https://mine-cetinkaya-rundel.github.io/teach-with-quarto/">Teaching (with) Quarto</a> Session. Aug 7, 2023 @ JSM 2023
+<ul>
+<li><a href="https://maria.quarto.pub/webr-demo/">WebR Demo</a> on <a href="https://quarto.pub">Quarto Pub</a></li>
+</ul></li>
 </ul>
 </section>
-</section>
-<section id="native-extension-options" class="level2">
-<h2 class="anchored" data-anchor-id="native-extension-options">Native Extension Options</h2>
-<p>The extension also provides native options that affect its behavior:</p>
-<section id="show-startup-message" class="level3">
-<h3 class="anchored" data-anchor-id="show-startup-message"><code>show-startup-message</code></h3>
+<section id="textbooks" class="level1">
+<h1>Textbooks</h1>
 <ul>
-<li><strong>Description</strong>: Controls the display of the WebR initialization state in the document header.</li>
-<li><strong>Default Value</strong>: <code>true</code></li>
+<li><a href="https://www.sph.pitt.edu/directory/daniel-weeks">Daniel E. Weeks</a>’s incorporated webR exercises into various parts of the <a href="https://danieleweeks.github.io/HuGen2071">HuGen2071</a>. Fall 2023.
+<ul>
+<li><a href="https://github.com/DanielEWeeks/HuGen2071">Book source</a></li>
+</ul></li>
 </ul>
 </section>
-<section id="show-header-message" class="level3">
-<h3 class="anchored" data-anchor-id="show-header-message"><code>show-header-message</code></h3>
+<section id="notebooks" class="level1">
+<h1>Notebooks</h1>
 <ul>
-<li><strong>Description</strong>: Determines whether COOP and COEP headers are in use for faster page loads.</li>
-<li><strong>Default Value</strong>: <code>false</code></li>
+<li><a href="https://gws.phd/">George Stagg</a>’s notebook example showing <a href="https://gws.quarto.pub/introduction-to-webr-2023/demo.html">tidymodels workflow using webR</a>
+<ul>
+<li>tidymodels starter article without webR <a href="https://www.tidymodels.org/start/recipes/"><em>Preprocess your data with recipes</em></a></li>
+</ul></li>
 </ul>
 </section>
-<section id="packages" class="level3">
-<h3 class="anchored" data-anchor-id="packages"><code>packages</code></h3>
+<section id="social-media-posts" class="level1">
+<h1>Social media posts</h1>
 <ul>
-<li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
-<li><strong>Default Value</strong>: <code>[]</code></li>
+<li><a href="https://www.linkedin.com/in/nguyenllpsych">Linh Nguyen</a>’s post on <a href="https://www.linkedin.com/posts/nguyenllpsych_positconf2023-activity-7111101659509899265-CTay?utm_source=share&amp;utm_medium=member_desktop">LinkedIn</a> describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the <code>quarto-webr</code> extension. Sept 22, 2023</li>
+<li><a href="https://joechelladurai.com/">Joe Chelladurai</a> mentioning a <a href="https://mastodon.social/@joe_chelladurai@fosstodon.org/110699434655070719">similiar integration on mastodon</a> for his newly developed <a href="https://www.theschoolofdata.org/">The School of Data</a>. Jul 11th, 2023</li>
+<li><a href="https://rud.is/">bob Rudis</a>’ kind <a href="https://mastodon.social/@hrbrmstr/110130242863636605">praise</a> of the extension. Apr 2nd, 2023</li>
+</ul>
+</section>
+<section id="blog-posts" class="level1">
+<h1>Blog posts</h1>
+<ul>
+<li><a href="https://gws.phd/">George Stagg</a>’s mention of the extension in his <a href="https://www.tidyverse.org/blog/2023/08/webr-0-2-0/">webR 0.2.0 announcement</a>. Aug 8th, 2023.</li>
+<li><a href="https://www.weecology.org/author/ethan-white/">Ethan White</a>’s use to create a <a href="https://tidytuesday.weecology.org/">portal for Tidy Tuesday</a>. May 2nd, 2023</li>
+<li><a href="https://www.matt-dray.com/">Matt Dray</a>’s post on <a href="https://www.rostrum.blog/posts/2023-03-16-webr-quarto/">Playgrounds with WebR and Quarto</a>. Mar 16th, 2023
+<ul>
+<li><a href="https://webr-parse-test.netlify.app/">A Parsing Playground for R Code</a> on Netlify and the <a href="https://github.com/matt-dray/webr-parse-test">repository powering it</a>.</li>
+</ul></li>
+<li><a href="https://www.weecology.org/author/ethan-white/">Ethan White</a>’s post on <a href="https://jabberwocky.weecology.org/2023/03/13/a-brief-introduction-to-using-webr-and-quarto-for-client-side-interactive-lesson-material/">Playgrounds with WebR and Quarto</a>. Mar 13th, 2023.
+<ul>
+<li><a href="https://webr-parse-test.netlify.app/">A Parsing Playground for R Code</a> on Netlify and the <a href="https://github.com/matt-dray/webr-parse-test">repository powering it</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="press" class="level1">
+<h1>Press</h1>
+<ul>
+<li><a href="https://rweekly.fireside.fm">R Weekly podcast</a> included a reference to the Proof of Concept document/extension during <a href="https://rweekly.fireside.fm/115?t=763">episode 115</a>, which was dedicated to the webR 0.1.0 announcement.
+<ul>
+<li><a href="https://rweekly.org/2023-W11.html">R weekly 115 (2023-W11)</a></li>
+</ul></li>
 </ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
