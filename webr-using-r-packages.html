@@ -551,6 +551,11 @@ head(webr_pkgs)`,
       }
     };
 
+    // Helper function to check if selected text is empty
+    function isEmptyCodeText(selectedCodeText) {
+      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+    }
+
     // Registry of keyboard shortcuts that should be re-added to each editor window
     // when focus changes.
     const addWebRKeyboardShortCutCommands = () => {
@@ -563,10 +568,38 @@ head(webr_pkgs)`,
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+
         // Get the selected text from the editor
         const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
+        // Check if no code is selected
+        if (isEmptyCodeText(selectedText)) {
+          // Obtain the current cursor position
+          let currentPosition = editor.getPosition();
+          // Retrieve the current line content
+          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
+
+          // Propose a new position to move the cursor to
+          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+
+          // Check if the new position is beyond the last line of the editor
+          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
+            // Add a new line at the end of the editor
+            editor.executeEdits("addNewLine", [{
+            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+            text: "\n", 
+            forceMoveMarkers: true,
+            }]);
+          }
+          
+          // Run the entire line of code.
+          executeCode(currentLine);
+
+          // Move cursor to new position
+          editor.setPosition(newPosition);
+        } else {
+          // Code to run when Ctrl+Enter is pressed with selected code
+          executeCode(selectedText);
+        }
       });
     }
 
@@ -750,6 +783,11 @@ Note
       }
     };
 
+    // Helper function to check if selected text is empty
+    function isEmptyCodeText(selectedCodeText) {
+      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+    }
+
     // Registry of keyboard shortcuts that should be re-added to each editor window
     // when focus changes.
     const addWebRKeyboardShortCutCommands = () => {
@@ -762,10 +800,38 @@ Note
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+
         // Get the selected text from the editor
         const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Code to run when Ctrl+Enter is pressed (run selected code)
-        executeCode(selectedText);
+        // Check if no code is selected
+        if (isEmptyCodeText(selectedText)) {
+          // Obtain the current cursor position
+          let currentPosition = editor.getPosition();
+          // Retrieve the current line content
+          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
+
+          // Propose a new position to move the cursor to
+          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+
+          // Check if the new position is beyond the last line of the editor
+          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
+            // Add a new line at the end of the editor
+            editor.executeEdits("addNewLine", [{
+            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+            text: "\n", 
+            forceMoveMarkers: true,
+            }]);
+          }
+          
+          // Run the entire line of code.
+          executeCode(currentLine);
+
+          // Move cursor to new position
+          editor.setPosition(newPosition);
+        } else {
+          // Code to run when Ctrl+Enter is pressed with selected code
+          executeCode(selectedText);
+        }
       });
     }
 
