@@ -1,0 +1,51 @@
+name: Question
+description: Ask a question
+labels: [q&a]
+title: "[Q&A]: "
+body:
+  - type: markdown
+    attributes: 
+      value: |
+        **Before You Begin:**
+        1. Check the [**quarto-webr Issue Tracker**](https://github.com/coatless/quarto-webr/issues?q=is%3Aissue+) to ensure your question hasn't already been addressed.
+  
+        2. If you're uncertain, feel free to create a new issue; we appreciate your engagement.
+  
+        **Creating a New Issue:**
+  
+        If you're creating a new issue, please provide the following information:
+  
+        1. **Description**: Clearly state your question or problem.
+  
+        2. **Goal**: Explain what you're trying to achieve or the challenge you're facing.
+  
+        3. **Significance**: Share why this issue matters to you or the project.
+  
+        4. **Additional Information**: Include any relevant context, such as your system setup, actions taken so far, and any potential solutions you've considered.
+  
+        **Thank you for reaching out!**
+  - type: textarea
+    attributes:
+      label: What's your question?
+      description: |
+          You can include webR-powered Quarto document code with your question by using:
+
+          ````qmd
+          ---
+          title: "Hello quarto-webr!"
+          format: html
+          filters:
+            - webr
+          ---
+
+          ```{webr-r}
+          1 + 1
+          ```
+          ````
+
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        _Thank you for opening this issue to ask a question!_
