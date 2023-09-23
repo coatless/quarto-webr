@@ -4,7 +4,7 @@ project:
     - CNAME
 
 website:
-  title: "quarto-webr: A Quarto Extension for webR"
+  title: "quarto-webr"
   reader-mode: true
   repo-url: https://github.com/coatless/quarto-webr
   repo-actions: [edit, issue]
@@ -35,8 +35,8 @@ website:
             text: README Example      
           - href: webr-code-cell-demos.qmd
             text: Exploring Interactive Code Cells
-          - href: webr-community-example-gallery.qmd
-            text: Community Example Gallery
+          - href: webr-community-examples.qmd
+            text: Community Examples
       - section: "Deployment"
         contents:
           - href: webr-communication-channels.qmd
