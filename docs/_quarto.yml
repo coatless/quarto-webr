@@ -35,6 +35,8 @@ website:
             text: README Example      
           - href: webr-code-cell-demos.qmd
             text: Exploring Interactive Code Cells
+          - href: webr-community-example-gallery.qmd
+            text: Community Example Gallery
       - section: "Deployment"
         contents:
           - href: webr-communication-channels.qmd
