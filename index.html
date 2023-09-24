@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr - Greetings from quarto-webr Wonderland!</title>
+<title>quarto-webr: A Quarto Extension for webR - Greetings from quarto-webr Wonderland!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -239,7 +239,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      quarto-webr
+      quarto-webr: A Quarto Extension for webR
       </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
@@ -255,7 +255,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">quarto-webr</a> 
+      <a href="./">quarto-webr: A Quarto Extension for webR</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/coatless/quarto-webr/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -337,8 +337,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-community-examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Community Examples</span></a>
+  <a href="./webr-community-example-gallery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Community Example Gallery</span></a>
   </div>
 </li>
       </ul>
@@ -483,11 +483,6 @@ summary(model)`,
       }
     };
 
-    // Helper function to check if selected text is empty
-    function isEmptyCodeText(selectedCodeText) {
-      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
-    }
-
     // Registry of keyboard shortcuts that should be re-added to each editor window
     // when focus changes.
     const addWebRKeyboardShortCutCommands = () => {
@@ -500,38 +495,10 @@ summary(model)`,
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-
         // Get the selected text from the editor
         const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Check if no code is selected
-        if (isEmptyCodeText(selectedText)) {
-          // Obtain the current cursor position
-          let currentPosition = editor.getPosition();
-          // Retrieve the current line content
-          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
-
-          // Propose a new position to move the cursor to
-          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
-
-          // Check if the new position is beyond the last line of the editor
-          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
-            // Add a new line at the end of the editor
-            editor.executeEdits("addNewLine", [{
-            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
-            text: "\n", 
-            forceMoveMarkers: true,
-            }]);
-          }
-          
-          // Run the entire line of code.
-          executeCode(currentLine);
-
-          // Move cursor to new position
-          editor.setPosition(newPosition);
-        } else {
-          // Code to run when Ctrl+Enter is pressed with selected code
-          executeCode(selectedText);
-        }
+        // Code to run when Ctrl+Enter is pressed (run selected code)
+        executeCode(selectedText);
       });
     }
 
@@ -639,7 +606,7 @@ summary(model)`,
   };
 </script>
 <p>At its core, the <a href="https://github.com/coatless/quarto-webr">quarto-webr extension</a> is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using <a href="https://docs.r-wasm.org/webr/latest/evaluating.html">webR’s JavaScript API</a>, granting you unparalleled freedom to harness the power of R in innovative ways.</p>
-<p>With this in mind, let’s dive in and kickstart your journey with interactive code cells by <a href="./webr-first-steps.html">creating our very first webR-powered Quarto document</a> or <a href="./webr-code-cell-demos.html">exploring interactive code cells</a>!</p>
+<p>With this in mind, let’s dive in and kickstart your journey with interactive code cells by creating our very first <a href="./webr-first-steps.html">webR-powered Quarto document</a>!</p>
 
 
 
