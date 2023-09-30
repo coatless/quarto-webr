@@ -1,0 +1,95 @@
+---
+title: "Example page"
+webr:  
+  show-startup-message: true    # Display status of webR initialization
+  packages: ['ggplot2', 'dplyr'] # Pre-install dependency
+---
+
+On this page, we set two options directly in the Quarto document. The rest of the options are coming from the `_quarto.yml` project file. These options are considered "global".
+
+The local options that we enabled are to show the webR status bar and to pre-install the `ggplot2` and `dplyr` packages. We create a hypothetical document that compares and constrasts Base R code with Tidyverse code.
+
+
+# Sorting
+
+Consider the need to find the highest or lowest values. In this case, we're seeking to sort or modify the order of the data.
+
+::: {.panel-tabset group="language"}
+
+## Base R
+
+```{webr-r}
+within(mtcars, {
+    mtcars[order(cyl, disp), , drop = FALSE]
+})
+```
+
+## tidyverse
+
+```{webr-r}
+library(dplyr)
+mtcars |> 
+    arrange(cyl, disp)
+```
+
+
+::: 
+
+# Summarize
+
+Next, let's take a look at how summarization differs between Base R and the Tidyverse
+
+::: {.panel-tabset group="language"}
+
+## Base R
+
+```{webr-r}
+mtcars_by <- by(mtcars, mtcars$cyl, function(df) {
+  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))
+})
+do.call(rbind, mtcars_by)
+```
+
+## tidyverse
+
+```{webr-r}
+library(dplyr)
+
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(mean = mean(disp), n = n())
+```
+
+
+::: 
+
+# Graphing
+
+Next, let's take a look at how summarization differs between Base R and the Tidyverse
+
+::: {.panel-tabset group="language"}
+
+## Base R
+
+```{webr-r}
+plot(mtcars$wt, mtcars$mpg,
+   main = "Scatterplot in Base R",
+   xlab = "Car Weight", ylab = "MPG", 
+   col = "blue", lwd = 1)
+abline(lm(mtcars$mpg ~ mtcars$wt), col = "red")
+```
+
+## tidyverse
+
+```{webr-r}
+library(ggplot2)
+
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(size=2, color="blue", stroke=1) + 
+  geom_smooth(method=lm, color="red") +
+  ggtitle("Scatterplot in ggplot2") +
+  xlab("Car Weight")
+```
+
+
+::: 

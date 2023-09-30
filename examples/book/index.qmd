@@ -1,0 +1,12 @@
+---
+title: "Quarto Webr Demo Book"
+---
+
+# Welcome
+
+Welcome to a demo Book that uses [`quarto-webr`](https://github.com/coatless/quarto-webr) to generate interactive code cells using [Quarto](https://quarto.org).
+
+```{webr-r}
+print("Hello there! Welcome to a quarto-webR powered book!")
+```
+

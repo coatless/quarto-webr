@@ -2,6 +2,7 @@ project:
   type: website
   resources: 
     - CNAME
+    - ../examples/*
 
 website:
   title: "quarto-webr"
