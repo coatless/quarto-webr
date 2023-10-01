@@ -50,6 +50,8 @@ website:
             text: Developer Resources
           - href: webr-extension-website.qmd
             text: Extension Website Notes
+          - href: webr-release-notes.qmd
+            text: Release Notes
 
 format:
   html:
