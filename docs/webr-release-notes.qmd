@@ -7,6 +7,13 @@ format:
     toc: true
 ---
 
+# 0.3.7: ??? (????)
+
+## Documentation
+
+- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/examples) containing examples for [HTML Documents](), [Books](), and [Websites]().
+- Added a documentation page that contains the extension updates and release dates.
+
 # 0.3.6: Ready, Set, Run. (09-24-2023)
 
 ## Feature
