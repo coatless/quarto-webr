@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James Joseph Balamuta">
-<meta name="dcterms.date" content="2023-09-15">
 
-<title>quarto-webr - Communication Channels</title>
+<title>quarto-webr - webR in Quarto HTML Documents</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -229,7 +193,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     "baseURL": "",
     "serviceWorkerUrl": "",
     "homedir": "/home/web_user", 
-    "channelType": ChannelType.PostMessage
+    "channelType": ChannelType.Automatic
   });
 
   // Initialization WebR
@@ -262,7 +226,6 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -274,7 +237,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-communication-channels.html">Deployment</a></li><li class="breadcrumb-item"><a href="./webr-communication-channels.html">Communication Channels</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-readme-example.html">Demos</a></li><li class="breadcrumb-item"><a href="./qwebr-readme-example.html">README Example</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -318,31 +281,31 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-first-steps.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-first-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Your first webR-powered Quarto document</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-meta-options.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Customization Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-using-r-packages.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using R Packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-internal-cell.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-internal-cell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hiding and Executing Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-troubleshooting.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -359,19 +322,19 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-readme-example.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-readme-example.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">README Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploring Interactive Code Cells</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-community-examples.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-community-examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Community Examples</span></a>
   </div>
 </li>
@@ -388,7 +351,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-communication-channels.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
   </div>
 </li>
@@ -405,20 +368,26 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-acknowledgements.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-developer-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-developer-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Developer Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-extension-website.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-extension-website.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extension Website Notes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
       </ul>
@@ -429,23 +398,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#communication-channels-how-web-browser-and-webr-talk" id="toc-communication-channels-how-web-browser-and-webr-talk" class="nav-link active" data-scroll-target="#communication-channels-how-web-browser-and-webr-talk">Communication Channels: How Web Browser and webR Talk</a>
-  <ul class="collapse">
-  <li><a href="#specifying-how-webr-communicates" id="toc-specifying-how-webr-communicates" class="nav-link" data-scroll-target="#specifying-how-webr-communicates">Specifying How webR Communicates</a></li>
-  </ul></li>
-  <li><a href="#your-communication-channel-choices" id="toc-your-communication-channel-choices" class="nav-link" data-scroll-target="#your-communication-channel-choices">Your Communication Channel Choices</a>
-  <ul class="collapse">
-  <li><a href="#sec-automatic" id="toc-sec-automatic" class="nav-link" data-scroll-target="#sec-automatic">Using “automatic” for Communication (Default)</a></li>
-  <li><a href="#sec-shared-array-buffer" id="toc-sec-shared-array-buffer" class="nav-link" data-scroll-target="#sec-shared-array-buffer">Using “shared-array-buffer” for Communication</a></li>
-  <li><a href="#sec-service-worker" id="toc-sec-service-worker" class="nav-link" data-scroll-target="#sec-service-worker">Using “service-worker” for Communication</a></li>
-  <li><a href="#sec-post-message" id="toc-sec-post-message" class="nav-link" data-scroll-target="#sec-post-message">Using “post-message” for Communication</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-communication-channels.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -462,218 +415,22 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Communication Channels</h1>
-<p class="subtitle lead">Using the <code>channel-type</code> meta variable of the <code>webr</code> filter</p>
+<h1 class="title">webR in Quarto HTML Documents</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James Joseph Balamuta </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 15, 2023</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 25, 2023</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-<p>As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:</p>
-<ol type="1">
-<li><strong>Web Browser</strong>: This is your web browser, like Chrome or Firefox, which you use to surf the internet and interact with web pages.</li>
-<li><strong>webR</strong>: This is like a dedicated helper that specializes in running R code. It operates separately from your main web browser.</li>
-</ol>
-<p>Now, here’s why this separation is so important: webR’s special version of R can tackle complicated and time-consuming calculations without causing your web browser to freeze or become unresponsive when you’re on a web page that uses webR.</p>
-<p>Imagine trying to watch a video online while your computer is running a heavy software update. Without separating them, your video might start buffering, freeze, or even crash. But by putting the update in the background (on a separate worker, like webR), your video can continue to play smoothly. It’s the same concept with webR and your web browser – keeping things running smoothly without hiccups.</p>
-<p>For more details, please see the <a href="https://docs.r-wasm.org/webr/latest/">official webR documentation</a> on <a href="https://docs.r-wasm.org/webr/latest/communication.html#webr-channels">Worker Communication</a> and <a href="https://docs.r-wasm.org/webr/latest/serving.html">Serving Web Pages with webR</a>.</p>
-<section id="communication-channels-how-web-browser-and-webr-talk" class="level1">
-<h1>Communication Channels: How Web Browser and webR Talk</h1>
-<p>Now, let’s explore how your main web browser and the webR worker thread communicate with each other. They use what we call “communication channels” to swap information. Think of it like like passing notes between two people, but in a high-tech way.</p>
-<p>There are a few different types of communication channels available:</p>
-<ol type="1">
-<li><strong>“automatic” or <code>0</code> (Default):</strong>
-<ul>
-<li><strong>Requirements:</strong> Your setup should be prepared for either <code>"shared-array-buffer"</code> or <code>"service-worker"</code>.</li>
-<li><strong>Limitations:</strong> It’s not clear which option is being used.</li>
-</ul></li>
-<li><strong>“shared-array-buffer” or <code>1</code>:</strong>
-<ul>
-<li><strong>Requirements:</strong> This option requires something called “cross-origin isolation,” which you can read more about <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">here</a>.</li>
-<li><strong>Limitations:</strong> There aren’t any significant limitations to worry about.</li>
-</ul></li>
-<li><strong>“service-worker” or <code>2</code>:</strong>
-<ul>
-<li><strong>Requirements:</strong> You need to have JavaScript service workers set up, like <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>.</li>
-<li><strong>Limitations:</strong> The script for the service worker must be on the same website as the one using WebR.</li>
-</ul></li>
-<li><strong>“post-message” or <code>3</code>:</strong>
-<ul>
-<li><strong>Requirements:</strong> No special requirements are needed for this option.</li>
-<li><strong>Limitations:</strong> R code can’t be interrupted easily. Some advanced R features, like nested R REPLs, might not work as expected.</li>
-</ul></li>
-</ol>
-<p>When you start using WebR, it usually picks the best communication channel for you. However, you can manually choose a channel type if needed. Just remember that each option comes with its own set of requirements and limitations, so pick the one that suits your project best.</p>
-<p>In simpler terms, it’s like choosing the right tool for the job. Depending on what you’re doing, you might use different methods to pass messages between your web browser and webR.</p>
-<section id="specifying-how-webr-communicates" class="level2">
-<h2 class="anchored" data-anchor-id="specifying-how-webr-communicates">Specifying How webR Communicates</h2>
-<p>In a Quarto document’s YAML header, you can tell webR which communication channel to use by setting the <code>channel-type</code> option. It’s like telling webR how you want it to talk with your web browser. For example, if you want to use the <code>"post-message"</code> channel, you can do it like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Setting Up webR to use the PostMessage Channel"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">channel-type</span><span class="kw">:</span><span class="at"> </span><span class="st">"post-message"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> webr</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="your-communication-channel-choices" class="level1">
-<h1>Your Communication Channel Choices</h1>
-<p>The remainder of the document describes the different communication methods alongside ways to satisfy the requirements.</p>
-<section id="sec-automatic" class="level2">
-<h2 class="anchored" data-anchor-id="sec-automatic">Using “automatic” for Communication (Default)</h2>
-<p>By default, the <code>quarto-webr</code> extension guides webR to use the <code>"automatic"</code> option for <code>channel-type</code>, if you don’t specify the <code>channel-type</code> in your document’s YAML header. Let’s break down how this default setting works:</p>
-<ol type="1">
-<li><strong>Communication Attempts:</strong> webR will try two different communication channels in order:
-<ul>
-<li>First, it attempts to establish a communication channel using <code>"shared-array-buffer"</code>.</li>
-<li>If that doesn’t work, it will then try to use <code>"service-worker"</code>.</li>
-</ul></li>
-<li><strong>Fallback Behavior:</strong> If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It’s important to note that the <code>"automatic"</code> option doesn’t try to use the <code>"post-message"</code> option for communication.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One thing to be aware of is that when the <code>"automatic"</code> option is used, it adds two additional files, <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the <code>"service-worker"</code> option. For more details on this, please refer to the <a href="#sec-service-worker">Section&nbsp;2.3</a> section of the documentation.</p>
-</div>
-</div>
-<p>In summary, when you leave the <code>channel-type</code> unspecified, webR will follow the <code>"automatic"</code> option, attempting to use <code>"shared-array-buffer"</code> and then <code>"service-worker"</code>. If both attempts fail, your webR code cells will be inactive.</p>
-</section>
-<section id="sec-shared-array-buffer" class="level2">
-<h2 class="anchored" data-anchor-id="sec-shared-array-buffer">Using “shared-array-buffer” for Communication</h2>
-<p>Now, let’s explore the <code>"shared-array-buffer"</code> option for communication. When you specify <code>channel-type</code> as <code>"shared-array-buffer"</code>, webR aims to use something called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code>SharedArrayBuffer</code></a>. This choice, however, comes with some specific requirements and benefits:</p>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>Your web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is <a href="https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated">cross-origin isolated</a>. In simple terms, your server must be set up to allow this kind of communication otherwise webR will not work.</li>
-</ul>
-<p><strong>Benefits:</strong></p>
-<ul>
-<li>The benefit of using this approach is that webR runs notably faster. It’s like giving webR a high-speed lane for its operations.</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It’s important to note that the <code>"shared-array-buffer"</code> option isn’t currently available on platforms like <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a>. If you’re using these services, we recommend using the <code>channel-type: "post-message"</code> option instead. There’s a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed <a href="https://github.com/community/community/discussions/13309">here</a>.</p>
-</div>
-</div>
-<p>To help you set up the necessary headers for cross-origin isolation, we provide some guidance for both <a href="https://www.netlify.com/">Netlify</a> and <a href="http://nginx.org/">nginx</a> web server administrators:</p>
-<p><strong>For Netlify Configuration:</strong></p>
-<p>If you’re hosting your website with <a href="https://www.netlify.com/">Netlify</a>, you can add the following code to your <a href="https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file">netlify.toml configuration file</a>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span><span class="dt">headers</span><span class="kw">]]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">for</span> <span class="op">=</span> <span class="st">"/directory/with/webr/content/*"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">[</span><span class="dt">headers</span><span class="kw">.</span><span class="dt">values</span><span class="kw">]</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Opener-Policy</span> <span class="op">=</span> <span class="st">"same-origin"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Cross-Origin-Embedder-Policy</span> <span class="op">=</span> <span class="st">"require-corp"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>For nginx Web Server Administrators:</strong></p>
-<p>If you’re managing a server with <code>nginx</code>, you can use the <a href="http://nginx.org/en/docs/http/ngx_http_headers_module.html"><code>add_header</code></a> directive in your server’s configuration file, which is usually found at <code>/etc/nginx/nginx.conf</code>. Here’s an example:</p>
-<pre><code>server {
-  # Enable headers for the webr directory
-  location ^~ /directory/with/webr/content {
-    add_header "Cross-Origin-Opener-Policy" "same-origin";
-    add_header "Cross-Origin-Embedder-Policy" "require-corp";
-  }
-}</code></pre>
-<p>By following these instructions, you’ll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the <code>"shared-array-buffer"</code> option effectively.</p>
-</section>
-<section id="sec-service-worker" class="level2">
-<h2 class="anchored" data-anchor-id="sec-service-worker">Using “service-worker” for Communication</h2>
-<p>Here, we’ll dive into the <code>"service-worker"</code> option for communication.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <code>"service-worker"</code> option doesn’t work with <a href="https://quartopub.com/">Quarto Pub</a>. If you’re hosting documents with Quarto Pub, please use the <code>channel-type: "post-message"</code> option instead. There’s an ongoing effort to address the service worker upload issue with the Quarto team, which you can track <a href="https://github.com/quarto-dev/quarto-cli/issues/6828">here</a>.</p>
-</div>
-</div>
-<p>When you set <code>channel-type</code> to <code>"service-worker"</code>, webR changes its communication channel to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker API</a>. This means you need two worker scripts, <code>webr-worker.js</code> and <code>webr-serviceworker.js</code>, hosted on the same website as the page using webR.</p>
-<p>Here’s what you need to ensure:</p>
-<p><strong>1. Worker Scripts:</strong> The <code>quarto-webr</code> extension will automatically create and register these workers when your Quarto document is rendered.</p>
-<p><strong>2. Directory Structure:</strong> Your initial directory structure should include these files:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> demo-quarto-webr.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After rendering the Quarto document with the <code>"service-worker"</code> option, your directory will look like this:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions/coatless/quarto-webr</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.qmd</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>3. Hosting:</strong> When hosting your rendered document, you need to make sure the rendered HTML document and the service worker files (<code>webr-serviceworker.js</code> and <code>webr-worker.js</code>) are present on the server. This is important for everything to work correctly:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.html  <span class="co"># Rendered document</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js  <span class="co"># Service workers</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you want to change where the service workers are located, you can set the <code>service-worker-url</code> option in the document YAML. By default, the rendered document will search for the service workers in its current directory.</p>
-<p>In a nutshell, the “service-worker” option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.</p>
-</section>
-<section id="sec-post-message" class="level2">
-<h2 class="anchored" data-anchor-id="sec-post-message">Using “post-message” for Communication</h2>
-<p>Now, let’s delve into the <code>"post-message"</code> option. This sets up a communication channel using something called <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage">Post Message</a>. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.</p>
-<p>However, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) won’t work as expected. Instead, they’ll return empty values like <code>""</code> or <code>c('', '')</code>. Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.</p>
-<p>Feel free to experiment with the <code>"post-message"</code> interface in this webR code cell:</p>
+<p>This is a webr-enabled code cell in a Quarto HTML document.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
   webR...</button>
 <div id="webr-editor-1"></div>
@@ -693,11 +450,8 @@ Warning
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `# Attempt to used an input-blocked function
-x = readline("What is your favorite color?")
-
-## View the value of x
-# print(x)`,
+      value: `fit = lm(mpg ~ am, data = mtcars)
+summary(fit)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -884,8 +638,6 @@ x = readline("What is your favorite color?")
 </script>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1125,4 +877,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-readme-example.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-03-12">
+
+<title>quarto-webr - Release Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S8CXP9TZG0"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-acknowledgements.html">Extra</a></li><li class="breadcrumb-item"><a href="./qwebr-release-notes.html">Release Notes</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">quarto-webr</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/coatless/quarto-webr/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-first-steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Your first webR-powered Quarto document</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Customization Options</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using R Packages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-internal-cell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hiding and Executing Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Demos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-readme-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">README Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-community-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Community Examples</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Deployment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Communication Channels</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Extra</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-developer-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developer Resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-extension-website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extension Website Notes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Release Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">0.3.7: ??? (????)</a>
+  <ul class="collapse">
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  </ul></li>
+  <li><a href="#ready-set-run.-09-24-2023" id="toc-ready-set-run.-09-24-2023" class="nav-link" data-scroll-target="#ready-set-run.-09-24-2023">0.3.6: Ready, Set, Run. (09-24-2023)</a>
+  <ul class="collapse">
+  <li><a href="#feature" id="toc-feature" class="nav-link" data-scroll-target="#feature">Feature</a></li>
+  <li><a href="#bugfixes" id="toc-bugfixes" class="nav-link" data-scroll-target="#bugfixes">Bugfixes</a></li>
+  <li><a href="#documentation-1" id="toc-documentation-1" class="nav-link" data-scroll-target="#documentation-1">Documentation</a></li>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
+  </ul></li>
+  <li><a href="#seance-of-communication-channels-09-17-2023" id="toc-seance-of-communication-channels-09-17-2023" class="nav-link" data-scroll-target="#seance-of-communication-channels-09-17-2023">0.3.5: Seance of Communication Channels (09-17-2023)</a>
+  <ul class="collapse">
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#bugfixes-1" id="toc-bugfixes-1" class="nav-link" data-scroll-target="#bugfixes-1">Bugfixes</a></li>
+  <li><a href="#documentation-2" id="toc-documentation-2" class="nav-link" data-scroll-target="#documentation-2">Documentation</a></li>
+  <li><a href="#deployment-1" id="toc-deployment-1" class="nav-link" data-scroll-target="#deployment-1">Deployment</a></li>
+  </ul></li>
+  <li><a href="#rocking-the-monaco-09-13-2023" id="toc-rocking-the-monaco-09-13-2023" class="nav-link" data-scroll-target="#rocking-the-monaco-09-13-2023">0.3.2: Rocking the Monaco (09-13-2023)</a>
+  <ul class="collapse">
+  <li><a href="#feature-1" id="toc-feature-1" class="nav-link" data-scroll-target="#feature-1">Feature</a></li>
+  <li><a href="#bugfixes-2" id="toc-bugfixes-2" class="nav-link" data-scroll-target="#bugfixes-2">Bugfixes</a></li>
+  </ul></li>
+  <li><a href="#maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023" id="toc-maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023" class="nav-link" data-scroll-target="#maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023">0.3.1: Maintenance Release: Upgrade to webR v0.2.1 (09-12-2023)</a>
+  <ul class="collapse">
+  <li><a href="#feature-2" id="toc-feature-2" class="nav-link" data-scroll-target="#feature-2">Feature</a></li>
+  </ul></li>
+  <li><a href="#across-the-webr-verse-to-v0.2.0-08-17-2023" id="toc-across-the-webr-verse-to-v0.2.0-08-17-2023" class="nav-link" data-scroll-target="#across-the-webr-verse-to-v0.2.0-08-17-2023">0.3.0: Across the webR-Verse to v0.2.0 (08-17-2023)</a>
+  <ul class="collapse">
+  <li><a href="#feature-3" id="toc-feature-3" class="nav-link" data-scroll-target="#feature-3">Feature</a></li>
+  </ul></li>
+  <li><a href="#demo-demo-demo-08-17-2023" id="toc-demo-demo-demo-08-17-2023" class="nav-link" data-scroll-target="#demo-demo-demo-08-17-2023">0.2.1: Demo, Demo, Demo! (08-17-2023)</a>
+  <ul class="collapse">
+  <li><a href="#bug-fix" id="toc-bug-fix" class="nav-link" data-scroll-target="#bug-fix">Bug fix</a></li>
+  <li><a href="#deployment-2" id="toc-deployment-2" class="nav-link" data-scroll-target="#deployment-2">Deployment</a></li>
+  </ul></li>
+  <li><a href="#accessibility-with-the-monaco-editor-05-01-2023" id="toc-accessibility-with-the-monaco-editor-05-01-2023" class="nav-link" data-scroll-target="#accessibility-with-the-monaco-editor-05-01-2023">0.2.0: Accessibility with the Monaco Editor (05-01-2023)</a>
+  <ul class="collapse">
+  <li><a href="#breaking-changes" id="toc-breaking-changes" class="nav-link" data-scroll-target="#breaking-changes">Breaking Changes</a></li>
+  <li><a href="#features-1" id="toc-features-1" class="nav-link" data-scroll-target="#features-1">Features</a></li>
+  </ul></li>
+  <li><a href="#setting-options-in-document-yaml-04-11-2023" id="toc-setting-options-in-document-yaml-04-11-2023" class="nav-link" data-scroll-target="#setting-options-in-document-yaml-04-11-2023">0.1.0: Setting Options in Document YAML (04-11-2023)</a>
+  <ul class="collapse">
+  <li><a href="#features-2" id="toc-features-2" class="nav-link" data-scroll-target="#features-2">Features</a></li>
+  </ul></li>
+  <li><a href="#execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023" id="toc-execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023" class="nav-link" data-scroll-target="#execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023">0.0.4: Execute webr cells when developing in VS Code or RStudio (03-30-2023)</a>
+  <ul class="collapse">
+  <li><a href="#breaking-changes-1" id="toc-breaking-changes-1" class="nav-link" data-scroll-target="#breaking-changes-1">Breaking Changes</a></li>
+  </ul></li>
+  <li><a href="#escape-escape-03-19-2023" id="toc-escape-escape-03-19-2023" class="nav-link" data-scroll-target="#escape-escape-03-19-2023">0.0.3: Escape Escape! (03-19-2023)</a>
+  <ul class="collapse">
+  <li><a href="#bugfix" id="toc-bugfix" class="nav-link" data-scroll-target="#bugfix">Bugfix</a></li>
+  <li><a href="#documentation-3" id="toc-documentation-3" class="nav-link" data-scroll-target="#documentation-3">Documentation</a></li>
+  </ul></li>
+  <li><a href="#all-about-that-margin-03-14-2023" id="toc-all-about-that-margin-03-14-2023" class="nav-link" data-scroll-target="#all-about-that-margin-03-14-2023">0.0.2: All about that margin (03-14-2023)</a>
+  <ul class="collapse">
+  <li><a href="#bug-fixes" id="toc-bug-fixes" class="nav-link" data-scroll-target="#bug-fixes">Bug Fixes</a></li>
+  </ul></li>
+  <li><a href="#democratizing-data-science-03-12-2023" id="toc-democratizing-data-science-03-12-2023" class="nav-link" data-scroll-target="#democratizing-data-science-03-12-2023">0.0.1: Democratizing Data Science (03-12-2023)</a>
+  <ul class="collapse">
+  <li><a href="#features-3" id="toc-features-3" class="nav-link" data-scroll-target="#features-3">Features</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-release-notes.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Release Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 12, 2023</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">October 1, 2023</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="section" class="level1">
+<h1>0.3.7: ??? (????)</h1>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li>Added an <a href="https://github.com/coatless/quarto-webr/tree/main/examples"><code>examples/</code> directory</a> containing examples for <a href="">HTML Documents</a>, <a href="">Books</a>, and <a href="">Websites</a>.</li>
+<li>Added a documentation page that contains the extension updates and release dates.</li>
+</ul>
+</section>
+</section>
+<section id="ready-set-run.-09-24-2023" class="level1">
+<h1>0.3.6: Ready, Set, Run. (09-24-2023)</h1>
+<section id="feature" class="level2">
+<h2 class="anchored" data-anchor-id="feature">Feature</h2>
+<ul>
+<li>Improved the run selected code shortcut to now also run the current line if no selection is present and advance to the next. (#43)
+<ul>
+<li>Use: <kbd>Cmd</kbd> + <kbd>Enter</kbd> on macOS or <kbd>Ctrl</kbd> + <kbd>Enter</kbd> on Windows</li>
+</ul></li>
+</ul>
+</section>
+<section id="bugfixes" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
+<ul>
+<li>Fixed space not being preserved (h/t <span class="citation" data-cites="nguyenllpsych">@nguyenllpsych</span>, #39)</li>
+<li>Fixed webR not initializing if a document lacked a title (h/t <span class="citation" data-cites="jimhester">@jimhester</span>, #40)</li>
+</ul>
+</section>
+<section id="documentation-1" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-1">Documentation</h2>
+<ul>
+<li>Added a walkthrough video to the <a href="https://quarto-webr.thecoatlessprofessor.com/webr-first-steps.html">getting started page</a>.</li>
+<li>Added a new page containing <a href="https://quarto-webr.thecoatlessprofessor.com/webr-community-examples.html">community examples</a> of the <code>quarto-webr</code> extension in the wild.</li>
+<li>Added an example on fill-in-the-blank usage.</li>
+<li>Clarified how interactive code cells could be used to explore what-if scenarios.</li>
+<li>Minor documentation fixes.</li>
+</ul>
+</section>
+<section id="deployment" class="level2">
+<h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
+<ul>
+<li>Add new issue templates for questions and examples.</li>
+<li>Improved GitHub repo issue template formatting.</li>
+</ul>
+</section>
+</section>
+<section id="seance-of-communication-channels-09-17-2023" class="level1">
+<h1>0.3.5: Seance of Communication Channels (09-17-2023)</h1>
+<section id="features" class="level2">
+<h2 class="anchored" data-anchor-id="features">Features</h2>
+<ul>
+<li>New documentation website is available at: <a href="https://quarto-webr.thecoatlessprofessor.com" class="uri">https://quarto-webr.thecoatlessprofessor.com</a></li>
+<li>Document option <code>channel-type</code> sets the communication channel webR uses.
+<ul>
+<li><code>channel-type: automatic</code> (default): Communicates using either <code>shared-array-buffer</code> or <code>service-worker</code>.</li>
+<li><code>channel-type: shared-buffer-array</code>: Fastest communication option, but requires setting up HTTP headers.</li>
+<li><code>channel-type: service-worker</code>: Slower communication option and requires worker scripts to be next to the rendered document.</li>
+<li><code>channel-type: post-message</code>: Easiest setup option at the expense of being unable to interrupt the R process or accept user-input.</li>
+</ul></li>
+<li>Code cell option <code>context</code> controls whether the code and output are shown or suppressed.
+<ul>
+<li><code>context: interactive</code>(default) shows both code and output.</li>
+<li><code>context: setup</code> suppresses both code and output.</li>
+<li><code>context: output</code> suppresses code but shows its output.</li>
+<li>To use the new hidden code cell feature, the code cell needs <code>#| context: &lt;value&gt;</code> like so:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: setup</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">my_hidden_variable = 11</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bugfixes-1" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes-1">Bugfixes</h2>
+<ul>
+<li>Fixed webR status indicator appearing outside of the header. (#33)</li>
+<li>Fixed button styling difference between standalone documents and website-based documents.</li>
+</ul>
+</section>
+<section id="documentation-2" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-2">Documentation</h2>
+<ul>
+<li>Created the <code>docs</code> folder inside the repository to host the documentation website.</li>
+<li>Moved documentation from the README.md file onto separate web pages.
+<ul>
+<li><em>Acknowledgements</em> now has a dedicated page thanking contributors and collaborators.</li>
+<li><em>Developer resources</em> expands on the reference resources.</li>
+<li><em>Using R packages</em> describes the best practices for using R’s ecosystem of extensions</li>
+<li><em>Customization Options</em> describes the document level options available to be set in document’s YAML field.</li>
+</ul></li>
+<li>Added new documentation entries for hidden code cell evaluation and communication channels.</li>
+<li>Added a rendered version of the README example to the website.</li>
+<li>Incorporated additional examples into the “Exploring Interactive Code Cells” demo document.</li>
+</ul>
+</section>
+<section id="deployment-1" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-1">Deployment</h2>
+<ul>
+<li>Added a Quarto action to render and publish the documentation website.</li>
+<li>Added issue templates for feature requests and bug fixes.</li>
+<li>Symlink the <code>_extension</code> directory into <code>docs</code> to avoid needing to add the extension on each render.</li>
+</ul>
+</section>
+</section>
+<section id="rocking-the-monaco-09-13-2023" class="level1">
+<h1>0.3.2: Rocking the Monaco (09-13-2023)</h1>
+<section id="feature-1" class="level2">
+<h2 class="anchored" data-anchor-id="feature-1">Feature</h2>
+<ul>
+<li>Upgraded the MonacoEditor version to v0.43.0 from v0.31.0</li>
+</ul>
+</section>
+<section id="bugfixes-2" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes-2">Bugfixes</h2>
+<ul>
+<li>Fixed <code>quarto-webr</code> documents requiring a reload in Safari to see/interact with code cells (#21)</li>
+<li>Fixed keyboard shortcuts not re-initializing correctly on multiple Monaco Editors by re-registering shortcuts on code cell focus (#28)</li>
+</ul>
+</section>
+</section>
+<section id="maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023" class="level1">
+<h1>0.3.1: Maintenance Release: Upgrade to webR v0.2.1 (09-12-2023)</h1>
+<section id="feature-2" class="level2">
+<h2 class="anchored" data-anchor-id="feature-2">Feature</h2>
+<ul>
+<li>Upgrades the extension to use <code>webR</code> v0.2.1</li>
+</ul>
+</section>
+</section>
+<section id="across-the-webr-verse-to-v0.2.0-08-17-2023" class="level1">
+<h1>0.3.0: Across the webR-Verse to v0.2.0 (08-17-2023)</h1>
+<section id="feature-3" class="level2">
+<h2 class="anchored" data-anchor-id="feature-3">Feature</h2>
+<ul>
+<li>Implements changes required to run <code>webR</code> v0.2.0</li>
+</ul>
+</section>
+</section>
+<section id="demo-demo-demo-08-17-2023" class="level1">
+<h1>0.2.1: Demo, Demo, Demo! (08-17-2023)</h1>
+<section id="bug-fix" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fix">Bug fix</h2>
+<ul>
+<li>Attempted to resolve missing service workers for published Quarto webR enabled documents on <a href="https://quarto.pub" class="uri">https://quarto.pub</a></li>
+</ul>
+</section>
+<section id="deployment-2" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-2">Deployment</h2>
+<ul>
+<li>Added a GitHub actions website deployment workflow to generate sample pages.</li>
+<li>Added a <code>devcontainer.json</code> for development on GitHub</li>
+<li>Added a script to update the version of Quarto used inside of the <code>devcontainer.json</code>.</li>
+</ul>
+</section>
+</section>
+<section id="accessibility-with-the-monaco-editor-05-01-2023" class="level1">
+<h1>0.2.0: Accessibility with the Monaco Editor (05-01-2023)</h1>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking Changes</h2>
+<ul>
+<li>We’ve transitioned the code editor used in the <code>quarto-webr</code> extension to <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a> from <a href="https://codemirror.net/">CodeMirror</a> for improved accessibility.
+<ul>
+<li>Special thanks go out to <a href="https://github.com/jooyoungseo">JooYoung Seo</a> (<a href="https://ischool.illinois.edu/people/jooyoung-seo">Website</a>) for identifying the <a href="https://github.com/coatless/quarto-webr/issues/15">accessibility issue</a> and submitting a <a href="https://github.com/coatless/quarto-webr/pull/16">pull request to incorporate the editor</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="features-1" class="level2">
+<h2 class="anchored" data-anchor-id="features-1">Features</h2>
+<ul>
+<li>Code editing areas on the Quarto document now use the <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a> for improved accessibility.</li>
+<li>Execute code using keyboard shortcuts:
+<ul>
+<li>Run selected code using: <code>[Cmd + Enter]</code> on macOS or <code>[Ctrl+Enter]</code> on Windows</li>
+<li>Run the entire code area using: <code>[Shift+Enter]</code></li>
+</ul></li>
+<li>Dynamically growing code editor as new lines are added.</li>
+<li>Announcing the status changes of webR initialization states through arias.</li>
+</ul>
+</section>
+</section>
+<section id="setting-options-in-document-yaml-04-11-2023" class="level1">
+<h1>0.1.0: Setting Options in Document YAML (04-11-2023)</h1>
+<section id="features-2" class="level2">
+<h2 class="anchored" data-anchor-id="features-2">Features</h2>
+<ul>
+<li>Upgraded the version of webR to use v0.1.1.</li>
+<li>Set options directly inside the document’s YAML header to control webR:
+<ul>
+<li>Support is available for setting the following <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html">WebR.WebROptions</a> options:
+<ul>
+<li><code>home-dir</code>: The WebAssembly user’s home directory and initial working directory (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir"><code>Documentation</code></a>). Default: <code>'/home/web_user'</code>.</li>
+<li><code>base-url</code>: The base URL used for downloading R WebAssembly binaries. (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl"><code>Documentation</code></a>). Default: <code>'https://webr.r-wasm.org/[version]/'</code>.</li>
+<li><code>service-worker-url</code>: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (<a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl"><code>Documentation</code></a>). Default: <code>''</code>.</li>
+</ul></li>
+</ul></li>
+<li>webR initialization status stages are now described and shown as stoplights (inspired by <a href="https://github.com/hrbrmstr">Bob Rudis</a>)
+<ul>
+<li><code>show-startup-message</code>: Display in the document header the state of WebR initialization. Default: <code>true</code></li>
+<li><code>show-header-message</code>: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: <code>false</code></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://user-images.githubusercontent.com/833642/231114983-191c8944-f4ab-4024-abe0-089952ab1eaa.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New status lighting</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023" class="level1">
+<h1>0.0.4: Execute webr cells when developing in VS Code or RStudio (03-30-2023)</h1>
+<section id="breaking-changes-1" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes-1">Breaking Changes</h2>
+<ul>
+<li>We’ve transitioned to using the <code>{webr-r}</code> code cell designation from our original <code>{webr}</code> designation.
+<ul>
+<li>The <code>{webr-r}</code> tag allows for code cell evaluation prior to rendering the document</li>
+<li>Moreover, the <code>{webr-r}</code> component does not need to be registered under the <code>knitr</code> compute engine.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="escape-escape-03-19-2023" class="level1">
+<h1>0.0.3: Escape Escape! (03-19-2023)</h1>
+<section id="bugfix" class="level2">
+<h2 class="anchored" data-anchor-id="bugfix">Bugfix</h2>
+<ul>
+<li>Escape characters <code>\</code> are further escaped.</li>
+</ul>
+<pre><code>```{webr}
+add_one &lt;- \(x) x + 1
+add_one(2)
+```</code></pre>
+<p>Should now appear in a webR code cell as:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>add_one <span class="ot">&lt;-</span> \(x) x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_one</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="documentation-3" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-3">Documentation</h2>
+<ul>
+<li>Added details on how to host webR content</li>
+<li>Added additional examples and details in the <code>webr-demo.qmd</code> file.</li>
+</ul>
+</section>
+</section>
+<section id="all-about-that-margin-03-14-2023" class="level1">
+<h1>0.0.2: All about that margin (03-14-2023)</h1>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>Fixed the error of <code>figure margins too large</code> due to canvas sizing issues.</li>
+<li>Removed the attempt to switch between <code>/</code> and <code>''</code> if COOP and COEP are not present. Defaults to relative directory.</li>
+</ul>
+</section>
+</section>
+<section id="democratizing-data-science-03-12-2023" class="level1">
+<h1>0.0.1: Democratizing Data Science (03-12-2023)</h1>
+<section id="features-3" class="level2">
+<h2 class="anchored" data-anchor-id="features-3">Features</h2>
+<ul>
+<li>Enable <a href="https://docs.r-wasm.org/webr/latest/">webR</a> code cells inside of a Quarto document.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/WLFHcQE.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><code>quarto-webr</code> Filter in Action</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

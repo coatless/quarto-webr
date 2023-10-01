@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James Joseph Balamuta">
+<meta name="dcterms.date" content="2023-09-14">
 
-<title>quarto-webr - webR in Quarto HTML Documents</title>
+<title>quarto-webr - Customization Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,165 +104,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
-
-<style>
-  .monaco-editor pre {
-    background-color: unset !important;
-  }
-
-  .btn-webr {
-    background-color: #EEEEEE;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0; /* Extra styling for consistency */
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    -webkit-text-decoration: none;
-    -moz-text-decoration: none;
-    -ms-text-decoration: none;
-    -o-text-decoration: none;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    border-color: #dee2e6;
-    border: 1px solid rgba(0,0,0,0);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-
-  .btn-webr:hover {
-    color: #000;
-    background-color: #e3e6ea;
-    border-color: #e1e5e9;
-  }
-
-  .btn-webr:disabled,.btn-webr.disabled,fieldset:disabled .btn-webr {
-    pointer-events: none;
-    opacity: .65
-  }
-</style>
-
-<script type="module">
-
-  // Start a timer
-  const initializeWebRTimerStart = performance.now();
-
-  // Determine if we need to install R packages
-  var installRPackagesList = [''];
-  // Check to see if we have an empty array, if we do set to skip the installation.
-  var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
-
-  // Display a startup message?
-  var showStartupMessage = true;
-  var showHeaderMessage = false;
-  if (showStartupMessage) {
-
-    // Create the outermost div element
-    var quartoTitleMeta = document.createElement("div");
-    quartoTitleMeta.classList.add("quarto-title-meta");
-
-    // Create the first inner div element
-    var firstInnerDiv = document.createElement("div");
-
-    // Create the second inner div element with "WebR Status" heading 
-    // and contents
-    var secondInnerDiv = document.createElement("div");
-    secondInnerDiv.classList.add("quarto-title-meta-heading");
-    secondInnerDiv.innerText = "WebR Status";
-
-    // Add another inner div
-    var secondInnerDivContents = document.createElement("div");
-    secondInnerDivContents.classList.add("quarto-title-meta-contents");
-
-    // Describe the WebR state
-    var startupMessageWebR = document.createElement("p");
-    startupMessageWebR.innerText = "🟡 Loading...";
-    startupMessageWebR.setAttribute("id", "startup");
-    // Add `aria-live` to auto-announce the startup status to screen readers
-    startupMessageWebR.setAttribute("aria-live", "assertive");
-
-    // Put everything together
-    secondInnerDivContents.appendChild(startupMessageWebR);
-
-    // Add a status indicator for COOP and COEP Headers
-    if (showHeaderMessage) {
-      var crossOriginMessage = document.createElement("p");
-      crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
-      crossOriginMessage.setAttribute("id", "coop-coep-header");
-      secondInnerDivContents.appendChild(crossOriginMessage);
-    }
-
-    firstInnerDiv.appendChild(secondInnerDiv);
-    firstInnerDiv.appendChild(secondInnerDivContents);
-    quartoTitleMeta.appendChild(firstInnerDiv);
-
-    // Add new element as last child in header element
-    var header = document.getElementById("title-block-header");
-
-    // Check if the header option is present or missing
-    if(header) {
-      // If present, directly append the child element.
-      header.appendChild(quartoTitleMeta);
-    } else {
-      // Attempt to place the new element inside a header _after_ the Monaco initialization
-      var monacoScript = document.getElementById("webr-monaco-editor-init");
-      var header = document.createElement("header");
-      header.setAttribute("id", "title-block-header");
-      // Now attempt to add the webR area to the title
-      header.appendChild(quartoTitleMeta);
-      // Include the header after the script tag
-      monacoScript.after(header);
-    }
-  }
-
-  // Retrieve the webr.mjs
-  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
-
-  // Populate WebR options with defaults or new values based on 
-  // webr meta
-  globalThis.webR = new WebR({
-    "baseURL": "",
-    "serviceWorkerUrl": "",
-    "homedir": "/home/web_user", 
-    "channelType": ChannelType.Automatic
-  });
-
-  // Initialization WebR
-  await globalThis.webR.init();
-
-  // Setup a shelter
-  globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
-
-  // Installing Packages
-  if (showStartupMessage && setupRPackages) {
-    // If initialized, but we have packages to install switch status
-    startupMessageWebR.innerText = "🟡 Installing package dependencies..."
-    // Install packages
-    await globalThis.webR.installPackages(installRPackagesList)
-  }
-
-  // Switch to allowing code to be executed
-  document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerText = "Run code";
-    btn.disabled = false;
-  });
-
-  // Stop timer
-  const initializeWebRTimerEnd = performance.now();
-
-  if (showStartupMessage) {
-    // If initialized, switch to a green light
-    startupMessageWebR.innerText = "🟢 Ready!"
-  }
-</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -238,7 +117,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./webr-readme-example.html">Demos</a></li><li class="breadcrumb-item"><a href="./webr-readme-example.html">README Example</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-meta-options.html">Customization Options</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -282,31 +161,31 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-first-steps.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-first-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Your first webR-powered Quarto document</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-meta-options.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Customization Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-using-r-packages.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using R Packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-internal-cell.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-internal-cell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hiding and Executing Code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-troubleshooting.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -323,19 +202,19 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-readme-example.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-readme-example.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">README Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploring Interactive Code Cells</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-community-examples.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-community-examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Community Examples</span></a>
   </div>
 </li>
@@ -352,7 +231,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-communication-channels.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
   </div>
 </li>
@@ -369,20 +248,26 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-acknowledgements.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-developer-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-developer-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Developer Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./webr-extension-website.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-extension-website.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extension Website Notes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
       </ul>
@@ -393,246 +278,160 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#customization-options" id="toc-customization-options" class="nav-link active" data-scroll-target="#customization-options">Customization Options</a>
+  <ul class="collapse">
+  <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
+  <ul class="collapse">
+  <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
+  <li><a href="#base-url" id="toc-base-url" class="nav-link" data-scroll-target="#base-url"><code>base-url</code></a></li>
+  <li><a href="#channel-type" id="toc-channel-type" class="nav-link" data-scroll-target="#channel-type"><code>channel-type</code></a></li>
+  <li><a href="#service-worker-url" id="toc-service-worker-url" class="nav-link" data-scroll-target="#service-worker-url"><code>service-worker-url</code></a></li>
+  </ul></li>
+  <li><a href="#native-extension-options" id="toc-native-extension-options" class="nav-link" data-scroll-target="#native-extension-options">Native Extension Options</a>
+  <ul class="collapse">
+  <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
+  <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-meta-options.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
-<script type="module" id="webr-monaco-editor-init">
-
-  // Configure the Monaco Editor's loader
-  require.config({
-    paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs'
-    }
-  });
-</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">webR in Quarto HTML Documents</h1>
+<h1 class="title">Customization Options</h1>
+<p class="subtitle lead">Fine-Tuning <code>quarto-webr</code> with Powerful Configuration Options</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>James Joseph Balamuta </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 14, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">October 1, 2023</p>
+    </div>
+  </div>
     
   </div>
   
 
 </header>
 
-<p>This is a webr-enabled code cell in a Quarto HTML document.</p>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">Loading
-  webR...</button>
-<div id="webr-editor-1"></div>
-<div id="webr-code-output-1" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.</p>
+<section id="customization-options" class="level1">
+<h1>Customization Options</h1>
+<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">engine</span><span class="kw">:</span><span class="at"> knitr</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">show-startup-message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="webr-options" class="level2">
+<h2 class="anchored" data-anchor-id="webr-options">webR options</h2>
+<p>By specifying various <code>WebROptions</code> options in the document YAML, you can create a personalized webR experience</p>
+<section id="home-dir" class="level3">
+<h3 class="anchored" data-anchor-id="home-dir"><code>home-dir</code></h3>
+<ul>
+<li><strong>Description</strong>: Set the WebAssembly user’s home directory and initial working directory.</li>
+<li><strong>Default Value</strong>: <code>'/home/web_user'</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir">homeDir</a></li>
+</ul>
+</section>
+<section id="base-url" class="level3">
+<h3 class="anchored" data-anchor-id="base-url"><code>base-url</code></h3>
+<ul>
+<li><strong>Description</strong>: Define the base URL for downloading R WebAssembly binaries.</li>
+<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/[version]/'</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl">baseUrl</a></li>
+</ul>
+</section>
+<section id="channel-type" class="level3">
+<h3 class="anchored" data-anchor-id="channel-type"><code>channel-type</code></h3>
+<ul>
+<li><strong>Description</strong>: Specify the communication channel type to interact with webR.</li>
+<li><strong>Default Value</strong>: <code>"automatic"</code> (0)</li>
+<li><strong>Possible Values</strong>: <code>"automatic"</code> (0), <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).</li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype">channelType</a></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-1");
-  const outputDiv = document.getElementById("webr-code-output-1");
-  const editorDiv = document.getElementById("webr-editor-1");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
-  // Load the Monaco Editor and create an instance
-  let editor;
-  require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(editorDiv, {
-      value: `fit = lm(mpg ~ am, data = mtcars)
-summary(fit)`,
-      language: 'r',
-      theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      fontSize: '17.5rem',               // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
-    });
-
-    // Dynamically modify the height of the editor window if new lines are added.
-    let ignoreEvent = false;
-    const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
-      // We're avoiding a width change
-      //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
-      try {
-        ignoreEvent = true;
-
-        // The key to resizing is this call
-        editor.layout();
-      } finally {
-        ignoreEvent = false;
-      }
-    };
-
-    // Helper function to check if selected text is empty
-    function isEmptyCodeText(selectedCodeText) {
-      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
-    }
-
-    // Registry of keyboard shortcuts that should be re-added to each editor window
-    // when focus changes.
-    const addWebRKeyboardShortCutCommands = () => {
-      // Add a keydown event listener for Shift+Enter to run all code in cell
-      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
-
-        // Retrieve all text inside the editor
-        executeCode(editor.getValue());
-      });
-
-      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-
-        // Get the selected text from the editor
-        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
-        // Check if no code is selected
-        if (isEmptyCodeText(selectedText)) {
-          // Obtain the current cursor position
-          let currentPosition = editor.getPosition();
-          // Retrieve the current line content
-          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
-
-          // Propose a new position to move the cursor to
-          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
-
-          // Check if the new position is beyond the last line of the editor
-          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
-            // Add a new line at the end of the editor
-            editor.executeEdits("addNewLine", [{
-            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
-            text: "\n", 
-            forceMoveMarkers: true,
-            }]);
-          }
-          
-          // Run the entire line of code.
-          executeCode(currentLine);
-
-          // Move cursor to new position
-          editor.setPosition(newPosition);
-        } else {
-          // Code to run when Ctrl+Enter is pressed with selected code
-          executeCode(selectedText);
-        }
-      });
-    }
-
-    // Register an on focus event handler for when a code cell is selected to update
-    // what keyboard shortcut commands should work.
-    // This is a workaround to fix a regression that happened with multiple
-    // editor windows since Monaco 0.32.0 
-    // https://github.com/microsoft/monaco-editor/issues/2947
-    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
-
-    // Register an on change event for when new code is added to the editor window
-    editor.onDidContentSizeChange(updateHeight);
-
-    // Manually re-update height to account for the content we inserted into the call
-    updateHeight();
-  });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Initialize webR
-    await globalThis.webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image stored
-      msgs.forEach(msg => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        }
-      });
-
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-      runButton.disabled = false;
-    }
-  }
-
-  // Add a click event listener to the run button
-  runButton.onclick = function () {
-    executeCode(editor.getValue());
-  };
-</script>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.). For more details, please see <a href="./qwebr-communication-channels.html#sec-post-message">Communication Channels</a></p>
+</div>
+</div>
+</section>
+<section id="service-worker-url" class="level3">
+<h3 class="anchored" data-anchor-id="service-worker-url"><code>service-worker-url</code></h3>
+<ul>
+<li><strong>Description</strong>: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.</li>
+<li><strong>Default Value</strong>: <code>''</code></li>
+<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl">serviceWorkerUrl</a></li>
+</ul>
+</section>
+</section>
+<section id="native-extension-options" class="level2">
+<h2 class="anchored" data-anchor-id="native-extension-options">Native Extension Options</h2>
+<p>The extension also provides native options that affect its behavior:</p>
+<section id="show-startup-message" class="level3">
+<h3 class="anchored" data-anchor-id="show-startup-message"><code>show-startup-message</code></h3>
+<ul>
+<li><strong>Description</strong>: Controls the display of the WebR initialization state in the document header.</li>
+<li><strong>Default Value</strong>: <code>true</code></li>
+</ul>
+</section>
+<section id="show-header-message" class="level3">
+<h3 class="anchored" data-anchor-id="show-header-message"><code>show-header-message</code></h3>
+<ul>
+<li><strong>Description</strong>: Determines whether COOP and COEP headers are in use for faster page loads.</li>
+<li><strong>Default Value</strong>: <code>false</code></li>
+</ul>
+</section>
+<section id="packages" class="level3">
+<h3 class="anchored" data-anchor-id="packages"><code>packages</code></h3>
+<ul>
+<li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
+<li><strong>Default Value</strong>: <code>[]</code></li>
+</ul>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -872,4 +671,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/webr-readme-example.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+</body></html>

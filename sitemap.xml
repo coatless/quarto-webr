@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-community-examples.html</loc>
-    <lastmod>2023-09-25T01:40:20.815Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-developer-resources.html</loc>
-    <lastmod>2023-09-25T01:40:18.571Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-acknowledgements.html</loc>
-    <lastmod>2023-09-25T01:40:17.147Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-using-r-packages.html</loc>
-    <lastmod>2023-09-25T01:40:15.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-extension-website.html</loc>
-    <lastmod>2023-09-25T01:40:14.095Z</lastmod>
-  </url>
-  <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-code-cell-demos.html</loc>
-    <lastmod>2023-09-25T01:40:11.715Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-developer-resources.html</loc>
+    <lastmod>2023-10-01T08:50:20.747Z</lastmod>
   </url>
   <url>
     <loc>https://quarto-webr.thecoatlessprofessor.com/index.html</loc>
-    <lastmod>2023-09-25T01:40:08.603Z</lastmod>
+    <lastmod>2023-10-01T08:50:19.807Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-internal-cell.html</loc>
-    <lastmod>2023-09-25T01:40:10.275Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-troubleshooting.html</loc>
+    <lastmod>2023-10-01T08:50:18.059Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-troubleshooting.html</loc>
-    <lastmod>2023-09-25T01:40:13.451Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-communication-channels.html</loc>
+    <lastmod>2023-10-01T08:50:15.019Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-first-steps.html</loc>
-    <lastmod>2023-09-25T01:40:14.599Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html</loc>
+    <lastmod>2023-10-01T08:50:12.039Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-meta-options.html</loc>
-    <lastmod>2023-09-25T01:40:16.755Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-first-steps.html</loc>
+    <lastmod>2023-10-01T08:50:09.619Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-readme-example.html</loc>
-    <lastmod>2023-09-25T01:40:18.099Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-code-cell-demos.html</loc>
+    <lastmod>2023-10-01T08:50:08.387Z</lastmod>
   </url>
   <url>
-    <loc>https://quarto-webr.thecoatlessprofessor.com/webr-communication-channels.html</loc>
-    <lastmod>2023-09-25T01:40:20.235Z</lastmod>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-readme-example.html</loc>
+    <lastmod>2023-10-01T08:50:06.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-extension-website.html</loc>
+    <lastmod>2023-10-01T08:50:09.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-release-notes.html</loc>
+    <lastmod>2023-10-01T08:50:10.683Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-meta-options.html</loc>
+    <lastmod>2023-10-01T08:50:13.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-using-r-packages.html</loc>
+    <lastmod>2023-10-01T08:50:16.171Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html</loc>
+    <lastmod>2023-10-01T08:50:18.723Z</lastmod>
+  </url>
+  <url>
+    <loc>https://quarto-webr.thecoatlessprofessor.com/qwebr-acknowledgements.html</loc>
+    <lastmod>2023-10-01T08:50:20.235Z</lastmod>
   </url>
 </urlset>
