@@ -58,7 +58,7 @@ By specifying various `WebROptions` options in the document YAML, you can create
 
 :::callout-note
 We recommend using the `"post-message"` channel when [GitHub Pages](https://pages.github.com/) or [Quarto Pub](https://quartopub.com/) serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.).
-For more details, please see [Communication Channels](webr-communication-channels.qmd#sec-post-message)
+For more details, please see [Communication Channels](qwebr-communication-channels.qmd#sec-post-message)
 :::
 
 ### `service-worker-url`

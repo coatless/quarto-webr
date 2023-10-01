@@ -1,0 +1,44 @@
+project:
+  type: website
+
+website:
+  title: "Demo Quarto Webr Website"
+  search: true
+  reader-mode: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: example-page.qmd
+        text: Example page
+  sidebar:
+    style: "floating"
+    contents:
+      - section: "Content"
+        contents:
+          - index.qmd
+          - example-page.qmd
+
+  page-footer: 
+    left: "An example website with quarto-webr."
+    right: 
+      - icon: github
+        href: https://github.com/coatless/quarto-webr
+
+# Set the language that should be used for Quarto websites
+# https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/language
+# lang: en
+
+# Set default options for every webpage that may or may not include webR.
+webr: 
+  show-startup-message: false    # Display status of webR initialization
+#  show-header-message: false     # Check to see if COOP&COEP headers are set for speed.
+#  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
+#  base-url: ''                   # Base URL used for specifying where R WebAssembly binaries should be located
+#  home-dir: '/home/rstudio'      # Customize where the working directory is
+#  channel-type: 'post-message'   # Specify communication channel
+#  service-worker-url: ''         # URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel.
+
+# Attach webR to every page
+filters:
+  - webr
