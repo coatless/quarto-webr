@@ -155,7 +155,7 @@ webr:
 ---
 ```
 
-Learn more on the [Using R Packages](webr-using-r-packages.qmd) documentation page.
+Learn more on the [Using R Packages](qwebr-using-r-packages.qmd) documentation page.
 :::
 
 ## Hidden Summarization

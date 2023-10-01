@@ -20,41 +20,40 @@ website:
     contents:
       - section: "Getting Started"
         contents:
-          - href: webr-first-steps.qmd
+          - href: qwebr-first-steps.qmd
             text: Your first webR-powered Quarto document
-          - href: webr-meta-options.qmd
+          - href: qwebr-meta-options.qmd
             text: Customization Options
-          - href: webr-using-r-packages.qmd
+          - href: qwebr-using-r-packages.qmd
             text: Using R Packages
-          - href: webr-internal-cell.qmd
+          - href: qwebr-internal-cell.qmd
             text: Hiding and Executing Code
-          - href: webr-troubleshooting.qmd
+          - href: qwebr-troubleshooting.qmd
             text: Troubleshooting
       - section: "Demos"
         contents:
-          - href: webr-readme-example.qmd
+          - href: qwebr-readme-example.qmd
             text: README Example      
-          - href: webr-code-cell-demos.qmd
+          - href: qwebr-code-cell-demos.qmd
             text: Exploring Interactive Code Cells
-          - href: webr-community-examples.qmd
+          - href: qwebr-community-examples.qmd
             text: Community Examples
       - section: "Deployment"
         contents:
-          - href: webr-communication-channels.qmd
+          - href: qwebr-communication-channels.qmd
             text: Communication Channels
       - section: "Extra"
         contents:
-          - href: webr-acknowledgements.md
+          - href: qwebr-acknowledgements.md
             text: Acknowledgements
-          - href: webr-developer-resources.qmd
+          - href: qwebr-developer-resources.qmd
             text: Developer Resources
-          - href: webr-extension-website.qmd
+          - href: qwebr-extension-website.qmd
             text: Extension Website Notes
-          - href: webr-release-notes.qmd
+          - href: qwebr-release-notes.qmd
             text: Release Notes
 
 format:
   html:
     theme: cosmo
-    css: styles.css
     toc: true

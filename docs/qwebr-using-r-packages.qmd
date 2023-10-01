@@ -54,7 +54,7 @@ By using this approach, you ensure that necessary packages are available right f
 If you need to install a package interactively within specific code cells, you can do so using the `webr::install()` function. This method allows you to install packages on-the-fly when needed.
 
 :::callout-note
-Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the [communication channel](webr-communication-channels.qmd#sec-service-worker) being used.
+Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the [communication channel](qwebr-communication-channels.qmd#sec-service-worker) being used.
 :::
 
 Let's take ggplot2 as an example:

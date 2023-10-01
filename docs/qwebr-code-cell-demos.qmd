@@ -102,10 +102,10 @@ head(modified_vs_data)
 
 ## Working with R Packages
 
-You can incorporate R packages available in webR by installing them interactively using `webr::install()` within a `{webr-r}` code cell or by specifying them in the document's YAML. Once you've installed a package, you can harness its power just as you would in a traditional R environment. For more details, please refer to [Using R Packages](webr-using-r-packages.qmd).
+You can incorporate R packages available in webR by installing them interactively using `webr::install()` within a `{webr-r}` code cell or by specifying them in the document's YAML. Once you've installed a package, you can harness its power just as you would in a traditional R environment. For more details, please refer to [Using R Packages](qwebr-using-r-packages.qmd).
 
 :::callout-note
-Please note that installing certain packages, such as `ggplot2`, may take some time depending on the [communication channel](webr-communication-channels.qmd) being used.
+Please note that installing certain packages, such as `ggplot2`, may take some time depending on the [communication channel](qwebr-communication-channels.qmd) being used.
 :::
 
 Let's take `ggplot2` as an example:

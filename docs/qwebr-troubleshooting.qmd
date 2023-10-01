@@ -21,7 +21,7 @@ As this is an exciting new frontier, we're learning as we go. Or as my friend [L
 └── webr-worker.js
 ```
 
-If the issue persists, specify the worker files' location using the [`service-worker-url` option](webr-meta-options.qmd) in the document's YAML header or set the [`channel-type` option to `"post-message"`](webr-communication-channels.qmd#sec-post-message).
+If the issue persists, specify the worker files' location using the [`service-worker-url` option](qwebr-meta-options.qmd) in the document's YAML header or set the [`channel-type` option to `"post-message"`](qwebr-communication-channels.qmd#sec-post-message).
 
 # Unable to Render the Quarto File
 
@@ -40,7 +40,7 @@ If the issue persists, specify the worker files' location using the [`service-wo
 └── test-document.qmd
 ```
 
-If your directory is missing the `_extensions/` folder, please install the `webr` extension by following the instructions in [Install the quarto-webr extension](webr-first-steps.qmd).
+If your directory is missing the `_extensions/` folder, please install the `webr` extension by following the instructions in [Install the quarto-webr extension](qwebr-first-steps.qmd).
 
 Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension's absence from your current working directory.
 
@@ -116,7 +116,7 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 
-By configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the [`"shared-array-buffer"`](webr-communication-channels.qmd#sec-shared-array-buffer) channel type documentation.
+By configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the [`"shared-array-buffer"`](qwebr-communication-channels.qmd#sec-shared-array-buffer) channel type documentation.
 
 # Engine Registration
 

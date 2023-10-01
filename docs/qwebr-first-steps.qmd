@@ -72,6 +72,6 @@ During execution, the filter will generate two essential files, `webr-worker.js`
 
 In summary, this guide has provided an overview of how to incorporate the `quarto-webr` extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.
 
-For your next steps consider looking at different use cases for [interactive options](webr-code-cell-demos.qmd).
+For your next steps consider looking at different use cases for [interactive options](qwebr-code-cell-demos.qmd).
 
-If you're eager to delve even deeper, explore topics like [setting document-level customizations inside the document header](webr-meta-options.qmd), [using R packages inside webR](webr-using-r-packages.qmd), or [hiding and executing code](webr-internal-cell.qmd). These resources will further empower you to make the most of `quarto-webr` and `webR` to elevate your Quarto documents to new heights.
+If you're eager to delve even deeper, explore topics like [setting document-level customizations inside the document header](qwebr-meta-options.qmd), [using R packages inside webR](qwebr-using-r-packages.qmd), or [hiding and executing code](qwebr-internal-cell.qmd). These resources will further empower you to make the most of `quarto-webr` and `webR` to elevate your Quarto documents to new heights.

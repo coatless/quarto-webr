@@ -154,7 +154,7 @@ Here's what you need to ensure:
 
 ```sh
 .
-├── _extensions/coatless/quarto-webr
+├── _extensions/coatless/webr
 └── demo-quarto-webr.qmd
 ```
 
@@ -162,7 +162,7 @@ After rendering the Quarto document with the `"service-worker"` option, your dir
 
 ```sh
 .
-├── _extensions/coatless/quarto-webr
+├── _extensions/coatless/webr
 ├── demo-quarto-webr.qmd
 ├── demo-quarto-webr.html  # Rendered document
 ├── webr-serviceworker.js  # Service workers

@@ -12,7 +12,7 @@ We would like to express our heartfelt gratitude to several individuals and team
 - [James Joseph Balamuta](https://github.com/coatless)
 - [JooYoung Seo](https://github.com/jooyoungseo) for accessibility improvements.
 
-Their tireless efforts and expertise have been instrumental in the development of this extension, and we are immensely grateful for their invaluable contributions.
+Their relentless dedication have played a pivotal role in shaping the development of this extension.
 
 ## webR Core Developers
 
