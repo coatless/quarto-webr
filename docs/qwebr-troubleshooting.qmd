@@ -10,9 +10,9 @@ As this is an exciting new frontier, we're learning as we go. Or as my friend [L
 
 # Stuck at Loading webR...
 
-**Problem**: If you see the message `Loading webR...` above your code cell instead of `Run code`, it might be due to missing worker files (`webr-worker.js` and `webr-serviceworker.js`) at the document's root or a relative directory.
+**Problem**: If you encounter the message `Loading webR...` above your code cell instead of `Run code`, it's likely due to missing worker files (`webr-worker.js` and `webr-serviceworker.js`) in the document's root or a relative directory.
 
-**Solution**: Ensure that these worker files are located in the same directory as your Quarto document. For instance, the following directory structure is recommended:
+**Solution**: To resolve this issue, make sure that these worker files are located in the same directory as your Quarto document. Here's the recommended directory structure:
 
 ```sh
 .
@@ -21,7 +21,35 @@ As this is an exciting new frontier, we're learning as we go. Or as my friend [L
 └── webr-worker.js
 ```
 
-If the issue persists, specify the worker files' location using the [`service-worker-url` option](qwebr-meta-options.qmd) in the document's YAML header or set the [`channel-type` option to `"post-message"`](qwebr-communication-channels.qmd#sec-post-message).
+If you still encounter the error after confirming the file placement, check the output of the preview command in either the **Terminal** or RStudio's **Background Jobs** tab. The output might resemble the following:
+
+```sh
+quarto preview --no-browser --no-watch-inputs
+
+Watching files for changes 
+GET: /website/posts/index.html
+ /website/posts/webr-serviceworker.js (404: Not Found)
+ /website/posts/webr-worker.js (404: Not Found)
+```
+
+This indicates that the `webr-serviceworker.js` and `webr-worker.js` files are missing during the rendering stage of your document. To fix this, add the [`resources` key](https://quarto.org/docs/reference/formats/html.html#includes) to your document header, explicitly specifying these two JavaScript files like so:
+
+```markdown
+---
+title: "My Post"
+resources:
+  - webr-serviceworker.js
+  - webr-worker.js
+filters:
+  - webr
+---
+```
+
+:::{.callout-note}
+We've informed the Quarto team about this issue regarding [automatic inclusion of extension registered dependencies](https://github.com/quarto-dev/quarto-cli/issues/6828).
+:::
+
+If the problem persists, you can specify the location of the worker files using the [`service-worker-url` option](qwebr-meta-options.qmd) in the document's YAML header or set the [`channel-type` option to `"post-message"`](qwebr-communication-channels.qmd#sec-post-message). You can see an example of the later [here](qwebr-communication-channels.qmd#specifying-how-webr-communicates).
 
 # Unable to Render the Quarto File
 

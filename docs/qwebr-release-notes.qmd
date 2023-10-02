@@ -12,8 +12,9 @@ format:
 
 ## Documentation
 
-- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/examples) containing examples for [HTML Documents](), [Books](), and [Websites]().
-- Added a documentation page that contains the extension updates and release dates.
+- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/examples) containing examples for [HTML Documents](), [Books](), and [Websites](). ([#53](https://github.com/coatless/quarto-webr/issues/53))
+- Added a documentation page that contains the extension updates and release dates. 
+- Added an FAQ page covering questions from posit::conf(2023). ([#56](https://github.com/coatless/quarto-webr/issues/56))
 
 # 0.3.6: Ready, Set, Run. (09-24-2023)
 

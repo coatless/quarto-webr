@@ -1,0 +1,18 @@
+---
+title: "Deployment Templates"
+date: "10-01-2023"
+date-modified: last-modified
+---
+
+# HTML Document Template
+
+[HTML Document](../examples/html-document/index.qmd)
+
+# Website Template
+
+[Website](../examples/website/index.qmd)
+
+# Book Template
+
+[Book](../examples/book/index.qmd)
+
