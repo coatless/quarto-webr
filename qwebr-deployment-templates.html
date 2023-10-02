@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James Joseph Balamuta">
-<meta name="dcterms.date" content="2023-09-14">
+<meta name="dcterms.date" content="2023-10-01">
 
-<title>quarto-webr - Customization Options</title>
+<title>quarto-webr - Deployment Templates</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -117,7 +82,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-meta-options.html">Customization Options</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      quarto-webr
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -167,7 +134,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Customization Options</span></a>
   </div>
 </li>
@@ -305,49 +272,29 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#customization-options" id="toc-customization-options" class="nav-link active" data-scroll-target="#customization-options">Customization Options</a>
-  <ul class="collapse">
-  <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
-  <ul class="collapse">
-  <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
-  <li><a href="#base-url" id="toc-base-url" class="nav-link" data-scroll-target="#base-url"><code>base-url</code></a></li>
-  <li><a href="#channel-type" id="toc-channel-type" class="nav-link" data-scroll-target="#channel-type"><code>channel-type</code></a></li>
-  <li><a href="#service-worker-url" id="toc-service-worker-url" class="nav-link" data-scroll-target="#service-worker-url"><code>service-worker-url</code></a></li>
-  </ul></li>
-  <li><a href="#native-extension-options" id="toc-native-extension-options" class="nav-link" data-scroll-target="#native-extension-options">Native Extension Options</a>
-  <ul class="collapse">
-  <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
-  <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#html-document-template" id="toc-html-document-template" class="nav-link active" data-scroll-target="#html-document-template">HTML Document Template</a></li>
+  <li><a href="#website-template" id="toc-website-template" class="nav-link" data-scroll-target="#website-template">Website Template</a></li>
+  <li><a href="#book-template" id="toc-book-template" class="nav-link" data-scroll-target="#book-template">Book Template</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-meta-options.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-deployment-templates.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Customization Options</h1>
-<p class="subtitle lead">Fine-Tuning <code>quarto-webr</code> with Powerful Configuration Options</p>
+<h1 class="title">Deployment Templates</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James Joseph Balamuta </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 14, 2023</p>
+      <p class="date">October 1, 2023</p>
     </div>
   </div>
   
@@ -363,97 +310,19 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 </header>
 
-<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.</p>
-<section id="customization-options" class="level1">
-<h1>Customization Options</h1>
-<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">engine</span><span class="kw">:</span><span class="at"> knitr</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">show-startup-message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="webr-options" class="level2">
-<h2 class="anchored" data-anchor-id="webr-options">webR options</h2>
-<p>By specifying various <code>WebROptions</code> options in the document YAML, you can create a personalized webR experience</p>
-<section id="home-dir" class="level3">
-<h3 class="anchored" data-anchor-id="home-dir"><code>home-dir</code></h3>
-<ul>
-<li><strong>Description</strong>: Set the WebAssembly user’s home directory and initial working directory.</li>
-<li><strong>Default Value</strong>: <code>'/home/web_user'</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir">homeDir</a></li>
-</ul>
+<section id="html-document-template" class="level1">
+<h1>HTML Document Template</h1>
+<p><a href="../examples/html-document/index.qmd">HTML Document</a></p>
 </section>
-<section id="base-url" class="level3">
-<h3 class="anchored" data-anchor-id="base-url"><code>base-url</code></h3>
-<ul>
-<li><strong>Description</strong>: Define the base URL for downloading R WebAssembly binaries.</li>
-<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/[version]/'</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl">baseUrl</a></li>
-</ul>
+<section id="website-template" class="level1">
+<h1>Website Template</h1>
+<p><a href="../examples/website/index.qmd">Website</a></p>
 </section>
-<section id="channel-type" class="level3">
-<h3 class="anchored" data-anchor-id="channel-type"><code>channel-type</code></h3>
-<ul>
-<li><strong>Description</strong>: Specify the communication channel type to interact with webR.</li>
-<li><strong>Default Value</strong>: <code>"automatic"</code> (0)</li>
-<li><strong>Possible Values</strong>: <code>"automatic"</code> (0), <code>"shared-array-buffer"</code> (1), <code>"service-worker"</code> (2), <code>"post-message"</code> (3).</li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype">channelType</a></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We recommend using the <code>"post-message"</code> channel when <a href="https://pages.github.com/">GitHub Pages</a> or <a href="https://quartopub.com/">Quarto Pub</a> serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (<code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.). For more details, please see <a href="./qwebr-communication-channels.html#sec-post-message">Communication Channels</a></p>
-</div>
-</div>
-</section>
-<section id="service-worker-url" class="level3">
-<h3 class="anchored" data-anchor-id="service-worker-url"><code>service-worker-url</code></h3>
-<ul>
-<li><strong>Description</strong>: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.</li>
-<li><strong>Default Value</strong>: <code>''</code></li>
-<li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl">serviceWorkerUrl</a></li>
-</ul>
-</section>
-</section>
-<section id="native-extension-options" class="level2">
-<h2 class="anchored" data-anchor-id="native-extension-options">Native Extension Options</h2>
-<p>The extension also provides native options that affect its behavior:</p>
-<section id="show-startup-message" class="level3">
-<h3 class="anchored" data-anchor-id="show-startup-message"><code>show-startup-message</code></h3>
-<ul>
-<li><strong>Description</strong>: Controls the display of the WebR initialization state in the document header.</li>
-<li><strong>Default Value</strong>: <code>true</code></li>
-</ul>
-</section>
-<section id="show-header-message" class="level3">
-<h3 class="anchored" data-anchor-id="show-header-message"><code>show-header-message</code></h3>
-<ul>
-<li><strong>Description</strong>: Determines whether COOP and COEP headers are in use for faster page loads.</li>
-<li><strong>Default Value</strong>: <code>false</code></li>
-</ul>
-</section>
-<section id="packages" class="level3">
-<h3 class="anchored" data-anchor-id="packages"><code>packages</code></h3>
-<ul>
-<li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
-<li><strong>Default Value</strong>: <code>[]</code></li>
-</ul>
+<section id="book-template" class="level1">
+<h1>Book Template</h1>
+<p><a href="../examples/book/index.qmd">Book</a></p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

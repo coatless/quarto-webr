@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-03-20">
+<meta name="dcterms.date" content="2023-10-01">
 
-<title>quarto-webr - Troubleshooting</title>
+<title>quarto-webr - Frequently Asked Questions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-troubleshooting.html">Support</a></li><li class="breadcrumb-item"><a href="./qwebr-troubleshooting.html">Troubleshooting</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-troubleshooting.html">Support</a></li><li class="breadcrumb-item"><a href="./qwebr-faq.html">FAQ</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -195,13 +195,13 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -304,21 +304,23 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#stuck-at-loading-webr" id="toc-stuck-at-loading-webr" class="nav-link active" data-scroll-target="#stuck-at-loading-webr">Stuck at Loading webR…</a></li>
-  <li><a href="#unable-to-render-the-quarto-file" id="toc-unable-to-render-the-quarto-file" class="nav-link" data-scroll-target="#unable-to-render-the-quarto-file">Unable to Render the Quarto File</a></li>
-  <li><a href="#directly-accessing-rendered-html" id="toc-directly-accessing-rendered-html" class="nav-link" data-scroll-target="#directly-accessing-rendered-html">Directly Accessing Rendered HTML</a></li>
-  <li><a href="#speed-up-webr" id="toc-speed-up-webr" class="nav-link" data-scroll-target="#speed-up-webr">Speed Up webR</a></li>
-  <li><a href="#engine-registration" id="toc-engine-registration" class="nav-link" data-scroll-target="#engine-registration">Engine Registration</a></li>
+  <li><a href="#stability-and-long-term-support" id="toc-stability-and-long-term-support" class="nav-link active" data-scroll-target="#stability-and-long-term-support">Stability and Long Term Support</a></li>
+  <li><a href="#improving-performance" id="toc-improving-performance" class="nav-link" data-scroll-target="#improving-performance">Improving Performance</a></li>
+  <li><a href="#webr-limitations" id="toc-webr-limitations" class="nav-link" data-scroll-target="#webr-limitations">webR Limitations</a></li>
+  <li><a href="#state-of-accessibility" id="toc-state-of-accessibility" class="nav-link" data-scroll-target="#state-of-accessibility">State of Accessibility</a></li>
+  <li><a href="#package-usage" id="toc-package-usage" class="nav-link" data-scroll-target="#package-usage">Package Usage</a></li>
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
+  <li><a href="#styling" id="toc-styling" class="nav-link" data-scroll-target="#styling">Styling</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-troubleshooting.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-faq.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Troubleshooting</h1>
-<p class="subtitle lead">Common Problems and Fixes in quarto-webR</p>
+<h1 class="title">Frequently Asked Questions</h1>
+<p class="subtitle lead">Find Answers to Common Queries About <code>quarto-webr</code> Extension</p>
 </div>
 
 
@@ -329,7 +331,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 20, 2023</p>
+      <p class="date">October 1, 2023</p>
     </div>
   </div>
   
@@ -345,128 +347,112 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 </header>
 
-<p>As this is an exciting new frontier, we’re learning as we go. Or as my friend <a href="https://cs.illinois.edu/about/people/faculty/angrave">Lawrence</a> says, <a href="https://www.youtube.com/watch?v=L2zqTYgcpfg">“I like to build airplanes in the air-”</a>. In the spirit of learning, let’s address some common issues you may come across…</p>
-<section id="stuck-at-loading-webr" class="level1">
-<h1>Stuck at Loading webR…</h1>
-<p><strong>Problem</strong>: If you encounter the message <code>Loading webR...</code> above your code cell instead of <code>Run code</code>, it’s likely due to missing worker files (<code>webr-worker.js</code> and <code>webr-serviceworker.js</code>) in the document’s root or a relative directory.</p>
-<p><strong>Solution</strong>: To resolve this issue, make sure that these worker files are located in the same directory as your Quarto document. Here’s the recommended directory structure:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> demo-quarto-webr.qmd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> webr-serviceworker.js</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> webr-worker.js</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you still encounter the error after confirming the file placement, check the output of the preview command in either the <strong>Terminal</strong> or RStudio’s <strong>Background Jobs</strong> tab. The output might resemble the following:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="at">--no-browser</span> <span class="at">--no-watch-inputs</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Watching</span> files for changes </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">GET:</span> /website/posts/index.html</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">/website/posts/webr-serviceworker.js</span> <span class="er">(</span><span class="ex">404:</span> Not Found<span class="kw">)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> <span class="ex">/website/posts/webr-worker.js</span> <span class="er">(</span><span class="ex">404:</span> Not Found<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This indicates that the <code>webr-serviceworker.js</code> and <code>webr-worker.js</code> files are missing during the rendering stage of your document. To fix this, add the <a href="https://quarto.org/docs/reference/formats/html.html#includes"><code>resources</code> key</a> to your document header, explicitly specifying these two JavaScript files like so:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My Post"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">resources:</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr-serviceworker.js</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr-worker.js</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We’ve informed the Quarto team about this issue regarding <a href="https://github.com/quarto-dev/quarto-cli/issues/6828">automatic inclusion of extension registered dependencies</a>.</p>
-</div>
-</div>
-<p>If the problem persists, you can specify the location of the worker files using the <a href="./qwebr-meta-options.html"><code>service-worker-url</code> option</a> in the document’s YAML header or set the <a href="./qwebr-communication-channels.html#sec-post-message"><code>channel-type</code> option to <code>"post-message"</code></a>. You can see an example of the later <a href="./qwebr-communication-channels.html#specifying-how-webr-communicates">here</a>.</p>
-</section>
-<section id="unable-to-render-the-quarto-file" class="level1">
-<h1>Unable to Render the Quarto File</h1>
-<p><strong>Problem</strong>: When I add the <code>webr</code> value to the <code>filter</code> section, my Quarto document fails to render and displays a lengthy error message.</p>
-<p><strong>Solution</strong>: Quarto extensions are project-specific, which means you must install the extension for each new project you create. To resolve this issue, ensure that your project directory structure includes an <code>_extensions</code> directory with the appropriate extension files, as shown below:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _extensions</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── coatless</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       └── webr</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           ├── _extension.yml</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           ├── ...</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>           └── webr.lua</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> test-document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If your directory is missing the <code>_extensions/</code> folder, please install the <code>webr</code> extension by following the instructions in <a href="./qwebr-first-steps.html">Install the quarto-webr extension</a>.</p>
-<p>Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension’s absence from your current working directory.</p>
-<div class="cell">
-<details>
-<summary>Missing extension error for Quarto v1.4 and later</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FATAL</span> <span class="er">(</span><span class="ex">/Applications/quarto/share/filters/main.lua:129</span><span class="kw">)</span> <span class="ex">An</span> error occurred:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not run /Users/jjb/github/demo-webr/webr as a JSON filter.</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Please</span> make sure the file exists and is executable.</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Did</span> you intend <span class="st">'webr'</span> as a Lua filter in an extension<span class="pp">?</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">If</span> so, make sure you<span class="st">'ve spelled the name of the extension correctly.</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">The original Pandoc error follows below.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">Error running filter /Users/jjb/github/demo-webr/webr:</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">Could not find executable /Users/jjb/github/demo-webr/webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>In versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.</p>
-<div class="cell">
-<details>
-<summary>Missing extension error for Quarto v1.3 and earlier</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Applications/quarto/share/filters/main.lua:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> running filter /Users/jjb/github/demo-webr/webr:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not find executable /Users/jjb/github/demo-webr/webr</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:4030:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:4009<span class="op">&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in <span class="pp">?</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">[C]:</span> in method <span class="st">'walk'</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> traceback:</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:171:</span> in function <span class="st">'run_emulated_filter'</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:449:</span> in local <span class="st">'callback'</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:454:</span> in upvalue <span class="st">'run_emulated_filter_chain'</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">/Applications/quarto/share/filters/main.lua:495:</span> in function <span class="op">&lt;</span>/Applications/quarto/share/filters/main.lua:476<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="directly-accessing-rendered-html" class="level1">
-<h1>Directly Accessing Rendered HTML</h1>
-<p><strong>Problem</strong>: When I directly open the rendered HTML document in a web browser, webR components are not loaded due to security reasons.</p>
-<p><strong>Solution</strong>: When you use <code>quarto preview</code> or <code>quarto render</code>, the rendered HTML document is served by mimicking a server running under <code>https://localhost/</code>. In this context, everything usually works fine if you follow the directory structure mentioned above.</p>
-<p>However, if you directly open the rendered HTML document (e.g., <code>demo-quarto-web.html</code>) in a web browser, you may encounter issues with WebR components not loading due to security restrictions. This behavior is explained further in this <a href="https://stackoverflow.com/questions/6811398/html5-web-workers-work-in-firefox-4-but-not-in-chrome-12-0-742-122/6823683#6823683">StackOverflow answer</a>.</p>
-<p>To address this problem and avoid the need for a local Quarto installation to open the rendered file directly, you have a few options:</p>
-<ol type="1">
-<li><p><strong>Use Chrome’s <code>--allow-file-access-from-files</code> access</strong>: You can modify your Chrome shortcut to include the <a href="https://stackoverflow.com/questions/18586921/how-to-launch-html-using-chrome-at-allow-file-access-from-files-mode"><code>--allow-file-access-from-files</code> flag</a>. This allows local files to access other local files, potentially resolving the issue.</p></li>
-<li><p><strong>Use the WebServer for Chrome Extension</strong>: Install the <a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en">WebServer for Chrome extension</a> to serve your HTML files. This extension sets up a local web server that doesn’t have the same security restrictions as directly opening files.</p></li>
-<li><p><strong>Use NPM to Obtain <code>local-web-server</code></strong>: Install the <a href="https://github.com/lwsjs/local-web-server"><code>local-web-server</code> package from npm</a>, which is a lightweight, no-configuration-required HTTP server. You can use it to serve your HTML files without encountering security restrictions.</p></li>
+<p>Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the <code>quarto-webr</code> extension. If you can’t find the answer you’re looking for, don’t hesitate to reach out to our community for additional support by opening a <a href="https://github.com/coatless/quarto-webr/issues/new?assignees=&amp;labels=q%26a&amp;projects=&amp;template=question.yml&amp;title=%5BQ%26A%5D%3A+">question</a> or a <a href="https://github.com/coatless/quarto-webr/issues/new?assignees=&amp;labels=bug%2Ctriage-needed&amp;projects=&amp;template=bug-report.yml&amp;title=%5BBug%5D%3A+">bug report</a> on the <a href="https://github.com/coatless/quarto-webr/issues">issue tracker</a>.</p>
+<section id="stability-and-long-term-support" class="level1">
+<h1>Stability and Long Term Support</h1>
+<blockquote class="blockquote">
+<p>Q. Would you say the quarto-webr extension API is stable? Thinking about starting to convert course notes and wondering where the project is in terms of stability.</p>
+</blockquote>
+<p>Yes, the <code>quarto-webr</code> extension API can be considered stable for most practical purposes. It has undergone significant development and testing to ensure that it functions reliably and consistently within the Quarto framework. You can confidently start converting your course notes and materials using this extension.</p>
+<p>However, it’s important to keep in mind a few considerations:</p>
+<ol start="2" type="1">
+<li><p><strong>Dependency on Quarto and webR projects:</strong> The <code>quarto-webr</code> extension relies on the main <code>webR</code> project for its core functionality. While we actively maintain the <code>quarto-webr</code> extension and aim to keep it compatible with the latest versions of Quarto and <code>webR</code>, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.</p></li>
+<li><p><strong>Version compatibility:</strong> It’s important to note that the version of the R client and R packages that is downloaded for <code>webR</code> execution may affect your materials. It’s advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before.</p></li>
+<li><p><strong>Start with a small set:</strong> When converting your course materials, it’s a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension’s functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.</p></li>
 </ol>
 </section>
-<section id="speed-up-webr" class="level1">
-<h1>Speed Up webR</h1>
-<p><strong>Problem</strong>: WebR documents are not performing as efficiently as expected.</p>
-<p><strong>Solution</strong>: To optimize the performance of webR documents, it’s essential to set appropriate HTTP headers for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">COOP</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">COEP</a>. These headers help speed up the process and ensure a smoother user experience.</p>
-<p>Here are the recommended COOP and COEP headers to use:</p>
-<pre class="http"><code>Cross-Origin-Opener-Policy: same-origin
-Cross-Origin-Embedder-Policy: require-corp</code></pre>
-<p>By configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the <a href="./qwebr-communication-channels.html#sec-shared-array-buffer"><code>"shared-array-buffer"</code></a> channel type documentation.</p>
+<section id="improving-performance" class="level1">
+<h1>Improving Performance</h1>
+<blockquote class="blockquote">
+<ol start="17" type="A">
+<li>What are your plans, if any, for scaling webR to handle complex content faster?</li>
+</ol>
+</blockquote>
+<p>For handling complex content, we recommend setting the <code>channel-type</code> option to the <a href="./qwebr-communication-channels.html#sec-shared-array-buffer"><code>'shared-array-buffer'</code></a>, which can significantly speed up its execution. This environment requires the proper configuration of HTTP headers for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">Cross-Origin Embedder Policy (COEP)</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">Cross-Origin Opener Policy (COOP)</a>. By setting these headers correctly, you can already achieve notable speed improvements when working with webR.</p>
+<p>However, for further enhancements and speed optimizations beyond what the COEP and COOP headers provide, we recommend keeping an eye on the <a href="https://docs.r-wasm.org/webr/latest/">main webR project’s documentation</a>. The core webR project continuously works on improving performance and scalability, so any future advancements in handling complex content faster will likely originate from their developments.</p>
 </section>
-<section id="engine-registration" class="level1">
-<h1>Engine Registration</h1>
-<p><strong>Problem</strong>: When using the <code>knitr</code> engine instead of the <code>jupyter</code> engine and the original tag <code>{webr}</code> instead of <code>{webr-r}</code>, a warning message may appear in the render processing output:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Warning message<span class="sc">:</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>In <span class="fu">get_engine</span>(options<span class="sc">$</span>engine) <span class="sc">:</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  Unknown language engine <span class="st">'webr'</span> (must be registered via knit_engines<span class="sc">$</span><span class="fu">set</span>()).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Solution</strong>: The warning message about the unknown language engine ‘webr’ is purely cosmetic and does not affect the functionality of the <code>webr</code> filter. It is merely an aesthetic issue and does not impact the execution of code cells.</p>
-<p>This warning occurs because the <code>knitr</code> engine is not initially aware of the <code>webr</code> engine. However, this lack of awareness does not cause any functional problems. The <code>webr</code> filter will operate as expected despite this warning.</p>
-<p>While the warning is not critical, it may be addressed in future updates for aesthetic reasons. Nevertheless, you can safely disregard this warning message as it does not interfere with the functionality of your webR documents.</p>
+<section id="webr-limitations" class="level1">
+<h1>webR Limitations</h1>
+<blockquote class="blockquote">
+<p>Q. I noticed that built in docs with ? don’t work in webR. Are there any other known issues? How long to feature parity?</p>
+</blockquote>
+<p>Regarding feature parity with the main <code>webR</code> project, it’s important to understand that <code>quarto-webr</code> inherits the same limitations and capabilities as the core <code>webR</code> technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of <code>webR</code> itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process.</p>
+<p>The known limitations at this time are:</p>
+<ol type="1">
+<li><p><strong>Package Installation</strong>: Installing packages from source within <code>webR</code> is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in <code>webR</code> is by providing pre-compiled WebAssembly binaries.</p></li>
+<li><p><strong>Graphics Device</strong>: The <code>webr::canvas()</code> graphics device relies on OffscreenCanvas support in the web browser or JavaScript engine running <code>webR</code>. This means that a modern and up-to-date browser is required for plotting with this device. Older browsers without OffscreenCanvas support can still create plots using the Cairo-based graphics devices, such as <code>png()</code>.</p></li>
+<li><p><strong>Communication Channels</strong>: <code>webR</code> relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup.</p></li>
+<li><p><strong>Interruption of Running Code</strong>: Interruption of running R code and the use of nested R REPLs (such as <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) are unsupported when using the PostMessage communication channel.</p></li>
+<li><p><strong>System Command</strong>: The <code>system()</code> command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.</p></li>
+<li><p><strong>Help Files</strong>: R relies on an external pager program using <code>system()</code> to display its help files, which is not supported in <code>webR</code>. We’ll have to implement a custom mechanic to interpret the output.</p></li>
+</ol>
+</section>
+<section id="state-of-accessibility" class="level1">
+<h1>State of Accessibility</h1>
+<blockquote class="blockquote">
+<p>Q. You mentioned there has been some work on accessibility. I’m curious what the current state of accessibility is? What are the known issues?</p>
+</blockquote>
+<p>Accessibility is an important aspect of webR, and we are committed to ensuring that the tool is usable by individuals with disabilities. To address accessibility concerns, we have engaged the expertise of <a href="https://github.com/jooyoungseo">JooYoung Seo</a>, an Assistant Professor in the School of Information Sciences (iSchool) at the University of Illinois Urbana-Champaign. JooYoung specializes in accessibility within Data Science and has been instrumental in conducting periodic accessibility reviews of webR.</p>
+<p>One of the primary areas of focus has been making sure that screen readers can easily identify and interact with code cells on the page. This ensures that individuals with visual impairments can effectively use webR. While we’ve made significant strides in improving accessibility, we continue to work on addressing any known issues and enhancing the overall accessibility of the tool. We are committed to providing an inclusive and user-friendly experience for all users, and JooYoung’s expertise has been invaluable in this regard.</p>
+</section>
+<section id="package-usage" class="level1">
+<h1>Package Usage</h1>
+<blockquote class="blockquote">
+<p>Q. Does the use of R packages cause any issues for you when teaching content with webR and Quarto?</p>
+</blockquote>
+<p>When teaching content with <code>webR</code> and Quarto, the use of R packages is certainly supported. However, it’s important to be aware of a few considerations that can help ensure a smooth teaching experience.</p>
+<p>In a typical R environment, packages are installed once and are available for subsequent sessions using <code>library()</code> or <code>require()</code>. In <code>webR</code>, packages are installed on each session. This means that each <code>webR</code> session starts with a clean slate, and packages need to be installed again for that specific session.</p>
+<p>To optimize this process and avoid unnecessary downloads, it’s recommended to use the <code>webr::install()</code> function instead of the standard <code>install.packages()</code> function. <code>webr::install()</code> checks if a package is already installed and does not re-download it if it’s already available. This can significantly speed up the package installation process when working with <code>webR</code> and Quarto.</p>
+<p>One way to simplify the teaching process and prevent students from working while packages are being installed is to use the built-in <a href="./qwebr-using-r-packages.html#install-r-packages-on-document-open"><code>packages</code> option</a> in the document’s header. This option hides the installation process from students and ensures that the required packages are pre-installed when they access the document.</p>
+<p>Finally, it’s worth noting that the R packages available to <code>webR</code> may not always be the latest versions that you can get from CRAN (the Comprehensive R Archive Network). Therefore, it’s a good practice to check the package versions and ensure compatibility with your teaching materials.</p>
+</section>
+<section id="debugging" class="level1">
+<h1>Debugging</h1>
+<blockquote class="blockquote">
+<p>Q. How are error messages, etc. communicated in webr’s interface? Would it be easy for a student to debug without the tools that are available in the RStudio?</p>
+</blockquote>
+<p>Error messages, warnings, and other diagnostic information are presented in the output of a <code>quarto-webr</code> interface, just like in a standard R environment. These messages appear directly below the code cell that generated them. While <code>quarto-webr</code> provides a user-friendly interface for working with R in a web browser, it does not offer advanced debugging tools like <code>debug()</code>, <code>debugonce()</code>, <code>debuggingState()</code>, or <code>setBreakpoint()</code>. Therefore, debugging in <code>quarto-webr</code> is primarily reliant on interpreting the error messages and warnings displayed in the output. For students familiar with RStudio’s debugging tools, transitioning to <code>quarto-webr</code> may require an adjustment to debugging practices. However, the clear presentation of error messages in the output makes it relatively straightforward for students to identify and address issues in their code.</p>
+</section>
+<section id="styling" class="level1">
+<h1>Styling</h1>
+<blockquote class="blockquote">
+<p>Q. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?</p>
+</blockquote>
+<p>Certainly! You have the flexibility to style the UI elements added by the <code>quarto-webr</code> extension to your document. These elements are categorized into three distinct areas, each of which can be styled individually. They are identifiable by their unique <code>id</code> and <code>class</code> attributes:</p>
+<ol type="1">
+<li><strong>Interactive Code Editor</strong>: This is where you input and edit your R code.
+<ul>
+<li><code>id</code>: <code>#webr-editor-{{ID}}</code></li>
+<li><code>class</code>: <code>.webr-editor</code></li>
+</ul></li>
+<li><strong>Output Area</strong>: This is where the results and output of your R code are displayed.
+<ul>
+<li><code>id</code>: <code>#webr-code-stdout-{{ID}}</code></li>
+<li><code>class</code>: <code>.webr-code-stdout</code></li>
+</ul></li>
+<li><strong>Run Button</strong>: The button that triggers the execution of your R code.
+<ul>
+<li><code>id</code>: <code>#webr-btn-run-{{ID}}</code></li>
+<li><code>class</code>: <code>.webr-btn-run</code></li>
+</ul></li>
+</ol>
+<p>The <code>{{ID}}</code> in these identifiers represents the instance of the element on the page, such as the first, second, or nth occurrence. By targeting the specific <code>id</code> or <code>class</code> attributes in your document’s CSS or by including a separate CSS file, you can control their appearance as per your design preferences.</p>
+<p>For example, you can insert new CSS elements by using:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;style&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">.webr-code-stdout {background-color: powderblue;}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">.webr-btn-run   {color: blue;}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/style&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Additionally, if you are using a Quarto theme, you can leverage <a href="https://quarto.org/docs/output-formats/html-themes.html#basic-options">theme-specific styling options</a> to ensure that these UI elements align with the overall theme of your document.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> My post</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - cosmo</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">      - custom.scss</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
