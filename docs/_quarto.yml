@@ -28,8 +28,14 @@ website:
             text: Using R Packages
           - href: qwebr-internal-cell.qmd
             text: Hiding and Executing Code
+      - section: "Support"
+        contents:
           - href: qwebr-troubleshooting.qmd
             text: Troubleshooting
+          - href: qwebr-faq.qmd
+            text: FAQ
+          - href: https://github.com/coatless/quarto-webr/issues/new
+            text: Submit an issue
       - section: "Demos"
         contents:
           - href: qwebr-readme-example.qmd
