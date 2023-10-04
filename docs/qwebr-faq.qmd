@@ -7,6 +7,8 @@ engine: markdown
 format: 
   html:
     toc: true
+aliases:
+  - webr-faq.html
 ---
 
 Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the `quarto-webr` extension.  If you can't find the answer you're looking for, don't hesitate to reach out to our community for additional support by opening a [question](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=q%26a&projects=&template=question.yml&title=%5BQ%26A%5D%3A+) or a [bug report](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=bug%2Ctriage-needed&projects=&template=bug-report.yml&title=%5BBug%5D%3A+) on the [issue tracker](https://github.com/coatless/quarto-webr/issues).
@@ -19,11 +21,11 @@ Yes, the `quarto-webr` extension API can be considered stable for most practical
 
 However, it's important to keep in mind a few considerations:
 
-2. **Dependency on Quarto and webR projects:** The `quarto-webr` extension relies on the main `webR` project for its core functionality. While we actively maintain the `quarto-webr` extension and aim to keep it compatible with the latest versions of Quarto and `webR`, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.
+1. **Dependency on Quarto and webR projects:** The `quarto-webr` extension relies on the main `webR` project for its core functionality. While we actively maintain the `quarto-webr` extension and aim to keep it compatible with the latest versions of Quarto and `webR`, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.
 
 1. **Version compatibility:** It's important to note that the version of the R client and R packages that is downloaded for `webR` execution may affect your materials. It's advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before. 
 
-3. **Start with a small set:** When converting your course materials, it's a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension's functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.
+1. **Start with a small set:** When converting your course materials, it's a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension's functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.
 
 # Improving Performance
 

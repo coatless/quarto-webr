@@ -12,6 +12,8 @@ webr:
   channel-type: "post-message"
 filters:
 - webr
+aliases:
+  - webr-meta-options.html
 ---
 
 The `quarto-webr` extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document's YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.
