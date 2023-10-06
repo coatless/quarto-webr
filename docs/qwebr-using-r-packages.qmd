@@ -12,6 +12,8 @@ webr:
   channel-type: "post-message"
 filters:
 - webr
+aliases:
+  - webr-using-r-packages.html
 ---
 
 Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, `quarto-webr` avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.

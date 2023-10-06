@@ -4,6 +4,8 @@ subtitle: "Common Problems and Fixes in quarto-webR"
 date: "03-20-2023"
 date-modified: last-modified
 engine: knitr
+aliases:
+  - webr-troubleshooting.html
 ---
 
 As this is an exciting new frontier, we're learning as we go. Or as my friend [Lawrence](https://cs.illinois.edu/about/people/faculty/angrave) says, ["I like to build airplanes in the air-"](https://www.youtube.com/watch?v=L2zqTYgcpfg). In the spirit of learning, let's address some common issues you may come across...

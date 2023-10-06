@@ -12,6 +12,8 @@ webr:
   channel-type: "post-message"
 filters:
 - webr
+aliases:
+  - webr-communication-channels.html
 ---
 
 As you dive deeper into using webR, it's crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or "threads":

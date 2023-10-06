@@ -8,6 +8,8 @@ format:
     toc: true
 filters:
   - webr
+aliases:
+  - webr-first-steps.html
 ---
 
 To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like `quarto-webr` within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.

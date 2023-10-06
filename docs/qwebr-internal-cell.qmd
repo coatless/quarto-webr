@@ -12,6 +12,8 @@ webr:
   channel-type: "post-message"
 filters:
 - webr
+aliases:
+  - webr-internal-cell.html
 ---
 
 In `quarto-webr`, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, creating visualizations, or checking student solutions without revealing the code to end users.

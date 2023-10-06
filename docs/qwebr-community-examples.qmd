@@ -8,6 +8,8 @@ format:
     toc: true
 filters:
   - webr
+aliases:
+  - webr-community-examples.html
 ---
 
 Welcome to the Community Examples page for the `quarto-webr` extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the `quarto-webr` extension. These examples showcase real-world use cases, highlighting the extension's adaptability and functionality across various fields. You may also find references to examples from the [main webR project](https://webr.r-wasm.org/) here as well.

@@ -3,6 +3,8 @@ title: "Acknowledgments and Collaborations"
 subtitle: "Bringing webR to Quarto"
 date: "03-11-2023"
 date-modified: last-modified
+aliases:
+  - webr-acknowledgements.html
 ---
 
 We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing [`quarto-webR`](https://github.com/coatless/quarto-webr) to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.
