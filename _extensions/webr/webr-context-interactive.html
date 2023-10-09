@@ -1,4 +1,4 @@
-<button class="btn btn-default btn-webr" disabled type="button" id="webr-run-button-{{WEBRCOUNTER}}">Loading
+<button class="btn btn-default btn-webr" disabled type="button" id="webr-run-button-{{WEBRCOUNTER}}">🟡 Loading
   webR...</button>
 <div id="webr-editor-{{WEBRCOUNTER}}"></div>
 <div id="webr-code-output-{{WEBRCOUNTER}}" aria-live="assertive">
@@ -118,6 +118,14 @@
     // Disable run button for code cell active
     runButton.disabled = true;
 
+    // Disallowing execution of other code cells
+    document.querySelectorAll(".btn-webr").forEach((btn) => {
+      btn.disabled = true;
+    });
+
+    // Emphasize the active code cell
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+
     // Create a canvas variable for graphics
     let canvas = undefined;
 
@@ -193,8 +201,15 @@
     } finally {
       // Clean up the remaining code
       webRCodeShelter.purge();
-      runButton.disabled = false;
     }
+
+    // Switch to allowing execution of code
+    document.querySelectorAll(".btn-webr").forEach((btn) => {
+      btn.disabled = false;
+    });
+
+    // Revert to the initial code cell state
+    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
