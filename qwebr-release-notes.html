@@ -306,6 +306,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">0.3.7: ??? (????)</a>
   <ul class="collapse">
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   </ul></li>
   <li><a href="#ready-set-run.-09-24-2023" id="toc-ready-set-run.-09-24-2023" class="nav-link" data-scroll-target="#ready-set-run.-09-24-2023">0.3.6: Ready, Set, Run. (09-24-2023)</a>
@@ -317,7 +318,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#seance-of-communication-channels-09-17-2023" id="toc-seance-of-communication-channels-09-17-2023" class="nav-link" data-scroll-target="#seance-of-communication-channels-09-17-2023">0.3.5: Seance of Communication Channels (09-17-2023)</a>
   <ul class="collapse">
-  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#features-1" id="toc-features-1" class="nav-link" data-scroll-target="#features-1">Features</a></li>
   <li><a href="#bugfixes-1" id="toc-bugfixes-1" class="nav-link" data-scroll-target="#bugfixes-1">Bugfixes</a></li>
   <li><a href="#documentation-2" id="toc-documentation-2" class="nav-link" data-scroll-target="#documentation-2">Documentation</a></li>
   <li><a href="#deployment-1" id="toc-deployment-1" class="nav-link" data-scroll-target="#deployment-1">Deployment</a></li>
@@ -343,11 +344,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#accessibility-with-the-monaco-editor-05-01-2023" id="toc-accessibility-with-the-monaco-editor-05-01-2023" class="nav-link" data-scroll-target="#accessibility-with-the-monaco-editor-05-01-2023">0.2.0: Accessibility with the Monaco Editor (05-01-2023)</a>
   <ul class="collapse">
   <li><a href="#breaking-changes" id="toc-breaking-changes" class="nav-link" data-scroll-target="#breaking-changes">Breaking Changes</a></li>
-  <li><a href="#features-1" id="toc-features-1" class="nav-link" data-scroll-target="#features-1">Features</a></li>
+  <li><a href="#features-2" id="toc-features-2" class="nav-link" data-scroll-target="#features-2">Features</a></li>
   </ul></li>
   <li><a href="#setting-options-in-document-yaml-04-11-2023" id="toc-setting-options-in-document-yaml-04-11-2023" class="nav-link" data-scroll-target="#setting-options-in-document-yaml-04-11-2023">0.1.0: Setting Options in Document YAML (04-11-2023)</a>
   <ul class="collapse">
-  <li><a href="#features-2" id="toc-features-2" class="nav-link" data-scroll-target="#features-2">Features</a></li>
+  <li><a href="#features-3" id="toc-features-3" class="nav-link" data-scroll-target="#features-3">Features</a></li>
   </ul></li>
   <li><a href="#execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023" id="toc-execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023" class="nav-link" data-scroll-target="#execute-webr-cells-when-developing-in-vs-code-or-rstudio-03-30-2023">0.0.4: Execute webr cells when developing in VS Code or RStudio (03-30-2023)</a>
   <ul class="collapse">
@@ -364,7 +365,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#democratizing-data-science-03-12-2023" id="toc-democratizing-data-science-03-12-2023" class="nav-link" data-scroll-target="#democratizing-data-science-03-12-2023">0.0.1: Democratizing Data Science (03-12-2023)</a>
   <ul class="collapse">
-  <li><a href="#features-3" id="toc-features-3" class="nav-link" data-scroll-target="#features-3">Features</a></li>
+  <li><a href="#features-4" id="toc-features-4" class="nav-link" data-scroll-target="#features-4">Features</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-release-notes.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -392,7 +393,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 6, 2023</p>
+      <p class="date-modified">October 9, 2023</p>
     </div>
   </div>
     
@@ -403,6 +404,16 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 <section id="section" class="level1">
 <h1>0.3.7: ??? (????)</h1>
+<section id="features" class="level2">
+<h2 class="anchored" data-anchor-id="features">Features</h2>
+<ul>
+<li>Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.
+<ul>
+<li>With this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.</li>
+</ul></li>
+<li>Added a visual spinning indicator to emphasize what code cell is currently running.</li>
+</ul>
+</section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 <ul>
@@ -450,8 +461,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </section>
 <section id="seance-of-communication-channels-09-17-2023" class="level1">
 <h1>0.3.5: Seance of Communication Channels (09-17-2023)</h1>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">Features</h2>
+<section id="features-1" class="level2">
+<h2 class="anchored" data-anchor-id="features-1">Features</h2>
 <ul>
 <li>New documentation website is available at: <a href="https://quarto-webr.thecoatlessprofessor.com" class="uri">https://quarto-webr.thecoatlessprofessor.com</a></li>
 <li>Document option <code>channel-type</code> sets the communication channel webR uses.
@@ -569,8 +580,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </ul></li>
 </ul>
 </section>
-<section id="features-1" class="level2">
-<h2 class="anchored" data-anchor-id="features-1">Features</h2>
+<section id="features-2" class="level2">
+<h2 class="anchored" data-anchor-id="features-2">Features</h2>
 <ul>
 <li>Code editing areas on the Quarto document now use the <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a> for improved accessibility.</li>
 <li>Execute code using keyboard shortcuts:
@@ -585,8 +596,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </section>
 <section id="setting-options-in-document-yaml-04-11-2023" class="level1">
 <h1>0.1.0: Setting Options in Document YAML (04-11-2023)</h1>
-<section id="features-2" class="level2">
-<h2 class="anchored" data-anchor-id="features-2">Features</h2>
+<section id="features-3" class="level2">
+<h2 class="anchored" data-anchor-id="features-3">Features</h2>
 <ul>
 <li>Upgraded the version of webR to use v0.1.1.</li>
 <li>Set options directly inside the document’s YAML header to control webR:
@@ -660,8 +671,8 @@ add_one(2)
 </section>
 <section id="democratizing-data-science-03-12-2023" class="level1">
 <h1>0.0.1: Democratizing Data Science (03-12-2023)</h1>
-<section id="features-3" class="level2">
-<h2 class="anchored" data-anchor-id="features-3">Features</h2>
+<section id="features-4" class="level2">
+<h2 class="anchored" data-anchor-id="features-4">Features</h2>
 <ul>
 <li>Enable <a href="https://docs.r-wasm.org/webr/latest/">webR</a> code cells inside of a Quarto document.</li>
 </ul>
