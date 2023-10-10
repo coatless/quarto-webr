@@ -111,6 +111,14 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     background-color: unset !important;
   }
 
+  .qwebr-icon-status-spinner {
+    color: #7894c4;
+  }
+
+  .qwebr-icon-run-code {
+    color: #0d9c29
+  }
+
   .btn-webr {
     background-color: #EEEEEE;
     border-bottom-left-radius: 0;
@@ -240,11 +248,25 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
   // Installing Packages
   if (showStartupMessage && setupRPackages) {
-    // If initialized, but we have packages to install switch status
-    startupMessageWebR.innerText = "🟡 Installing package dependencies..."
-    // Install packages
-    await globalThis.webR.installPackages(installRPackagesList)
+
+    // Determine number of packages to install
+    const nInstallPackages = installRPackagesList.length
+
+    // Iterate through list of packages
+    for (let i = 0; i < nInstallPackages; i++) {
+
+      // Retrieve the package
+      const activePackage = installRPackagesList[i];
+
+      // Update status of package installs
+      startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing ${i + 1} of ${nInstallPackages} packages: ${activePackage}</span>`;
+
+      // Install the package
+      await globalThis.webR.installPackages(activePackage)
+    }
+
   }
+
   // Stop timer
   const initializeWebRTimerEnd = performance.now();
 
@@ -255,7 +277,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   
   // Switch to allowing code to be executed
   document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    btn.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
     btn.disabled = false;
   });
 
@@ -522,7 +544,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 9, 2023</p>
+      <p class="date-modified">October 10, 2023</p>
     </div>
   </div>
     
@@ -652,8 +674,6 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -661,7 +681,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -746,7 +766,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -883,8 +903,6 @@ summary(fit)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -892,7 +910,7 @@ summary(fit)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -977,7 +995,7 @@ summary(fit)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -1114,8 +1132,6 @@ summary(fit)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -1123,7 +1139,7 @@ summary(fit)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -1208,7 +1224,7 @@ summary(fit)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -1340,8 +1356,6 @@ summary(fit)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -1349,7 +1363,7 @@ summary(fit)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -1434,7 +1448,7 @@ summary(fit)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -1566,8 +1580,6 @@ summary(fit)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -1575,7 +1587,7 @@ summary(fit)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -1660,7 +1672,7 @@ summary(fit)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -1800,8 +1812,6 @@ head(modified_vs_data)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -1809,7 +1819,7 @@ head(modified_vs_data)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -1894,7 +1904,7 @@ head(modified_vs_data)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -2037,8 +2047,6 @@ Note
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -2046,7 +2054,7 @@ Note
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -2131,7 +2139,7 @@ Note
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -2260,8 +2268,6 @@ p + geom_boxplot()`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -2269,7 +2275,7 @@ p + geom_boxplot()`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -2354,7 +2360,7 @@ p + geom_boxplot()`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -2484,8 +2490,6 @@ age <- 42`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -2493,7 +2497,7 @@ age <- 42`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -2578,7 +2582,7 @@ age <- 42`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -2703,8 +2707,6 @@ age <- 42`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -2712,7 +2714,7 @@ age <- 42`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -2797,7 +2799,7 @@ age <- 42`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -2931,8 +2933,6 @@ say_hello("James")`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -2940,7 +2940,7 @@ say_hello("James")`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -3025,7 +3025,7 @@ say_hello("James")`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -3150,8 +3150,6 @@ say_hello("James")`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -3159,7 +3157,7 @@ say_hello("James")`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -3244,7 +3242,7 @@ say_hello("James")`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -3387,8 +3385,6 @@ Note
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -3396,7 +3392,7 @@ Note
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -3481,7 +3477,7 @@ Note
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -3607,8 +3603,6 @@ Note
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -3616,7 +3610,7 @@ Note
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -3701,7 +3695,7 @@ Note
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -3830,8 +3824,6 @@ Note
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -3839,7 +3831,7 @@ Note
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -3924,7 +3916,7 @@ Note
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -4077,8 +4069,6 @@ quadratic_roots(1, 3, 7)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -4086,7 +4076,7 @@ quadratic_roots(1, 3, 7)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -4171,7 +4161,7 @@ quadratic_roots(1, 3, 7)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -4301,8 +4291,6 @@ seven_seas`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -4310,7 +4298,7 @@ seven_seas`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -4395,7 +4383,7 @@ seven_seas`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -4525,8 +4513,6 @@ add_one(2)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -4534,7 +4520,7 @@ add_one(2)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -4619,7 +4605,7 @@ add_one(2)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
@@ -4748,8 +4734,6 @@ add_one(2)`,
 
   // Function to execute the code (accepts code as an argument)
   async function executeCode(codeToRun) {
-    // Disable run button for code cell active
-    runButton.disabled = true;
 
     // Disallowing execution of other code cells
     document.querySelectorAll(".btn-webr").forEach((btn) => {
@@ -4757,7 +4741,7 @@ add_one(2)`,
     });
 
     // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #7894c4;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
 
     // Create a canvas variable for graphics
     let canvas = undefined;
@@ -4842,7 +4826,7 @@ add_one(2)`,
     });
 
     // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play" style="color: #0d9c29;"></i> <span>Run Code</span>';
+    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
   }
 
   // Add a click event listener to the run button
