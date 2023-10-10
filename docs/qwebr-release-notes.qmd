@@ -17,6 +17,10 @@ format:
 - Added a visual spinning indicator to emphasize what code cell is currently running.
 - Improved status updates about installing R packages specified in the document's `package` key.
 
+## Bugfixes
+
+- Fixed `base-url` to allow for a localized version of `webR` away.
+
 ## Documentation
 
 - Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/examples) containing examples for [HTML Documents](), [Books](), and [Websites](). ([#53](https://github.com/coatless/quarto-webr/issues/53))

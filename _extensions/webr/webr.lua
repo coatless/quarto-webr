@@ -12,7 +12,7 @@ local hasDoneWebRSetup = false
 local baseVersionWebR = "0.2.1"
 
 -- Define where WebR can be found
-local baseUrl = ""
+local baseUrl = "https://webr.r-wasm.org/v".. baseVersionWebR .."/"
 local serviceWorkerUrl = ""
 
 -- Define the webR communication protocol
