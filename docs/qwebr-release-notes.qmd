@@ -8,13 +8,14 @@ format:
     toc: true
 ---
 
-# 0.3.7: ??? (????)
+# 0.3.7: Mutex On, Mutex Off (????)
 
 ## Features
 
 - Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.
   - With this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.
 - Added a visual spinning indicator to emphasize what code cell is currently running.
+- Improved status updates about installing R packages specified in the document's `package` key.
 
 ## Documentation
 
