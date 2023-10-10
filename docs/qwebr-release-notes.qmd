@@ -19,7 +19,7 @@ format:
 
 ## Bugfixes
 
-- Fixed `base-url` to allow for a localized version of `webR` away.
+- Fixed `base-url` to allow for a localized version of `webR` away. ([#54](https://github.com/coatless/quarto-webr/issues/54))
 
 ## Documentation
 
