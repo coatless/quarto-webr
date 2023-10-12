@@ -102,7 +102,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running.\nImproved status updates about installing R packages specified in the document’s package key.\n\n\n\n\n\nFixed base-url to allow for a localized version of webR away. (#54)\n\n\n\n\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)"
+    "text": "Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running.\nImproved status updates about installing R packages specified in the document’s package key.\n\n\n\n\n\nFixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)\n\n\n\n\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)"
   },
   {
     "objectID": "qwebr-release-notes.html#features",
@@ -116,7 +116,7 @@
     "href": "qwebr-release-notes.html#bugfixes",
     "title": "Release Notes",
     "section": "",
-    "text": "Fixed base-url to allow for a localized version of webR away. (#54)"
+    "text": "Fixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)"
   },
   {
     "objectID": "qwebr-release-notes.html#documentation",
