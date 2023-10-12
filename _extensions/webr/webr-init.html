@@ -140,39 +140,30 @@
   // Setup a shelter
   globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
 
-  // Installing Packages
-  if (showStartupMessage && setupRPackages) {
+  // Package install 
+  async function installRPackage(packages, verbose = true) {
 
-    // Obtain a unique list of R packages
-    function checkUnique(value, index, array) {
-      return array.indexOf(value) === index;
-    }
-    var uniqueRPackageList = installRPackagesList.filter(checkUnique);
+    // Iterate through package list
+    for (let i = 0; i < packages.length; i++) {
+      // Obtain one package
+      const activePackage = packages[i];
 
-    // Determine number of packages to install
-    const nInstallPackages = uniqueRPackageList.length
-
-    if (nInstallPackages == 1) {
-        // Update status of package installs
-        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing package: ${uniqueRPackageList}</span>`;
-
-        // Install the package
-        await globalThis.webR.installPackages(uniqueRPackageList)
-    } else {
-      // Iterate through list of packages
-      for (let i = 0; i < nInstallPackages; i++) {
-
-        // Retrieve the package
-        const activePackage = uniqueRPackageList[i];
-
-        // Update status of package installs
-        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing ${i + 1} of ${nInstallPackages} packages: ${activePackage}</span>`;
-
-        // Install the package
-        await globalThis.webR.installPackages([activePackage])
+      // Update status of package install with progress
+      if (verbose) {
+        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
       }
-    }
 
+      // Install the selected package
+      await globalThis.webR.installPackages([activePackage]);
+    }
+  }
+
+  // Check to see if any packages need to be installed
+  if (setupRPackages) {
+    // Obtain only a unique list of packages
+    const uniqueRPackageList = Array.from(new Set(installRPackagesList));
+    // Install R packages one at a time (either silently or with a status update)
+    await installRPackage(uniqueRPackageList, showStartupMessage);
   }
 
   // Stop timer
