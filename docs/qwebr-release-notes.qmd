@@ -20,6 +20,7 @@ format:
 ## Bugfixes
 
 - Fixed `base-url` to allow for a localized version of `webR` away. ([#54](https://github.com/coatless/quarto-webr/issues/54))
+- Fixed document-level `packages` meta option not installing packages if the status bar was not present ([#69](https://github.com/coatless/quarto-webr/issues/69))
 
 ## Documentation
 
