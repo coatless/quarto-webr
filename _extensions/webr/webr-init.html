@@ -141,16 +141,24 @@
   globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
 
   // Package install 
-  async function installRPackage(packages, verbose = true) {
+  async function installRPackagesWithStatus(packages, status = true) {
+
+    // Update reason for code cells not being executable
+    document.querySelectorAll(".btn-webr").forEach((btn) => {
+      btn.innerText = "🟡 Installing packages ...";
+    });
 
     // Iterate through package list
     for (let i = 0; i < packages.length; i++) {
+
       // Obtain one package
       const activePackage = packages[i];
 
       // Update status of package install with progress
-      if (verbose) {
-        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+      if (status) {
+        startupMessageWebR.innerHTML = 
+           `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
+            <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
       }
 
       // Install the selected package
@@ -162,15 +170,16 @@
   if (setupRPackages) {
     // Obtain only a unique list of packages
     const uniqueRPackageList = Array.from(new Set(installRPackagesList));
+
     // Install R packages one at a time (either silently or with a status update)
-    await installRPackage(uniqueRPackageList, showStartupMessage);
+    await installRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
   }
 
   // Stop timer
   const initializeWebRTimerEnd = performance.now();
 
+  // Release document status as ready
   if (showStartupMessage) {
-    // If initialized, switch to a green light
     startupMessageWebR.innerText = "🟢 Ready!"
   }
   
