@@ -307,26 +307,27 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#mutex-on-mutex-off" id="toc-mutex-on-mutex-off" class="nav-link active" data-scroll-target="#mutex-on-mutex-off">0.3.7: Mutex On, Mutex Off (????)</a>
   <ul class="collapse">
   <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#bugfixes" id="toc-bugfixes" class="nav-link" data-scroll-target="#bugfixes">Bugfixes</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   </ul></li>
   <li><a href="#ready-set-run.-09-24-2023" id="toc-ready-set-run.-09-24-2023" class="nav-link" data-scroll-target="#ready-set-run.-09-24-2023">0.3.6: Ready, Set, Run. (09-24-2023)</a>
   <ul class="collapse">
   <li><a href="#feature" id="toc-feature" class="nav-link" data-scroll-target="#feature">Feature</a></li>
-  <li><a href="#bugfixes" id="toc-bugfixes" class="nav-link" data-scroll-target="#bugfixes">Bugfixes</a></li>
+  <li><a href="#bugfixes-1" id="toc-bugfixes-1" class="nav-link" data-scroll-target="#bugfixes-1">Bugfixes</a></li>
   <li><a href="#documentation-1" id="toc-documentation-1" class="nav-link" data-scroll-target="#documentation-1">Documentation</a></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
   </ul></li>
   <li><a href="#seance-of-communication-channels-09-17-2023" id="toc-seance-of-communication-channels-09-17-2023" class="nav-link" data-scroll-target="#seance-of-communication-channels-09-17-2023">0.3.5: Seance of Communication Channels (09-17-2023)</a>
   <ul class="collapse">
   <li><a href="#features-1" id="toc-features-1" class="nav-link" data-scroll-target="#features-1">Features</a></li>
-  <li><a href="#bugfixes-1" id="toc-bugfixes-1" class="nav-link" data-scroll-target="#bugfixes-1">Bugfixes</a></li>
+  <li><a href="#bugfixes-2" id="toc-bugfixes-2" class="nav-link" data-scroll-target="#bugfixes-2">Bugfixes</a></li>
   <li><a href="#documentation-2" id="toc-documentation-2" class="nav-link" data-scroll-target="#documentation-2">Documentation</a></li>
   <li><a href="#deployment-1" id="toc-deployment-1" class="nav-link" data-scroll-target="#deployment-1">Deployment</a></li>
   </ul></li>
   <li><a href="#rocking-the-monaco-09-13-2023" id="toc-rocking-the-monaco-09-13-2023" class="nav-link" data-scroll-target="#rocking-the-monaco-09-13-2023">0.3.2: Rocking the Monaco (09-13-2023)</a>
   <ul class="collapse">
   <li><a href="#feature-1" id="toc-feature-1" class="nav-link" data-scroll-target="#feature-1">Feature</a></li>
-  <li><a href="#bugfixes-2" id="toc-bugfixes-2" class="nav-link" data-scroll-target="#bugfixes-2">Bugfixes</a></li>
+  <li><a href="#bugfixes-3" id="toc-bugfixes-3" class="nav-link" data-scroll-target="#bugfixes-3">Bugfixes</a></li>
   </ul></li>
   <li><a href="#maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023" id="toc-maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023" class="nav-link" data-scroll-target="#maintenance-release-upgrade-to-webr-v0.2.1-09-12-2023">0.3.1: Maintenance Release: Upgrade to webR v0.2.1 (09-12-2023)</a>
   <ul class="collapse">
@@ -393,7 +394,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 10, 2023</p>
+      <p class="date-modified">October 12, 2023</p>
     </div>
   </div>
     
@@ -413,6 +414,12 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </ul></li>
 <li>Added a visual spinning indicator to emphasize what code cell is currently running.</li>
 <li>Improved status updates about installing R packages specified in the document’s <code>package</code> key.</li>
+</ul>
+</section>
+<section id="bugfixes" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
+<ul>
+<li>Fixed <code>base-url</code> to allow for a localized version of <code>webR</code> away. (<a href="https://github.com/coatless/quarto-webr/issues/54">#54</a>)</li>
 </ul>
 </section>
 <section id="documentation" class="level2">
@@ -435,8 +442,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </ul></li>
 </ul>
 </section>
-<section id="bugfixes" class="level2">
-<h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
+<section id="bugfixes-1" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes-1">Bugfixes</h2>
 <ul>
 <li>Fixed space not being preserved (h/t <span class="citation" data-cites="nguyenllpsych">@nguyenllpsych</span>, #39)</li>
 <li>Fixed webR not initializing if a document lacked a title (h/t <span class="citation" data-cites="jimhester">@jimhester</span>, #40)</li>
@@ -487,8 +494,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">my_hidden_variable = 11</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="bugfixes-1" class="level2">
-<h2 class="anchored" data-anchor-id="bugfixes-1">Bugfixes</h2>
+<section id="bugfixes-2" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes-2">Bugfixes</h2>
 <ul>
 <li>Fixed webR status indicator appearing outside of the header. (#33)</li>
 <li>Fixed button styling difference between standalone documents and website-based documents.</li>
@@ -527,8 +534,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li>Upgraded the MonacoEditor version to v0.43.0 from v0.31.0</li>
 </ul>
 </section>
-<section id="bugfixes-2" class="level2">
-<h2 class="anchored" data-anchor-id="bugfixes-2">Bugfixes</h2>
+<section id="bugfixes-3" class="level2">
+<h2 class="anchored" data-anchor-id="bugfixes-3">Bugfixes</h2>
 <ul>
 <li>Fixed <code>quarto-webr</code> documents requiring a reload in Safari to see/interact with code cells (#21)</li>
 <li>Fixed keyboard shortcuts not re-initializing correctly on multiple Monaco Editors by re-registering shortcuts on code cell focus (#28)</li>
