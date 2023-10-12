@@ -143,20 +143,34 @@
   // Installing Packages
   if (showStartupMessage && setupRPackages) {
 
+    // Obtain a unique list of R packages
+    function checkUnique(value, index, array) {
+      return array.indexOf(value) === index;
+    }
+    var uniqueRPackageList = installRPackagesList.filter(checkUnique);
+
     // Determine number of packages to install
-    const nInstallPackages = installRPackagesList.length
+    const nInstallPackages = uniqueRPackageList.length
 
-    // Iterate through list of packages
-    for (let i = 0; i < nInstallPackages; i++) {
+    if (nInstallPackages == 1) {
+        // Update status of package installs
+        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing package: ${uniqueRPackageList}</span>`;
 
-      // Retrieve the package
-      const activePackage = installRPackagesList[i];
+        // Install the package
+        await globalThis.webR.installPackages(uniqueRPackageList)
+    } else {
+      // Iterate through list of packages
+      for (let i = 0; i < nInstallPackages; i++) {
 
-      // Update status of package installs
-      startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing ${i + 1} of ${nInstallPackages} packages: ${activePackage}</span>`;
+        // Retrieve the package
+        const activePackage = uniqueRPackageList[i];
 
-      // Install the package
-      await globalThis.webR.installPackages(activePackage)
+        // Update status of package installs
+        startupMessageWebR.innerHTML = `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Installing ${i + 1} of ${nInstallPackages} packages: ${activePackage}</span>`;
+
+        // Install the package
+        await globalThis.webR.installPackages([activePackage])
+      }
     }
 
   }
