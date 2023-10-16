@@ -74,7 +74,11 @@ jobs:
       # Remove symlinks
       - name: Delete symlinks
         run: |
-          rm -rf docs/*_extensions
+          rm -rf docs/_extensions && \
+          rm -rf docs/examples/html-document/_extensions && \
+          rm -rf docs/examples/website/_extensions && \
+          rm -rf docs/examples/book/_extensions 
+          
 
       # Publish the docs directory onto gh-pages
       - name: Deploy 🚀
