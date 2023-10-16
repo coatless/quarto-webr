@@ -39,7 +39,7 @@ However, for further enhancements and speed optimizations beyond what the COEP a
 
 > Q. I noticed that built in docs with ? don't work in webR. Are there any other known issues? How long to feature parity?
 
-Regarding feature parity with the main `webR` project, it's important to understand that `quarto-webr` inherits the same limitations and capabilities as the core `webR` technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of `webR` itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process.
+Regarding feature parity with the main `webR` project, it's important to understand that `quarto-webr` inherits the same limitations and capabilities as the core `webR` technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of `webR` itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in `quarto-webr` v0.3.7.
 
 The known limitations at this time are:
 
@@ -52,8 +52,6 @@ The known limitations at this time are:
 4. **Interruption of Running Code**: Interruption of running R code and the use of nested R REPLs (such as `readline()`, `menu()`, `browser()`, etc.) are unsupported when using the PostMessage communication channel.
 
 5. **System Command**: The `system()` command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.
-
-6. **Help Files**: R relies on an external pager program using `system()` to display its help files, which is not supported in `webR`. We'll have to implement a custom mechanic to interpret the output.
 
 # State of Accessibility
 
