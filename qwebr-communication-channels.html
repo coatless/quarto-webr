@@ -897,9 +897,6 @@ x = readline("What is your favorite color?")
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -995,7 +992,7 @@ x = readline("What is your favorite color?")
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-1-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }

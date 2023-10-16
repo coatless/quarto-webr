@@ -782,9 +782,6 @@ meaning_of_life = 42
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -880,7 +877,7 @@ meaning_of_life = 42
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-2-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }
@@ -949,9 +946,6 @@ meaning_of_life = 42
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -1043,11 +1037,11 @@ meaning_of_life = 42
       // Display the pager data
       if (pager) {
         // Use the `pre` element to preserve whitespace.
-        pager.forEach((paged_data) => {
+        pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-3-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }
@@ -1109,9 +1103,6 @@ mat2x2`)
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -1203,11 +1194,11 @@ mat2x2`)
       // Display the pager data
       if (pager) {
         // Use the `pre` element to preserve whitespace.
-        pager.forEach((paged_data) => {
+        pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-4-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }
@@ -1420,9 +1411,6 @@ head(df_penguins)`,
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -1518,7 +1506,7 @@ head(df_penguins)`,
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-6-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }
@@ -1609,9 +1597,6 @@ Note
           // Returned cleaned data
           return content;
         });
-
-        // Is it set to delete?
-        console.log(deleteFile)
 
         // Unlink file if needed
         if (deleteFile) { 
@@ -1704,11 +1689,11 @@ Note
       // Display the pager data
       if (pager) {
         // Use the `pre` element to preserve whitespace.
-        pager.forEach((paged_data) => {
+        pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-7-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }
@@ -1963,9 +1948,6 @@ check(problem = "1a", answer = student_solution)`,
           return content;
         });
 
-        // Is it set to delete?
-        console.log(deleteFile)
-
         // Unlink file if needed
         if (deleteFile) { 
           globalThis.webR.FS.unlink(path); 
@@ -2061,7 +2043,7 @@ check(problem = "1a", answer = student_solution)`,
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
           pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-9-" + (index + 1));
           outputDiv.appendChild(pre_pager);
         });
       }

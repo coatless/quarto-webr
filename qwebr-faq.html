@@ -376,7 +376,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <blockquote class="blockquote">
 <p>Q. I noticed that built in docs with ? don’t work in webR. Are there any other known issues? How long to feature parity?</p>
 </blockquote>
-<p>Regarding feature parity with the main <code>webR</code> project, it’s important to understand that <code>quarto-webr</code> inherits the same limitations and capabilities as the core <code>webR</code> technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of <code>webR</code> itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process.</p>
+<p>Regarding feature parity with the main <code>webR</code> project, it’s important to understand that <code>quarto-webr</code> inherits the same limitations and capabilities as the core <code>webR</code> technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of <code>webR</code> itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in <code>quarto-webr</code> v0.3.7.</p>
 <p>The known limitations at this time are:</p>
 <ol type="1">
 <li><p><strong>Package Installation</strong>: Installing packages from source within <code>webR</code> is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in <code>webR</code> is by providing pre-compiled WebAssembly binaries.</p></li>
@@ -384,7 +384,6 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li><p><strong>Communication Channels</strong>: <code>webR</code> relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup.</p></li>
 <li><p><strong>Interruption of Running Code</strong>: Interruption of running R code and the use of nested R REPLs (such as <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) are unsupported when using the PostMessage communication channel.</p></li>
 <li><p><strong>System Command</strong>: The <code>system()</code> command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.</p></li>
-<li><p><strong>Help Files</strong>: R relies on an external pager program using <code>system()</code> to display its help files, which is not supported in <code>webR</code>. We’ll have to implement a custom mechanic to interpret the output.</p></li>
 </ol>
 </section>
 <section id="state-of-accessibility" class="level1">
