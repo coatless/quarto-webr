@@ -67,7 +67,7 @@ jobs:
       - name: Copy documentation portal & examples into the staging directory
         run: |        
           mkdir -p staging && \
-          cp -rp docs/_site staging/ && \
+          cp -rp docs/_site/* staging/ && \
           cp -rp examples/book/_book staging/book && \
           cp -rp examples/website/_site staging/website && \
           cp -rp examples/html-document/ staging/html-document
