@@ -246,6 +246,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   // Setup a shelter
   globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
 
+  // Setup a pager to allow processing help documentation 
+  await globalThis.webR.evalRVoid('webr::pager_install()'); 
+
   // Package install 
   async function installRPackagesWithStatus(packages, status = true) {
 
@@ -558,7 +561,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 12, 2023</p>
+      <p class="date-modified">October 16, 2023</p>
     </div>
   </div>
     
@@ -700,6 +703,41 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -728,8 +766,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -744,8 +782,17 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -768,6 +815,18 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -929,6 +988,41 @@ summary(fit)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -957,8 +1051,8 @@ summary(fit)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -973,8 +1067,17 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -997,6 +1100,18 @@ summary(fit)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -1158,6 +1273,41 @@ summary(fit)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -1186,8 +1336,8 @@ summary(fit)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -1202,8 +1352,17 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -1226,6 +1385,18 @@ summary(fit)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -1382,6 +1553,41 @@ summary(fit)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -1410,8 +1616,8 @@ summary(fit)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -1426,8 +1632,17 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -1450,6 +1665,18 @@ summary(fit)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -1606,6 +1833,41 @@ summary(fit)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -1634,8 +1896,8 @@ summary(fit)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -1650,8 +1912,17 @@ summary(fit)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -1674,6 +1945,18 @@ summary(fit)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -1838,6 +2121,41 @@ head(modified_vs_data)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -1866,8 +2184,8 @@ head(modified_vs_data)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -1882,8 +2200,17 @@ head(modified_vs_data)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -1906,6 +2233,18 @@ head(modified_vs_data)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -2073,6 +2412,41 @@ Note
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -2101,8 +2475,8 @@ Note
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -2117,8 +2491,17 @@ Note
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -2141,6 +2524,18 @@ Note
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -2294,6 +2689,41 @@ p + geom_boxplot()`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -2322,8 +2752,8 @@ p + geom_boxplot()`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -2338,8 +2768,17 @@ p + geom_boxplot()`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -2362,6 +2801,18 @@ p + geom_boxplot()`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -2516,6 +2967,41 @@ age <- 42`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -2544,8 +3030,8 @@ age <- 42`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -2560,8 +3046,17 @@ age <- 42`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -2584,6 +3079,18 @@ age <- 42`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -2733,6 +3240,41 @@ age <- 42`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -2761,8 +3303,8 @@ age <- 42`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -2777,8 +3319,17 @@ age <- 42`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -2801,6 +3352,18 @@ age <- 42`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -2959,6 +3522,41 @@ say_hello("James")`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -2987,8 +3585,8 @@ say_hello("James")`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -3003,8 +3601,17 @@ say_hello("James")`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -3027,6 +3634,18 @@ say_hello("James")`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -3176,6 +3795,41 @@ say_hello("James")`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -3204,8 +3858,8 @@ say_hello("James")`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -3220,8 +3874,17 @@ say_hello("James")`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -3244,6 +3907,18 @@ say_hello("James")`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -3411,6 +4086,41 @@ Note
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -3439,8 +4149,8 @@ Note
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -3455,8 +4165,17 @@ Note
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -3479,6 +4198,18 @@ Note
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -3629,6 +4360,41 @@ Note
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -3657,8 +4423,8 @@ Note
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -3673,8 +4439,17 @@ Note
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -3697,6 +4472,18 @@ Note
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -3850,6 +4637,41 @@ Note
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -3878,8 +4700,8 @@ Note
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -3894,8 +4716,17 @@ Note
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -3918,6 +4749,18 @@ Note
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -4095,6 +4938,41 @@ quadratic_roots(1, 3, 7)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -4123,8 +5001,8 @@ quadratic_roots(1, 3, 7)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -4139,8 +5017,17 @@ quadratic_roots(1, 3, 7)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -4163,6 +5050,18 @@ quadratic_roots(1, 3, 7)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -4317,6 +5216,41 @@ seven_seas`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -4345,8 +5279,8 @@ seven_seas`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -4361,8 +5295,17 @@ seven_seas`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -4385,6 +5328,18 @@ seven_seas`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -4539,6 +5494,41 @@ add_one(2)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -4567,8 +5557,8 @@ add_one(2)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -4583,8 +5573,17 @@ add_one(2)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -4607,6 +5606,18 @@ add_one(2)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
@@ -4760,6 +5771,41 @@ add_one(2)`,
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -4788,8 +5834,8 @@ add_one(2)`,
       // Clean the state
       const msgs = await webR.flush();
 
-      // Output each image stored
-      msgs.forEach(msg => {
+      // Output each image event stored
+      msgs.forEach((msg) => {
         // Determine if old canvas can be used or a new canvas is required.
         if (msg.type === 'canvas'){
           // Add image to the current canvas
@@ -4804,8 +5850,17 @@ add_one(2)`,
             canvas.style.display = "block";
             canvas.style.margin = "auto";
           }
-        }
+        } 
       });
+
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -4828,6 +5883,18 @@ add_one(2)`,
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code
