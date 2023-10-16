@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.3.7: Mutex On, Mutex Off (????)
+# 0.3.7: Mutex On, Mutex Off (10-16-2023)
 
 ## Features
 
