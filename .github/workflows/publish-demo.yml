@@ -63,25 +63,24 @@ jobs:
         with:
           path: "examples/book"
 
-      # Collect the output into the docs/ directory
-      - name: Copy examples into the docs directory
+      # Collect the output into the staging/ directory
+      - name: Copy documentation portal & examples into the staging directory
         run: |        
-          mkdir -p docs/examples && \
-          cp -rp examples/book/_book docs/examples/book && \
-          cp -rp examples/website/_site docs/examples/website && \
-          cp -rp examples/html-document/ docs/examples/html-document
+          mkdir -p staging && \
+          cp -rp docs/_site staging/ && \
+          cp -rp examples/book/_book staging/book && \
+          cp -rp examples/website/_site staging/website && \
+          cp -rp examples/html-document/ staging/html-document
 
       # Remove symlinks
       - name: Delete symlinks
         run: |
-          rm -rf docs/_extensions && \
-          rm -rf docs/examples/html-document/_extensions && \
-          rm -rf docs/examples/website/_extensions && \
-          rm -rf docs/examples/book/_extensions 
-          
+          rm -rf staging/html-document/_extensions && \
+          rm -rf staging/website/_extensions && \
+          rm -rf staging/book/_extensions
 
       # Publish the docs directory onto gh-pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs # The folder the action should deploy.
+          folder: staging # The folder the action should deploy.
