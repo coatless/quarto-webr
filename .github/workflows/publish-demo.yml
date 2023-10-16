@@ -69,7 +69,7 @@ jobs:
           mkdir -p docs/examples && \
           cp -rp examples/book/_book docs/examples/book && \
           cp -rp examples/website/_site docs/examples/website && \
-          cp -rp examples/html-document/ docs/examples/html-document && \
+          cp -rp examples/html-document/ docs/examples/html-document
 
       # Publish the docs directory onto gh-pages
       - name: "Render and Publish"
