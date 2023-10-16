@@ -1,8 +1,2 @@
 project:
   title: "index"
-
-format: 
-  html: 
-    resources:
-    - webr-serviceworker.js
-    - webr-worker.js
