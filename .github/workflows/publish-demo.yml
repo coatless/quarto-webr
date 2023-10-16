@@ -72,9 +72,7 @@ jobs:
           cp -rp examples/html-document/ docs/examples/html-document
 
       # Publish the docs directory onto gh-pages
-      - name: "Render and Publish"
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target: gh-pages
-          path: docs
-          render: false
+          folder: docs # The folder the action should deploy.
