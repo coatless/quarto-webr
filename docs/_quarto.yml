@@ -2,7 +2,6 @@ project:
   type: website
   resources: 
     - CNAME
-    - ../examples/*
 
 website:
   title: "quarto-webr"
@@ -46,6 +45,8 @@ website:
             text: Community Examples
       - section: "Deployment"
         contents:
+          - href: qwebr-deployment-templates.qmd
+            text: Templates
           - href: qwebr-communication-channels.qmd
             text: Communication Channels
       - section: "Extra"

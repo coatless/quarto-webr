@@ -1,5 +1,8 @@
 project:
   type: website
+  resources:
+  - webr-serviceworker.js
+  - webr-worker.js
 
 website:
   title: "Demo Quarto Webr Website"
@@ -11,6 +14,8 @@ website:
         text: Home
       - href: example-page.qmd
         text: Example page
+      - href: ../../
+        text: Documentation Portal
   sidebar:
     style: "floating"
     contents:
@@ -18,6 +23,8 @@ website:
         contents:
           - index.qmd
           - example-page.qmd
+          - href: ../../
+            text: Documentation Portal
 
   page-footer: 
     left: "An example website with quarto-webr."

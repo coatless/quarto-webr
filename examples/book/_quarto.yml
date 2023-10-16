@@ -1,5 +1,8 @@
 project:
   type: book
+  resources:
+  - webr-serviceworker.js
+  - webr-worker.js
 
 book:
   title: "Sample quarto-webr Book Project"
@@ -17,7 +20,8 @@ book:
     - part: "Exploring R"
       chapters:
         - example-page.qmd
-
+    - href: ../../
+      text: Documentation Portal
   page-footer: 
     left: "An example book with quarto-webr."
     right: 

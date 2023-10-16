@@ -1,5 +1,10 @@
 ---
 title: "Quarto Webr Demo HTML Document"
+format:
+  html:
+    resources:
+    - webr-serviceworker.js
+    - webr-worker.js
 webr:
   channel-type: "automatic"
 filters:
@@ -14,3 +19,4 @@ Welcome to a demo HTML Document that uses [`quarto-webr`](https://github.com/coa
 print("Hello there! Welcome to a quarto-webR powered HTML Document!")
 ```
 
+Let's go back to the [documentation portal](../../)
