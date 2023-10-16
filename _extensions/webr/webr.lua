@@ -105,7 +105,7 @@ function setWebRInitializationOptions(meta)
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype
   if not is_variable_empty(webr["channel-type"]) then
     channelType = convertMetaChannelTypeToWebROption(pandoc.utils.stringify(webr["channel-type"]))
-    if not (channelType == "ChannelType.Automatic" and channelType == "ChannelType.ServiceWorker") then
+    if not (channelType == "ChannelType.Automatic" or channelType == "ChannelType.ServiceWorker") then
       hasServiceWorkerFiles = false
     end
   end

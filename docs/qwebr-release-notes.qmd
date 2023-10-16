@@ -23,12 +23,18 @@ format:
 
 - Fixed `base-url` to allow for a localized version of `webR` away. ([#54](https://github.com/coatless/quarto-webr/issues/54))
 - Fixed document-level `packages` meta option not installing packages if the status bar was not present ([#69](https://github.com/coatless/quarto-webr/issues/69))
+- Fixed service workers not being placed if user explicitly set `channel-type: 'automatic'` ([#74](https://github.com/coatless/quarto-webr/pull/74))
 
 ## Documentation
 
 - Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/docs/examples) containing examples for [HTML Documents](https://github.com/coatless/quarto-webr/tree/main/docs/examples/html-document), [Books](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book), and [Websites](https://github.com/coatless/quarto-webr/tree/main/docs/examples/websites). ([#53](https://github.com/coatless/quarto-webr/issues/53))
 - Added a documentation page that contains the extension updates and release dates. 
 - Added an FAQ page covering questions from posit::conf(2023). ([#56](https://github.com/coatless/quarto-webr/issues/56))
+
+## Deployment
+
+- Switched from Quarto's publishing action to individually rendering projects, merging output, and, then, publishing. ([#73](https://github.com/coatless/quarto-webr/pull/73))
+  - By using a custom publish action, we can retain a single repository with nested quarto projects (e.g. A website project that also contains a book.)
 
 # 0.3.6: Ready, Set, Run. (09-24-2023)
 
