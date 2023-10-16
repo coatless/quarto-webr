@@ -1,2 +1,5 @@
 project:
   title: "index"
+  resources:
+  - webr-serviceworker.js
+  - webr-worker.js

@@ -1,5 +1,8 @@
 project:
   type: book
+  resources:
+  - webr-serviceworker.js
+  - webr-worker.js
 
 book:
   title: "Sample quarto-webr Book Project"
