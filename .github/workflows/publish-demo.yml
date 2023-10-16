@@ -71,6 +71,11 @@ jobs:
           cp -rp examples/website/_site docs/examples/website && \
           cp -rp examples/html-document/ docs/examples/html-document
 
+      # Remove symlinks
+      - name: Delete symlinks
+        run: |
+          rm -rf docs/*_extensions
+
       # Publish the docs directory onto gh-pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
