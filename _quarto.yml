@@ -46,7 +46,7 @@ website:
       - section: "Deployment"
         contents:
           - href: qwebr-deployment-templates.qmd
-            text: Deployment Templates
+            text: Templates
           - href: qwebr-communication-channels.qmd
             text: Communication Channels
       - section: "Extra"
