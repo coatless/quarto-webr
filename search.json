@@ -102,7 +102,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running. (#64)\nImproved status updates about installing R packages specified in the document’s package key. (#68)\nFully supported pager event types. (#58)\n\nWith this update, looking at R help documentation for a function is now possible.\n\n\n\n\n\n\nFixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)\n\n\n\n\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)"
+    "text": "Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running. (#64)\nImproved status updates about installing R packages specified in the document’s package key. (#68)\nFully supported pager event types. (#58)\n\nWith this update, looking at R help documentation for a function is now possible.\n\n\n\n\n\n\nFixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)\nFixed service workers not being placed if user explicitly set channel-type: 'automatic' (#74)\n\n\n\n\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)\n\n\n\n\n\nSwitched from Quarto’s publishing action to individually rendering projects, merging output, and, then, publishing. (#73)\n\nBy using a custom publish action, we can retain a single repository with nested quarto projects (e.g. A website project that also contains a book.)"
   },
   {
     "objectID": "qwebr-release-notes.html#features",
@@ -116,7 +116,7 @@
     "href": "qwebr-release-notes.html#bugfixes",
     "title": "Release Notes",
     "section": "",
-    "text": "Fixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)"
+    "text": "Fixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)\nFixed service workers not being placed if user explicitly set channel-type: 'automatic' (#74)"
   },
   {
     "objectID": "qwebr-release-notes.html#documentation",
@@ -124,6 +124,13 @@
     "title": "Release Notes",
     "section": "",
     "text": "Added an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)"
+  },
+  {
+    "objectID": "qwebr-release-notes.html#deployment",
+    "href": "qwebr-release-notes.html#deployment",
+    "title": "Release Notes",
+    "section": "",
+    "text": "Switched from Quarto’s publishing action to individually rendering projects, merging output, and, then, publishing. (#73)\n\nBy using a custom publish action, we can retain a single repository with nested quarto projects (e.g. A website project that also contains a book.)"
   },
   {
     "objectID": "qwebr-release-notes.html#feature",
@@ -147,8 +154,8 @@
     "text": "Documentation\n\nAdded a walkthrough video to the getting started page.\nAdded a new page containing community examples of the quarto-webr extension in the wild.\nAdded an example on fill-in-the-blank usage.\nClarified how interactive code cells could be used to explore what-if scenarios.\nMinor documentation fixes."
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment",
-    "href": "qwebr-release-notes.html#deployment",
+    "objectID": "qwebr-release-notes.html#deployment-1",
+    "href": "qwebr-release-notes.html#deployment-1",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdd new issue templates for questions and examples.\nImproved GitHub repo issue template formatting."
@@ -175,8 +182,8 @@
     "text": "Documentation\n\nCreated the docs folder inside the repository to host the documentation website.\nMoved documentation from the README.md file onto separate web pages.\n\nAcknowledgements now has a dedicated page thanking contributors and collaborators.\nDeveloper resources expands on the reference resources.\nUsing R packages describes the best practices for using R’s ecosystem of extensions\nCustomization Options describes the document level options available to be set in document’s YAML field.\n\nAdded new documentation entries for hidden code cell evaluation and communication channels.\nAdded a rendered version of the README example to the website.\nIncorporated additional examples into the “Exploring Interactive Code Cells” demo document."
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-1",
-    "href": "qwebr-release-notes.html#deployment-1",
+    "objectID": "qwebr-release-notes.html#deployment-2",
+    "href": "qwebr-release-notes.html#deployment-2",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdded a Quarto action to render and publish the documentation website.\nAdded issue templates for feature requests and bug fixes.\nSymlink the _extension directory into docs to avoid needing to add the extension on each render."
@@ -217,8 +224,8 @@
     "text": "Bug fix\n\nAttempted to resolve missing service workers for published Quarto webR enabled documents on https://quarto.pub"
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-2",
-    "href": "qwebr-release-notes.html#deployment-2",
+    "objectID": "qwebr-release-notes.html#deployment-3",
+    "href": "qwebr-release-notes.html#deployment-3",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdded a GitHub actions website deployment workflow to generate sample pages.\nAdded a devcontainer.json for development on GitHub\nAdded a script to update the version of Quarto used inside of the devcontainer.json."
