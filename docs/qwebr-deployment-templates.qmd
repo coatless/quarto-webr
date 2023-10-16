@@ -10,22 +10,22 @@ Discover a range of sample deployment templates for the `quarto-webr` extension 
 
 This template is designed for creating standalone HTML documents with interactive webR functionality. It's suitable for individual reports or interactive documents.
 
-**Example**: You can find an example of an HTML document template [here](https://github.com/coatless/quarto-webr/tree/main/examples/html-document).
-**Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/html-document).
+- **Example**: You can find an example of an HTML document template [here](examples/html-document/index.qmd).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/html-document).
 
 # Website Template**
 
 This template is meant for building interactive websites with multiple webR-powered pages. It's ideal for creating blog posts, educational platforms, or any web content that requires interactive data analysis.
 
-**Example**: Explore an example of a website template [here](https://github.com/coatless/quarto-webr/tree/main/examples/website).
-**Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/website).
+- **Example**: Explore an example of a website template [here](examples/website/index.qmd).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/website).
 
 
 # Book Template
 
 The book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.
 
-**Example**: You can view an example of a book template [here](https://github.com/coatless/quarto-webr/tree/main/examples/book).
+- **Example**: You can view an example of a book template [here](examples/book/index.qmd).
 
-**Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/book).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book).
 
