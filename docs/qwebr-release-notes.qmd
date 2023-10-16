@@ -14,8 +14,10 @@ format:
 
 - Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.
   - With this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.
-- Added a visual spinning indicator to emphasize what code cell is currently running.
-- Improved status updates about installing R packages specified in the document's `package` key.
+- Added a visual spinning indicator to emphasize what code cell is currently running. ([#64](https://github.com/coatless/quarto-webr/issues/64))
+- Improved status updates about installing R packages specified in the document's `package` key. ([#68](https://github.com/coatless/quarto-webr/issues/68))
+- Fully supported `pager` event types. ([#58](https://github.com/coatless/quarto-webr/issues/58))
+  - With this update, looking at R help documentation for a function is now possible.
 
 ## Bugfixes
 

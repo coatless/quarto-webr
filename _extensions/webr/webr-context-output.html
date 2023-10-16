@@ -10,6 +10,41 @@
     // Create a canvas variable for graphics
     let canvas = undefined;
 
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // Process 
+    async function parseTypePager(msg) { 
+
+        // Split out the event data
+        const { path, title, deleteFile } = msg.data; 
+
+        // Process the pager data by reading the information from disk
+        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+            content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+        });
+
+        // Is it set to delete?
+        console.log(deleteFile)
+
+        // Unlink file if needed
+        if (deleteFile) { 
+          globalThis.webR.FS.unlink(path); 
+        } 
+
+        // Return extracted data with spaces
+        return paged_data;
+    } 
+
     // Initialize webR
     await globalThis.webR.init();
 
@@ -55,7 +90,16 @@
             canvas.style.margin = "auto";
           }
         }
-      });
+      });      
+      
+      // Use `map` to process the filtered "pager" events asynchronously
+      const pager = await Promise.all(
+        msgs.filter(msg => msg.type === 'pager').map(
+          async (msg) => {
+            return await parseTypePager(msg);
+          }
+        )
+      );
 
       // Nullify the outputDiv of content
       outputDiv.innerHTML = "";
@@ -78,6 +122,18 @@
         const p = document.createElement("p");
         p.appendChild(canvas);
         outputDiv.appendChild(p);
+      }
+
+      // Display the pager data
+      if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data) => {
+          let pre_pager = document.createElement("pre");
+          pre_pager.innerText = paged_data;
+          pre_pager.classList.add("qwebr-output-type-pager");
+          pre_pager.setAttribute("id", "qwebr-output-type-pager-" + (index + 1));
+          outputDiv.appendChild(pre_pager);
+        });
       }
     } finally {
       // Clean up the remaining code

@@ -140,6 +140,9 @@
   // Setup a shelter
   globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
 
+  // Setup a pager to allow processing help documentation 
+  await globalThis.webR.evalRVoid('webr::pager_install()'); 
+
   // Package install 
   async function installRPackagesWithStatus(packages, status = true) {
 
