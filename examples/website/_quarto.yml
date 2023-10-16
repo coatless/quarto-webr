@@ -14,7 +14,7 @@ website:
         text: Home
       - href: example-page.qmd
         text: Example page
-      - href: /
+      - href: ../../
         text: Documentation Portal
   sidebar:
     style: "floating"
@@ -23,7 +23,7 @@ website:
         contents:
           - index.qmd
           - example-page.qmd
-          - href: /
+          - href: ../../
             text: Documentation Portal
 
   page-footer: 

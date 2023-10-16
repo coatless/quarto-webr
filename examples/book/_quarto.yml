@@ -20,7 +20,7 @@ book:
     - part: "Exploring R"
       chapters:
         - example-page.qmd
-    - href: /
+    - href: ../../
       text: Documentation Portal
   page-footer: 
     left: "An example book with quarto-webr."

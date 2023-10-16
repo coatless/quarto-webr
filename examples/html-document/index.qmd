@@ -14,4 +14,4 @@ Welcome to a demo HTML Document that uses [`quarto-webr`](https://github.com/coa
 print("Hello there! Welcome to a quarto-webR powered HTML Document!")
 ```
 
-Let's go back to the [documentation portal](/)
+Let's go back to the [documentation portal](../../)
