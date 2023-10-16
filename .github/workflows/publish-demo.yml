@@ -51,17 +51,17 @@ jobs:
       - name: Render sample deployment HTML document template
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          path: "examples/html-document/index.qmd"
+          path: "docs/examples/html-document/index.qmd"
 
       - name: Render sample deployment website template
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          path: "examples/website"
+          path: "docs/examples/website"
 
       - name: Render sample deployment book template
         uses: quarto-dev/quarto-actions/render@v2
         with:
-          path: "examples/book"
+          path: "docs/examples/book"
 
       # Collect and, then, publish onto gh-pages the output
       - name: "Render and Publish"
