@@ -66,18 +66,18 @@ jobs:
       # Collect the output into the staging/ directory
       - name: Copy documentation portal & examples into the staging directory
         run: |        
-          mkdir -p staging && \
+          mkdir -p staging/examples && \
           cp -rp docs/_site/* staging/ && \
-          cp -rp examples/book/_book staging/book && \
-          cp -rp examples/website/_site staging/website && \
-          cp -rp examples/html-document/ staging/html-document
+          cp -rp examples/book/_book staging/examples/book && \
+          cp -rp examples/website/_site staging/examples/website && \
+          cp -rp examples/html-document/ staging/examples/html-document
 
       # Remove symlinks
       - name: Delete symlinks
         run: |
-          rm -rf staging/html-document/_extensions && \
-          rm -rf staging/website/_extensions && \
-          rm -rf staging/book/_extensions
+          rm -rf staging/examples/html-document/_extensions && \
+          rm -rf staging/examples/website/_extensions && \
+          rm -rf staging/examples/book/_extensions
 
       # Publish the docs directory onto gh-pages
       - name: Deploy 🚀
