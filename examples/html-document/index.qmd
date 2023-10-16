@@ -1,0 +1,16 @@
+---
+title: "Quarto Webr Demo HTML Document"
+webr:
+  channel-type: "automatic"
+filters:
+- webr
+---
+
+# Welcome
+
+Welcome to a demo HTML Document that uses [`quarto-webr`](https://github.com/coatless/quarto-webr) to generate interactive code cells using [Quarto](https://quarto.org).
+
+```{webr-r}
+print("Hello there! Welcome to a quarto-webR powered HTML Document!")
+```
+

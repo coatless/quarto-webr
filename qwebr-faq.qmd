@@ -1,0 +1,128 @@
+---
+title: "Frequently Asked Questions"
+subtitle: "Find Answers to Common Queries About `quarto-webr` Extension"
+date: "10-01-2023"
+date-modified: last-modified
+engine: markdown
+format: 
+  html:
+    toc: true
+aliases:
+  - webr-faq.html
+---
+
+Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the `quarto-webr` extension.  If you can't find the answer you're looking for, don't hesitate to reach out to our community for additional support by opening a [question](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=q%26a&projects=&template=question.yml&title=%5BQ%26A%5D%3A+) or a [bug report](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=bug%2Ctriage-needed&projects=&template=bug-report.yml&title=%5BBug%5D%3A+) on the [issue tracker](https://github.com/coatless/quarto-webr/issues).
+
+# Stability and Long Term Support
+
+> Q. Would you say the quarto-webr extension API is stable? Thinking about starting to convert course notes and wondering where the project is in terms of stability. 
+
+Yes, the `quarto-webr` extension API can be considered stable for most practical purposes. It has undergone significant development and testing to ensure that it functions reliably and consistently within the Quarto framework. You can confidently start converting your course notes and materials using this extension.
+
+However, it's important to keep in mind a few considerations:
+
+1. **Dependency on Quarto and webR projects:** The `quarto-webr` extension relies on the main `webR` project for its core functionality. While we actively maintain the `quarto-webr` extension and aim to keep it compatible with the latest versions of Quarto and `webR`, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.
+
+1. **Version compatibility:** It's important to note that the version of the R client and R packages that is downloaded for `webR` execution may affect your materials. It's advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before. 
+
+1. **Start with a small set:** When converting your course materials, it's a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension's functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.
+
+# Improving Performance
+
+> Q.  What are your plans, if any, for scaling webR to handle complex content faster?
+
+For handling complex content, we recommend setting the `channel-type` option to the [`'shared-array-buffer'`](qwebr-communication-channels.qmd#sec-shared-array-buffer), which can significantly speed up its execution. This environment requires the proper configuration of HTTP headers for [Cross-Origin Embedder Policy (COEP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy) and [Cross-Origin Opener Policy (COOP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy). By setting these headers correctly, you can already achieve notable speed improvements when working with webR.
+
+However, for further enhancements and speed optimizations beyond what the COEP and COOP headers provide, we recommend keeping an eye on the [main webR project's documentation](https://docs.r-wasm.org/webr/latest/). The core webR project continuously works on improving performance and scalability, so any future advancements in handling complex content faster will likely originate from their developments.
+
+# webR Limitations
+
+> Q. I noticed that built in docs with ? don't work in webR. Are there any other known issues? How long to feature parity?
+
+Regarding feature parity with the main `webR` project, it's important to understand that `quarto-webr` inherits the same limitations and capabilities as the core `webR` technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of `webR` itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in `quarto-webr` v0.3.7.
+
+The known limitations at this time are:
+
+1. **Package Installation**: Installing packages from source within `webR` is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in `webR` is by providing pre-compiled WebAssembly binaries.
+
+2. **Graphics Device**: The `webr::canvas()` graphics device relies on OffscreenCanvas support in the web browser or JavaScript engine running `webR`. This means that a modern and up-to-date browser is required for plotting with this device. Older browsers without OffscreenCanvas support can still create plots using the Cairo-based graphics devices, such as `png()`.
+
+3. **Communication Channels**: `webR` relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup. 
+
+4. **Interruption of Running Code**: Interruption of running R code and the use of nested R REPLs (such as `readline()`, `menu()`, `browser()`, etc.) are unsupported when using the PostMessage communication channel.
+
+5. **System Command**: The `system()` command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.
+
+# State of Accessibility
+
+> Q. You mentioned there has been some work on accessibility. I'm curious what the current state of accessibility is? What are the known issues?
+
+Accessibility is an important aspect of webR, and we are committed to ensuring that the tool is usable by individuals with disabilities. To address accessibility concerns, we have engaged the expertise of [JooYoung Seo](https://github.com/jooyoungseo), an Assistant Professor in the School of Information Sciences (iSchool) at the University of Illinois Urbana-Champaign. JooYoung specializes in accessibility within Data Science and has been instrumental in conducting periodic accessibility reviews of webR.
+
+One of the primary areas of focus has been making sure that screen readers can easily identify and interact with code cells on the page. This ensures that individuals with visual impairments can effectively use webR. While we've made significant strides in improving accessibility, we continue to work on addressing any known issues and enhancing the overall accessibility of the tool. We are committed to providing an inclusive and user-friendly experience for all users, and JooYoung's expertise has been invaluable in this regard.
+
+# Package Usage
+
+> Q. Does the use of R packages cause any issues for you when teaching content with webR and Quarto?
+
+When teaching content with `webR` and Quarto, the use of R packages is certainly supported. However, it's important to be aware of a few considerations that can help ensure a smooth teaching experience.
+
+In a typical R environment, packages are installed once and are available for subsequent sessions using `library()` or `require()`. In `webR`, packages are installed on each session. This means that each `webR` session starts with a clean slate, and packages need to be installed again for that specific session.
+
+To optimize this process and avoid unnecessary downloads, it's recommended to use the `webr::install()` function instead of the standard `install.packages()` function. `webr::install()` checks if a package is already installed and does not re-download it if it's already available. This can significantly speed up the package installation process when working with `webR` and Quarto.
+
+One way to simplify the teaching process and prevent students from working while packages are being installed is to use the built-in [`packages` option](qwebr-using-r-packages.qmd#install-r-packages-on-document-open) in the document's header. This option hides the installation process from students and ensures that the required packages are pre-installed when they access the document.
+
+Finally, it's worth noting that the R packages available to `webR` may not always be the latest versions that you can get from CRAN (the Comprehensive R Archive Network). Therefore, it's a good practice to check the package versions and ensure compatibility with your teaching materials.
+
+
+# Debugging
+
+> Q. How are error messages, etc. communicated in webr's interface? Would it be easy for a student to debug without the tools that are available in the RStudio?
+
+Error messages, warnings, and other diagnostic information are presented in the output of a `quarto-webr` interface, just like in a standard R environment. These messages appear directly below the code cell that generated them. While `quarto-webr` provides a user-friendly interface for working with R in a web browser, it does not offer advanced debugging tools like `debug()`, `debugonce()`, `debuggingState()`, or `setBreakpoint()`. Therefore, debugging in `quarto-webr` is primarily reliant on interpreting the error messages and warnings displayed in the output. For students familiar with RStudio's debugging tools, transitioning to `quarto-webr` may require an adjustment to debugging practices. However, the clear presentation of error messages in the output makes it relatively straightforward for students to identify and address issues in their code.
+
+
+# Styling
+
+> Q. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?
+
+Certainly! You have the flexibility to style the UI elements added by the `quarto-webr` extension to your document. These elements are categorized into three distinct areas, each of which can be styled individually. They are identifiable by their unique `id` and `class` attributes:
+
+1. **Interactive Code Editor**: This is where you input and edit your R code.
+   - `id`: `#webr-editor-{{ID}}`
+   - `class`: `.webr-editor`
+
+2. **Output Area**: This is where the results and output of your R code are displayed.
+   - `id`: `#webr-code-stdout-{{ID}}`
+   - `class`: `.webr-code-stdout`
+
+3. **Run Button**: The button that triggers the execution of your R code.
+   - `id`: `#webr-btn-run-{{ID}}`
+   - `class`: `.webr-btn-run`
+
+The `{{ID}}` in these identifiers represents the instance of the element on the page, such as the first, second, or nth occurrence. By targeting the specific `id` or `class` attributes in your document's CSS or by including a separate CSS file, you can control their appearance as per your design preferences. 
+
+For example, you can insert new CSS elements by using:
+
+````markdown
+```{=html}
+<style>
+.webr-code-stdout {background-color: powderblue;}
+.webr-btn-run   {color: blue;}
+</style>
+```
+````
+
+Additionally, if you are using a Quarto theme, you can leverage [theme-specific styling options](https://quarto.org/docs/output-formats/html-themes.html#basic-options) to ensure that these UI elements align with the overall theme of your document.
+
+````markdown
+---
+title: My post
+format:
+  html: 
+    theme:
+      - cosmo
+      - custom.scss
+---
+````

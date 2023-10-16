@@ -1,0 +1,66 @@
+project:
+  type: website
+  resources: 
+    - CNAME
+
+website:
+  title: "quarto-webr"
+  reader-mode: true
+  repo-url: https://github.com/coatless/quarto-webr
+  repo-actions: [edit, issue]
+  repo-subdir: "docs"
+  google-analytics: "G-S8CXP9TZG0"
+  sidebar:
+    style: "floating"
+    search: true
+    tools:
+      - icon: github
+        href: https://github.com/coatless/quarto-webr/
+    contents:
+      - section: "Getting Started"
+        contents:
+          - href: qwebr-first-steps.qmd
+            text: Your first webR-powered Quarto document
+          - href: qwebr-meta-options.qmd
+            text: Customization Options
+          - href: qwebr-using-r-packages.qmd
+            text: Using R Packages
+          - href: qwebr-internal-cell.qmd
+            text: Hiding and Executing Code
+      - section: "Support"
+        contents:
+          - href: qwebr-troubleshooting.qmd
+            text: Troubleshooting
+          - href: qwebr-faq.qmd
+            text: FAQ
+          - href: https://github.com/coatless/quarto-webr/issues/new
+            text: Submit an issue
+      - section: "Demos"
+        contents:
+          - href: qwebr-readme-example.qmd
+            text: README Example      
+          - href: qwebr-code-cell-demos.qmd
+            text: Exploring Interactive Code Cells
+          - href: qwebr-community-examples.qmd
+            text: Community Examples
+      - section: "Deployment"
+        contents:
+          - href: qwebr-deployment-templates.qmd
+            text: Deployment Templates
+          - href: qwebr-communication-channels.qmd
+            text: Communication Channels
+      - section: "Extra"
+        contents:
+          - href: qwebr-acknowledgements.md
+            text: Acknowledgements
+          - href: qwebr-developer-resources.qmd
+            text: Developer Resources
+          - href: qwebr-extension-website.qmd
+            text: Extension Website Notes
+          - href: qwebr-release-notes.qmd
+            text: Release Notes
+
+format:
+  html:
+    theme: cosmo
+    toc: true

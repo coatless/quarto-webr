@@ -1,0 +1,41 @@
+---
+title: "Extension Website"
+subtitle: "Development notes for the quarto-webr website"
+author: "James Joseph Balamuta"
+date: "09-17-2023"
+date-modified: last-modified
+format: 
+  html:
+    toc: true
+---
+
+# Initializing the Project
+
+To get started, follow these steps to set up the Quarto extension website project:
+
+1. Create a new directory named `docs/` within your repository using the following command:
+   
+   ```sh
+   mkdir docs && cd $_
+   ```
+
+2. Initialize a Quarto website project by running the following command:
+
+   ```sh
+   quarto create project website .
+   ```
+
+# Incorporating the Extension
+
+To seamlessly integrate the extension into your project, you'll need to create a symbolic link to the `_extensions` folder containing the development version of the extension. This approach helps you avoid maintaining a duplicate copy of the extension in your Git repository history.
+
+Follow these steps:
+
+1. Navigate to the `docs/` directory in your project.
+
+2. Create a symbolic link to the `_extensions` folder using the following command:
+
+   ```sh
+   ln -s ../_extensions _extensions
+   ```
+

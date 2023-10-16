@@ -1,0 +1,223 @@
+---
+title: "Release Notes"
+date: "03-12-2023"
+date-modified: last-modified
+engine: markdown
+format: 
+  html:
+    toc: true
+---
+
+# 0.3.7: Mutex On, Mutex Off (????)
+
+## Features
+
+- Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.
+  - With this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.
+- Added a visual spinning indicator to emphasize what code cell is currently running. ([#64](https://github.com/coatless/quarto-webr/issues/64))
+- Improved status updates about installing R packages specified in the document's `package` key. ([#68](https://github.com/coatless/quarto-webr/issues/68))
+- Fully supported `pager` event types. ([#58](https://github.com/coatless/quarto-webr/issues/58))
+  - With this update, looking at R help documentation for a function is now possible.
+
+## Bugfixes
+
+- Fixed `base-url` to allow for a localized version of `webR` away. ([#54](https://github.com/coatless/quarto-webr/issues/54))
+- Fixed document-level `packages` meta option not installing packages if the status bar was not present ([#69](https://github.com/coatless/quarto-webr/issues/69))
+
+## Documentation
+
+- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/docs/examples) containing examples for [HTML Documents](https://github.com/coatless/quarto-webr/tree/main/docs/examples/html-document), [Books](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book), and [Websites](https://github.com/coatless/quarto-webr/tree/main/docs/examples/websites). ([#53](https://github.com/coatless/quarto-webr/issues/53))
+- Added a documentation page that contains the extension updates and release dates. 
+- Added an FAQ page covering questions from posit::conf(2023). ([#56](https://github.com/coatless/quarto-webr/issues/56))
+
+# 0.3.6: Ready, Set, Run. (09-24-2023)
+
+## Feature
+
+- Improved the run selected code shortcut to now also run the current line if no selection is present and advance to the next. (#43)
+   - Use: <kbd>Cmd</kbd> + <kbd>Enter</kbd> on macOS or <kbd>Ctrl</kbd> + <kbd>Enter</kbd> on Windows
+
+## Bugfixes
+
+- Fixed space not being preserved (h/t @nguyenllpsych, #39)
+- Fixed webR not initializing if a document lacked a title (h/t @jimhester, #40)
+
+## Documentation
+
+- Added a walkthrough video to the [getting started page](https://quarto-webr.thecoatlessprofessor.com/webr-first-steps.html).
+- Added a new page containing [community examples](https://quarto-webr.thecoatlessprofessor.com/webr-community-examples.html) of the `quarto-webr` extension in the wild. 
+- Added an example on fill-in-the-blank usage.
+- Clarified how interactive code cells could be used to explore what-if scenarios.
+- Minor documentation fixes.
+
+## Deployment
+
+- Add new issue templates for questions and examples.
+- Improved GitHub repo issue template formatting.
+
+# 0.3.5: Seance of Communication Channels (09-17-2023)
+
+## Features
+
+- New documentation website is available at: <https://quarto-webr.thecoatlessprofessor.com> 
+- Document option `channel-type` sets the communication channel webR uses. 
+   - `channel-type: automatic`  (default): Communicates using either `shared-array-buffer` or `service-worker`.
+   - `channel-type: shared-buffer-array`:  Fastest communication option, but requires setting up HTTP headers.
+   - `channel-type: service-worker`: Slower communication option and requires worker scripts to be next to the rendered document.
+   - `channel-type: post-message`: Easiest setup option at the expense of being unable to interrupt the R process or accept user-input.
+- Code cell option `context` controls whether the code and output are shown or suppressed.
+   - `context: interactive`(default) shows both code and output. 
+   - `context: setup` suppresses both code and output. 
+   - `context: output` suppresses code but shows its output. 
+   - To use the new hidden code cell feature, the code cell needs `#| context: <value>` like so:
+
+````md
+```{webr-r}
+#| context: setup
+
+my_hidden_variable = 11
+```
+````
+
+## Bugfixes
+
+- Fixed webR status indicator appearing outside of the header. (#33)
+- Fixed button styling difference between standalone documents and website-based documents.
+ 
+## Documentation
+
+- Created the `docs` folder inside the repository to host the documentation website.
+- Moved documentation from the README.md file onto separate web pages.
+   - _Acknowledgements_ now has a dedicated page thanking contributors and collaborators.
+   - _Developer resources_ expands on the reference resources.
+   - _Using R packages_ describes the best practices for using R's ecosystem of extensions
+   -  _Customization Options_ describes the document level options available to be set in document's YAML field.
+- Added new documentation entries for hidden code cell evaluation and communication channels.
+- Added a rendered version of the README example to the website. 
+- Incorporated additional examples into the "Exploring Interactive Code Cells" demo document.
+ 
+## Deployment
+
+- Added a Quarto action to render and publish the documentation website.
+- Added issue templates for feature requests and bug fixes.
+- Symlink the `_extension` directory into `docs` to avoid needing to add the extension on each render.
+
+
+# 0.3.2: Rocking the Monaco (09-13-2023)
+
+## Feature
+
+- Upgraded the MonacoEditor version to v0.43.0 from v0.31.0
+
+## Bugfixes
+
+- Fixed `quarto-webr` documents requiring a reload in Safari to see/interact with code cells (#21)
+- Fixed keyboard shortcuts not re-initializing correctly on multiple Monaco Editors by re-registering shortcuts on code cell focus (#28)
+
+# 0.3.1: Maintenance Release: Upgrade to webR v0.2.1 (09-12-2023)
+
+## Feature
+
+- Upgrades the extension to use `webR` v0.2.1
+
+# 0.3.0: Across the webR-Verse to v0.2.0 (08-17-2023)
+
+## Feature
+
+- Implements changes required to run `webR` v0.2.0
+
+# 0.2.1: Demo, Demo, Demo! (08-17-2023)
+
+## Bug fix
+
+- Attempted to resolve missing service workers for published Quarto webR enabled documents on <https://quarto.pub>
+
+## Deployment
+
+- Added a GitHub actions website deployment workflow to generate sample pages.
+- Added a `devcontainer.json` for development on GitHub
+- Added a script to update the version of Quarto used inside of the `devcontainer.json`.
+
+# 0.2.0: Accessibility with the Monaco Editor (05-01-2023)
+
+## Breaking Changes
+
+- We've transitioned the code editor used in the `quarto-webr` extension to [Monaco Editor](https://microsoft.github.io/monaco-editor/) from [CodeMirror](https://codemirror.net/) for improved accessibility.
+    - Special thanks go out to [JooYoung Seo](https://github.com/jooyoungseo) ([Website](https://ischool.illinois.edu/people/jooyoung-seo)) for identifying the [accessibility issue](https://github.com/coatless/quarto-webr/issues/15) and submitting a [pull request to incorporate the editor](https://github.com/coatless/quarto-webr/pull/16). 
+
+## Features
+
+- Code editing areas on the Quarto document now use the [Monaco Editor](https://microsoft.github.io/monaco-editor/) for improved accessibility.
+- Execute code using keyboard shortcuts:
+   - Run selected code using: `[Cmd + Enter]` on macOS or `[Ctrl+Enter]`  on Windows 
+   - Run the entire code area using: `[Shift+Enter]`
+- Dynamically growing code editor as new lines are added.
+- Announcing the status changes of webR initialization states through arias. 
+
+
+# 0.1.0: Setting Options in Document YAML (04-11-2023)
+
+## Features
+
+- Upgraded the version of webR to use v0.1.1.
+- Set options directly inside the document's YAML header to control webR:
+    - Support is available for setting the following [WebR.WebROptions](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html) options:
+        - `home-dir`: The WebAssembly user’s home directory and initial working directory ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)). Default: `'/home/web_user'`.
+        - `base-url`: The base URL used for downloading R WebAssembly binaries. ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)). Default: `'https://webr.r-wasm.org/[version]/'`.
+        - `service-worker-url`: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode ([`Documentation`](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)). Default: `''`.
+- webR initialization status stages are now described and shown as stoplights (inspired by [Bob Rudis](https://github.com/hrbrmstr))
+    - `show-startup-message`: Display in the document header the state of WebR initialization. Default: `true`
+    - `show-header-message`: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: `false`
+ 
+![New status lighting](https://user-images.githubusercontent.com/833642/231114983-191c8944-f4ab-4024-abe0-089952ab1eaa.gif)
+
+
+
+# 0.0.4: Execute webr cells when developing in VS Code or RStudio (03-30-2023)
+
+## Breaking Changes
+
+- We've transitioned to using the `{webr-r}` code cell designation from our original `{webr}` designation.
+   - The `{webr-r}` tag allows for code cell evaluation prior to rendering the document
+   - Moreover, the `{webr-r}` component does not need to be registered under the `knitr` compute engine.
+
+
+# 0.0.3: Escape Escape! (03-19-2023)
+
+## Bugfix
+
+- Escape characters `\` are further escaped.
+
+````
+```{webr}
+add_one <- \(x) x + 1
+add_one(2)
+```
+````
+
+Should now appear in a webR code cell as:
+
+```r
+add_one <- \(x) x + 1
+add_one(2)
+```
+
+## Documentation
+
+- Added details on how to host webR content
+- Added additional examples and details in the `webr-demo.qmd` file.
+
+# 0.0.2: All about that margin (03-14-2023)
+
+## Bug Fixes
+
+- Fixed the error of `figure margins too large` due to canvas sizing issues.
+- Removed the attempt to switch between `/` and `''` if COOP and COEP are not present. Defaults to relative directory.
+
+# 0.0.1: Democratizing Data Science (03-12-2023)
+
+## Features
+
+- Enable [webR](https://docs.r-wasm.org/webr/latest/) code cells inside of a Quarto document.
+
+![`quarto-webr` Filter in Action](https://i.imgur.com/WLFHcQE.gif)

@@ -1,0 +1,89 @@
+---
+title: "Customization Options"
+subtitle: "Fine-Tuning `quarto-webr` with Powerful Configuration Options"
+author: "James Joseph Balamuta"
+date: "09-14-2023"
+date-modified: last-modified
+format: 
+  html:
+    toc: true
+engine: knitr
+webr:
+  channel-type: "post-message"
+filters:
+- webr
+aliases:
+  - webr-meta-options.html
+---
+
+The `quarto-webr` extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document's YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.
+
+# Customization Options
+
+Enhance your webR experience by customizing its behavior through the `webr` key in your document's YAML header. These options allow you to fine-tune webR according to your specific needs.
+
+```yaml
+---
+title: WebR in Quarto HTML Documents
+format: html
+engine: knitr
+webr: 
+  show-startup-message: false
+  packages: ['ggplot2', 'dplyr']
+filters:
+  - webr
+---
+```
+
+## webR options
+
+By specifying various `WebROptions` options in the document YAML, you can create a personalized webR experience
+
+### `home-dir`
+
+- **Description**: Set the WebAssembly user's home directory and initial working directory.
+- **Default Value**: `'/home/web_user'`
+- **Documentation**: [homeDir](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)
+
+### `base-url`
+
+- **Description**: Define the base URL for downloading R WebAssembly binaries.
+- **Default Value**: `'https://webr.r-wasm.org/[version]/'`
+- **Documentation**: [baseUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)
+
+### `channel-type`
+
+- **Description**: Specify the communication channel type to interact with webR.
+- **Default Value**: `"automatic"` (0)
+- **Possible Values**: `"automatic"` (0), `"shared-array-buffer"` (1), `"service-worker"` (2), `"post-message"` (3).
+- **Documentation**: [channelType](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype)
+
+:::callout-note
+We recommend using the `"post-message"` channel when [GitHub Pages](https://pages.github.com/) or [Quarto Pub](https://quartopub.com/) serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (`readline()`, `menu()`, `browser()`, etc.).
+For more details, please see [Communication Channels](qwebr-communication-channels.qmd#sec-post-message)
+:::
+
+### `service-worker-url`
+
+- **Description**: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.
+- **Default Value**: `''`
+- **Documentation**: [serviceWorkerUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)
+
+## Native Extension Options
+
+The extension also provides native options that affect its behavior:
+
+### `show-startup-message`
+
+- **Description**: Controls the display of the WebR initialization state in the document header.
+- **Default Value**: `true`
+
+### `show-header-message`
+
+- **Description**: Determines whether COOP and COEP headers are in use for faster page loads.
+- **Default Value**: `false`
+
+### `packages`
+
+- **Description**: Specifies R packages to install automatically when the document opens.
+- **Default Value**: `[]`

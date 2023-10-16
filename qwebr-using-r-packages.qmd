@@ -1,0 +1,68 @@
+---
+title: "Using R Packages"
+subtitle: "Seamlessly integrate R packages into your interactive Quarto HTML documents"
+author: "James Joseph Balamuta"
+date: "09-14-2023"
+date-modified: last-modified
+format: 
+  html:
+    toc: true
+engine: knitr
+webr:
+  channel-type: "post-message"
+filters:
+- webr
+aliases:
+  - webr-using-r-packages.html
+---
+
+Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, `quarto-webr` avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.
+
+# Available R Packages 
+
+Before you use any R package with webR, it's essential to check if it's available. You can explore the available packages by executing the following R code, either with webR or just R:
+
+```{webr-r}
+webr_pkgs = available.packages(
+  repos = "https://repo.r-wasm.org/",
+  type = "source"
+)[, c("Package", "Version")]
+
+# Number of R packages available to webR
+cat("There are current", nrow(webr_pkgs), 
+    "available to use with webR!\n")
+
+# Only view the first 6, there's a lot available!
+head(webr_pkgs)
+```
+
+Alternatively, you can navigate to the WebR repository [here](https://github.com/r-wasm/webr-repo/blob/main/repo-packages) for package listings.
+
+# Install R Packages on Document Open
+
+To automatically install packages when the document opens, add the `packages` key under `webr` in the YAML header, listing the packages in an array:
+
+```yaml
+---
+webr:
+  packages: ['ggplot2', 'dplyr']
+---
+```
+
+By using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.
+
+# Installing an R Package Interactively
+
+If you need to install a package interactively within specific code cells, you can do so using the `webr::install()` function. This method allows you to install packages on-the-fly when needed.
+
+:::callout-note
+Please note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the [communication channel](qwebr-communication-channels.qmd#sec-service-worker) being used.
+:::
+
+Let's take ggplot2 as an example:
+
+```{webr-r}
+webr::install("ggplot2")
+```
+
+Using this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.

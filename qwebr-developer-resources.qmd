@@ -1,0 +1,62 @@
+---
+title: "Developer Resources"
+author: "James Joseph Balamuta"
+date: "03-14-2023"
+date-modified: last-modified
+format: 
+  html:
+    toc: true
+---
+
+Are you eager to contribute to the development of the `quarto-webr` extension or explore ways to modify it to suit your needs? This resource page is your guide to invaluable tools and references that will empower you on your development journey.
+
+## Mastering webR
+
+Before diving into extension development, it's essential to understand the core of what powers the `quarto-webr` extension: [webR](https://docs.r-wasm.org/webr/latest/). These webR resources will be your trusty companions:
+
+- **[webR Documentation](https://docs.r-wasm.org/webr/latest/)**: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR's features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.
+
+- **[webR Source Code](https://github.com/r-wasm/webr/)**: For the technically curious, webR's GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.
+
+- **[Bob Rudis' Experiments with webR](https://rud.is/webr-experiments/)**: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.
+
+These resources empower you to master webR, whether you're just starting out or you're a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.
+
+## Quarto Development Ecosystem
+
+For those interested in extending the `quarto-webr` extension or exploring broader extension development within the Quarto ecosystem, we recommend exploring the following supplementary resources.
+
+### Quarto Documentation
+
+Get acquainted with Quarto's official extension documentation to deepen your understanding.
+
+- **[Filters Documentation](https://quarto.org/docs/extensions/filters.html)**: Learn the art of creating filters for Quarto documents, enabling you to customize content generation.
+
+- **[Lua Development Tips](https://quarto.org/docs/extensions/lua.html)**: Access development tips specific to Lua scripting within Quarto extensions.
+
+- **[Lua API](https://quarto.org/docs/extensions/lua-api.html)**: Explore the Lua API documentation to understand how to interact with Quarto's core functionality programmatically.
+
+### Related Extensions
+
+For those intrigued by the broader world of extension development, we suggest the following Quarto extensions that can inspire your journey into extension development and functionality:
+
+- **[`quarto-ext/shinylive`](https://github.com/quarto-ext/shinylive)**: Explore the `shinylive` extension's codebase to understand how interactive content is implemented within Quarto documents.
+
+- **[`mcanouil/quarto-elevator`](https://github.com/mcanouil/quarto-elevator)**: Delve into the `quarto-elevator` extension to gain insights into adding new features to Quarto documents.
+
+- **[`shafayetShafee/downloadthis`](https://github.com/shafayetShafee/downloadthis/tree/main)**: Investigate the `downloadthis` extension to see how it facilitates downloads within Quarto documents.
+
+There are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: <https://quarto.org/docs/extensions/>
+
+
+### Pandoc Essentials
+
+Pandoc plays a pivotal role in Quarto's document conversion process. To deepen your knowledge of Quarto, consider these Pandoc resources:
+
+- **[Example Filters](https://pandoc.org/lua-filters.html#examples)**: Draw inspiration from Pandoc's example filters to see how custom filters can be applied to your Quarto documents.
+
+- **[CodeBlock](https://pandoc.org/lua-filters.html#type-codeblock)**: Understand the significance of the `CodeBlock` element in Pandoc, often used for implementing extensions and custom functionality.
+
+# Fin
+
+With this wealth of resources at your disposal, you're well-equipped to embark on your development journey, whether you're diving into webR or contributing to the `quarto-webr` extension. Happy coding!
