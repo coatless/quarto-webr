@@ -2,7 +2,7 @@ project:
   type: website
   resources: 
     - CNAME
-    - ../examples/*.qmd
+    - examples/*
 
 website:
   title: "quarto-webr"
