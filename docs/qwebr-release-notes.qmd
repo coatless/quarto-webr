@@ -8,13 +8,19 @@ format:
     toc: true
 ---
 
+# 0.3.8: ???? (??-??-????) [DEV]
+
+## Features
+
+## Bugfixes
+
 # 0.3.7: Mutex On, Mutex Off (10-16-2023)
 
 ## Features
 
 - Added a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.
   - With this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.
-- Added a visual spinning indicator to emphasize what code cell is currently running. ([#64](https://github.com/coatless/quarto-webr/issues/64))
+- Added a visual spinning indicator to emphasize what code cell is currently running. ([#64](https://github.com/coatless/quarto-webr/issues/64), [#17](https://github.com/coatless/quarto-webr/issues/17))
 - Improved status updates about installing R packages specified in the document's `package` key. ([#68](https://github.com/coatless/quarto-webr/issues/68))
 - Fully supported `pager` event types. ([#58](https://github.com/coatless/quarto-webr/issues/58))
   - With this update, looking at R help documentation for a function is now possible.
@@ -27,7 +33,7 @@ format:
 
 ## Documentation
 
-- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/docs/examples) containing examples for [HTML Documents](https://github.com/coatless/quarto-webr/tree/main/docs/examples/html-document), [Books](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book), and [Websites](https://github.com/coatless/quarto-webr/tree/main/docs/examples/websites). ([#53](https://github.com/coatless/quarto-webr/issues/53))
+- Added an [`examples/` directory](https://github.com/coatless/quarto-webr/tree/main/examples) containing examples for [HTML Documents](https://github.com/coatless/quarto-webr/tree/main/examples/html-document), [Books](https://github.com/coatless/quarto-webr/tree/main/examples/book), and [Websites](https://github.com/coatless/quarto-webr/tree/main/examples/websites). ([#53](https://github.com/coatless/quarto-webr/issues/53))
 - Added a documentation page that contains the extension updates and release dates. 
 - Added an FAQ page covering questions from posit::conf(2023). ([#56](https://github.com/coatless/quarto-webr/issues/56))
 
