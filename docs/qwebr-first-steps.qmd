@@ -16,7 +16,10 @@ To get started, we highly recommend watching our walkthrough video. This video p
 
 ## Workflow Video
 
-[![Creating your first webR-powered Quarto Document inside of RStudio](http://img.youtube.com/vi/DoRR2S5lLvk/0.jpg)](https://youtu.be/DoRR2S5lLvk "Creating your first webR-powered Quarto Document inside of RStudio")
+{{< video https://youtu.be/DoRR2S5lLvk
+    title="Creating your first webR-powered Quarto Document inside of RStudio"
+    start="5"
+>}}
 
 ## Installation
 
