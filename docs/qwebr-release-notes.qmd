@@ -26,6 +26,8 @@ format:
 ## Deployment
 
 - Added a `tests/` directory that contains Quarto documents used across multiple browsers before triggering a point release. ([#76](https://github.com/coatless/quarto-webr/issues/76))
+- Added the `open-in-html-browser` extension to devcontainer for better previewing options of HTML results.
+- GitHub codespaces now automatically open the README example when the devcontainer is launched.
 
 # 0.3.7: Mutex On, Mutex Off (10-16-2023)
 
