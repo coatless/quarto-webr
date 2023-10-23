@@ -143,61 +143,39 @@
   // Setup a pager to allow processing help documentation 
   await globalThis.webR.evalRVoid('webr::pager_install()'); 
 
-  // Package install 
-  async function installRPackagesWithStatus(packages, status = true) {
+  async function processRPackagesWithStatus(packages, processType, status = true) {
+    // Set the message prefix based on the process type
+    const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
 
     // Update reason for code cells not being executable
     document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.innerText = "🟡 Installing packages ...";
+      btn.innerText = `🟡 ${messagePrefix} packages ...`;
     });
 
-    // Iterate through package list
+    // Iterate through the package list
     for (let i = 0; i < packages.length; i++) {
-
-      // Obtain one package
       const activePackage = packages[i];
 
-      // Update status of package install with progress
+      // Update status of the package process with progress
       if (status) {
-        startupMessageWebR.innerHTML = 
-           `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
-            <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+        startupMessageWebR.innerHTML = `
+          <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+          <span>${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
       }
 
-      // Install the selected package
-      await globalThis.webR.installPackages([activePackage]);
-    }
-  }
-
-  // Package autoload
-  async function loadRPackagesWithStatus(packages, status = true) {
-
-    // Update reason for code cells not being executable
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.innerText = "🟡 Loading packages ...";
-    });
-
-    // Iterate through package list
-    for (let i = 0; i < packages.length; i++) {
-
-      // Obtain one package
-      const activePackage = packages[i];
-
-      // Update status of package load with progress
-      if (status) {
-        startupMessageWebR.innerHTML = 
-          `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
-            <span>Loading package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+      // Perform the appropriate action (install or load) for the selected package
+      if (processType === 'install') {
+        await globalThis.webR.installPackages([activePackage]);
+      } else {
+        await globalThis.webR.evalRVoid(`library(${activePackage});`);
       }
-
-      // Load the selected package
-      await globalThis.webR.evalRVoid("library(" + activePackage + ");");
     }
 
-    // Flush away state
-    await globalThis.webR.flush()
+    // Flush away state if loading packages
+    if (processType === 'load') {
+      await globalThis.webR.flush();
+    }
   }
-
 
   // Check to see if any packages need to be installed
   if (setupRPackages) {
@@ -205,10 +183,10 @@
     const uniqueRPackageList = Array.from(new Set(installRPackagesList));
 
     // Install R packages one at a time (either silently or with a status update)
-    await installRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
+    await processRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
 
     // Load R packages one at a time (either silently or with a status update)
-    await loadRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
+    await processRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
   }
 
   // Stop timer
