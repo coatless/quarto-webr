@@ -1,15 +1,16 @@
 ---
-title: "Test: Package Keys"
+title: "Test: Packages Key with Autoloading"
 format: html
 engine: knitr
 webr:
   packages: ['ggplot2', 'dplyr']
+  autoload-packages: true
 filters:
   - webr
 ---
 
-This webpage tests the `packages` key meta option.
+This webpage tests the `packages` key meta option with the default of `autoload-packages` removing the need for a `library()` call.
 
 ```{webr-r}
-library('ggplot2')
+ggplot()
 ```

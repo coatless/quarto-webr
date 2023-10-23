@@ -1,0 +1,17 @@
+---
+title: "Test: Autoload Package"
+format: html
+engine: knitr
+webr:
+  packages: ['ggplot2']
+  autoload-packages: 'false'
+filters:
+  - webr
+---
+
+This webpage tests the `autoload-packages` key meta option by not loading the requested packages.
+
+```{webr-r}
+# Must call the library statement
+library('ggplot2')
+```

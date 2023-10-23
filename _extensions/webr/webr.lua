@@ -33,6 +33,9 @@ local showHeaderMessage = "false"
 
 -- Define an empty string if no packages need to be installed.
 local installRPackagesList = "''"
+
+-- Define whether R packages should automatically be loaded
+local autoloadRPackages = "true"
 ----
 
 --- Setup variables for tracking number of code cells
@@ -150,6 +153,11 @@ function setWebRInitializationOptions(meta)
     end
 
     installRPackagesList = table.concat(package_list, ", ")
+
+    if not is_variable_empty(webr['autoload-packages']) then
+      autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
+    end
+
   end
 
   
@@ -292,7 +300,8 @@ function initializationWebR()
     ["CHANNELTYPE"] = channelType,
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
-    ["INSTALLRPACKAGESLIST"] = installRPackagesList
+    ["INSTALLRPACKAGESLIST"] = installRPackagesList,
+    ["AUTOLOADRPACKAGES"] = autoloadRPackages
     -- ["VERSION"] = baseVersionWebR
   }
   
