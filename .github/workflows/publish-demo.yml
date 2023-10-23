@@ -48,6 +48,11 @@ jobs:
           path: "docs"
 
       # Attempt to render the nested deployment template Quarto projects
+      - name: Render README demo 
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: "examples/readme/index.qmd"
+
       - name: Render sample deployment HTML document template
         uses: quarto-dev/quarto-actions/render@v2
         with:
