@@ -12,6 +12,9 @@ format:
 
 ## Features
 
+- Added `autoload-packages` document meta option key that will automatically load packages specified in the `packages` key. The default value is `true`. ([#75](https://github.com/coatless/quarto-webr/issues/75))
+  - This feature simplifies the use of packages, eliminating the need to call `library()` in interactive code cells or setup code cells, as the specified packages will be loaded automatically. 
+
 ## Bugfixes
 
 ## Documentation
@@ -21,7 +24,7 @@ format:
 
 ## Deployment
 
-- Added a `tests/` directory that contains Quarto documents used across multiple browsers before triggering a point release. ([#74](https://github.com/coatless/quarto-webr/issues/74))
+- Added a `tests/` directory that contains Quarto documents used across multiple browsers before triggering a point release. ([#76](https://github.com/coatless/quarto-webr/issues/76))
 
 # 0.3.7: Mutex On, Mutex Off (10-16-2023)
 
