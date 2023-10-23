@@ -4,7 +4,9 @@ This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cel
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/NCTDwUk.gif)
 
-Take a look at a live example of the extension in action [here](https://quarto-webr.thecoatlessprofessor.com/qwebr-readme-example.html)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
+Take a look at a live example of the extension in action [here](https://quarto-webr.thecoatlessprofessor.com/examples/readme)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
+
+## Background
 
 If you're new to [webR](https://docs.r-wasm.org/webr/latest/), this cutting-edge technology empowers you to:
 
@@ -51,11 +53,12 @@ This is a webR-enabled code cell in a Quarto HTML document.
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
+
 summary(fit)
 ```
 ````
 
-The rendered document can be viewed online [here](https://quarto-webr.thecoatlessprofessor.com/qwebr-readme-example.html).
+The rendered document can be viewed online [here](https://quarto-webr.thecoatlessprofessor.com/examples/readme).
 
 When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
 During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
