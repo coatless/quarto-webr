@@ -10,5 +10,9 @@ This is a webr-enabled code cell in a Quarto HTML document.
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
+
 summary(fit)
 ```
+
+
+Return to the [documentation website](https://quarto-webr.thecoatlessprofessor.com/)

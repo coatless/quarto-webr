@@ -37,7 +37,7 @@ website:
             text: Submit an issue
       - section: "Demos"
         contents:
-          - href: qwebr-readme-example.qmd
+          - href: https://quarto-webr.thecoatlessprofessor.com/examples/readme/
             text: README Example      
           - href: qwebr-code-cell-demos.qmd
             text: Exploring Interactive Code Cells
