@@ -1,4 +1,4 @@
-# webR Code Extension for Quarto HTML Documents
+# webR Code Extension for Quarto
 
 This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
 
