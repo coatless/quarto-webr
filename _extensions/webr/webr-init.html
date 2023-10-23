@@ -169,6 +169,36 @@
     }
   }
 
+  // Package autoload
+  async function loadRPackagesWithStatus(packages, status = true) {
+
+    // Update reason for code cells not being executable
+    document.querySelectorAll(".btn-webr").forEach((btn) => {
+      btn.innerText = "🟡 Loading packages ...";
+    });
+
+    // Iterate through package list
+    for (let i = 0; i < packages.length; i++) {
+
+      // Obtain one package
+      const activePackage = packages[i];
+
+      // Update status of package load with progress
+      if (status) {
+        startupMessageWebR.innerHTML = 
+          `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
+            <span>Loading package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+      }
+
+      // Load the selected package
+      await globalThis.webR.evalRVoid("library(" + activePackage + ");");
+    }
+
+    // Flush away state
+    await globalThis.webR.flush()
+  }
+
+
   // Check to see if any packages need to be installed
   if (setupRPackages) {
     // Obtain only a unique list of packages
@@ -176,6 +206,9 @@
 
     // Install R packages one at a time (either silently or with a status update)
     await installRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
+
+    // Load R packages one at a time (either silently or with a status update)
+    await loadRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
   }
 
   // Stop timer
