@@ -42,9 +42,35 @@ We begin by using the "Hello World" example of statistics: fitting and analyzing
 
 ```{webr-r}
 fit <- lm(mpg ~ vs, data = mtcars)
+
 summary(fit)
 ```
 
+## Line-by-line Execution
+
+In this section, we'll explore the built-in keyboard shortcuts for executing code within the interactive code cell. You can run either the selected code or specific lines or the entire cell with the following keyboard shortcuts:
+
+- Run selected code:
+  - macOS: <kbd>⌘</kbd> + <kbd>↩/Return</kbd>
+  - Windows/Linux: <kbd>Ctrl</kbd> + <kbd>↩/Enter</kbd>
+
+- To run the entire code cell, you can simply click the "Run code" button, or use the keyboard shortcut:
+  - <kbd>Shift</kbd> + <kbd>↩</kbd>
+
+Feel free to try it out in the following code cell:
+
+```{webr-r}
+# Try running selected code at the start of the line
+print("Hello quarto-webr World!")
+
+# Try highlight only -3 or 5 and pressing the keys required
+# for the "selected code" approach
+-3 + 5
+
+# Finally, try running the entire code cell by using Shift + ↩
+```
+
+By using these shortcuts, you can run code conveniently and efficiently. This practice can also help you become familiar with keyboard shortcuts when transitioning to integrated development environments (IDEs) like [RStudio](https://posit.co/products/open-source/rstudio/) or [Visual Studio Code with R](https://code.visualstudio.com/docs/languages/r).
 
 ## Create a Graph with Base R
 
@@ -62,15 +88,7 @@ plot(
 )
 ```
 
-## Fill in the Blanks
 
-Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:
-
-> Fill in the blank to create an expression that adds up to **42**.
-
-```{webr-r}
-35 + ________
-```
 
 ## Fill in the Blanks
 

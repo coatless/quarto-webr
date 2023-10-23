@@ -1,0 +1,13 @@
+---
+title: "quarto-webr Test Website"
+subtitle: "Extension Test Suite"
+---
+
+# Welcome
+
+Welcome to the test suite website for the [`quarto-webr`](https://github.com/coatless/quarto-webr). This website is meant to examine how different features of the extension are working or not working across different browsers. 
+
+```{webr-r}
+print("Welcome to behind the scenes of quarto-webr!")
+```
+
