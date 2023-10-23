@@ -58,6 +58,7 @@
   var installRPackagesList = [{{INSTALLRPACKAGESLIST}}];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
+  var autoloadRPackages = {{AUTOLOADRPACKAGES}};
 
   // Display a startup message?
   var showStartupMessage = {{SHOWSTARTUPMESSAGE}};
@@ -157,7 +158,7 @@
       <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
       <span>${message}</span>`;
   }
-  
+
   // Function to install a single package
   async function qwebrInstallRPackage(packageName) {
     await globalThis.webR.installPackages([packageName]);
@@ -209,8 +210,10 @@
     // Install R packages one at a time (either silently or with a status update)
     await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
 
-    // Load R packages one at a time (either silently or with a status update)
-    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+    if(autoloadRPackages) {
+      // Load R packages one at a time (either silently or with a status update)
+      await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+    }
   }
 
   // Stop timer
