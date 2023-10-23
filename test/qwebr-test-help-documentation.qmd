@@ -1,0 +1,23 @@
+---
+title: "Test: Help Documentation"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Test pager event support by verifying help documentation works in the interactive and non-interactive contexts. 
+
+## Interactive
+
+```{webr-r}
+?mean
+```
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+?sd
+```
+
