@@ -49,7 +49,17 @@ webr:
 ---
 ```
 
-By using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells do not become active until the packages are installed. This can be especially helpful when working with packages in multiple cells.
+By using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.
+
+If you do not want the packages to be loaded by default, add the `autoload-packages: false` under `webr` in the YAML header. This will disable the calls to load each R package in the `packages` key, e.g. `library(package)`.
+
+```yaml
+---
+webr:
+  packages: ['ggplot2', 'dplyr']
+  autoload-packages: false
+---
+```
 
 # Installing an R Package Interactively
 
@@ -66,3 +76,20 @@ webr::install("ggplot2")
 ```
 
 Using this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.
+
+
+# Load R Packages Interactively
+
+Once an R package is installed, you can use it just like normal by calling either `library()` or `require()` to load the package. 
+
+For instance, if you have installed `ggplot2` in the prior code cell, then the following will load the `ggplot2` and create a scatterplot.
+
+```{webr-r}
+library("ggplot2")
+
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+
+Not a fan of having a code cell dedicated to load packages? You can use the `packages` key option above to let the `quarto-webr` extension take care of loading the packages after installing. 
