@@ -1,16 +1,16 @@
 # webR Code Extension for Quarto HTML Documents
 
-This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell in a Quarto HTML document. 
+This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/NCTDwUk.gif)
 
-Check out the example in action [here](https://coatless.github.io/quarto-webr/webr-readme-example.html)!
+Take a look at a live example of the extension in action [here](https://coatless.github.io/quarto-webr/webr-readme-example.html)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
 
-The goal of [webR](https://docs.r-wasm.org/webr/latest/) is to: 
+If you're new to [webR](https://docs.r-wasm.org/webr/latest/), this cutting-edge technology empowers you to:
 
-> run R code in the browser without the need for an R server to execute the code
+> "run R code in the browser without the need for an R server to execute the code."
 
-For more details on [webR](https://docs.r-wasm.org/webr/latest/), please see: 
+For a deeper understanding of [webR](https://docs.r-wasm.org/webr/latest/), explore the following resources:
 
 - [webR Documentation](https://docs.r-wasm.org/webr/latest/)
 - [webR Source Code](https://github.com/r-wasm/webr/)
@@ -24,6 +24,8 @@ quarto add coatless/quarto-webr
 ```
 
 ![Demonstration of using the Terminal tab to install the extension.](https://i.imgur.com/aVuBdyN.png)
+
+After the installation process is finished, the extension will be readily available for Quarto documents within the designated working directory. Please note that if you are working on projects located in different directories, you will need to repeat this installation step for each of those directories.
 
 ## Usage
 
@@ -45,7 +47,7 @@ filters:
   - webr
 ---
 
-This is a webr-enabled code cell in a Quarto HTML document.
+This is a webR-enabled code cell in a Quarto HTML document.
 
 ```{webr-r}
 fit = lm(mpg ~ am, data = mtcars)
@@ -59,7 +61,7 @@ When `quarto render` or `quarto preview` is called, the filter will execute unde
 During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
 `webR` session to be started and must be present with the rendered output. 
 
-**Note:** If `engine: knitr` is not specified, then the `jupyter` compute engine will be used by default.
+ **Note:** If you don't specify the engine: knitr, the default compute engine used will be jupyter. This could trigger prompts to install Python. However, if you specify engine: knitr, there's no need to install Python.
 
 There are many more customization options that are available. Please see the [customization documentation](https://coatless.github.io/quarto-webr/webr-meta-options.html) for more examples.
 
