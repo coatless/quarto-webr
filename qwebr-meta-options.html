@@ -325,6 +325,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
   <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
+  <li><a href="#autoload-packages" id="toc-autoload-packages" class="nav-link" data-scroll-target="#autoload-packages"><code>autoload-packages</code></a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -455,6 +456,13 @@ Note
 <ul>
 <li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
 <li><strong>Default Value</strong>: <code>[]</code></li>
+</ul>
+</section>
+<section id="autoload-packages" class="level3">
+<h3 class="anchored" data-anchor-id="autoload-packages"><code>autoload-packages</code></h3>
+<ul>
+<li><strong>Description</strong>: The <code>autoload-packages</code> option allows you to control whether R packages specified in the <code>packages</code> document option will be automatically loaded using <code>library()</code> calls when the document opens. By default, this option is set to <code>true</code>, meaning that packages listed in the <code>packages</code> option will be automatically loaded. If you set it to <code>false</code>, you will need to include a code cell with <code>library(package)</code> function calls for each package in <code>packages</code>.</li>
+<li><strong>Default Value</strong>: <code>true</code></li>
 </ul>
 
 

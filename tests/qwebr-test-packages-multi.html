@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr - Test: Package Keys</title>
+<title>Test Suite for quarto-webr - Test: Packages Key with Autoloading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,6 +119,7 @@ ul.task-list li input[type="checkbox"] {
   var installRPackagesList = ['ggplot2', 'dplyr'];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
+  var autoloadRPackages = true;
 
   // Display a startup message?
   var showStartupMessage = true;
@@ -204,31 +205,63 @@ ul.task-list li input[type="checkbox"] {
   // Setup a pager to allow processing help documentation 
   await globalThis.webR.evalRVoid('webr::pager_install()'); 
 
-  // Package install 
-  async function installRPackagesWithStatus(packages, status = true) {
-
-    // Update reason for code cells not being executable
+  // Function to set the button text
+  function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
     document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.innerText = "🟡 Installing packages ...";
+      btn.innerHTML = buttonText;
+      btn.disabled = !enableCodeButton;
     });
+  }
 
-    // Iterate through package list
+  // Function to update the status message
+  function qwebrUpdateStatusHeader(message) {
+    startupMessageWebR.innerHTML = `
+      <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+      <span>${message}</span>`;
+  }
+
+  // Function to install a single package
+  async function qwebrInstallRPackage(packageName) {
+    await globalThis.webR.installPackages([packageName]);
+  }
+
+  // Function to load a single package
+  async function qwebrLoadRPackage(packageName) {
+    await globalThis.webR.evalRVoid(`library(${packageName});`);
+  }
+
+  // Generic function to process R packages
+  async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
+    // Switch between contexts
+    const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
+
+    // Modify button state
+    qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
+
+    // Iterate over packages
     for (let i = 0; i < packages.length; i++) {
-
-      // Obtain one package
       const activePackage = packages[i];
-
-      // Update status of package install with progress
-      if (status) {
-        startupMessageWebR.innerHTML = 
-           `<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> 
-            <span>Installing package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+      const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
+      
+      // Display the update
+      if (displayStatusMessageUpdate) {
+        qwebrUpdateStatusHeader(formattedMessage);
       }
 
-      // Install the selected package
-      await globalThis.webR.installPackages([activePackage]);
+      // Run package installation
+      if (processType === 'install') {
+        await qwebrInstallRPackage(activePackage);
+      } else {
+        await qwebrLoadRPackage(activePackage);
+      }
+    }
+
+    // Clean slate
+    if (processType === 'load') {
+      await globalThis.webR.flush();
     }
   }
+
 
   // Check to see if any packages need to be installed
   if (setupRPackages) {
@@ -236,7 +269,12 @@ ul.task-list li input[type="checkbox"] {
     const uniqueRPackageList = Array.from(new Set(installRPackagesList));
 
     // Install R packages one at a time (either silently or with a status update)
-    await installRPackagesWithStatus(uniqueRPackageList, showStartupMessage);
+    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
+
+    if(autoloadRPackages) {
+      // Load R packages one at a time (either silently or with a status update)
+      await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+    }
   }
 
   // Stop timer
@@ -247,11 +285,10 @@ ul.task-list li input[type="checkbox"] {
     startupMessageWebR.innerText = "🟢 Ready!"
   }
   
-  // Switch to allowing code to be executed
-  document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
-    btn.disabled = false;
-  });
+  qwebrSetInteractiveButtonState(
+    `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+    true
+  );
 
 </script>
 
@@ -267,7 +304,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-packages-multi.html">Test: Package Keys</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-packages-multi.html">Test: Packages Key with Autoloading</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -334,8 +371,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Autoload Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-packages-multi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Test: Package Keys</span></a>
+ <span class="menu-text">Test: Packages Key with Autoloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -367,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Test: Package Keys</h1>
+<h1 class="title">Test: Packages Key with Autoloading</h1>
 </div>
 
 
@@ -382,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This webpage tests the <code>packages</code> key meta option.</p>
+<p>This webpage tests the <code>packages</code> key meta option with the default of <code>autoload-packages</code> removing the need for a <code>library()</code> call.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">🟡 Loading
   webR...</button>
 <div id="webr-editor-1"></div>
@@ -402,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `library('ggplot2')`,
+      value: `ggplot()`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks

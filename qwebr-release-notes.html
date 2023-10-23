@@ -421,6 +421,12 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <h1>0.3.8: ???? (??-??-????) [DEV]</h1>
 <section id="features" class="level2">
 <h2 class="anchored" data-anchor-id="features">Features</h2>
+<ul>
+<li>Added <code>autoload-packages</code> document meta option key that will automatically load packages specified in the <code>packages</code> key. The default value is <code>true</code>. (<a href="https://github.com/coatless/quarto-webr/issues/75">#75</a>)
+<ul>
+<li>This feature simplifies the use of packages, eliminating the need to call <code>library()</code> in interactive code cells or setup code cells, as the specified packages will be loaded automatically.</li>
+</ul></li>
+</ul>
 </section>
 <section id="bugfixes" class="level2">
 <h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
@@ -435,7 +441,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <section id="deployment" class="level2">
 <h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
 <ul>
-<li>Added a <code>tests/</code> directory that contains Quarto documents used across multiple browsers before triggering a point release. (<a href="https://github.com/coatless/quarto-webr/issues/74">#74</a>)</li>
+<li>Added a <code>tests/</code> directory that contains Quarto documents used across multiple browsers before triggering a point release. (<a href="https://github.com/coatless/quarto-webr/issues/76">#76</a>)</li>
 </ul>
 </section>
 </section>

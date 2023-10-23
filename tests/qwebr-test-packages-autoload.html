@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr - Test: Keyboard Shortcuts in Code cell</title>
+<title>Test Suite for quarto-webr - Test: Autoload Package</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,10 +116,10 @@ ul.task-list li input[type="checkbox"] {
   const initializeWebRTimerStart = performance.now();
 
   // Determine if we need to install R packages
-  var installRPackagesList = [''];
+  var installRPackagesList = ['ggplot2'];
   // Check to see if we have an empty array, if we do set to skip the installation.
   var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
-  var autoloadRPackages = true;
+  var autoloadRPackages = false;
 
   // Display a startup message?
   var showStartupMessage = true;
@@ -304,7 +304,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-interactive-with-keyboard-shortcut.html">Test: Keyboard Shortcuts in Code cell</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-packages-autoload.html">Test: Autoload Package</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -365,13 +365,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Keyboard Shortcuts in Code cell</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: Autoload Package</span></a>
   </div>
 </li>
@@ -410,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Test: Keyboard Shortcuts in Code cell</h1>
+<h1 class="title">Test: Autoload Package</h1>
 </div>
 
 
@@ -425,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This is a webr-enabled code cell in a Quarto HTML document.</p>
+<p>This webpage tests the <code>autoload-packages</code> key meta option by not loading the requested packages.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-1">🟡 Loading
   webR...</button>
 <div id="webr-editor-1"></div>
@@ -445,9 +445,8 @@ ul.task-list li input[type="checkbox"] {
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `-3 + 5
-
-print("Hello quarto-webr World!")`,
+      value: `# Must call the library statement
+library('ggplot2')`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -698,14 +697,6 @@ print("Hello quarto-webr World!")`,
     executeCode(editor.getValue());
   };
 </script>
-<ul>
-<li>Run selected code using either:
-<ul>
-<li>macOS: <kbd>⌘</kbd> + <kbd>↩︎/Return</kbd></li>
-<li>Windows/Linux: <kbd>Ctrl</kbd> + <kbd>↩︎/Enter</kbd></li>
-</ul></li>
-<li>Run the entire code by clicking the “Run code” button or pressing <kbd>Shift</kbd>+<kbd>↩︎</kbd>.</li>
-</ul>
 
 
 
