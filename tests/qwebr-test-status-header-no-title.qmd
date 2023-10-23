@@ -1,0 +1,8 @@
+---
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Ensure that the webR code cell initializes a status even if a title is omitted. 
