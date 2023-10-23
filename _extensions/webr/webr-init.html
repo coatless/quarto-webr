@@ -143,39 +143,63 @@
   // Setup a pager to allow processing help documentation 
   await globalThis.webR.evalRVoid('webr::pager_install()'); 
 
-  async function processRPackagesWithStatus(packages, processType, status = true) {
-    // Set the message prefix based on the process type
+  // Function to set the button text
+  function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
+    document.querySelectorAll(".btn-webr").forEach((btn) => {
+      btn.innerHTML = buttonText;
+      btn.disabled = !enableCodeButton;
+    });
+  }
+
+  // Function to update the status message
+  function qwebrUpdateStatusHeader(message) {
+    startupMessageWebR.innerHTML = `
+      <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+      <span>${message}</span>`;
+  }
+  
+  // Function to install a single package
+  async function qwebrInstallRPackage(packageName) {
+    await globalThis.webR.installPackages([packageName]);
+  }
+
+  // Function to load a single package
+  async function qwebrLoadRPackage(packageName) {
+    await globalThis.webR.evalRVoid(`library(${packageName});`);
+  }
+
+  // Generic function to process R packages
+  async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
+    // Switch between contexts
     const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
 
-    // Update reason for code cells not being executable
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
-      btn.innerText = `🟡 ${messagePrefix} packages ...`;
-    });
+    // Modify button state
+    qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
 
-    // Iterate through the package list
+    // Iterate over packages
     for (let i = 0; i < packages.length; i++) {
       const activePackage = packages[i];
-
-      // Update status of the package process with progress
-      if (status) {
-        startupMessageWebR.innerHTML = `
-          <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
-          <span>${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}</span>`;
+      const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
+      
+      // Display the update
+      if (displayStatusMessageUpdate) {
+        qwebrUpdateStatusHeader(formattedMessage);
       }
 
-      // Perform the appropriate action (install or load) for the selected package
+      // Run package installation
       if (processType === 'install') {
-        await globalThis.webR.installPackages([activePackage]);
+        await qwebrInstallRPackage(activePackage);
       } else {
-        await globalThis.webR.evalRVoid(`library(${activePackage});`);
+        await qwebrLoadRPackage(activePackage);
       }
     }
 
-    // Flush away state if loading packages
+    // Clean slate
     if (processType === 'load') {
       await globalThis.webR.flush();
     }
   }
+
 
   // Check to see if any packages need to be installed
   if (setupRPackages) {
@@ -183,10 +207,10 @@
     const uniqueRPackageList = Array.from(new Set(installRPackagesList));
 
     // Install R packages one at a time (either silently or with a status update)
-    await processRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
+    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
 
     // Load R packages one at a time (either silently or with a status update)
-    await processRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
   }
 
   // Stop timer
@@ -197,10 +221,9 @@
     startupMessageWebR.innerText = "🟢 Ready!"
   }
   
-  // Switch to allowing code to be executed
-  document.querySelectorAll(".btn-webr").forEach((btn) => {
-    btn.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
-    btn.disabled = false;
-  });
+  qwebrSetInteractiveButtonState(
+    `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+    true
+  );
 
 </script>
