@@ -457,7 +457,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-readme-example.html" class="sidebar-item-text sidebar-link">
+  <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
  <span class="menu-text">README Example</span></a>
   </div>
 </li>
@@ -622,17 +622,22 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `webr_pkgs = available.packages(
-  repos = "https://repo.r-wasm.org/",
-  type = "source"
-)[, c("Package", "Version")]
+      value: `# Obtain a list of packages
+webr_info <- as.data.frame(
+  available.packages(
+    contriburl = "https://repo.r-wasm.org/bin/emscripten/contrib/4.3"
+  )
+)
+
+# Obtain the number of R packages built
+n_webr_pkgs <- nrow(webr_info)
 
 # Number of R packages available to webR
-cat("There are current", nrow(webr_pkgs), 
+cat("There are current", n_webr_pkgs, 
     "available to use with webR!\\n")
 
 # Only view the first 6, there's a lot available!
-head(webr_pkgs)`,
+head(webr_info)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -883,7 +888,25 @@ head(webr_pkgs)`,
     executeCode(editor.getValue());
   };
 </script>
-<p>Alternatively, you can navigate to the WebR repository <a href="https://github.com/r-wasm/webr-repo/blob/main/repo-packages">here</a> for package listings.</p>
+<p>Alternatively, you can navigate to the webR binary R repository <a href="https://repo.r-wasm.org/">here</a> for package listings.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>webR reports the number of packages available in two ways:</p>
+<ul>
+<li><p><strong>Built R packages</strong>: This indicates the number of R packages with WebAssembly binaries that can be used within webR, although they may have a decreased number of features available.</p></li>
+<li><p><strong>Available R packages</strong>: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.</p></li>
+</ul>
+<p>To achieve parity with base R, the <strong>Available R packages</strong> metric serves as an indicator of whether R scripts may require further modification to function properly within webR.</p>
+</div>
+</div>
 </section>
 <section id="install-r-packages-on-document-open" class="level1">
 <h1>Install R Packages on Document Open</h1>
