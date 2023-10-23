@@ -19,7 +19,8 @@ format:
 
 ## Documentation
 
-- Added a subsection to using two keyboard shortcuts into the interactive code cell demo. 
+- Added a subsection to using two keyboard shortcuts into the interactive code cell demo.
+- Emphasized the extension must be in the same directory or contained within a Quarto project as the Quarto document being used. ([#79](https://github.com/coatless/quarto-webr/issues/79), [#26](https://github.com/coatless/quarto-webr/issues/26))
 - Miscellaneous documentation typo fixes.
 
 ## Deployment
