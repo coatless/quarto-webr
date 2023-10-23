@@ -510,9 +510,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#sample-use-cases" id="toc-sample-use-cases" class="nav-link" data-scroll-target="#sample-use-cases">Sample Use Cases</a>
   <ul class="collapse">
   <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
+  <li><a href="#line-by-line-execution" id="toc-line-by-line-execution" class="nav-link" data-scroll-target="#line-by-line-execution">Line-by-line Execution</a></li>
   <li><a href="#create-a-graph-with-base-r" id="toc-create-a-graph-with-base-r" class="nav-link" data-scroll-target="#create-a-graph-with-base-r">Create a Graph with Base R</a></li>
   <li><a href="#fill-in-the-blanks" id="toc-fill-in-the-blanks" class="nav-link" data-scroll-target="#fill-in-the-blanks">Fill in the Blanks</a></li>
-  <li><a href="#fill-in-the-blanks-1" id="toc-fill-in-the-blanks-1" class="nav-link" data-scroll-target="#fill-in-the-blanks-1">Fill in the Blanks</a></li>
   <li><a href="#data-wrangle-in-real-time" id="toc-data-wrangle-in-real-time" class="nav-link" data-scroll-target="#data-wrangle-in-real-time">Data Wrangle in Real Time</a></li>
   <li><a href="#working-with-r-packages" id="toc-working-with-r-packages" class="nav-link" data-scroll-target="#working-with-r-packages">Working with R Packages</a></li>
   <li><a href="#variable-definitions-and-reuse" id="toc-variable-definitions-and-reuse" class="nav-link" data-scroll-target="#variable-definitions-and-reuse">Variable Definitions and Reuse</a></li>
@@ -567,7 +567,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 17, 2023</p>
+      <p class="date-modified">October 23, 2023</p>
     </div>
   </div>
     
@@ -881,6 +881,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
       value: `fit <- lm(mpg ~ vs, data = mtcars)
+
 summary(fit)`,
       language: 'r',
       theme: 'vs-light',
@@ -1133,9 +1134,21 @@ summary(fit)`,
   };
 </script>
 </section>
-<section id="create-a-graph-with-base-r" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-graph-with-base-r">Create a Graph with Base R</h2>
-<p>For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value <code>blue</code> to <code>orange</code> and run the code again.</p>
+<section id="line-by-line-execution" class="level2">
+<h2 class="anchored" data-anchor-id="line-by-line-execution">Line-by-line Execution</h2>
+<p>In this section, we’ll explore the built-in keyboard shortcuts for executing code within the interactive code cell. You can run either the selected code or specific lines or the entire cell with the following keyboard shortcuts:</p>
+<ul>
+<li>Run selected code:
+<ul>
+<li>macOS: <kbd>⌘</kbd> + <kbd>↩︎/Return</kbd></li>
+<li>Windows/Linux: <kbd>Ctrl</kbd> + <kbd>↩︎/Enter</kbd></li>
+</ul></li>
+<li>To run the entire code cell, you can simply click the “Run code” button, or use the keyboard shortcut:
+<ul>
+<li><kbd>Shift</kbd> + <kbd>↩︎</kbd></li>
+</ul></li>
+</ul>
+<p>Feel free to try it out in the following code cell:</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-3">🟡 Loading
   webR...</button>
 <div id="webr-editor-3"></div>
@@ -1155,15 +1168,14 @@ summary(fit)`,
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `plot(
-  mpg ~ wt,
-  data = mtcars,
-  col = "blue", 
-  xlab = "Miles/(US) gallon",
-  ylab = "Weight (1000 lbs)",
-  main = "Miles per Gallon and Weight of Cars",
-  sub = "Source: 1974 Motor Trend US magazine."
-)`,
+      value: `# Try running selected code at the start of the line
+print("Hello quarto-webr World!")
+
+# Try highlight only -3 or 5 and pressing the keys required
+# for the "selected code" approach
+-3 + 5
+
+# Finally, try running the entire code cell by using Shift + ↩`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -1414,13 +1426,11 @@ summary(fit)`,
     executeCode(editor.getValue());
   };
 </script>
+<p>By using these shortcuts, you can run code conveniently and efficiently. This practice can also help you become familiar with keyboard shortcuts when transitioning to integrated development environments (IDEs) like <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> or <a href="https://code.visualstudio.com/docs/languages/r">Visual Studio Code with R</a>.</p>
 </section>
-<section id="fill-in-the-blanks" class="level2">
-<h2 class="anchored" data-anchor-id="fill-in-the-blanks">Fill in the Blanks</h2>
-<p>Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:</p>
-<blockquote class="blockquote">
-<p>Fill in the blank to create an expression that adds up to <strong>42</strong>.</p>
-</blockquote>
+<section id="create-a-graph-with-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-graph-with-base-r">Create a Graph with Base R</h2>
+<p>For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value <code>blue</code> to <code>orange</code> and run the code again.</p>
 <button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-4">🟡 Loading
   webR...</button>
 <div id="webr-editor-4"></div>
@@ -1440,7 +1450,15 @@ summary(fit)`,
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `35 + ________`,
+      value: `plot(
+  mpg ~ wt,
+  data = mtcars,
+  col = "blue", 
+  xlab = "Miles/(US) gallon",
+  ylab = "Weight (1000 lbs)",
+  main = "Miles per Gallon and Weight of Cars",
+  sub = "Source: 1974 Motor Trend US magazine."
+)`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -1692,8 +1710,8 @@ summary(fit)`,
   };
 </script>
 </section>
-<section id="fill-in-the-blanks-1" class="level2">
-<h2 class="anchored" data-anchor-id="fill-in-the-blanks-1">Fill in the Blanks</h2>
+<section id="fill-in-the-blanks" class="level2">
+<h2 class="anchored" data-anchor-id="fill-in-the-blanks">Fill in the Blanks</h2>
 <p>Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:</p>
 <blockquote class="blockquote">
 <p>Fill in the blank to have the following expression add up to <strong>42</strong>.</p>
