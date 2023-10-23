@@ -1,10 +1,10 @@
-# webR Code Extension for Quarto
+# webR Extension for Quarto
 
 This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/NCTDwUk.gif)
 
-Take a look at a live example of the extension in action [here](https://coatless.github.io/quarto-webr/webr-readme-example.html)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
+Take a look at a live example of the extension in action [here](https://quarto-webr.thecoatlessprofessor.com/qwebr-readme-example.html)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
 
 If you're new to [webR](https://docs.r-wasm.org/webr/latest/), this cutting-edge technology empowers you to:
 
@@ -55,7 +55,7 @@ summary(fit)
 ```
 ````
 
-The rendered document can be viewed online [here](https://coatless.github.io/quarto-webr/webr-readme-example.html).
+The rendered document can be viewed online [here](https://quarto-webr.thecoatlessprofessor.com/qwebr-readme-example.html).
 
 When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
 During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
@@ -63,11 +63,11 @@ During the execution, the filter adds two files to the working directory: `webr-
 
  **Note:** If you don't specify the engine: knitr, the default compute engine used will be jupyter. This could trigger prompts to install Python. However, if you specify engine: knitr, there's no need to install Python.
 
-There are many more customization options that are available. Please see the [customization documentation](https://coatless.github.io/quarto-webr/webr-meta-options.html) for more examples.
+There are many more customization options that are available. Please see the [customization documentation](https://quarto-webr.thecoatlessprofessor.com/qwebr-meta-options.html) for more examples.
 
 ## Help
 
-For troubleshooting help, please see our [troubleshooting page](https://coatless.github.io/quarto-webr/webr-troubleshooting.html).
+For troubleshooting help, please see our [troubleshooting page](https://quarto-webr.thecoatlessprofessor.com/qwebr-troubleshooting.html).
 
 To report a bug, please [add an issue](https://github.com/coatless/quarto-webr/issues/new) to the repository's [bug tracker](https://github.com/coatless/quarto-webr/issues).
 
@@ -75,4 +75,4 @@ Want to contribute a feature? Please open an issue ticket to discuss the feature
 
 ## Acknowledgements
 
-Please see our [acknowledgements page](https://coatless.github.io/quarto-webr/webr-acknowledgements.html).
+Please see our [acknowledgements page](https://quarto-webr.thecoatlessprofessor.com/qwebr-acknowledgements.html).
