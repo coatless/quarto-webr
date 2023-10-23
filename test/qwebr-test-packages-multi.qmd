@@ -1,0 +1,15 @@
+---
+title: "Test: Package Keys"
+format: html
+engine: knitr
+webr:
+  packages: ['ggplot2', 'dplyr']
+filters:
+  - webr
+---
+
+This webpage tests the `packages` key meta option.
+
+```{webr-r}
+library('ggplot2')
+```
