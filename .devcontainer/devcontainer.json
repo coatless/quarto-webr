@@ -19,7 +19,13 @@
 		"vscode": {
 			"extensions": [
 				"quarto.quarto",
-				"sumneko.lua"
+				"sumneko.lua",
+				"peakchen90.open-html-in-browser"
+			]
+		},
+		"codespaces": {
+			"openFiles": [
+				"examples/readme/index.qmd"
 			]
 		}
 	} 

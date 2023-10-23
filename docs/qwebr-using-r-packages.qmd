@@ -23,20 +23,35 @@ Whether you need specialized statistical analysis, advanced visualization, or an
 Before you use any R package with webR, it's essential to check if it's available. You can explore the available packages by executing the following R code, either with webR or just R:
 
 ```{webr-r}
-webr_pkgs = available.packages(
-  repos = "https://repo.r-wasm.org/",
-  type = "source"
-)[, c("Package", "Version")]
+# Obtain a list of packages
+webr_info <- as.data.frame(
+  available.packages(
+    contriburl = "https://repo.r-wasm.org/bin/emscripten/contrib/4.3"
+  )
+)
+
+# Obtain the number of R packages built
+n_webr_pkgs <- nrow(webr_info)
 
 # Number of R packages available to webR
-cat("There are current", nrow(webr_pkgs), 
+cat("There are current", n_webr_pkgs, 
     "available to use with webR!\n")
 
 # Only view the first 6, there's a lot available!
-head(webr_pkgs)
+head(webr_info)
 ```
 
-Alternatively, you can navigate to the WebR repository [here](https://github.com/r-wasm/webr-repo/blob/main/repo-packages) for package listings.
+Alternatively, you can navigate to the webR binary R repository [here](https://repo.r-wasm.org/) for package listings.
+
+::: {.callout-note}
+webR reports the number of packages available in two ways:
+
+- **Built R packages**: This indicates the number of R packages with WebAssembly binaries that can be used within webR, although they may have a decreased number of features available.
+
+- **Available R packages**: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.
+
+To achieve parity with base R, the **Available R packages** metric serves as an indicator of whether R scripts may require further modification to function properly within webR.
+:::
 
 # Install R Packages on Document Open
 

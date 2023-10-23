@@ -70,7 +70,7 @@ If the problem persists, you can specify the location of the worker files using 
 └── test-document.qmd
 ```
 
-If your directory is missing the `_extensions/` folder, please install the `webr` extension by following the instructions in [Install the quarto-webr extension](qwebr-first-steps.qmd).
+If your directory is missing the `_extensions/` folder, please install the `webr` extension by following the instructions in [Install the quarto-webr extension](qwebr-first-steps.qmd) video.
 
 Starting from Quarto v1.4, you will receive an improved error message that emphasizes the extension's absence from your current working directory.
 

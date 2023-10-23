@@ -4,3 +4,6 @@ webr-worker.js
 webr-serviceworker.js
 /webr-*.html
 *.csv
+/.luarc.json
+docs/_site/*
+tests/_site/*
