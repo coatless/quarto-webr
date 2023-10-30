@@ -6,3 +6,7 @@ filters:
 ---
 
 Ensure that the webR code cell initializes a status even if a title is omitted. 
+
+```{webr-r}
+print("Hello hidden title world!")
+```
