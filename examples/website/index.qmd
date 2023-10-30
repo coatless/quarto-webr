@@ -4,7 +4,7 @@ title: "Quarto Webr Demo Website"
 
 # Welcome
 
-Welcome to a demo website that uses [`quarto-webr`](https://github.com/coatless/quarto-webr) to generate interactive code cells using [Quarto](https://quarto.org).
+Welcome to a demo website that uses the [`quarto-webr`](https://github.com/coatless/quarto-webr) extension to generate interactive code cells with [Quarto](https://quarto.org) and [webR](https://docs.r-wasm.org/webr/latest/).
 
 ```{webr-r}
 print("Hello there! Welcome to a quarto-webR powered website!")
