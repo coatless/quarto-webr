@@ -119,7 +119,15 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     color: #0d9c29
   }
 
-  .btn-webr {
+  .qwebr-output-code-stdout {
+    color: #111;
+  }
+
+  .qwebr-output-code-stderr {
+    color: #db4133;
+  }
+
+  .qwebr-button-run {
     background-color: #EEEEEE;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; /* Extra styling for consistency */
@@ -143,13 +151,13 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
 
-  .btn-webr:hover {
+  .qwebr-button-run:hover {
     color: #000;
     background-color: #e3e6ea;
     border-color: #e1e5e9;
   }
 
-  .btn-webr:disabled,.btn-webr.disabled,fieldset:disabled .btn-webr {
+  .qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
     pointer-events: none;
     opacity: .65
   }
@@ -254,7 +262,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
   // Function to set the button text
   function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.innerHTML = buttonText;
       btn.disabled = !enableCodeButton;
     });
@@ -503,12 +511,18 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Extra</span></a>
+ <span class="menu-text">Extra Information</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release Notes</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
@@ -529,8 +543,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Release Notes</span></a>
+  <a href="https://quarto-webr.thecoatlessprofessor.com/tests/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test Suite</span></a>
   </div>
 </li>
       </ul>
@@ -675,17 +689,22 @@ await globalThis.webR.evalRVoid(`
 meaning_of_life = 42
 `)
 </script>	
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-2">🟡 Loading
+<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-2">🟡 Loading
   webR...</button>
-<div id="webr-editor-2"></div>
-<div id="webr-code-output-2" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-interactive-area-2" class="qwebr-interactive-area">
+  <div id="qwebr-editor-2" class="qwebr-editor"></div>
+  <div id="qwebr-output-code-area-2" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-2" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-2");
-  const outputDiv = document.getElementById("webr-code-output-2");
-  const editorDiv = document.getElementById("webr-editor-2");
+  const runButton = document.getElementById("qwebr-button-run-2");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-2");
+  const editorDiv = document.getElementById("qwebr-editor-2");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-2");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -794,7 +813,7 @@ meaning_of_life = 42
   async function executeCode(codeToRun) {
 
     // Disallowing execution of other code cells
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = true;
     });
 
@@ -814,7 +833,7 @@ meaning_of_life = 42
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -829,7 +848,7 @@ meaning_of_life = 42
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -837,7 +856,7 @@ meaning_of_life = 42
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -857,9 +876,14 @@ meaning_of_life = 42
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-2-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
+
 
       // Clean the state
       const msgs = await webR.flush();
@@ -892,27 +916,26 @@ meaning_of_life = 42
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -921,9 +944,9 @@ meaning_of_life = 42
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-2-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-2-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -932,7 +955,7 @@ meaning_of_life = 42
     }
 
     // Switch to allowing execution of code
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = false;
     });
 
@@ -956,12 +979,17 @@ meaning_of_life = 42
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">mat2x2 &lt;- matrix(c(1, 2, 3, 4), nrow = 2)</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">mat2x2</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="webr-code-output-3" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-noninteractive-area-3" class="qwebr-noninteractive-area">
+  <div id="qwebr-output-code-area-3" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-3" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const outputDiv = document.getElementById("webr-code-output-3");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-3");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-3");
   
   // Function to execute the code (accepts code as an argument)
   async function executeOutputOnlyCode(codeToRun) {  
@@ -978,7 +1006,7 @@ meaning_of_life = 42
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -993,7 +1021,7 @@ meaning_of_life = 42
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -1001,7 +1029,7 @@ meaning_of_life = 42
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -1021,9 +1049,13 @@ meaning_of_life = 42
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-3-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
 
       // Clean the state
       const msgs = await webR.flush();
@@ -1056,27 +1088,26 @@ meaning_of_life = 42
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -1085,9 +1116,9 @@ meaning_of_life = 42
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-3-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-3-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -1097,7 +1128,7 @@ meaning_of_life = 42
   }
 
   // Run the code
-  executeOutputOnlyCode(`mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)
+  await executeOutputOnlyCode(`mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)
 mat2x2`)
 </script>
 <p>In the next example, the code used to generate the graph is suppressed.</p>
@@ -1113,12 +1144,17 @@ mat2x2`)
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">  sub = "Source: 1974 Motor Trend US magazine."</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="webr-code-output-4" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-noninteractive-area-4" class="qwebr-noninteractive-area">
+  <div id="qwebr-output-code-area-4" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-4" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const outputDiv = document.getElementById("webr-code-output-4");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-4");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-4");
   
   // Function to execute the code (accepts code as an argument)
   async function executeOutputOnlyCode(codeToRun) {  
@@ -1135,7 +1171,7 @@ mat2x2`)
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -1150,7 +1186,7 @@ mat2x2`)
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -1158,7 +1194,7 @@ mat2x2`)
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -1178,9 +1214,13 @@ mat2x2`)
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-4-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
 
       // Clean the state
       const msgs = await webR.flush();
@@ -1213,27 +1253,26 @@ mat2x2`)
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -1242,9 +1281,9 @@ mat2x2`)
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-4-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-4-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -1254,7 +1293,7 @@ mat2x2`)
   }
 
   // Run the code
-  executeOutputOnlyCode(`plot(
+  await executeOutputOnlyCode(`plot(
   mpg ~ wt,
   data = mtcars,
   col = "blue", 
@@ -1303,17 +1342,22 @@ download.file(
 df_penguins = read.csv("penguins.csv")
 `)
 </script>	
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-6">🟡 Loading
+<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-6">🟡 Loading
   webR...</button>
-<div id="webr-editor-6"></div>
-<div id="webr-code-output-6" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-interactive-area-6" class="qwebr-interactive-area">
+  <div id="qwebr-editor-6" class="qwebr-editor"></div>
+  <div id="qwebr-output-code-area-6" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-6" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-6");
-  const outputDiv = document.getElementById("webr-code-output-6");
-  const editorDiv = document.getElementById("webr-editor-6");
+  const runButton = document.getElementById("qwebr-button-run-6");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-6");
+  const editorDiv = document.getElementById("qwebr-editor-6");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-6");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1423,7 +1467,7 @@ head(df_penguins)`,
   async function executeCode(codeToRun) {
 
     // Disallowing execution of other code cells
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = true;
     });
 
@@ -1443,7 +1487,7 @@ head(df_penguins)`,
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -1458,7 +1502,7 @@ head(df_penguins)`,
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -1466,7 +1510,7 @@ head(df_penguins)`,
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -1486,9 +1530,14 @@ head(df_penguins)`,
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-6-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
+
 
       // Clean the state
       const msgs = await webR.flush();
@@ -1521,27 +1570,26 @@ head(df_penguins)`,
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -1550,9 +1598,9 @@ head(df_penguins)`,
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-6-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-6-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -1561,7 +1609,7 @@ head(df_penguins)`,
     }
 
     // Switch to allowing execution of code
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = false;
     });
 
@@ -1608,12 +1656,17 @@ Note
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">summary(mtcars2)</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="webr-code-output-7" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-noninteractive-area-7" class="qwebr-noninteractive-area">
+  <div id="qwebr-output-code-area-7" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-7" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const outputDiv = document.getElementById("webr-code-output-7");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-7");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-7");
   
   // Function to execute the code (accepts code as an argument)
   async function executeOutputOnlyCode(codeToRun) {  
@@ -1630,7 +1683,7 @@ Note
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -1645,7 +1698,7 @@ Note
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -1653,7 +1706,7 @@ Note
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -1673,9 +1726,13 @@ Note
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-7-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
 
       // Clean the state
       const msgs = await webR.flush();
@@ -1708,27 +1765,26 @@ Note
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -1737,9 +1793,9 @@ Note
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-7-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-7-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -1749,7 +1805,7 @@ Note
   }
 
   // Run the code
-  executeOutputOnlyCode(`
+  await executeOutputOnlyCode(`
 mtcars2 <- within(mtcars, {
    vs <- factor(vs, labels = c("V", "S"))
    am <- factor(am, labels = c("automatic", "manual"))
@@ -1839,17 +1895,22 @@ check <- function(problem, answer) {
 <blockquote class="blockquote">
 <p>What is 9 + 1?</p>
 </blockquote>
-<button class="btn btn-default btn-webr" disabled="" type="button" id="webr-run-button-9">🟡 Loading
+<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-9">🟡 Loading
   webR...</button>
-<div id="webr-editor-9"></div>
-<div id="webr-code-output-9" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-interactive-area-9" class="qwebr-interactive-area">
+  <div id="qwebr-editor-9" class="qwebr-editor"></div>
+  <div id="qwebr-output-code-area-9" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-9" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("webr-run-button-9");
-  const outputDiv = document.getElementById("webr-code-output-9");
-  const editorDiv = document.getElementById("webr-editor-9");
+  const runButton = document.getElementById("qwebr-button-run-9");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-9");
+  const editorDiv = document.getElementById("qwebr-editor-9");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-9");
 
   // Add a light grey outline around the code editor
   editorDiv.style.border = "1px solid #eee";
@@ -1960,7 +2021,7 @@ check(problem = "1a", answer = student_solution)`,
   async function executeCode(codeToRun) {
 
     // Disallowing execution of other code cells
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = true;
     });
 
@@ -1980,7 +2041,7 @@ check(problem = "1a", answer = student_solution)`,
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -1995,7 +2056,7 @@ check(problem = "1a", answer = student_solution)`,
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -2003,7 +2064,7 @@ check(problem = "1a", answer = student_solution)`,
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width=504, height=360)");
@@ -2023,9 +2084,14 @@ check(problem = "1a", answer = student_solution)`,
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-9-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
+
 
       // Clean the state
       const msgs = await webR.flush();
@@ -2058,27 +2124,26 @@ check(problem = "1a", answer = student_solution)`,
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -2087,9 +2152,9 @@ check(problem = "1a", answer = student_solution)`,
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-9-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-9-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -2098,7 +2163,7 @@ check(problem = "1a", answer = student_solution)`,
     }
 
     // Switch to allowing execution of code
-    document.querySelectorAll(".btn-webr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = false;
     });
 

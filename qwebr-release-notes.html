@@ -116,7 +116,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-acknowledgements.html">Extra</a></li><li class="breadcrumb-item"><a href="./qwebr-release-notes.html">Release Notes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-release-notes.html">Extra Information</a></li><li class="breadcrumb-item"><a href="./qwebr-release-notes.html">Release Notes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -268,12 +268,18 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Extra</span></a>
+ <span class="menu-text">Extra Information</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Release Notes</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
@@ -294,8 +300,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Release Notes</span></a>
+  <a href="https://quarto-webr.thecoatlessprofessor.com/tests/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test Suite</span></a>
   </div>
 </li>
       </ul>
@@ -425,6 +431,10 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li>Added <code>autoload-packages</code> document meta option key that will automatically load packages specified in the <code>packages</code> key. The default value is <code>true</code>. (<a href="https://github.com/coatless/quarto-webr/issues/75">#75</a>)
 <ul>
 <li>This feature simplifies the use of packages, eliminating the need to call <code>library()</code> in interactive code cells or setup code cells, as the specified packages will be loaded automatically.</li>
+</ul></li>
+<li>Added new output classes to differentiate between STDOUT and STDERR text. (<a href="https://github.com/coatless/quarto-webr/issues/60">#60</a>)
+<ul>
+<li>Error and warning messages will now appear red and regular output will appear black.</li>
 </ul></li>
 </ul>
 </section>
