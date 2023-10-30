@@ -53,6 +53,11 @@ jobs:
         with:
           path: "examples/readme/index.qmd"
 
+      - name: Render RevealJS demo 
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: "examples/revealjs/index.qmd"
+
       - name: Render sample deployment HTML document template
         uses: quarto-dev/quarto-actions/render@v2
         with:
@@ -82,6 +87,7 @@ jobs:
           cp -rp examples/book/_book staging/examples/book && \
           cp -rp examples/website/_site staging/examples/website && \
           cp -rp examples/html-document/ staging/examples/html-document && \
+          cp -rp examples/revealjs/ staging/examples/revealjs && \
           cp -rp examples/readme/ staging/examples/readme
 
       # Remove symlinks
