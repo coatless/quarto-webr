@@ -20,4 +20,3 @@ Test pager event support by verifying help documentation works in the interactiv
 #| context: output
 ?sd
 ```
-

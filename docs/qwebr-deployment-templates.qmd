@@ -26,6 +26,5 @@ This template is meant for building interactive websites with multiple webR-powe
 The book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.
 
 - **Example**: You can view an example of a book template [here](https://quarto-webr.thecoatlessprofessor.com/examples/book).
-
 - **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book).
 
