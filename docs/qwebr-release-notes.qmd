@@ -23,8 +23,8 @@ format:
 
 - Added a subsection to using two keyboard shortcuts into the interactive code cell demo.
 - Emphasized the extension must be in the same directory or contained within a Quarto project as the Quarto document being used. ([#79](https://github.com/coatless/quarto-webr/issues/79), [#26](https://github.com/coatless/quarto-webr/issues/26))
-- Added an RevealJS presentation example ([#84](https://github.com/coatless/quarto-webr/issues/84)).
-- Added examples of embedding a RevealJS presentation inside of a website and book project ([#84](https://github.com/coatless/quarto-webr/issues/84)).
+- Added an RevealJS presentation example ([#83](https://github.com/coatless/quarto-webr/issues/83)).
+- Added examples of embedding a RevealJS presentation inside of a website and book project ([#83](https://github.com/coatless/quarto-webr/issues/83)).
 - Miscellaneous documentation typo fixes.
 
 ## Deployment
