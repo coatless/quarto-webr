@@ -20,6 +20,7 @@ book:
     - part: "Exploring R"
       chapters:
         - example-page.qmd
+        - slide-embed.qmd
     - href: ../../
       text: Documentation Portal
   page-footer: 
