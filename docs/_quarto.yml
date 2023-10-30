@@ -49,16 +49,18 @@ website:
             text: Templates
           - href: qwebr-communication-channels.qmd
             text: Communication Channels
-      - section: "Extra"
+      - section: "Extra Information"
         contents:
+          - href: qwebr-release-notes.qmd
+            text: Release Notes
           - href: qwebr-acknowledgements.md
             text: Acknowledgements
           - href: qwebr-developer-resources.qmd
             text: Developer Resources
           - href: qwebr-extension-website.qmd
             text: Extension Website Notes
-          - href: qwebr-release-notes.qmd
-            text: Release Notes
+          - href: https://quarto-webr.thecoatlessprofessor.com/tests/
+            text: Test Suite
 
 format:
   html:
