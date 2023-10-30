@@ -14,6 +14,8 @@ website:
         text: Home
       - href: example-page.qmd
         text: Example page
+      - href: slide-embed.qmd
+        text: Embed Slides
       - href: ../../
         text: Documentation Portal
   sidebar:
@@ -23,6 +25,7 @@ website:
         contents:
           - index.qmd
           - example-page.qmd
+          - slide-embed.qmd
           - href: ../../
             text: Documentation Portal
 

@@ -1,0 +1,25 @@
+---
+title: "Embed Slides"
+---
+
+On this page, we show how we can embed a RevealJS Presentation inside of a Quarto Book.
+
+## Presentation
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../examples/revealjs/"></iframe>
+```
+</div>
+
+## Embed Code
+
+Place the following code inside of the Quarto Document: 
+
+````html
+<div>
+```{=html}
+<iframe class="slide-deck" src="path/to/presentation/"></iframe>
+```
+</div>
+````
