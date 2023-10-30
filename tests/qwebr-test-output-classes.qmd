@@ -1,0 +1,32 @@
+---
+title: "Test: CSS Output Classes"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Test output classes for standard output and standard error.
+
+## Interactive
+
+```{webr-r}
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
