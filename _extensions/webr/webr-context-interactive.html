@@ -1,16 +1,16 @@
-<button class="btn btn-default btn-qwebr" disabled type="button" id="qwebr-run-button-{{WEBRCOUNTER}}">🟡 Loading
+<button class="btn btn-default qwebr-button-run" disabled type="button" id="qwebr-button-run-{{WEBRCOUNTER}}">🟡 Loading
   webR...</button>
-<div id="qwebr-interactive-area-{{WEBRCOUNTER}}">
-  <div id="qwebr-editor-{{WEBRCOUNTER}}"></div>
-  <div id="qwebr-output-code-area-{{WEBRCOUNTER}}" aria-live="assertive">
+<div id="qwebr-interactive-area-{{WEBRCOUNTER}}" class="qwebr-interactive-area">
+  <div id="qwebr-editor-{{WEBRCOUNTER}}" class="qwebr-editor"></div>
+  <div id="qwebr-output-code-area-{{WEBRCOUNTER}}" class="qwebr-output-code-area" aria-live="assertive">
     <pre style="visibility: hidden"></pre>
   </div>
 </div>
-<div id="qwebr-output-graph-area-{{WEBRCOUNTER}}">
+<div id="qwebr-output-graph-area-{{WEBRCOUNTER}}" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const runButton = document.getElementById("qwebr-run-button-{{WEBRCOUNTER}}");
+  const runButton = document.getElementById("qwebr-button-run-{{WEBRCOUNTER}}");
   const outputCodeDiv = document.getElementById("qwebr-output-code-area-{{WEBRCOUNTER}}");
   const editorDiv = document.getElementById("qwebr-editor-{{WEBRCOUNTER}}");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-{{WEBRCOUNTER}}");
@@ -122,7 +122,7 @@
   async function executeCode(codeToRun) {
 
     // Disallowing execution of other code cells
-    document.querySelectorAll(".btn-qwebr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = true;
     });
 
@@ -264,7 +264,7 @@
     }
 
     // Switch to allowing execution of code
-    document.querySelectorAll(".btn-qwebr").forEach((btn) => {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
       btn.disabled = false;
     });
 
