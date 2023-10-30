@@ -8,7 +8,7 @@ On this page, we show how we can embed a RevealJS Presentation inside of a Quart
 
 <div>
 ```{=html}
-<iframe class="slide-deck" src="../examples/revealjs/"></iframe>
+<iframe class="slide-deck" src="../revealjs/"></iframe>
 ```
 </div>
 

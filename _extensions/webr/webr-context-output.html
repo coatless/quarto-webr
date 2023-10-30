@@ -1,9 +1,14 @@
-<div id="webr-code-output-{{WEBRCOUNTER}}" aria-live="assertive">
-  <pre style="visibility: hidden"></pre>
+<div id="qwebr-noninteractive-area-{{WEBRCOUNTER}}" class="qwebr-noninteractive-area">
+  <div id="qwebr-output-code-area-{{WEBRCOUNTER}}" class="qwebr-output-code-area" aria-live="assertive">
+    <pre style="visibility: hidden"></pre>
+  </div>
+</div>
+<div id="qwebr-output-graph-area-{{WEBRCOUNTER}}" class="qwebr-output-graph-area">
 </div>
 <script type="module">
   // Retrieve webR code cell information
-  const outputDiv = document.getElementById("webr-code-output-{{WEBRCOUNTER}}");
+  const outputCodeDiv = document.getElementById("qwebr-output-code-area-{{WEBRCOUNTER}}");
+  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-{{WEBRCOUNTER}}");
   
   // Function to execute the code (accepts code as an argument)
   async function executeOutputOnlyCode(codeToRun) {  
@@ -20,7 +25,7 @@
         const { path, title, deleteFile } = msg.data; 
 
         // Process the pager data by reading the information from disk
-        const paged_data = await globalThis.webR.FS.readFile(path).then((data) => {
+        const paged_data = await webR.FS.readFile(path).then((data) => {
           // Obtain the file content
           let content = new TextDecoder().decode(data);
 
@@ -35,7 +40,7 @@
 
         // Unlink file if needed
         if (deleteFile) { 
-          globalThis.webR.FS.unlink(path); 
+          await webR.FS.unlink(path); 
         } 
 
         // Return extracted data with spaces
@@ -43,7 +48,7 @@
     } 
 
     // Initialize webR
-    await globalThis.webR.init();
+    await webR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await webR.evalRVoid("webr::canvas(width={{WIDTH}}, height={{HEIGHT}})");
@@ -63,9 +68,13 @@
       await webR.evalRVoid("dev.off()");
 
       // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output.filter(
-        evt => evt.type == "stdout" || evt.type == "stderr"
-      ).map((evt) => evt.data).join("\n");
+      const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+          const className = `qwebr-output-code-${evt.type}`;
+          return `<code id="${className}-editor-{{WEBRCOUNTER}}-result-${index + 1}" class="${className}">${evt.data}</code>`;
+        })
+        .join("\n");
 
       // Clean the state
       const msgs = await webR.flush();
@@ -98,27 +107,26 @@
         )
       );
 
-      // Nullify the outputDiv of content
-      outputDiv.innerHTML = "";
+      // Nullify the output area of content
+      outputCodeDiv.innerHTML = "";
+      outputGraphDiv.innerHTML = "";
 
       // Design an output object for messages
       const pre = document.createElement("pre");
       if (/\S/.test(out)) {
-        // Display results as text
-        const code = document.createElement("code");
-        code.innerText = out;
-        pre.appendChild(code);
+        // Display results as HTML elements to retain output styling
+        const div = document.createElement("div");
+        div.innerHTML = out;
+        pre.appendChild(div);
       } else {
         // If nothing is present, hide the element.
         pre.style.visibility = "hidden";
       }
-      outputDiv.appendChild(pre);
+      outputCodeDiv.appendChild(pre);
 
       // Place the graphics on the canvas
       if (canvas) {
-        const p = document.createElement("p");
-        p.appendChild(canvas);
-        outputDiv.appendChild(p);
+        outputGraphDiv.appendChild(canvas);
       }
 
       // Display the pager data
@@ -127,9 +135,9 @@
         pager.forEach((paged_data, index) => {
           let pre_pager = document.createElement("pre");
           pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-type-pager");
-          pre_pager.setAttribute("id", "qwebr-output-type-pager-{{WEBRCOUNTER}}-" + (index + 1));
-          outputDiv.appendChild(pre_pager);
+          pre_pager.classList.add("qwebr-output-code-pager");
+          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-{{WEBRCOUNTER}}-result-" + (index + 1));
+          outputCodeDiv.appendChild(pre_pager);
         });
       }
     } finally {
@@ -139,5 +147,5 @@
   }
 
   // Run the code
-  executeOutputOnlyCode(`{{WEBRCODE}}`)
+  await executeOutputOnlyCode(`{{WEBRCODE}}`)
 </script>
