@@ -14,11 +14,11 @@
     "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n🟡 Loading\n  webR..."
   },
   {
-    "objectID": "qwebr-test-status-header-no-title.html",
-    "href": "qwebr-test-status-header-no-title.html",
-    "title": "Test Suite for quarto-webr",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quarto-webr Test Website",
     "section": "",
-    "text": "Ensure that the webR code cell initializes a status even if a title is omitted."
+    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n🟡 Loading\n  webR..."
   },
   {
     "objectID": "qwebr-test-help-documentation.html",
@@ -42,17 +42,31 @@
     "text": "Non-interactive"
   },
   {
+    "objectID": "qwebr-test-revealjs.html#webr-in-revealjs",
+    "href": "qwebr-test-revealjs.html#webr-in-revealjs",
+    "title": "Test: webR in RevealJS",
+    "section": "webR in RevealJS",
+    "text": "webR in RevealJS\nThis is a webR-enabled code cell in a Quarto RevealJS document.\n🟡 Loading\n  webR..."
+  },
+  {
+    "objectID": "qwebr-test-revealjs.html#keyboard-shortcuts",
+    "href": "qwebr-test-revealjs.html#keyboard-shortcuts",
+    "title": "Test: webR in RevealJS",
+    "section": "Keyboard Shortcuts",
+    "text": "Keyboard Shortcuts\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.\n\n🟡 Loading\n  webR..."
+  },
+  {
+    "objectID": "qwebr-test-status-header-no-title.html",
+    "href": "qwebr-test-status-header-no-title.html",
+    "title": "Test Suite for quarto-webr",
+    "section": "",
+    "text": "Ensure that the webR code cell initializes a status even if a title is omitted."
+  },
+  {
     "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "title": "Test: Keyboard Shortcuts in Code cell",
     "section": "",
     "text": "This is a webr-enabled code cell in a Quarto HTML document.\n🟡 Loading\n  webR...\n\n\n  \n\n\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "quarto-webr Test Website",
-    "section": "",
-    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n🟡 Loading\n  webR..."
   }
 ]

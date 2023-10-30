@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./../../" rel="next">
+<link href="./slide-embed.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -128,21 +128,24 @@ ul.task-list li input[type="checkbox"] {
   var showHeaderMessage = false;
   if (showStartupMessage) {
 
-    // Create the outermost div element
-    var quartoTitleMeta = document.createElement("div");
+    // Get references to header elements
+    const headerHTML = document.getElementById("title-block-header");
+    const headerRevealJS = document.getElementById("title-slide");
+
+    // Create the outermost div element for metadata
+    const quartoTitleMeta = document.createElement("div");
     quartoTitleMeta.classList.add("quarto-title-meta");
 
     // Create the first inner div element
-    var firstInnerDiv = document.createElement("div");
+    const firstInnerDiv = document.createElement("div");
 
-    // Create the second inner div element with "WebR Status" heading 
-    // and contents
-    var secondInnerDiv = document.createElement("div");
+    // Create the second inner div element for "WebR Status" heading and contents
+    const secondInnerDiv = document.createElement("div");
     secondInnerDiv.classList.add("quarto-title-meta-heading");
     secondInnerDiv.innerText = "WebR Status";
 
-    // Add another inner div
-    var secondInnerDivContents = document.createElement("div");
+    // Create another inner div for contents
+    const secondInnerDivContents = document.createElement("div");
     secondInnerDivContents.classList.add("quarto-title-meta-contents");
 
     // Describe the WebR state
@@ -152,36 +155,35 @@ ul.task-list li input[type="checkbox"] {
     // Add `aria-live` to auto-announce the startup status to screen readers
     startupMessageWebR.setAttribute("aria-live", "assertive");
 
-    // Put everything together
+    // Append the startup message to the contents
     secondInnerDivContents.appendChild(startupMessageWebR);
 
-    // Add a status indicator for COOP and COEP Headers
+    // Add a status indicator for COOP and COEP Headers if needed
     if (showHeaderMessage) {
-      var crossOriginMessage = document.createElement("p");
+      const crossOriginMessage = document.createElement("p");
       crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
       crossOriginMessage.setAttribute("id", "coop-coep-header");
       secondInnerDivContents.appendChild(crossOriginMessage);
     }
 
+    // Combine the inner divs and contents
     firstInnerDiv.appendChild(secondInnerDiv);
     firstInnerDiv.appendChild(secondInnerDivContents);
     quartoTitleMeta.appendChild(firstInnerDiv);
 
-    // Add new element as last child in header element
-    var header = document.getElementById("title-block-header");
-
-    // Check if the header option is present or missing
-    if(header) {
-      // If present, directly append the child element.
-      header.appendChild(quartoTitleMeta);
+    // Determine where to insert the quartoTitleMeta element
+    if (headerHTML) {
+      // Append to the existing "title-block-header" element
+      headerHTML.appendChild(quartoTitleMeta);
+    } else if (headerRevealJS) {
+      // If using RevealJS, add to the "title-slide" div
+      headerRevealJS.appendChild(firstInnerDiv);
     } else {
-      // Attempt to place the new element inside a header _after_ the Monaco initialization
-      var monacoScript = document.getElementById("webr-monaco-editor-init");
-      var header = document.createElement("header");
+      // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
+      const monacoScript = document.getElementById("webr-monaco-editor-init");
+      const header = document.createElement("header");
       header.setAttribute("id", "title-block-header");
-      // Now attempt to add the webR area to the title
       header.appendChild(quartoTitleMeta);
-      // Include the header after the script tag
       monacoScript.after(header);
     }
   }
@@ -358,6 +360,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./example-page.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example page</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slide-embed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Embed Slides</span></span></a>
   </div>
 </li>
       </ul>
@@ -2340,8 +2348,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./../../" class="pagination-link">
-        <span class="nav-page-text">Documentation Portal</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./slide-embed.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Embed Slides</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

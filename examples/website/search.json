@@ -4,7 +4,28 @@
     "href": "index.html",
     "title": "Quarto Webr Demo Website",
     "section": "",
-    "text": "Welcome\nWelcome to a demo website that uses quarto-webr to generate interactive code cells using Quarto.\n🟡 Loading\n  webR..."
+    "text": "Welcome\nWelcome to a demo website that uses the quarto-webr extension to generate interactive code cells with Quarto and webR.\n🟡 Loading\n  webR..."
+  },
+  {
+    "objectID": "slide-embed.html",
+    "href": "slide-embed.html",
+    "title": "Embed Slides",
+    "section": "",
+    "text": "On this page, we show how we can embed a RevealJS Presentation inside of a Quarto Website."
+  },
+  {
+    "objectID": "slide-embed.html#presentation",
+    "href": "slide-embed.html#presentation",
+    "title": "Embed Slides",
+    "section": "Presentation",
+    "text": "Presentation"
+  },
+  {
+    "objectID": "slide-embed.html#embed-code",
+    "href": "slide-embed.html#embed-code",
+    "title": "Embed Slides",
+    "section": "Embed Code",
+    "text": "Embed Code\nPlace the following code inside of the Quarto Document:\n&lt;div&gt;\n```{=html}\n&lt;iframe class=\"slide-deck\" src=\"path/to/presentation/\"&gt;&lt;/iframe&gt;\n```\n&lt;/div&gt;"
   },
   {
     "objectID": "example-page.html",
