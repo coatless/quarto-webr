@@ -13,6 +13,17 @@ This template is designed for creating standalone HTML documents with interactiv
 - **Example**: You can find an example of an HTML document template [here](https://quarto-webr.thecoatlessprofessor.com/examples/html-document/).
 - **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/html-document).
 
+# RevealJS Presentation Template
+
+This template is designed for creating standalone RevealJS presentations with interactive webR functionality. It's suitable for creating lecture slides.
+
+:::{.callout-important}
+This template requires a [**pre-release** version of Quarto](https://quarto.org/docs/download/prerelease) that contains an updated copy of `pandoc`. For more details, please see [Issue #14](https://github.com/coatless/quarto-webr/issues/14). 
+:::
+
+- **Example**: You can find an example of an HTML document template [here](https://quarto-webr.thecoatlessprofessor.com/examples/revealjs/).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/revealjs).
+
 # Website Template
 
 This template is meant for building interactive websites with multiple webR-powered pages. It's ideal for websites that have multiple piece of web content that requires interactive data analysis at the "top-level".
