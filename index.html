@@ -462,6 +462,12 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-theming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theming Elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Templates</span></a>
   </div>
@@ -556,15 +562,17 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 <p>Welcome to the documentation portal for the <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code></a> extension – your key to unlocking the endless possibilities of <a href="https://docs.r-wasm.org/webr/latest/">webR</a> within various <a href="https://quarto.org/">Quarto</a> formats, including <a href="https://quarto.org/docs/output-formats/html-basics.html">HTML</a>, <a href="https://quarto.org/docs/websites/">Websites</a>, and <a href="https://quarto.org/docs/books">Books</a>.</p>
 <p>Ready for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:</p>
-<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
-  webR...</button>
 <div id="qwebr-interactive-area-1" class="qwebr-interactive-area">
-  <div id="qwebr-editor-1" class="qwebr-editor"></div>
-  <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
-    <pre style="visibility: hidden"></pre>
+  <button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
+    webR...</button>
+  <div id="qwebr-console-area-1" class="qwebr-console-area">
+    <div id="qwebr-editor-1" class="qwebr-editor"></div>
+    <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
+      <pre style="visibility: hidden"></pre>
+    </div>
   </div>
-</div>
-<div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  <div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  </div>
 </div>
 <script type="module">
   // Retrieve webR code cell information

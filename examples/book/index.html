@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2023-10-30">
+<meta name="dcterms.date" content="2023-11-12">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -431,7 +431,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 30, 2023</p>
+      <p class="date">November 12, 2023</p>
     </div>
   </div>
   
@@ -444,15 +444,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="welcome" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Welcome</h1>
 <p>Welcome to a demo Book that uses the <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code></a> extension to generate interactive code cells with <a href="https://quarto.org">Quarto</a> and <a href="https://docs.r-wasm.org/webr/latest/">webR</a>.</p>
-<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
-  webR...</button>
 <div id="qwebr-interactive-area-1" class="qwebr-interactive-area">
-  <div id="qwebr-editor-1" class="qwebr-editor"></div>
-  <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
-    <pre style="visibility: hidden"></pre>
+  <button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
+    webR...</button>
+  <div id="qwebr-console-area-1" class="qwebr-console-area">
+    <div id="qwebr-editor-1" class="qwebr-editor"></div>
+    <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
+      <pre style="visibility: hidden"></pre>
+    </div>
   </div>
-</div>
-<div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  <div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  </div>
 </div>
 <script type="module">
   // Retrieve webR code cell information

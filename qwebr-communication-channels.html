@@ -359,7 +359,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-deployment-templates.html">Deployment</a></li><li class="breadcrumb-item"><a href="./qwebr-communication-channels.html">Communication Channels</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-theming.html">Deployment</a></li><li class="breadcrumb-item"><a href="./qwebr-communication-channels.html">Communication Channels</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -496,6 +496,12 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-theming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theming Elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Templates</span></a>
   </div>
@@ -613,7 +619,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 30, 2023</p>
+      <p class="date-modified">November 12, 2023</p>
     </div>
   </div>
     
@@ -800,15 +806,17 @@ Warning
 <p>Now, let’s delve into the <code>"post-message"</code> option. This sets up a communication channel using something called <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage">Post Message</a>. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.</p>
 <p>However, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) won’t work as expected. Instead, they’ll return empty values like <code>""</code> or <code>c('', '')</code>. Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.</p>
 <p>Feel free to experiment with the <code>"post-message"</code> interface in this webR code cell:</p>
-<button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
-  webR...</button>
 <div id="qwebr-interactive-area-1" class="qwebr-interactive-area">
-  <div id="qwebr-editor-1" class="qwebr-editor"></div>
-  <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
-    <pre style="visibility: hidden"></pre>
+  <button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
+    webR...</button>
+  <div id="qwebr-console-area-1" class="qwebr-console-area">
+    <div id="qwebr-editor-1" class="qwebr-editor"></div>
+    <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
+      <pre style="visibility: hidden"></pre>
+    </div>
   </div>
-</div>
-<div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  <div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
+  </div>
 </div>
 <script type="module">
   // Retrieve webR code cell information

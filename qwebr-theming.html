@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-03-11">
+<meta name="author" content="James Balamuta">
+<meta name="dcterms.date" content="2023-11-01">
 
-<title>quarto-webr - Acknowledgments and Collaborations</title>
+<title>quarto-webr - Theming Elements</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,7 +117,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-release-notes.html">Extra Information</a></li><li class="breadcrumb-item"><a href="./qwebr-acknowledgements.html">Acknowledgements</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-theming.html">Deployment</a></li><li class="breadcrumb-item"><a href="./qwebr-theming.html">Theming Elements</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -219,7 +254,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-theming.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-theming.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Theming Elements</span></a>
   </div>
 </li>
@@ -254,7 +289,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
@@ -288,33 +323,41 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto-webr-extension-core-developers" id="toc-quarto-webr-extension-core-developers" class="nav-link active" data-scroll-target="#quarto-webr-extension-core-developers">quarto-webr Extension Core Developers</a></li>
-  <li><a href="#webr-core-developers" id="toc-webr-core-developers" class="nav-link" data-scroll-target="#webr-core-developers">webR Core Developers</a></li>
-  <li><a href="#early-testing-feedback" id="toc-early-testing-feedback" class="nav-link" data-scroll-target="#early-testing-feedback">Early Testing Feedback</a></li>
-  <li><a href="#quarto-team-assistance" id="toc-quarto-team-assistance" class="nav-link" data-scroll-target="#quarto-team-assistance">Quarto Team Assistance</a></li>
-  <li><a href="#inspirations" id="toc-inspirations" class="nav-link" data-scroll-target="#inspirations">Inspirations</a></li>
-  <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
+  <li><a href="#css-class-and-id-identifiers" id="toc-css-class-and-id-identifiers" class="nav-link active" data-scroll-target="#css-class-and-id-identifiers">CSS Class and ID Identifiers</a></li>
+  <li><a href="#css-html-structure" id="toc-css-html-structure" class="nav-link" data-scroll-target="#css-html-structure">CSS &amp; HTML Structure</a>
+  <ul class="collapse">
+  <li><a href="#interactive-area-structure" id="toc-interactive-area-structure" class="nav-link" data-scroll-target="#interactive-area-structure">Interactive Area Structure</a></li>
+  <li><a href="#non-interactive-area-structure" id="toc-non-interactive-area-structure" class="nav-link" data-scroll-target="#non-interactive-area-structure">Non-interactive Area Structure</a></li>
+  </ul></li>
+  <li><a href="#custom-embedded-styles" id="toc-custom-embedded-styles" class="nav-link" data-scroll-target="#custom-embedded-styles">Custom Embedded Styles</a></li>
+  <li><a href="#external-theme-support" id="toc-external-theme-support" class="nav-link" data-scroll-target="#external-theme-support">External Theme Support</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-acknowledgements.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-theming.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Acknowledgments and Collaborations</h1>
-<p class="subtitle lead">Bringing webR to Quarto</p>
+<h1 class="title">Theming Elements</h1>
+<p class="subtitle lead">Customizing the Look and Feel of <code>quarto-webr</code> Elements</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>James Balamuta </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 11, 2023</p>
+      <p class="date">November 1, 2023</p>
     </div>
   </div>
   
@@ -330,48 +373,128 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 </header>
 
-<p>We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing <a href="https://github.com/coatless/quarto-webr"><code>quarto-webR</code></a> to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.</p>
-<section id="quarto-webr-extension-core-developers" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-webr-extension-core-developers">quarto-webr Extension Core Developers</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section of the documentation is tailored to those with a deeper understanding of web design. If you’re new to these concepts, don’t worry; you can still create fantastic documents using the <code>quarto-webr</code> extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.</p>
+</div>
+</div>
+<p>On this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.</p>
+<section id="css-class-and-id-identifiers" class="level2">
+<h2 class="anchored" data-anchor-id="css-class-and-id-identifiers">CSS Class and ID Identifiers</h2>
+<p>To effectively style web-based documents created with the extension, you’ll need to understand the unique <code>id</code> and <code>class</code> attributes associated with different content areas. There are two primary context types where content is displayed to users:</p>
 <ul>
-<li><a href="https://github.com/coatless">James Joseph Balamuta</a></li>
-<li><a href="https://github.com/jooyoungseo">JooYoung Seo</a> for accessibility improvements.</li>
-</ul>
-<p>Their relentless dedication have played a pivotal role in shaping the development of this extension.</p>
-</section>
-<section id="webr-core-developers" class="level2">
-<h2 class="anchored" data-anchor-id="webr-core-developers">webR Core Developers</h2>
+<li><strong>Interactive Area</strong>: This area encompasses the <strong>Code Editor</strong>, <strong>Code Output</strong>, and the <strong>Graph Output Area</strong> under the <code>interactive</code> context.
 <ul>
-<li><a href="https://github.com/georgestagg">George Stagg</a></li>
-<li><a href="https://github.com/lionel-">Lionel Henry</a></li>
-</ul>
-<p>Their tireless efforts and expertise in developing <a href="https://docs.r-wasm.org/webr/latest/">webR</a> were instrumental in the development of this extension, and we are immensely grateful for their contributions.</p>
-</section>
-<section id="early-testing-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="early-testing-feedback">Early Testing Feedback</h2>
-<p>We extend our sincere appreciation to the following individuals for providing early testing feedback on the extension:</p>
+<li><code>id</code>: <code>#qwebr-interactive-area-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-interactive-area</code></li>
+</ul></li>
+<li><strong>Non-Interactive Area</strong>: This includes the <strong>Code Output</strong> and the <strong>Graph Output Area</strong> under the <code>output</code> context.
 <ul>
-<li><a href="https://eeholmes.github.io/">Eli E. Holmes</a></li>
-<li><a href="https://rud.is/">Bob Rudis</a></li>
+<li><code>id</code>: <code>#qwebr-noninteractive-area-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-noninteractive-area</code></li>
+</ul></li>
 </ul>
-<p>Their insightful feedback and suggestions have been invaluable in refining and enhancing the functionality of the extension.</p>
-</section>
-<section id="quarto-team-assistance" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-team-assistance">Quarto Team Assistance</h2>
-<p>We would like to acknowledge the Quarto team for their assistance in setting up a new code cell type, which greatly improved the overall functionality of the extension. You can view the discussion <a href="https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636">here</a>.</p>
-</section>
-<section id="inspirations" class="level2">
-<h2 class="anchored" data-anchor-id="inspirations">Inspirations</h2>
-<p>Our project built upon the initial proof of concept for a standalone Quarto HTML document, made possible by the work of the <a href="https://github.com/coatless-r-n-d/webR-quarto-demos">coatless-r-n-d/webR-quarto-demos</a> repository.</p>
-<p>Additionally, we were inspired by the following public-facing examples from the webR Core developers:</p>
+<p>Within the interactive section, you’ll find elements that are displayed when users request results:</p>
 <ul>
-<li><a href="https://github.com/tidyverse/tidyverse.org/pull/617/files">Source of Tidyverse Blog Post</a> and <a href="https://github.com/tidyverse/tidyverse.org/commit/72bb2dd7ca0b2f211498a891aa54f55ddcad5014">Minor fix</a></li>
-<li><a href="https://github.com/r-wasm/webr/blob/53acd8861c44f1f167941d0a40f62b0cc23852da/src/docs/index.qmd#L23-L68">webR documentation landing page</a> (<a href="https://docs.r-wasm.org/webr/latest/">Live page</a>)</li>
+<li><strong>Run Button</strong>: This button triggers the execution of your R code.
+<ul>
+<li><code>id</code>: <code>#qwebr-button-run-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-button-run</code></li>
+</ul></li>
+<li><strong>Console Area</strong>: This area contains the <strong>Code Editor</strong> and <strong>Code Output</strong>.
+<ul>
+<li><code>id</code>: <code>#qwebr-console-area-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-console-area</code></li>
+</ul></li>
+<li><strong>Code Editor</strong>: You use this area to input and edit your R code.
+<ul>
+<li><code>id</code>: <code>#qwebr-editor-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-editor</code></li>
+</ul></li>
 </ul>
+<p>Across both contexts, you’ll find shared output element classes and names:</p>
+<ul>
+<li><strong>Code Output Area</strong>: This is where the results and output of your R code are displayed.
+<ul>
+<li><code>id</code>: <code>#qwebr-output-code-area-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-output-code-area</code></li>
+</ul></li>
+<li><strong>Code Output Standard Output</strong>: Results from standard output (<code>STDOUT</code>) are stored here.
+<ul>
+<li><code>id</code>: <code>#qwebr-output-code-stdout-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-output-code-stdout</code></li>
+</ul></li>
+<li><strong>Code Output Standard Error</strong>: Each line of results from standard error (<code>STDERR</code>) when running your code is stored here.
+<ul>
+<li><code>id</code>: <code>#qwebr-output-code-stderr-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-output-code-stderr</code></li>
+</ul></li>
+<li><strong>Graph Output Area</strong>: Any graphical output of your R code is displayed in this area.
+<ul>
+<li><code>id</code>: <code>#qwebr-output-graph-area-{{ID}}</code></li>
+<li><code>class</code>: <code>.qwebr-output-graph-area</code></li>
+</ul></li>
+</ul>
+<p>The <code>{{ID}}</code> in these identifiers represents the instance of the element on the page, whether it’s the first, second, or nth occurrence. You can customize their appearance by targeting the specific <code>id</code> or <code>class</code> attributes in your document’s CSS, or you can include a separate CSS file to align with your design preferences.</p>
 </section>
-<section id="fin" class="level1">
-<h1>Fin</h1>
-<p>Once again, thank you to everyone who contributed, collaborated, and provided support throughout this project. Your dedication and expertise have made this achievement possible.</p>
+<section id="css-html-structure" class="level2">
+<h2 class="anchored" data-anchor-id="css-html-structure">CSS &amp; HTML Structure</h2>
+<section id="interactive-area-structure" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-area-structure">Interactive Area Structure</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-interactive-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-interactive-area"</span><span class="kw">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">"btn btn-default qwebr-button-run"</span> <span class="er">disabled</span> <span class="er">type</span><span class="ot">=</span><span class="st">"button"</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-button-run-{{ID}}"</span><span class="kw">&gt;&lt;/button&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-console-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-interactive-area"</span><span class="kw">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-editor-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-editor"</span><span class="kw">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">"monaco-editor ..."</span><span class="kw">&gt;&lt;/div&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-output-code-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-output-code-area"</span> <span class="er">aria-live</span><span class="ot">=</span><span class="st">"assertive"</span><span class="kw">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;pre</span> <span class="er">style</span><span class="ot">=</span><span class="st">"visibility: hidden"</span><span class="kw">&gt;&lt;/pre&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-output-graph-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-output-graph-area"</span><span class="kw">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="non-interactive-area-structure" class="level3">
+<h3 class="anchored" data-anchor-id="non-interactive-area-structure">Non-interactive Area Structure</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-noninteractive-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-noninteractive-area"</span><span class="kw">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-output-code-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-output-code-area"</span> <span class="er">aria-live</span><span class="ot">=</span><span class="st">"assertive"</span><span class="kw">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;pre</span> <span class="er">style</span><span class="ot">=</span><span class="st">"visibility: hidden"</span><span class="kw">&gt;&lt;/pre&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"qwebr-output-graph-area-{{ID}}"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"qwebr-output-graph-area"</span> <span class="er">aria-live</span><span class="ot">=</span><span class="st">"assertive"</span><span class="kw">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="custom-embedded-styles" class="level2">
+<h2 class="anchored" data-anchor-id="custom-embedded-styles">Custom Embedded Styles</h2>
+<p>For instance, you can insert new CSS elements by using the following method:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;style&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">.qwebr-code-output-stdout {background-color: powderblue;}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">.qwebr-button-run   {color: blue;}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/style&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="external-theme-support" class="level2">
+<h2 class="anchored" data-anchor-id="external-theme-support">External Theme Support</h2>
+<p>Furthermore, if you are using a Quarto theme, you can make use of <a href="https://quarto.org/docs/output-formats/html-themes.html#basic-options">theme-specific styling options</a> to ensure that these UI elements align with the overall theme of your document.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> My post</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - cosmo</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">      - custom.scss</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
