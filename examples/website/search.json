@@ -25,7 +25,7 @@
     "href": "slide-embed.html#presentation",
     "title": "Embed Slides",
     "section": "Presentation",
-    "text": "Presentation"
+    "text": "Presentation\n\n\n\n\n\n\nImportant\n\n\n\nFor quarto-webr to work within RevealJS, you must use a pre-release version of Quarto that contains an updated copy of pandoc. For more details, please see Issue #14."
   },
   {
     "objectID": "slide-embed.html#embed-code",
