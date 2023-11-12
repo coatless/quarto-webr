@@ -1,0 +1,125 @@
+---
+title: "Theming Elements"
+subtitle: "Customizing the Look and Feel of `quarto-webr` Elements"
+date: "11-01-2023"
+date-modified: last-modified
+author: James Balamuta
+engine: markdown
+format: 
+  html:
+    toc: true
+filters:
+- webr
+---
+
+:::{.callout-note}
+This section of the documentation is tailored to those with a deeper understanding of web design. If you're new to these concepts, don't worry; you can still create fantastic documents using the `quarto-webr` extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.
+:::
+
+On this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization's style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.
+
+## CSS Class and ID Identifiers
+
+To effectively style web-based documents created with the extension, you'll need to understand the unique `id` and `class` attributes associated with different content areas. There are two primary context types where content is displayed to users:
+
+- **Interactive Area**: This area encompasses the **Code Editor**, **Code Output**, and the **Graph Output Area** under the `interactive` context.
+   - `id`: `#qwebr-interactive-area-{{ID}}`
+   - `class`: `.qwebr-interactive-area`
+
+- **Non-Interactive Area**: This includes the **Code Output** and the **Graph Output Area** under the `output` context.
+   - `id`: `#qwebr-noninteractive-area-{{ID}}`
+   - `class`: `.qwebr-noninteractive-area`
+
+Within the interactive section, you'll find elements that are displayed when users request results:
+
+- **Run Button**: This button triggers the execution of your R code.
+   - `id`: `#qwebr-button-run-{{ID}}`
+   - `class`: `.qwebr-button-run`
+
+- **Console Area**: This area contains the **Code Editor** and **Code Output**.
+   - `id`: `#qwebr-console-area-{{ID}}`
+   - `class`: `.qwebr-console-area`
+
+- **Code Editor**: You use this area to input and edit your R code.
+   - `id`: `#qwebr-editor-{{ID}}`
+   - `class`: `.qwebr-editor`
+
+Across both contexts, you'll find shared output element classes and names:
+
+- **Code Output Area**: This is where the results and output of your R code are displayed.
+   - `id`: `#qwebr-output-code-area-{{ID}}` 
+   - `class`: `.qwebr-output-code-area`
+
+- **Code Output Standard Output**: Results from standard output (`STDOUT`) are stored here.
+   - `id`: `#qwebr-output-code-stdout-{{ID}}` 
+   - `class`: `.qwebr-output-code-stdout`
+
+- **Code Output Standard Error**: Each line of results from standard error (`STDERR`) when running your code is stored here.
+   - `id`: `#qwebr-output-code-stderr-{{ID}}` 
+   - `class`: `.qwebr-output-code-stderr`
+
+- **Graph Output Area**: Any graphical output of your R code is displayed in this area.
+   - `id`: `#qwebr-output-graph-area-{{ID}}` 
+   - `class`: `.qwebr-output-graph-area`
+
+The `{{ID}}` in these identifiers represents the instance of the element on the page, whether it's the first, second, or nth occurrence. You can customize their appearance by targeting the specific `id` or `class` attributes in your document's CSS, or you can include a separate CSS file to align with your design preferences.
+
+## CSS & HTML Structure
+
+### Interactive Area Structure
+
+```{.html}
+<div id="qwebr-interactive-area-{{ID}}" class="qwebr-interactive-area">
+  <button class="btn btn-default qwebr-button-run" disabled type="button" id="qwebr-button-run-{{ID}}"></button>
+  <div id="qwebr-console-area-{{ID}}" class="qwebr-interactive-area">
+    <div id="qwebr-editor-{{ID}}" class="qwebr-editor">
+      <div class="monaco-editor ..."></div>
+    </div>
+    <div id="qwebr-output-code-area-{{ID}}" class="qwebr-output-code-area" aria-live="assertive">
+      <pre style="visibility: hidden"></pre>
+    </div>
+  </div>
+  <div id="qwebr-output-graph-area-{{ID}}" class="qwebr-output-graph-area">
+  </div>
+</div>
+```
+
+### Non-interactive Area Structure
+
+```{.html}
+<div id="qwebr-noninteractive-area-{{ID}}" class="qwebr-noninteractive-area">
+   <div id="qwebr-output-code-area-{{ID}}" class="qwebr-output-code-area" aria-live="assertive">
+   <pre style="visibility: hidden"></pre>
+   </div>
+  <div id="qwebr-output-graph-area-{{ID}}" class="qwebr-output-graph-area" aria-live="assertive">
+  </div>
+</div>
+```
+
+## Custom Embedded Styles
+
+For instance, you can insert new CSS elements by using the following method:
+
+````markdown
+```{=html}
+<style>
+.qwebr-code-output-stdout {background-color: powderblue;}
+.qwebr-button-run   {color: blue;}
+</style>
+```
+````
+
+## External Theme Support
+
+Furthermore, if you are using a Quarto theme, you can make use of [theme-specific styling options](https://quarto.org/docs/output-formats/html-themes.html#basic-options) to ensure that these UI elements align with the overall theme of your document.
+
+```markdown
+---
+title: My post
+format:
+  html: 
+    theme:
+      - cosmo
+      - custom.scss
+---
+```

@@ -45,6 +45,8 @@ website:
             text: Community Examples
       - section: "Deployment"
         contents:
+          - href: qwebr-theming.qmd
+            text: Theming Elements
           - href: qwebr-deployment-templates.qmd
             text: Templates
           - href: qwebr-communication-channels.qmd
