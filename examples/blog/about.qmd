@@ -1,0 +1,12 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/coatless/quarto-webr
+---
+
+This blog is a demo showing how to use the `quarto-webr` extension.
