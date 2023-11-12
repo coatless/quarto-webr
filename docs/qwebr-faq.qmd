@@ -87,42 +87,4 @@ Error messages, warnings, and other diagnostic information are presented in the 
 
 > Q. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?
 
-Certainly! You have the flexibility to style the UI elements added by the `quarto-webr` extension to your document. These elements are categorized into three distinct areas, each of which can be styled individually. They are identifiable by their unique `id` and `class` attributes:
-
-1. **Interactive Code Editor**: This is where you input and edit your R code.
-   - `id`: `#webr-editor-{{ID}}`
-   - `class`: `.webr-editor`
-
-2. **Output Area**: This is where the results and output of your R code are displayed.
-   - `id`: `#webr-code-stdout-{{ID}}`
-   - `class`: `.webr-code-stdout`
-
-3. **Run Button**: The button that triggers the execution of your R code.
-   - `id`: `#webr-btn-run-{{ID}}`
-   - `class`: `.webr-btn-run`
-
-The `{{ID}}` in these identifiers represents the instance of the element on the page, such as the first, second, or nth occurrence. By targeting the specific `id` or `class` attributes in your document's CSS or by including a separate CSS file, you can control their appearance as per your design preferences. 
-
-For example, you can insert new CSS elements by using:
-
-````markdown
-```{=html}
-<style>
-.webr-code-stdout {background-color: powderblue;}
-.webr-btn-run   {color: blue;}
-</style>
-```
-````
-
-Additionally, if you are using a Quarto theme, you can leverage [theme-specific styling options](https://quarto.org/docs/output-formats/html-themes.html#basic-options) to ensure that these UI elements align with the overall theme of your document.
-
-````markdown
----
-title: My post
-format:
-  html: 
-    theme:
-      - cosmo
-      - custom.scss
----
-````
+Certainly! You have the flexibility to style the UI elements added by the `quarto-webr` extension to your document. For more details, please see [Theming Elements](qwebr-theming.qmd).
