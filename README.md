@@ -1,6 +1,6 @@
 # webR Extension for Quarto
 
-This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), and [Books](https://quarto.org/docs/books). 
+This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [Websites](https://quarto.org/docs/websites/), [Blogs](https://quarto.org/docs/websites/website-blog.html), and [Books](https://quarto.org/docs/books). 
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/NCTDwUk.gif)
 
@@ -67,6 +67,8 @@ During the execution, the filter adds two files to the working directory: `webr-
  **Note:** If you don't specify the engine: knitr, the default compute engine used will be jupyter. This could trigger prompts to install Python. However, if you specify engine: knitr, there's no need to install Python.
 
 There are many more customization options that are available. Please see the [customization documentation](https://quarto-webr.thecoatlessprofessor.com/qwebr-meta-options.html) for more examples.
+
+For specific deployment usage cases, please see [Templates](https://quarto-webr.thecoatlessprofessor.com/qwebr-deployment-templates.html). 
 
 ## Help
 

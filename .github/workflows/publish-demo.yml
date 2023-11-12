@@ -68,6 +68,11 @@ jobs:
         with:
           path: "examples/website"
 
+      - name: Render sample deployment blog template
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: "examples/blog"
+
       - name: Render sample deployment book template
         uses: quarto-dev/quarto-actions/render@v2
         with:
@@ -86,6 +91,7 @@ jobs:
           cp -rp tests/_site/* staging/tests/ && \
           cp -rp examples/book/_book staging/examples/book && \
           cp -rp examples/website/_site staging/examples/website && \
+          cp -rp examples/blog/_site staging/examples/blog && \
           cp -rp examples/html-document/ staging/examples/html-document && \
           cp -rp examples/revealjs/ staging/examples/revealjs && \
           cp -rp examples/readme/ staging/examples/readme
