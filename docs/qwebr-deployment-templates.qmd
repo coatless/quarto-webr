@@ -11,20 +11,25 @@ Discover a range of sample deployment templates for the `quarto-webr` extension 
 This template is designed for creating standalone HTML documents with interactive webR functionality. It's suitable for individual reports or interactive documents.
 
 - **Example**: You can find an example of an HTML document template [here](https://quarto-webr.thecoatlessprofessor.com/examples/html-document/).
-- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/html-document).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/html-document).
 
 # Website Template
 
-This template is meant for building interactive websites with multiple webR-powered pages. It's ideal for creating blog posts, educational platforms, or any web content that requires interactive data analysis.
+This template is meant for building interactive websites with multiple webR-powered pages. It's ideal for websites that have multiple piece of web content that requires interactive data analysis at the "top-level".
 
 - **Example**: Explore an example of a website template [here](https://quarto-webr.thecoatlessprofessor.com/examples/website/).
-- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/website).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/website).
 
+# Blog Template
+
+For users who want to periodically use webR on their Quarto blog, please use the following template. 
+
+- **Example**: Explore an example of a blog website template [here](https://quarto-webr.thecoatlessprofessor.com/examples/blog/).
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/blog).
 
 # Book Template
 
 The book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.
 
 - **Example**: You can view an example of a book template [here](https://quarto-webr.thecoatlessprofessor.com/examples/book).
-- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/docs/examples/book).
-
+- **Source Code**: Access the source code for this template [here](https://github.com/coatless/quarto-webr/tree/main/examples/book).
