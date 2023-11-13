@@ -15,4 +15,4 @@ summary(fit)
 ```
 
 
-Return to the [documentation website](https://quarto-webr.thecoatlessprofessor.com/)
+Return to the [documentation website](https://quarto-webr.thecoatlessprofessor.com/) or [GitHub Repository](https://github.com/coatless/quarto-webr).
