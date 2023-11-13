@@ -4,118 +4,185 @@
     "href": "qwebr-test-revealjs.html#webr-in-revealjs",
     "title": "Test: webR in RevealJS",
     "section": "webR in RevealJS",
-    "text": "webR in RevealJS\nThis is a webR-enabled code cell in a Quarto RevealJS document.\n\n  🟡 Loading\n    webR..."
+    "text": "webR in RevealJS\nThis is a webR-enabled code cell in a Quarto RevealJS document.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
   },
   {
     "objectID": "qwebr-test-revealjs.html#keyboard-shortcuts",
     "href": "qwebr-test-revealjs.html#keyboard-shortcuts",
     "title": "Test: webR in RevealJS",
     "section": "Keyboard Shortcuts",
-    "text": "Keyboard Shortcuts\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.\n\n\n  🟡 Loading\n    webR..."
+    "text": "Keyboard Shortcuts\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.\n\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
   },
   {
     "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "title": "Test: Keyboard Shortcuts in Code cell",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎."
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "crumbs": [
+      "Tests",
+      "Test: Keyboard Shortcuts in Code cell"
+    ]
   },
   {
     "objectID": "qwebr-test-status-header-no-title.html",
     "href": "qwebr-test-status-header-no-title.html",
     "title": "Test Suite for quarto-webr",
     "section": "",
-    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\n  🟡 Loading\n    webR..."
+    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Qwebr Test Status Header No Title"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "quarto-webr Test Website",
     "section": "",
-    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\n  🟡 Loading\n    webR..."
+    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "qwebr-test-help-documentation.html",
     "href": "qwebr-test-help-documentation.html",
     "title": "Test: Help Documentation",
     "section": "",
-    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts."
+    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts.",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
   },
   {
     "objectID": "qwebr-test-help-documentation.html#interactive",
     "href": "qwebr-test-help-documentation.html#interactive",
     "title": "Test: Help Documentation",
     "section": "Interactive",
-    "text": "Interactive\n\n  🟡 Loading\n    webR..."
+    "text": "Interactive\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
   },
   {
     "objectID": "qwebr-test-help-documentation.html#non-interactive",
     "href": "qwebr-test-help-documentation.html#non-interactive",
     "title": "Test: Help Documentation",
     "section": "Non-interactive",
-    "text": "Non-interactive"
+    "text": "Non-interactive",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
   },
   {
     "objectID": "qwebr-test-packages-multi.html",
     "href": "qwebr-test-packages-multi.html",
     "title": "Test: Packages Key with Autoloading",
     "section": "",
-    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\n  🟡 Loading\n    webR..."
+    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Packages Key with Autoloading"
+    ]
   },
   {
     "objectID": "qwebr-test-output-classes.html",
     "href": "qwebr-test-output-classes.html",
     "title": "Test: CSS Output Classes",
     "section": "",
-    "text": "Test output classes for standard output and standard error."
+    "text": "Test output classes for standard output and standard error.",
+    "crumbs": [
+      "Tests",
+      "Test: CSS Output Classes"
+    ]
   },
   {
     "objectID": "qwebr-test-output-classes.html#interactive",
     "href": "qwebr-test-output-classes.html#interactive",
     "title": "Test: CSS Output Classes",
     "section": "Interactive",
-    "text": "Interactive\n\n  🟡 Loading\n    webR..."
+    "text": "Interactive\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: CSS Output Classes"
+    ]
   },
   {
     "objectID": "qwebr-test-output-classes.html#non-interactive",
     "href": "qwebr-test-output-classes.html#non-interactive",
     "title": "Test: CSS Output Classes",
     "section": "Non-interactive",
-    "text": "Non-interactive"
+    "text": "Non-interactive",
+    "crumbs": [
+      "Tests",
+      "Test: CSS Output Classes"
+    ]
   },
   {
     "objectID": "qwebr-test-internal-cell.html",
     "href": "qwebr-test-internal-cell.html",
     "title": "Test: Cell Context Options",
     "section": "",
-    "text": "Test page for verifying cell context options set explicitly with context."
+    "text": "Test page for verifying cell context options set explicitly with context.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
   },
   {
     "objectID": "qwebr-test-internal-cell.html#interactive",
     "href": "qwebr-test-internal-cell.html#interactive",
     "title": "Test: Cell Context Options",
     "section": "Interactive",
-    "text": "Interactive\n\n  🟡 Loading\n    webR..."
+    "text": "Interactive\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
   },
   {
     "objectID": "qwebr-test-internal-cell.html#setup",
     "href": "qwebr-test-internal-cell.html#setup",
     "title": "Test: Cell Context Options",
     "section": "Setup",
-    "text": "Setup\nHidden cell that sets x and y vector values."
+    "text": "Setup\nHidden cell that sets x and y vector values.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
   },
   {
     "objectID": "qwebr-test-internal-cell.html#output",
     "href": "qwebr-test-internal-cell.html#output",
     "title": "Test: Cell Context Options",
     "section": "Output",
-    "text": "Output\nHidden cell that retrieves previously set x and y vector values and displays the data."
+    "text": "Output\nHidden cell that retrieves previously set x and y vector values and displays the data.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
   },
   {
     "objectID": "qwebr-test-packages-autoload.html",
     "href": "qwebr-test-packages-autoload.html",
     "title": "Test: Autoload Package",
     "section": "",
-    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\n  🟡 Loading\n    webR..."
+    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Autoload Package"
+    ]
   }
 ]
