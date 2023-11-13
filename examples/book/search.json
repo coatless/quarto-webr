@@ -25,7 +25,7 @@
     "href": "slide-embed.html#presentation",
     "title": "3  Embed Slides",
     "section": "3.1 Presentation",
-    "text": "3.1 Presentation\n\n\n\n\n\n\nImportant\n\n\n\nFor quarto-webr to work within RevealJS, you must use a pre-release version of Quarto that contains an updated copy of pandoc. For more details, please see Issue #14.",
+    "text": "3.1 Presentation\n\n\n\n\n\n\nImportant\n\n\n\nFor quarto-webr to work within RevealJS, you must use a pre-release version of Quarto that is 1.4.499 or greater that contains an updated copy of pandoc. For more details, please see Issue #14.",
     "crumbs": [
       "Exploring R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Embed Slides</span>"
