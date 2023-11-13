@@ -14,19 +14,21 @@ format:
 
 - Added `autoload-packages` document meta option key that will automatically load packages specified in the `packages` key. The default value is `true`. ([#75](https://github.com/coatless/quarto-webr/issues/75))
   - This feature simplifies the use of packages, eliminating the need to call `library()` in interactive code cells or setup code cells, as the specified packages will be loaded automatically. 
-- Added new output classes to differentiate between STDOUT and STDERR text. ([#60](https://github.com/coatless/quarto-webr/issues/60))
+- Added new output classes to differentiate between STDOUT and STDERR text. ([#60](https://github.com/coatless/quarto-webr/issues/60), [#89](https://github.com/coatless/quarto-webr/pull/89))
   - Error and warning messages will now appear red and regular output will appear black.
   
 ## Bugfixes
 
-- Fix placement of the "WebR Status" indicator when in the `revealjs` presentation format. ([#84](https://github.com/coatless/quarto-webr/issues/84)).
+- Fix placement of the "WebR Status" indicator when in the `revealjs` presentation format. ([#84](https://github.com/coatless/quarto-webr/issues/84))
 
 ## Documentation
 
 - Added a subsection to using two keyboard shortcuts into the interactive code cell demo.
 - Emphasized the extension must be in the same directory or contained within a Quarto project as the Quarto document being used. ([#79](https://github.com/coatless/quarto-webr/issues/79), [#26](https://github.com/coatless/quarto-webr/issues/26))
-- Added an RevealJS presentation example ([#83](https://github.com/coatless/quarto-webr/issues/83)).
-- Added examples of embedding a RevealJS presentation inside of a website and book project ([#83](https://github.com/coatless/quarto-webr/issues/83)).
+- Added an RevealJS presentation example. ([#83](https://github.com/coatless/quarto-webr/issues/83))
+- Added examples of embedding a RevealJS presentation inside of a website and book project. ([#83](https://github.com/coatless/quarto-webr/issues/83))
+- Added an example of using the extension with a Blog website. ([#81](https://github.com/coatless/quarto-webr/issues/81))
+- Added documentation on theming quarto elements. ([#89](https://github.com/coatless/quarto-webr/pull/89))
 - Miscellaneous documentation typo fixes.
 
 ## Deployment

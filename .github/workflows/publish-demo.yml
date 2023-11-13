@@ -40,6 +40,8 @@ jobs:
       # Back to our regularly scheduled Quarto output
       - name: "Set up Quarto"
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "pre-release"
 
       # Generate the documentation website
       - name: Render Documentation website
