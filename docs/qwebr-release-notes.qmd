@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.3.8: ???? (??-??-????) [DEV]
+# 0.3.8: New Coat of Paint (11-13-2023)
 
 ## Features
 
