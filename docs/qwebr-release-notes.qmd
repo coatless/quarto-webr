@@ -8,6 +8,12 @@ format:
     toc: true
 ---
 
+# 0.3.9: ???? (??-??-??) [DEV]
+
+## Features
+
+## Bugfixes
+
 # 0.3.8: New Coat of Paint (11-13-2023)
 
 ## Features
