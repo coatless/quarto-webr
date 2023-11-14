@@ -49,6 +49,14 @@ print("Hello quarto-webr RevealJS world!")
 You can embed the slide deck inside of a Quarto Website or Book by using:
 
 ````html
+<style>
+.slide-deck {
+    border: 3px solid #dee2e6;
+    width: 100%;
+    height: 475px;
+}
+</style>
+
 <div>
 ```{=html}
 <iframe class="slide-deck" src="path/to/presentation/"></iframe>

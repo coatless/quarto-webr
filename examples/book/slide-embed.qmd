@@ -10,6 +10,20 @@ On this page, we show how we can embed a RevealJS Presentation inside of a Quart
 For `quarto-webr` to work within RevealJS, you must use a [**pre-release** version of Quarto that is 1.4.502 or greater](https://quarto.org/docs/download/prerelease) that contains an updated copy of `pandoc`. For more details, please see [Issue #14](https://github.com/coatless/quarto-webr/issues/14). 
 :::
 
+<style>
+.slide-deck {
+    border: 3px solid #dee2e6;
+    width: 100%;
+    height: 475px;
+}
+</style>
+
+<div>
+```{=html}
+
+<iframe class="slide-deck" src="../revealjs/"></iframe>
+```
+</div>
 <div>
 ```{=html}
 <iframe class="slide-deck" src="../revealjs/"></iframe>
@@ -21,6 +35,14 @@ For `quarto-webr` to work within RevealJS, you must use a [**pre-release** versi
 Place the following code inside of the Quarto Document: 
 
 ````html
+<style>
+.slide-deck {
+    border: 3px solid #dee2e6;
+    width: 100%;
+    height: 475px;
+}
+</style>
+
 <div>
 ```{=html}
 <iframe class="slide-deck" src="path/to/presentation/"></iframe>
