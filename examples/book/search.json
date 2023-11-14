@@ -36,7 +36,7 @@
     "href": "slide-embed.html#embed-code",
     "title": "3  Embed Slides",
     "section": "3.2 Embed Code",
-    "text": "3.2 Embed Code\nPlace the following code inside of the Quarto Document:\n&lt;div&gt;\n```{=html}\n&lt;iframe class=\"slide-deck\" src=\"path/to/presentation/\"&gt;&lt;/iframe&gt;\n```\n&lt;/div&gt;",
+    "text": "3.2 Embed Code\nPlace the following code inside of the Quarto Document:\n&lt;style&gt;\n.slide-deck {\n    border: 3px solid #dee2e6;\n    width: 100%;\n    height: 475px;\n}\n&lt;/style&gt;\n\n&lt;div&gt;\n```{=html}\n&lt;iframe class=\"slide-deck\" src=\"path/to/presentation/\"&gt;&lt;/iframe&gt;\n```\n&lt;/div&gt;",
     "crumbs": [
       "Exploring R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Embed Slides</span>"

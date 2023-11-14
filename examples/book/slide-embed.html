@@ -235,6 +235,17 @@ Important
 <p>For <code>quarto-webr</code> to work within RevealJS, you must use a <a href="https://quarto.org/docs/download/prerelease"><strong>pre-release</strong> version of Quarto that is 1.4.502 or greater</a> that contains an updated copy of <code>pandoc</code>. For more details, please see <a href="https://github.com/coatless/quarto-webr/issues/14">Issue #14</a>.</p>
 </div>
 </div>
+<style>
+.slide-deck {
+    border: 3px solid #dee2e6;
+    width: 100%;
+    height: 475px;
+}
+</style>
+<div>
+
+<iframe class="slide-deck" src="../revealjs/"></iframe>
+</div>
 <div>
 <iframe class="slide-deck" src="../revealjs/"></iframe>
 </div>
@@ -242,11 +253,19 @@ Important
 <section id="embed-code" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="embed-code"><span class="header-section-number">3.2</span> Embed Code</h2>
 <p>Place the following code inside of the Quarto Document:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>```{=html}</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> class</span><span class="op">=</span><span class="st">"slide-deck"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"path/to/presentation/"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.slide-deck</span> {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#dee2e6</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">height</span>: <span class="dv">475</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>```{=html}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> class</span><span class="op">=</span><span class="st">"slide-deck"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"path/to/presentation/"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
