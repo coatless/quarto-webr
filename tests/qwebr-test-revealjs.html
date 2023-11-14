@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.489">
+  <meta name="generator" content="quarto-1.4.501">
 
   <title>Test Suite for quarto-webr - Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -319,7 +319,248 @@
       margin-right: 0; 
     }
   </style>
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    .monaco-editor pre {
+      background-color: unset !important;
+    }
+
+    .qwebr-icon-status-spinner {
+      color: #7894c4;
+    }
+
+    .qwebr-icon-run-code {
+      color: #0d9c29
+    }
+
+    .qwebr-output-code-stdout {
+      color: #111;
+    }
+
+    .qwebr-output-code-stderr {
+      color: #db4133;
+    }
+
+    .qwebr-button-run {
+      background-color: #EEEEEE;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; /* Extra styling for consistency */
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      -webkit-text-decoration: none;
+      -moz-text-decoration: none;
+      -ms-text-decoration: none;
+      -o-text-decoration: none;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      border-color: #dee2e6;
+      border: 1px solid rgba(0,0,0,0);
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .qwebr-button-run:hover {
+      color: #000;
+      background-color: #e3e6ea;
+      border-color: #e1e5e9;
+    }
+
+    .qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
+      pointer-events: none;
+      opacity: .65
+    }
+  </style>
+
+  <script type="module">
+
+    // Start a timer
+    const initializeWebRTimerStart = performance.now();
+
+    // Determine if we need to install R packages
+    var installRPackagesList = [''];
+    // Check to see if we have an empty array, if we do set to skip the installation.
+    var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
+    var autoloadRPackages = true;
+
+    // Display a startup message?
+    var showStartupMessage = true;
+    var showHeaderMessage = false;
+    if (showStartupMessage) {
+
+      // Get references to header elements
+      const headerHTML = document.getElementById("title-block-header");
+      const headerRevealJS = document.getElementById("title-slide");
+
+      // Create the outermost div element for metadata
+      const quartoTitleMeta = document.createElement("div");
+      quartoTitleMeta.classList.add("quarto-title-meta");
+
+      // Create the first inner div element
+      const firstInnerDiv = document.createElement("div");
+
+      // Create the second inner div element for "WebR Status" heading and contents
+      const secondInnerDiv = document.createElement("div");
+      secondInnerDiv.classList.add("quarto-title-meta-heading");
+      secondInnerDiv.innerText = "WebR Status";
+
+      // Create another inner div for contents
+      const secondInnerDivContents = document.createElement("div");
+      secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+      // Describe the WebR state
+      var startupMessageWebR = document.createElement("p");
+      startupMessageWebR.innerText = "🟡 Loading...";
+      startupMessageWebR.setAttribute("id", "startup");
+      // Add `aria-live` to auto-announce the startup status to screen readers
+      startupMessageWebR.setAttribute("aria-live", "assertive");
+
+      // Append the startup message to the contents
+      secondInnerDivContents.appendChild(startupMessageWebR);
+
+      // Add a status indicator for COOP and COEP Headers if needed
+      if (showHeaderMessage) {
+        const crossOriginMessage = document.createElement("p");
+        crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
+        crossOriginMessage.setAttribute("id", "coop-coep-header");
+        secondInnerDivContents.appendChild(crossOriginMessage);
+      }
+
+      // Combine the inner divs and contents
+      firstInnerDiv.appendChild(secondInnerDiv);
+      firstInnerDiv.appendChild(secondInnerDivContents);
+      quartoTitleMeta.appendChild(firstInnerDiv);
+
+      // Determine where to insert the quartoTitleMeta element
+      if (headerHTML) {
+        // Append to the existing "title-block-header" element
+        headerHTML.appendChild(quartoTitleMeta);
+      } else if (headerRevealJS) {
+        // If using RevealJS, add to the "title-slide" div
+        headerRevealJS.appendChild(firstInnerDiv);
+      } else {
+        // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
+        const monacoScript = document.getElementById("webr-monaco-editor-init");
+        const header = document.createElement("header");
+        header.setAttribute("id", "title-block-header");
+        header.appendChild(quartoTitleMeta);
+        monacoScript.after(header);
+      }
+    }
+
+    // Retrieve the webr.mjs
+    import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
+
+    // Populate WebR options with defaults or new values based on 
+    // webr meta
+    globalThis.webR = new WebR({
+      "baseURL": "https://webr.r-wasm.org/v0.2.1/",
+      "serviceWorkerUrl": "",
+      "homedir": "/home/web_user", 
+      "channelType": ChannelType.Automatic
+    });
+
+    // Initialization WebR
+    await globalThis.webR.init();
+
+    // Setup a shelter
+    globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
+
+    // Setup a pager to allow processing help documentation 
+    await globalThis.webR.evalRVoid('webr::pager_install()'); 
+
+    // Function to set the button text
+    function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
+      document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+        btn.innerHTML = buttonText;
+        btn.disabled = !enableCodeButton;
+      });
+    }
+
+    // Function to update the status message
+    function qwebrUpdateStatusHeader(message) {
+      startupMessageWebR.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+        <span>${message}</span>`;
+    }
+
+    // Function to install a single package
+    async function qwebrInstallRPackage(packageName) {
+      await globalThis.webR.installPackages([packageName]);
+    }
+
+    // Function to load a single package
+    async function qwebrLoadRPackage(packageName) {
+      await globalThis.webR.evalRVoid(`library(${packageName});`);
+    }
+
+    // Generic function to process R packages
+    async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
+      // Switch between contexts
+      const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
+
+      // Modify button state
+      qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
+
+      // Iterate over packages
+      for (let i = 0; i < packages.length; i++) {
+        const activePackage = packages[i];
+        const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
+        
+        // Display the update
+        if (displayStatusMessageUpdate) {
+          qwebrUpdateStatusHeader(formattedMessage);
+        }
+
+        // Run package installation
+        if (processType === 'install') {
+          await qwebrInstallRPackage(activePackage);
+        } else {
+          await qwebrLoadRPackage(activePackage);
+        }
+      }
+
+      // Clean slate
+      if (processType === 'load') {
+        await globalThis.webR.flush();
+      }
+    }
+
+
+    // Check to see if any packages need to be installed
+    if (setupRPackages) {
+      // Obtain only a unique list of packages
+      const uniqueRPackageList = Array.from(new Set(installRPackagesList));
+
+      // Install R packages one at a time (either silently or with a status update)
+      await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
+
+      if(autoloadRPackages) {
+        // Load R packages one at a time (either silently or with a status update)
+        await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+      }
+    }
+
+    // Stop timer
+    const initializeWebRTimerEnd = performance.now();
+
+    // Release document status as ready
+    if (showStartupMessage) {
+      startupMessageWebR.innerText = "🟢 Ready!"
+    }
+    
+    qwebrSetInteractiveButtonState(
+      `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+      true
+    );
+
+  </script>
 </head>
 <body class="quarto-light">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
