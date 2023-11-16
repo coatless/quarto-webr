@@ -71,8 +71,6 @@ summary(fit)
 If an engine is not specified, Quarto will attempt to use the `jupyter` compute engine by default. This may cause an error if `jupyter` is not installed on your computer.
 :::
 
-During execution, the filter will generate two essential files, `webr-worker.js` and `webr-serviceworker.js`, in your working directory. These files are required for the `webR` session to function properly under the default options and must be present alongside your rendered output.
-
 # Fin
 
 In summary, this guide has provided an overview of how to incorporate the `quarto-webr` extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.
