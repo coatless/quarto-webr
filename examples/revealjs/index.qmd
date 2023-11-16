@@ -31,6 +31,27 @@ summary(fit)
 plot(pressure)
 ```
 
+## Help Documentation
+
+```{webr-r}
+?mean
+```
+
+
+## Prints, Warnings, and Errors
+
+```{webr-r}
+cat("Hello there!\n")
+
+x = c(1, 2, 3)
+print(x)
+
+warning("Uh-oh, something is amiss")
+
+stop("I'm sorry Dave, I'm afraid I can't do that")
+```
+
+
 ## Keyboard Shortcuts
 
 - Run selected code using either:
