@@ -1,16 +1,5 @@
 [
   {
-    "objectID": "example-page.html",
-    "href": "example-page.html",
-    "title": "Example page",
-    "section": "",
-    "text": "On this page, we set two options directly in the Quarto document. The rest of the options are coming from the _quarto.yml project file. These options are considered “global”.\nThe local options that we enabled are to show the webR status bar and to pre-install the ggplot2 package.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n\n\n\nNote\n\n\n\nIf we did not specify the package dependency in the document header, then we would need to add to the code cell the installation command of webr::install('ggplot2') prior to using library(ggplot2).",
-    "crumbs": [
-      "Content",
-      "Example page"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Quarto Webr Demo Website",
@@ -19,6 +8,17 @@
     "crumbs": [
       "Content",
       "Quarto Webr Demo Website"
+    ]
+  },
+  {
+    "objectID": "example-page.html",
+    "href": "example-page.html",
+    "title": "Example page",
+    "section": "",
+    "text": "On this page, we set two options directly in the Quarto document. The rest of the options are coming from the _quarto.yml project file. These options are considered “global”.\nThe local options that we enabled are to show the webR status bar and to pre-install the ggplot2 package.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n\n\n\nNote\n\n\n\nIf we did not specify the package dependency in the document header, then we would need to add to the code cell the installation command of webr::install('ggplot2') prior to using library(ggplot2).",
+    "crumbs": [
+      "Content",
+      "Example page"
     ]
   },
   {
