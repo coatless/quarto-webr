@@ -1,12 +1,6 @@
 ---
 title: "quarto-webr Demo RevealJS Document"
-format:
-  revealjs:
-    resources:
-    - webr-serviceworker.js
-    - webr-worker.js
-webr:
-  channel-type: "automatic"
+format: revealjs
 filters:
 - webr
 ---

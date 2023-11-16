@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.502">
+<meta name="generator" content="quarto-1.4.506">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -251,12 +251,12 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   }
 
   // Retrieve the webr.mjs
-  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.1/webr.mjs";
+  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.2/webr.mjs";
 
   // Populate WebR options with defaults or new values based on 
   // webr meta
   globalThis.webR = new WebR({
-    "baseURL": "https://webr.r-wasm.org/v0.2.1/",
+    "baseURL": "https://webr.r-wasm.org/v0.2.2/",
     "serviceWorkerUrl": "",
     "homedir": "/home/web_user", 
     "channelType": ChannelType.PostMessage
@@ -630,7 +630,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 14, 2023</p>
+      <p class="date-modified">November 16, 2023</p>
     </div>
   </div>
     
@@ -656,7 +656,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <ol type="1">
 <li><strong>“automatic” or <code>0</code> (Default):</strong>
 <ul>
-<li><strong>Requirements:</strong> Your setup should be prepared for either <code>"shared-array-buffer"</code> or <code>"service-worker"</code>.</li>
+<li><strong>Requirements:</strong> Your setup should be prepared for either <code>"shared-array-buffer"</code> or <code>"post-message"</code>.</li>
 <li><strong>Limitations:</strong> It’s not clear which option is being used.</li>
 </ul></li>
 <li><strong>“shared-array-buffer” or <code>1</code>:</strong>
@@ -700,7 +700,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li><strong>Communication Attempts:</strong> webR will try two different communication channels in order:
 <ul>
 <li>First, it attempts to establish a communication channel using <code>"shared-array-buffer"</code>.</li>
-<li>If that doesn’t work, it will then try to use <code>"service-worker"</code>.</li>
+<li>If that doesn’t work, it will then try to use <code>"post-message"</code>.</li>
 </ul></li>
 <li><strong>Fallback Behavior:</strong> If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.</li>
 </ol>
@@ -714,23 +714,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It’s important to note that the <code>"automatic"</code> option doesn’t try to use the <code>"post-message"</code> option for communication.</p>
+<p>It’s important to note that the <code>"automatic"</code> option doesn’t try to use the <code>"service-worker"</code> option for communication.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One thing to be aware of is that when the <code>"automatic"</code> option is used, it adds two additional files, <code>webr-serviceworker.js</code> and <code>webr-worker.js</code>, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the <code>"service-worker"</code> option. For more details on this, please refer to the <a href="#sec-service-worker" class="quarto-xref">Section&nbsp;2.3</a> section of the documentation.</p>
-</div>
-</div>
-<p>In summary, when you leave the <code>channel-type</code> unspecified, webR will follow the <code>"automatic"</code> option, attempting to use <code>"shared-array-buffer"</code> and then <code>"service-worker"</code>. If both attempts fail, your webR code cells will be inactive.</p>
+<p>In summary, when you leave the <code>channel-type</code> unspecified, webR will follow the <code>"automatic"</code> option, attempting to use <code>"shared-array-buffer"</code> and then <code>"post-message"</code>. If both attempts fail, your webR code cells will be inactive.</p>
 </section>
 <section id="sec-shared-array-buffer" class="level2">
 <h2 class="anchored" data-anchor-id="sec-shared-array-buffer">Using “shared-array-buffer” for Communication</h2>
