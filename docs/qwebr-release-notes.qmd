@@ -10,9 +10,24 @@ format:
 
 # 0.3.9: ???? (??-??-??) [DEV]
 
+## Breaking changes
+
+- With the update to webR v0.2.2, the `webr-worker.js` and `webr-serviceworker.js` files are no longer required to be present with the document under default options. 
+
 ## Features
 
+- Upgraded the embedded version of webR to v0.2.2. ([#96](https://github.com/coatless/quarto-webr/issues/96))
+
 ## Bugfixes
+
+- Fix line breaks inside of code output area inside of RevealJS.
+- Fix height of the RevealJS output area.
+
+## Documentation
+
+- Updated documentation to reflect the removal of `webr-worker.js` and `webr-serviceworker.js` scripts.
+- Added slide embedding CSS class alongside examples.
+- Minor documentation tweaks.
 
 # 0.3.8: New Coat of Paint (11-13-2023)
 

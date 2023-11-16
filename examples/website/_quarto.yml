@@ -1,8 +1,5 @@
 project:
   type: website
-  resources:
-  - webr-serviceworker.js
-  - webr-worker.js
 
 website:
   title: "Demo Quarto Webr Website"

@@ -34,7 +34,7 @@ Now, let's explore how your main web browser and the webR worker thread communic
 There are a few different types of communication channels available:
 
 1. **"automatic" or `0` (Default):**
-   - **Requirements:** Your setup should be prepared for either `"shared-array-buffer"` or `"service-worker"`.
+   - **Requirements:** Your setup should be prepared for either `"shared-array-buffer"` or `"post-message"`.
    - **Limitations:** It's not clear which option is being used.
 
 2. **"shared-array-buffer" or `1`:**
@@ -78,18 +78,15 @@ By default, the `quarto-webr` extension guides webR to use the `"automatic"` opt
 
 1. **Communication Attempts:** webR will try two different communication channels in order:
    - First, it attempts to establish a communication channel using `"shared-array-buffer"`.
-   - If that doesn't work, it will then try to use `"service-worker"`.
+   - If that doesn't work, it will then try to use `"post-message"`.
 2. **Fallback Behavior:** If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won't run or execute any R code.
 
 :::callout-note
-It's important to note that the `"automatic"` option doesn't try to use the `"post-message"` option for communication.
+It's important to note that the `"automatic"` option doesn't try to use the `"service-worker"` option for communication.
 :::
 
-:::callout-warning
-One thing to be aware of is that when the `"automatic"` option is used, it adds two additional files, `webr-serviceworker.js` and `webr-worker.js`, into the output directory. These files must be present alongside the rendered HTML document if you intend to use the `"service-worker"` option. For more details on this, please refer to the @sec-service-worker section of the documentation.
-:::
 
-In summary, when you leave the `channel-type` unspecified, webR will follow the `"automatic"` option, attempting to use `"shared-array-buffer"` and then `"service-worker"`. If both attempts fail, your webR code cells will be inactive.
+In summary, when you leave the `channel-type` unspecified, webR will follow the `"automatic"` option, attempting to use `"shared-array-buffer"` and then `"post-message"`. If both attempts fail, your webR code cells will be inactive.
 
 ## Using "shared-array-buffer" for Communication {#sec-shared-array-buffer}
 

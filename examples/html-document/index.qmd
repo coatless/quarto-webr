@@ -1,10 +1,6 @@
 ---
 title: "quarto-webr Demo HTML Document"
-format:
-  html:
-    resources:
-    - webr-serviceworker.js
-    - webr-worker.js
+format: html
 webr:
   channel-type: "automatic"
 filters:
