@@ -8,8 +8,6 @@ format:
   html:
     toc: true
 engine: knitr
-webr:
-  channel-type: "post-message"
 filters:
 - webr
 aliases:
