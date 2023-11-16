@@ -87,6 +87,17 @@
     ]
   },
   {
+    "objectID": "qwebr-test-service-worker.html",
+    "href": "qwebr-test-service-worker.html",
+    "title": "Test: Service Worker",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Service Worker"
+    ]
+  },
+  {
     "objectID": "qwebr-test-packages-multi.html",
     "href": "qwebr-test-packages-multi.html",
     "title": "Test: Packages Key with Autoloading",

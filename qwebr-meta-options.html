@@ -331,6 +331,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#customization-options" id="toc-customization-options" class="nav-link active" data-scroll-target="#customization-options">Customization Options</a>
   <ul class="collapse">
+  <li><a href="#document-yaml" id="toc-document-yaml" class="nav-link" data-scroll-target="#document-yaml">Document YAML</a></li>
+  <li><a href="#global-configuration" id="toc-global-configuration" class="nav-link" data-scroll-target="#global-configuration">Global Configuration</a></li>
   <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
   <ul class="collapse">
   <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
@@ -390,10 +392,13 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </header>
 
 
-<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.</p>
+<p>The <code>quarto-webr</code> extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or <code>_quarto.yml</code> file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.</p>
 <section id="customization-options" class="level1">
 <h1>Customization Options</h1>
-<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key in your document’s YAML header. These options allow you to fine-tune webR according to your specific needs.</p>
+<p>Enhance your webR experience by customizing its behavior through the <code>webr</code> key. This key should be added before listing the <code>filter</code> statement.</p>
+<section id="document-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="document-yaml">Document YAML</h2>
+<p>To fine-tune webR to the specific needs of a document, place inside your document’s YAML header the <code>webr</code> key. Specifying options this way allows webR to be setup with unique options confined to only that document.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> WebR in Quarto HTML Documents</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
@@ -404,6 +409,39 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="global-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="global-configuration">Global Configuration</h2>
+<p>If you have multiple pages that use webR, we suggest setting global options inside of the <code>_quarto.yml</code> file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the <code>_quarto.yml</code> should look like:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Sample quarto-webr Book Project"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  # ... more options</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default options for every bookpage that may or may not include webR.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">show-startup-message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">     # Display status of webR initialization</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Attach webR extension for the project</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> webr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a webR code cell is not present on a website, blog, or book page, then the <code>quarto-webr</code> extension will not setup webR on the page.</p>
+</div>
+</div>
+<p>You can see full examples of setting a global option under the <a href="./qwebr-deployment-templates.html">Deployment Templates</a> page.</p>
+</section>
 <section id="webr-options" class="level2">
 <h2 class="anchored" data-anchor-id="webr-options">webR options</h2>
 <p>By specifying various <code>WebROptions</code> options in the document YAML, you can create a personalized webR experience</p>

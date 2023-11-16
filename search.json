@@ -103,7 +103,7 @@
     "href": "qwebr-first-steps.html#usage",
     "title": "Making your first webR-powered Quarto document",
     "section": "Usage",
-    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.\n\n\nDuring execution, the filter will generate two essential files, webr-worker.js and webr-serviceworker.js, in your working directory. These files are required for the webR session to function properly under the default options and must be present alongside your rendered output.",
+    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.",
     "crumbs": [
       "Getting Started",
       "Your first webR-powered Quarto document"
@@ -246,7 +246,29 @@
     "href": "qwebr-meta-options.html",
     "title": "Customization Options",
     "section": "",
-    "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.",
+    "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or _quarto.yml file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-meta-options.html#document-yaml",
+    "href": "qwebr-meta-options.html#document-yaml",
+    "title": "Customization Options",
+    "section": "Document YAML",
+    "text": "Document YAML\nTo fine-tune webR to the specific needs of a document, place inside your document’s YAML header the webr key. Specifying options this way allows webR to be setup with unique options confined to only that document.\n---\ntitle: WebR in Quarto HTML Documents\nformat: html\nengine: knitr\nwebr: \n  show-startup-message: false\n  packages: ['ggplot2', 'dplyr']\nfilters:\n  - webr\n---",
+    "crumbs": [
+      "Getting Started",
+      "Customization Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-meta-options.html#global-configuration",
+    "href": "qwebr-meta-options.html#global-configuration",
+    "title": "Customization Options",
+    "section": "Global Configuration",
+    "text": "Global Configuration\nIf you have multiple pages that use webR, we suggest setting global options inside of the _quarto.yml file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the _quarto.yml should look like:\nproject:\n  type: book\n\nbook:\n  title: \"Sample quarto-webr Book Project\"\n  # ... more options\n\n# Set default options for every bookpage that may or may not include webR.\nwebr: \n  show-startup-message: false     # Display status of webR initialization\n\n# Attach webR extension for the project\nfilters:\n  - webr\n\n\n\n\n\n\nNote\n\n\n\nIf a webR code cell is not present on a website, blog, or book page, then the quarto-webr extension will not setup webR on the page.\n\n\nYou can see full examples of setting a global option under the Deployment Templates page.",
     "crumbs": [
       "Getting Started",
       "Customization Options"
@@ -583,7 +605,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "With the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.\n\n\n\n\n\nUpgraded the embedded version of webR to v0.2.2. (#96)\n\n\n\n\n\nFix line breaks inside of code output area inside of RevealJS.\nFix height of the RevealJS output area.\n\n\n\n\n\nUpdated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts.\nAdded slide embedding CSS class alongside examples.\nMinor documentation tweaks.",
+    "text": "With the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.\n\n\n\n\n\nUpgraded the embedded version of webR to v0.2.2. (#96)\n\n\n\n\n\nFix line breaks inside of code output area inside of RevealJS.\nFix height and presentation of the webR cell within RevealJS. (#98)\n\n\n\n\n\nUpdated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nMinor documentation tweaks.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -616,7 +638,7 @@
     "href": "qwebr-release-notes.html#bugfixes",
     "title": "Release Notes",
     "section": "",
-    "text": "Fix line breaks inside of code output area inside of RevealJS.\nFix height of the RevealJS output area.",
+    "text": "Fix line breaks inside of code output area inside of RevealJS.\nFix height and presentation of the webR cell within RevealJS. (#98)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -627,7 +649,7 @@
     "href": "qwebr-release-notes.html#documentation",
     "title": "Release Notes",
     "section": "",
-    "text": "Updated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts.\nAdded slide embedding CSS class alongside examples.\nMinor documentation tweaks.",
+    "text": "Updated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nMinor documentation tweaks.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
