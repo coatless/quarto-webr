@@ -21,11 +21,12 @@ format:
 ## Bugfixes
 
 - Fix line breaks inside of code output area inside of RevealJS.
-- Fix height of the RevealJS output area.
+- Fix height and presentation of the webR cell within RevealJS.  ([#98](https://github.com/coatless/quarto-webr/pulls/98))
 
 ## Documentation
 
-- Updated documentation to reflect the removal of `webr-worker.js` and `webr-serviceworker.js` scripts.
+- Updated documentation to reflect the removal of `webr-worker.js` and `webr-serviceworker.js` scripts. ([#59](https://github.com/coatless/quarto-webr/issues/59))
+- Added a section on setting global extension settings using `_quarto.yml` to the meta options ([#46](https://github.com/coatless/quarto-webr/issues/46))
 - Added slide embedding CSS class alongside examples.
 - Minor documentation tweaks.
 

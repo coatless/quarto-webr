@@ -1,0 +1,21 @@
+---
+title: "Test: Service Worker"
+format: 
+  html:
+    resources:
+      - webr-serviceworker.js
+      - webr-worker.js
+engine: knitr
+webr:
+  channel-type: "service-worker"
+filters:
+  - webr
+---
+
+This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.
+
+```{webr-r}
+-3 + 5
+
+print("Hello service worker model!")
+```

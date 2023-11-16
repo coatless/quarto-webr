@@ -12,11 +12,15 @@ aliases:
   - webr-meta-options.html
 ---
 
-The `quarto-webr` extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document's YAML header, you can structure the webR experience on a per-page basis. Below, we explore these customization options and how to implement them.
+The `quarto-webr` extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document's YAML header or `_quarto.yml` file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.
 
 # Customization Options
 
-Enhance your webR experience by customizing its behavior through the `webr` key in your document's YAML header. These options allow you to fine-tune webR according to your specific needs.
+Enhance your webR experience by customizing its behavior through the `webr` key. This key should be added before listing the `filter` statement.
+
+## Document YAML
+
+To fine-tune webR to the specific needs of a document, place inside your document's YAML header the `webr` key. Specifying options this way allows webR to be setup with unique options confined to only that document.
 
 ```yaml
 ---
@@ -30,6 +34,33 @@ filters:
   - webr
 ---
 ```
+
+## Global Configuration
+
+If you have multiple pages that use webR, we suggest setting global options inside of the `_quarto.yml` file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the `_quarto.yml` should look like: 
+
+```yaml
+project:
+  type: book
+
+book:
+  title: "Sample quarto-webr Book Project"
+  # ... more options
+
+# Set default options for every bookpage that may or may not include webR.
+webr: 
+  show-startup-message: false     # Display status of webR initialization
+
+# Attach webR extension for the project
+filters:
+  - webr
+```
+
+:::{.callout-note}
+If a webR code cell is not present on a website, blog, or book page, then the `quarto-webr` extension will not setup webR on the page. 
+:::
+
+You can see full examples of setting a global option under the [Deployment Templates](qwebr-deployment-templates.qmd) page.
 
 ## webR options
 

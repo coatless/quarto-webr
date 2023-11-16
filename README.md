@@ -60,10 +60,6 @@ summary(fit)
 
 The rendered document can be viewed online [here](https://quarto-webr.thecoatlessprofessor.com/examples/readme).
 
-When `quarto render` or `quarto preview` is called, the filter will execute under `engine: knitr`. 
-During the execution, the filter adds two files to the working directory: `webr-worker.js` and `webr-serviceworker.js`. These files allow for the 
-`webR` session to be started and must be present with the rendered output. 
-
  **Note:** If you don't specify the `engine: knitr`, the default compute engine used will be `jupyter`. This could trigger prompts to install Python. However, if you specify `engine: knitr`, there's no need to install Python.
 
 There are many more customization options that are available. Please see the [customization documentation](https://quarto-webr.thecoatlessprofessor.com/qwebr-meta-options.html) for more examples.
