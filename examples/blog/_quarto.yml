@@ -17,6 +17,6 @@ format:
 
 # Enable webR on all post pages
 webr:
-  channel-type: 'post-message'
+  channel-type: 'automatic'
 filters:
   - webr
