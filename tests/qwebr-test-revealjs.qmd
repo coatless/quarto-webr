@@ -31,3 +31,13 @@ print("Hello quarto-webr RevealJS world!")
 
 3 + 5
 ```
+
+## Text Before and After Code Cell
+
+Sample text before
+
+```{webr-r}
+message("Hello World!")
+```
+
+Sample text after
