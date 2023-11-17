@@ -95,7 +95,7 @@ You can embed the slide deck inside of a Quarto Website or Book by using:
 ````
 
 :::{.callout-note}
-Avoid having multiple instances of webR running. 
+Avoid using _within_ a RevealJS presentation. Only 1 instance of webR should be running.
 :::
 
 ## Fin
