@@ -605,40 +605,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "With the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.\n\n\n\n\n\nUpgraded the embedded version of webR to v0.2.2. (#96)\n\n\n\n\n\nFix line breaks inside of code output area inside of RevealJS.\nFix height and presentation of the webR cell within RevealJS. (#98)\nFix code output class styling in RevealJS. (#100)\n\n\n\n\n\nUpdated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nUpdated GIF on the README to show the UI improvements.\nMinor documentation tweaks.",
-    "crumbs": [
-      "Extra Information",
-      "Release Notes"
-    ]
-  },
-  {
-    "objectID": "qwebr-release-notes.html#breaking-changes",
-    "href": "qwebr-release-notes.html#breaking-changes",
-    "title": "Release Notes",
-    "section": "",
-    "text": "With the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.",
-    "crumbs": [
-      "Extra Information",
-      "Release Notes"
-    ]
-  },
-  {
-    "objectID": "qwebr-release-notes.html#features",
-    "href": "qwebr-release-notes.html#features",
-    "title": "Release Notes",
-    "section": "",
-    "text": "Upgraded the embedded version of webR to v0.2.2. (#96)",
-    "crumbs": [
-      "Extra Information",
-      "Release Notes"
-    ]
-  },
-  {
-    "objectID": "qwebr-release-notes.html#bugfixes",
-    "href": "qwebr-release-notes.html#bugfixes",
-    "title": "Release Notes",
-    "section": "",
-    "text": "Fix line breaks inside of code output area inside of RevealJS.\nFix height and presentation of the webR cell within RevealJS. (#98)\nFix code output class styling in RevealJS. (#100)",
+    "text": "Minor documentation tweaks.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -649,7 +616,18 @@
     "href": "qwebr-release-notes.html#documentation",
     "title": "Release Notes",
     "section": "",
-    "text": "Updated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nUpdated GIF on the README to show the UI improvements.\nMinor documentation tweaks.",
+    "text": "Minor documentation tweaks.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#breaking-changes",
+    "href": "qwebr-release-notes.html#breaking-changes",
+    "title": "Release Notes",
+    "section": "Breaking changes",
+    "text": "Breaking changes\n\nWith the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -660,7 +638,7 @@
     "href": "qwebr-release-notes.html#features-1",
     "title": "Release Notes",
     "section": "Features",
-    "text": "Features\n\nAdded autoload-packages document meta option key that will automatically load packages specified in the packages key. The default value is true. (#75)\n\nThis feature simplifies the use of packages, eliminating the need to call library() in interactive code cells or setup code cells, as the specified packages will be loaded automatically.\n\nAdded new output classes to differentiate between STDOUT and STDERR text. (#60, #89)\n\nError and warning messages will now appear red and regular output will appear black.",
+    "text": "Features\n\nUpgraded the embedded version of webR to v0.2.2. (#96)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -671,7 +649,7 @@
     "href": "qwebr-release-notes.html#bugfixes-1",
     "title": "Release Notes",
     "section": "Bugfixes",
-    "text": "Bugfixes\n\nFix placement of the “WebR Status” indicator when in the revealjs presentation format. (#84)",
+    "text": "Bugfixes\n\nFix line breaks inside of code output area inside of RevealJS.\nFix height and presentation of the webR cell within RevealJS. (#98)\nFix code output class styling in RevealJS. (#100)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -680,6 +658,39 @@
   {
     "objectID": "qwebr-release-notes.html#documentation-1",
     "href": "qwebr-release-notes.html#documentation-1",
+    "title": "Release Notes",
+    "section": "Documentation",
+    "text": "Documentation\n\nUpdated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nUpdated GIF on the README to show the UI improvements.\nMinor documentation tweaks.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#features-2",
+    "href": "qwebr-release-notes.html#features-2",
+    "title": "Release Notes",
+    "section": "Features",
+    "text": "Features\n\nAdded autoload-packages document meta option key that will automatically load packages specified in the packages key. The default value is true. (#75)\n\nThis feature simplifies the use of packages, eliminating the need to call library() in interactive code cells or setup code cells, as the specified packages will be loaded automatically.\n\nAdded new output classes to differentiate between STDOUT and STDERR text. (#60, #89)\n\nError and warning messages will now appear red and regular output will appear black.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#bugfixes-2",
+    "href": "qwebr-release-notes.html#bugfixes-2",
+    "title": "Release Notes",
+    "section": "Bugfixes",
+    "text": "Bugfixes\n\nFix placement of the “WebR Status” indicator when in the revealjs presentation format. (#84)",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#documentation-2",
+    "href": "qwebr-release-notes.html#documentation-2",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded a subsection to using two keyboard shortcuts into the interactive code cell demo.\nEmphasized the extension must be in the same directory or contained within a Quarto project as the Quarto document being used. (#79, #26)\nAdded an RevealJS presentation example. (#83)\nAdded examples of embedding a RevealJS presentation inside of a website and book project. (#83)\nAdded an example of using the extension with a Blog website. (#81)\nAdded documentation on theming quarto elements. (#89)\nMiscellaneous documentation typo fixes.",
@@ -700,8 +711,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-2",
-    "href": "qwebr-release-notes.html#features-2",
+    "objectID": "qwebr-release-notes.html#features-3",
+    "href": "qwebr-release-notes.html#features-3",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nAdded a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running. (#64, #17)\nImproved status updates about installing R packages specified in the document’s package key. (#68)\nFully supported pager event types. (#58)\n\nWith this update, looking at R help documentation for a function is now possible.",
@@ -711,8 +722,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bugfixes-2",
-    "href": "qwebr-release-notes.html#bugfixes-2",
+    "objectID": "qwebr-release-notes.html#bugfixes-3",
+    "href": "qwebr-release-notes.html#bugfixes-3",
     "title": "Release Notes",
     "section": "Bugfixes",
     "text": "Bugfixes\n\nFixed base-url to allow for a localized version of webR away. (#54)\nFixed document-level packages meta option not installing packages if the status bar was not present (#69)\nFixed service workers not being placed if user explicitly set channel-type: 'automatic' (#74)",
@@ -722,8 +733,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-2",
-    "href": "qwebr-release-notes.html#documentation-2",
+    "objectID": "qwebr-release-notes.html#documentation-3",
+    "href": "qwebr-release-notes.html#documentation-3",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)",
@@ -755,8 +766,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bugfixes-3",
-    "href": "qwebr-release-notes.html#bugfixes-3",
+    "objectID": "qwebr-release-notes.html#bugfixes-4",
+    "href": "qwebr-release-notes.html#bugfixes-4",
     "title": "Release Notes",
     "section": "Bugfixes",
     "text": "Bugfixes\n\nFixed space not being preserved (h/t @nguyenllpsych, #39)\nFixed webR not initializing if a document lacked a title (h/t @jimhester, #40)",
@@ -766,8 +777,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-3",
-    "href": "qwebr-release-notes.html#documentation-3",
+    "objectID": "qwebr-release-notes.html#documentation-4",
+    "href": "qwebr-release-notes.html#documentation-4",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded a walkthrough video to the getting started page.\nAdded a new page containing community examples of the quarto-webr extension in the wild.\nAdded an example on fill-in-the-blank usage.\nClarified how interactive code cells could be used to explore what-if scenarios.\nMinor documentation fixes.",
@@ -788,8 +799,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-3",
-    "href": "qwebr-release-notes.html#features-3",
+    "objectID": "qwebr-release-notes.html#features-4",
+    "href": "qwebr-release-notes.html#features-4",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nNew documentation website is available at: https://quarto-webr.thecoatlessprofessor.com\nDocument option channel-type sets the communication channel webR uses.\n\nchannel-type: automatic (default): Communicates using either shared-array-buffer or service-worker.\nchannel-type: shared-buffer-array: Fastest communication option, but requires setting up HTTP headers.\nchannel-type: service-worker: Slower communication option and requires worker scripts to be next to the rendered document.\nchannel-type: post-message: Easiest setup option at the expense of being unable to interrupt the R process or accept user-input.\n\nCode cell option context controls whether the code and output are shown or suppressed.\n\ncontext: interactive(default) shows both code and output.\ncontext: setup suppresses both code and output.\ncontext: output suppresses code but shows its output.\nTo use the new hidden code cell feature, the code cell needs #| context: &lt;value&gt; like so:\n\n\n```{webr-r}\n#| context: setup\n\nmy_hidden_variable = 11\n```",
@@ -799,8 +810,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bugfixes-4",
-    "href": "qwebr-release-notes.html#bugfixes-4",
+    "objectID": "qwebr-release-notes.html#bugfixes-5",
+    "href": "qwebr-release-notes.html#bugfixes-5",
     "title": "Release Notes",
     "section": "Bugfixes",
     "text": "Bugfixes\n\nFixed webR status indicator appearing outside of the header. (#33)\nFixed button styling difference between standalone documents and website-based documents.",
@@ -810,8 +821,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-4",
-    "href": "qwebr-release-notes.html#documentation-4",
+    "objectID": "qwebr-release-notes.html#documentation-5",
+    "href": "qwebr-release-notes.html#documentation-5",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nCreated the docs folder inside the repository to host the documentation website.\nMoved documentation from the README.md file onto separate web pages.\n\nAcknowledgements now has a dedicated page thanking contributors and collaborators.\nDeveloper resources expands on the reference resources.\nUsing R packages describes the best practices for using R’s ecosystem of extensions\nCustomization Options describes the document level options available to be set in document’s YAML field.\n\nAdded new documentation entries for hidden code cell evaluation and communication channels.\nAdded a rendered version of the README example to the website.\nIncorporated additional examples into the “Exploring Interactive Code Cells” demo document.",
@@ -843,8 +854,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bugfixes-5",
-    "href": "qwebr-release-notes.html#bugfixes-5",
+    "objectID": "qwebr-release-notes.html#bugfixes-6",
+    "href": "qwebr-release-notes.html#bugfixes-6",
     "title": "Release Notes",
     "section": "Bugfixes",
     "text": "Bugfixes\n\nFixed quarto-webr documents requiring a reload in Safari to see/interact with code cells (#21)\nFixed keyboard shortcuts not re-initializing correctly on multiple Monaco Editors by re-registering shortcuts on code cell focus (#28)",
@@ -909,8 +920,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-4",
-    "href": "qwebr-release-notes.html#features-4",
+    "objectID": "qwebr-release-notes.html#features-5",
+    "href": "qwebr-release-notes.html#features-5",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nCode editing areas on the Quarto document now use the Monaco Editor for improved accessibility.\nExecute code using keyboard shortcuts:\n\nRun selected code using: [Cmd + Enter] on macOS or [Ctrl+Enter] on Windows\nRun the entire code area using: [Shift+Enter]\n\nDynamically growing code editor as new lines are added.\nAnnouncing the status changes of webR initialization states through arias.",
@@ -920,8 +931,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-5",
-    "href": "qwebr-release-notes.html#features-5",
+    "objectID": "qwebr-release-notes.html#features-6",
+    "href": "qwebr-release-notes.html#features-6",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the version of webR to use v0.1.1.\nSet options directly inside the document’s YAML header to control webR:\n\nSupport is available for setting the following WebR.WebROptions options:\n\nhome-dir: The WebAssembly user’s home directory and initial working directory (Documentation). Default: '/home/web_user'.\nbase-url: The base URL used for downloading R WebAssembly binaries. (Documentation). Default: 'https://webr.r-wasm.org/[version]/'.\nservice-worker-url: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (Documentation). Default: ''.\n\n\nwebR initialization status stages are now described and shown as stoplights (inspired by Bob Rudis)\n\nshow-startup-message: Display in the document header the state of WebR initialization. Default: true\nshow-header-message: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: false\n\n\n\n\n\nNew status lighting",
@@ -953,8 +964,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-5",
-    "href": "qwebr-release-notes.html#documentation-5",
+    "objectID": "qwebr-release-notes.html#documentation-6",
+    "href": "qwebr-release-notes.html#documentation-6",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded details on how to host webR content\nAdded additional examples and details in the webr-demo.qmd file.",
@@ -975,8 +986,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-6",
-    "href": "qwebr-release-notes.html#features-6",
+    "objectID": "qwebr-release-notes.html#features-7",
+    "href": "qwebr-release-notes.html#features-7",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nEnable webR code cells inside of a Quarto document.\n\n\n\n\nquarto-webr Filter in Action",
