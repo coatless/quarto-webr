@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.3.9: ???? (??-??-??) [DEV]
+# 0.3.9: Zoom-Zoom (11-16-2023)
 
 ## Breaking changes
 
@@ -22,12 +22,14 @@ format:
 
 - Fix line breaks inside of code output area inside of RevealJS.
 - Fix height and presentation of the webR cell within RevealJS.  ([#98](https://github.com/coatless/quarto-webr/pulls/98))
+- Fix code output class styling in RevealJS.  ([#100](https://github.com/coatless/quarto-webr/pulls/100))
 
 ## Documentation
 
 - Updated documentation to reflect the removal of `webr-worker.js` and `webr-serviceworker.js` scripts. ([#59](https://github.com/coatless/quarto-webr/issues/59))
 - Added a section on setting global extension settings using `_quarto.yml` to the meta options ([#46](https://github.com/coatless/quarto-webr/issues/46))
 - Added slide embedding CSS class alongside examples.
+- Updated GIF on the README to show the UI improvements.
 - Minor documentation tweaks.
 
 # 0.3.8: New Coat of Paint (11-13-2023)
