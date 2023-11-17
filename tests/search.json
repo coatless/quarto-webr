@@ -22,6 +22,17 @@
     ]
   },
   {
+    "objectID": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
+    "href": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
+    "title": "Test: webR in RevealJS",
+    "section": "Text Before and After Code Cell",
+    "text": "Text Before and After Code Cell\nSample text before\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nSample text after",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
+  },
+  {
     "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "title": "Test: Keyboard Shortcuts in Code cell",

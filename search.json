@@ -605,7 +605,18 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Minor documentation tweaks.",
+    "text": "Fix text added after code cell in RevealJS appearing off the page (#102)\n\n\n\n\n\nMinor documentation tweaks.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#bugfixes",
+    "href": "qwebr-release-notes.html#bugfixes",
+    "title": "Release Notes",
+    "section": "",
+    "text": "Fix text added after code cell in RevealJS appearing off the page (#102)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
