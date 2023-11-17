@@ -1,6 +1,8 @@
 ---
 title: "quarto-webr Demo RevealJS Document"
 format: revealjs
+webr:
+  packages: ['ggplot2']
 filters:
 - webr
 ---
@@ -25,10 +27,17 @@ fit = lm(mpg ~ wt, data = mtcars)
 summary(fit)
 ```
 
-## Graphing with webR
+## Base R Graphing with webR
 
 ```{webr-r}
 plot(pressure)
+```
+
+## ggplot2 in webR
+
+```{webr-r}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
 ```
 
 ## Help Documentation
@@ -85,24 +94,9 @@ You can embed the slide deck inside of a Quarto Website or Book by using:
 </div>
 ````
 
-## Embedded Slides: Demo
-
-Nested slides
-
-<style>
-.slide-deck {
-    border: 3px solid #dee2e6;
-    width: 100%;
-    height: 475px;
-}
-</style>
-
-<div>
-```{=html}
-<iframe class="slide-deck" src="index.html"></iframe>
-```
-</div>
-
+:::{.callout-note}
+Avoid using _within_ a RevealJS presentation. Only 1 instance of webR should be running.
+:::
 
 ## Fin
 
