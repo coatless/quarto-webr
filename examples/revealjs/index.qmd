@@ -94,24 +94,9 @@ You can embed the slide deck inside of a Quarto Website or Book by using:
 </div>
 ````
 
-## Embedded Slides: Demo
-
-Nested slides
-
-<style>
-.slide-deck {
-    border: 3px solid #dee2e6;
-    width: 100%;
-    height: 475px;
-}
-</style>
-
-<div>
-```{=html}
-<iframe class="slide-deck" src="index.html"></iframe>
-```
-</div>
-
+:::{.callout-note}
+Avoid having multiple instances of webR running. 
+:::
 
 ## Fin
 
