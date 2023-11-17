@@ -1,57 +1,57 @@
 [
   {
-    "objectID": "qwebr-theming.html",
-    "href": "qwebr-theming.html",
-    "title": "Theming Elements",
+    "objectID": "qwebr-meta-options.html",
+    "href": "qwebr-meta-options.html",
+    "title": "Customization Options",
     "section": "",
-    "text": "Note\n\n\n\nThis section of the documentation is tailored to those with a deeper understanding of web design. If you’re new to these concepts, don’t worry; you can still create fantastic documents using the quarto-webr extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.\nOn this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.",
+    "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or _quarto.yml file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.",
     "crumbs": [
-      "Deployment",
-      "Theming Elements"
+      "Getting Started",
+      "Customization Options"
     ]
   },
   {
-    "objectID": "qwebr-theming.html#css-class-and-id-identifiers",
-    "href": "qwebr-theming.html#css-class-and-id-identifiers",
-    "title": "Theming Elements",
-    "section": "CSS Class and ID Identifiers",
-    "text": "CSS Class and ID Identifiers\nTo effectively style web-based documents created with the extension, you’ll need to understand the unique id and class attributes associated with different content areas. There are two primary context types where content is displayed to users:\n\nInteractive Area: This area encompasses the Code Editor, Code Output, and the Graph Output Area under the interactive context.\n\nid: #qwebr-interactive-area-{{ID}}\nclass: .qwebr-interactive-area\n\nNon-Interactive Area: This includes the Code Output and the Graph Output Area under the output context.\n\nid: #qwebr-noninteractive-area-{{ID}}\nclass: .qwebr-noninteractive-area\n\n\nWithin the interactive section, you’ll find elements that are displayed when users request results:\n\nRun Button: This button triggers the execution of your R code.\n\nid: #qwebr-button-run-{{ID}}\nclass: .qwebr-button-run\n\nConsole Area: This area contains the Code Editor and Code Output.\n\nid: #qwebr-console-area-{{ID}}\nclass: .qwebr-console-area\n\nCode Editor: You use this area to input and edit your R code.\n\nid: #qwebr-editor-{{ID}}\nclass: .qwebr-editor\n\n\nAcross both contexts, you’ll find shared output element classes and names:\n\nCode Output Area: This is where the results and output of your R code are displayed.\n\nid: #qwebr-output-code-area-{{ID}}\nclass: .qwebr-output-code-area\n\nCode Output Standard Output: Results from standard output (STDOUT) are stored here.\n\nid: #qwebr-output-code-stdout-{{ID}}\nclass: .qwebr-output-code-stdout\n\nCode Output Standard Error: Each line of results from standard error (STDERR) when running your code is stored here.\n\nid: #qwebr-output-code-stderr-{{ID}}\nclass: .qwebr-output-code-stderr\n\nGraph Output Area: Any graphical output of your R code is displayed in this area.\n\nid: #qwebr-output-graph-area-{{ID}}\nclass: .qwebr-output-graph-area\n\n\nThe {ID} in these identifiers represents the instance of the element on the page, whether it’s the first, second, or nth occurrence. You can customize their appearance by targeting the specific id or class attributes in your document’s CSS, or you can include a separate CSS file to align with your design preferences.",
+    "objectID": "qwebr-meta-options.html#document-yaml",
+    "href": "qwebr-meta-options.html#document-yaml",
+    "title": "Customization Options",
+    "section": "Document YAML",
+    "text": "Document YAML\nTo fine-tune webR to the specific needs of a document, place inside your document’s YAML header the webr key. Specifying options this way allows webR to be setup with unique options confined to only that document.\n---\ntitle: WebR in Quarto HTML Documents\nformat: html\nengine: knitr\nwebr: \n  show-startup-message: false\n  packages: ['ggplot2', 'dplyr']\nfilters:\n  - webr\n---",
     "crumbs": [
-      "Deployment",
-      "Theming Elements"
+      "Getting Started",
+      "Customization Options"
     ]
   },
   {
-    "objectID": "qwebr-theming.html#css-html-structure",
-    "href": "qwebr-theming.html#css-html-structure",
-    "title": "Theming Elements",
-    "section": "CSS & HTML Structure",
-    "text": "CSS & HTML Structure\n\nInteractive Area Structure\n&lt;div id=\"qwebr-interactive-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n  &lt;button class=\"btn btn-default qwebr-button-run\" disabled type=\"button\" id=\"qwebr-button-run-{{ID}}\"&gt;&lt;/button&gt;\n  &lt;div id=\"qwebr-console-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n    &lt;div id=\"qwebr-editor-{{ID}}\" class=\"qwebr-editor\"&gt;\n      &lt;div class=\"monaco-editor ...\"&gt;&lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n      &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\nNon-interactive Area Structure\n&lt;div id=\"qwebr-noninteractive-area-{{ID}}\" class=\"qwebr-noninteractive-area\"&gt;\n   &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n   &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n   &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\" aria-live=\"assertive\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;",
+    "objectID": "qwebr-meta-options.html#global-configuration",
+    "href": "qwebr-meta-options.html#global-configuration",
+    "title": "Customization Options",
+    "section": "Global Configuration",
+    "text": "Global Configuration\nIf you have multiple pages that use webR, we suggest setting global options inside of the _quarto.yml file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the _quarto.yml should look like:\nproject:\n  type: book\n\nbook:\n  title: \"Sample quarto-webr Book Project\"\n  # ... more options\n\n# Set default options for every bookpage that may or may not include webR.\nwebr: \n  show-startup-message: false     # Display status of webR initialization\n\n# Attach webR extension for the project\nfilters:\n  - webr\n\n\n\n\n\n\nNote\n\n\n\nIf a webR code cell is not present on a website, blog, or book page, then the quarto-webr extension will not setup webR on the page.\n\n\nYou can see full examples of setting a global option under the Deployment Templates page.",
     "crumbs": [
-      "Deployment",
-      "Theming Elements"
+      "Getting Started",
+      "Customization Options"
     ]
   },
   {
-    "objectID": "qwebr-theming.html#custom-embedded-styles",
-    "href": "qwebr-theming.html#custom-embedded-styles",
-    "title": "Theming Elements",
-    "section": "Custom Embedded Styles",
-    "text": "Custom Embedded Styles\nFor instance, you can insert new CSS elements by using the following method:\n```{=html}\n&lt;style&gt;\n.qwebr-code-output-stdout {background-color: powderblue;}\n.qwebr-button-run   {color: blue;}\n&lt;/style&gt;\n```",
+    "objectID": "qwebr-meta-options.html#webr-options",
+    "href": "qwebr-meta-options.html#webr-options",
+    "title": "Customization Options",
+    "section": "webR options",
+    "text": "webR options\nBy specifying various WebROptions options in the document YAML, you can create a personalized webR experience\n\nhome-dir\n\nDescription: Set the WebAssembly user’s home directory and initial working directory.\nDefault Value: '/home/web_user'\nDocumentation: homeDir\n\n\n\nbase-url\n\nDescription: Define the base URL for downloading R WebAssembly binaries.\nDefault Value: 'https://webr.r-wasm.org/[version]/'\nDocumentation: baseUrl\n\n\n\nchannel-type\n\nDescription: Specify the communication channel type to interact with webR.\nDefault Value: \"automatic\" (0)\nPossible Values: \"automatic\" (0), \"shared-array-buffer\" (1), \"service-worker\" (2), \"post-message\" (3).\nDocumentation: channelType\n\n\n\n\n\n\n\nNote\n\n\n\nWe recommend using the \"post-message\" channel when GitHub Pages or Quarto Pub serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (readline(), menu(), browser(), etc.). For more details, please see Communication Channels\n\n\n\n\nservice-worker-url\n\nDescription: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.\nDefault Value: ''\nDocumentation: serviceWorkerUrl",
     "crumbs": [
-      "Deployment",
-      "Theming Elements"
+      "Getting Started",
+      "Customization Options"
     ]
   },
   {
-    "objectID": "qwebr-theming.html#external-theme-support",
-    "href": "qwebr-theming.html#external-theme-support",
-    "title": "Theming Elements",
-    "section": "External Theme Support",
-    "text": "External Theme Support\nFurthermore, if you are using a Quarto theme, you can make use of theme-specific styling options to ensure that these UI elements align with the overall theme of your document.\n---\ntitle: My post\nformat:\n  html: \n    theme:\n      - cosmo\n      - custom.scss\n---",
+    "objectID": "qwebr-meta-options.html#native-extension-options",
+    "href": "qwebr-meta-options.html#native-extension-options",
+    "title": "Customization Options",
+    "section": "Native Extension Options",
+    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
     "crumbs": [
-      "Deployment",
-      "Theming Elements"
+      "Getting Started",
+      "Customization Options"
     ]
   },
   {
@@ -66,113 +66,25 @@
     ]
   },
   {
-    "objectID": "qwebr-first-steps.html",
-    "href": "qwebr-first-steps.html",
-    "title": "Making your first webR-powered Quarto document",
+    "objectID": "qwebr-extension-website.html",
+    "href": "qwebr-extension-website.html",
+    "title": "Extension Website",
     "section": "",
-    "text": "To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like quarto-webr within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.",
+    "text": "Initializing the Project\nTo get started, follow these steps to set up the Quarto extension website project:\n\nCreate a new directory named docs/ within your repository using the following command:\nmkdir docs && cd $_\nInitialize a Quarto website project by running the following command:\nquarto create project website .\n\n\n\nIncorporating the Extension\nTo seamlessly integrate the extension into your project, you’ll need to create a symbolic link to the _extensions folder containing the development version of the extension. This approach helps you avoid maintaining a duplicate copy of the extension in your Git repository history.\nFollow these steps:\n\nNavigate to the docs/ directory in your project.\nCreate a symbolic link to the _extensions folder using the following command:\nln -s ../_extensions _extensions",
     "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
+      "Extra Information",
+      "Extension Website Notes"
     ]
   },
   {
-    "objectID": "qwebr-first-steps.html#workflow-video",
-    "href": "qwebr-first-steps.html#workflow-video",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Workflow Video",
-    "text": "Workflow Video",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-first-steps.html#installation",
-    "href": "qwebr-first-steps.html#installation",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Installation",
-    "text": "Installation\nTo use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again.",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-first-steps.html#usage",
-    "href": "qwebr-first-steps.html#usage",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Usage",
-    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html",
-    "href": "qwebr-communication-channels.html",
-    "title": "Communication Channels",
+    "objectID": "qwebr-community-examples.html",
+    "href": "qwebr-community-examples.html",
+    "title": "Community Examples",
     "section": "",
-    "text": "As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:\nNow, here’s why this separation is so important: webR’s special version of R can tackle complicated and time-consuming calculations without causing your web browser to freeze or become unresponsive when you’re on a web page that uses webR.\nImagine trying to watch a video online while your computer is running a heavy software update. Without separating them, your video might start buffering, freeze, or even crash. But by putting the update in the background (on a separate worker, like webR), your video can continue to play smoothly. It’s the same concept with webR and your web browser – keeping things running smoothly without hiccups.\nFor more details, please see the official webR documentation on Worker Communication and Serving Web Pages with webR.",
+    "text": "Welcome to the Community Examples page for the quarto-webr extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the quarto-webr extension. These examples showcase real-world use cases, highlighting the extension’s adaptability and functionality across various fields. You may also find references to examples from the main webR project here as well.\nExplore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community’s contributions and discover how you can leverage the full potential of quarto-webr in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you’ll find valuable insights and ideas within the community’s projects.\nDo you have your own project or example that incorporates quarto-webr? We invite you to contribute to this growing collection of community-driven projects by submitting a pull request or creating an issue. Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of quarto-webr.\n\nVideos\n\nquarto-webr: Your first webR-powered Quarto Document (RStudio)\nEli E. Holmes’ coverage of webR + Quarto on her EEHolmes-DataScience YouTube channel\n\nDemo of webR quarto extension along with Codespaces on Mar 14, 2023 and her test repository\nWebR + Quarto Demo: Running R right in the browser! on Mar 10, 2023 (Note: This uses an earlier Proof of Concept document. Not the quarto extension!)\n\n\n\n\nTeaching Workshops\n\nMine Çetinkaya-Rundel’s Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials. Sept 18, 2023 @ posit::conf(2023)\n\nEx 1.1: UN Votes, Page Source\nFull workshop materials at source repository and deployed website example’s source repository\n\n\n\n\nTalks\n\nGeorge Stagg’s talk on the Magic with WebAssembly and webR mentioning quarto-webr as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)\nJames Balamuta’s talk on Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR. Sep 19, 2023 @ posit::conf(2023)\nGeorge Stagg’s talk on the Introduction to webR mentioning quarto-webr as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)\nNicola Rennie’s talk on Teaching statistics interactively with webR. @ RSS International Conference 2023\n\nSlides and Source code\n\nbob Rudis’ talk on 🕸️ Into the WebR-Verse incorporating a demo of the quarto-webr extension. Jul 13th, 2023 @ New York R Conference 2023\n\nVideo and Source code\nboB used a cool trick to embed the demo in his revealjs slides.\n\nMaria Tackett’s talk on Using Quarto for Making and Organizing Teaching Materials during the Teaching (with) Quarto Session. Aug 7, 2023 @ JSM 2023\n\nSlides and Source code\nWebR Demo on Quarto Pub\n\n\n\n\nTextbooks\n\nDaniel E. Weeks’s incorporated webR exercises into various parts of the HuGen2071. Fall 2023.\n\nBook source\n\n\n\n\nNotebooks\n\nGeorge Stagg’s notebook example showing tidymodels workflow using webR\n\ntidymodels starter article without webR Preprocess your data with recipes\n\n\n\n\nSocial media posts\n\nLinh Nguyen’s post on LinkedIn and Twitter describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the quarto-webr extension. Sept 22, 2023\nJoe Chelladurai mentioning a similiar integration on mastodon for his newly developed The School of Data. Jul 11th, 2023\nNicola Rennie’s tweet showing live coding with webR. May 5th, 2023\nbob Rudis’ kind praise of the extension. Apr 2nd, 2023\n\n\n\nBlog posts\n\nJavier Orraca-Deatcu’s post titled webR via Quarto Extensions. Aug 23rd, 2023.\nGeorge Stagg’s mention of the extension in his webR 0.2.0 announcement. Aug 8th, 2023.\nEthan White’s use to create a portal for Tidy Tuesday. May 2nd, 2023\nMatt Dray’s post on Playgrounds with WebR and Quarto. Mar 16th, 2023\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\n\nEthan White’s post on Playgrounds with WebR and Quarto. Mar 13th, 2023.\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\n\n\n\n\nPress\n\nR Weekly podcast included a reference to the Proof of Concept document/extension during episode 115, which was dedicated to the webR 0.1.0 announcement.\n\nR weekly 115 (2023-W11)",
     "crumbs": [
-      "Deployment",
-      "Communication Channels"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html#specifying-how-webr-communicates",
-    "href": "qwebr-communication-channels.html#specifying-how-webr-communicates",
-    "title": "Communication Channels",
-    "section": "Specifying How webR Communicates",
-    "text": "Specifying How webR Communicates\nIn a Quarto document’s YAML header, you can tell webR which communication channel to use by setting the channel-type option. It’s like telling webR how you want it to talk with your web browser. For example, if you want to use the \"post-message\" channel, you can do it like this:\n---\ntitle: \"Setting Up webR to use the PostMessage Channel\"\nformat: html\nwebr:\n  channel-type: \"post-message\"\nfilters:\n- webr\n---",
-    "crumbs": [
-      "Deployment",
-      "Communication Channels"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html#sec-automatic",
-    "href": "qwebr-communication-channels.html#sec-automatic",
-    "title": "Communication Channels",
-    "section": "Using “automatic” for Communication (Default)",
-    "text": "Using “automatic” for Communication (Default)\nBy default, the quarto-webr extension guides webR to use the \"automatic\" option for channel-type, if you don’t specify the channel-type in your document’s YAML header. Let’s break down how this default setting works:\n\nCommunication Attempts: webR will try two different communication channels in order:\n\nFirst, it attempts to establish a communication channel using \"shared-array-buffer\".\nIf that doesn’t work, it will then try to use \"post-message\".\n\nFallback Behavior: If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.\n\n\n\n\n\n\n\nNote\n\n\n\nIt’s important to note that the \"automatic\" option doesn’t try to use the \"service-worker\" option for communication.\n\n\nIn summary, when you leave the channel-type unspecified, webR will follow the \"automatic\" option, attempting to use \"shared-array-buffer\" and then \"post-message\". If both attempts fail, your webR code cells will be inactive.",
-    "crumbs": [
-      "Deployment",
-      "Communication Channels"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html#sec-shared-array-buffer",
-    "href": "qwebr-communication-channels.html#sec-shared-array-buffer",
-    "title": "Communication Channels",
-    "section": "Using “shared-array-buffer” for Communication",
-    "text": "Using “shared-array-buffer” for Communication\nNow, let’s explore the \"shared-array-buffer\" option for communication. When you specify channel-type as \"shared-array-buffer\", webR aims to use something called SharedArrayBuffer. This choice, however, comes with some specific requirements and benefits:\nRequirements:\n\nYour web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is cross-origin isolated. In simple terms, your server must be set up to allow this kind of communication otherwise webR will not work.\n\nBenefits:\n\nThe benefit of using this approach is that webR runs notably faster. It’s like giving webR a high-speed lane for its operations.\n\n\n\n\n\n\n\nNote\n\n\n\nIt’s important to note that the \"shared-array-buffer\" option isn’t currently available on platforms like GitHub Pages or Quarto Pub. If you’re using these services, we recommend using the channel-type: \"post-message\" option instead. There’s a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed here.\n\n\nTo help you set up the necessary headers for cross-origin isolation, we provide some guidance for both Netlify and nginx web server administrators:\nFor Netlify Configuration:\nIf you’re hosting your website with Netlify, you can add the following code to your netlify.toml configuration file:\n[[headers]]\n  for = \"/directory/with/webr/content/*\"\n\n  [headers.values]\n    Cross-Origin-Opener-Policy = \"same-origin\"\n    Cross-Origin-Embedder-Policy = \"require-corp\"\nFor nginx Web Server Administrators:\nIf you’re managing a server with nginx, you can use the add_header directive in your server’s configuration file, which is usually found at /etc/nginx/nginx.conf. Here’s an example:\nserver {\n  # Enable headers for the webr directory\n  location ^~ /directory/with/webr/content {\n    add_header \"Cross-Origin-Opener-Policy\" \"same-origin\";\n    add_header \"Cross-Origin-Embedder-Policy\" \"require-corp\";\n  }\n}\nBy following these instructions, you’ll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the \"shared-array-buffer\" option effectively.",
-    "crumbs": [
-      "Deployment",
-      "Communication Channels"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html#sec-service-worker",
-    "href": "qwebr-communication-channels.html#sec-service-worker",
-    "title": "Communication Channels",
-    "section": "Using “service-worker” for Communication",
-    "text": "Using “service-worker” for Communication\nHere, we’ll dive into the \"service-worker\" option for communication.\n\n\n\n\n\n\nWarning\n\n\n\nThe \"service-worker\" option doesn’t work with Quarto Pub. If you’re hosting documents with Quarto Pub, please use the channel-type: \"post-message\" option instead. There’s an ongoing effort to address the service worker upload issue with the Quarto team, which you can track here.\n\n\nWhen you set channel-type to \"service-worker\", webR changes its communication channel to use the Service Worker API. This means you need two worker scripts, webr-worker.js and webr-serviceworker.js, hosted on the same website as the page using webR.\nHere’s what you need to ensure:\n1. Worker Scripts: The quarto-webr extension will automatically create and register these workers when your Quarto document is rendered.\n2. Directory Structure: Your initial directory structure should include these files:\n.\n├── _extensions/coatless/webr\n└── demo-quarto-webr.qmd\nAfter rendering the Quarto document with the \"service-worker\" option, your directory will look like this:\n.\n├── _extensions/coatless/webr\n├── demo-quarto-webr.qmd\n├── demo-quarto-webr.html  # Rendered document\n├── webr-serviceworker.js  # Service workers\n└── webr-worker.js\n3. Hosting: When hosting your rendered document, you need to make sure the rendered HTML document and the service worker files (webr-serviceworker.js and webr-worker.js) are present on the server. This is important for everything to work correctly:\n.\n├── demo-quarto-webr.html  # Rendered document\n├── webr-serviceworker.js  # Service workers\n└── webr-worker.js\nIf you want to change where the service workers are located, you can set the service-worker-url option in the document YAML. By default, the rendered document will search for the service workers in its current directory.\nIn a nutshell, the “service-worker” option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.",
-    "crumbs": [
-      "Deployment",
-      "Communication Channels"
-    ]
-  },
-  {
-    "objectID": "qwebr-communication-channels.html#sec-post-message",
-    "href": "qwebr-communication-channels.html#sec-post-message",
-    "title": "Communication Channels",
-    "section": "Using “post-message” for Communication",
-    "text": "Using “post-message” for Communication\nNow, let’s delve into the \"post-message\" option. This sets up a communication channel using something called Post Message. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.\nHowever, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like readline(), menu(), browser(), etc.) won’t work as expected. Instead, they’ll return empty values like \"\" or c('', ''). Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.\nFeel free to experiment with the \"post-message\" interface in this webR code cell:\n\n  🟡 Loading\n    webR...",
-    "crumbs": [
-      "Deployment",
-      "Communication Channels"
+      "Demos",
+      "Community Examples"
     ]
   },
   {
@@ -242,186 +154,14 @@
     ]
   },
   {
-    "objectID": "qwebr-meta-options.html",
-    "href": "qwebr-meta-options.html",
-    "title": "Customization Options",
+    "objectID": "qwebr-using-r-packages.html",
+    "href": "qwebr-using-r-packages.html",
+    "title": "Using R Packages",
     "section": "",
-    "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or _quarto.yml file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.",
+    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.\n\nAvailable R Packages\nBefore you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nAlternatively, you can navigate to the webR binary R repository here for package listings.\n\n\n\n\n\n\nNote\n\n\n\nwebR reports the number of packages available in two ways:\n\nBuilt R packages: This indicates the number of R packages with WebAssembly binaries that can be used within webR, although they may have a decreased number of features available.\nAvailable R packages: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.\n\nTo achieve parity with base R, the Available R packages metric serves as an indicator of whether R scripts may require further modification to function properly within webR.\n\n\n\n\nInstall R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.\nIf you do not want the packages to be loaded by default, add the autoload-packages: false under webr in the YAML header. This will disable the calls to load each R package in the packages key, e.g. library(package).\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n  autoload-packages: false\n---\n\n\nInstalling an R Package Interactively\nIf you need to install a package interactively within specific code cells, you can do so using the webr::install() function. This method allows you to install packages on-the-fly when needed.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nUsing this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.\n\n\nLoad R Packages Interactively\nOnce an R package is installed, you can use it just like normal by calling either library() or require() to load the package.\nFor instance, if you have installed ggplot2 in the prior code cell, then the following will load the ggplot2 and create a scatterplot.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nNot a fan of having a code cell dedicated to load packages? You can use the packages key option above to let the quarto-webr extension take care of loading the packages after installing.",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-meta-options.html#document-yaml",
-    "href": "qwebr-meta-options.html#document-yaml",
-    "title": "Customization Options",
-    "section": "Document YAML",
-    "text": "Document YAML\nTo fine-tune webR to the specific needs of a document, place inside your document’s YAML header the webr key. Specifying options this way allows webR to be setup with unique options confined to only that document.\n---\ntitle: WebR in Quarto HTML Documents\nformat: html\nengine: knitr\nwebr: \n  show-startup-message: false\n  packages: ['ggplot2', 'dplyr']\nfilters:\n  - webr\n---",
-    "crumbs": [
-      "Getting Started",
-      "Customization Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-meta-options.html#global-configuration",
-    "href": "qwebr-meta-options.html#global-configuration",
-    "title": "Customization Options",
-    "section": "Global Configuration",
-    "text": "Global Configuration\nIf you have multiple pages that use webR, we suggest setting global options inside of the _quarto.yml file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the _quarto.yml should look like:\nproject:\n  type: book\n\nbook:\n  title: \"Sample quarto-webr Book Project\"\n  # ... more options\n\n# Set default options for every bookpage that may or may not include webR.\nwebr: \n  show-startup-message: false     # Display status of webR initialization\n\n# Attach webR extension for the project\nfilters:\n  - webr\n\n\n\n\n\n\nNote\n\n\n\nIf a webR code cell is not present on a website, blog, or book page, then the quarto-webr extension will not setup webR on the page.\n\n\nYou can see full examples of setting a global option under the Deployment Templates page.",
-    "crumbs": [
-      "Getting Started",
-      "Customization Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-meta-options.html#webr-options",
-    "href": "qwebr-meta-options.html#webr-options",
-    "title": "Customization Options",
-    "section": "webR options",
-    "text": "webR options\nBy specifying various WebROptions options in the document YAML, you can create a personalized webR experience\n\nhome-dir\n\nDescription: Set the WebAssembly user’s home directory and initial working directory.\nDefault Value: '/home/web_user'\nDocumentation: homeDir\n\n\n\nbase-url\n\nDescription: Define the base URL for downloading R WebAssembly binaries.\nDefault Value: 'https://webr.r-wasm.org/[version]/'\nDocumentation: baseUrl\n\n\n\nchannel-type\n\nDescription: Specify the communication channel type to interact with webR.\nDefault Value: \"automatic\" (0)\nPossible Values: \"automatic\" (0), \"shared-array-buffer\" (1), \"service-worker\" (2), \"post-message\" (3).\nDocumentation: channelType\n\n\n\n\n\n\n\nNote\n\n\n\nWe recommend using the \"post-message\" channel when GitHub Pages or Quarto Pub serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (readline(), menu(), browser(), etc.). For more details, please see Communication Channels\n\n\n\n\nservice-worker-url\n\nDescription: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.\nDefault Value: ''\nDocumentation: serviceWorkerUrl",
-    "crumbs": [
-      "Getting Started",
-      "Customization Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-meta-options.html#native-extension-options",
-    "href": "qwebr-meta-options.html#native-extension-options",
-    "title": "Customization Options",
-    "section": "Native Extension Options",
-    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
-    "crumbs": [
-      "Getting Started",
-      "Customization Options"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Greetings from quarto-webr Wonderland!",
-    "section": "",
-    "text": "Welcome to the documentation portal for the quarto-webr extension – your key to unlocking the endless possibilities of webR within various Quarto formats, including HTML, RevealJS, Websites, Blogs, and Books.\nReady for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nAt its core, the quarto-webr extension is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using webR’s JavaScript API, granting you unparalleled freedom to harness the power of R in innovative ways.\nWith this in mind, let’s dive in and kickstart your journey with interactive code cells by creating our very first webR-powered Quarto document or exploring some examples!"
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html",
-    "href": "qwebr-acknowledgements.html",
-    "title": "Acknowledgments and Collaborations",
-    "section": "",
-    "text": "We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing quarto-webR to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html#quarto-webr-extension-core-developers",
-    "href": "qwebr-acknowledgements.html#quarto-webr-extension-core-developers",
-    "title": "Acknowledgments and Collaborations",
-    "section": "quarto-webr Extension Core Developers",
-    "text": "quarto-webr Extension Core Developers\n\nJames Joseph Balamuta\nJooYoung Seo for accessibility improvements.\n\nTheir relentless dedication have played a pivotal role in shaping the development of this extension.",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html#webr-core-developers",
-    "href": "qwebr-acknowledgements.html#webr-core-developers",
-    "title": "Acknowledgments and Collaborations",
-    "section": "webR Core Developers",
-    "text": "webR Core Developers\n\nGeorge Stagg\nLionel Henry\n\nTheir tireless efforts and expertise in developing webR were instrumental in the development of this extension, and we are immensely grateful for their contributions.",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html#early-testing-feedback",
-    "href": "qwebr-acknowledgements.html#early-testing-feedback",
-    "title": "Acknowledgments and Collaborations",
-    "section": "Early Testing Feedback",
-    "text": "Early Testing Feedback\nWe extend our sincere appreciation to the following individuals for providing early testing feedback on the extension:\n\nEli E. Holmes\nBob Rudis\n\nTheir insightful feedback and suggestions have been invaluable in refining and enhancing the functionality of the extension.",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html#quarto-team-assistance",
-    "href": "qwebr-acknowledgements.html#quarto-team-assistance",
-    "title": "Acknowledgments and Collaborations",
-    "section": "Quarto Team Assistance",
-    "text": "Quarto Team Assistance\nWe would like to acknowledge the Quarto team for their assistance in setting up a new code cell type, which greatly improved the overall functionality of the extension. You can view the discussion here.",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-acknowledgements.html#inspirations",
-    "href": "qwebr-acknowledgements.html#inspirations",
-    "title": "Acknowledgments and Collaborations",
-    "section": "Inspirations",
-    "text": "Inspirations\nOur project built upon the initial proof of concept for a standalone Quarto HTML document, made possible by the work of the coatless-r-n-d/webR-quarto-demos repository.\nAdditionally, we were inspired by the following public-facing examples from the webR Core developers:\n\nSource of Tidyverse Blog Post and Minor fix\nwebR documentation landing page (Live page)",
-    "crumbs": [
-      "Extra Information",
-      "Acknowledgements"
-    ]
-  },
-  {
-    "objectID": "qwebr-developer-resources.html",
-    "href": "qwebr-developer-resources.html",
-    "title": "Developer Resources",
-    "section": "",
-    "text": "Are you eager to contribute to the development of the quarto-webr extension or explore ways to modify it to suit your needs? This resource page is your guide to invaluable tools and references that will empower you on your development journey.",
-    "crumbs": [
-      "Extra Information",
-      "Developer Resources"
-    ]
-  },
-  {
-    "objectID": "qwebr-developer-resources.html#mastering-webr",
-    "href": "qwebr-developer-resources.html#mastering-webr",
-    "title": "Developer Resources",
-    "section": "Mastering webR",
-    "text": "Mastering webR\nBefore diving into extension development, it’s essential to understand the core of what powers the quarto-webr extension: webR. These webR resources will be your trusty companions:\n\nwebR Documentation: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR’s features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.\nwebR Source Code: For the technically curious, webR’s GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.\nBob Rudis’ Experiments with webR: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.\n\nThese resources empower you to master webR, whether you’re just starting out or you’re a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.",
-    "crumbs": [
-      "Extra Information",
-      "Developer Resources"
-    ]
-  },
-  {
-    "objectID": "qwebr-developer-resources.html#quarto-development-ecosystem",
-    "href": "qwebr-developer-resources.html#quarto-development-ecosystem",
-    "title": "Developer Resources",
-    "section": "Quarto Development Ecosystem",
-    "text": "Quarto Development Ecosystem\nFor those interested in extending the quarto-webr extension or exploring broader extension development within the Quarto ecosystem, we recommend exploring the following supplementary resources.\n\nQuarto Documentation\nGet acquainted with Quarto’s official extension documentation to deepen your understanding.\n\nFilters Documentation: Learn the art of creating filters for Quarto documents, enabling you to customize content generation.\nLua Development Tips: Access development tips specific to Lua scripting within Quarto extensions.\nLua API: Explore the Lua API documentation to understand how to interact with Quarto’s core functionality programmatically.\n\n\n\nRelated Extensions\nFor those intrigued by the broader world of extension development, we suggest the following Quarto extensions that can inspire your journey into extension development and functionality:\n\nquarto-ext/shinylive: Explore the shinylive extension’s codebase to understand how interactive content is implemented within Quarto documents.\nmcanouil/quarto-elevator: Delve into the quarto-elevator extension to gain insights into adding new features to Quarto documents.\nshafayetShafee/downloadthis: Investigate the downloadthis extension to see how it facilitates downloads within Quarto documents.\n\nThere are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: https://quarto.org/docs/extensions/\n\n\nPandoc Essentials\nPandoc plays a pivotal role in Quarto’s document conversion process. To deepen your knowledge of Quarto, consider these Pandoc resources:\n\nExample Filters: Draw inspiration from Pandoc’s example filters to see how custom filters can be applied to your Quarto documents.\nCodeBlock: Understand the significance of the CodeBlock element in Pandoc, often used for implementing extensions and custom functionality.",
-    "crumbs": [
-      "Extra Information",
-      "Developer Resources"
-    ]
-  },
-  {
-    "objectID": "qwebr-faq.html",
-    "href": "qwebr-faq.html",
-    "title": "Frequently Asked Questions",
-    "section": "",
-    "text": "Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the quarto-webr extension. If you can’t find the answer you’re looking for, don’t hesitate to reach out to our community for additional support by opening a question or a bug report on the issue tracker.\n\nStability and Long Term Support\n\nQ. Would you say the quarto-webr extension API is stable? Thinking about starting to convert course notes and wondering where the project is in terms of stability.\n\nYes, the quarto-webr extension API can be considered stable for most practical purposes. It has undergone significant development and testing to ensure that it functions reliably and consistently within the Quarto framework. You can confidently start converting your course notes and materials using this extension.\nHowever, it’s important to keep in mind a few considerations:\n\nDependency on Quarto and webR projects: The quarto-webr extension relies on the main webR project for its core functionality. While we actively maintain the quarto-webr extension and aim to keep it compatible with the latest versions of Quarto and webR, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.\nVersion compatibility: It’s important to note that the version of the R client and R packages that is downloaded for webR execution may affect your materials. It’s advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before.\nStart with a small set: When converting your course materials, it’s a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension’s functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.\n\n\n\nImproving Performance\n\n\nWhat are your plans, if any, for scaling webR to handle complex content faster?\n\n\nFor handling complex content, we recommend setting the channel-type option to the 'shared-array-buffer', which can significantly speed up its execution. This environment requires the proper configuration of HTTP headers for Cross-Origin Embedder Policy (COEP) and Cross-Origin Opener Policy (COOP). By setting these headers correctly, you can already achieve notable speed improvements when working with webR.\nHowever, for further enhancements and speed optimizations beyond what the COEP and COOP headers provide, we recommend keeping an eye on the main webR project’s documentation. The core webR project continuously works on improving performance and scalability, so any future advancements in handling complex content faster will likely originate from their developments.\n\n\nwebR Limitations\n\nQ. I noticed that built in docs with ? don’t work in webR. Are there any other known issues? How long to feature parity?\n\nRegarding feature parity with the main webR project, it’s important to understand that quarto-webr inherits the same limitations and capabilities as the core webR technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of webR itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in quarto-webr v0.3.7.\nThe known limitations at this time are:\n\nPackage Installation: Installing packages from source within webR is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in webR is by providing pre-compiled WebAssembly binaries.\nGraphics Device: The webr::canvas() graphics device relies on OffscreenCanvas support in the web browser or JavaScript engine running webR. This means that a modern and up-to-date browser is required for plotting with this device. Older browsers without OffscreenCanvas support can still create plots using the Cairo-based graphics devices, such as png().\nCommunication Channels: webR relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup.\nInterruption of Running Code: Interruption of running R code and the use of nested R REPLs (such as readline(), menu(), browser(), etc.) are unsupported when using the PostMessage communication channel.\nSystem Command: The system() command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.\n\n\n\nState of Accessibility\n\nQ. You mentioned there has been some work on accessibility. I’m curious what the current state of accessibility is? What are the known issues?\n\nAccessibility is an important aspect of webR, and we are committed to ensuring that the tool is usable by individuals with disabilities. To address accessibility concerns, we have engaged the expertise of JooYoung Seo, an Assistant Professor in the School of Information Sciences (iSchool) at the University of Illinois Urbana-Champaign. JooYoung specializes in accessibility within Data Science and has been instrumental in conducting periodic accessibility reviews of webR.\nOne of the primary areas of focus has been making sure that screen readers can easily identify and interact with code cells on the page. This ensures that individuals with visual impairments can effectively use webR. While we’ve made significant strides in improving accessibility, we continue to work on addressing any known issues and enhancing the overall accessibility of the tool. We are committed to providing an inclusive and user-friendly experience for all users, and JooYoung’s expertise has been invaluable in this regard.\n\n\nPackage Usage\n\nQ. Does the use of R packages cause any issues for you when teaching content with webR and Quarto?\n\nWhen teaching content with webR and Quarto, the use of R packages is certainly supported. However, it’s important to be aware of a few considerations that can help ensure a smooth teaching experience.\nIn a typical R environment, packages are installed once and are available for subsequent sessions using library() or require(). In webR, packages are installed on each session. This means that each webR session starts with a clean slate, and packages need to be installed again for that specific session.\nTo optimize this process and avoid unnecessary downloads, it’s recommended to use the webr::install() function instead of the standard install.packages() function. webr::install() checks if a package is already installed and does not re-download it if it’s already available. This can significantly speed up the package installation process when working with webR and Quarto.\nOne way to simplify the teaching process and prevent students from working while packages are being installed is to use the built-in packages option in the document’s header. This option hides the installation process from students and ensures that the required packages are pre-installed when they access the document.\nFinally, it’s worth noting that the R packages available to webR may not always be the latest versions that you can get from CRAN (the Comprehensive R Archive Network). Therefore, it’s a good practice to check the package versions and ensure compatibility with your teaching materials.\n\n\nDebugging\n\nQ. How are error messages, etc. communicated in webr’s interface? Would it be easy for a student to debug without the tools that are available in the RStudio?\n\nError messages, warnings, and other diagnostic information are presented in the output of a quarto-webr interface, just like in a standard R environment. These messages appear directly below the code cell that generated them. While quarto-webr provides a user-friendly interface for working with R in a web browser, it does not offer advanced debugging tools like debug(), debugonce(), debuggingState(), or setBreakpoint(). Therefore, debugging in quarto-webr is primarily reliant on interpreting the error messages and warnings displayed in the output. For students familiar with RStudio’s debugging tools, transitioning to quarto-webr may require an adjustment to debugging practices. However, the clear presentation of error messages in the output makes it relatively straightforward for students to identify and address issues in their code.\n\n\nStyling\n\nQ. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?\n\nCertainly! You have the flexibility to style the UI elements added by the quarto-webr extension to your document. For more details, please see Theming Elements.",
-    "crumbs": [
-      "Support",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "qwebr-community-examples.html",
-    "href": "qwebr-community-examples.html",
-    "title": "Community Examples",
-    "section": "",
-    "text": "Welcome to the Community Examples page for the quarto-webr extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the quarto-webr extension. These examples showcase real-world use cases, highlighting the extension’s adaptability and functionality across various fields. You may also find references to examples from the main webR project here as well.\nExplore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community’s contributions and discover how you can leverage the full potential of quarto-webr in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you’ll find valuable insights and ideas within the community’s projects.\nDo you have your own project or example that incorporates quarto-webr? We invite you to contribute to this growing collection of community-driven projects by submitting a pull request or creating an issue. Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of quarto-webr.\n\nVideos\n\nquarto-webr: Your first webR-powered Quarto Document (RStudio)\nEli E. Holmes’ coverage of webR + Quarto on her EEHolmes-DataScience YouTube channel\n\nDemo of webR quarto extension along with Codespaces on Mar 14, 2023 and her test repository\nWebR + Quarto Demo: Running R right in the browser! on Mar 10, 2023 (Note: This uses an earlier Proof of Concept document. Not the quarto extension!)\n\n\n\n\nTeaching Workshops\n\nMine Çetinkaya-Rundel’s Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials. Sept 18, 2023 @ posit::conf(2023)\n\nEx 1.1: UN Votes, Page Source\nFull workshop materials at source repository and deployed website example’s source repository\n\n\n\n\nTalks\n\nGeorge Stagg’s talk on the Magic with WebAssembly and webR mentioning quarto-webr as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)\nJames Balamuta’s talk on Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR. Sep 19, 2023 @ posit::conf(2023)\nGeorge Stagg’s talk on the Introduction to webR mentioning quarto-webr as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)\nNicola Rennie’s talk on Teaching statistics interactively with webR. @ RSS International Conference 2023\n\nSlides and Source code\n\nbob Rudis’ talk on 🕸️ Into the WebR-Verse incorporating a demo of the quarto-webr extension. Jul 13th, 2023 @ New York R Conference 2023\n\nVideo and Source code\nboB used a cool trick to embed the demo in his revealjs slides.\n\nMaria Tackett’s talk on Using Quarto for Making and Organizing Teaching Materials during the Teaching (with) Quarto Session. Aug 7, 2023 @ JSM 2023\n\nSlides and Source code\nWebR Demo on Quarto Pub\n\n\n\n\nTextbooks\n\nDaniel E. Weeks’s incorporated webR exercises into various parts of the HuGen2071. Fall 2023.\n\nBook source\n\n\n\n\nNotebooks\n\nGeorge Stagg’s notebook example showing tidymodels workflow using webR\n\ntidymodels starter article without webR Preprocess your data with recipes\n\n\n\n\nSocial media posts\n\nLinh Nguyen’s post on LinkedIn and Twitter describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the quarto-webr extension. Sept 22, 2023\nJoe Chelladurai mentioning a similiar integration on mastodon for his newly developed The School of Data. Jul 11th, 2023\nNicola Rennie’s tweet showing live coding with webR. May 5th, 2023\nbob Rudis’ kind praise of the extension. Apr 2nd, 2023\n\n\n\nBlog posts\n\nJavier Orraca-Deatcu’s post titled webR via Quarto Extensions. Aug 23rd, 2023.\nGeorge Stagg’s mention of the extension in his webR 0.2.0 announcement. Aug 8th, 2023.\nEthan White’s use to create a portal for Tidy Tuesday. May 2nd, 2023\nMatt Dray’s post on Playgrounds with WebR and Quarto. Mar 16th, 2023\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\n\nEthan White’s post on Playgrounds with WebR and Quarto. Mar 13th, 2023.\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\n\n\n\n\nPress\n\nR Weekly podcast included a reference to the Proof of Concept document/extension during episode 115, which was dedicated to the webR 0.1.0 announcement.\n\nR weekly 115 (2023-W11)",
-    "crumbs": [
-      "Demos",
-      "Community Examples"
+      "Using R Packages"
     ]
   },
   {
@@ -579,25 +319,219 @@
     ]
   },
   {
-    "objectID": "qwebr-using-r-packages.html",
-    "href": "qwebr-using-r-packages.html",
-    "title": "Using R Packages",
+    "objectID": "qwebr-communication-channels.html",
+    "href": "qwebr-communication-channels.html",
+    "title": "Communication Channels",
     "section": "",
-    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.\n\nAvailable R Packages\nBefore you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nAlternatively, you can navigate to the webR binary R repository here for package listings.\n\n\n\n\n\n\nNote\n\n\n\nwebR reports the number of packages available in two ways:\n\nBuilt R packages: This indicates the number of R packages with WebAssembly binaries that can be used within webR, although they may have a decreased number of features available.\nAvailable R packages: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.\n\nTo achieve parity with base R, the Available R packages metric serves as an indicator of whether R scripts may require further modification to function properly within webR.\n\n\n\n\nInstall R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.\nIf you do not want the packages to be loaded by default, add the autoload-packages: false under webr in the YAML header. This will disable the calls to load each R package in the packages key, e.g. library(package).\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n  autoload-packages: false\n---\n\n\nInstalling an R Package Interactively\nIf you need to install a package interactively within specific code cells, you can do so using the webr::install() function. This method allows you to install packages on-the-fly when needed.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nUsing this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.\n\n\nLoad R Packages Interactively\nOnce an R package is installed, you can use it just like normal by calling either library() or require() to load the package.\nFor instance, if you have installed ggplot2 in the prior code cell, then the following will load the ggplot2 and create a scatterplot.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nNot a fan of having a code cell dedicated to load packages? You can use the packages key option above to let the quarto-webr extension take care of loading the packages after installing.",
+    "text": "As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:\nNow, here’s why this separation is so important: webR’s special version of R can tackle complicated and time-consuming calculations without causing your web browser to freeze or become unresponsive when you’re on a web page that uses webR.\nImagine trying to watch a video online while your computer is running a heavy software update. Without separating them, your video might start buffering, freeze, or even crash. But by putting the update in the background (on a separate worker, like webR), your video can continue to play smoothly. It’s the same concept with webR and your web browser – keeping things running smoothly without hiccups.\nFor more details, please see the official webR documentation on Worker Communication and Serving Web Pages with webR.",
     "crumbs": [
-      "Getting Started",
-      "Using R Packages"
+      "Deployment",
+      "Communication Channels"
     ]
   },
   {
-    "objectID": "qwebr-extension-website.html",
-    "href": "qwebr-extension-website.html",
-    "title": "Extension Website",
+    "objectID": "qwebr-communication-channels.html#specifying-how-webr-communicates",
+    "href": "qwebr-communication-channels.html#specifying-how-webr-communicates",
+    "title": "Communication Channels",
+    "section": "Specifying How webR Communicates",
+    "text": "Specifying How webR Communicates\nIn a Quarto document’s YAML header, you can tell webR which communication channel to use by setting the channel-type option. It’s like telling webR how you want it to talk with your web browser. For example, if you want to use the \"post-message\" channel, you can do it like this:\n---\ntitle: \"Setting Up webR to use the PostMessage Channel\"\nformat: html\nwebr:\n  channel-type: \"post-message\"\nfilters:\n- webr\n---",
+    "crumbs": [
+      "Deployment",
+      "Communication Channels"
+    ]
+  },
+  {
+    "objectID": "qwebr-communication-channels.html#sec-automatic",
+    "href": "qwebr-communication-channels.html#sec-automatic",
+    "title": "Communication Channels",
+    "section": "Using “automatic” for Communication (Default)",
+    "text": "Using “automatic” for Communication (Default)\nBy default, the quarto-webr extension guides webR to use the \"automatic\" option for channel-type, if you don’t specify the channel-type in your document’s YAML header. Let’s break down how this default setting works:\n\nCommunication Attempts: webR will try two different communication channels in order:\n\nFirst, it attempts to establish a communication channel using \"shared-array-buffer\".\nIf that doesn’t work, it will then try to use \"post-message\".\n\nFallback Behavior: If both of these attempts are unsuccessful, webR code cells in your document will be shown in a deactivated state. This means they won’t run or execute any R code.\n\n\n\n\n\n\n\nNote\n\n\n\nIt’s important to note that the \"automatic\" option doesn’t try to use the \"service-worker\" option for communication.\n\n\nIn summary, when you leave the channel-type unspecified, webR will follow the \"automatic\" option, attempting to use \"shared-array-buffer\" and then \"post-message\". If both attempts fail, your webR code cells will be inactive.",
+    "crumbs": [
+      "Deployment",
+      "Communication Channels"
+    ]
+  },
+  {
+    "objectID": "qwebr-communication-channels.html#sec-shared-array-buffer",
+    "href": "qwebr-communication-channels.html#sec-shared-array-buffer",
+    "title": "Communication Channels",
+    "section": "Using “shared-array-buffer” for Communication",
+    "text": "Using “shared-array-buffer” for Communication\nNow, let’s explore the \"shared-array-buffer\" option for communication. When you specify channel-type as \"shared-array-buffer\", webR aims to use something called SharedArrayBuffer. This choice, however, comes with some specific requirements and benefits:\nRequirements:\n\nYour web server needs to send web pages with webR using specific HTTP headers. This is to ensure that the page is cross-origin isolated. In simple terms, your server must be set up to allow this kind of communication otherwise webR will not work.\n\nBenefits:\n\nThe benefit of using this approach is that webR runs notably faster. It’s like giving webR a high-speed lane for its operations.\n\n\n\n\n\n\n\nNote\n\n\n\nIt’s important to note that the \"shared-array-buffer\" option isn’t currently available on platforms like GitHub Pages or Quarto Pub. If you’re using these services, we recommend using the channel-type: \"post-message\" option instead. There’s a possibility that GitHub Pages may offer the option to set the necessary headers in the future, as discussed here.\n\n\nTo help you set up the necessary headers for cross-origin isolation, we provide some guidance for both Netlify and nginx web server administrators:\nFor Netlify Configuration:\nIf you’re hosting your website with Netlify, you can add the following code to your netlify.toml configuration file:\n[[headers]]\n  for = \"/directory/with/webr/content/*\"\n\n  [headers.values]\n    Cross-Origin-Opener-Policy = \"same-origin\"\n    Cross-Origin-Embedder-Policy = \"require-corp\"\nFor nginx Web Server Administrators:\nIf you’re managing a server with nginx, you can use the add_header directive in your server’s configuration file, which is usually found at /etc/nginx/nginx.conf. Here’s an example:\nserver {\n  # Enable headers for the webr directory\n  location ^~ /directory/with/webr/content {\n    add_header \"Cross-Origin-Opener-Policy\" \"same-origin\";\n    add_header \"Cross-Origin-Embedder-Policy\" \"require-corp\";\n  }\n}\nBy following these instructions, you’ll ensure that your web server is set up to display web pages with a cross-origin isolated status, allowing you to use the \"shared-array-buffer\" option effectively.",
+    "crumbs": [
+      "Deployment",
+      "Communication Channels"
+    ]
+  },
+  {
+    "objectID": "qwebr-communication-channels.html#sec-service-worker",
+    "href": "qwebr-communication-channels.html#sec-service-worker",
+    "title": "Communication Channels",
+    "section": "Using “service-worker” for Communication",
+    "text": "Using “service-worker” for Communication\nHere, we’ll dive into the \"service-worker\" option for communication.\n\n\n\n\n\n\nWarning\n\n\n\nThe \"service-worker\" option doesn’t work with Quarto Pub. If you’re hosting documents with Quarto Pub, please use the channel-type: \"post-message\" option instead. There’s an ongoing effort to address the service worker upload issue with the Quarto team, which you can track here.\n\n\nWhen you set channel-type to \"service-worker\", webR changes its communication channel to use the Service Worker API. This means you need two worker scripts, webr-worker.js and webr-serviceworker.js, hosted on the same website as the page using webR.\nHere’s what you need to ensure:\n1. Worker Scripts: The quarto-webr extension will automatically create and register these workers when your Quarto document is rendered.\n2. Directory Structure: Your initial directory structure should include these files:\n.\n├── _extensions/coatless/webr\n└── demo-quarto-webr.qmd\nAfter rendering the Quarto document with the \"service-worker\" option, your directory will look like this:\n.\n├── _extensions/coatless/webr\n├── demo-quarto-webr.qmd\n├── demo-quarto-webr.html  # Rendered document\n├── webr-serviceworker.js  # Service workers\n└── webr-worker.js\n3. Hosting: When hosting your rendered document, you need to make sure the rendered HTML document and the service worker files (webr-serviceworker.js and webr-worker.js) are present on the server. This is important for everything to work correctly:\n.\n├── demo-quarto-webr.html  # Rendered document\n├── webr-serviceworker.js  # Service workers\n└── webr-worker.js\nIf you want to change where the service workers are located, you can set the service-worker-url option in the document YAML. By default, the rendered document will search for the service workers in its current directory.\nIn a nutshell, the “service-worker” option is a powerful choice for communication with webR, but you need to ensure the correct setup and hosting to make it work smoothly.",
+    "crumbs": [
+      "Deployment",
+      "Communication Channels"
+    ]
+  },
+  {
+    "objectID": "qwebr-communication-channels.html#sec-post-message",
+    "href": "qwebr-communication-channels.html#sec-post-message",
+    "title": "Communication Channels",
+    "section": "Using “post-message” for Communication",
+    "text": "Using “post-message” for Communication\nNow, let’s delve into the \"post-message\" option. This sets up a communication channel using something called Post Message. It’s a good choice when you can’t use cross-isolation or service workers. This option is simpler to set up and works in more places, like RStudio’s preview pane or the built-in browser in VSCode.\nHowever, there are some trade-offs. While it’s easier to get started, certain R features that need to pause and wait for input (like readline(), menu(), browser(), etc.) won’t work as expected. Instead, they’ll return empty values like \"\" or c('', ''). Also, you won’t have the option to stop or interrupt long-running R code. In those cases, you’ll need to refresh the page to regain control.\nFeel free to experiment with the \"post-message\" interface in this webR code cell:\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Deployment",
+      "Communication Channels"
+    ]
+  },
+  {
+    "objectID": "qwebr-first-steps.html",
+    "href": "qwebr-first-steps.html",
+    "title": "Making your first webR-powered Quarto document",
     "section": "",
-    "text": "Initializing the Project\nTo get started, follow these steps to set up the Quarto extension website project:\n\nCreate a new directory named docs/ within your repository using the following command:\nmkdir docs && cd $_\nInitialize a Quarto website project by running the following command:\nquarto create project website .\n\n\n\nIncorporating the Extension\nTo seamlessly integrate the extension into your project, you’ll need to create a symbolic link to the _extensions folder containing the development version of the extension. This approach helps you avoid maintaining a duplicate copy of the extension in your Git repository history.\nFollow these steps:\n\nNavigate to the docs/ directory in your project.\nCreate a symbolic link to the _extensions folder using the following command:\nln -s ../_extensions _extensions",
+    "text": "To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like quarto-webr within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
+  },
+  {
+    "objectID": "qwebr-first-steps.html#workflow-video",
+    "href": "qwebr-first-steps.html#workflow-video",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Workflow Video",
+    "text": "Workflow Video",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
+  },
+  {
+    "objectID": "qwebr-first-steps.html#installation",
+    "href": "qwebr-first-steps.html#installation",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Installation",
+    "text": "Installation\nTo use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
+  },
+  {
+    "objectID": "qwebr-first-steps.html#usage",
+    "href": "qwebr-first-steps.html#usage",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Usage",
+    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
+  },
+  {
+    "objectID": "qwebr-deployment-templates.html",
+    "href": "qwebr-deployment-templates.html",
+    "title": "Deployment Templates",
+    "section": "",
+    "text": "Discover a range of sample deployment templates for the quarto-webr extension at our GitHub repository here. These templates serve as convenient starting points for various web-based projects that harness the power of the quarto-webr extension, enabling interactive data analysis inside of a web browser. Whether you’re embarking on an individual report, creating an interactive website, or compiling a digital book, these templates simplify the process, making it effortless to kickstart your own projects.\n\nHTML Document Template\nThis template is designed for creating standalone HTML documents with interactive webR functionality. It’s suitable for individual reports or interactive documents.\n\nExample: You can find an example of an HTML document template here.\nSource Code: Access the source code for this template here.\n\n\n\nRevealJS Presentation Template\nThis template is designed for creating standalone RevealJS presentations with interactive webR functionality. It’s suitable for creating lecture slides.\n\n\n\n\n\n\nImportant\n\n\n\nThis template requires a pre-release version of Quarto that is 1.4.502 or greater that contains an updated copy of pandoc. For more details, please see Issue #14.\n\n\n\nExample: You can find an example of a RevealJS presentation template here.\nSource Code: Access the source code for this template here.\n\n\n\nWebsite Template\nThis template is meant for building interactive websites with multiple webR-powered pages. It’s ideal for websites that have multiple piece of web content that requires interactive data analysis at the “top-level”.\n\nExample: Explore an example of a website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBlog Template\nFor users who want to periodically use webR on their Quarto blog, please use the following template.\n\nExample: Explore an example of a blog website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBook Template\nThe book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.\n\nExample: You can view an example of a book template here.\nSource Code: Access the source code for this template here.",
+    "crumbs": [
+      "Deployment",
+      "Templates"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Greetings from quarto-webr Wonderland!",
+    "section": "",
+    "text": "Welcome to the documentation portal for the quarto-webr extension – your key to unlocking the endless possibilities of webR within various Quarto formats, including HTML, RevealJS, Websites, Blogs, and Books.\nReady for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nAt its core, the quarto-webr extension is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using webR’s JavaScript API, granting you unparalleled freedom to harness the power of R in innovative ways.\nWith this in mind, let’s dive in and kickstart your journey with interactive code cells by creating our very first webR-powered Quarto document or exploring some examples!"
+  },
+  {
+    "objectID": "qwebr-theming.html",
+    "href": "qwebr-theming.html",
+    "title": "Theming Elements",
+    "section": "",
+    "text": "Note\n\n\n\nThis section of the documentation is tailored to those with a deeper understanding of web design. If you’re new to these concepts, don’t worry; you can still create fantastic documents using the quarto-webr extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.\nOn this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.",
+    "crumbs": [
+      "Deployment",
+      "Theming Elements"
+    ]
+  },
+  {
+    "objectID": "qwebr-theming.html#css-class-and-id-identifiers",
+    "href": "qwebr-theming.html#css-class-and-id-identifiers",
+    "title": "Theming Elements",
+    "section": "CSS Class and ID Identifiers",
+    "text": "CSS Class and ID Identifiers\nTo effectively style web-based documents created with the extension, you’ll need to understand the unique id and class attributes associated with different content areas. There are two primary context types where content is displayed to users:\n\nInteractive Area: This area encompasses the Code Editor, Code Output, and the Graph Output Area under the interactive context.\n\nid: #qwebr-interactive-area-{{ID}}\nclass: .qwebr-interactive-area\n\nNon-Interactive Area: This includes the Code Output and the Graph Output Area under the output context.\n\nid: #qwebr-noninteractive-area-{{ID}}\nclass: .qwebr-noninteractive-area\n\n\nWithin the interactive section, you’ll find elements that are displayed when users request results:\n\nRun Button: This button triggers the execution of your R code.\n\nid: #qwebr-button-run-{{ID}}\nclass: .qwebr-button-run\n\nConsole Area: This area contains the Code Editor and Code Output.\n\nid: #qwebr-console-area-{{ID}}\nclass: .qwebr-console-area\n\nCode Editor: You use this area to input and edit your R code.\n\nid: #qwebr-editor-{{ID}}\nclass: .qwebr-editor\n\n\nAcross both contexts, you’ll find shared output element classes and names:\n\nCode Output Area: This is where the results and output of your R code are displayed.\n\nid: #qwebr-output-code-area-{{ID}}\nclass: .qwebr-output-code-area\n\nCode Output Standard Output: Results from standard output (STDOUT) are stored here.\n\nid: #qwebr-output-code-stdout-{{ID}}\nclass: .qwebr-output-code-stdout\n\nCode Output Standard Error: Each line of results from standard error (STDERR) when running your code is stored here.\n\nid: #qwebr-output-code-stderr-{{ID}}\nclass: .qwebr-output-code-stderr\n\nGraph Output Area: Any graphical output of your R code is displayed in this area.\n\nid: #qwebr-output-graph-area-{{ID}}\nclass: .qwebr-output-graph-area\n\n\nThe {ID} in these identifiers represents the instance of the element on the page, whether it’s the first, second, or nth occurrence. You can customize their appearance by targeting the specific id or class attributes in your document’s CSS, or you can include a separate CSS file to align with your design preferences.",
+    "crumbs": [
+      "Deployment",
+      "Theming Elements"
+    ]
+  },
+  {
+    "objectID": "qwebr-theming.html#css-html-structure",
+    "href": "qwebr-theming.html#css-html-structure",
+    "title": "Theming Elements",
+    "section": "CSS & HTML Structure",
+    "text": "CSS & HTML Structure\n\nInteractive Area Structure\n&lt;div id=\"qwebr-interactive-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n  &lt;button class=\"btn btn-default qwebr-button-run\" disabled type=\"button\" id=\"qwebr-button-run-{{ID}}\"&gt;&lt;/button&gt;\n  &lt;div id=\"qwebr-console-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n    &lt;div id=\"qwebr-editor-{{ID}}\" class=\"qwebr-editor\"&gt;\n      &lt;div class=\"monaco-editor ...\"&gt;&lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n      &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\nNon-interactive Area Structure\n&lt;div id=\"qwebr-noninteractive-area-{{ID}}\" class=\"qwebr-noninteractive-area\"&gt;\n   &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n   &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n   &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\" aria-live=\"assertive\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;",
+    "crumbs": [
+      "Deployment",
+      "Theming Elements"
+    ]
+  },
+  {
+    "objectID": "qwebr-theming.html#custom-embedded-styles",
+    "href": "qwebr-theming.html#custom-embedded-styles",
+    "title": "Theming Elements",
+    "section": "Custom Embedded Styles",
+    "text": "Custom Embedded Styles\nFor instance, you can insert new CSS elements by using the following method:\n```{=html}\n&lt;style&gt;\n.qwebr-code-output-stdout {background-color: powderblue;}\n.qwebr-button-run   {color: blue;}\n&lt;/style&gt;\n```",
+    "crumbs": [
+      "Deployment",
+      "Theming Elements"
+    ]
+  },
+  {
+    "objectID": "qwebr-theming.html#external-theme-support",
+    "href": "qwebr-theming.html#external-theme-support",
+    "title": "Theming Elements",
+    "section": "External Theme Support",
+    "text": "External Theme Support\nFurthermore, if you are using a Quarto theme, you can make use of theme-specific styling options to ensure that these UI elements align with the overall theme of your document.\n---\ntitle: My post\nformat:\n  html: \n    theme:\n      - cosmo\n      - custom.scss\n---",
+    "crumbs": [
+      "Deployment",
+      "Theming Elements"
+    ]
+  },
+  {
+    "objectID": "qwebr-developer-resources.html",
+    "href": "qwebr-developer-resources.html",
+    "title": "Developer Resources",
+    "section": "",
+    "text": "Are you eager to contribute to the development of the quarto-webr extension or explore ways to modify it to suit your needs? This resource page is your guide to invaluable tools and references that will empower you on your development journey.",
     "crumbs": [
       "Extra Information",
-      "Extension Website Notes"
+      "Developer Resources"
+    ]
+  },
+  {
+    "objectID": "qwebr-developer-resources.html#mastering-webr",
+    "href": "qwebr-developer-resources.html#mastering-webr",
+    "title": "Developer Resources",
+    "section": "Mastering webR",
+    "text": "Mastering webR\nBefore diving into extension development, it’s essential to understand the core of what powers the quarto-webr extension: webR. These webR resources will be your trusty companions:\n\nwebR Documentation: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR’s features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.\nwebR Source Code: For the technically curious, webR’s GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.\nBob Rudis’ Experiments with webR: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.\n\nThese resources empower you to master webR, whether you’re just starting out or you’re a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.",
+    "crumbs": [
+      "Extra Information",
+      "Developer Resources"
+    ]
+  },
+  {
+    "objectID": "qwebr-developer-resources.html#quarto-development-ecosystem",
+    "href": "qwebr-developer-resources.html#quarto-development-ecosystem",
+    "title": "Developer Resources",
+    "section": "Quarto Development Ecosystem",
+    "text": "Quarto Development Ecosystem\nFor those interested in extending the quarto-webr extension or exploring broader extension development within the Quarto ecosystem, we recommend exploring the following supplementary resources.\n\nQuarto Documentation\nGet acquainted with Quarto’s official extension documentation to deepen your understanding.\n\nFilters Documentation: Learn the art of creating filters for Quarto documents, enabling you to customize content generation.\nLua Development Tips: Access development tips specific to Lua scripting within Quarto extensions.\nLua API: Explore the Lua API documentation to understand how to interact with Quarto’s core functionality programmatically.\n\n\n\nRelated Extensions\nFor those intrigued by the broader world of extension development, we suggest the following Quarto extensions that can inspire your journey into extension development and functionality:\n\nquarto-ext/shinylive: Explore the shinylive extension’s codebase to understand how interactive content is implemented within Quarto documents.\nmcanouil/quarto-elevator: Delve into the quarto-elevator extension to gain insights into adding new features to Quarto documents.\nshafayetShafee/downloadthis: Investigate the downloadthis extension to see how it facilitates downloads within Quarto documents.\n\nThere are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: https://quarto.org/docs/extensions/\n\n\nPandoc Essentials\nPandoc plays a pivotal role in Quarto’s document conversion process. To deepen your knowledge of Quarto, consider these Pandoc resources:\n\nExample Filters: Draw inspiration from Pandoc’s example filters to see how custom filters can be applied to your Quarto documents.\nCodeBlock: Understand the significance of the CodeBlock element in Pandoc, often used for implementing extensions and custom functionality.",
+    "crumbs": [
+      "Extra Information",
+      "Developer Resources"
     ]
   },
   {
@@ -986,14 +920,80 @@
     ]
   },
   {
-    "objectID": "qwebr-deployment-templates.html",
-    "href": "qwebr-deployment-templates.html",
-    "title": "Deployment Templates",
+    "objectID": "qwebr-acknowledgements.html",
+    "href": "qwebr-acknowledgements.html",
+    "title": "Acknowledgments and Collaborations",
     "section": "",
-    "text": "Discover a range of sample deployment templates for the quarto-webr extension at our GitHub repository here. These templates serve as convenient starting points for various web-based projects that harness the power of the quarto-webr extension, enabling interactive data analysis inside of a web browser. Whether you’re embarking on an individual report, creating an interactive website, or compiling a digital book, these templates simplify the process, making it effortless to kickstart your own projects.\n\nHTML Document Template\nThis template is designed for creating standalone HTML documents with interactive webR functionality. It’s suitable for individual reports or interactive documents.\n\nExample: You can find an example of an HTML document template here.\nSource Code: Access the source code for this template here.\n\n\n\nRevealJS Presentation Template\nThis template is designed for creating standalone RevealJS presentations with interactive webR functionality. It’s suitable for creating lecture slides.\n\n\n\n\n\n\nImportant\n\n\n\nThis template requires a pre-release version of Quarto that is 1.4.502 or greater that contains an updated copy of pandoc. For more details, please see Issue #14.\n\n\n\nExample: You can find an example of a RevealJS presentation template here.\nSource Code: Access the source code for this template here.\n\n\n\nWebsite Template\nThis template is meant for building interactive websites with multiple webR-powered pages. It’s ideal for websites that have multiple piece of web content that requires interactive data analysis at the “top-level”.\n\nExample: Explore an example of a website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBlog Template\nFor users who want to periodically use webR on their Quarto blog, please use the following template.\n\nExample: Explore an example of a blog website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBook Template\nThe book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.\n\nExample: You can view an example of a book template here.\nSource Code: Access the source code for this template here.",
+    "text": "We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing quarto-webR to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.",
     "crumbs": [
-      "Deployment",
-      "Templates"
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-acknowledgements.html#quarto-webr-extension-core-developers",
+    "href": "qwebr-acknowledgements.html#quarto-webr-extension-core-developers",
+    "title": "Acknowledgments and Collaborations",
+    "section": "quarto-webr Extension Core Developers",
+    "text": "quarto-webr Extension Core Developers\n\nJames Joseph Balamuta\nJooYoung Seo for accessibility improvements.\n\nTheir relentless dedication have played a pivotal role in shaping the development of this extension.",
+    "crumbs": [
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-acknowledgements.html#webr-core-developers",
+    "href": "qwebr-acknowledgements.html#webr-core-developers",
+    "title": "Acknowledgments and Collaborations",
+    "section": "webR Core Developers",
+    "text": "webR Core Developers\n\nGeorge Stagg\nLionel Henry\n\nTheir tireless efforts and expertise in developing webR were instrumental in the development of this extension, and we are immensely grateful for their contributions.",
+    "crumbs": [
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-acknowledgements.html#early-testing-feedback",
+    "href": "qwebr-acknowledgements.html#early-testing-feedback",
+    "title": "Acknowledgments and Collaborations",
+    "section": "Early Testing Feedback",
+    "text": "Early Testing Feedback\nWe extend our sincere appreciation to the following individuals for providing early testing feedback on the extension:\n\nEli E. Holmes\nBob Rudis\n\nTheir insightful feedback and suggestions have been invaluable in refining and enhancing the functionality of the extension.",
+    "crumbs": [
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-acknowledgements.html#quarto-team-assistance",
+    "href": "qwebr-acknowledgements.html#quarto-team-assistance",
+    "title": "Acknowledgments and Collaborations",
+    "section": "Quarto Team Assistance",
+    "text": "Quarto Team Assistance\nWe would like to acknowledge the Quarto team for their assistance in setting up a new code cell type, which greatly improved the overall functionality of the extension. You can view the discussion here.",
+    "crumbs": [
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-acknowledgements.html#inspirations",
+    "href": "qwebr-acknowledgements.html#inspirations",
+    "title": "Acknowledgments and Collaborations",
+    "section": "Inspirations",
+    "text": "Inspirations\nOur project built upon the initial proof of concept for a standalone Quarto HTML document, made possible by the work of the coatless-r-n-d/webR-quarto-demos repository.\nAdditionally, we were inspired by the following public-facing examples from the webR Core developers:\n\nSource of Tidyverse Blog Post and Minor fix\nwebR documentation landing page (Live page)",
+    "crumbs": [
+      "Extra Information",
+      "Acknowledgements"
+    ]
+  },
+  {
+    "objectID": "qwebr-faq.html",
+    "href": "qwebr-faq.html",
+    "title": "Frequently Asked Questions",
+    "section": "",
+    "text": "Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the quarto-webr extension. If you can’t find the answer you’re looking for, don’t hesitate to reach out to our community for additional support by opening a question or a bug report on the issue tracker.\n\nStability and Long Term Support\n\nQ. Would you say the quarto-webr extension API is stable? Thinking about starting to convert course notes and wondering where the project is in terms of stability.\n\nYes, the quarto-webr extension API can be considered stable for most practical purposes. It has undergone significant development and testing to ensure that it functions reliably and consistently within the Quarto framework. You can confidently start converting your course notes and materials using this extension.\nHowever, it’s important to keep in mind a few considerations:\n\nDependency on Quarto and webR projects: The quarto-webr extension relies on the main webR project for its core functionality. While we actively maintain the quarto-webr extension and aim to keep it compatible with the latest versions of Quarto and webR, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.\nVersion compatibility: It’s important to note that the version of the R client and R packages that is downloaded for webR execution may affect your materials. It’s advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before.\nStart with a small set: When converting your course materials, it’s a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension’s functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.\n\n\n\nImproving Performance\n\n\nWhat are your plans, if any, for scaling webR to handle complex content faster?\n\n\nFor handling complex content, we recommend setting the channel-type option to the 'shared-array-buffer', which can significantly speed up its execution. This environment requires the proper configuration of HTTP headers for Cross-Origin Embedder Policy (COEP) and Cross-Origin Opener Policy (COOP). By setting these headers correctly, you can already achieve notable speed improvements when working with webR.\nHowever, for further enhancements and speed optimizations beyond what the COEP and COOP headers provide, we recommend keeping an eye on the main webR project’s documentation. The core webR project continuously works on improving performance and scalability, so any future advancements in handling complex content faster will likely originate from their developments.\n\n\nwebR Limitations\n\nQ. I noticed that built in docs with ? don’t work in webR. Are there any other known issues? How long to feature parity?\n\nRegarding feature parity with the main webR project, it’s important to understand that quarto-webr inherits the same limitations and capabilities as the core webR technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of webR itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in quarto-webr v0.3.7.\nThe known limitations at this time are:\n\nPackage Installation: Installing packages from source within webR is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in webR is by providing pre-compiled WebAssembly binaries.\nGraphics Device: The webr::canvas() graphics device relies on OffscreenCanvas support in the web browser or JavaScript engine running webR. This means that a modern and up-to-date browser is required for plotting with this device. Older browsers without OffscreenCanvas support can still create plots using the Cairo-based graphics devices, such as png().\nCommunication Channels: webR relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup.\nInterruption of Running Code: Interruption of running R code and the use of nested R REPLs (such as readline(), menu(), browser(), etc.) are unsupported when using the PostMessage communication channel.\nSystem Command: The system() command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.\n\n\n\nState of Accessibility\n\nQ. You mentioned there has been some work on accessibility. I’m curious what the current state of accessibility is? What are the known issues?\n\nAccessibility is an important aspect of webR, and we are committed to ensuring that the tool is usable by individuals with disabilities. To address accessibility concerns, we have engaged the expertise of JooYoung Seo, an Assistant Professor in the School of Information Sciences (iSchool) at the University of Illinois Urbana-Champaign. JooYoung specializes in accessibility within Data Science and has been instrumental in conducting periodic accessibility reviews of webR.\nOne of the primary areas of focus has been making sure that screen readers can easily identify and interact with code cells on the page. This ensures that individuals with visual impairments can effectively use webR. While we’ve made significant strides in improving accessibility, we continue to work on addressing any known issues and enhancing the overall accessibility of the tool. We are committed to providing an inclusive and user-friendly experience for all users, and JooYoung’s expertise has been invaluable in this regard.\n\n\nPackage Usage\n\nQ. Does the use of R packages cause any issues for you when teaching content with webR and Quarto?\n\nWhen teaching content with webR and Quarto, the use of R packages is certainly supported. However, it’s important to be aware of a few considerations that can help ensure a smooth teaching experience.\nIn a typical R environment, packages are installed once and are available for subsequent sessions using library() or require(). In webR, packages are installed on each session. This means that each webR session starts with a clean slate, and packages need to be installed again for that specific session.\nTo optimize this process and avoid unnecessary downloads, it’s recommended to use the webr::install() function instead of the standard install.packages() function. webr::install() checks if a package is already installed and does not re-download it if it’s already available. This can significantly speed up the package installation process when working with webR and Quarto.\nOne way to simplify the teaching process and prevent students from working while packages are being installed is to use the built-in packages option in the document’s header. This option hides the installation process from students and ensures that the required packages are pre-installed when they access the document.\nFinally, it’s worth noting that the R packages available to webR may not always be the latest versions that you can get from CRAN (the Comprehensive R Archive Network). Therefore, it’s a good practice to check the package versions and ensure compatibility with your teaching materials.\n\n\nDebugging\n\nQ. How are error messages, etc. communicated in webr’s interface? Would it be easy for a student to debug without the tools that are available in the RStudio?\n\nError messages, warnings, and other diagnostic information are presented in the output of a quarto-webr interface, just like in a standard R environment. These messages appear directly below the code cell that generated them. While quarto-webr provides a user-friendly interface for working with R in a web browser, it does not offer advanced debugging tools like debug(), debugonce(), debuggingState(), or setBreakpoint(). Therefore, debugging in quarto-webr is primarily reliant on interpreting the error messages and warnings displayed in the output. For students familiar with RStudio’s debugging tools, transitioning to quarto-webr may require an adjustment to debugging practices. However, the clear presentation of error messages in the output makes it relatively straightforward for students to identify and address issues in their code.\n\n\nStyling\n\nQ. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?\n\nCertainly! You have the flexibility to style the UI elements added by the quarto-webr extension to your document. For more details, please see Theming Elements.",
+    "crumbs": [
+      "Support",
+      "FAQ"
     ]
   }
 ]
