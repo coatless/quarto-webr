@@ -6,8 +6,6 @@ date-modified: last-modified
 format: 
   html:
     toc: true
-filters:
-  - webr
 aliases:
   - webr-community-examples.html
 ---
@@ -25,11 +23,12 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
   - [Demo of webR quarto extension along with Codespaces](https://www.youtube.com/watch?v=hVLF98HP6Sw) on Mar 14, 2023 and her [test repository](https://github.com/eeholmes/test-webr)
   - [WebR + Quarto Demo: Running R right in the browser!](https://www.youtube.com/watch?v=g_2ogFn2XrY) on Mar 10, 2023 (**Note:** This uses an earlier Proof of Concept document. Not the quarto extension!)
 
-# Teaching Workshops
+# Teaching Materials / Workshops
 
 - [Mine Çetinkaya-Rundel](https://mine-cr.com/)'s [Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials](https://posit-conf-2023.github.io/teach-ds-masterclass/materials/course-materials). Sept 18, 2023 @ posit::conf(2023)
   - [Ex 1.1: UN Votes](https://data-sci-101.github.io/ae/ae-01-unvotes.html), [Page Source](https://github.com/data-sci-101/data-sci-101.github.io/blob/main/ae/ae-01-unvotes.qmd)
   - Full workshop materials at [source repository](https://github.com/posit-conf-2023/teach-ds-masterclass) and deployed website example's [source repository](https://github.com/data-sci-101/data-sci-101.github.io)
+- [Ethan White](https://www.weecology.org/author/ethan-white/)'s experimental interactive version of [Data Carpentry for Biologists](https://interactive-lessons.weecology.org/). Mar 13th, 2023.
 
 # Talks
 
@@ -57,20 +56,22 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Social media posts
 
+- [Nien Xiang Tou](https://www.nienxiangtou.com/) post on [LinkedIn](https://www.linkedin.com/posts/nien-xiang-tou-phd-a15594184_quarto-webr-rstats-activity-7121412832021123072-BWW3) and [Mastodon](https://mastodon.social/@Nxrunning@fosstodon.org/111284901156764484)
 - [Linh Nguyen](https://nguyenllpsych.github.io/)'s post on [LinkedIn](https://www.linkedin.com/posts/nguyenllpsych_positconf2023-activity-7111101659509899265-CTay?utm_source=share&utm_medium=member_desktop) and [Twitter](https://twitter.com/nguyenllpsych/status/1705357201400066141) describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the `quarto-webr` extension. Sept 22, 2023
 - [Joe Chelladurai](https://joechelladurai.com/) mentioning a [similiar integration on mastodon](https://mastodon.social/@joe_chelladurai@fosstodon.org/110699434655070719) for his newly developed [The School of Data](https://www.theschoolofdata.org/). Jul 11th, 2023
 - [Nicola Rennie](https://nrennie.rbind.io/)'s tweet showing [live coding with webR](https://twitter.com/nrennie35/status/1654509541499850752). May 5th, 2023
 - [bob Rudis](https://rud.is/)' kind [praise](https://mastodon.social/@hrbrmstr/110130242863636605) of the extension. Apr 2nd, 2023
 
+
 # Blog posts
 
+- [Chi Zhang](https://andreaczhang.github.io/)'s post [Use WebR in your existing quarto website](https://andreaczhang.github.io/blog/technotes_20231001_qt_webr/). Oct 1st, 2023.
 - [Javier Orraca-Deatcu](https://www.javierorracadeatcu.com/)'s post titled [webR via Quarto Extensions](https://www.javierorracadeatcu.com/posts/2023-08-23-webr-via-quarto-extensions/). Aug 23rd, 2023.
 - [George Stagg](https://gws.phd/)'s mention of the extension in his [webR 0.2.0 announcement](https://www.tidyverse.org/blog/2023/08/webr-0-2-0/). Aug 8th, 2023.
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s use to create a [portal for Tidy Tuesday](https://tidytuesday.weecology.org/). May 2nd, 2023
 - [Matt Dray](https://www.matt-dray.com/)'s post on [Playgrounds with WebR and Quarto](https://www.rostrum.blog/posts/2023-03-16-webr-quarto/). Mar 16th, 2023
   - [A Parsing Playground for R Code](https://webr-parse-test.netlify.app/) on Netlify and the [repository powering it](https://github.com/matt-dray/webr-parse-test).
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s post on [Playgrounds with WebR and Quarto](https://jabberwocky.weecology.org/2023/03/13/a-brief-introduction-to-using-webr-and-quarto-for-client-side-interactive-lesson-material/). Mar 13th, 2023.
-  - [A Parsing Playground for R Code](https://webr-parse-test.netlify.app/) on Netlify and the [repository powering it](https://github.com/matt-dray/webr-parse-test).
 
 # Press
 
