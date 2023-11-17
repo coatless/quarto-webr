@@ -1,6 +1,8 @@
 ---
 title: "quarto-webr Demo RevealJS Document"
 format: revealjs
+webr:
+  packages: ['ggplot2']
 filters:
 - webr
 ---
@@ -25,10 +27,17 @@ fit = lm(mpg ~ wt, data = mtcars)
 summary(fit)
 ```
 
-## Graphing with webR
+## Base R Graphing with webR
 
 ```{webr-r}
 plot(pressure)
+```
+
+## ggplot2 in webR
+
+```{webr-r}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
 ```
 
 ## Help Documentation
