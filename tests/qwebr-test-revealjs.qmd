@@ -41,3 +41,12 @@ message("Hello World!")
 ```
 
 Sample text after
+
+## Scrollable Class Enabled
+
+```{webr-r}
+2 + 3
+```
+
+The default webR block should not make the slide too wide 
+(no scrollbar at the bottom).
