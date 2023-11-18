@@ -17,9 +17,6 @@
   const editorDiv = document.getElementById("qwebr-editor-{{WEBRCOUNTER}}");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-{{WEBRCOUNTER}}");
 
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
