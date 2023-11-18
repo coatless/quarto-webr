@@ -14,7 +14,7 @@ format:
 
 ## Bugfixes
 
-- Fix text added after code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102))
+- Fix text added after code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
 
 ## Documentation 
 
