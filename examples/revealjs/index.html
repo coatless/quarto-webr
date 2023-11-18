@@ -407,6 +407,10 @@
       color: #db4133;
     }
 
+    .qwebr-editor {
+      border: 1px solid #EEEEEE;
+    }
+
     .qwebr-button-run {
       background-color: #EEEEEE;
       border-bottom-left-radius: 0;
@@ -447,7 +451,6 @@
 
     /* Reset the style of the interactive area */
     .reveal div.qwebr-interactive-area {
-      width: 100%;
       display: block;
       box-shadow: none;
       max-width: 100%;
@@ -456,9 +459,9 @@
       padding: 0;
     } 
 
-    /* Pad the right side by 10 px to avoid rubbing the border */
-    .reveal div.qwebr-output-code-area pre {
-      padding: 0px 0px 0px 10px;
+    /* Provide space to entries */
+    .reveal div.qwebr-output-code-area pre div {
+      margin: 1px 2px 1px 10px;
     }
 
     /* Collapse the inside code tags to avoid extra space between line outputs */
@@ -734,9 +737,6 @@
   const outputCodeDiv = document.getElementById("qwebr-output-code-area-1");
   const editorDiv = document.getElementById("qwebr-editor-1");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-1");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
 
   // Load the Monaco Editor and create an instance
   let editor;
@@ -1021,9 +1021,6 @@ summary(fit)`,
   const editorDiv = document.getElementById("qwebr-editor-2");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-2");
 
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1304,9 +1301,6 @@ summary(fit)`,
   const outputCodeDiv = document.getElementById("qwebr-output-code-area-3");
   const editorDiv = document.getElementById("qwebr-editor-3");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-3");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
 
   // Load the Monaco Editor and create an instance
   let editor;
@@ -1590,9 +1584,6 @@ summary(fit)`,
   const editorDiv = document.getElementById("qwebr-editor-4");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-4");
 
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
-
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1873,9 +1864,6 @@ summary(fit)`,
   const outputCodeDiv = document.getElementById("qwebr-output-code-area-5");
   const editorDiv = document.getElementById("qwebr-editor-5");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-5");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
 
   // Load the Monaco Editor and create an instance
   let editor;
@@ -2172,9 +2160,6 @@ stop("I'm sorry Dave, I'm afraid I can't do that")`,
   const outputCodeDiv = document.getElementById("qwebr-output-code-area-6");
   const editorDiv = document.getElementById("qwebr-editor-6");
   const outputGraphDiv = document.getElementById("qwebr-output-graph-area-6");
-
-  // Add a light grey outline around the code editor
-  editorDiv.style.border = "1px solid #eee";
 
   // Load the Monaco Editor and create an instance
   let editor;

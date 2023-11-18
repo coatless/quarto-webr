@@ -33,6 +33,17 @@
     ]
   },
   {
+    "objectID": "qwebr-test-revealjs.html#scrollable-class-enabled",
+    "href": "qwebr-test-revealjs.html#scrollable-class-enabled",
+    "title": "Test: webR in RevealJS",
+    "section": "Scrollable Class Enabled",
+    "text": "Scrollable Class Enabled\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nThe default webR block should not make the slide too wide (no scrollbar at the bottom).",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
+  },
+  {
     "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
     "title": "Test: Keyboard Shortcuts in Code cell",
