@@ -175,11 +175,17 @@ function readTemplateFile(template)
 
   -- Let's hopefully read the template file... 
 
-  -- Open the webr editor
+  -- Open the template file
   local file = io.open(path, "r")
 
   -- Check if null pointer before grabbing content
-  if not file then
+  if not file then        
+    error("\nWe were unable to read the template file `" .. template .. "` from the extension directory.\n\n" ..
+          "Double check that the extension is fully available by comparing the \n" ..
+          "`_extensions/coatless/webr` directory with the main repository:\n" ..
+          "https://github.com/coatless/quarto-webr/tree/main/_extensions/webr\n\n" ..
+          "You may need to modify `.gitignore` to allow the extension files using:\n" ..
+          "!_extensions/*/*/*\n")
     return nil
   end
 

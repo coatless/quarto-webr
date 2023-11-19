@@ -20,6 +20,10 @@ format:
 
 - Minor documentation tweaks.
 
+## Deployment
+
+- Added an instructive error message regarding whether template files are missing. ([#107](https://github.com/coatless/quarto-webr/issues/107))
+
 # 0.3.9: Zoom-Zoom (11-16-2023)
 
 ## Breaking changes
