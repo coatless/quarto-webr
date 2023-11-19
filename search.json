@@ -605,7 +605,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Fix text added after code cell in RevealJS appearing off the page (#102, #106)\n\n\n\n\n\nMinor documentation tweaks.",
+    "text": "Fix text added after code cell in RevealJS appearing off the page (#102, #106)\n\n\n\n\n\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -628,6 +628,17 @@
     "title": "Release Notes",
     "section": "",
     "text": "Minor documentation tweaks.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#deployment",
+    "href": "qwebr-release-notes.html#deployment",
+    "title": "Release Notes",
+    "section": "",
+    "text": "Added an instructive error message regarding whether template files are missing. (#107)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -711,8 +722,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment",
-    "href": "qwebr-release-notes.html#deployment",
+    "objectID": "qwebr-release-notes.html#deployment-1",
+    "href": "qwebr-release-notes.html#deployment-1",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdded a tests/ directory that contains Quarto documents used across multiple browsers before triggering a point release. (#76)\nAdded the open-in-html-browser extension to devcontainer for better previewing options of HTML results.\nGitHub codespaces now automatically open the README example when the devcontainer is launched.",
@@ -755,8 +766,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-1",
-    "href": "qwebr-release-notes.html#deployment-1",
+    "objectID": "qwebr-release-notes.html#deployment-2",
+    "href": "qwebr-release-notes.html#deployment-2",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nSwitched from Quarto’s publishing action to individually rendering projects, merging output, and, then, publishing. (#73)\n\nBy using a custom publish action, we can retain a single repository with nested quarto projects (e.g. A website project that also contains a book.)",
@@ -799,8 +810,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-2",
-    "href": "qwebr-release-notes.html#deployment-2",
+    "objectID": "qwebr-release-notes.html#deployment-3",
+    "href": "qwebr-release-notes.html#deployment-3",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdd new issue templates for questions and examples.\nImproved GitHub repo issue template formatting.",
@@ -843,8 +854,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-3",
-    "href": "qwebr-release-notes.html#deployment-3",
+    "objectID": "qwebr-release-notes.html#deployment-4",
+    "href": "qwebr-release-notes.html#deployment-4",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdded a Quarto action to render and publish the documentation website.\nAdded issue templates for feature requests and bug fixes.\nSymlink the _extension directory into docs to avoid needing to add the extension on each render.",
@@ -909,8 +920,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#deployment-4",
-    "href": "qwebr-release-notes.html#deployment-4",
+    "objectID": "qwebr-release-notes.html#deployment-5",
+    "href": "qwebr-release-notes.html#deployment-5",
     "title": "Release Notes",
     "section": "Deployment",
     "text": "Deployment\n\nAdded a GitHub actions website deployment workflow to generate sample pages.\nAdded a devcontainer.json for development on GitHub\nAdded a script to update the version of Quarto used inside of the devcontainer.json.",
