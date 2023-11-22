@@ -1,0 +1,15 @@
+---
+title: "Test: No Startup Status Present in HTML Documents"
+format: html
+engine: knitr
+webr: 
+  show-startup-message: false
+filters:
+  - webr
+---
+
+Ensure that the webR code cell initializes even if the webR status bar is disabled.
+
+```{webr-r}
+print("Hello hidden title world!")
+```
