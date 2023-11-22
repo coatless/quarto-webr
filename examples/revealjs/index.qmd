@@ -2,7 +2,9 @@
 title: "quarto-webr Demo RevealJS Document"
 format: revealjs
 webr:
-  packages: ['ggplot2']
+  packages: ['ggplot2', 'dplyr'] # Install R packages on document open
+# autoload-packages: false       # Disable automatic loading of packages
+# show-startup-message: false    # Disable displaying status of webR initialization
 filters:
 - webr
 ---

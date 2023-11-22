@@ -20,7 +20,18 @@ On this page, we delve into the world of web design to enhance the visual aesthe
 
 ## CSS Class and ID Identifiers
 
-To effectively style web-based documents created with the extension, you'll need to understand the unique `id` and `class` attributes associated with different content areas. There are two primary context types where content is displayed to users:
+To effectively style web-based documents created with the extension, you'll need to understand the unique `id` and `class` attributes associated with different content areas. There are two key areas to every Quarto document that uses the `quarto-webr` extension: header and code cells. The header is where status and debug information can be found whereas the code cell portion is where R code is actively run using webR.
+
+Let's turn our attention to the document's header. By default, the webR initialization state is displayed in the header. This can be turned off by setting the [`show-startup-message: false` meta option.](qwebr-meta-options.qmd). 
+
+- **Status Area**: This represents the area we dynamic add to the document using JavaScript and stores the **Status Title** and **Status Message**
+  - `id`: `#qwebr-status-message-area`
+- **Status Title**: This element contains the header of the status text.
+  - `id`: `#qwebr-status-message-title`
+- **Status Message**: This element is updated with the document status updates.
+  - `id`: `#qwebr-status-message-body`
+
+With this in mind, we next focus on improving how content is being displayed through **code cells**. There are two primary context types where code content is displayed to users:
 
 - **Interactive Area**: This area encompasses the **Code Editor**, **Code Output**, and the **Graph Output Area** under the `interactive` context.
    - `id`: `#qwebr-interactive-area-{{ID}}`

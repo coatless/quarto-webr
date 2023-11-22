@@ -3,9 +3,11 @@ title: "WebR-enabled code cell"
 format: html
 engine: knitr
 #webr:
-#  show-startup-message: false      # Display status of webR initialization
-#  show-header-message: false      # Check to see if COOP&COEP headers are set for speed.
+#  show-startup-message: false    # Disable display of webR initialization state
+#  show-header-message: true      # Display whether COOP&COEP headers are set for speed.
 #  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
+#  autoload-packages: false       # Disable automatic library calls on R packages specified in packages.
+#  channel-type: 'post-message'   # Specify a specific communication channel type.
 #  home-dir: "/home/rstudio"      # Customize where the working directory is
 #  base-url: ''                   # Base URL used for downloading R WebAssembly binaries
 #  service-worker-url: ''         # URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel.

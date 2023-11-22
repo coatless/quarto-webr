@@ -1,0 +1,19 @@
+---
+title: "Test: No Startup Status Present in RevealJS Presentations"
+subtitle: "Examining State"
+authors: "Presentation Lead"
+format: revealjs
+engine: knitr
+webr: 
+  show-startup-message: false
+filters:
+  - webr
+---
+
+## webR in RevealJS 
+
+Ensure that the webR code cell initializes even if the webR status bar is disabled.
+
+```{webr-r}
+print("Hello hidden title world!")
+```

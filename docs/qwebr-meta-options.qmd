@@ -24,12 +24,12 @@ To fine-tune webR to the specific needs of a document, place inside your documen
 
 ```yaml
 ---
-title: WebR in Quarto HTML Documents
+title: webR in Quarto HTML Documents
 format: html
 engine: knitr
 webr: 
-  show-startup-message: false
-  packages: ['ggplot2', 'dplyr']
+  show-startup-message: false    # Disable displaying status of webR initialization
+  packages: ['ggplot2', 'dplyr'] # Install R packages on document open
 filters:
   - webr
 ---
@@ -49,7 +49,8 @@ book:
 
 # Set default options for every bookpage that may or may not include webR.
 webr: 
-  show-startup-message: false     # Display status of webR initialization
+  show-startup-message: false    # Disable displaying status of webR initialization
+  packages: ['ggplot2', 'dplyr'] # Install R packages on document open
 
 # Attach webR extension for the project
 filters:
