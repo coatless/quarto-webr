@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr - Test: Keyboard Shortcuts in Code cell</title>
+<title>Test Suite for quarto-webr - Test: No Startup Status Present in HTML Documents</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
   var autoloadRPackages = true;
 
   // Display a startup message?
-  var showStartupMessage = true;
+  var showStartupMessage = false;
   var showHeaderMessage = false;
   if (showStartupMessage) {
 
@@ -373,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-interactive-with-keyboard-shortcut.html">Test: Keyboard Shortcuts in Code cell</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-status-header-suppressed-html copy.html">Test: No Startup Status Present in HTML Documents</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -434,7 +434,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Keyboard Shortcuts in Code cell</span></a>
   </div>
 </li>
@@ -482,7 +482,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-status-header-suppressed-html copy.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-test-status-header-suppressed-html copy.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: No Startup Status Present in HTML Documents</span></a>
   </div>
 </li>
@@ -513,9 +513,9 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-interactive-with-keyboard-shortcut.html">Test: Keyboard Shortcuts in Code cell</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-help-documentation.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-status-header-suppressed-html copy.html">Test: No Startup Status Present in HTML Documents</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Test: Keyboard Shortcuts in Code cell</h1>
+<h1 class="title">Test: No Startup Status Present in HTML Documents</h1>
 </div>
 
 
@@ -532,7 +532,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a webr-enabled code cell in a Quarto HTML document.</p>
+<p>Ensure that the webR code cell initializes even if the webR status bar is disabled.</p>
 <div id="qwebr-interactive-area-1" class="qwebr-interactive-area">
   <button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
     webR...</button>
@@ -556,9 +556,7 @@ ul.task-list li input[type="checkbox"] {
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `-3 + 5
-
-print("Hello quarto-webr World!")`,
+      value: `print("Hello hidden title world!")`,
       language: 'r',
       theme: 'vs-light',
       automaticLayout: true,           // TODO: Could be problematic for slide decks
@@ -813,14 +811,6 @@ print("Hello quarto-webr World!")`,
     executeCode(editor.getValue());
   };
 </script>
-<ul>
-<li>Run selected code using either:
-<ul>
-<li>macOS: <kbd>⌘</kbd> + <kbd>↩︎/Return</kbd></li>
-<li>Windows/Linux: <kbd>Ctrl</kbd> + <kbd>↩︎/Enter</kbd></li>
-</ul></li>
-<li>Run the entire code by clicking the “Run code” button or pressing <kbd>Shift</kbd>+<kbd>↩︎</kbd>.</li>
-</ul>
 
 
 

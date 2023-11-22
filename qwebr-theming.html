@@ -397,7 +397,23 @@ Note
 <p>On this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.</p>
 <section id="css-class-and-id-identifiers" class="level2">
 <h2 class="anchored" data-anchor-id="css-class-and-id-identifiers">CSS Class and ID Identifiers</h2>
-<p>To effectively style web-based documents created with the extension, you’ll need to understand the unique <code>id</code> and <code>class</code> attributes associated with different content areas. There are two primary context types where content is displayed to users:</p>
+<p>To effectively style web-based documents created with the extension, you’ll need to understand the unique <code>id</code> and <code>class</code> attributes associated with different content areas. There are two key areas to every Quarto document that uses the <code>quarto-webr</code> extension: header and code cells. The header is where status and debug information can be found whereas the code cell portion is where R code is actively run using webR.</p>
+<p>Let’s turn our attention to the document’s header. By default, the webR initialization state is displayed in the header. This can be turned off by setting the <a href="./qwebr-meta-options.html"><code>show-startup-message: false</code> meta option.</a>.</p>
+<ul>
+<li><strong>Status Area</strong>: This represents the area we dynamic add to the document using JavaScript and stores the <strong>Status Title</strong> and <strong>Status Message</strong>
+<ul>
+<li><code>id</code>: <code>#qwebr-status-message-area</code></li>
+</ul></li>
+<li><strong>Status Title</strong>: This element contains the header of the status text.
+<ul>
+<li><code>id</code>: <code>#qwebr-status-message-title</code></li>
+</ul></li>
+<li><strong>Status Message</strong>: This element is updated with the document status updates.
+<ul>
+<li><code>id</code>: <code>#qwebr-status-message-body</code></li>
+</ul></li>
+</ul>
+<p>With this in mind, we next focus on improving how content is being displayed through <strong>code cells</strong>. There are two primary context types where code content is displayed to users:</p>
 <ul>
 <li><strong>Interactive Area</strong>: This area encompasses the <strong>Code Editor</strong>, <strong>Code Output</strong>, and the <strong>Graph Output Area</strong> under the <code>interactive</code> context.
 <ul>

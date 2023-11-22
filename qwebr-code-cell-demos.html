@@ -245,20 +245,23 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
     // Create the first inner div element
     const firstInnerDiv = document.createElement("div");
+    firstInnerDiv.setAttribute("id", "qwebr-status-message-area");
 
     // Create the second inner div element for "WebR Status" heading and contents
     const secondInnerDiv = document.createElement("div");
+    secondInnerDiv.setAttribute("id", "qwebr-status-message-title");
     secondInnerDiv.classList.add("quarto-title-meta-heading");
     secondInnerDiv.innerText = "WebR Status";
 
     // Create another inner div for contents
     const secondInnerDivContents = document.createElement("div");
+    secondInnerDivContents.setAttribute("id", "qwebr-status-message-body");
     secondInnerDivContents.classList.add("quarto-title-meta-contents");
 
     // Describe the WebR state
     var startupMessageWebR = document.createElement("p");
     startupMessageWebR.innerText = "🟡 Loading...";
-    startupMessageWebR.setAttribute("id", "startup");
+    startupMessageWebR.setAttribute("id", "qwebr-status-message-text");
     // Add `aria-live` to auto-announce the startup status to screen readers
     startupMessageWebR.setAttribute("aria-live", "assertive");
 
@@ -269,7 +272,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     if (showHeaderMessage) {
       const crossOriginMessage = document.createElement("p");
       crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
-      crossOriginMessage.setAttribute("id", "coop-coep-header");
+      crossOriginMessage.setAttribute("id", "qwebr-coop-coep-header");
       secondInnerDivContents.appendChild(crossOriginMessage);
     }
 
@@ -287,7 +290,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       headerRevealJS.appendChild(firstInnerDiv);
     } else {
       // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
-      const monacoScript = document.getElementById("webr-monaco-editor-init");
+      const monacoScript = document.getElementById("qwebr-monaco-editor-init");
       const header = document.createElement("header");
       header.setAttribute("id", "title-block-header");
       header.appendChild(quartoTitleMeta);
@@ -645,7 +648,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
-<script type="module" id="webr-monaco-editor-init">
+<script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
