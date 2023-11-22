@@ -12,12 +12,18 @@ format:
 
 ## Features
 
+
+## Changes
+
+- Added new CSS IDs governing the webR initialization state. ([#110](https://github.com/coatless/quarto-webr/issues/110))
+
 ## Bugfixes
 
-- Fix text added after code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
+- Fixed display of text found after a code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
 
 ## Documentation 
 
+- Modified the RevealJS presentation YAML to include an option to disable the webR status message header ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Minor documentation tweaks.
 
 ## Deployment
