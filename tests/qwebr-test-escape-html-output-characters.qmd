@@ -1,0 +1,34 @@
+---
+title: "Test: Escape Output with HTML Entities"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Ensure HTML output is escaped.
+
+## Interactive
+
+```{webr-r}
+# This function converts a markdown link into HTML
+"[Posit](https://posit.co)" |> (\(.) {
+  text <- sub("\\].*", "", sub(".*\\[", "", .))
+  url <- sub("\\).*", "", sub(".*\\(", "", .))
+  
+  writeLines(noquote(paste0('<a href="', url, '" target = "_blank">', text, '</a>')))
+})()
+```
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+# This function converts a markdown link into HTML
+"[Posit](https://posit.co)" |> (\(.) {
+  text <- sub("\\].*", "", sub(".*\\[", "", .))
+  url <- sub("\\).*", "", sub(".*\\(", "", .))
+  
+  writeLines(noquote(paste0('<a href="', url, '" target = "_blank">', text, '</a>')))
+})()
+```

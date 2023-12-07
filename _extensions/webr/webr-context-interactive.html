@@ -188,7 +188,7 @@
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-{{WEBRCOUNTER}}-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-{{WEBRCOUNTER}}-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
