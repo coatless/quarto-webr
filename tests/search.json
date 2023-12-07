@@ -11,101 +11,113 @@
     ]
   },
   {
-    "objectID": "qwebr-test-output-classes.html",
-    "href": "qwebr-test-output-classes.html",
-    "title": "Test: CSS Output Classes",
+    "objectID": "qwebr-test-escape-html-output-characters.html",
+    "href": "qwebr-test-escape-html-output-characters.html",
+    "title": "Test: Escape Output with HTML Entities",
     "section": "",
-    "text": "Test output classes for standard output and standard error.",
+    "text": "Ensure HTML output is escaped.",
     "crumbs": [
       "Tests",
-      "Test: CSS Output Classes"
+      "Test: Escape Output with HTML Entities"
     ]
   },
   {
-    "objectID": "qwebr-test-output-classes.html#interactive",
-    "href": "qwebr-test-output-classes.html#interactive",
-    "title": "Test: CSS Output Classes",
+    "objectID": "qwebr-test-escape-html-output-characters.html#interactive",
+    "href": "qwebr-test-escape-html-output-characters.html#interactive",
+    "title": "Test: Escape Output with HTML Entities",
     "section": "Interactive",
     "text": "Interactive\n\n  🟡 Loading\n    webR...",
     "crumbs": [
       "Tests",
-      "Test: CSS Output Classes"
+      "Test: Escape Output with HTML Entities"
     ]
   },
   {
-    "objectID": "qwebr-test-output-classes.html#non-interactive",
-    "href": "qwebr-test-output-classes.html#non-interactive",
-    "title": "Test: CSS Output Classes",
+    "objectID": "qwebr-test-escape-html-output-characters.html#non-interactive",
+    "href": "qwebr-test-escape-html-output-characters.html#non-interactive",
+    "title": "Test: Escape Output with HTML Entities",
     "section": "Non-interactive",
     "text": "Non-interactive",
     "crumbs": [
       "Tests",
-      "Test: CSS Output Classes"
+      "Test: Escape Output with HTML Entities"
     ]
   },
   {
-    "objectID": "qwebr-test-revealjs.html#webr-in-revealjs",
-    "href": "qwebr-test-revealjs.html#webr-in-revealjs",
-    "title": "Test: webR in RevealJS",
-    "section": "webR in RevealJS",
-    "text": "webR in RevealJS\nThis is a webR-enabled code cell in a Quarto RevealJS document.\n\n  🟡 Loading\n    webR...",
-    "crumbs": [
-      "Tests",
-      "Test: webR in RevealJS"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-revealjs.html#keyboard-shortcuts",
-    "href": "qwebr-test-revealjs.html#keyboard-shortcuts",
-    "title": "Test: webR in RevealJS",
-    "section": "Keyboard Shortcuts",
-    "text": "Keyboard Shortcuts\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.\n\n\n  🟡 Loading\n    webR...",
-    "crumbs": [
-      "Tests",
-      "Test: webR in RevealJS"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
-    "href": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
-    "title": "Test: webR in RevealJS",
-    "section": "Text Before and After Code Cell",
-    "text": "Text Before and After Code Cell\nSample text before\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nSample text after",
-    "crumbs": [
-      "Tests",
-      "Test: webR in RevealJS"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-revealjs.html#scrollable-class-enabled",
-    "href": "qwebr-test-revealjs.html#scrollable-class-enabled",
-    "title": "Test: webR in RevealJS",
-    "section": "Scrollable Class Enabled",
-    "text": "Scrollable Class Enabled\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nThe default webR block should not make the slide too wide (no scrollbar at the bottom).",
-    "crumbs": [
-      "Tests",
-      "Test: webR in RevealJS"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "quarto-webr Test Website",
+    "objectID": "qwebr-test-packages-autoload.html",
+    "href": "qwebr-test-packages-autoload.html",
+    "title": "Test: Autoload Package",
     "section": "",
-    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\n  🟡 Loading\n    webR...",
+    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\n  🟡 Loading\n    webR...",
     "crumbs": [
-      "Home"
+      "Tests",
+      "Test: Autoload Package"
     ]
   },
   {
-    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "title": "Test: Keyboard Shortcuts in Code cell",
+    "objectID": "qwebr-test-packages-multi.html",
+    "href": "qwebr-test-packages-multi.html",
+    "title": "Test: Packages Key with Autoloading",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\n  🟡 Loading\n    webR...",
     "crumbs": [
       "Tests",
-      "Test: Keyboard Shortcuts in Code cell"
+      "Test: Packages Key with Autoloading"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html",
+    "href": "qwebr-test-help-documentation.html",
+    "title": "Test: Help Documentation",
+    "section": "",
+    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts.",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html#interactive",
+    "href": "qwebr-test-help-documentation.html#interactive",
+    "title": "Test: Help Documentation",
+    "section": "Interactive",
+    "text": "Interactive\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html#non-interactive",
+    "href": "qwebr-test-help-documentation.html#non-interactive",
+    "title": "Test: Help Documentation",
+    "section": "Non-interactive",
+    "text": "Non-interactive",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-status-header-suppressed-html copy.html",
+    "href": "qwebr-test-status-header-suppressed-html copy.html",
+    "title": "Test: No Startup Status Present in HTML Documents",
+    "section": "",
+    "text": "Ensure that the webR code cell initializes even if the webR status bar is disabled.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: No Startup Status Present in HTML Documents"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-service-worker.html",
+    "href": "qwebr-test-service-worker.html",
+    "title": "Test: Service Worker",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: Service Worker"
     ]
   },
   {
@@ -153,80 +165,101 @@
     ]
   },
   {
-    "objectID": "qwebr-test-service-worker.html",
-    "href": "qwebr-test-service-worker.html",
-    "title": "Test: Service Worker",
+    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "title": "Test: Keyboard Shortcuts in Code cell",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.\n\n  🟡 Loading\n    webR...",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
     "crumbs": [
       "Tests",
-      "Test: Service Worker"
+      "Test: Keyboard Shortcuts in Code cell"
     ]
   },
   {
-    "objectID": "qwebr-test-status-header-suppressed-html copy.html",
-    "href": "qwebr-test-status-header-suppressed-html copy.html",
-    "title": "Test: No Startup Status Present in HTML Documents",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quarto-webr Test Website",
     "section": "",
-    "text": "Ensure that the webR code cell initializes even if the webR status bar is disabled.\n\n  🟡 Loading\n    webR...",
+    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\n  🟡 Loading\n    webR...",
     "crumbs": [
-      "Tests",
-      "Test: No Startup Status Present in HTML Documents"
+      "Home"
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html",
-    "href": "qwebr-test-help-documentation.html",
-    "title": "Test: Help Documentation",
-    "section": "",
-    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts.",
+    "objectID": "qwebr-test-revealjs.html#webr-in-revealjs",
+    "href": "qwebr-test-revealjs.html#webr-in-revealjs",
+    "title": "Test: webR in RevealJS",
+    "section": "webR in RevealJS",
+    "text": "webR in RevealJS\nThis is a webR-enabled code cell in a Quarto RevealJS document.\n\n  🟡 Loading\n    webR...",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
+      "Test: webR in RevealJS"
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html#interactive",
-    "href": "qwebr-test-help-documentation.html#interactive",
-    "title": "Test: Help Documentation",
+    "objectID": "qwebr-test-revealjs.html#keyboard-shortcuts",
+    "href": "qwebr-test-revealjs.html#keyboard-shortcuts",
+    "title": "Test: webR in RevealJS",
+    "section": "Keyboard Shortcuts",
+    "text": "Keyboard Shortcuts\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.\n\n\n  🟡 Loading\n    webR...",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
+    "href": "qwebr-test-revealjs.html#text-before-and-after-code-cell",
+    "title": "Test: webR in RevealJS",
+    "section": "Text Before and After Code Cell",
+    "text": "Text Before and After Code Cell\nSample text before\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nSample text after",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-revealjs.html#scrollable-class-enabled",
+    "href": "qwebr-test-revealjs.html#scrollable-class-enabled",
+    "title": "Test: webR in RevealJS",
+    "section": "Scrollable Class Enabled",
+    "text": "Scrollable Class Enabled\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\nThe default webR block should not make the slide too wide (no scrollbar at the bottom).",
+    "crumbs": [
+      "Tests",
+      "Test: webR in RevealJS"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-classes.html",
+    "href": "qwebr-test-output-classes.html",
+    "title": "Test: CSS Output Classes",
+    "section": "",
+    "text": "Test output classes for standard output and standard error.",
+    "crumbs": [
+      "Tests",
+      "Test: CSS Output Classes"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-classes.html#interactive",
+    "href": "qwebr-test-output-classes.html#interactive",
+    "title": "Test: CSS Output Classes",
     "section": "Interactive",
     "text": "Interactive\n\n  🟡 Loading\n    webR...",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
+      "Test: CSS Output Classes"
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html#non-interactive",
-    "href": "qwebr-test-help-documentation.html#non-interactive",
-    "title": "Test: Help Documentation",
+    "objectID": "qwebr-test-output-classes.html#non-interactive",
+    "href": "qwebr-test-output-classes.html#non-interactive",
+    "title": "Test: CSS Output Classes",
     "section": "Non-interactive",
     "text": "Non-interactive",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-packages-multi.html",
-    "href": "qwebr-test-packages-multi.html",
-    "title": "Test: Packages Key with Autoloading",
-    "section": "",
-    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\n  🟡 Loading\n    webR...",
-    "crumbs": [
-      "Tests",
-      "Test: Packages Key with Autoloading"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-packages-autoload.html",
-    "href": "qwebr-test-packages-autoload.html",
-    "title": "Test: Autoload Package",
-    "section": "",
-    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\n  🟡 Loading\n    webR...",
-    "crumbs": [
-      "Tests",
-      "Test: Autoload Package"
+      "Test: CSS Output Classes"
     ]
   },
   {

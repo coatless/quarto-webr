@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.510">
+<meta name="generator" content="quarto-1.4.521">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -95,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -441,7 +442,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 22, 2023</p>
+      <p class="date-modified">December 7, 2023</p>
     </div>
   </div>
     
@@ -466,6 +467,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <section id="bugfixes" class="level2">
 <h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
 <ul>
+<li>Prevented HTML output being shown as HTML by replacing HTML characters like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, etc., with their corresponding HTML entities. (<a href="https://github.com/coatless/quarto-webr/issues/115">#115</a>, h/t <a href="https://github.com/gvelasq"><span class="citation" data-cites="gvelasq">@gvelasq</span></a>)</li>
 <li>Fixed display of text found after a code cell in RevealJS appearing off the page (<a href="https://github.com/coatless/quarto-webr/issues/102">#102</a>, <a href="https://github.com/coatless/quarto-webr/issues/106">#106</a>)</li>
 </ul>
 </section>

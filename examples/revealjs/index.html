@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.510">
+  <meta name="generator" content="quarto-1.4.521">
 
   <title>quarto-webr Demo RevealJS Document</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -678,6 +678,16 @@
       true
     );
 
+    // Global version of the Escape HTML function that converts HTML 
+    // characters to their HTML entities.
+    globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    };
   </script>
 </head>
 <body class="quarto-light">
@@ -914,7 +924,7 @@ summary(fit)`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-1-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-1-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -1195,7 +1205,7 @@ summary(fit)`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-2-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-2-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -1477,7 +1487,7 @@ summary(fit)`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-3-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-3-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -1758,7 +1768,7 @@ summary(fit)`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-4-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-4-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -2046,7 +2056,7 @@ stop("I'm sorry Dave, I'm afraid I can't do that")`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-5-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-5-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -2337,7 +2347,7 @@ stop("I'm sorry Dave, I'm afraid I can't do that")`,
         .filter(evt => evt.type === "stdout" || evt.type === "stderr")
         .map((evt, index) => {
           const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-6-result-${index + 1}" class="${className}">${evt.data}</code>`;
+          return `<code id="${className}-editor-6-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
         })
         .join("\n");
 

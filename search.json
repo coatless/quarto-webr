@@ -539,7 +539,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Added new CSS IDs governing the webR initialization state. (#110)\n\n\n\n\n\nFixed display of text found after a code cell in RevealJS appearing off the page (#102, #106)\n\n\n\n\n\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
+    "text": "Added new CSS IDs governing the webR initialization state. (#110)\n\n\n\n\n\nPrevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page (#102, #106)\n\n\n\n\n\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -561,7 +561,7 @@
     "href": "qwebr-release-notes.html#bugfixes",
     "title": "Release Notes",
     "section": "",
-    "text": "Fixed display of text found after a code cell in RevealJS appearing off the page (#102, #106)",
+    "text": "Prevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page (#102, #106)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
