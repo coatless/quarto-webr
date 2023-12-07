@@ -19,6 +19,7 @@ format:
 
 ## Bugfixes
 
+- Prevented HTML output being shown as HTML by replacing HTML characters like `<`, `>`, `&`, etc., with their corresponding HTML entities. ([#115](https://github.com/coatless/quarto-webr/issues/115), h/t [@gvelasq](https://github.com/gvelasq))
 - Fixed display of text found after a code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
 
 ## Documentation 
