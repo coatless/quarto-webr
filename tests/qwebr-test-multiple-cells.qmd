@@ -14,6 +14,7 @@ Ensure each webR cell outputs in its own area.
 1 + 1 
 ```
 
+Graph in separate code cell
 
 ```{webr-r}
 plot(pressure)
@@ -26,6 +27,7 @@ plot(pressure)
 1 + 1 
 ```
 
+Graph in separate code cell
 
 ```{webr-r}
 #| context: output
