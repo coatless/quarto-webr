@@ -88,13 +88,13 @@ globalThis.webR = new WebR({
 });
 
 // Initialization WebR
-await globalThis.webR.init();
+await webR.init();
 
 // Setup a shelter
-globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
+globalThis.webRCodeShelter = await new webR.Shelter();
 
 // Setup a pager to allow processing help documentation 
-await globalThis.webR.evalRVoid('webr::pager_install()'); 
+await webR.evalRVoid('webr::pager_install()'); 
 
 // Function to set the button text
 function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
