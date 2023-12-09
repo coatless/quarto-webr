@@ -1,0 +1,21 @@
+---
+title: "Test: Graphics Output"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+This webpage tests the interactive and output contexts for showing a graph
+
+## Interactive
+```{webr-r}
+#| context: interactive
+plot(pressure)
+```
+
+## Non-interactive
+```{webr-r}
+#| context: output
+plot(pressure)
+```

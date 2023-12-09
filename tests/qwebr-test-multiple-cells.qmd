@@ -1,0 +1,33 @@
+---
+title: "Test: Multiple webR cells"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Ensure each webR cell outputs in its own area.
+
+## Interactive
+
+```{webr-r}
+1 + 1 
+```
+
+
+```{webr-r}
+plot(pressure)
+```
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+1 + 1 
+```
+
+
+```{webr-r}
+#| context: output
+plot(pressure)
+```
