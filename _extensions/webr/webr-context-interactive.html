@@ -1,16 +1,17 @@
-<div id="qwebr-interactive-area-{{WEBRCOUNTER}}" class="qwebr-interactive-area">
-  <button class="btn btn-default qwebr-button-run" disabled type="button" id="qwebr-button-run-{{WEBRCOUNTER}}">🟡 Loading
-    webR...</button>
-  <div id="qwebr-console-area-{{WEBRCOUNTER}}" class="qwebr-console-area">
-    <div id="qwebr-editor-{{WEBRCOUNTER}}" class="qwebr-editor"></div>
-    <div id="qwebr-output-code-area-{{WEBRCOUNTER}}" class="qwebr-output-code-area" aria-live="assertive">
-      <pre style="visibility: hidden"></pre>
-    </div>
-  </div>
-  <div id="qwebr-output-graph-area-{{WEBRCOUNTER}}" class="qwebr-output-graph-area">
-  </div>
-</div>
+<div id="qwebr-insertion-location-{{WEBRCOUNTER}}"></div>
 <script type="module">
+// Retrieve the insertion point
+const currentDocumentLocation = document.getElementById("qwebr-insertion-location-{{WEBRCOUNTER}}");
+
+// Initalize an interactive element
+const initializedElement =   qwebrCreateInteractiveElement(
+    {{WEBRCOUNTER}}
+  );
+
+// Add the interactive element into the document scope
+currentDocumentLocation.appendChild(initializedElement);
+
+// Initialize a Monaco Editor Instance
 qwebrCreateMonacoEditorInstance(
   `{{WEBRCODE}}`, 
   {{WEBRCOUNTER}});

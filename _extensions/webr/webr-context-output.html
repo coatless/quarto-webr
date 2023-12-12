@@ -1,11 +1,16 @@
-<div id="qwebr-noninteractive-area-{{WEBRCOUNTER}}" class="qwebr-noninteractive-area">
-  <div id="qwebr-output-code-area-{{WEBRCOUNTER}}" class="qwebr-output-code-area" aria-live="assertive">
-    <pre style="visibility: hidden"></pre>
-  </div>
-  <div id="qwebr-output-graph-area-{{WEBRCOUNTER}}" class="qwebr-output-graph-area">
-  </div>
-</div>
-<script type="module">  
-  // Run the code in a non-interactive state
-  await qwebrExecuteCode(`{{WEBRCODE}}`, {{WEBRCOUNTER}}, EvalTypes.Output)
+<div id="qwebr-insertion-location-{{WEBRCOUNTER}}"></div>
+<script type="module">
+// Retrieve the insertion point
+const currentDocumentLocation = document.getElementById("qwebr-insertion-location-{{WEBRCOUNTER}}");
+
+// Initalize an interactive element
+const initializedElement = qwebrCreateNonInteractiveOutputElement(
+    {{WEBRCOUNTER}}
+  );
+
+// Add the interactive element into the document scope
+currentDocumentLocation.appendChild(initializedElement);
+
+// Run the code in a non-interactive state
+await qwebrExecuteCode(`{{WEBRCODE}}`, {{WEBRCOUNTER}}, EvalTypes.Output)
 </script>

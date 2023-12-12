@@ -390,8 +390,11 @@ function ensureWebRSetup()
   -- Insert the customized startup procedure
   includeTextInHTMLTag("in-header", initializedConfigurationWebR, "js")
 
-  -- Insert the extension styling for defined elements
+  -- Insert the extension computational engine that calls webR
   includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
+
+  -- Insert the extension element creation scripts
+  includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
 
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "monaco-editor-init.html")
