@@ -396,6 +396,9 @@ function ensureWebRSetup()
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "monaco-editor-init.html")
 
+  -- Insert the extension styling for defined elements
+  includeFileInHTMLTag("before-body", "qwebr-monaco-editor-element.js", "js")
+
   -- If the ChannelType requires service workers, register and copy them into the 
   -- output directory.
   if hasServiceWorkerFiles then 
