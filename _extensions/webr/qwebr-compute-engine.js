@@ -40,7 +40,10 @@ globalThis.qwebrParseTypePager = async function (msg) {
 } 
 
 // Function to run the code using webR and parse the output
-globalThis.qwebrComputeEngine = async function(codeToRun, elements, options) {
+globalThis.qwebrComputeEngine = async function(
+    codeToRun, 
+    elements, 
+    options) {
 
     // Call into the R compute engine that persists within the document scope.
     // To be prepared for all scenarios, the following happens: 
