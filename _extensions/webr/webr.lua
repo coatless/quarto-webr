@@ -216,7 +216,7 @@ end
 
 -- Obtain the initialization template file at webr-init.html
 function initializationTemplateFile()
-  return readTemplateFile("webr-init.html")
+  return readTemplateFile("qwebr-init.js")
 end
 
 -- Cache a copy of each public-facing templates to avoid multiple read/writes.
@@ -320,6 +320,50 @@ function initializationWebR()
   return initializedWebRConfiguration
 end
 
+function generateHTMLElement(tag)
+  -- Store a map containing opening and closing tabs
+  local tagMappings = {
+      js = { opening = "<script type=\"module\">", closing = "</script>" },
+      css = { opening = "<style type=\"text/css\">", closing = "</style>" }
+  }
+
+  -- Find the tag
+  local tagMapping = tagMappings[tag]
+
+  -- If present, extract tag and return
+  if tagMapping then
+      return tagMapping.opening, tagMapping.closing
+  else
+      quarto.log.error("Invalid tag specified")
+  end
+end
+
+-- Custom functions to include values into Quarto
+-- https://quarto.org/docs/extensions/lua-api.html#includes
+
+local function includeTextInHTMLTag(location, text, tag)
+
+  -- Obtain the HTML element opening and closing tag
+  local openingTag, closingTag = generateHTMLElement(tag)
+
+  -- Insert the file into the document using the correct opening and closing tags
+  quarto.doc.include_text(location, openingTag .. text .. closingTag)
+
+end
+
+local function includeFileInHTMLTag(location, file, tag)
+
+  -- Obtain the HTML element opening and closing tag
+  local openingTag, closingTag = generateHTMLElement(tag)
+
+  -- Retrieve the file contents
+  local fileContents = readTemplateFile(file)
+
+  -- Insert the file into the document using the correct opening and closing tags
+  quarto.doc.include_text(location, openingTag .. fileContents .. closingTag)
+
+end
+
 -- Setup WebR's pre-requisites once per document.
 function ensureWebRSetup()
   
@@ -332,13 +376,31 @@ function ensureWebRSetup()
   hasDoneWebRSetup = true
 
   local initializedConfigurationWebR = initializationWebR()
-  
-  -- Insert the web initialization
-  -- https://quarto.org/docs/extensions/lua-api.html#includes
-  quarto.doc.include_text("in-header", initializedConfigurationWebR)
+
+  -- Embed Support Files to Avoid Resource Registration Issues
+  -- Note: We're not able to use embed-resources due to the web assembly binary and the potential for additional service worker files.
+  quarto.doc.include_text("in-header", [[
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  ]])
+
+  -- Insert the extension styling for defined elements
+  includeFileInHTMLTag("in-header", "qwebr-styling.css", "css")
+
+  -- Insert the customized startup procedure
+  includeTextInHTMLTag("in-header", initializedConfigurationWebR, "js")
+
+  -- Insert the extension computational engine that calls webR
+  includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
+
+  -- Insert the extension element creation scripts
+  includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
 
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "monaco-editor-init.html")
+
+  -- Insert the extension styling for defined elements
+  includeFileInHTMLTag("before-body", "qwebr-monaco-editor-element.js", "js")
 
   -- If the ChannelType requires service workers, register and copy them into the 
   -- output directory.

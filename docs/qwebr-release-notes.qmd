@@ -10,8 +10,13 @@ format:
 
 # 0.4.0: ???? (??-??-????) [DEV]
 
+## Breaking changes
+
+- Internal JavaScript functions used by the extension have been significantly changed.
+
 ## Features
 
+- Optimized the underlying code handling insertion and execution of R code.  ([#118](https://github.com/coatless/quarto-webr/pulls/118))
 
 ## Changes
 

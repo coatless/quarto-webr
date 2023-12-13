@@ -1,4 +1,16 @@
+<div id="qwebr-insertion-location-{{WEBRCOUNTER}}"></div>
 <script type="module">
+// Retrieve the insertion point
+const currentDocumentLocation = document.getElementById("qwebr-insertion-location-{{WEBRCOUNTER}}");
+
+// Initalize an interactive element
+const initializedElement = qwebrCreateNonInteractiveSetupElement(
+    {{WEBRCOUNTER}}
+  );
+
+// Add the interactive element into the document scope
+currentDocumentLocation.appendChild(initializedElement);
+
 // Initialization WebR
 await globalThis.webR.init();
 
@@ -6,4 +18,5 @@ await globalThis.webR.init();
 await globalThis.webR.evalRVoid(`
 {{WEBRCODE}}
 `)
-</script>	
+</script>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
