@@ -17,6 +17,12 @@ For a deeper understanding of [webR](https://docs.r-wasm.org/webr/latest/), expl
 - [webR Documentation](https://docs.r-wasm.org/webr/latest/)
 - [webR Source Code](https://github.com/r-wasm/webr/)
 
+## Quick Start Video Guide
+
+Want to get started quickly? We recommend watching the following [YouTube video](https://youtu.be/DoRR2S5lLvk?t=5) if your new to Quarto and Quarto Extensions: 
+
+[![Creating your first webR-powered Quarto Document inside of RStudio](https://i3.ytimg.com/vi/DoRR2S5lLvk/maxresdefault.jpg)](https://youtu.be/DoRR2S5lLvk?t=5)
+
 ## Installation 
 
 To use this extension in a Quarto project, install it from within the project's working directory by typing into **Terminal**:
