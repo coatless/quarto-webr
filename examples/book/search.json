@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sample quarto-webr Book Project",
     "section": "",
-    "text": "1 Welcome\nWelcome to a demo Book that uses the quarto-webr extension to generate interactive code cells with Quarto and webR.\n\n  🟡 Loading\n    webR...",
+    "text": "1 Welcome\nWelcome to a demo Book that uses the quarto-webr extension to generate interactive code cells with Quarto and webR.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Quarto Webr Demo Book</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "example-page.html",
     "title": "2  Example page",
     "section": "",
-    "text": "On this page, we set two options directly in the Quarto document. The rest of the options are coming from the _quarto.yml project file. These options are considered “global”.\nThe local options that we enabled are to show the webR status bar and to pre-install the ggplot2 and dplyr packages. We create a hypothetical document that compares and constrasts Base R code with Tidyverse code.\n\n3 Sorting\nConsider the need to find the highest or lowest values. In this case, we’re seeking to sort or modify the order of the data.\n\nBase Rtidyverse\n\n\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n\n\n4 Summarize\nNext, let’s take a look at how summarization differs between Base R and the Tidyverse\n\nBase Rtidyverse\n\n\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n\n\n5 Graphing\nNext, let’s take a look at how summarization differs between Base R and the Tidyverse\n\nBase Rtidyverse\n\n\n\n  🟡 Loading\n    webR...\n  \n    \n    \n      \n    \n  \n  \n  \n\n\n\n\n\n  🟡 Loading\n    webR...",
+    "text": "On this page, we set two options directly in the Quarto document. The rest of the options are coming from the _quarto.yml project file. These options are considered “global”.\nThe local options that we enabled are to show the webR status bar and to pre-install the ggplot2 and dplyr packages. We create a hypothetical document that compares and constrasts Base R code with Tidyverse code.\n\n3 Sorting\nConsider the need to find the highest or lowest values. In this case, we’re seeking to sort or modify the order of the data.\n\nBase Rtidyverse\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n4 Summarize\nNext, let’s take a look at how summarization differs between Base R and the Tidyverse\n\nBase Rtidyverse\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n5 Graphing\nNext, let’s take a look at how summarization differs between Base R and the Tidyverse\n\nBase Rtidyverse\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Exploring R",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Example page</span>"

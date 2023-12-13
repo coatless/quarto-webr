@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr - Test: Service Worker</title>
+<title>Test Suite for quarto-webr - Test: Graphics Output</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -260,7 +260,7 @@ globalThis.webR = new WebR({
   "baseURL": "https://webr.r-wasm.org/v0.2.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
-  "channelType": ChannelType.ServiceWorker
+  "channelType": ChannelType.Automatic
 });
 
 // Initialization WebR
@@ -706,7 +706,7 @@ globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-service-worker.html">Test: Service Worker</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-output-graph.html">Test: Graphics Output</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -797,7 +797,7 @@ globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-output-graph.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-test-output-graph.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: Graphics Output</span></a>
   </div>
 </li>
@@ -821,7 +821,7 @@ globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
   </div>
 </li>
@@ -996,9 +996,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (
 
 }</script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-service-worker.html">Test: Service Worker</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-output-graph.html">Test: Graphics Output</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Test: Service Worker</h1>
+<h1 class="title">Test: Graphics Output</h1>
 </div>
 
 
@@ -1015,7 +1015,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (
 </header>
 
 
-<p>This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.</p>
+<p>This webpage tests the interactive and output contexts for showing a graph</p>
+<section id="interactive" class="level2">
+<h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
 <div id="qwebr-insertion-location-1"></div>
 <script type="module">
 // Retrieve the insertion point
@@ -1031,14 +1033,34 @@ currentDocumentLocation.appendChild(initializedElement);
 
 // Initialize a Monaco Editor Instance
 qwebrCreateMonacoEditorInstance(
-  `-3 + 5
-
-print("Hello service worker model!")`, 
+  `plot(pressure)`, 
   1);
+</script>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="non-interactive" class="level2">
+<h2 class="anchored" data-anchor-id="non-interactive">Non-interactive</h2>
+<div id="qwebr-insertion-location-2"></div>
+<script type="module">
+// Retrieve the insertion point
+const currentDocumentLocation = document.getElementById("qwebr-insertion-location-2");
+
+// Initalize an interactive element
+const initializedElement = qwebrCreateNonInteractiveOutputElement(
+    2
+  );
+
+// Add the interactive element into the document scope
+currentDocumentLocation.appendChild(initializedElement);
+
+// Run the code in a non-interactive state
+await qwebrExecuteCode(`plot(pressure)`, 2, EvalTypes.Output)
 </script>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

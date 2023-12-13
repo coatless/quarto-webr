@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.521">
+<meta name="generator" content="quarto-1.4.526">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -66,311 +66,633 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<style>
-  .monaco-editor pre {
-    background-color: unset !important;
-  }
-
-  .qwebr-icon-status-spinner {
-    color: #7894c4;
-  }
-
-  .qwebr-icon-run-code {
-    color: #0d9c29
-  }
-
-  .qwebr-output-code-stdout {
-    color: #111;
-  }
-
-  .qwebr-output-code-stderr {
-    color: #db4133;
-  }
-
-  .qwebr-editor {
-    border: 1px solid #EEEEEE;
-  }
-
-  .qwebr-button-run {
-    background-color: #EEEEEE;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0; /* Extra styling for consistency */
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    -webkit-text-decoration: none;
-    -moz-text-decoration: none;
-    -ms-text-decoration: none;
-    -o-text-decoration: none;
-    /* vertical-align: middle; */ /* Prevents a space from appearing between the code cell and button */
-    -webkit-user-select: none;
-    border-color: #dee2e6;
-    border: 1px solid rgba(0,0,0,0);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-top-right-radius: 0.25rem;
-    border-top-left-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }
-
-  .qwebr-button-run:hover {
-    color: #000;
-    background-color: #e3e6ea;
-    border-color: #e1e5e9;
-  }
-
-  .qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
-    pointer-events: none;
-    opacity: .65
-  }
-
-  /* Custom styling for RevealJS Presentations*/
-
-  /* Reset the style of the interactive area */
-  .reveal div.qwebr-interactive-area {
-    display: block;
-    box-shadow: none;
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0;
-    padding: 0;
-  } 
-
-  /* Provide space to entries */
-  .reveal div.qwebr-output-code-area pre div {
-    margin: 1px 2px 1px 10px;
-  }
-
-  /* Collapse the inside code tags to avoid extra space between line outputs */
-  .reveal pre div code.qwebr-output-code-stdout, .reveal pre div code.qwebr-output-code-stderr {
-    padding: 0;
-    display: contents;
-  }
-
-  .reveal pre div code.qwebr-output-code-stdout {
-    color: #111;
-  }
-
-  .reveal pre div code.qwebr-output-code-stderr {
-    color: #db4133;
-  }
-
-
-  /* Create a border around console and output (does not effect graphs) */
-  .reveal div.qwebr-console-area {
-    border: 1px solid #EEEEEE;
-    box-shadow: 2px 2px 10px #EEEEEE;
-  }
-
-  /* Cap output height and allow text to scroll */
-  /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
-  .reveal div.qwebr-output-code-area pre {
-    max-height: 400px;
-    overflow: scroll;
-  }
-</style>
-
-<script type="module">
-
-  // Start a timer
-  const initializeWebRTimerStart = performance.now();
-
-  // Determine if we need to install R packages
-  var installRPackagesList = [''];
-  // Check to see if we have an empty array, if we do set to skip the installation.
-  var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
-  var autoloadRPackages = true;
-
-  // Display a startup message?
-  var showStartupMessage = false;
-  var showHeaderMessage = false;
-  if (showStartupMessage) {
-
-    // Get references to header elements
-    const headerHTML = document.getElementById("title-block-header");
-    const headerRevealJS = document.getElementById("title-slide");
-
-    // Create the outermost div element for metadata
-    const quartoTitleMeta = document.createElement("div");
-    quartoTitleMeta.classList.add("quarto-title-meta");
-
-    // Create the first inner div element
-    const firstInnerDiv = document.createElement("div");
-    firstInnerDiv.setAttribute("id", "qwebr-status-message-area");
-
-    // Create the second inner div element for "WebR Status" heading and contents
-    const secondInnerDiv = document.createElement("div");
-    secondInnerDiv.setAttribute("id", "qwebr-status-message-title");
-    secondInnerDiv.classList.add("quarto-title-meta-heading");
-    secondInnerDiv.innerText = "WebR Status";
-
-    // Create another inner div for contents
-    const secondInnerDivContents = document.createElement("div");
-    secondInnerDivContents.setAttribute("id", "qwebr-status-message-body");
-    secondInnerDivContents.classList.add("quarto-title-meta-contents");
-
-    // Describe the WebR state
-    var startupMessageWebR = document.createElement("p");
-    startupMessageWebR.innerText = "🟡 Loading...";
-    startupMessageWebR.setAttribute("id", "qwebr-status-message-text");
-    // Add `aria-live` to auto-announce the startup status to screen readers
-    startupMessageWebR.setAttribute("aria-live", "assertive");
-
-    // Append the startup message to the contents
-    secondInnerDivContents.appendChild(startupMessageWebR);
-
-    // Add a status indicator for COOP and COEP Headers if needed
-    if (showHeaderMessage) {
-      const crossOriginMessage = document.createElement("p");
-      crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
-      crossOriginMessage.setAttribute("id", "qwebr-coop-coep-header");
-      secondInnerDivContents.appendChild(crossOriginMessage);
-    }
-
-    // Combine the inner divs and contents
-    firstInnerDiv.appendChild(secondInnerDiv);
-    firstInnerDiv.appendChild(secondInnerDivContents);
-    quartoTitleMeta.appendChild(firstInnerDiv);
-
-    // Determine where to insert the quartoTitleMeta element
-    if (headerHTML) {
-      // Append to the existing "title-block-header" element
-      headerHTML.appendChild(quartoTitleMeta);
-    } else if (headerRevealJS) {
-      // If using RevealJS, add to the "title-slide" div
-      headerRevealJS.appendChild(firstInnerDiv);
-    } else {
-      // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
-      const monacoScript = document.getElementById("qwebr-monaco-editor-init");
-      const header = document.createElement("header");
-      header.setAttribute("id", "title-block-header");
-      header.appendChild(quartoTitleMeta);
-      monacoScript.after(header);
-    }
-  }
-
-  // Retrieve the webr.mjs
-  import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.2/webr.mjs";
-
-  // Populate WebR options with defaults or new values based on 
-  // webr meta
-  globalThis.webR = new WebR({
-    "baseURL": "https://webr.r-wasm.org/v0.2.2/",
-    "serviceWorkerUrl": "",
-    "homedir": "/home/web_user", 
-    "channelType": ChannelType.Automatic
-  });
-
-  // Initialization WebR
-  await globalThis.webR.init();
-
-  // Setup a shelter
-  globalThis.webRCodeShelter = await new globalThis.webR.Shelter();
-
-  // Setup a pager to allow processing help documentation 
-  await globalThis.webR.evalRVoid('webr::pager_install()'); 
-
-  // Function to set the button text
-  function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
-    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
-      btn.innerHTML = buttonText;
-      btn.disabled = !enableCodeButton;
-    });
-  }
-
-  // Function to update the status message
-  function qwebrUpdateStatusHeader(message) {
-    startupMessageWebR.innerHTML = `
-      <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
-      <span>${message}</span>`;
-  }
-
-  // Function to install a single package
-  async function qwebrInstallRPackage(packageName) {
-    await globalThis.webR.installPackages([packageName]);
-  }
-
-  // Function to load a single package
-  async function qwebrLoadRPackage(packageName) {
-    await globalThis.webR.evalRVoid(`library(${packageName});`);
-  }
-
-  // Generic function to process R packages
-  async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
-    // Switch between contexts
-    const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
-
-    // Modify button state
-    qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
-
-    // Iterate over packages
-    for (let i = 0; i < packages.length; i++) {
-      const activePackage = packages[i];
-      const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
-      
-      // Display the update
-      if (displayStatusMessageUpdate) {
-        qwebrUpdateStatusHeader(formattedMessage);
-      }
-
-      // Run package installation
-      if (processType === 'install') {
-        await qwebrInstallRPackage(activePackage);
-      } else {
-        await qwebrLoadRPackage(activePackage);
-      }
-    }
-
-    // Clean slate
-    if (processType === 'load') {
-      await globalThis.webR.flush();
-    }
-  }
-
-
-  // Check to see if any packages need to be installed
-  if (setupRPackages) {
-    // Obtain only a unique list of packages
-    const uniqueRPackageList = Array.from(new Set(installRPackagesList));
-
-    // Install R packages one at a time (either silently or with a status update)
-    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
-
-    if(autoloadRPackages) {
-      // Load R packages one at a time (either silently or with a status update)
-      await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
-    }
-  }
-
-  // Stop timer
-  const initializeWebRTimerEnd = performance.now();
-
-  // Release document status as ready
-  if (showStartupMessage) {
-    startupMessageWebR.innerText = "🟢 Ready!"
-  }
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
-  qwebrSetInteractiveButtonState(
-    `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
-    true
-  );
+<style type="text/css">.monaco-editor pre {
+  background-color: unset !important;
+}
 
-  // Global version of the Escape HTML function that converts HTML 
-  // characters to their HTML entities.
-  globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  };
+.qwebr-icon-status-spinner {
+  color: #7894c4;
+}
+
+.qwebr-icon-run-code {
+  color: #0d9c29
+}
+
+.qwebr-output-code-stdout {
+  color: #111;
+}
+
+.qwebr-output-code-stderr {
+  color: #db4133;
+}
+
+.qwebr-editor {
+  border: 1px solid #EEEEEE;
+}
+
+.qwebr-button-run {
+  background-color: #EEEEEE;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; /* Extra styling for consistency */
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  -webkit-text-decoration: none;
+  -moz-text-decoration: none;
+  -ms-text-decoration: none;
+  -o-text-decoration: none;
+  /* vertical-align: middle; */ /* Prevents a space from appearing between the code cell and button */
+  -webkit-user-select: none;
+  border-color: #dee2e6;
+  border: 1px solid rgba(0,0,0,0);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.qwebr-button-run:hover {
+  color: #000;
+  background-color: #e3e6ea;
+  border-color: #e1e5e9;
+}
+
+.qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
+  pointer-events: none;
+  opacity: .65
+}
+
+/* Custom styling for RevealJS Presentations*/
+
+/* Reset the style of the interactive area */
+.reveal div.qwebr-interactive-area {
+  display: block;
+  box-shadow: none;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+} 
+
+/* Provide space to entries */
+.reveal div.qwebr-output-code-area pre div {
+  margin: 1px 2px 1px 10px;
+}
+
+/* Collapse the inside code tags to avoid extra space between line outputs */
+.reveal pre div code.qwebr-output-code-stdout, .reveal pre div code.qwebr-output-code-stderr {
+  padding: 0;
+  display: contents;
+}
+
+.reveal pre div code.qwebr-output-code-stdout {
+  color: #111;
+}
+
+.reveal pre div code.qwebr-output-code-stderr {
+  color: #db4133;
+}
+
+
+/* Create a border around console and output (does not effect graphs) */
+.reveal div.qwebr-console-area {
+  border: 1px solid #EEEEEE;
+  box-shadow: 2px 2px 10px #EEEEEE;
+}
+
+/* Cap output height and allow text to scroll */
+/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
+.reveal div.qwebr-output-code-area pre {
+  max-height: 400px;
+  overflow: scroll;
+}
+</style>
+<script type="module">// Start a timer
+const initializeWebRTimerStart = performance.now();
+
+// Determine if we need to install R packages
+var installRPackagesList = [''];
+// Check to see if we have an empty array, if we do set to skip the installation.
+var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
+var autoloadRPackages = true;
+
+// Display a startup message?
+var showStartupMessage = false;
+var showHeaderMessage = false;
+if (showStartupMessage) {
+
+  // Get references to header elements
+  const headerHTML = document.getElementById("title-block-header");
+  const headerRevealJS = document.getElementById("title-slide");
+
+  // Create the outermost div element for metadata
+  const quartoTitleMeta = document.createElement("div");
+  quartoTitleMeta.classList.add("quarto-title-meta");
+
+  // Create the first inner div element
+  const firstInnerDiv = document.createElement("div");
+  firstInnerDiv.setAttribute("id", "qwebr-status-message-area");
+
+  // Create the second inner div element for "WebR Status" heading and contents
+  const secondInnerDiv = document.createElement("div");
+  secondInnerDiv.setAttribute("id", "qwebr-status-message-title");
+  secondInnerDiv.classList.add("quarto-title-meta-heading");
+  secondInnerDiv.innerText = "WebR Status";
+
+  // Create another inner div for contents
+  const secondInnerDivContents = document.createElement("div");
+  secondInnerDivContents.setAttribute("id", "qwebr-status-message-body");
+  secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+  // Describe the WebR state
+  var startupMessageWebR = document.createElement("p");
+  startupMessageWebR.innerText = "🟡 Loading...";
+  startupMessageWebR.setAttribute("id", "qwebr-status-message-text");
+  // Add `aria-live` to auto-announce the startup status to screen readers
+  startupMessageWebR.setAttribute("aria-live", "assertive");
+
+  // Append the startup message to the contents
+  secondInnerDivContents.appendChild(startupMessageWebR);
+
+  // Add a status indicator for COOP and COEP Headers if needed
+  if (showHeaderMessage) {
+    const crossOriginMessage = document.createElement("p");
+    crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
+    crossOriginMessage.setAttribute("id", "qwebr-coop-coep-header");
+    secondInnerDivContents.appendChild(crossOriginMessage);
+  }
+
+  // Combine the inner divs and contents
+  firstInnerDiv.appendChild(secondInnerDiv);
+  firstInnerDiv.appendChild(secondInnerDivContents);
+  quartoTitleMeta.appendChild(firstInnerDiv);
+
+  // Determine where to insert the quartoTitleMeta element
+  if (headerHTML) {
+    // Append to the existing "title-block-header" element
+    headerHTML.appendChild(quartoTitleMeta);
+  } else if (headerRevealJS) {
+    // If using RevealJS, add to the "title-slide" div
+    headerRevealJS.appendChild(firstInnerDiv);
+  } else {
+    // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
+    const monacoScript = document.getElementById("qwebr-monaco-editor-init");
+    const header = document.createElement("header");
+    header.setAttribute("id", "title-block-header");
+    header.appendChild(quartoTitleMeta);
+    monacoScript.after(header);
+  }
+}
+
+// Retrieve the webr.mjs
+import { WebR, ChannelType } from "https://webr.r-wasm.org/v0.2.2/webr.mjs";
+
+// Populate WebR options with defaults or new values based on 
+// webr meta
+globalThis.webR = new WebR({
+  "baseURL": "https://webr.r-wasm.org/v0.2.2/",
+  "serviceWorkerUrl": "",
+  "homedir": "/home/web_user", 
+  "channelType": ChannelType.Automatic
+});
+
+// Initialization WebR
+await webR.init();
+
+// Setup a shelter
+globalThis.webRCodeShelter = await new webR.Shelter();
+
+// Setup a pager to allow processing help documentation 
+await webR.evalRVoid('webr::pager_install()'); 
+
+// Function to set the button text
+function qwebrSetInteractiveButtonState(buttonText, enableCodeButton = true) {
+  document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+    btn.innerHTML = buttonText;
+    btn.disabled = !enableCodeButton;
+  });
+}
+
+// Function to update the status message
+function qwebrUpdateStatusHeader(message) {
+  startupMessageWebR.innerHTML = `
+    <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+    <span>${message}</span>`;
+}
+
+// Function to install a single package
+async function qwebrInstallRPackage(packageName) {
+  await globalThis.webR.installPackages([packageName]);
+}
+
+// Function to load a single package
+async function qwebrLoadRPackage(packageName) {
+  await globalThis.webR.evalRVoid(`library(${packageName});`);
+}
+
+// Generic function to process R packages
+async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
+  // Switch between contexts
+  const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
+
+  // Modify button state
+  qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
+
+  // Iterate over packages
+  for (let i = 0; i < packages.length; i++) {
+    const activePackage = packages[i];
+    const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
+    
+    // Display the update
+    if (displayStatusMessageUpdate) {
+      qwebrUpdateStatusHeader(formattedMessage);
+    }
+
+    // Run package installation
+    if (processType === 'install') {
+      await qwebrInstallRPackage(activePackage);
+    } else {
+      await qwebrLoadRPackage(activePackage);
+    }
+  }
+
+  // Clean slate
+  if (processType === 'load') {
+    await globalThis.webR.flush();
+  }
+}
+
+
+// Check to see if any packages need to be installed
+if (setupRPackages) {
+  // Obtain only a unique list of packages
+  const uniqueRPackageList = Array.from(new Set(installRPackagesList));
+
+  // Install R packages one at a time (either silently or with a status update)
+  await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', showStartupMessage);
+
+  if(autoloadRPackages) {
+    // Load R packages one at a time (either silently or with a status update)
+    await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', showStartupMessage);
+  }
+}
+
+// Stop timer
+const initializeWebRTimerEnd = performance.now();
+
+// Release document status as ready
+if (showStartupMessage) {
+  startupMessageWebR.innerText = "🟢 Ready!"
+}
+
+qwebrSetInteractiveButtonState(
+  `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+  true
+);
+
+// Global version of the Escape HTML function that converts HTML 
+// characters to their HTML entities.
+globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+};</script>
+<script type="module">// Supported Evaluation Types for Context
+globalThis.EvalTypes = Object.freeze({
+    Interactive: 'interactive',
+    Setup: 'setup',
+    Output: 'output',
+});
+
+// Function to verify a given JavaScript Object is empty
+globalThis.qwebrIsObjectEmpty = function (arr) {
+    return Object.keys(arr).length === 0;
+}
+
+// Function to parse the pager results
+globalThis.qwebrParseTypePager = async function (msg) { 
+
+    // Split out the event data
+    const { path, title, deleteFile } = msg.data; 
+
+    // Process the pager data by reading the information from disk
+    const paged_data = await webR.FS.readFile(path).then((data) => {
+        // Obtain the file content
+        let content = new TextDecoder().decode(data);
+
+        // Remove excessive backspace characters until none remain
+        while(content.match(/.[\b]/)){
+        content = content.replace(/.[\b]/g, '');
+        }
+
+        // Returned cleaned data
+        return content;
+    });
+
+    // Unlink file if needed
+    if (deleteFile) { 
+        await webR.FS.unlink(path); 
+    } 
+
+    // Return extracted data with spaces
+    return paged_data;
+} 
+
+// Function to run the code using webR and parse the output
+globalThis.qwebrComputeEngine = async function(
+    codeToRun, 
+    elements, 
+    options) {
+
+    // Call into the R compute engine that persists within the document scope.
+    // To be prepared for all scenarios, the following happens: 
+    // 1. We setup a canvas device to write to by making a namespace call into the {webr} package
+    // 2. We use values inside of the options array to set the figure size.
+    // 3. We capture the output stream information (STDOUT and STERR)
+    // 4. While parsing the results, we disable image creation.
+
+    // Create a canvas variable for graphics
+    let canvas = undefined;
+
+    // Create a pager variable for help/file contents
+    let pager = [];
+
+    // ---- 
+
+    // Initialize webR
+    await webR.init();
+
+    // Setup a webR canvas by making a namespace call into the {webr} package
+    await webR.evalRVoid(`webr::canvas(width=${options["fig-width"]}, height=${options["fig-height"]})`);
+
+    const result = await webRCodeShelter.captureR(codeToRun, {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false//,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    });
+
+    // -----
+
+    // Start attempting to parse the result data
+    try {
+
+        // Stop creating images
+        await webR.evalRVoid("dev.off()");
+
+        // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+        const out = result.output
+        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .map((evt, index) => {
+            const className = `qwebr-output-code-${evt.type}`;
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
+        })
+        .join("\n");
+
+
+        // Clean the state
+        // We're now able to process both graphics and pager events.
+        // As a result, we cannot maintain a true 1-to-1 output order 
+        // without individually feeding each line
+        const msgs = await webR.flush();
+
+        // Output each image event stored
+        msgs.forEach((msg) => {
+        // Determine if old canvas can be used or a new canvas is required.
+        if (msg.type === 'canvas'){
+            // Add image to the current canvas
+            if (msg.data.event === 'canvasImage') {
+                canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
+            } else if (msg.data.event === 'canvasNewPage') {
+                // Generate a new canvas element
+                canvas = document.createElement("canvas");
+                canvas.setAttribute("width", 2 * options["fig-width"]);
+                canvas.setAttribute("height", 2 * options["fig-height"]);
+                canvas.style.width = "700px";
+                canvas.style.display = "block";
+                canvas.style.margin = "auto";
+            }
+        } 
+        });
+
+        // Use `map` to process the filtered "pager" events asynchronously
+        const pager = await Promise.all(
+            msgs.filter(msg => msg.type === 'pager').map(
+                async (msg) => {
+                    return await qwebrParseTypePager(msg);
+                }
+            )
+        );
+
+        // Nullify the output area of content
+        elements.outputCodeDiv.innerHTML = "";
+        elements.outputGraphDiv.innerHTML = "";
+
+        // Design an output object for messages
+        const pre = document.createElement("pre");
+        if (/\S/.test(out)) {
+            // Display results as HTML elements to retain output styling
+            const div = document.createElement("div");
+            div.innerHTML = out;
+            pre.appendChild(div);
+        } else {
+            // If nothing is present, hide the element.
+            pre.style.visibility = "hidden";
+        }
+
+        elements.outputCodeDiv.appendChild(pre);
+
+        // Place the graphics on the canvas
+        if (canvas) {
+            elements.outputGraphDiv.appendChild(canvas);
+        }
+
+        // Display the pager data
+        if (pager) {
+        // Use the `pre` element to preserve whitespace.
+        pager.forEach((paged_data, index) => {
+            let pre_pager = document.createElement("pre");
+            pre_pager.innerText = paged_data;
+            pre_pager.classList.add("qwebr-output-code-pager");
+            pre_pager.setAttribute("id", `qwebr-output-code-pager-editor-${elements.id}-result-${index + 1}`);
+            elements.outputCodeDiv.appendChild(pre_pager);
+        });
+        }
+    } finally {
+        // Clean up the remaining code
+        webRCodeShelter.purge();
+    }
+}
+
+// Function to execute the code (accepts code as an argument)
+globalThis.qwebrExecuteCode = async function (
+    codeToRun,
+    id,
+    evalType = EvalTypes.Interactive,
+    options = {}) {
+
+    // If options are not passed, we fall back on the bare minimum to handle the computation
+    if (qwebrIsObjectEmpty(options)) {
+        options = { "fig-width": 504, "fig-height": 360 };
+    }
+
+    // Next, we access the compute areas values
+    const elements = {
+        runButton: document.getElementById(`qwebr-button-run-${id}`),
+        outputCodeDiv: document.getElementById(`qwebr-output-code-area-${id}`),
+        outputGraphDiv: document.getElementById(`qwebr-output-graph-area-${id}`),
+        id: id,
+    }
+
+    // Disallowing execution of other code cells
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+        btn.disabled = true;
+    });
+
+    if (evalType == EvalTypes.Interactive) {
+        // Emphasize the active code cell
+        elements.runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
+    }
+
+    // Evaluate the code and parse the output into the document
+    await qwebrComputeEngine(codeToRun, elements, options);
+
+    // Switch to allowing execution of code
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+        btn.disabled = false;
+    });
+
+    if (evalType == EvalTypes.Interactive) {
+        // Revert to the initial code cell state
+        elements.runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
+    }
+}
 </script>
+<script type="module">// Function that dispatches the creation request
+globalThis.qwebrCreateHTMLElement = function (insertElement,
+  qwebrCounter, 
+  evalType = EvalTypes.Interactive,
+  options = {}) {
+
+  // Figure out the routine to use to insert the element.
+  let qwebrElement;
+  switch ( evalType ) {
+    case EvalTypes.Interactive: 
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+    case EvalTypes.Output: 
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+    case EvalTypes.Setup: 
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+    default: 
+      qwebrElement = document.createElement('div');
+      qwebrElement.textContent = 'Error creating element';
+  }
+
+  // Insert the dynamically generated object at the document location.
+  insertElement.appendChild(qwebrElement);
+};
+
+// Function that setups the interactive element creation
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+
+  // Create main div element
+  var mainDiv = document.createElement('div');
+  mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
+  mainDiv.className = 'qwebr-interactive-area';
+
+  // Create button element
+  var button = document.createElement('button');
+  button.className = 'btn btn-default qwebr-button-run';
+  button.disabled = true;
+  button.type = 'button';
+  button.id = 'qwebr-button-run-' + qwebrCounter;
+  button.textContent = '🟡 Loading webR...';
+
+  // Create console area div
+  var consoleAreaDiv = document.createElement('div');
+  consoleAreaDiv.id = 'qwebr-console-area-' + qwebrCounter;
+  consoleAreaDiv.className = 'qwebr-console-area';
+
+  // Create editor div
+  var editorDiv = document.createElement('div');
+  editorDiv.id = 'qwebr-editor-' + qwebrCounter;
+  editorDiv.className = 'qwebr-editor';
+
+  // Create output code area div
+  var outputCodeAreaDiv = document.createElement('div');
+  outputCodeAreaDiv.id = 'qwebr-output-code-area-' + qwebrCounter;
+  outputCodeAreaDiv.className = 'qwebr-output-code-area';
+  outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+  // Create pre element inside output code area
+  var preElement = document.createElement('pre');
+  preElement.style.visibility = 'hidden';
+  outputCodeAreaDiv.appendChild(preElement);
+
+  // Create output graph area div
+  var outputGraphAreaDiv = document.createElement('div');
+  outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
+  outputGraphAreaDiv.className = 'qwebr-output-graph-area';
+
+  // Append all elements to the main div
+  mainDiv.appendChild(button);
+  consoleAreaDiv.appendChild(editorDiv);
+  consoleAreaDiv.appendChild(outputCodeAreaDiv);
+  mainDiv.appendChild(consoleAreaDiv);
+  mainDiv.appendChild(outputGraphAreaDiv);
+
+  return mainDiv;
+}
+
+// Function that adds output structure for non-interactive output
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+  // Create main div element
+  var mainDiv = document.createElement('div');
+  mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
+  mainDiv.className = 'qwebr-noninteractive-area';
+
+  // Create output code area div
+  var outputCodeAreaDiv = document.createElement('div');
+  outputCodeAreaDiv.id = 'qwebr-output-code-area-' + qwebrCounter;
+  outputCodeAreaDiv.className = 'qwebr-output-code-area';
+  outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+  // Create pre element inside output code area
+  var preElement = document.createElement('pre');
+  preElement.style.visibility = 'hidden';
+  outputCodeAreaDiv.appendChild(preElement);
+
+  // Create output graph area div
+  var outputGraphAreaDiv = document.createElement('div');
+  outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
+  outputGraphAreaDiv.className = 'qwebr-output-graph-area';
+
+  // Append all elements to the main div
+  mainDiv.appendChild(outputCodeAreaDiv);
+  mainDiv.appendChild(outputGraphAreaDiv);
+
+  return mainDiv;
+};
+
+// Function that adds a stub in the page to indicate a setup cell was used.
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+  // Create main div element
+  var mainDiv = document.createElement('div');
+  mainDiv.id = 'qwebr-noninteractive-setup-area-' + qwebrCounter;
+  mainDiv.className = 'qwebr-noninteractive-setup-area';
+
+  return mainDiv;
+}</script>
 
 
 </head>
@@ -463,8 +785,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-multiple-cells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Multiple webR cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-output-classes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: CSS Output Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-output-graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Graphics Output</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -529,62 +863,43 @@ ul.task-list li input[type="checkbox"] {
     }
   });
 </script>
+<script type="module">// Global dictionary to store Monaco Editor instances
+const qwebrEditorInstances = {};
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-status-header-suppressed-html copy.html">Test: No Startup Status Present in HTML Documents</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Test: No Startup Status Present in HTML Documents</h1>
-</div>
+// Function that builds and registers a Monaco Editor instance    
+globalThis.qwebrCreateMonacoEditorInstance = function (
+    initialCode, 
+    qwebrCounter) {
 
-
-
-<div class="quarto-title-meta">
-
-    
+  // Retrieve the previously created document elements
+  let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
+  let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
   
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Ensure that the webR code cell initializes even if the webR status bar is disabled.</p>
-<div id="qwebr-interactive-area-1" class="qwebr-interactive-area">
-  <button class="btn btn-default qwebr-button-run" disabled="" type="button" id="qwebr-button-run-1">🟡 Loading
-    webR...</button>
-  <div id="qwebr-console-area-1" class="qwebr-console-area">
-    <div id="qwebr-editor-1" class="qwebr-editor"></div>
-    <div id="qwebr-output-code-area-1" class="qwebr-output-code-area" aria-live="assertive">
-      <pre style="visibility: hidden"></pre>
-    </div>
-  </div>
-  <div id="qwebr-output-graph-area-1" class="qwebr-output-graph-area">
-  </div>
-</div>
-<script type="module">
-  // Retrieve webR code cell information
-  const runButton = document.getElementById("qwebr-button-run-1");
-  const outputCodeDiv = document.getElementById("qwebr-output-code-area-1");
-  const editorDiv = document.getElementById("qwebr-editor-1");
-  const outputGraphDiv = document.getElementById("qwebr-output-graph-area-1");
-
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(editorDiv, {
-      value: `print("Hello hidden title world!")`,
+      value: initialCode,
       language: 'r',
       theme: 'vs-light',
-      automaticLayout: true,           // TODO: Could be problematic for slide decks
+      automaticLayout: true,           // Works wonderfully with RevealJS
       scrollBeyondLastLine: false,
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',               // Bootstrap is 1 rem
+      fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
     });
+
+    // Store the official counter ID to be used in keyboard shortcuts
+    editor.__qwebrCounter = qwebrCounter;
+
+    // Store the official div container ID
+    editor.__qwebrEditorId = `qwebr-editor-${qwebrCounter}`;
+
+    // Store the initial code value
+    editor.__qwebrinitialCode = initialCode;
 
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
@@ -615,7 +930,7 @@ ul.task-list li input[type="checkbox"] {
       editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
 
         // Retrieve all text inside the editor
-        executeCode(editor.getValue());
+        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter);
       });
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
@@ -644,13 +959,14 @@ ul.task-list li input[type="checkbox"] {
           }
           
           // Run the entire line of code.
-          executeCode(currentLine);
+          qwebrExecuteCode(currentLine, editor.__qwebrCounter,
+            EvalTypes.Interactive);
 
           // Move cursor to new position
           editor.setPosition(newPosition);
         } else {
           // Code to run when Ctrl+Enter is pressed with selected code
-          executeCode(selectedText);
+          qwebrExecuteCode(selectedText, editor.__qwebrCounter, EvalTypes.Interactive);
         }
       });
     }
@@ -667,167 +983,58 @@ ul.task-list li input[type="checkbox"] {
 
     // Manually re-update height to account for the content we inserted into the call
     updateHeight();
+
+    // Store the editor instance in the global dictionary
+    qwebrEditorInstances[editor.__qwebrCounter] = editor;
+
   });
-
-  // Function to execute the code (accepts code as an argument)
-  async function executeCode(codeToRun) {
-
-    // Disallowing execution of other code cells
-    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
-      btn.disabled = true;
-    });
-
-    // Emphasize the active code cell
-    runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
-
-    // Create a pager variable for help/file contents
-    let pager = [];
-
-    // Process 
-    async function parseTypePager(msg) { 
-
-        // Split out the event data
-        const { path, title, deleteFile } = msg.data; 
-
-        // Process the pager data by reading the information from disk
-        const paged_data = await webR.FS.readFile(path).then((data) => {
-          // Obtain the file content
-          let content = new TextDecoder().decode(data);
-
-          // Remove excessive backspace characters until none remain
-          while(content.match(/.[\b]/)){
-            content = content.replace(/.[\b]/g, '');
-          }
-
-          // Returned cleaned data
-          return content;
-        });
-
-        // Unlink file if needed
-        if (deleteFile) { 
-          await webR.FS.unlink(path); 
-        } 
-
-        // Return extracted data with spaces
-        return paged_data;
-    } 
-
-    // Initialize webR
-    await webR.init();
-
-    // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid("webr::canvas(width=504, height=360)");
-
-    // Capture output data from evaluating the code
-    const result = await webRCodeShelter.captureR(codeToRun, {
-      withAutoprint: true,
-      captureStreams: true,
-      captureConditions: false//,
-      // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
-
-    // Start attempting to parse the result data
-    try {
-
-      // Stop creating images
-      await webR.evalRVoid("dev.off()");
-
-      // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
-      const out = result.output
-        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
-        .map((evt, index) => {
-          const className = `qwebr-output-code-${evt.type}`;
-          return `<code id="${className}-editor-1-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
-        })
-        .join("\n");
-
-
-      // Clean the state
-      const msgs = await webR.flush();
-
-      // Output each image event stored
-      msgs.forEach((msg) => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-          // Add image to the current canvas
-          if (msg.data.event === 'canvasImage') {
-            canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-          } else if (msg.data.event === 'canvasNewPage') {
-            // Generate a new canvas element
-            canvas = document.createElement("canvas");
-            canvas.setAttribute("width", 2 * 504);
-            canvas.setAttribute("height", 2 * 360);
-            canvas.style.width = "700px";
-            canvas.style.display = "block";
-            canvas.style.margin = "auto";
-          }
-        } 
-      });
-
-      // Use `map` to process the filtered "pager" events asynchronously
-      const pager = await Promise.all(
-        msgs.filter(msg => msg.type === 'pager').map(
-          async (msg) => {
-            return await parseTypePager(msg);
-          }
-        )
-      );
-
-      // Nullify the output area of content
-      outputCodeDiv.innerHTML = "";
-      outputGraphDiv.innerHTML = "";
-
-      // Design an output object for messages
-      const pre = document.createElement("pre");
-      if (/\S/.test(out)) {
-        // Display results as HTML elements to retain output styling
-        const div = document.createElement("div");
-        div.innerHTML = out;
-        pre.appendChild(div);
-      } else {
-        // If nothing is present, hide the element.
-        pre.style.visibility = "hidden";
-      }
-      outputCodeDiv.appendChild(pre);
-
-      // Place the graphics on the canvas
-      if (canvas) {
-        outputGraphDiv.appendChild(canvas);
-      }
-
-      // Display the pager data
-      if (pager) {
-        // Use the `pre` element to preserve whitespace.
-        pager.forEach((paged_data, index) => {
-          let pre_pager = document.createElement("pre");
-          pre_pager.innerText = paged_data;
-          pre_pager.classList.add("qwebr-output-code-pager");
-          pre_pager.setAttribute("id", "qwebr-output-code-pager-editor-1-result-" + (index + 1));
-          outputCodeDiv.appendChild(pre_pager);
-        });
-      }
-    } finally {
-      // Clean up the remaining code
-      webRCodeShelter.purge();
-    }
-
-    // Switch to allowing execution of code
-    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
-      btn.disabled = false;
-    });
-
-    // Revert to the initial code cell state
-    runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
-  }
 
   // Add a click event listener to the run button
   runButton.onclick = function () {
-    executeCode(editor.getValue());
+    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, EvalTypes.Interactive);
   };
+
+}</script>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-status-header-suppressed-html copy.html">Test: No Startup Status Present in HTML Documents</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Test: No Startup Status Present in HTML Documents</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Ensure that the webR code cell initializes even if the webR status bar is disabled.</p>
+<div id="qwebr-insertion-location-1"></div>
+<script type="module">
+// Retrieve the insertion point
+const currentDocumentLocation = document.getElementById("qwebr-insertion-location-1");
+
+// Initalize an interactive element
+const initializedElement =   qwebrCreateInteractiveElement(
+    1
+  );
+
+// Add the interactive element into the document scope
+currentDocumentLocation.appendChild(initializedElement);
+
+// Initialize a Monaco Editor Instance
+qwebrCreateMonacoEditorInstance(
+  `print("Hello hidden title world!")`, 
+  1);
 </script>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
 
