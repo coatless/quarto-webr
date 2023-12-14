@@ -517,8 +517,6 @@ function enableWebRCodeCell(el)
       -- https://yihui.org/knitr/options/
       local substitutions = {
         ["WEBRCOUNTER"] = counter, 
-        ["WIDTH"] = 504,
-        ["HEIGHT"] = 360,
         ["WEBRCODE"] = escapeControlSequences(el.text)
       }
       
