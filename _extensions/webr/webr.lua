@@ -46,9 +46,14 @@ local counter = 0
 ----
 --- Process initialization
 
--- Check if variable is present and not just the empty string
-function is_variable_empty(s)
+-- Check if variable missing or an empty string
+local function isVariableEmpty(s)
   return s == nil or s == ''
+end
+
+-- Check if variable is present
+local function isVariablePopulated(s)
+  return not isVariableEmpty(s)
 end
 
 -- Convert the communication channel meta option into a WebROptions.channelType option
@@ -90,7 +95,7 @@ function setWebRInitializationOptions(meta)
   local webr = meta.webr
 
   -- Does this exist? If not, just return meta as we'll just use the defaults.
-  if is_variable_empty(webr) then
+  if isVariableEmpty(webr) then
     return meta
   end
 
@@ -98,7 +103,7 @@ function setWebRInitializationOptions(meta)
   -- https://webr.r-wasm.org/[version]/webr.mjs
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
-  if not is_variable_empty(webr["base-url"]) then
+  if isVariablePopulated(webr["base-url"]) then
     baseUrl = pandoc.utils.stringify(webr["base-url"])
   end
 
@@ -106,7 +111,7 @@ function setWebRInitializationOptions(meta)
   -- Default: "ChannelType.Automatic"
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype
-  if not is_variable_empty(webr["channel-type"]) then
+  if isVariablePopulated(webr["channel-type"]) then
     channelType = convertMetaChannelTypeToWebROption(pandoc.utils.stringify(webr["channel-type"]))
     
     -- Starting from webR v0.2.2, service workers are only deployed when explicitly requested.
@@ -117,24 +122,24 @@ function setWebRInitializationOptions(meta)
   -- with the ServiceWorker communication channel mode.
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl
-  if not is_variable_empty(webr["service-worker-url"]) then
+  if isVariablePopulated(webr["service-worker-url"]) then
     serviceWorkerUrl = pandoc.utils.stringify(webr["service-worker-url"])
   end
 
   -- The WebAssembly user's home directory and initial working directory. Default: '/home/web_user'
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir
-  if not is_variable_empty(webr['home-dir']) then
+  if isVariablePopulated(webr['home-dir']) then
     homeDir = pandoc.utils.stringify(webr["home-dir"])
   end
 
   -- Display a startup message indicating the WebR state at the top of the document.
-  if not is_variable_empty(webr['show-startup-message']) then
+  if isVariablePopulated(webr['show-startup-message']) then
     showStartUpMessage = pandoc.utils.stringify(webr["show-startup-message"])
   end
 
   -- Display a startup message indicating the WebR state at the top of the document.
-  if not is_variable_empty(webr['show-header-message']) then
+  if isVariablePopulated(webr['show-header-message']) then
     showHeaderMessage = pandoc.utils.stringify(webr["show-header-message"])
     if showHeaderMessage == "true" then
       showStartUpMessage = "true"
@@ -143,7 +148,7 @@ function setWebRInitializationOptions(meta)
 
 
   -- Attempt to install different packages.
-  if not is_variable_empty(webr["packages"]) then
+  if isVariablePopulated(webr["packages"]) then
     -- Create a custom list
     local package_list = {}
 
@@ -154,7 +159,7 @@ function setWebRInitializationOptions(meta)
 
     installRPackagesList = table.concat(package_list, ", ")
 
-    if not is_variable_empty(webr['autoload-packages']) then
+    if isVariablePopulated(webr['autoload-packages']) then
       autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
     end
 
@@ -526,7 +531,7 @@ function enableWebRCodeCell(el)
       -- Decide the correct template
       -- Make sure we perform a copy of each template
       local copied_code_template = nil
-      if is_variable_empty(cell_context) or cell_context == "interactive" then
+      if isVariableEmpty(cell_context) or cell_context == "interactive" then
         copied_code_template = interactive_template
       elseif cell_context == "setup" then
         copied_code_template = setup_template
