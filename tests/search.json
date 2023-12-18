@@ -1,35 +1,13 @@
 [
   {
-    "objectID": "qwebr-test-multiple-cells.html",
-    "href": "qwebr-test-multiple-cells.html",
-    "title": "Test: Multiple webR cells",
+    "objectID": "qwebr-test-status-header-no-title.html",
+    "href": "qwebr-test-status-header-no-title.html",
+    "title": "Test Suite for quarto-webr",
     "section": "",
-    "text": "Ensure each webR cell outputs in its own area.",
+    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Multiple webR cells"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-multiple-cells.html#interactive",
-    "href": "qwebr-test-multiple-cells.html#interactive",
-    "title": "Test: Multiple webR cells",
-    "section": "Interactive",
-    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nGraph in separate code cell\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Multiple webR cells"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-multiple-cells.html#non-interactive",
-    "href": "qwebr-test-multiple-cells.html#non-interactive",
-    "title": "Test: Multiple webR cells",
-    "section": "Non-interactive",
-    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nGraph in separate code cell\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Multiple webR cells"
+      "Qwebr Test Status Header No Title"
     ]
   },
   {
@@ -44,36 +22,36 @@
     ]
   },
   {
-    "objectID": "qwebr-test-output-graph.html",
-    "href": "qwebr-test-output-graph.html",
-    "title": "Test: Graphics Output",
+    "objectID": "qwebr-test-output-classes.html",
+    "href": "qwebr-test-output-classes.html",
+    "title": "Test: CSS Output Classes",
     "section": "",
-    "text": "This webpage tests the interactive and output contexts for showing a graph",
+    "text": "Test output classes for standard output and standard error.",
     "crumbs": [
       "Tests",
-      "Test: Graphics Output"
+      "Test: CSS Output Classes"
     ]
   },
   {
-    "objectID": "qwebr-test-output-graph.html#interactive",
-    "href": "qwebr-test-output-graph.html#interactive",
-    "title": "Test: Graphics Output",
+    "objectID": "qwebr-test-output-classes.html#interactive",
+    "href": "qwebr-test-output-classes.html#interactive",
+    "title": "Test: CSS Output Classes",
     "section": "Interactive",
     "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Graphics Output"
+      "Test: CSS Output Classes"
     ]
   },
   {
-    "objectID": "qwebr-test-output-graph.html#non-interactive",
-    "href": "qwebr-test-output-graph.html#non-interactive",
-    "title": "Test: Graphics Output",
+    "objectID": "qwebr-test-output-classes.html#non-interactive",
+    "href": "qwebr-test-output-classes.html#non-interactive",
+    "title": "Test: CSS Output Classes",
     "section": "Non-interactive",
     "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Graphics Output"
+      "Test: CSS Output Classes"
     ]
   },
   {
@@ -121,39 +99,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-escape-html-output-characters.html",
-    "href": "qwebr-test-escape-html-output-characters.html",
-    "title": "Test: Escape Output with HTML Entities",
-    "section": "",
-    "text": "Ensure HTML output is escaped.",
-    "crumbs": [
-      "Tests",
-      "Test: Escape Output with HTML Entities"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-escape-html-output-characters.html#interactive",
-    "href": "qwebr-test-escape-html-output-characters.html#interactive",
-    "title": "Test: Escape Output with HTML Entities",
-    "section": "Interactive",
-    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Escape Output with HTML Entities"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-escape-html-output-characters.html#non-interactive",
-    "href": "qwebr-test-escape-html-output-characters.html#non-interactive",
-    "title": "Test: Escape Output with HTML Entities",
-    "section": "Non-interactive",
-    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Escape Output with HTML Entities"
-    ]
-  },
-  {
     "objectID": "qwebr-test-help-documentation.html",
     "href": "qwebr-test-help-documentation.html",
     "title": "Test: Help Documentation",
@@ -187,14 +132,14 @@
     ]
   },
   {
-    "objectID": "qwebr-test-status-header-suppressed-html copy.html",
-    "href": "qwebr-test-status-header-suppressed-html copy.html",
-    "title": "Test: No Startup Status Present in HTML Documents",
-    "section": "",
-    "text": "Ensure that the webR code cell initializes even if the webR status bar is disabled.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
+    "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
+    "title": "Test: No Startup Status Present in RevealJS Presentations",
+    "section": "webR in RevealJS",
+    "text": "webR in RevealJS\nEnsure that the webR code cell initializes even if the webR status bar is disabled.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: No Startup Status Present in HTML Documents"
+      "Test: No Startup Status Present in RevealJS Presentations"
     ]
   },
   {
@@ -216,6 +161,61 @@
     "crumbs": [
       "Tests",
       "Test: Autoload Package"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "title": "Test: Keyboard Shortcuts in Code cell",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "crumbs": [
+      "Tests",
+      "Test: Keyboard Shortcuts in Code cell"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-multiple-cells.html",
+    "href": "qwebr-test-multiple-cells.html",
+    "title": "Test: Multiple webR cells",
+    "section": "",
+    "text": "Ensure each webR cell outputs in its own area.",
+    "crumbs": [
+      "Tests",
+      "Test: Multiple webR cells"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-multiple-cells.html#interactive",
+    "href": "qwebr-test-multiple-cells.html#interactive",
+    "title": "Test: Multiple webR cells",
+    "section": "Interactive",
+    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nGraph in separate code cell\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Multiple webR cells"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-multiple-cells.html#non-interactive",
+    "href": "qwebr-test-multiple-cells.html#non-interactive",
+    "title": "Test: Multiple webR cells",
+    "section": "Non-interactive",
+    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nGraph in separate code cell\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Multiple webR cells"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-status-header-suppressed-html copy.html",
+    "href": "qwebr-test-status-header-suppressed-html copy.html",
+    "title": "Test: No Startup Status Present in HTML Documents",
+    "section": "",
+    "text": "Ensure that the webR code cell initializes even if the webR status bar is disabled.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: No Startup Status Present in HTML Documents"
     ]
   },
   {
@@ -263,39 +263,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-output-classes.html",
-    "href": "qwebr-test-output-classes.html",
-    "title": "Test: CSS Output Classes",
-    "section": "",
-    "text": "Test output classes for standard output and standard error.",
-    "crumbs": [
-      "Tests",
-      "Test: CSS Output Classes"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-output-classes.html#interactive",
-    "href": "qwebr-test-output-classes.html#interactive",
-    "title": "Test: CSS Output Classes",
-    "section": "Interactive",
-    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: CSS Output Classes"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-output-classes.html#non-interactive",
-    "href": "qwebr-test-output-classes.html#non-interactive",
-    "title": "Test: CSS Output Classes",
-    "section": "Non-interactive",
-    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: CSS Output Classes"
-    ]
-  },
-  {
     "objectID": "qwebr-test-service-worker.html",
     "href": "qwebr-test-service-worker.html",
     "title": "Test: Service Worker",
@@ -307,36 +274,69 @@
     ]
   },
   {
-    "objectID": "qwebr-test-status-header-no-title.html",
-    "href": "qwebr-test-status-header-no-title.html",
-    "title": "Test Suite for quarto-webr",
+    "objectID": "qwebr-test-escape-html-output-characters.html",
+    "href": "qwebr-test-escape-html-output-characters.html",
+    "title": "Test: Escape Output with HTML Entities",
     "section": "",
-    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Ensure HTML output is escaped.",
     "crumbs": [
       "Tests",
-      "Qwebr Test Status Header No Title"
+      "Test: Escape Output with HTML Entities"
     ]
   },
   {
-    "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
-    "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
-    "title": "Test: No Startup Status Present in RevealJS Presentations",
-    "section": "webR in RevealJS",
-    "text": "webR in RevealJS\nEnsure that the webR code cell initializes even if the webR status bar is disabled.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "qwebr-test-escape-html-output-characters.html#interactive",
+    "href": "qwebr-test-escape-html-output-characters.html#interactive",
+    "title": "Test: Escape Output with HTML Entities",
+    "section": "Interactive",
+    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: No Startup Status Present in RevealJS Presentations"
+      "Test: Escape Output with HTML Entities"
     ]
   },
   {
-    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "title": "Test: Keyboard Shortcuts in Code cell",
-    "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "objectID": "qwebr-test-escape-html-output-characters.html#non-interactive",
+    "href": "qwebr-test-escape-html-output-characters.html#non-interactive",
+    "title": "Test: Escape Output with HTML Entities",
+    "section": "Non-interactive",
+    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Keyboard Shortcuts in Code cell"
+      "Test: Escape Output with HTML Entities"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html",
+    "href": "qwebr-test-output-graph.html",
+    "title": "Test: Graphics Output",
+    "section": "",
+    "text": "This webpage tests the interactive and output contexts for showing a graph",
+    "crumbs": [
+      "Tests",
+      "Test: Graphics Output"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html#interactive",
+    "href": "qwebr-test-output-graph.html#interactive",
+    "title": "Test: Graphics Output",
+    "section": "Interactive",
+    "text": "Interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Graphics Output"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html#non-interactive",
+    "href": "qwebr-test-output-graph.html#non-interactive",
+    "title": "Test: Graphics Output",
+    "section": "Non-interactive",
+    "text": "Non-interactive\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Graphics Output"
     ]
   }
 ]
