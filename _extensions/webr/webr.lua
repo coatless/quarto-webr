@@ -43,6 +43,9 @@ local autoloadRPackages = "true"
 -- Define a counter variable
 local counter = 0
 
+-- Initialize a table to store the CodeDiv elements
+local capturedCodeBlocks = {}
+
 ----
 --- Process initialization
 
@@ -57,7 +60,7 @@ local function isVariablePopulated(s)
 end
 
 -- Convert the communication channel meta option into a WebROptions.channelType option
-function convertMetaChannelTypeToWebROption(input)
+local function convertMetaChannelTypeToWebROption(input)
   -- Create a table of conditions
   local conditions = {
     ["automatic"] = "ChannelType.Automatic",
@@ -164,14 +167,13 @@ function setWebRInitializationOptions(meta)
     end
 
   end
-
   
   return meta
 end
 
 
 -- Obtain a template file
-function readTemplateFile(template)
+local function readTemplateFile(template)
   -- Establish a hardcoded path to where the .html partial resides
   -- Note, this should be at the same level as the lua filter.
   -- This is crazy fragile since Lua lacks a directory representation (!?!?)
@@ -204,36 +206,15 @@ function readTemplateFile(template)
   return content
 end
 
--- Obtain the editor template file at webr-context-interactive.html
-function interactiveTemplateFile()
-  return readTemplateFile("webr-context-interactive.html")
-end
-
--- Obtain the output template file at webr-context-output.html
-function outputTemplateFile()
-  return readTemplateFile("webr-context-output.html")
-end
-
--- Obtain the setup template file at webr-context-setup.html
-function setupTemplateFile()
-  return readTemplateFile("webr-context-setup.html")
-end
-
 -- Obtain the initialization template file at webr-init.html
-function initializationTemplateFile()
+local function initializationTemplateFile()
   return readTemplateFile("qwebr-init.js")
 end
 
--- Cache a copy of each public-facing templates to avoid multiple read/writes.
-interactive_template = interactiveTemplateFile()
-
-output_template = outputTemplateFile()
-
-setup_template = setupTemplateFile()
 ----
 
 -- Define a function that escape control sequence
-function escapeControlSequences(str)
+local function escapeControlSequences(str)
   -- Perform a global replacement on the control sequence character
   return str:gsub("[\\%c]", function(c)
     if c == "\\" then
@@ -244,13 +225,13 @@ function escapeControlSequences(str)
 end
 
 -- Check if version is latest
-function isLatestVersion(str)
+local function isLatestVersion(str)
   return str == "latest"
 end
 
 
 -- Verify the string is a valid version
-function isMajorMinorPatchFormat(version)
+local function isMajorMinorPatchFormat(version)
   -- Create a regular expression pattern that matches:
   -- major.minor.patch
   local pattern = "^%d+%.%d+%.%d+$"
@@ -259,7 +240,7 @@ function isMajorMinorPatchFormat(version)
   return string.match(version, pattern) ~= nil
 end
 
-function checkMajorMinorPatchVersionFormat(version_string)
+local function checkMajorMinorPatchVersionFormat(version_string)
   -- Verify string matches a given format
   if not isMajorMinorPatchFormat(version_string) then
       error("Invalid version string: " .. version_string)
@@ -269,7 +250,7 @@ function checkMajorMinorPatchVersionFormat(version_string)
 end
 
 -- Compare versions
-function compareMajorMinorPatchVersions(v1, v2)
+local function compareMajorMinorPatchVersions(v1, v2)
 
   -- Enforce a version string
   checkMajorMinorPatchVersionFormat(v1)
@@ -301,7 +282,7 @@ function compareMajorMinorPatchVersions(v1, v2)
 end
 ----
 
-function initializationWebR()
+local function initializationWebR()
 
   -- Setup different WebR specific initialization variables
   local substitutions = {
@@ -325,7 +306,7 @@ function initializationWebR()
   return initializedWebRConfiguration
 end
 
-function generateHTMLElement(tag)
+local function generateHTMLElement(tag)
   -- Store a map containing opening and closing tabs
   local tagMappings = {
       js = { opening = "<script type=\"module\">", closing = "</script>" },
@@ -370,7 +351,7 @@ local function includeFileInHTMLTag(location, file, tag)
 end
 
 -- Setup WebR's pre-requisites once per document.
-function ensureWebRSetup()
+local function ensureWebRSetup()
   
   -- If we've included the initialization, then bail.
   if hasDoneWebRSetup then
@@ -431,7 +412,7 @@ end
 
 -- Define a function to replace keywords given by {{ WORD }}
 -- Is there a better lua-approach?
-function substitute_in_file(contents, substitutions)
+local function substitute_in_file(contents, substitutions)
 
   -- Substitute values in the contents of the file
   contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
@@ -440,8 +421,14 @@ function substitute_in_file(contents, substitutions)
   return contents
 end
 
+local function qwebrJSCellInsertionCode(counter)
+  local insertionLocation = '<div id="qwebr-insertion-location-' .. counter ..'"></div>\n'
+  local noscriptWarning = '<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>'
+  return insertionLocation .. noscriptWarning
+end 
+
 -- Extract Quarto code cell options from the block's text
-function extractCodeBlockOptions(block)
+local function extractCodeBlockOptions(block)
   
   -- Access the text aspect of the code block
   local code = block.text
@@ -467,18 +454,15 @@ function extractCodeBlockOptions(block)
     end
   end
 
-  -- Set the new attributes for the code block
-  block.attributes = newAttributes
-
   -- Set the codeblock text to exclude the special comments.
   block.text = table.concat(newCodeLines, '\n')
 
   -- Return the full block
-  return block
+  return block, newAttributes
 end
 
 -- Replace the code cell with a webR editor
-function enableWebRCodeCell(el)
+local function enableWebRCodeCell(el)
       
   -- Let's see what's going on here:
   -- quarto.log.output(el)
@@ -513,8 +497,11 @@ function enableWebRCodeCell(el)
       -- unique code cells
       counter = counter + 1
 
+      -- Local code cell option storage
+      local cellOptions = {}
+
       -- Convert webr-specific option commands into attributes
-      el = extractCodeBlockOptions(el)
+      el, cellOptions = extractCodeBlockOptions(el)
       
       -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
       -- So, we have 504 and 360 respectively.
@@ -525,27 +512,8 @@ function enableWebRCodeCell(el)
         ["WEBRCODE"] = escapeControlSequences(el.text)
       }
       
-      -- Retrieve the newly defined attributes
-      local cell_context = el.attributes.context
-
-      -- Decide the correct template
-      -- Make sure we perform a copy of each template
-      local copied_code_template = nil
-      if isVariableEmpty(cell_context) or cell_context == "interactive" then
-        copied_code_template = interactive_template
-      elseif cell_context == "setup" then
-        copied_code_template = setup_template
-      elseif cell_context == "output" then
-        copied_code_template = output_template
-      else
-        error("The `context` option must contain either: `interactive`, `setup`, or `output`. Not the value of `".. cell_context .."`")
-      end
-
-      -- Make the necessary substitutions into the template
-      local webr_enabled_code_cell = substitute_in_file(copied_code_template, substitutions)
-
-      -- Return the modified HTML template as a raw cell
-      return pandoc.RawInline('html', webr_enabled_code_cell)
+      -- Return an insertion point inside the document
+      return pandoc.RawInline('html', qwebrJSCellInsertionCode(counter))
 
     end
   end
