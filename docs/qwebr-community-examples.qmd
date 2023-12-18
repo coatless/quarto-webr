@@ -25,6 +25,10 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Teaching Materials / Workshops
 
+- [Bruno Rodrigues](https://www.brodrigues.co/)' use of the extension in his notes for [Building Reproducible Analytical Pipelines](https://rap4mads.eu/).
+  - [Source repository](https://github.com/b-rodrigues/rap4mads_2023)
+- [David Brocker](https://davidabrocker.com/)'s conversion of his [PY 3600: Statistical Methods](https://davidbrocker.github.io/DBPSYC3400/) course materials. Oct 23rd, 2023.
+  - [Source repository](https://github.com/davidbrocker/DBPSYC3400/)
 - [Mine Çetinkaya-Rundel](https://mine-cr.com/)'s [Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials](https://posit-conf-2023.github.io/teach-ds-masterclass/materials/course-materials). Sept 18, 2023 @ posit::conf(2023)
   - [Ex 1.1: UN Votes](https://data-sci-101.github.io/ae/ae-01-unvotes.html), [Page Source](https://github.com/data-sci-101/data-sci-101.github.io/blob/main/ae/ae-01-unvotes.qmd)
   - Full workshop materials at [source repository](https://github.com/posit-conf-2023/teach-ds-masterclass) and deployed website example's [source repository](https://github.com/data-sci-101/data-sci-101.github.io)
@@ -35,13 +39,16 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Nicola Rennie](https://nrennie.rbind.io/)'s talk on [Teaching statistics interactively with webR](https://nrennie.rbind.io/talks/rss-conference-teaching-webr/). Nov 22th, 2023 @ RSS/RoSE UK Statistics Education Meeting 2023
   - [Slides](https://teaching-with-webr.netlify.app/#/title-slide) and [Source code](https://github.com/nrennie/teaching-with-webR)
 - [George Stagg](https://gws.phd)'s talk on [Shiny Without a Server: webR & Shinylive](https://georgestagg.github.io/shiny-without-a-server-2023/) brief mention of `quarto-webr` as a quick onboarding option. Oct 18, 2023 @ Jumping Rivers Shiny in Production 2023 Conference
+  - [Video (38:07)](https://www.youtube.com/watch?v=GlZKReTx8GA)
 - [George Stagg](https://gws.phd)'s talk on the [Magic with WebAssembly and webR](https://gws.quarto.pub/magic-with-wasm-and-webr/#/title-slide) mentioning `quarto-webr` as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)
-- [James Balamuta](http://thecoatlessprofessor.com/)'s talk on [Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR](https://assets.thecoatlessprofessor.com/talks/quarto-webr-posit-conf-23-talk.pdf). Sep 19, 2023 @ posit::conf(2023)
+  - [Video (19:22)](https://www.youtube.com/watch?v=P7aTHrgjHt4&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=78)
+- [James Balamuta](https://thecoatlessprofessor.com/)'s talk on [Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR](https://assets.thecoatlessprofessor.com/talks/quarto-webr-posit-conf-23-talk.pdf). Sep 19, 2023 @ posit::conf(2023)
+  - [Video (20:35)](https://www.youtube.com/watch?v=60i9f861HLg&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=51)
 - [George Stagg](https://gws.phd)'s talk on the [Introduction to webR](https://gws.quarto.pub/introduction-to-webr-2023/#/title-slide) mentioning `quarto-webr` as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)
 - [Nicola Rennie](https://nrennie.rbind.io/)'s talk on [Teaching statistics interactively with webR](https://nrennie.rbind.io/talks/rss-conference-teaching-webr/). Sept 7th, 2023 @ RSS International Conference 2023
   - [Slides](https://teaching-with-webr.netlify.app/#/title-slide) and [Source code](https://github.com/nrennie/teaching-with-webR)
 - [bob Rudis](https://rud.is/)' talk on [🕸️ Into the WebR-Verse](https://github.com/hrbrmstr/2023-nyr-webr) incorporating a demo of the `quarto-webr` extension. Jul 13th, 2023 @ New York R Conference 2023
-  - [Video](https://www.youtube.com/watch?v=inpwcTUmBDY&list=PLlzRFZmxVl9RYNkA-lRUxloDYrd1Bhln9&index=8) and [Source code](https://github.com/hrbrmstr/2023-nyr-webr)
+  - [Video (21:01)](https://www.youtube.com/watch?v=inpwcTUmBDY&list=PLlzRFZmxVl9RYNkA-lRUxloDYrd1Bhln9&index=8) and [Source code](https://github.com/hrbrmstr/2023-nyr-webr)
   - boB used a [cool trick to embed the demo](https://github.com/coatless/quarto-webr/issues/14#issuecomment-1634944155) in his revealjs slides.
 - [Maria Tackett](https://maria-tackett.netlify.app/)'s talk on [Using Quarto for Making and Organizing Teaching Materials](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/) during the [Teaching (with) Quarto](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/) Session. Aug 7, 2023 @ JSM 2023
   - [Slides](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/) and [Source code](https://github.com/mine-cetinkaya-rundel/teach-with-quarto/tree/main/talks/5-teaching-materials)
@@ -61,6 +68,7 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Social media posts
 
+- [Jeffrey Perkel](https://github.com/jperkel) post on [Mastodon](https://mastodon.social/@jperkel@sciencemastodon.com/111581346220627969) with a [quick ggplot2 demo](https://jperkel.github.io/). Dec 14th, 2023
 - [Nien Xiang Tou](https://www.nienxiangtou.com/) post on [LinkedIn](https://www.linkedin.com/posts/nien-xiang-tou-phd-a15594184_quarto-webr-rstats-activity-7121412832021123072-BWW3) and [Mastodon](https://mastodon.social/@Nxrunning@fosstodon.org/111284901156764484)
 - [Linh Nguyen](https://nguyenllpsych.github.io/)'s post on [LinkedIn](https://www.linkedin.com/posts/nguyenllpsych_positconf2023-activity-7111101659509899265-CTay?utm_source=share&utm_medium=member_desktop) and [Twitter](https://twitter.com/nguyenllpsych/status/1705357201400066141) describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the `quarto-webr` extension. Sept 22, 2023
 - [Joe Chelladurai](https://joechelladurai.com/) mentioning a [similiar integration on mastodon](https://mastodon.social/@joe_chelladurai@fosstodon.org/110699434655070719) for his newly developed [The School of Data](https://www.theschoolofdata.org/). Jul 11th, 2023
