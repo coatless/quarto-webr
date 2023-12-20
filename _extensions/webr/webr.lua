@@ -1,7 +1,10 @@
 ----
 --- Setup variables for default initialization
 
--- Define a variable to only include the initialization once
+-- Define a variable to check if webR is present.
+local missingWebRCell = true
+
+-- Define a variable to check if webR was initialized for the page
 local hasDoneWebRSetup = false
 
 --- Setup default initialization values
@@ -41,10 +44,10 @@ local autoloadRPackages = "true"
 --- Setup variables for tracking number of code cells
 
 -- Define a counter variable
-local counter = 0
+local qwebrCounter = 0
 
--- Initialize a table to store the CodeDiv elements
-local capturedCodeBlocks = {}
+-- Initialize a table to store the CodeBlock elements
+local qwebrCapturedCodeBlocks = {}
 
 ----
 --- Process initialization
@@ -427,6 +430,28 @@ local function qwebrJSCellInsertionCode(counter)
   return insertionLocation .. noscriptWarning
 end 
 
+-- Remove lines with only whitespace until the first non-whitespace character is detected.
+local function removeEmptyLinesUntilContent(codeText)
+  -- Iterate through each line in the codeText table
+  for _, value in ipairs(codeText) do
+      -- Detect leading whitespace (newline, return character, or empty space)
+      local detectedWhitespace = string.match(value, "^%s*$")
+
+      -- Check if the detectedWhitespace is either an empty string or nil
+      -- This indicates whitespace was detected
+      if isVariableEmpty(detectedWhitespace) then
+          -- Delete empty space
+          table.remove(codeText, 1)
+      else
+          -- Stop the loop as we've now have content
+          break
+      end
+  end
+
+  -- Return the modified table
+  return codeText
+end
+
 -- Extract Quarto code cell options from the block's text
 local function extractCodeBlockOptions(block)
   
@@ -455,10 +480,10 @@ local function extractCodeBlockOptions(block)
   end
 
   -- Set the codeblock text to exclude the special comments.
-  block.text = table.concat(newCodeLines, '\n')
+  cellCode = table.concat(newCodeLines, '\n')
 
-  -- Return the full block
-  return block, newAttributes
+  -- Return the code alongside options
+  return cellCode, newAttributes
 end
 
 -- Replace the code cell with a webR editor
@@ -489,36 +514,53 @@ local function enableWebRCodeCell(el)
     local newEngine = el.attr.classes:includes("{webr-r}")
     
     if (originalEngine or newEngine) then
-      
-      -- Make sure we've initialized the code block
-      ensureWebRSetup()
 
+      missingWebRCell = false
+      
       -- Modify the counter variable each time this is run to create
       -- unique code cells
-      counter = counter + 1
+      qwebrCounter = qwebrCounter + 1
 
-      -- Local code cell option storage
+      -- Local code cell storage
       local cellOptions = {}
+      local cellCode = ''
 
       -- Convert webr-specific option commands into attributes
-      el, cellOptions = extractCodeBlockOptions(el)
-      
-      -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
-      -- So, we have 504 and 360 respectively.
-      -- Should we check the attributes for this value? Seems odd.
-      -- https://yihui.org/knitr/options/
-      local substitutions = {
-        ["WEBRCOUNTER"] = counter, 
-        ["WEBRCODE"] = escapeControlSequences(el.text)
+      cellCode, cellOptions = extractCodeBlockOptions(el)
+
+      -- Remove space left between options and code contents
+      cellCode = removeEmptyLinesUntilContent(cellCode)
+
+      -- Create a new table for the CodeBlock
+      local codeBlockData = {
+        id = qwebrCounter,
+        code = cellCode,
+        options = cellOptions
       }
-      
+
+      -- Store the CodeDiv in the global table
+      table.insert(qwebrCapturedCodeBlocks, codeBlockData)
+
       -- Return an insertion point inside the document
-      return pandoc.RawInline('html', qwebrJSCellInsertionCode(counter))
+      return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
 
     end
   end
   -- Allow for a pass through in other languages
   return el
+end
+
+local function stitchDocument(doc)
+
+  -- Do not attach webR as the page lacks any active webR cells
+  if missingWebRCell then 
+    return doc
+  end
+
+  -- Make sure we've initialized the code block
+  ensureWebRSetup()
+
+  return doc
 end
 
 return {
@@ -527,6 +569,9 @@ return {
   }, 
   {
     CodeBlock = enableWebRCodeCell
+  }, 
+  {
+    Pandoc = stitchDocument
   }
 }
 
