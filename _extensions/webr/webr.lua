@@ -49,6 +49,11 @@ local qwebrCounter = 0
 -- Initialize a table to store the CodeBlock elements
 local qwebrCapturedCodeBlocks = {}
 
+-- Initialize a table that contains the default cell-level options
+local qwebRDefaultCellOptions = {
+  ["context"] = "interactive"
+}
+
 ----
 --- Process initialization
 
@@ -60,6 +65,42 @@ end
 -- Check if variable is present
 local function isVariablePopulated(s)
   return not isVariableEmpty(s)
+end
+
+-- Copy the top level value and its direct children
+-- Details: http://lua-users.org/wiki/CopyTable
+local function shallowcopy(original)
+  -- Determine if its a table
+  if type(original) == 'table' then
+    -- Copy the top level to remove references
+    local copy = {}
+    for key, value in pairs(original) do
+        copy[key] = value
+    end
+    -- Return the copy
+    return copy
+  else
+    -- If original is not a table, return it directly since it's already a copy
+    return original
+  end
+end
+
+-- Custom method for cloning a table with a shallow copy.
+function table.clone(original)
+  return shallowcopy(original)
+end
+
+local function mergeCellOptions(localOptions)
+  -- Copy default options to the mergedOptions table
+  local mergedOptions = table.clone(qwebRDefaultCellOptions)
+
+  -- Override default options with local options
+  for key, value in pairs(localOptions) do
+    mergedOptions[key] = value
+  end
+
+  -- Return the customized options
+  return mergedOptions
 end
 
 -- Convert the communication channel meta option into a WebROptions.channelType option
@@ -462,29 +503,32 @@ local function extractCodeBlockOptions(block)
   -- Define two local tables:
   --  the block's attributes
   --  the block's code lines
-  local newAttributes = {}
+  local cellOptions = {}
   local newCodeLines = {}
 
   -- Iterate over each line in the code block 
   for line in code:gmatch("([^\r\n]*)[\r\n]?") do
     -- Check if the line starts with "#|" and extract the key-value pairing
-    -- e.g. #| key: value goes to newAttributes[key] -> value
+    -- e.g. #| key: value goes to cellOptions[key] -> value
     local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
 
-    -- If a special comment is found, then add the key-value pairing to the newAttributes table
+    -- If a special comment is found, then add the key-value pairing to the cellOptions table
     if key and value then
-      newAttributes[key] = value
+      cellOptions[key] = value
     else
       -- Otherwise, it's not a special comment, keep the code line
       table.insert(newCodeLines, line)
     end
   end
 
+  -- Merge cell options with default options
+  cellOptions = mergeCellOptions(cellOptions)
+
   -- Set the codeblock text to exclude the special comments.
   cellCode = table.concat(newCodeLines, '\n')
 
   -- Return the code alongside options
-  return cellCode, newAttributes
+  return cellCode, cellOptions
 end
 
 -- Replace the code cell with a webR editor
