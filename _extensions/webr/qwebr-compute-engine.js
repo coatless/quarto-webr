@@ -10,6 +10,18 @@ globalThis.qwebrIsObjectEmpty = function (arr) {
     return Object.keys(arr).length === 0;
 }
 
+
+// Global version of the Escape HTML function that converts HTML 
+// characters to their HTML entities.
+globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 

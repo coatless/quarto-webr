@@ -1,9 +1,6 @@
 // Start a timer
 const initializeWebRTimerStart = performance.now();
 
-// Store cell data
-var qwebrCellDetails = {{QWEBRCELLDETAILS}};
-
 // Determine if we need to install R packages
 var installRPackagesList = [{{INSTALLRPACKAGESLIST}}];
 
@@ -185,14 +182,3 @@ qwebrSetInteractiveButtonState(
   `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
   true
 );
-
-// Global version of the Escape HTML function that converts HTML 
-// characters to their HTML entities.
-globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-};

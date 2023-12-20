@@ -250,11 +250,6 @@ local function readTemplateFile(template)
   return content
 end
 
--- Obtain the initialization template file at webr-init.html
-local function initializationTemplateFile()
-  return readTemplateFile("qwebr-init.js")
-end
-
 ----
 
 -- Define a function to replace keywords given by {{ WORD }}
@@ -337,7 +332,25 @@ local function compareMajorMinorPatchVersions(v1, v2)
 end
 ----
 
-local function initializationWebR()
+-- Pass the data into the document to setup cells
+local function initializationWebRCellData()
+
+  -- Pass the extracted cell data
+  local substitutions = {
+    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
+  }
+  
+  -- Make sure we're performing a copy
+  local initializationCellTemplate = readTemplateFile("qwebr-cell-initialization.js")
+
+  -- Make the necessary substitutions
+  local initializedWebRCell = substitute_in_file(initializationCellTemplate, substitutions)
+
+  return initializedWebRCell
+end
+
+-- Pass document-level data into the header to initialize the document.
+local function initializationWebRDocument()
 
   -- Setup different WebR specific initialization variables
   local substitutions = {
@@ -348,13 +361,12 @@ local function initializationWebR()
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
-    ["AUTOLOADRPACKAGES"] = autoloadRPackages,
-    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
+    ["AUTOLOADRPACKAGES"] = autoloadRPackages
     -- ["VERSION"] = baseVersionWebR
   }
   
   -- Make sure we perform a copy
-  local initializationTemplate = initializationTemplateFile()
+  local initializationTemplate = readTemplateFile("qwebr-document-initialization.js")
 
   -- Make the necessary substitutions
   local initializedWebRConfiguration = substitute_in_file(initializationTemplate, substitutions)
@@ -417,8 +429,6 @@ local function ensureWebRSetup()
   -- Otherwise, let's include the initialization script _once_
   hasDoneWebRSetup = true
 
-  local initializedConfigurationWebR = initializationWebR()
-
   -- Embed Support Files to Avoid Resource Registration Issues
   -- Note: We're not able to use embed-resources due to the web assembly binary and the potential for additional service worker files.
   quarto.doc.include_text("in-header", [[
@@ -430,7 +440,10 @@ local function ensureWebRSetup()
   includeFileInHTMLTag("in-header", "qwebr-styling.css", "css")
 
   -- Insert the customized startup procedure
-  includeTextInHTMLTag("in-header", initializedConfigurationWebR, "js")
+  includeTextInHTMLTag("in-header", initializationWebRDocument(), "js")
+
+  -- Insert the cell data at the end of the document
+  includeTextInHTMLTag("after-body", initializationWebRCellData(), "js")
 
   -- Insert the extension computational engine that calls webR
   includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
@@ -439,7 +452,7 @@ local function ensureWebRSetup()
   includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
 
   -- Insert the monaco editor initialization
-  quarto.doc.include_file("before-body", "monaco-editor-init.html")
+  quarto.doc.include_file("before-body", "qwebr-monaco-editor-init.html")
 
   -- Insert the extension styling for defined elements
   includeFileInHTMLTag("before-body", "qwebr-monaco-editor-element.js", "js")
