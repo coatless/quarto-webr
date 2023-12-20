@@ -555,57 +555,57 @@ local function enableWebRCodeCell(el)
   
   -- Verify the element has attributes and the document type is HTML
   -- not sure if this will work with an epub (may need html:js)
-  if el.attr and quarto.doc.is_format("html") then
-
-    -- Check to see if any form of the {webr} tag is present 
-
-    -- Look for the original compute cell type `{webr}` 
-    -- If the compute engine is:
-    -- - jupyter: this appears as `{webr}` 
-    -- - knitr: this appears as `webr`
-    --  since the later dislikes custom engines
-    local originalEngine = el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")
-
-    -- Check for the new engine syntax that allows for the cell to be 
-    -- evaluated in VS Code or RStudio editor views, c.f.
-    -- https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636
-    local newEngine = el.attr.classes:includes("{webr-r}")
-    
-    if (originalEngine or newEngine) then
-
-      missingWebRCell = false
-      
-      -- Modify the counter variable each time this is run to create
-      -- unique code cells
-      qwebrCounter = qwebrCounter + 1
-
-      -- Local code cell storage
-      local cellOptions = {}
-      local cellCode = ''
-
-      -- Convert webr-specific option commands into attributes
-      cellCode, cellOptions = extractCodeBlockOptions(el)
-
-      -- Remove space left between options and code contents
-      cellCode = removeEmptyLinesUntilContent(cellCode)
-
-      -- Create a new table for the CodeBlock
-      local codeBlockData = {
-        id = qwebrCounter,
-        code = cellCode,
-        options = cellOptions
-      }
-
-      -- Store the CodeDiv in the global table
-      table.insert(qwebrCapturedCodeBlocks, codeBlockData)
-
-      -- Return an insertion point inside the document
-      return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
-
-    end
+  if not (el.attr and quarto.doc.is_format("html")) then
+    return el
   end
-  -- Allow for a pass through in other languages
-  return el
+
+  -- Check to see if any form of the {webr} tag is present 
+
+  -- Look for the original compute cell type `{webr}` 
+  -- If the compute engine is:
+  -- - jupyter: this appears as `{webr}` 
+  -- - knitr: this appears as `webr`
+  --  since the later dislikes custom engines
+  local originalEngine = el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")
+
+  -- Check for the new engine syntax that allows for the cell to be 
+  -- evaluated in VS Code or RStudio editor views, c.f.
+  -- https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636
+  local newEngine = el.attr.classes:includes("{webr-r}")
+  
+  if not (originalEngine or newEngine) then
+    return el
+  end
+
+  -- We detected a webR cell
+  missingWebRCell = false
+  
+  -- Modify the counter variable each time this is run to create
+  -- unique code cells
+  qwebrCounter = qwebrCounter + 1
+
+  -- Local code cell storage
+  local cellOptions = {}
+  local cellCode = ''
+
+  -- Convert webr-specific option commands into attributes
+  cellCode, cellOptions = extractCodeBlockOptions(el)
+
+  -- Remove space left between options and code contents
+  cellCode = removeEmptyLinesUntilContent(cellCode)
+
+  -- Create a new table for the CodeBlock
+  local codeBlockData = {
+    id = qwebrCounter,
+    code = cellCode,
+    options = cellOptions
+  }
+
+  -- Store the CodeDiv in the global table
+  table.insert(qwebrCapturedCodeBlocks, codeBlockData)
+
+  -- Return an insertion point inside the document
+  return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
 end
 
 local function stitchDocument(doc)
