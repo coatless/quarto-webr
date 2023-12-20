@@ -350,7 +350,7 @@ local function initializationWebRCellData()
 end
 
 -- Pass document-level data into the header to initialize the document.
-local function initializationWebRDocument()
+local function initializationWebRDocumentSettings()
 
   -- Setup different WebR specific initialization variables
   local substitutions = {
@@ -366,7 +366,7 @@ local function initializationWebRDocument()
   }
   
   -- Make sure we perform a copy
-  local initializationTemplate = readTemplateFile("qwebr-document-initialization.js")
+  local initializationTemplate = readTemplateFile("qwebr-document-settings.js")
 
   -- Make the necessary substitutions
   local initializedWebRConfiguration = substitute_in_file(initializationTemplate, substitutions)
@@ -440,7 +440,13 @@ local function ensureWebRSetup()
   includeFileInHTMLTag("in-header", "qwebr-styling.css", "css")
 
   -- Insert the customized startup procedure
-  includeTextInHTMLTag("in-header", initializationWebRDocument(), "js")
+  includeTextInHTMLTag("in-header", initializationWebRDocumentSettings(), "js")
+
+  -- Insert JS routine to add document status header
+  includeFileInHTMLTag("in-header", "qwebr-document-status.js", "js")
+
+  -- Insert JS routine to bring webR online
+  includeFileInHTMLTag("in-header", "qwebr-document-engine-initialization.js", "js")
 
   -- Insert the cell data at the end of the document
   includeTextInHTMLTag("after-body", initializationWebRCellData(), "js")

@@ -8,3 +8,9 @@ const filteredEntries = qwebrCellDetails.filter(entry => {
 
   return ['interactive', 'output', 'setup'].includes(contextOption);
 });
+
+qwebrInstance.then(
+  () => {
+    console.log('test')
+  }
+)
