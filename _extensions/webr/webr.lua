@@ -216,6 +216,17 @@ end
 
 ----
 
+-- Define a function to replace keywords given by {{ WORD }}
+-- Is there a better lua-approach?
+local function substitute_in_file(contents, substitutions)
+
+  -- Substitute values in the contents of the file
+  contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
+
+  -- Return the contents of the file with substitutions
+  return contents
+end
+
 -- Define a function that escape control sequence
 local function escapeControlSequences(str)
   -- Perform a global replacement on the control sequence character
@@ -296,7 +307,8 @@ local function initializationWebR()
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
-    ["AUTOLOADRPACKAGES"] = autoloadRPackages
+    ["AUTOLOADRPACKAGES"] = autoloadRPackages,
+    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
     -- ["VERSION"] = baseVersionWebR
   }
   
@@ -411,17 +423,6 @@ local function ensureWebRSetup()
     })
   end
 
-end
-
--- Define a function to replace keywords given by {{ WORD }}
--- Is there a better lua-approach?
-local function substitute_in_file(contents, substitutions)
-
-  -- Substitute values in the contents of the file
-  contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
-
-  -- Return the contents of the file with substitutions
-  return contents
 end
 
 local function qwebrJSCellInsertionCode(counter)

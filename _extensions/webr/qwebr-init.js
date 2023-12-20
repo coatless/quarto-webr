@@ -1,8 +1,12 @@
 // Start a timer
 const initializeWebRTimerStart = performance.now();
 
+// Store cell data
+var qwebrCellDetails = {{QWEBRCELLDETAILS}};
+
 // Determine if we need to install R packages
 var installRPackagesList = [{{INSTALLRPACKAGESLIST}}];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 var setupRPackages = !(installRPackagesList.indexOf("") !== -1);
 var autoloadRPackages = {{AUTOLOADRPACKAGES}};
@@ -10,6 +14,7 @@ var autoloadRPackages = {{AUTOLOADRPACKAGES}};
 // Display a startup message?
 var showStartupMessage = {{SHOWSTARTUPMESSAGE}};
 var showHeaderMessage = {{SHOWHEADERMESSAGE}};
+
 if (showStartupMessage) {
 
   // Get references to header elements
