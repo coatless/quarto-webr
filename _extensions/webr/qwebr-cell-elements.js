@@ -1,8 +1,18 @@
+// Supported Evaluation Types for Context
+globalThis.EvalTypes = Object.freeze({
+  Interactive: 'interactive',
+  Setup: 'setup',
+  Output: 'output',
+});
+
 // Function that dispatches the creation request
-globalThis.qwebrCreateHTMLElement = function (insertElement,
-  qwebrCounter, 
-  evalType = EvalTypes.Interactive,
-  options = {}) {
+globalThis.qwebrCreateHTMLElement = function (
+  insertElement,
+  cellData
+) {
+
+  const evalType = cellData.options.context
+  const qwebrCounter = cellData.options.id
 
   // Figure out the routine to use to insert the element.
   let qwebrElement;

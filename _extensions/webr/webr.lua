@@ -276,23 +276,6 @@ end
 
 ----
 
--- Pass the data into the document to setup cells
-local function initializationWebRCellData()
-
-  -- Pass the extracted cell data
-  local substitutions = {
-    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
-  }
-  
-  -- Make sure we're performing a copy
-  local initializationCellTemplate = readTemplateFile("qwebr-cell-initialization.js")
-
-  -- Make the necessary substitutions
-  local initializedWebRCell = substitute_in_file(initializationCellTemplate, substitutions)
-
-  return initializedWebRCell
-end
-
 -- Pass document-level data into the header to initialize the document.
 local function initializationWebRDocumentSettings()
 
@@ -305,7 +288,8 @@ local function initializationWebRDocumentSettings()
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
-    ["AUTOLOADRPACKAGES"] = autoloadRPackages
+    ["AUTOLOADRPACKAGES"] = autoloadRPackages,
+    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
     -- ["VERSION"] = baseVersionWebR
   }
   
@@ -321,8 +305,8 @@ end
 local function generateHTMLElement(tag)
   -- Store a map containing opening and closing tabs
   local tagMappings = {
-      js = { opening = "<script type=\"module\">", closing = "</script>" },
-      css = { opening = "<style type=\"text/css\">", closing = "</style>" }
+      js = { opening = "<script type=\"module\">\n", closing = "\n</script>" },
+      css = { opening = "<style type=\"text/css\">\n", closing = "\n</style>" }
   }
 
   -- Find the tag
@@ -389,17 +373,17 @@ local function ensureWebRSetup()
   -- Insert JS routine to add document status header
   includeFileInHTMLTag("in-header", "qwebr-document-status.js", "js")
 
+  -- Insert the extension element creation scripts
+  includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
+
   -- Insert JS routine to bring webR online
   includeFileInHTMLTag("in-header", "qwebr-document-engine-initialization.js", "js")
 
   -- Insert the cell data at the end of the document
-  includeTextInHTMLTag("after-body", initializationWebRCellData(), "js")
+  includeFileInHTMLTag("after-body", "qwebr-cell-initialization.js", "js")
 
   -- Insert the extension computational engine that calls webR
   includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
-
-  -- Insert the extension element creation scripts
-  includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
 
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "qwebr-monaco-editor-init.html")

@@ -1,10 +1,3 @@
-// Supported Evaluation Types for Context
-globalThis.EvalTypes = Object.freeze({
-    Interactive: 'interactive',
-    Setup: 'setup',
-    Output: 'output',
-});
-
 // Function to verify a given JavaScript Object is empty
 globalThis.qwebrIsObjectEmpty = function (arr) {
     return Object.keys(arr).length === 0;

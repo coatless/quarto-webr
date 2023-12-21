@@ -1,3 +1,5 @@
+// Document level settings ----
+
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = [{{INSTALLRPACKAGESLIST}}];
 
@@ -17,3 +19,5 @@ globalThis.qwebrCustomizedWebROptions = {
   "channelType": "{{CHANNELTYPE}}"
 };
 
+// Store cell data
+globalThis.qwebrCellDetails = {{QWEBRCELLDETAILS}};
