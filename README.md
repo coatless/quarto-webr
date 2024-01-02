@@ -19,13 +19,13 @@ For a deeper understanding of [webR](https://docs.r-wasm.org/webr/latest/), expl
 
 ## Quick Start Video Guide
 
-Want to get started quickly? We recommend watching the following [YouTube video](https://youtu.be/DoRR2S5lLvk?t=5) if your new to Quarto and Quarto Extensions: 
+For those new to Quarto and Quarto Extensions, we highly recommend checking out this informative [YouTube video](https://youtu.be/DoRR2S5lLvk?t=5) to get started quickly:
 
 [![Creating your first webR-powered Quarto Document inside of RStudio](https://i3.ytimg.com/vi/DoRR2S5lLvk/maxresdefault.jpg)](https://youtu.be/DoRR2S5lLvk?t=5)
 
 ## Installation 
 
-To use this extension in a Quarto project, install it from within the project's working directory by typing into **Terminal**:
+To use this extension in a [Quarto project](https://quarto.org/docs/projects/quarto-projects.html), install it from within the project's working directory by typing into **Terminal**:
 
 ``` bash
 quarto add coatless/quarto-webr
