@@ -127,6 +127,7 @@ window.document.addEventListener("DOMContentLoaded", function () {
       } else {
         sidebar.style.top = topOffset + "px";
         sidebar.style.maxHeight = "calc(100vh - " + topOffset + "px)";
+        sidebar.style.minHeight = "calc(100vh - " + topOffset + "px)";
       }
     });
 
