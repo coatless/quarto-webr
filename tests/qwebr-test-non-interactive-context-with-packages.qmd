@@ -1,0 +1,17 @@
+---
+title: "Test: Packages used in Context"
+engine: knitr
+webr: 
+  packages: ['ggplot2']
+  show-startup-message: false
+filters:
+  - webr
+---
+
+This is a webr-enabled code cell in a Quarto HTML document.
+
+```{webr-r}
+#| context: output
+library("ggplot2")
+ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+```
