@@ -16,36 +16,43 @@ const filteredEntries = qwebrCellDetails.filter(entry => {
   return ['output', 'setup'].includes(contextOption);
 });
 
-// Release document status as ready
+// Condition non-interactive cells to only be run after webR finishes its initialization.
 qwebrInstance.then(
   async () => {
-    
-    filteredEntries.map( async (entry) => {
-      // Extract key components
-      const evalType = entry.options.context;
-      const cellCode = entry.code;
-      const qwebrCounter = entry.id;
-      switch (evalType) {
-        case 'output':
-          // Run the code in a non-interactive state
-          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
-          break;
-        case 'setup':
-          // Run the code in a non-interactive state
-          await webR.evalRVoid(`${cellCode}`);
-          break;
-        default: 
-          break; 
+
+    // Begin processing non-interactive sections
+    filteredEntries.map( 
+      async (entry) => {
+        // Extract key components
+        const evalType = entry.options.context;
+        const cellCode = entry.code;
+        const qwebrCounter = entry.id;
+        switch (evalType) {
+          case 'output':
+            // Run the code in a non-interactive state that is geared to displaying output
+            await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
+            break;
+          case 'setup':
+            // Run the code in a non-interactive state with all output thrown away
+            await webR.evalRVoid(`${cellCode}`);
+            break;
+          default: 
+            break; 
+        }
       }
-    })}).then(
-    () => {
-      if (qwebrShowStartupMessage) {
-        qwebrStartupMessage.innerText = "🟢 Ready!"
-      }
-    
-      qwebrSetInteractiveButtonState(
-        `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
-        true
-      );  
+    )
+  }
+).then(
+  () => {
+    // Release document status as ready
+
+    if (qwebrShowStartupMessage) {
+      qwebrStartupMessage.innerText = "🟢 Ready!"
+    }
+  
+    qwebrSetInteractiveButtonState(
+      `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+      true
+    );  
   }
 );
