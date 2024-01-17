@@ -2,9 +2,10 @@
 const qwebrEditorInstances = {};
 
 // Function that builds and registers a Monaco Editor instance    
-globalThis.qwebrCreateMonacoEditorInstance = function (
-    initialCode, 
-    qwebrCounter) {
+globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
+
+  const initialCode = cellData.code;
+  const qwebrCounter = cellData.id;
 
   // Retrieve the previously created document elements
   let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
