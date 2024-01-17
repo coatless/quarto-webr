@@ -7,29 +7,36 @@ globalThis.EvalTypes = Object.freeze({
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
-  insertElement,
   cellData
 ) {
 
-  const evalType = cellData.options.context
-  const qwebrCounter = cellData.options.id
+  // Extract key components
+  const evalType = cellData.options.context;
+  const qwebrCounter = cellData.id;
+
+  // We make an assumption that insertion points are defined by the Lua filter as:
+  // qwebr-insertion-location-{qwebrCounter} 
+  const elementLocator = document.getElementById(`qwebr-insertion-location-${qwebrCounter}`);
 
   // Figure out the routine to use to insert the element.
   let qwebrElement;
   switch ( evalType ) {
-    case EvalTypes.Interactive: 
+    case EvalTypes.Interactive:
       qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      break;
     case EvalTypes.Output: 
       qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      break;
     case EvalTypes.Setup: 
       qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      break;
     default: 
       qwebrElement = document.createElement('div');
-      qwebrElement.textContent = 'Error creating element';
+      qwebrElement.textContent = 'Error creating `quarto-webr` element';
   }
 
   // Insert the dynamically generated object at the document location.
-  insertElement.appendChild(qwebrElement);
+  elementLocator.appendChild(qwebrElement);
 };
 
 // Function that setups the interactive element creation
@@ -99,7 +106,7 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 
   // Create pre element inside output code area
   var preElement = document.createElement('pre');
-  preElement.style.visibility = 'hidden';
+  preElement.textContent = "Loading webR ...";
   outputCodeAreaDiv.appendChild(preElement);
 
   // Create output graph area div
@@ -120,6 +127,7 @@ globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-setup-area-' + qwebrCounter;
   mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.textContent = "Loading webR ...";
 
   return mainDiv;
 }
