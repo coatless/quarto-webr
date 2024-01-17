@@ -33,8 +33,11 @@ qwebrInstance.then(
             await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
             break;
           case 'setup':
+            const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
+            activeDiv.textContent = "Computing hidden webR Startup ...";
             // Run the code in a non-interactive state with all output thrown away
             await mainWebR.evalRVoid(`${cellCode}`);
+            activeDiv.textContent = "";
             break;
           default: 
             break; 
