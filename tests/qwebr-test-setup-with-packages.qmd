@@ -1,7 +1,5 @@
 ---
 title: "Test: Packages used in Hidden Setup"
-format:
-  html: default
 engine: knitr
 webr:
   packages: ["dplyr", "tibble"]
