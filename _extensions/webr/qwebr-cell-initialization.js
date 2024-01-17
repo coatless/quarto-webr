@@ -11,6 +11,7 @@ filteredEntries.map(
   }
  )
 
+
 // Release document status as ready
 qwebrInstance.then(
   () => {
@@ -18,6 +19,11 @@ qwebrInstance.then(
   if (qwebrShowStartupMessage) {
       qwebrStartupMessage.innerText = "🟢 Ready!"
     }
-  }
 
+  qwebrSetInteractiveButtonState(
+    `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+    true
+  );
+  
+  }
 )
