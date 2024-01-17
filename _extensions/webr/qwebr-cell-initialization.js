@@ -17,34 +17,30 @@ const filteredEntries = qwebrCellDetails.filter(entry => {
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
-qwebrInstance.then(
-  async () => {
+qwebrInstance.then(async () => {
 
-    // Begin processing non-interactive sections
-    filteredEntries.map( 
-      async (entry) => {
-        // Extract key components
-        const evalType = entry.options.context;
-        const cellCode = entry.code;
-        const qwebrCounter = entry.id;
-        switch (evalType) {
-          case 'output':
-            // Run the code in a non-interactive state that is geared to displaying output
-            await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
-            break;
-          case 'setup':
-            const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-            activeDiv.textContent = "Computing hidden webR Startup ...";
-            // Run the code in a non-interactive state with all output thrown away
-            await mainWebR.evalRVoid(`${cellCode}`);
-            activeDiv.textContent = "";
-            break;
-          default: 
-            break; 
-        }
-      }
-    )
+  // Begin processing non-interactive sections
+  for (const entry of filteredEntries) {
+    const evalType = entry.options.context;
+    const cellCode = entry.code;
+    const qwebrCounter = entry.id;
+    switch (evalType) {
+      case 'output':
+        // Run the code in a non-interactive state that is geared to displaying output
+        await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
+        break;
+      case 'setup':
+        const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
+        activeDiv.textContent = "Computing hidden webR Startup ...";
+        // Run the code in a non-interactive state with all output thrown away
+        await mainWebR.evalRVoid(`${cellCode}`);
+        activeDiv.textContent = "";
+        break;
+      default: 
+        break; 
+    }
   }
+}
 ).then(
   () => {
     // Release document status as ready
