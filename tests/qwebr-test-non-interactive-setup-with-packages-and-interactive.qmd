@@ -1,0 +1,37 @@
+---
+title: "Test: Setup Cell with Packages for Interactive"
+engine: knitr
+webr: 
+  show-startup-message: true
+  packages: ['tibble', 'dplyr', 'ggplot2']
+  autoload-packages: true
+filters:
+  - webr
+---
+
+The following hidden cell should setup a ggplot2 theme and set variables:
+
+```{webr-r}
+#| context: setup
+s <- 1000
+theme_set(theme_minimal())
+blue <- "#327291"
+```
+
+The next cell should handle graphing values with a theme being set:
+
+```{webr-r}
+mean <- 5
+sd <- 2
+n <- 100
+
+data <- tibble(x = rnorm(n = n, mean = mean, sd = sd))
+
+ggplot(data, aes(x = x)) +
+  geom_histogram(
+    color = "gray20",
+    linewidth = 0.25,
+    fill = blue,
+    alpha = .85
+  )
+```
