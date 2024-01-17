@@ -1,14 +1,23 @@
 
 const filteredEntries = qwebrCellDetails.filter(entry => {
   const contextOption = entry.options && entry.options.context;
-
-  console.log('Detected entry with context: ' + contextOption);
-
-  return ['interactive', 'output', 'setup'].includes(contextOption);
+  return ['interactive'].includes(contextOption);
 });
 
+filteredEntries.map(
+  (entry) => {
+   qwebrCreateHTMLElement(entry);
+   qwebrCreateMonacoEditorInstance(entry);
+  }
+ )
+
+// Release document status as ready
 qwebrInstance.then(
   () => {
-    console.log('test')
+
+  if (qwebrShowStartupMessage) {
+      qwebrStartupMessage.innerText = "🟢 Ready!"
+    }
   }
+
 )
