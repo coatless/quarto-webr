@@ -7,3 +7,4 @@ webr-serviceworker.js
 /.luarc.json
 docs/_site/*
 tests/_site/*
+examples/*/*.html
