@@ -34,7 +34,7 @@ qwebrInstance.then(
             break;
           case 'setup':
             // Run the code in a non-interactive state with all output thrown away
-            await webR.evalRVoid(`${cellCode}`);
+            await mainWebR.evalRVoid(`${cellCode}`);
             break;
           default: 
             break; 
