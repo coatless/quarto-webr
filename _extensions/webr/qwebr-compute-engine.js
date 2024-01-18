@@ -1,14 +1,18 @@
-// Supported Evaluation Types for Context
-globalThis.EvalTypes = Object.freeze({
-    Interactive: 'interactive',
-    Setup: 'setup',
-    Output: 'output',
-});
-
 // Function to verify a given JavaScript Object is empty
 globalThis.qwebrIsObjectEmpty = function (arr) {
     return Object.keys(arr).length === 0;
 }
+
+// Global version of the Escape HTML function that converts HTML 
+// characters to their HTML entities.
+globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
 
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
@@ -17,7 +21,7 @@ globalThis.qwebrParseTypePager = async function (msg) {
     const { path, title, deleteFile } = msg.data; 
 
     // Process the pager data by reading the information from disk
-    const paged_data = await webR.FS.readFile(path).then((data) => {
+    const paged_data = await mainWebR.FS.readFile(path).then((data) => {
         // Obtain the file content
         let content = new TextDecoder().decode(data);
 
@@ -32,7 +36,7 @@ globalThis.qwebrParseTypePager = async function (msg) {
 
     // Unlink file if needed
     if (deleteFile) { 
-        await webR.FS.unlink(path); 
+        await mainWebR.FS.unlink(path); 
     } 
 
     // Return extracted data with spaces
@@ -61,12 +65,12 @@ globalThis.qwebrComputeEngine = async function(
     // ---- 
 
     // Initialize webR
-    await webR.init();
+    await mainWebR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
-    await webR.evalRVoid(`webr::canvas(width=${options["fig-width"]}, height=${options["fig-height"]})`);
+    await mainWebR.evalRVoid(`webr::canvas(width=${options["fig-width"]}, height=${options["fig-height"]})`);
 
-    const result = await webRCodeShelter.captureR(codeToRun, {
+    const result = await mainWebRCodeShelter.captureR(codeToRun, {
         withAutoprint: true,
         captureStreams: true,
         captureConditions: false//,
@@ -79,7 +83,7 @@ globalThis.qwebrComputeEngine = async function(
     try {
 
         // Stop creating images
-        await webR.evalRVoid("dev.off()");
+        await mainWebR.evalRVoid("dev.off()");
 
         // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
         const out = result.output
@@ -95,7 +99,7 @@ globalThis.qwebrComputeEngine = async function(
         // We're now able to process both graphics and pager events.
         // As a result, we cannot maintain a true 1-to-1 output order 
         // without individually feeding each line
-        const msgs = await webR.flush();
+        const msgs = await mainWebR.flush();
 
         // Output each image event stored
         msgs.forEach((msg) => {
@@ -161,7 +165,7 @@ globalThis.qwebrComputeEngine = async function(
         }
     } finally {
         // Clean up the remaining code
-        webRCodeShelter.purge();
+        mainWebRCodeShelter.purge();
     }
 }
 

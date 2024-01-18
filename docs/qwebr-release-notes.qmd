@@ -16,7 +16,9 @@ format:
 
 ## Features
 
-- Optimized the underlying code handling insertion and execution of R code.  ([#118](https://github.com/coatless/quarto-webr/pulls/118))
+- Optimized the underlying code handling insertion and execution of R code.  ([#118](https://github.com/coatless/quarto-webr/pull/118))
+- Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. ([#120](https://github.com/coatless/quarto-webr/pull/120))
+- Redesigned non-interactive cells to provide improved reliability and visual cues. ([#120](https://github.com/coatless/quarto-webr/pull/120))
 
 ## Changes
 
@@ -25,7 +27,9 @@ format:
 ## Bugfixes
 
 - Prevented HTML output being shown as HTML by replacing HTML characters like `<`, `>`, `&`, etc., with their corresponding HTML entities. ([#115](https://github.com/coatless/quarto-webr/issues/115), h/t [@gvelasq](https://github.com/gvelasq))
-- Fixed display of text found after a code cell in RevealJS appearing off the page ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
+- Fixed display of text found after a code cell in RevealJS appearing off the page. ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
+- Fixed `setup` and `output` contexts not syncing with values found in `packages`.   ([#114](https://github.com/coatless/quarto-webr/issues/114), [#105](https://github.com/coatless/quarto-webr/issues/105), [#88](https://github.com/coatless/quarto-webr/issues/88))
+
 
 ## Documentation 
 

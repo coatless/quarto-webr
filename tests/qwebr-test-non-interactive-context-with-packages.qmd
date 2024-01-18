@@ -1,0 +1,25 @@
+---
+title: "Test: Load and Use Packages used in Context"
+engine: knitr
+webr: 
+  packages: ['ggplot2']
+  show-startup-message: false
+  autoload-packages: false
+filters:
+  - webr
+---
+
+This document disables autoloading of the packages and manually loads the package inside of the context output. 
+
+```{webr-r}
+#| context: output
+library("ggplot2")
+g <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+g
+```
+
+Next, we should be able to retrieve the prior cells value
+```{webr-r}
+#| context: interactive
+g + aes(color = factor(cyl))
+```

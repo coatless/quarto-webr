@@ -1,0 +1,30 @@
+---
+title: "Test: Packages used in Hidden Setup"
+engine: knitr
+webr:
+  packages: ["dplyr", "tibble"]
+filters:
+  - webr
+---
+
+Perform data manipulations on `mtcars` in a non-interactive cell... 
+
+```{webr-r}
+#| label: spike-data
+#| context: setup
+
+new_mtcars <- mtcars |>
+  tibble::rownames_to_column(var = "car") |>
+  tibble::as_tibble() |>
+  dplyr::select(car, cyl, disp, wt) |>
+  dplyr::mutate(wt = dplyr::case_when(
+    wt < 2 ~ -wt,
+    TRUE ~ wt))
+```
+
+Then we print it to see how it looks:
+
+```{webr-r}
+#| label: spike-data
+new_mtcars
+```

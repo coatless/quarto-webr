@@ -1,7 +1,10 @@
 ----
 --- Setup variables for default initialization
 
--- Define a variable to only include the initialization once
+-- Define a variable to check if webR is present.
+local missingWebRCell = true
+
+-- Define a variable to check if webR was initialized for the page
 local hasDoneWebRSetup = false
 
 --- Setup default initialization values
@@ -41,18 +44,67 @@ local autoloadRPackages = "true"
 --- Setup variables for tracking number of code cells
 
 -- Define a counter variable
-local counter = 0
+local qwebrCounter = 0
+
+-- Initialize a table to store the CodeBlock elements
+local qwebrCapturedCodeBlocks = {}
+
+-- Initialize a table that contains the default cell-level options
+local qwebRDefaultCellOptions = {
+  ["context"] = "interactive"
+}
 
 ----
 --- Process initialization
 
--- Check if variable is present and not just the empty string
-function is_variable_empty(s)
+-- Check if variable missing or an empty string
+local function isVariableEmpty(s)
   return s == nil or s == ''
 end
 
+-- Check if variable is present
+local function isVariablePopulated(s)
+  return not isVariableEmpty(s)
+end
+
+-- Copy the top level value and its direct children
+-- Details: http://lua-users.org/wiki/CopyTable
+local function shallowcopy(original)
+  -- Determine if its a table
+  if type(original) == 'table' then
+    -- Copy the top level to remove references
+    local copy = {}
+    for key, value in pairs(original) do
+        copy[key] = value
+    end
+    -- Return the copy
+    return copy
+  else
+    -- If original is not a table, return it directly since it's already a copy
+    return original
+  end
+end
+
+-- Custom method for cloning a table with a shallow copy.
+function table.clone(original)
+  return shallowcopy(original)
+end
+
+local function mergeCellOptions(localOptions)
+  -- Copy default options to the mergedOptions table
+  local mergedOptions = table.clone(qwebRDefaultCellOptions)
+
+  -- Override default options with local options
+  for key, value in pairs(localOptions) do
+    mergedOptions[key] = value
+  end
+
+  -- Return the customized options
+  return mergedOptions
+end
+
 -- Convert the communication channel meta option into a WebROptions.channelType option
-function convertMetaChannelTypeToWebROption(input)
+local function convertMetaChannelTypeToWebROption(input)
   -- Create a table of conditions
   local conditions = {
     ["automatic"] = "ChannelType.Automatic",
@@ -90,7 +142,7 @@ function setWebRInitializationOptions(meta)
   local webr = meta.webr
 
   -- Does this exist? If not, just return meta as we'll just use the defaults.
-  if is_variable_empty(webr) then
+  if isVariableEmpty(webr) then
     return meta
   end
 
@@ -98,7 +150,7 @@ function setWebRInitializationOptions(meta)
   -- https://webr.r-wasm.org/[version]/webr.mjs
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
-  if not is_variable_empty(webr["base-url"]) then
+  if isVariablePopulated(webr["base-url"]) then
     baseUrl = pandoc.utils.stringify(webr["base-url"])
   end
 
@@ -106,7 +158,7 @@ function setWebRInitializationOptions(meta)
   -- Default: "ChannelType.Automatic"
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype
-  if not is_variable_empty(webr["channel-type"]) then
+  if isVariablePopulated(webr["channel-type"]) then
     channelType = convertMetaChannelTypeToWebROption(pandoc.utils.stringify(webr["channel-type"]))
     
     -- Starting from webR v0.2.2, service workers are only deployed when explicitly requested.
@@ -117,24 +169,24 @@ function setWebRInitializationOptions(meta)
   -- with the ServiceWorker communication channel mode.
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl
-  if not is_variable_empty(webr["service-worker-url"]) then
+  if isVariablePopulated(webr["service-worker-url"]) then
     serviceWorkerUrl = pandoc.utils.stringify(webr["service-worker-url"])
   end
 
   -- The WebAssembly user's home directory and initial working directory. Default: '/home/web_user'
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir
-  if not is_variable_empty(webr['home-dir']) then
+  if isVariablePopulated(webr['home-dir']) then
     homeDir = pandoc.utils.stringify(webr["home-dir"])
   end
 
   -- Display a startup message indicating the WebR state at the top of the document.
-  if not is_variable_empty(webr['show-startup-message']) then
+  if isVariablePopulated(webr['show-startup-message']) then
     showStartUpMessage = pandoc.utils.stringify(webr["show-startup-message"])
   end
 
   -- Display a startup message indicating the WebR state at the top of the document.
-  if not is_variable_empty(webr['show-header-message']) then
+  if isVariablePopulated(webr['show-header-message']) then
     showHeaderMessage = pandoc.utils.stringify(webr["show-header-message"])
     if showHeaderMessage == "true" then
       showStartUpMessage = "true"
@@ -143,7 +195,7 @@ function setWebRInitializationOptions(meta)
 
 
   -- Attempt to install different packages.
-  if not is_variable_empty(webr["packages"]) then
+  if isVariablePopulated(webr["packages"]) then
     -- Create a custom list
     local package_list = {}
 
@@ -154,19 +206,18 @@ function setWebRInitializationOptions(meta)
 
     installRPackagesList = table.concat(package_list, ", ")
 
-    if not is_variable_empty(webr['autoload-packages']) then
+    if isVariablePopulated(webr['autoload-packages']) then
       autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
     end
 
   end
-
   
   return meta
 end
 
 
 -- Obtain a template file
-function readTemplateFile(template)
+local function readTemplateFile(template)
   -- Establish a hardcoded path to where the .html partial resides
   -- Note, this should be at the same level as the lua filter.
   -- This is crazy fragile since Lua lacks a directory representation (!?!?)
@@ -199,36 +250,21 @@ function readTemplateFile(template)
   return content
 end
 
--- Obtain the editor template file at webr-context-interactive.html
-function interactiveTemplateFile()
-  return readTemplateFile("webr-context-interactive.html")
-end
-
--- Obtain the output template file at webr-context-output.html
-function outputTemplateFile()
-  return readTemplateFile("webr-context-output.html")
-end
-
--- Obtain the setup template file at webr-context-setup.html
-function setupTemplateFile()
-  return readTemplateFile("webr-context-setup.html")
-end
-
--- Obtain the initialization template file at webr-init.html
-function initializationTemplateFile()
-  return readTemplateFile("qwebr-init.js")
-end
-
--- Cache a copy of each public-facing templates to avoid multiple read/writes.
-interactive_template = interactiveTemplateFile()
-
-output_template = outputTemplateFile()
-
-setup_template = setupTemplateFile()
 ----
 
+-- Define a function to replace keywords given by {{ WORD }}
+-- Is there a better lua-approach?
+local function substitute_in_file(contents, substitutions)
+
+  -- Substitute values in the contents of the file
+  contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
+
+  -- Return the contents of the file with substitutions
+  return contents
+end
+
 -- Define a function that escape control sequence
-function escapeControlSequences(str)
+local function escapeControlSequences(str)
   -- Perform a global replacement on the control sequence character
   return str:gsub("[\\%c]", function(c)
     if c == "\\" then
@@ -238,65 +274,10 @@ function escapeControlSequences(str)
   end)
 end
 
--- Check if version is latest
-function isLatestVersion(str)
-  return str == "latest"
-end
-
-
--- Verify the string is a valid version
-function isMajorMinorPatchFormat(version)
-  -- Create a regular expression pattern that matches:
-  -- major.minor.patch
-  local pattern = "^%d+%.%d+%.%d+$"
-
-  -- If the pattern matches, then we're set!
-  return string.match(version, pattern) ~= nil
-end
-
-function checkMajorMinorPatchVersionFormat(version_string)
-  -- Verify string matches a given format
-  if not isMajorMinorPatchFormat(version_string) then
-      error("Invalid version string: " .. version_string)
-  end
-  -- Empty return to use as enforcement
-  return false
-end
-
--- Compare versions
-function compareMajorMinorPatchVersions(v1, v2)
-
-  -- Enforce a version string
-  checkMajorMinorPatchVersionFormat(v1)
-  checkMajorMinorPatchVersionFormat(v2)
-
-  -- Extract version details
-  local v1_major, v1_minor, v1_patch = v1:match("(%d+)%.(%d+)%.(%d+)")
-  local v2_major, v2_minor, v2_patch = v2:match("(%d+)%.(%d+)%.(%d+)")
-  
-  -- Perform a comparison check on the dot releases, such that:
-  -- v1 > v2 returns 1 
-  -- v2 > v1 returns -1 
-  -- v1 == v2 returns 0
-  if tonumber(v1_major) > tonumber(v2_major) then
-    return 1
-  elseif tonumber(v2_major) > tonumber(v1_major) then
-    return -1
-  elseif tonumber(v1_minor) > tonumber(v2_minor) then
-    return 1
-  elseif tonumber(v2_minor) > tonumber(v1_minor) then
-    return -1
-  elseif tonumber(v1_patch) > tonumber(v2_patch) then
-    return 1
-  elseif tonumber(v2_patch) > tonumber(v1_patch) then
-    return -1
-  else
-    return 0
-  end
-end
 ----
 
-function initializationWebR()
+-- Pass document-level data into the header to initialize the document.
+local function initializationWebRDocumentSettings()
 
   -- Setup different WebR specific initialization variables
   local substitutions = {
@@ -307,12 +288,13 @@ function initializationWebR()
     ["SERVICEWORKERURL"] = serviceWorkerUrl, 
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
-    ["AUTOLOADRPACKAGES"] = autoloadRPackages
+    ["AUTOLOADRPACKAGES"] = autoloadRPackages,
+    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
     -- ["VERSION"] = baseVersionWebR
   }
   
   -- Make sure we perform a copy
-  local initializationTemplate = initializationTemplateFile()
+  local initializationTemplate = readTemplateFile("qwebr-document-settings.js")
 
   -- Make the necessary substitutions
   local initializedWebRConfiguration = substitute_in_file(initializationTemplate, substitutions)
@@ -320,11 +302,11 @@ function initializationWebR()
   return initializedWebRConfiguration
 end
 
-function generateHTMLElement(tag)
+local function generateHTMLElement(tag)
   -- Store a map containing opening and closing tabs
   local tagMappings = {
-      js = { opening = "<script type=\"module\">", closing = "</script>" },
-      css = { opening = "<style type=\"text/css\">", closing = "</style>" }
+      js = { opening = "<script type=\"module\">\n", closing = "\n</script>" },
+      css = { opening = "<style type=\"text/css\">\n", closing = "\n</style>" }
   }
 
   -- Find the tag
@@ -365,7 +347,7 @@ local function includeFileInHTMLTag(location, file, tag)
 end
 
 -- Setup WebR's pre-requisites once per document.
-function ensureWebRSetup()
+local function ensureWebRSetup()
   
   -- If we've included the initialization, then bail.
   if hasDoneWebRSetup then
@@ -374,8 +356,6 @@ function ensureWebRSetup()
   
   -- Otherwise, let's include the initialization script _once_
   hasDoneWebRSetup = true
-
-  local initializedConfigurationWebR = initializationWebR()
 
   -- Embed Support Files to Avoid Resource Registration Issues
   -- Note: We're not able to use embed-resources due to the web assembly binary and the potential for additional service worker files.
@@ -388,16 +368,25 @@ function ensureWebRSetup()
   includeFileInHTMLTag("in-header", "qwebr-styling.css", "css")
 
   -- Insert the customized startup procedure
-  includeTextInHTMLTag("in-header", initializedConfigurationWebR, "js")
+  includeTextInHTMLTag("in-header", initializationWebRDocumentSettings(), "js")
 
-  -- Insert the extension computational engine that calls webR
-  includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
+  -- Insert JS routine to add document status header
+  includeFileInHTMLTag("in-header", "qwebr-document-status.js", "js")
 
   -- Insert the extension element creation scripts
   includeFileInHTMLTag("in-header", "qwebr-cell-elements.js", "js")
 
+  -- Insert JS routine to bring webR online
+  includeFileInHTMLTag("in-header", "qwebr-document-engine-initialization.js", "js")
+
+  -- Insert the cell data at the end of the document
+  includeFileInHTMLTag("after-body", "qwebr-cell-initialization.js", "js")
+
+  -- Insert the extension computational engine that calls webR
+  includeFileInHTMLTag("in-header", "qwebr-compute-engine.js", "js")
+
   -- Insert the monaco editor initialization
-  quarto.doc.include_file("before-body", "monaco-editor-init.html")
+  quarto.doc.include_file("before-body", "qwebr-monaco-editor-init.html")
 
   -- Insert the extension styling for defined elements
   includeFileInHTMLTag("before-body", "qwebr-monaco-editor-element.js", "js")
@@ -424,19 +413,36 @@ function ensureWebRSetup()
 
 end
 
--- Define a function to replace keywords given by {{ WORD }}
--- Is there a better lua-approach?
-function substitute_in_file(contents, substitutions)
+local function qwebrJSCellInsertionCode(counter)
+  local insertionLocation = '<div id="qwebr-insertion-location-' .. counter ..'"></div>\n'
+  local noscriptWarning = '<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>'
+  return insertionLocation .. noscriptWarning
+end 
 
-  -- Substitute values in the contents of the file
-  contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
+-- Remove lines with only whitespace until the first non-whitespace character is detected.
+local function removeEmptyLinesUntilContent(codeText)
+  -- Iterate through each line in the codeText table
+  for _, value in ipairs(codeText) do
+      -- Detect leading whitespace (newline, return character, or empty space)
+      local detectedWhitespace = string.match(value, "^%s*$")
 
-  -- Return the contents of the file with substitutions
-  return contents
+      -- Check if the detectedWhitespace is either an empty string or nil
+      -- This indicates whitespace was detected
+      if isVariableEmpty(detectedWhitespace) then
+          -- Delete empty space
+          table.remove(codeText, 1)
+      else
+          -- Stop the loop as we've now have content
+          break
+      end
+  end
+
+  -- Return the modified table
+  return codeText
 end
 
 -- Extract Quarto code cell options from the block's text
-function extractCodeBlockOptions(block)
+local function extractCodeBlockOptions(block)
   
   -- Access the text aspect of the code block
   local code = block.text
@@ -444,36 +450,36 @@ function extractCodeBlockOptions(block)
   -- Define two local tables:
   --  the block's attributes
   --  the block's code lines
-  local newAttributes = {}
+  local cellOptions = {}
   local newCodeLines = {}
 
   -- Iterate over each line in the code block 
   for line in code:gmatch("([^\r\n]*)[\r\n]?") do
     -- Check if the line starts with "#|" and extract the key-value pairing
-    -- e.g. #| key: value goes to newAttributes[key] -> value
+    -- e.g. #| key: value goes to cellOptions[key] -> value
     local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
 
-    -- If a special comment is found, then add the key-value pairing to the newAttributes table
+    -- If a special comment is found, then add the key-value pairing to the cellOptions table
     if key and value then
-      newAttributes[key] = value
+      cellOptions[key] = value
     else
       -- Otherwise, it's not a special comment, keep the code line
       table.insert(newCodeLines, line)
     end
   end
 
-  -- Set the new attributes for the code block
-  block.attributes = newAttributes
+  -- Merge cell options with default options
+  cellOptions = mergeCellOptions(cellOptions)
 
   -- Set the codeblock text to exclude the special comments.
-  block.text = table.concat(newCodeLines, '\n')
+  cellCode = table.concat(newCodeLines, '\n')
 
-  -- Return the full block
-  return block
+  -- Return the code alongside options
+  return cellCode, cellOptions
 end
 
 -- Replace the code cell with a webR editor
-function enableWebRCodeCell(el)
+local function enableWebRCodeCell(el)
       
   -- Let's see what's going on here:
   -- quarto.log.output(el)
@@ -483,71 +489,70 @@ function enableWebRCodeCell(el)
   
   -- Verify the element has attributes and the document type is HTML
   -- not sure if this will work with an epub (may need html:js)
-  if el.attr and quarto.doc.is_format("html") then
-
-    -- Check to see if any form of the {webr} tag is present 
-
-    -- Look for the original compute cell type `{webr}` 
-    -- If the compute engine is:
-    -- - jupyter: this appears as `{webr}` 
-    -- - knitr: this appears as `webr`
-    --  since the later dislikes custom engines
-    local originalEngine = el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")
-
-    -- Check for the new engine syntax that allows for the cell to be 
-    -- evaluated in VS Code or RStudio editor views, c.f.
-    -- https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636
-    local newEngine = el.attr.classes:includes("{webr-r}")
-    
-    if (originalEngine or newEngine) then
-      
-      -- Make sure we've initialized the code block
-      ensureWebRSetup()
-
-      -- Modify the counter variable each time this is run to create
-      -- unique code cells
-      counter = counter + 1
-
-      -- Convert webr-specific option commands into attributes
-      el = extractCodeBlockOptions(el)
-      
-      -- 7 is the default height and width for knitr. But, that doesn't translate to pixels.
-      -- So, we have 504 and 360 respectively.
-      -- Should we check the attributes for this value? Seems odd.
-      -- https://yihui.org/knitr/options/
-      local substitutions = {
-        ["WEBRCOUNTER"] = counter, 
-        ["WIDTH"] = 504,
-        ["HEIGHT"] = 360,
-        ["WEBRCODE"] = escapeControlSequences(el.text)
-      }
-      
-      -- Retrieve the newly defined attributes
-      local cell_context = el.attributes.context
-
-      -- Decide the correct template
-      -- Make sure we perform a copy of each template
-      local copied_code_template = nil
-      if is_variable_empty(cell_context) or cell_context == "interactive" then
-        copied_code_template = interactive_template
-      elseif cell_context == "setup" then
-        copied_code_template = setup_template
-      elseif cell_context == "output" then
-        copied_code_template = output_template
-      else
-        error("The `context` option must contain either: `interactive`, `setup`, or `output`. Not the value of `".. cell_context .."`")
-      end
-
-      -- Make the necessary substitutions into the template
-      local webr_enabled_code_cell = substitute_in_file(copied_code_template, substitutions)
-
-      -- Return the modified HTML template as a raw cell
-      return pandoc.RawInline('html', webr_enabled_code_cell)
-
-    end
+  if not (el.attr and quarto.doc.is_format("html")) then
+    return el
   end
-  -- Allow for a pass through in other languages
-  return el
+
+  -- Check to see if any form of the {webr} tag is present 
+
+  -- Look for the original compute cell type `{webr}` 
+  -- If the compute engine is:
+  -- - jupyter: this appears as `{webr}` 
+  -- - knitr: this appears as `webr`
+  --  since the later dislikes custom engines
+  local originalEngine = el.attr.classes:includes("{webr}") or el.attr.classes:includes("webr")
+
+  -- Check for the new engine syntax that allows for the cell to be 
+  -- evaluated in VS Code or RStudio editor views, c.f.
+  -- https://github.com/quarto-dev/quarto-cli/discussions/4761#discussioncomment-5336636
+  local newEngine = el.attr.classes:includes("{webr-r}")
+  
+  if not (originalEngine or newEngine) then
+    return el
+  end
+
+  -- We detected a webR cell
+  missingWebRCell = false
+  
+  -- Modify the counter variable each time this is run to create
+  -- unique code cells
+  qwebrCounter = qwebrCounter + 1
+
+  -- Local code cell storage
+  local cellOptions = {}
+  local cellCode = ''
+
+  -- Convert webr-specific option commands into attributes
+  cellCode, cellOptions = extractCodeBlockOptions(el)
+
+  -- Remove space left between options and code contents
+  cellCode = removeEmptyLinesUntilContent(cellCode)
+
+  -- Create a new table for the CodeBlock
+  local codeBlockData = {
+    id = qwebrCounter,
+    code = cellCode,
+    options = cellOptions
+  }
+
+  -- Store the CodeDiv in the global table
+  table.insert(qwebrCapturedCodeBlocks, codeBlockData)
+
+  -- Return an insertion point inside the document
+  return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
+end
+
+local function stitchDocument(doc)
+
+  -- Do not attach webR as the page lacks any active webR cells
+  if missingWebRCell then 
+    return doc
+  end
+
+  -- Make sure we've initialized the code block
+  ensureWebRSetup()
+
+  return doc
 end
 
 return {
@@ -556,6 +561,9 @@ return {
   }, 
   {
     CodeBlock = enableWebRCodeCell
+  }, 
+  {
+    Pandoc = stitchDocument
   }
 }
 

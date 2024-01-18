@@ -1,0 +1,60 @@
+---
+title: "Test: Chained Non-interactive Areas"
+engine: knitr
+webr: 
+  packages: ['ggplot2', 'dplyr']
+filters:
+  - webr
+---
+
+:::{.callout-important}
+We've slowed down each cell's execution time by about 1/4 of a second to show how the document is responding.
+:::
+
+# Package dependencies
+
+The `quarto-webr` extension is set to automatically install and load the `ggplot2` and `dplyr` packages by specifying a `packages` key in the document's header. 
+
+# Setup a hidden ggplot2 object
+
+From there, we're going to use the `context: setup` hidden cell to create a `ggplot2` object that uses the `mtcars` data set with the aesthetic mappings of `x = wt` and `y = mpg` called `g`.
+
+```{webr-r}
+#| context: setup
+g <- ggplot(mtcars, aes(x = wt, y = mpg)) 
+
+Sys.sleep(0.25)
+```
+
+# Generate a graph
+
+Let's move from setup to generating and displaying results by using `g` object created in `setup` within an `output` context:
+
+```{webr-r}
+#| context: output
+g + geom_point()
+
+Sys.sleep(0.25)
+```
+
+# Re-use prior graph object
+
+Let's also re-use the base `g` but change the aesthetics so that colour is now present.
+
+```{webr-r}
+#| context: output
+g + geom_point(aes(colour = factor(cyl)))
+Sys.sleep(0.25)
+```
+
+# Expose the setup object
+
+Finally, let's make sure we can do some interesting things with the interactive session. 
+
+:::{.callout-note}
+Changes inside of interactive cells do not propagate backwards in the document.
+:::
+
+```{webr-r}
+g
+```
