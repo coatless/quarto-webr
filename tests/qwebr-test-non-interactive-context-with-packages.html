@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sample quarto-webr Book Project - 2&nbsp; Example page</title>
+<title>Test Suite for quarto-webr - Test: Load and Use Packages used in Context</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./slide-embed.html" rel="next">
-<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -196,14 +194,14 @@ ul.task-list li input[type="checkbox"] {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['ggplot2', 'dplyr'];
+globalThis.qwebrInstallRPackagesList = ['ggplot2'];
 
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
-globalThis.qwebrAutoloadRPackages = true;
+globalThis.qwebrAutoloadRPackages = false;
 
 // Display a startup message?
-globalThis.qwebrShowStartupMessage = true;
+globalThis.qwebrShowStartupMessage = false;
 globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
@@ -215,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"context":"interactive"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"context":"interactive"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"context":"interactive"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"context":"interactive"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"context":"interactive"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"output"},"id":1,"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng"},{"options":{"context":"interactive"},"id":2,"code":"g + aes(color = factor(cyl))"}];
 
 </script>
 <script type="module">
@@ -798,7 +796,7 @@ globalThis.qwebrExecuteCode = async function (
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -807,7 +805,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example-page.html">Exploring R</a></li><li class="breadcrumb-item"><a href="./example-page.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example page</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-context-with-packages.html">Test: Load and Use Packages used in Context</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -819,12 +817,11 @@ globalThis.qwebrExecuteCode = async function (
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Sample quarto-webr Book Project</a> 
+      <a href="./">Test Suite for quarto-webr</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/coatless/quarto-webr/tree/main/examples/book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -843,13 +840,19 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quarto Webr Demo Book</span></span></a>
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./../../" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Main Website</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Exploring R</span></a>
+ <span class="menu-text">Tests</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -857,40 +860,120 @@ globalThis.qwebrExecuteCode = async function (
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example-page.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example page</span></span></a>
+  <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slide-embed.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Embed Slides</span></span></a>
+  <a href="./qwebr-test-help-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Help Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Keyboard Shortcuts in Code cell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-internal-cell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Cell Context Options</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-multiple-cells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Multiple webR cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-non-interactive-chained-cells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Chained Non-interactive Areas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-non-interactive-context-with-packages.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Test: Load and Use Packages used in Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-non-interactive-setup-with-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Packages used in Hidden Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-output-classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: CSS Output Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-output-graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Graphics Output</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Autoload Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-packages-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Packages Key with Autoloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-revealjs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: webR in RevealJS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-no-title.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Qwebr Test Status Header No Title</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-suppressed-html copy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: No Startup Status Present in HTML Documents</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-suppressed-revealjs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: No Startup Status Present in RevealJS Presentations</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./../../" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Documentation Portal</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#sorting" id="toc-sorting" class="nav-link active" data-scroll-target="#sorting"><span class="header-section-number">3</span> Sorting</a></li>
-  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><span class="header-section-number">4</span> Summarize</a></li>
-  <li><a href="#graphing" id="toc-graphing" class="nav-link" data-scroll-target="#graphing"><span class="header-section-number">5</span> Graphing</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/tree/main/examples/book/edit/main/example-page.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
@@ -1039,9 +1122,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example-page.html">Exploring R</a></li><li class="breadcrumb-item"><a href="./example-page.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example page</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-context-with-packages.html">Test: Load and Use Packages used in Context</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example page</span></h1>
+<h1 class="title">Test: Load and Use Packages used in Context</h1>
 </div>
 
 
@@ -1058,61 +1141,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>On this page, we set two options directly in the Quarto document. The rest of the options are coming from the <code>_quarto.yml</code> project file. These options are considered “global”.</p>
-<p>The local options that we enabled are to show the webR status bar and to pre-install the <code>ggplot2</code> and <code>dplyr</code> packages. We create a hypothetical document that compares and constrasts Base R code with Tidyverse code.</p>
-<section id="sorting" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Sorting</h1>
-<p>Consider the need to find the highest or lowest values. In this case, we’re seeking to sort or modify the order of the data.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Base R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">tidyverse</a></li></ul>
-<div class="tab-content" data-group="language">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>This document disables autoloading of the packages and manually loads the package inside of the context output.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Next, we should be able to retrieve the prior cells value</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-</div>
-</div>
-</section>
-<section id="summarize" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Summarize</h1>
-<p>Next, let’s take a look at how summarization differs between Base R and the Tidyverse</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Base R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">tidyverse</a></li></ul>
-<div class="tab-content" data-group="language">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-</div>
-</div>
-</section>
-<section id="graphing" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Graphing</h1>
-<p>Next, let’s take a look at how summarization differs between Base R and the Tidyverse</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Base R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">tidyverse</a></li></ul>
-<div class="tab-content" data-group="language">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-</div>
-</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1502,27 +1538,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" &lt;span="" webr="" demo="" book&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quarto Webr Demo Book</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./slide-embed.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Embed Slides</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Embed Slides</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>An example book with quarto-webr.</p>
+<p>Test suite for quarto-webr.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/tree/main/examples/book/edit/main/example-page.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -39,6 +39,6 @@
     "href": "posts/post-with-code/index.html",
     "title": "Post With Interactive Code",
     "section": "",
-    "text": "This is a post with interactive code on a Quarto Blog through the quarto-webr extension. The configuration setup for the quarto-webr extension is taken care of in the _quarto.yml file to avoid needing to re-specify options multiple times.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "This is a post with interactive code on a Quarto Blog through the quarto-webr extension. The configuration setup for the quarto-webr extension is taken care of in the _quarto.yml file to avoid needing to re-specify options multiple times.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   }
 ]

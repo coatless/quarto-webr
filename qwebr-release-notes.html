@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.545">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -443,7 +443,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 2, 2024</p>
+      <p class="date-modified">January 18, 2024</p>
     </div>
   </div>
     
@@ -465,7 +465,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <section id="features" class="level2">
 <h2 class="anchored" data-anchor-id="features">Features</h2>
 <ul>
-<li>Optimized the underlying code handling insertion and execution of R code. (<a href="https://github.com/coatless/quarto-webr/pulls/118">#118</a>)</li>
+<li>Optimized the underlying code handling insertion and execution of R code. (<a href="https://github.com/coatless/quarto-webr/pull/118">#118</a>)</li>
+<li>Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. (<a href="https://github.com/coatless/quarto-webr/pull/120">#120</a>)</li>
+<li>Redesigned non-interactive cells to provide improved reliability and visual cues. (<a href="https://github.com/coatless/quarto-webr/pull/120">#120</a>)</li>
 </ul>
 </section>
 <section id="changes" class="level2">
@@ -478,7 +480,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="bugfixes">Bugfixes</h2>
 <ul>
 <li>Prevented HTML output being shown as HTML by replacing HTML characters like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, etc., with their corresponding HTML entities. (<a href="https://github.com/coatless/quarto-webr/issues/115">#115</a>, h/t <a href="https://github.com/gvelasq"><span class="citation" data-cites="gvelasq">@gvelasq</span></a>)</li>
-<li>Fixed display of text found after a code cell in RevealJS appearing off the page (<a href="https://github.com/coatless/quarto-webr/issues/102">#102</a>, <a href="https://github.com/coatless/quarto-webr/issues/106">#106</a>)</li>
+<li>Fixed display of text found after a code cell in RevealJS appearing off the page. (<a href="https://github.com/coatless/quarto-webr/issues/102">#102</a>, <a href="https://github.com/coatless/quarto-webr/issues/106">#106</a>)</li>
+<li>Fixed <code>setup</code> and <code>output</code> contexts not syncing with values found in <code>packages</code>. (<a href="https://github.com/coatless/quarto-webr/issues/114">#114</a>, <a href="https://github.com/coatless/quarto-webr/issues/105">#105</a>, <a href="https://github.com/coatless/quarto-webr/issues/88">#88</a>)</li>
 </ul>
 </section>
 <section id="documentation" class="level2">
@@ -805,7 +808,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li><code>show-header-message</code>: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: <code>false</code></li>
 </ul></li>
 </ul>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://user-images.githubusercontent.com/833642/231114983-191c8944-f4ab-4024-abe0-089952ab1eaa.gif" class="img-fluid figure-img"></p>
 <figcaption>New status lighting</figcaption>
@@ -866,7 +869,7 @@ add_one(2)
 <ul>
 <li>Enable <a href="https://docs.r-wasm.org/webr/latest/">webR</a> code cells inside of a Quarto document.</li>
 </ul>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://i.imgur.com/WLFHcQE.gif" class="img-fluid figure-img"></p>
 <figcaption><code>quarto-webr</code> Filter in Action</figcaption>
@@ -1039,7 +1042,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
