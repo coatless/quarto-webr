@@ -12,8 +12,8 @@ globalThis.qwebrSetInteractiveButtonState = function(buttonText, enableCodeButto
 
 // Function to update the status message in non-interactive cells
 globalThis.qwebrUpdateStatusMessage = function(message) {
-  document.querySelectorAll(".qwebr-cell-needs-evaluation, .qwebr-status-text").forEach((elem) => {
-    elem.text = message;
+  document.querySelectorAll(".qwebr-status-text.qwebr-cell-needs-evaluation").forEach((elem) => {
+    elem.innerText = message;
   });
 }
 

@@ -161,7 +161,7 @@ globalThis.createLoadingContainer = function(qwebrCounter) {
   // Add a section for status text
   const statusText = document.createElement('p');
   statusText.id = `qwebr-status-text-${qwebrCounter}`;
-  statusText.className = `qwebr-status-text`;
+  statusText.className = `qwebr-status-text qwebr-cell-needs-evaluation`;
   statusText.innerText = 'Loading webR...';
 
   // Incorporate an inner container

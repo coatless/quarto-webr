@@ -22,6 +22,10 @@ qwebrInstance.then(
     const nHiddenCells = filteredEntries.length;
     var currentHiddenCell = 0;
 
+
+    // Modify button state
+    qwebrSetInteractiveButtonState(`🟡 Running hidden code cells ...`, false);
+
     // Begin processing non-interactive sections
     // Due to the iteration policy, we must use a for() loop.
     // Otherwise, we would need to switch to using reduce with an empty
@@ -52,7 +56,9 @@ qwebrInstance.then(
 
       // Update status on the code cell
       const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-      activeStatus.innerText = "Evaluating code cell... This text will disappear once complete.";
+      activeStatus.innerText = " Evaluating hidden code cell...";
+      activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+      activeStatus.classList.add('qwebr-cell-evaluated');
 
       switch (evalType) {
         case 'output':
