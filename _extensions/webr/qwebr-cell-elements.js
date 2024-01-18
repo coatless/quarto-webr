@@ -98,6 +98,9 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
   mainDiv.className = 'qwebr-noninteractive-area';
 
+  // Create a status container div
+  var statusContainer = createLoadingContainer(qwebrCounter);
+
   // Create output code area div
   var outputCodeAreaDiv = document.createElement('div');
   outputCodeAreaDiv.id = 'qwebr-output-code-area-' + qwebrCounter;
@@ -106,7 +109,7 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 
   // Create pre element inside output code area
   var preElement = document.createElement('pre');
-  preElement.textContent = "Loading webR ...";
+  preElement.style.visibility = 'hidden';
   outputCodeAreaDiv.appendChild(preElement);
 
   // Create output graph area div
@@ -115,6 +118,7 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
   outputGraphAreaDiv.className = 'qwebr-output-graph-area';
 
   // Append all elements to the main div
+  mainDiv.appendChild(statusContainer);
   mainDiv.appendChild(outputCodeAreaDiv);
   mainDiv.appendChild(outputGraphAreaDiv);
 
@@ -125,9 +129,51 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
   // Create main div element
   var mainDiv = document.createElement('div');
-  mainDiv.id = 'qwebr-noninteractive-setup-area-' + qwebrCounter;
+  mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
   mainDiv.className = 'qwebr-noninteractive-setup-area';
-  mainDiv.textContent = "Loading webR ...";
+
+  // Create a status container div
+  var statusContainer = createLoadingContainer(qwebrCounter);
+
+  // Append status onto the main div
+  mainDiv.appendChild(statusContainer);
 
   return mainDiv;
+}
+
+
+// Function to create loading container with specified ID
+globalThis.createLoadingContainer = function(qwebrCounter) {
+
+  // Create a status container
+  const container = document.createElement('div');
+  container.id = `qwebr-non-interactive-loading-container-${qwebrCounter}`;
+  container.className = 'qwebr-non-interactive-loading-container qwebr-cell-needs-evaluation';
+
+  // Create an R project logo to indicate its a code space
+  const rProjectIcon = document.createElement('i');
+  rProjectIcon.className = 'fa-brands fa-r-project fa-3x qwebr-r-project-logo';
+
+  // Setup a loading icon from font awesome
+  const spinnerIcon = document.createElement('i');
+  spinnerIcon.className = 'fa-solid fa-spinner fa-spin fa-1x qwebr-icon-status-spinner';
+
+  // Add a section for status text
+  const statusText = document.createElement('p');
+  statusText.id = `qwebr-status-text-${qwebrCounter}`;
+  statusText.className = `qwebr-status-text`;
+  statusText.innerText = 'Loading webR...';
+
+  // Incorporate an inner container
+  const innerContainer = document.createElement('div');
+
+  // Append elements to the inner container
+  innerContainer.appendChild(spinnerIcon);
+  innerContainer.appendChild(statusText);
+
+  // Append elements to the main container
+  container.appendChild(rProjectIcon);
+  container.appendChild(innerContainer);
+
+  return container;
 }

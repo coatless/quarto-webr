@@ -21,10 +21,13 @@ async function qwebrProcessRPackagesWithStatus(packages, processType, displaySta
     const activePackage = packages[i];
     const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
 
-    // Display the update
+    // Display the update in header
     if (displayStatusMessageUpdate) {
       qwebrUpdateStatusHeader(formattedMessage);
     }
+
+    // Display the update in non-active areas
+    qwebrUpdateStatusMessage(formattedMessage);
 
     // Run package installation
     if (processType === 'install') {

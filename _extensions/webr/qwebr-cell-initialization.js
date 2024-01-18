@@ -17,30 +17,63 @@ const filteredEntries = qwebrCellDetails.filter(entry => {
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
-qwebrInstance.then(async () => {
+qwebrInstance.then(
+  async () => {
+    const nHiddenCells = filteredEntries.length;
+    var currentHiddenCell = 0;
 
-  // Begin processing non-interactive sections
-  for (const entry of filteredEntries) {
-    const evalType = entry.options.context;
-    const cellCode = entry.code;
-    const qwebrCounter = entry.id;
-    switch (evalType) {
-      case 'output':
-        // Run the code in a non-interactive state that is geared to displaying output
-        await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
-        break;
-      case 'setup':
-        const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-        activeDiv.textContent = "Computing hidden webR Startup ...";
-        // Run the code in a non-interactive state with all output thrown away
-        await mainWebR.evalRVoid(`${cellCode}`);
-        activeDiv.textContent = "";
-        break;
-      default: 
-        break; 
+    // Begin processing non-interactive sections
+    // Due to the iteration policy, we must use a for() loop.
+    // Otherwise, we would need to switch to using reduce with an empty
+    // starting promise
+    for (const entry of filteredEntries) {
+
+      // Determine cell being examined
+      currentHiddenCell = currentHiddenCell + 1;
+      const formattedMessage = `Evaluating hidden cell ${currentHiddenCell} out of ${nHiddenCells}`;
+
+      // Update the document status header
+      if (qwebrShowStartupMessage) {
+        qwebrUpdateStatusHeader(formattedMessage);
+      }
+
+      // Display the update in non-active areas
+      qwebrUpdateStatusMessage(formattedMessage);
+
+      // Extract details on the active cell
+      const evalType = entry.options.context;
+      const cellCode = entry.code;
+      const qwebrCounter = entry.id;
+
+      // Disable further global status updates
+      const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+      activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+      activeContainer.classList.add('qwebr-cell-evaluated');
+
+      // Update status on the code cell
+      const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+      activeStatus.innerText = "Evaluating code cell... This text will disappear once complete.";
+
+      switch (evalType) {
+        case 'output':
+          // Run the code in a non-interactive state that is geared to displaying output
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
+          break;
+        case 'setup':
+          const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
+          //activeDiv.textContent = "Computing hidden webR Startup ...";
+          // Run the code in a non-interactive state with all output thrown away
+          await mainWebR.evalRVoid(`${cellCode}`);
+          //activeDiv.textContent = "";
+          break;
+        default: 
+          break; 
+      }
+      // Disable visibility
+      activeContainer.style.visibility = 'hidden';
+      activeContainer.style.display = 'none';
     }
   }
-}
 ).then(
   () => {
     // Release document status as ready
