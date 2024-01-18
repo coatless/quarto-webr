@@ -1,0 +1,57 @@
+---
+title: "Test: Chained Non-interactive Areas"
+engine: knitr
+webr: 
+  packages: ['ggplot2']
+  autoload-packages: false
+filters:
+  - webr
+---
+
+This document texts repeated setup and context non-interactive cells.
+
+# Load package
+
+We've manually loaded the `ggplot2` package.
+
+```{webr-r}
+#| context: setup
+library("ggplot2")
+```
+
+Once loaded, there should be a `ggplot2` object using `mtcars` with the aes mappings `x = wt` and `y = mpg` called `g` that is created.
+
+```{webr-r}
+#| context: setup
+g <- ggplot(mtcars, aes(x = wt, y = mpg)) 
+```
+
+# Generate a graph
+
+Let's move from setup to generating and displaying results by using `g` object created in `setup` within an `output` context:
+
+```{webr-r}
+#| context: output
+g + geom_point()
+```
+
+# Use prior graph
+
+Let's also re-use the base `g`
+
+```{webr-r}
+#| context: output
+g + geom_point(aes(colour = factor(cyl)))
+```
+
+# Expose the setup object
+
+Finally, let's make sure we can do some interesting things with the interactive session. 
+
+:::{.callout-note}
+Changes inside of interactive do not propagate backwards in the document.
+:::
+
+```{webr-r}
+g
+```
