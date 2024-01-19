@@ -23,6 +23,7 @@ format:
 ## Changes
 
 - Added new CSS IDs governing the webR initialization state. ([#110](https://github.com/coatless/quarto-webr/issues/110))
+- Added shim that overrides `install.packages()` with `webr::install()` through `webr::shim_install()` this requires webR v0.2.2 to be in use. ([#122](https://github.com/coatless/quarto-webr/issues/122))
 
 ## Bugfixes
 

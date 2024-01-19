@@ -61,6 +61,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
 
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
+
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
       // Obtain only a unique list of packages
