@@ -38,9 +38,11 @@ website:
       - section: "Demos"
         contents:
           - href: https://quarto-webr.thecoatlessprofessor.com/examples/readme/
-            text: README Example      
+            text: README Demo      
           - href: qwebr-code-cell-demos.qmd
             text: Exploring Interactive Code Cells
+          - href: demos/qwebr-feature-demos.qmd
+            text: Feature Demos
           - href: qwebr-community-examples.qmd
             text: Community Examples
       - section: "Deployment"

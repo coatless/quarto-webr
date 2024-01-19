@@ -1,0 +1,11 @@
+---
+title: "Feature Demonstrations"
+---
+
+Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.
+
+- [Revamped Noninteractive Areas](qwebr-non-interactive-areas.qmd)
+- [webR in RevealJS](https://quarto-webr.thecoatlessprofessor.com/examples/revealjs)
+- [Locking interactive areas when long runtime is present](qwebr-long-running-execution-interactive-locking.qmd)
+- [Setting Options in Document Header](qwebr-setting-options-in-document-yaml.qmd)
+- [webR in Quarto HTML Documents](https://quarto-webr.thecoatlessprofessor.com/examples/readme/)

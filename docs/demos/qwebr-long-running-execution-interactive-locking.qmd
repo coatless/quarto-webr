@@ -1,0 +1,35 @@
+---
+title: "Demo: Locking interactive code"
+engine: knitr
+filters:
+  - webr
+---
+
+:::{.callout-important}
+We've slowed down each cell's execution time by 5 seconds by adding `Sys.sleep()` to emphasize code cell locking.
+:::
+
+# Say Hi
+
+```{webr-r}
+#| context: interactive
+print("Hello {quarto-webr} world!")
+Sys.sleep(5) # Sleep for 5 seconds
+```
+
+# Calculate
+
+```{webr-r}
+#| context: interactive
+-3 + 5
+Sys.sleep(5) # Sleep for 5 seconds
+```
+
+# Help!
+
+```{webr-r}
+#| context: interactive
+?mean
+Sys.sleep(5) # Sleep for 5 seconds
+```
+

@@ -1,4 +1,5 @@
 *.luarc.json
+*.DS_Store
 *_files
 webr-worker.js
 webr-serviceworker.js
