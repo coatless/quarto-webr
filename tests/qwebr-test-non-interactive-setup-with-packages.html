@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"context":"setup","label":"spike-data"}},{"id":2,"code":"new_mtcars","options":{"context":"interactive","label":"spike-data"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"setup","label":"spike-data"},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"context":"interactive","label":"spike-data"},"id":2,"code":"new_mtcars"}];
 
 </script>
 <script type="module">

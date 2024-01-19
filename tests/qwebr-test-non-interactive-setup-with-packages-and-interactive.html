@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"context":"setup"},"id":1},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"context":"interactive"},"id":2}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"setup"},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"context":"interactive"},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
