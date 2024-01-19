@@ -1,0 +1,22 @@
+---
+title: "Demo: Setting Options in Document Header"
+format: html
+engine: knitr
+webr:
+  packages: ['ggplot2', 'dplyr']
+  show-startup-message: true
+  show-header-message: true
+  autoload-packages: false
+filters:
+  - webr
+---
+
+# Demo
+
+webR-enabled code cells are established by using `{webr-r}` in a Quarto HTML document.
+
+```{webr-r}
+library("ggplot2")
+
+ggplot()
+```
