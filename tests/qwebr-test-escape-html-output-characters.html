@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"context":"interactive"},"id":1},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"context":"output"},"id":2}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":1},{"options":{"context":"output"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":2}];
 
 </script>
 <script type="module">

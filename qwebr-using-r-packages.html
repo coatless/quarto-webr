@@ -258,7 +258,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"options":{"context":"interactive"},"id":2,"code":"webr::install(\"ggplot2\")"},{"options":{"context":"interactive"},"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1},{"options":{"context":"interactive"},"code":"webr::install(\"ggplot2\")","id":2},{"options":{"context":"interactive"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3}];
 
 </script>
 <script type="module">
@@ -962,13 +962,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README Example</span></a>
+ <span class="menu-text">README Demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./demos/qwebr-feature-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature Demos</span></a>
   </div>
 </li>
           <li class="sidebar-item">

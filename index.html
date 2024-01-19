@@ -222,7 +222,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","options":{"context":"interactive"},"id":1}];
 
 </script>
 <script type="module">
@@ -928,13 +928,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README Example</span></a>
+ <span class="menu-text">README Demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./demos/qwebr-feature-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature Demos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
