@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","id":1,"options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")"}];
 
 </script>
 <script type="module">
@@ -554,6 +554,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
+
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {

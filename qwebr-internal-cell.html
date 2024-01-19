@@ -258,7 +258,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"meaning_of_life = 42","id":1,"options":{"context":"setup"}},{"code":"meaning_of_life","id":2,"options":{"context":"interactive"}},{"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","id":3,"options":{"context":"output"}},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4,"options":{"context":"output"}},{"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")","id":5,"options":{"context":"setup"}},{"code":"# Display the head of the data\nhead(df_penguins)","id":6,"options":{"context":"interactive"}},{"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","id":7,"options":{"context":"output"}},{"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","id":8,"options":{"context":"setup"}},{"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","id":9,"options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"setup"},"code":"meaning_of_life = 42"},{"id":2,"options":{"context":"interactive"},"code":"meaning_of_life"},{"id":3,"options":{"context":"output"},"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2"},{"id":4,"options":{"context":"output"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"id":5,"options":{"context":"setup"},"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")"},{"id":6,"options":{"context":"interactive"},"code":"# Display the head of the data\nhead(df_penguins)"},{"id":7,"options":{"context":"output"},"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)"},{"id":8,"options":{"context":"setup"},"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}"},{"id":9,"options":{"context":"interactive"},"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)"}];
 
 </script>
 <script type="module">
@@ -599,6 +599,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
+
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
@@ -1246,7 +1249,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 18, 2024</p>
+      <p class="date-modified">January 19, 2024</p>
     </div>
   </div>
     

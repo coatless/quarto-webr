@@ -110,13 +110,36 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "quarto-webr Test Website",
+    "objectID": "qwebr-test-shim-install.html",
+    "href": "qwebr-test-shim-install.html",
+    "title": "Test: Install Packages Shim",
     "section": "",
-    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Home"
+      "Tests",
+      "Test: Install Packages Shim"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-shim-install.html#non-interactive",
+    "href": "qwebr-test-shim-install.html#non-interactive",
+    "title": "Test: Install Packages Shim",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Install Packages Shim"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "title": "Test: Keyboard Shortcuts in Code cell",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "crumbs": [
+      "Tests",
+      "Test: Keyboard Shortcuts in Code cell"
     ]
   },
   {
@@ -131,14 +154,13 @@
     ]
   },
   {
-    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "title": "Test: Keyboard Shortcuts in Code cell",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "quarto-webr Test Website",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "text": "Welcome\nWelcome to the test suite website for the quarto-webr. This website is meant to examine how different features of the extension are working or not working across different browsers.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Tests",
-      "Test: Keyboard Shortcuts in Code cell"
+      "Home"
     ]
   },
   {

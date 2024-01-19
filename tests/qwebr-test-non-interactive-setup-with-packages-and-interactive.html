@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"context":"setup"}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"setup"},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"context":"interactive"},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -554,6 +554,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
+
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
@@ -946,6 +949,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-shim-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Install Packages Shim</span></a>
   </div>
 </li>
           <li class="sidebar-item">

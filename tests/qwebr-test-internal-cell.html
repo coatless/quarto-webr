@@ -213,7 +213,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"1 + 1"},{"id":2,"options":{"context":"setup"},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":3,"options":{"context":"output"},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"1 + 1"},{"options":{"context":"setup"},"id":2,"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"options":{"context":"output"},"id":3,"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
 
 </script>
 <script type="module">
@@ -554,6 +554,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
+
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
@@ -946,6 +949,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-shim-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Install Packages Shim</span></a>
   </div>
 </li>
           <li class="sidebar-item">

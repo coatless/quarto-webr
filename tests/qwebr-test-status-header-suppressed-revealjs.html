@@ -466,7 +466,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"print(\"Hello hidden title world!\")","options":{"context":"interactive"},"id":1}];
+  globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"print(\"Hello hidden title world!\")"}];
 
   </script>
   <script type="module">
@@ -807,6 +807,9 @@
 
       // Setup a pager to allow processing help documentation 
       await mainWebR.evalRVoid('webr::pager_install()'); 
+
+      // Override the existing install.packages() to use webr::install()
+      await mainWebR.evalRVoid('webr::shim_install()'); 
 
       // Check to see if any packages need to be installed
       if (qwebrSetupRPackages) {

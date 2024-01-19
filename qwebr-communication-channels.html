@@ -600,6 +600,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
 
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
+
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
       // Obtain only a unique list of packages
@@ -1245,7 +1248,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 18, 2024</p>
+      <p class="date-modified">January 19, 2024</p>
     </div>
   </div>
     

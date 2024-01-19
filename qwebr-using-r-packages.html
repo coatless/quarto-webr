@@ -258,7 +258,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"context":"interactive"}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"context":"interactive"}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"options":{"context":"interactive"},"id":2,"code":"webr::install(\"ggplot2\")"},{"options":{"context":"interactive"},"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -599,6 +599,9 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Setup a pager to allow processing help documentation 
     await mainWebR.evalRVoid('webr::pager_install()'); 
+
+    // Override the existing install.packages() to use webr::install()
+    await mainWebR.evalRVoid('webr::shim_install()'); 
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
@@ -1238,7 +1241,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 18, 2024</p>
+      <p class="date-modified">January 19, 2024</p>
     </div>
   </div>
     
