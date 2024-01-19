@@ -1,6 +1,6 @@
 // Function to install a single package
 async function qwebrInstallRPackage(packageName) {
-  await mainWebR.installPackages([packageName]);
+  await mainWebR.evalRVoid(`webr::install('${packageName}');`);
 }
 
 // Function to load a single package
@@ -63,6 +63,14 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Override the existing install.packages() to use webr::install()
     await mainWebR.evalRVoid('webr::shim_install()'); 
+
+    // Specify the repositories to pull from
+    // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    await mainWebR.evalRVoid(`
+      options(
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+      )
+    `);
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {

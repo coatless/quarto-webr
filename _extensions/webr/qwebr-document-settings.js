@@ -3,6 +3,9 @@
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = [{{INSTALLRPACKAGESLIST}}];
 
+// Specify possible locations to search for the repository
+globalThis.qwebrPackageRepoURLS = [{{RPACKAGEREPOURLS}}];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
 globalThis.qwebrAutoloadRPackages = {{AUTOLOADRPACKAGES}};

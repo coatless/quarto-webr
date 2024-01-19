@@ -1,0 +1,26 @@
+---
+title: "Test: Repos package key"
+format: html
+engine: knitr
+webr:
+  packages: ['demorwasmbinary', 'visualize']
+  repos: 
+    - 'https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/'
+filters:
+  - webr
+---
+
+This document tests the `repos` key meta option by attempting to download a package `demorwasmbinary` from a custom repository at:
+
+<https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/>
+
+And, then, falls back on the main webR repository for a second package `visualize`.
+
+```{webr-r}
+#| context: output
+
+print(paste0("Check if we are in webR with non-CRAN package demorwasmbinary: ", demorwasmbinary::in_webr()))
+
+print("Creating a graph with a package on CRAN")
+visualize::visualize.norm()
+```

@@ -34,6 +34,12 @@ local showStartUpMessage = "true"
 -- Define whether header type messages should be displayed
 local showHeaderMessage = "false"
 
+-- Define a default repository URL
+local defaultRepoURL = "'https://repo.r-wasm.org/'"
+
+-- Define possible repo URLs
+local rPackageRepoURLS = defaultRepoURL
+
 -- Define an empty string if no packages need to be installed.
 local installRPackagesList = "''"
 
@@ -193,6 +199,22 @@ function setWebRInitializationOptions(meta)
     end
   end
 
+  -- Attempt to install different packages.
+  if isVariablePopulated(webr["repos"]) then
+    -- Create a custom list
+    local repoURLList = {}
+
+    -- Iterate through each list item and enclose it in quotes
+    for _, repoURL in pairs(webr["repos"]) do
+      table.insert(repoURLList, "'" .. pandoc.utils.stringify(repoURL) .. "'")
+    end
+    
+    -- Add default repo URL
+    table.insert(repoURLList, defaultRepoURL)
+
+    -- Combine URLs
+    rPackageRepoURLS = table.concat(repoURLList, ", ")
+  end
 
   -- Attempt to install different packages.
   if isVariablePopulated(webr["packages"]) then
@@ -289,6 +311,7 @@ local function initializationWebRDocumentSettings()
     ["HOMEDIR"] = homeDir,
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
     ["AUTOLOADRPACKAGES"] = autoloadRPackages,
+    ["RPACKAGEREPOURLS"] = rPackageRepoURLS,
     ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
     -- ["VERSION"] = baseVersionWebR
   }
