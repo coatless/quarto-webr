@@ -1,0 +1,23 @@
+---
+title: "Test: Install Packages Shim"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+
+check_pkg_installed <- function(x) {
+    x %in% installed.packages()[,"Package"]
+}
+
+print(paste0("(Pre-install) Is the package visualize installed? ", check_pkg_installed("visualize")))
+
+install.packages("visualize")
+
+print(paste0("(Post-install) Is the package visualize installed? ", check_pkg_installed("visualize")))
+```
