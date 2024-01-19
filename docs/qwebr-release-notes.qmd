@@ -34,6 +34,7 @@ format:
 
 ## Documentation 
 
+- Added section on demonstrations used to showcase the Quarto extension's features. ([#128](https://github.com/coatless/quarto-webr/pull/128))
 - Modified the RevealJS presentation YAML to include an option to disable the webR status message header ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Minor documentation tweaks.
 

@@ -16,5 +16,7 @@ filters:
 webR-enabled code cells are established by using `{webr-r}` in a Quarto HTML document.
 
 ```{webr-r}
+library("ggplot2")
+
 ggplot()
 ```
