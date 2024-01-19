@@ -97,6 +97,7 @@ For more details, please see [Communication Channels](qwebr-communication-channe
 - **Default Value**: `''`
 - **Documentation**: [serviceWorkerUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl)
 
+
 ## Native Extension Options
 
 The extension also provides native options that affect its behavior:
@@ -111,12 +112,21 @@ The extension also provides native options that affect its behavior:
 - **Description**: Determines whether COOP and COEP headers are in use for faster page loads.
 - **Default Value**: `false`
 
+### `repos`
+
+- **Description**: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: <https://repo.r-wasm.org/>.
+- **Default Value**: `['https://repo.r-wasm.org/']`
+- **Example**: `['https://username.r-universe.dev', 'https://username.github.io/reponame']` will cause webR to first look for the package on `r-universe.dev`, then move to looking at the package on GitHub Pages, before finally landing on the official repository.
+
+
 ### `packages`
 
 - **Description**: Specifies R packages to install automatically when the document opens.
 - **Default Value**: `[]`
+- **Example:** `['ggplot2', 'dplyr']` will cause `ggplot2` and `dplyr` to be installed.
 
 ### `autoload-packages`
 
 - **Description**: The `autoload-packages` option allows you to control whether R packages specified in the `packages` document option will be automatically loaded using `library()` calls when the document opens. By default, this option is set to `true`, meaning that packages listed in the `packages` option will be automatically loaded. If you set it to `false`, you will need to include a code cell with `library(package)` function calls for each package in `packages`.
 - **Default Value**: `true`
+
