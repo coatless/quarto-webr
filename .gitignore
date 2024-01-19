@@ -1,11 +1,11 @@
+/.luarc.json
 *.luarc.json
 *.DS_Store
-*_files
 webr-worker.js
 webr-serviceworker.js
-/webr-*.html
 *.csv
-/.luarc.json
+*_files
 docs/_site/*
 tests/_site/*
-examples/*/*.html
+*.html
+!_extensions/*/*
