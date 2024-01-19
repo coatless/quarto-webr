@@ -241,6 +241,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = [''];
 
+// Specify possible locations to search for the repository
+globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
 globalThis.qwebrAutoloadRPackages = true;
@@ -258,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"context":"interactive"}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"context":"interactive"}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"context":"interactive"},"id":1},{"code":"webr::install(\"ggplot2\")","options":{"context":"interactive"},"id":2},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"context":"interactive"},"id":3}];
 
 </script>
 <script type="module">
@@ -539,7 +542,7 @@ globalThis.createLoadingContainer = function(qwebrCounter) {
 <script type="module">
 // Function to install a single package
 async function qwebrInstallRPackage(packageName) {
-  await mainWebR.installPackages([packageName]);
+  await mainWebR.evalRVoid(`webr::install('${packageName}');`);
 }
 
 // Function to load a single package
@@ -602,6 +605,14 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Override the existing install.packages() to use webr::install()
     await mainWebR.evalRVoid('webr::shim_install()'); 
+
+    // Specify the repositories to pull from
+    // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    await mainWebR.evalRVoid(`
+      options(
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+      )
+    `);
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {

@@ -449,6 +449,9 @@
   // Determine if we need to install R packages
   globalThis.qwebrInstallRPackagesList = [''];
 
+  // Specify possible locations to search for the repository
+  globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
   // Check to see if we have an empty array, if we do set to skip the installation.
   globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
   globalThis.qwebrAutoloadRPackages = true;
@@ -466,7 +469,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"context":"interactive"},"id":1},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"context":"interactive"},"id":2},{"code":"message(\"Hello World!\")","options":{"context":"interactive"},"id":3},{"code":"2 + 3","options":{"context":"interactive"},"id":4}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"context":"interactive"}},{"id":2,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"context":"interactive"}},{"id":3,"code":"message(\"Hello World!\")","options":{"context":"interactive"}},{"id":4,"code":"2 + 3","options":{"context":"interactive"}}];
 
   </script>
   <script type="module">
@@ -747,7 +750,7 @@
   <script type="module">
   // Function to install a single package
   async function qwebrInstallRPackage(packageName) {
-    await mainWebR.installPackages([packageName]);
+    await mainWebR.evalRVoid(`webr::install('${packageName}');`);
   }
 
   // Function to load a single package
@@ -810,6 +813,14 @@
 
       // Override the existing install.packages() to use webr::install()
       await mainWebR.evalRVoid('webr::shim_install()'); 
+
+      // Specify the repositories to pull from
+      // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+      await mainWebR.evalRVoid(`
+        options(
+          webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+        )
+      `);
 
       // Check to see if any packages need to be installed
       if (qwebrSetupRPackages) {

@@ -241,6 +241,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = [''];
 
+// Specify possible locations to search for the repository
+globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
 globalThis.qwebrAutoloadRPackages = true;
@@ -258,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"meaning_of_life = 42","options":{"context":"setup"}},{"id":2,"code":"meaning_of_life","options":{"context":"interactive"}},{"id":3,"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","options":{"context":"output"}},{"id":4,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"context":"output"}},{"id":5,"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")","options":{"context":"setup"}},{"id":6,"code":"# Display the head of the data\nhead(df_penguins)","options":{"context":"interactive"}},{"id":7,"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","options":{"context":"output"}},{"id":8,"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","options":{"context":"setup"}},{"id":9,"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"setup"},"code":"meaning_of_life = 42","id":1},{"options":{"context":"interactive"},"code":"meaning_of_life","id":2},{"options":{"context":"output"},"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","id":3},{"options":{"context":"output"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4},{"options":{"context":"setup"},"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")","id":5},{"options":{"context":"interactive"},"code":"# Display the head of the data\nhead(df_penguins)","id":6},{"options":{"context":"output"},"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","id":7},{"options":{"context":"setup"},"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","id":8},{"options":{"context":"interactive"},"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","id":9}];
 
 </script>
 <script type="module">
@@ -539,7 +542,7 @@ globalThis.createLoadingContainer = function(qwebrCounter) {
 <script type="module">
 // Function to install a single package
 async function qwebrInstallRPackage(packageName) {
-  await mainWebR.installPackages([packageName]);
+  await mainWebR.evalRVoid(`webr::install('${packageName}');`);
 }
 
 // Function to load a single package
@@ -602,6 +605,14 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Override the existing install.packages() to use webr::install()
     await mainWebR.evalRVoid('webr::shim_install()'); 
+
+    // Specify the repositories to pull from
+    // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    await mainWebR.evalRVoid(`
+      options(
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+      )
+    `);
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {

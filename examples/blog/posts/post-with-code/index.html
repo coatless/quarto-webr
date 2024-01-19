@@ -198,6 +198,9 @@ ul.task-list li input[type="checkbox"] {
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = [''];
 
+// Specify possible locations to search for the repository
+globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
 globalThis.qwebrAutoloadRPackages = true;
@@ -215,7 +218,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello blog Quarto world!\")","options":{"context":"interactive"},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"print(\"Hello blog Quarto world!\")"}];
 
 </script>
 <script type="module">
@@ -496,7 +499,7 @@ globalThis.createLoadingContainer = function(qwebrCounter) {
 <script type="module">
 // Function to install a single package
 async function qwebrInstallRPackage(packageName) {
-  await mainWebR.installPackages([packageName]);
+  await mainWebR.evalRVoid(`webr::install('${packageName}');`);
 }
 
 // Function to load a single package
@@ -559,6 +562,14 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Override the existing install.packages() to use webr::install()
     await mainWebR.evalRVoid('webr::shim_install()'); 
+
+    // Specify the repositories to pull from
+    // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    await mainWebR.evalRVoid(`
+      options(
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+      )
+    `);
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {

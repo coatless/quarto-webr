@@ -198,6 +198,9 @@ ul.task-list li input[type="checkbox"] {
 // Determine if we need to install R packages
 globalThis.qwebrInstallRPackagesList = ['ggplot2', 'dplyr'];
 
+// Specify possible locations to search for the repository
+globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
 // Check to see if we have an empty array, if we do set to skip the installation.
 globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
 globalThis.qwebrAutoloadRPackages = true;
@@ -215,7 +218,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})"},{"id":2,"options":{"context":"interactive"},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)"},{"id":3,"options":{"context":"interactive"},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)"},{"id":4,"options":{"context":"interactive"},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())"},{"id":5,"options":{"context":"interactive"},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")"},{"id":6,"options":{"context":"interactive"},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")"}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"context":"interactive"},"id":1},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"context":"interactive"},"id":2},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"context":"interactive"},"id":3},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"context":"interactive"},"id":4},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"context":"interactive"},"id":5},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"context":"interactive"},"id":6}];
 
 </script>
 <script type="module">
@@ -496,7 +499,7 @@ globalThis.createLoadingContainer = function(qwebrCounter) {
 <script type="module">
 // Function to install a single package
 async function qwebrInstallRPackage(packageName) {
-  await mainWebR.installPackages([packageName]);
+  await mainWebR.evalRVoid(`webr::install('${packageName}');`);
 }
 
 // Function to load a single package
@@ -559,6 +562,14 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Override the existing install.packages() to use webr::install()
     await mainWebR.evalRVoid('webr::shim_install()'); 
+
+    // Specify the repositories to pull from
+    // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    await mainWebR.evalRVoid(`
+      options(
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+      )
+    `);
 
     // Check to see if any packages need to be installed
     if (qwebrSetupRPackages) {
