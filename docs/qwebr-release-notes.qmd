@@ -19,6 +19,7 @@ format:
 - Optimized the underlying code handling insertion and execution of R code.  ([#118](https://github.com/coatless/quarto-webr/pull/118))
 - Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. ([#120](https://github.com/coatless/quarto-webr/pull/120))
 - Redesigned non-interactive cells to provide improved reliability and visual cues. ([#120](https://github.com/coatless/quarto-webr/pull/120))
+- Added `repos` document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main [webR repository](https://repo.r-wasm.org/) ([#124](https://github.com/coatless/quarto-webr/issues/124)).
 
 ## Changes
 
