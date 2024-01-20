@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.545">
+  <meta name="generator" content="quarto-1.4.547">
 
   <title>Test Suite for quarto-webr - Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -319,7 +319,7 @@
       margin-right: 0; 
     }
   </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
   <style type="text/css">
@@ -469,7 +469,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"context":"interactive"}},{"id":2,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"context":"interactive"}},{"id":3,"code":"message(\"Hello World!\")","options":{"context":"interactive"}},{"id":4,"code":"2 + 3","options":{"context":"interactive"}}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"context":"interactive"},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"},{"id":3,"options":{"context":"interactive"},"code":"message(\"Hello World!\")"},{"id":4,"options":{"context":"interactive"},"code":"2 + 3"}];
 
   </script>
   <script type="module">
@@ -1061,13 +1061,13 @@
   </script>
 </head>
 <body class="quarto-light">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
     }
   });
 </script>
