@@ -33,7 +33,7 @@ format:
 - Prevented HTML output being shown as HTML by replacing HTML characters like `<`, `>`, `&`, etc., with their corresponding HTML entities. ([#115](https://github.com/coatless/quarto-webr/issues/115), h/t [@gvelasq](https://github.com/gvelasq))
 - Fixed display of text found after a code cell in RevealJS appearing off the page. ([#102](https://github.com/coatless/quarto-webr/issues/102), [#106](https://github.com/coatless/quarto-webr/issues/106))
 - Fixed `setup` and `output` contexts not syncing with values found in `packages`.   ([#114](https://github.com/coatless/quarto-webr/issues/114), [#105](https://github.com/coatless/quarto-webr/issues/105), [#88](https://github.com/coatless/quarto-webr/issues/88))
-
+- Fixed `unexpected input` error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be `LF` (`\n`) and, thus preventing `CRLF` (`\r\n`) from entering the picture. ([#94](https://github.com/coatless/quarto-webr/issues/94) huge thank you and h/t to [@ute](https://github.com/ute). Thanks also to [@alexCardazzi](https://github.com/alexCardazzi) for initial reporting).
 
 ## Documentation 
 
