@@ -216,7 +216,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":1,"options":{"context":"interactive"}},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":2,"options":{"context":"output"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")"},{"id":2,"options":{"context":"output"},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")"}];
 
 </script>
 <script type="module">
@@ -1059,7 +1059,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Error: <text>:1:7 unexpected input
 
     // Retrieve the underlying model
-    const model = editor.getModel()
+    const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
 

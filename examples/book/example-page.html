@@ -218,7 +218,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"context":"interactive"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"context":"interactive"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"context":"interactive"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"context":"interactive"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"context":"interactive"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})"},{"options":{"context":"interactive"},"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)"},{"options":{"context":"interactive"},"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)"},{"options":{"context":"interactive"},"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())"},{"options":{"context":"interactive"},"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")"},{"options":{"context":"interactive"},"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")"}];
 
 </script>
 <script type="module">
@@ -964,7 +964,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Error: <text>:1:7 unexpected input
 
     // Retrieve the underlying model
-    const model = editor.getModel()
+    const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
 

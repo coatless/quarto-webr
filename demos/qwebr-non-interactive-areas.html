@@ -225,7 +225,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup"},"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)"},{"options":{"context":"output"},"id":2,"code":"g + geom_point()\n\nSys.sleep(0.5)"},{"options":{"context":"output"},"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)"},{"options":{"context":"interactive"},"id":4,"code":"g"}];
+globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","id":1,"options":{"context":"setup"}},{"code":"g + geom_point()\n\nSys.sleep(0.5)","id":2,"options":{"context":"output"}},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","id":3,"options":{"context":"output"}},{"code":"g","id":4,"options":{"context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -1109,7 +1109,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Error: <text>:1:7 unexpected input
 
     // Retrieve the underlying model
-    const model = editor.getModel()
+    const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
 

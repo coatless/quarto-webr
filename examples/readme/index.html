@@ -183,7 +183,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)","options":{"context":"interactive"},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)"}];
 
 </script>
 <script type="module">
@@ -839,7 +839,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Error: <text>:1:7 unexpected input
 
     // Retrieve the underlying model
-    const model = editor.getModel()
+    const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
 
