@@ -449,7 +449,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 20, 2024</p>
+      <p class="date-modified">January 21, 2024</p>
     </div>
   </div>
     
@@ -492,6 +492,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li>Prevented HTML output being shown as HTML by replacing HTML characters like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, etc., with their corresponding HTML entities. (<a href="https://github.com/coatless/quarto-webr/issues/115">#115</a>, h/t <a href="https://github.com/gvelasq"><span class="citation" data-cites="gvelasq">@gvelasq</span></a>)</li>
 <li>Fixed display of text found after a code cell in RevealJS appearing off the page. (<a href="https://github.com/coatless/quarto-webr/issues/102">#102</a>, <a href="https://github.com/coatless/quarto-webr/issues/106">#106</a>)</li>
 <li>Fixed <code>setup</code> and <code>output</code> contexts not syncing with values found in <code>packages</code>. (<a href="https://github.com/coatless/quarto-webr/issues/114">#114</a>, <a href="https://github.com/coatless/quarto-webr/issues/105">#105</a>, <a href="https://github.com/coatless/quarto-webr/issues/88">#88</a>)</li>
+<li>Fixed <code>unexpected input</code> error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be <code>LF</code> (<code>\n</code>) and, thus preventing <code>CRLF</code> (<code>\r\n</code>) from entering the picture. (<a href="https://github.com/coatless/quarto-webr/issues/94">#94</a> huge thank you and h/t to <a href="https://github.com/ute"><span class="citation" data-cites="ute">@ute</span></a>. Thanks also to <a href="https://github.com/alexCardazzi"><span class="citation" data-cites="alexCardazzi">@alexCardazzi</span></a> for initial reporting).</li>
 </ul>
 </section>
 <section id="documentation" class="level2">

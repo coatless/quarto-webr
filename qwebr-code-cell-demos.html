@@ -261,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"1 + 1","id":1},{"options":{"context":"interactive"},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","id":2},{"options":{"context":"interactive"},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","id":3},{"options":{"context":"interactive"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4},{"options":{"context":"interactive"},"code":"35 + ________","id":5},{"options":{"context":"interactive"},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","id":6},{"options":{"context":"interactive"},"code":"webr::install(\"ggplot2\")","id":7},{"options":{"context":"interactive"},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","id":8},{"options":{"context":"interactive"},"code":"name <- \"James\"\nage <- 42","id":9},{"options":{"context":"interactive"},"code":"message(name, \" is \", age, \" years old!\")","id":10},{"options":{"context":"interactive"},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","id":11},{"options":{"context":"interactive"},"code":"say_hello(\"Hulya\")","id":12},{"options":{"context":"interactive"},"code":"stop(\"This is a hard error\")","id":13},{"options":{"context":"interactive"},"code":"variable_not_defined","id":14},{"options":{"context":"interactive"},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","id":15},{"options":{"context":"interactive"},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","id":16},{"options":{"context":"interactive"},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","id":17},{"options":{"context":"interactive"},"code":"add_one <- \\(x) x + 1\nadd_one(2)","id":18},{"options":{"context":"interactive"},"code":"","id":19}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"1 + 1"},{"id":2,"options":{"context":"interactive"},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)"},{"id":3,"options":{"context":"interactive"},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩"},{"id":4,"options":{"context":"interactive"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"id":5,"options":{"context":"interactive"},"code":"35 + ________"},{"id":6,"options":{"context":"interactive"},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)"},{"id":7,"options":{"context":"interactive"},"code":"webr::install(\"ggplot2\")"},{"id":8,"options":{"context":"interactive"},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()"},{"id":9,"options":{"context":"interactive"},"code":"name <- \"James\"\nage <- 42"},{"id":10,"options":{"context":"interactive"},"code":"message(name, \" is \", age, \" years old!\")"},{"id":11,"options":{"context":"interactive"},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")"},{"id":12,"options":{"context":"interactive"},"code":"say_hello(\"Hulya\")"},{"id":13,"options":{"context":"interactive"},"code":"stop(\"This is a hard error\")"},{"id":14,"options":{"context":"interactive"},"code":"variable_not_defined"},{"id":15,"options":{"context":"interactive"},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1"},{"id":16,"options":{"context":"interactive"},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)"},{"id":17,"options":{"context":"interactive"},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas"},{"id":18,"options":{"context":"interactive"},"code":"add_one <- \\(x) x + 1\nadd_one(2)"},{"id":19,"options":{"context":"interactive"},"code":""}];
 
 </script>
 <script type="module">
@@ -1111,7 +1111,7 @@ globalThis.qwebrExecuteCode = async function (
 </script>
 <script type="module">
 // Global dictionary to store Monaco Editor instances
-const qwebrEditorInstances = {};
+globalThis.qwebrEditorInstances = {};
 
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
@@ -1148,6 +1148,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
     // Store the initial code value
     editor.__qwebrinitialCode = initialCode;
+
+    // Set at the model level the preferred end of line (EOL) character to LF.
+    // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
+    // See details in: https://github.com/coatless/quarto-webr/issues/94
+    // Associated error text: 
+    // Error: <text>:1:7 unexpected input
+
+    // Retrieve the underlying model
+    const model = editor.getModel()
+    // Set EOL for the model
+    model.setEOL(monaco.editor.EndOfLineSequence.LF);
 
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
@@ -1272,7 +1283,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 20, 2024</p>
+      <p class="date-modified">January 21, 2024</p>
     </div>
   </div>
     

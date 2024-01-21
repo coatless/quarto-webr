@@ -261,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"context":"interactive"}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"context":"interactive"}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"options":{"context":"interactive"},"id":2,"code":"webr::install(\"ggplot2\")"},{"options":{"context":"interactive"},"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1097,7 +1097,7 @@ globalThis.qwebrExecuteCode = async function (
 </script>
 <script type="module">
 // Global dictionary to store Monaco Editor instances
-const qwebrEditorInstances = {};
+globalThis.qwebrEditorInstances = {};
 
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
@@ -1134,6 +1134,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
     // Store the initial code value
     editor.__qwebrinitialCode = initialCode;
+
+    // Set at the model level the preferred end of line (EOL) character to LF.
+    // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
+    // See details in: https://github.com/coatless/quarto-webr/issues/94
+    // Associated error text: 
+    // Error: <text>:1:7 unexpected input
+
+    // Retrieve the underlying model
+    const model = editor.getModel()
+    // Set EOL for the model
+    model.setEOL(monaco.editor.EndOfLineSequence.LF);
 
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
@@ -1258,7 +1269,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 20, 2024</p>
+      <p class="date-modified">January 21, 2024</p>
     </div>
   </div>
     

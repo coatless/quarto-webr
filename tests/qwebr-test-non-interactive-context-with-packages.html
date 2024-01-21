@@ -216,7 +216,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng","options":{"context":"output"}},{"id":2,"code":"g + aes(color = factor(cyl))","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"output"},"id":1,"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng"},{"options":{"context":"interactive"},"id":2,"code":"g + aes(color = factor(cyl))"}];
 
 </script>
 <script type="module">
@@ -1014,7 +1014,7 @@ globalThis.qwebrExecuteCode = async function (
 </script>
 <script type="module">
 // Global dictionary to store Monaco Editor instances
-const qwebrEditorInstances = {};
+globalThis.qwebrEditorInstances = {};
 
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
@@ -1051,6 +1051,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
     // Store the initial code value
     editor.__qwebrinitialCode = initialCode;
+
+    // Set at the model level the preferred end of line (EOL) character to LF.
+    // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
+    // See details in: https://github.com/coatless/quarto-webr/issues/94
+    // Associated error text: 
+    // Error: <text>:1:7 unexpected input
+
+    // Retrieve the underlying model
+    const model = editor.getModel()
+    // Set EOL for the model
+    model.setEOL(monaco.editor.EndOfLineSequence.LF);
 
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
