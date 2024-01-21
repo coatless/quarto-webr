@@ -78,8 +78,17 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Blog posts
 
+- [James Goldie](https://github.com/jimjam-slam)'s post on [Your new R package? Write a WebR blog post for it](https://jamesgoldie.dev/writing/your-new-r-package-webr/). Jan 19th, 2024.
+  - [Source](https://github.com/jimjam-slam/jamesgoldie-dev/blob/6b60b2e42c6e21eb1ed8ae390f108592bb48d98c/writing/your-new-r-package-webr/index.qmd)
+- [Isabella Velásquez](https://github.com/ivelasq)'s post on [Six not-so-basic base R functions](https://ivelasq.rbind.io/blog/not-so-basic-base-r-functions/). Jan 16th, 2024.
+  - [Source](https://github.com/ivelasq/pipedream/blob/e3ad8c78672a34869194f7deae06ba2310e87c2b/blog/not-so-basic-base-r-functions/index.qmd)
+- [Wolfgang Huber](https://github.com/wolfganghuber)'s post on [Horseshoes in multi-dimensional scaling](https://www.huber.embl.de/group/posts/horseshoes-embeddings.html). Jan 6th, 2024.
+  - [Source](https://github.com/Huber-group-EMBL/Huber-group-EMBL.github.io/blob/af96767084888843dc0100c070a19993de3762fb/posts/horseshoes-embeddings.qmd)
+- [Alex Hayes](https://github.com/alexpghayes)'s post on [the accumulation of small risks](https://www.alexpghayes.com/post/2023-12-12-accumulation-of-risk/). Dec 23rd, 2023.
+  - [Source](https://github.com/alexpghayes/quarto-blog/blob/a1bf15bd71278fdddb8b7f6b0358e87700dc9831/post/2023-12-12-accumulation-of-risk/index.qmd)
 - [Thomas Sandmann](https://www.linkedin.com/in/thomas-sandmann)'s post on [Embedding R into Quarto documents with quarto-webr](https://tomsing1.github.io/blog/posts/quarto-webr/). Nov 18th, 2023.
   - Example document: [Intersecting Differential expression results](https://tomsing1.github.io/blog/posts/quarto-webr/quarto_webr_example.html).
+  - [Source](https://github.com/tomsing1/blog/blob/ae4b593152f09366a39a133d7bee9a95d739d394/posts/quarto-webr/index.qmd)
 - [Chi Zhang](https://andreaczhang.github.io/)'s post [Use WebR in your existing quarto website](https://andreaczhang.github.io/blog/technotes_20231001_qt_webr/). Oct 1st, 2023.
 - [Javier Orraca-Deatcu](https://www.javierorracadeatcu.com/)'s post titled [webR via Quarto Extensions](https://www.javierorracadeatcu.com/posts/2023-08-23-webr-via-quarto-extensions/). Aug 23rd, 2023.
 - [George Stagg](https://gws.phd/)'s mention of the extension in his [webR 0.2.0 announcement](https://www.tidyverse.org/blog/2023/08/webr-0-2-0/). Aug 8th, 2023.
