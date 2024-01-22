@@ -78,6 +78,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Blog posts
 
+- [Matt Dray](https://www.matt-dray.com/)'s post on [Pseudo-apps in the browser with WebR and Quarto?](https://www.rostrum.blog/posts/2024-01-20-webr-remote/). Jan 20th, 2024.
+  - [Source](https://github.com/matt-dray/rostrum-blog-2/tree/9a533bd968743c429a2376288c1600dd20a158b7/posts/2024-01-20-webr-remote)
 - [James Goldie](https://github.com/jimjam-slam)'s post on [Your new R package? Write a WebR blog post for it](https://jamesgoldie.dev/writing/your-new-r-package-webr/). Jan 19th, 2024.
   - [Source](https://github.com/jimjam-slam/jamesgoldie-dev/blob/6b60b2e42c6e21eb1ed8ae390f108592bb48d98c/writing/your-new-r-package-webr/index.qmd)
 - [Isabella Velásquez](https://github.com/ivelasq)'s post on [Six not-so-basic base R functions](https://ivelasq.rbind.io/blog/not-so-basic-base-r-functions/). Jan 16th, 2024.
@@ -95,6 +97,7 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s use to create a [portal for Tidy Tuesday](https://tidytuesday.weecology.org/). May 2nd, 2023
 - [Matt Dray](https://www.matt-dray.com/)'s post on [Playgrounds with WebR and Quarto](https://www.rostrum.blog/posts/2023-03-16-webr-quarto/). Mar 16th, 2023
   - [A Parsing Playground for R Code](https://webr-parse-test.netlify.app/) on Netlify and the [repository powering it](https://github.com/matt-dray/webr-parse-test).
+  - [Source](https://github.com/matt-dray/rostrum-blog-2/tree/9a533bd968743c429a2376288c1600dd20a158b7/posts/2023-03-16-webr-quarto)
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s post on [Playgrounds with WebR and Quarto](https://jabberwocky.weecology.org/2023/03/13/a-brief-introduction-to-using-webr-and-quarto-for-client-side-interactive-lesson-material/). Mar 13th, 2023.
 
 # Press
