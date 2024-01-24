@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -351,6 +351,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
   <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
+  <li><a href="#repos" id="toc-repos" class="nav-link" data-scroll-target="#repos"><code>repos</code></a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
   <li><a href="#autoload-packages" id="toc-autoload-packages" class="nav-link" data-scroll-target="#autoload-packages"><code>autoload-packages</code></a></li>
   </ul></li>
@@ -388,7 +389,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 22, 2024</p>
+      <p class="date-modified">January 24, 2024</p>
     </div>
   </div>
     
@@ -517,11 +518,20 @@ Note
 <li><strong>Default Value</strong>: <code>false</code></li>
 </ul>
 </section>
+<section id="repos" class="level3">
+<h3 class="anchored" data-anchor-id="repos"><code>repos</code></h3>
+<ul>
+<li><strong>Description</strong>: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: <a href="https://repo.r-wasm.org/" class="uri">https://repo.r-wasm.org/</a>.</li>
+<li><strong>Default Value</strong>: <code>['https://repo.r-wasm.org/']</code></li>
+<li><strong>Example</strong>: <code>['https://username.r-universe.dev', 'https://username.github.io/reponame']</code> will cause webR to first look for the package on <code>r-universe.dev</code>, then move to looking at the package on GitHub Pages, before finally landing on the official repository.</li>
+</ul>
+</section>
 <section id="packages" class="level3">
 <h3 class="anchored" data-anchor-id="packages"><code>packages</code></h3>
 <ul>
 <li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
 <li><strong>Default Value</strong>: <code>[]</code></li>
+<li><strong>Example:</strong> <code>['ggplot2', 'dplyr']</code> will cause <code>ggplot2</code> and <code>dplyr</code> to be installed.</li>
 </ul>
 </section>
 <section id="autoload-packages" class="level3">

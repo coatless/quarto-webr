@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.547">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -261,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = \"https://repo.r-wasm.org/bin/emscripten/contrib/4.3\"\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"context":"interactive"}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"context":"interactive"}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"context":"interactive"},"id":1},{"code":"webr::install(\"ggplot2\")","options":{"context":"interactive"},"id":2},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"context":"interactive"},"id":3}];
 
 </script>
 <script type="module">
@@ -608,9 +608,11 @@ globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs
 
     // Specify the repositories to pull from
     // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+    // inside of `install()`. However, other R functions still pull from `repos`.
     await mainWebR.evalRVoid(`
       options(
-        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+        webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')}),
+        repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
       )
     `);
 
@@ -1076,7 +1078,10 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#available-r-packages" id="toc-available-r-packages" class="nav-link active" data-scroll-target="#available-r-packages">Available R Packages</a></li>
+  <li><a href="#available-r-packages" id="toc-available-r-packages" class="nav-link active" data-scroll-target="#available-r-packages">Available R Packages</a>
+  <ul class="collapse">
+  <li><a href="#custom-repositories" id="toc-custom-repositories" class="nav-link" data-scroll-target="#custom-repositories">Custom Repositories</a></li>
+  </ul></li>
   <li><a href="#install-r-packages-on-document-open" id="toc-install-r-packages-on-document-open" class="nav-link" data-scroll-target="#install-r-packages-on-document-open">Install R Packages on Document Open</a></li>
   <li><a href="#installing-an-r-package-interactively" id="toc-installing-an-r-package-interactively" class="nav-link" data-scroll-target="#installing-an-r-package-interactively">Installing an R Package Interactively</a></li>
   <li><a href="#load-r-packages-interactively" id="toc-load-r-packages-interactively" class="nav-link" data-scroll-target="#load-r-packages-interactively">Load R Packages Interactively</a></li>
@@ -1269,7 +1274,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 22, 2024</p>
+      <p class="date-modified">January 24, 2024</p>
     </div>
   </div>
     
@@ -1305,21 +1310,51 @@ Note
 <p>To achieve parity with base R, the <strong>Available R packages</strong> metric serves as an indicator of whether R scripts may require further modification to function properly within webR.</p>
 </div>
 </div>
+<section id="custom-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="custom-repositories">Custom Repositories</h2>
+<p>If an R package is not available on the <a href="https://repo.r-wasm.org">main webR repository</a> (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.</p>
+<p>We have the following guides:</p>
+<ul>
+<li><a href="https://github.com/coatless-tutorials/webr-org-gh-action">Org-focused webR/WASM Package Repository without a <code>{pkgdown}</code> website</a></li>
+<li><a href="https://github.com/coatless-tutorials/webr-unified-gh-workflow">Unified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website</a></li>
+<li><a href="https://github.com/coatless-tutorials/webr-github-action-wasm-binaries">Separate GitHub Action Deployment onto <code>gh-pages</code> branch of R WASM Package binaries and {pkgdown} website</a></li>
+</ul>
+<p>Once done, please make sure to specify where the custom repository is by using the <code>repos</code> key under the <code>webr</code> option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the <a href="https://r-universe.dev/search/">r-universe</a>, by using:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">repos</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> https://username.github.io/reponame</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> https://username.r-universe.dev</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>{quarto-webr}</code> extension is setup to always check whether an R package is available at the main repository even without it being specified in the <code>repos</code> key.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="install-r-packages-on-document-open" class="level1">
 <h1>Install R Packages on Document Open</h1>
 <p>To automatically install packages when the document opens, add the <code>packages</code> key under <code>webr</code> in the YAML header, listing the packages in an array:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>By using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.</p>
-<p>If you do not want the packages to be loaded by default, add the <code>autoload-packages: false</code> under <code>webr</code> in the YAML header. This will disable the calls to load each R package in the <code>packages</code> key, e.g.&nbsp;<code>library(package)</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">autoload-packages</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.</p>
+<p>If you do not want the packages to be loaded by default, add the <code>autoload-packages: false</code> under <code>webr</code> in the YAML header. This will disable the calls to load each R package in the <code>packages</code> key, e.g.&nbsp;<code>library(package)</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'ggplot2'</span><span class="kw">,</span><span class="at"> </span><span class="st">'dplyr'</span><span class="kw">]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">autoload-packages</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="installing-an-r-package-interactively" class="level1">
 <h1>Installing an R Package Interactively</h1>

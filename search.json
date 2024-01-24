@@ -125,7 +125,7 @@
     "href": "qwebr-meta-options.html#native-extension-options",
     "title": "Customization Options",
     "section": "Native Extension Options",
-    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
+    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\nrepos\n\nDescription: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: https://repo.r-wasm.org/.\nDefault Value: ['https://repo.r-wasm.org/']\nExample: ['https://username.r-universe.dev', 'https://username.github.io/reponame'] will cause webR to first look for the package on r-universe.dev, then move to looking at the package on GitHub Pages, before finally landing on the official repository.\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\nExample: ['ggplot2', 'dplyr'] will cause ggplot2 and dplyr to be installed.\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
     "crumbs": [
       "Getting Started",
       "Customization Options"
@@ -334,7 +334,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Internal JavaScript functions used by the extension have been significantly changed.\n\n\n\n\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124).\n\n\n\n\n\nAdded new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)\n\n\n\n\n\nPrevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page. (#102, #106)\nFixed setup and output contexts not syncing with values found in packages. (#114, #105, #88)\nFixed unexpected input error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be LF (\\n) and, thus preventing CRLF (\\r\\n) from entering the picture. (#94 huge thank you and h/t to @ute. Thanks also to @alexCardazzi for initial reporting).\n\n\n\n\n\nAdded section on demonstrations used to showcase the Quarto extension’s features. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
+    "text": "Internal JavaScript functions used by the extension have been significantly changed.\n\n\n\n\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).\n\n\n\n\n\nAdded new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)\n\n\n\n\n\nPrevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page. (#102, #106)\nFixed setup and output contexts not syncing with values found in packages. (#114, #105, #88)\nFixed unexpected input error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be LF (\\n) and, thus preventing CRLF (\\r\\n) from entering the picture. (#94 huge thank you and h/t to @ute. Thanks also to @alexCardazzi for initial reporting).\n\n\n\n\n\nNew section with demos of the Quarto extension’s features. (#128)\nAdded a demo on non-interactive code cells. (#128)\nAdded a demo on using custom repositories to install R WASM package binaries. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -356,7 +356,7 @@
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
     "section": "",
-    "text": "Optimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124).",
+    "text": "Optimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -389,7 +389,7 @@
     "href": "qwebr-release-notes.html#documentation",
     "title": "Release Notes",
     "section": "",
-    "text": "Added section on demonstrations used to showcase the Quarto extension’s features. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.",
+    "text": "New section with demos of the Quarto extension’s features. (#128)\nAdded a demo on non-interactive code cells. (#128)\nAdded a demo on using custom repositories to install R WASM package binaries. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -802,6 +802,49 @@
     "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by 5 seconds by adding Sys.sleep() to emphasize code cell locking.\n\n\n\nSay Hi\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nCalculate\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHelp!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "demos/qwebr-custom-repository.html",
+    "href": "demos/qwebr-custom-repository.html",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "In this example, we add a custom R WASM Package repository that contains demorwasmbinary R WASM package. The package is not available from the main webR repository.\nThe source of the custom repository can be viewed here and the rendered website using {pkgdown} can be viewed here.\n\n\nTo automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present.\n\n\n\n\n\nAlternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+  },
+  {
+    "objectID": "demos/qwebr-custom-repository.html#specify-repos-key",
+    "href": "demos/qwebr-custom-repository.html#specify-repos-key",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "To automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present."
+  },
+  {
+    "objectID": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
+    "href": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "Alternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+  },
+  {
+    "objectID": "qwebr-using-r-packages.html",
+    "href": "qwebr-using-r-packages.html",
+    "title": "Using R Packages",
+    "section": "",
+    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.",
+    "crumbs": [
+      "Getting Started",
+      "Using R Packages"
+    ]
+  },
+  {
+    "objectID": "qwebr-using-r-packages.html#custom-repositories",
+    "href": "qwebr-using-r-packages.html#custom-repositories",
+    "title": "Using R Packages",
+    "section": "Custom Repositories",
+    "text": "Custom Repositories\nIf an R package is not available on the main webR repository (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.\nWe have the following guides:\n\nOrg-focused webR/WASM Package Repository without a {pkgdown} website\nUnified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website\nSeparate GitHub Action Deployment onto gh-pages branch of R WASM Package binaries and {pkgdown} website\n\nOnce done, please make sure to specify where the custom repository is by using the repos key under the webr option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the r-universe, by using:\n---\nwebr:\n  repos:\n    - https://username.github.io/reponame\n    - https://username.r-universe.dev\n---\n\n\n\n\n\n\nNote\n\n\n\nThe {quarto-webr} extension is setup to always check whether an R package is available at the main repository even without it being specified in the repos key.",
+    "crumbs": [
+      "Getting Started",
+      "Using R Packages"
+    ]
+  },
+  {
     "objectID": "qwebr-faq.html",
     "href": "qwebr-faq.html",
     "title": "Frequently Asked Questions",
@@ -813,22 +856,11 @@
     ]
   },
   {
-    "objectID": "qwebr-using-r-packages.html",
-    "href": "qwebr-using-r-packages.html",
-    "title": "Using R Packages",
-    "section": "",
-    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.\n\nAvailable R Packages\nBefore you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAlternatively, you can navigate to the webR binary R repository here for package listings.\n\n\n\n\n\n\nNote\n\n\n\nwebR reports the number of packages available in two ways:\n\nBuilt R packages: This indicates the number of R packages with WebAssembly binaries that can be used within webR, although they may have a decreased number of features available.\nAvailable R packages: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.\n\nTo achieve parity with base R, the Available R packages metric serves as an indicator of whether R scripts may require further modification to function properly within webR.\n\n\n\n\nInstall R Packages on Document Open\nTo automatically install packages when the document opens, add the packages key under webr in the YAML header, listing the packages in an array:\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n---\nBy using this approach, you ensure that necessary packages are available right from the start when readers access your document. Moreover, the webR code cells will not become active until the packages are installed and loaded. This can be especially helpful when working with packages in multiple cells.\nIf you do not want the packages to be loaded by default, add the autoload-packages: false under webr in the YAML header. This will disable the calls to load each R package in the packages key, e.g. library(package).\n---\nwebr:\n  packages: ['ggplot2', 'dplyr']\n  autoload-packages: false\n---\n\n\nInstalling an R Package Interactively\nIf you need to install a package interactively within specific code cells, you can do so using the webr::install() function. This method allows you to install packages on-the-fly when needed.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that not all R packages are immediately available for use with webR due to the presence of compiled code routines. The installation process might also take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nUsing this approach, you can install packages on a per-code cell basis, which can be more efficient when you only need specific packages for certain parts of your document.\n\n\nLoad R Packages Interactively\nOnce an R package is installed, you can use it just like normal by calling either library() or require() to load the package.\nFor instance, if you have installed ggplot2 in the prior code cell, then the following will load the ggplot2 and create a scatterplot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNot a fan of having a code cell dedicated to load packages? You can use the packages key option above to let the quarto-webr extension take care of loading the packages after installing.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
     "objectID": "demos/qwebr-feature-demos.html",
     "href": "demos/qwebr-feature-demos.html",
     "title": "Feature Demonstrations",
     "section": "",
-    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
+    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nUsing Custom Repositories for R WASM Package binaries\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
     "crumbs": [
       "Demos",
       "Feature Demos"
