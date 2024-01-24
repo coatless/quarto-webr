@@ -1,0 +1,68 @@
+---
+title: "Demo: Custom R WASM Package Repository"
+engine: knitr
+webr:
+  packages: ['demorwasmbinary']
+  repos:
+    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/
+filters:
+  - webr
+---
+
+# Overview
+
+In this example, we add a custom R WASM Package repository that contains `demorwasmbinary` R WASM package. The package is not available from the [main webR repository](https://repo.r-wasm.org/).
+
+The source of the custom repository can be viewed [here](https://github.com/coatless-tutorials/webr-unified-gh-workflow) and the rendered website using {pkgdown} can be viewed [here](https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/).
+
+## Specify `repos` key 
+
+To automatically have the package installed and loaded like normal, please specify the name of the package in `packages` and where the custom repository is in `repos`.
+
+For this example, we would specify:
+
+```yaml
+---
+webr:
+  packages: ['demorwasmbinary']
+  repos:
+    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/
+---
+```
+
+:::{.callout-note}
+This version will ensure that any `webr-r` code cells inside of the document are not run prior to the package being present. 
+:::
+
+## Specify `repos` in `webr::install()`
+
+Alternatively, we can avoid registering a repository and directly install 
+from a custom repository by using `webr::install(pkg, repos = "...")`.
+
+For example, we can re-create the above statement using:
+
+````md
+```{webr-r}
+# context: setup
+# Install the binary from a custom repository
+webr::install(
+  "demorwasmbinary", 
+  repos = "https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/"
+)
+
+library("demorwasmbinary")
+```
+````
+
+# Explore the package
+
+Finally, let's use the package within a regular webR code cell, e.g.
+
+```{webr-r}
+#| context: interactive
+# Check to see if the function works
+demorwasmbinary::in_webr()
+
+# View help documentation
+?demorwasmbinary::in_webr
+```

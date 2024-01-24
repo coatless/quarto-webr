@@ -7,6 +7,9 @@ engine: knitr
 #  show-header-message: true      # Display whether COOP&COEP headers are set for speed.
 #  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
 #  autoload-packages: false       # Disable automatic library calls on R packages specified in packages.
+#  repos:                         # Specify repositories to check for custom packages
+#    - https://github-username.github.io/reponame
+#    - https://username.r-universe.dev
 #  channel-type: 'post-message'   # Specify a specific communication channel type.
 #  home-dir: "/home/rstudio"      # Customize where the working directory is
 #  base-url: ''                   # Base URL used for downloading R WebAssembly binaries

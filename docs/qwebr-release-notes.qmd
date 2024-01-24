@@ -19,7 +19,7 @@ format:
 - Optimized the underlying code handling insertion and execution of R code.  ([#118](https://github.com/coatless/quarto-webr/pull/118))
 - Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. ([#120](https://github.com/coatless/quarto-webr/pull/120))
 - Redesigned non-interactive cells to provide improved reliability and visual cues. ([#120](https://github.com/coatless/quarto-webr/pull/120))
-- Added `repos` document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main [webR repository](https://repo.r-wasm.org/) ([#124](https://github.com/coatless/quarto-webr/issues/124)).
+- Added `repos` document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main [webR repository](https://repo.r-wasm.org/) ([#124](https://github.com/coatless/quarto-webr/issues/124), [#132](https://github.com/coatless/quarto-webr/pull/132)).
 
 ## Changes
 
@@ -37,7 +37,9 @@ format:
 
 ## Documentation 
 
-- Added section on demonstrations used to showcase the Quarto extension's features. ([#128](https://github.com/coatless/quarto-webr/pull/128))
+- New section with [demos of the Quarto extension's features](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-feature-demos.html). ([#128](https://github.com/coatless/quarto-webr/pull/128))
+- Added a demo on [non-interactive code cells](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-non-interactive-areas.html). ([#128](https://github.com/coatless/quarto-webr/pull/128))
+- Added a demo on [using custom repositories to install R WASM package binaries](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-custom-repository.html). ([#128](https://github.com/coatless/quarto-webr/pull/132))
 - Modified the RevealJS presentation YAML to include an option to disable the webR status message header ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Updated [blog posts](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html#blog-posts) on [community examples](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html) page ([#135](https://github.com/coatless/quarto-webr/pull/135))
 - Minor documentation tweaks.
