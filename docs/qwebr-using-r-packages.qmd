@@ -21,10 +21,20 @@ Whether you need specialized statistical analysis, advanced visualization, or an
 Before you use any R package with webR, it's essential to check if it's available. You can explore the available packages by executing the following R code, either with webR or just R:
 
 ```{webr-r}
+# Determine the version of R being used by webR 
+major_minor_version <- paste(
+  R.version$major, 
+  strsplit(R.version$minor, ".", fixed = TRUE)[[1L]][1L],
+  sep = "."
+)
+
 # Obtain a list of packages
 webr_info <- as.data.frame(
   available.packages(
-    contriburl = "https://repo.r-wasm.org/bin/emscripten/contrib/4.3"
+    contriburl = paste0(
+      "https://repo.r-wasm.org/bin/emscripten/contrib/", 
+      major_minor_version
+    )
   )
 )
 
@@ -49,6 +59,32 @@ webR reports the number of packages available in two ways:
 - **Available R packages**: This number represents feature-complete R packages that have all their dependencies compiled and are fully functional within webR.
 
 To achieve parity with base R, the **Available R packages** metric serves as an indicator of whether R scripts may require further modification to function properly within webR.
+:::
+
+## Custom Repositories
+
+If an R package is not available on the [main webR repository](https://repo.r-wasm.org) (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.
+
+We have the following guides:
+
+- [Org-focused webR/WASM Package Repository without a `{pkgdown}` website](https://github.com/coatless-tutorials/webr-org-gh-action) 
+- [Unified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website](https://github.com/coatless-tutorials/webr-unified-gh-workflow)
+- [Separate GitHub Action Deployment onto `gh-pages` branch of R WASM Package binaries and {pkgdown} website](https://github.com/coatless-tutorials/webr-github-action-wasm-binaries)
+
+
+Once done, please make sure to specify where the custom repository is by using the `repos` key under the `webr` option in the document header. For example, we can add two custom repositories -- one to a GitHub pages hosted repository and another to the [r-universe](https://r-universe.dev/search/), by using:
+
+```yaml
+---
+webr:
+  repos:
+    - https://username.github.io/reponame
+    - https://username.r-universe.dev
+---
+```
+
+:::{.callout-note}
+The `{quarto-webr}` extension is setup to always check whether an R package is available at the main repository even without it being specified in the `repos` key.
 :::
 
 # Install R Packages on Document Open
