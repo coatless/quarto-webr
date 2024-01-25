@@ -71,6 +71,8 @@ We have the following guides:
 - [Unified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website](https://github.com/coatless-tutorials/webr-unified-gh-workflow)
 - [Separate GitHub Action Deployment onto `gh-pages` branch of R WASM Package binaries and {pkgdown} website](https://github.com/coatless-tutorials/webr-github-action-wasm-binaries)
 
+Another approach would be to use [r-universe.dev](https://ropensci.org/blog/2023/11/17/runiverse-wasm/)
+to automatically build and supply R WASM package binaries.
 
 Once done, please make sure to specify where the custom repository is by using the `repos` key under the `webr` option in the document header. For example, we can add two custom repositories -- one to a GitHub pages hosted repository and another to the [r-universe](https://r-universe.dev/search/), by using:
 

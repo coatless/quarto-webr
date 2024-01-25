@@ -13,7 +13,8 @@ filters:
 
 In this example, we add a custom R WASM Package repository that contains `demorwasmbinary` R WASM package. The package is not available from the [main webR repository](https://repo.r-wasm.org/).
 
-The source of the custom repository can be viewed [here](https://github.com/coatless-tutorials/webr-unified-gh-workflow) and the rendered website using {pkgdown} can be viewed [here](https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/).
+The source of the custom repository can be viewed [here](https://github.com/coatless-tutorials/webr-unified-gh-workflow) and the rendered website using {pkgdown} can be viewed [here](https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/). Another approach would be to use [r-universe.dev](https://ropensci.org/blog/2023/11/17/runiverse-wasm/)
+to automatically build and supply R WASM package binaries.
 
 ## Specify `repos` key 
 
