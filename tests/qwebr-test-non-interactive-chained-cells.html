@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.3">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr - Test: Chained Non-interactive Areas</title>
+<title>Test Suite for quarto-webr – Test: Chained Non-interactive Areas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -216,7 +216,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"setup"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"id":2,"options":{"context":"output"},"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"id":3,"options":{"context":"output"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"id":4,"options":{"context":"interactive"},"code":"g"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"setup"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1},{"options":{"context":"output"},"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2},{"options":{"context":"output"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3},{"options":{"context":"interactive"},"code":"g","id":4}];
 
 </script>
 <script type="module">

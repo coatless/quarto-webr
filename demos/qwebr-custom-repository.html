@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.3">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr - Demo: Custom R WASM Package Repository</title>
+<title>quarto-webr – Demo: Custom R WASM Package Repository</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -259,7 +259,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr","id":1}];
 
 </script>
 <script type="module">
@@ -1268,7 +1268,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>In this example, we add a custom R WASM Package repository that contains <code>demorwasmbinary</code> R WASM package. The package is not available from the <a href="https://repo.r-wasm.org/">main webR repository</a>.</p>
-<p>The source of the custom repository can be viewed <a href="https://github.com/coatless-tutorials/webr-unified-gh-workflow">here</a> and the rendered website using {pkgdown} can be viewed <a href="https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/">here</a>.</p>
+<p>The source of the custom repository can be viewed <a href="https://github.com/coatless-tutorials/webr-unified-gh-workflow">here</a> and the rendered website using {pkgdown} can be viewed <a href="https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/">here</a>. Another approach would be to use <a href="https://ropensci.org/blog/2023/11/17/runiverse-wasm/">r-universe.dev</a> to automatically build and supply R WASM package binaries.</p>
 <section id="specify-repos-key" class="level2">
 <h2 class="anchored" data-anchor-id="specify-repos-key">Specify <code>repos</code> key</h2>
 <p>To automatically have the package installed and loaded like normal, please specify the name of the package in <code>packages</code> and where the custom repository is in <code>repos</code>.</p>

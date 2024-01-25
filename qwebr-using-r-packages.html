@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.3">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="James Joseph Balamuta">
 <meta name="dcterms.date" content="2023-09-14">
 
-<title>quarto-webr - Using R Packages</title>
+<title>quarto-webr – Using R Packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -261,7 +261,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"context":"interactive"},"id":1},{"code":"webr::install(\"ggplot2\")","options":{"context":"interactive"},"id":2},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"context":"interactive"},"id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"context":"interactive"},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"context":"interactive"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1274,7 +1274,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 24, 2024</p>
+      <p class="date-modified">January 25, 2024</p>
     </div>
   </div>
     
@@ -1319,6 +1319,7 @@ Note
 <li><a href="https://github.com/coatless-tutorials/webr-unified-gh-workflow">Unified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website</a></li>
 <li><a href="https://github.com/coatless-tutorials/webr-github-action-wasm-binaries">Separate GitHub Action Deployment onto <code>gh-pages</code> branch of R WASM Package binaries and {pkgdown} website</a></li>
 </ul>
+<p>Another approach would be to use <a href="https://ropensci.org/blog/2023/11/17/runiverse-wasm/">r-universe.dev</a> to automatically build and supply R WASM package binaries.</p>
 <p>Once done, please make sure to specify where the custom repository is by using the <code>repos</code> key under the <code>webr</code> option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the <a href="https://r-universe.dev/search/">r-universe</a>, by using:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
