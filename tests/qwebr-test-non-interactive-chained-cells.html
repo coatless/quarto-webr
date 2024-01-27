@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.3">
+<meta name="generator" content="quarto-1.5.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -216,7 +216,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1},{"options":{"context":"output"},"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2},{"options":{"context":"output"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3},{"options":{"context":"interactive"},"code":"g","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","options":{"context":"setup"}},{"id":2,"code":"g + geom_point()\n\nSys.sleep(0.25)","options":{"context":"output"}},{"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","options":{"context":"output"}},{"id":4,"code":"g","options":{"context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -502,7 +502,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`library(${packageName});`);
+  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
 }
 
 // Generic function to process R packages
