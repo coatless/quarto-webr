@@ -195,17 +195,17 @@ plot2::plot2(
 
 ## `out-width` and `out-height` Option
 
-The `out-width` and `out-height` options control physical space the plot will reside in. Let's revisit our previous example and constrain the output area by specifying `out-width: 500px` and `out-height: 400px`.
+The `out-width` and `out-height` options control physical space the plot will reside in. Let's revisit our previous example and constrain the output area by specifying `out-width: 500px` and `out-height: 500px`.
 
 
 :::  {.panel-tabset group="language"}
 #### `{quarto-webr}` Output
 ```{webr-r}
 #| context: output
-#| fig-width: 5
-#| fig-height: 5
+#| fig-width: 6
+#| fig-height: 6
 #| out-width: 500px
-#| out-height: 400px
+#| out-height: 500px
 plot2::plot2(
   ~ Petal.Length | Species,
   data = iris,
