@@ -209,17 +209,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "title": "Test: Keyboard Shortcuts in Code cell",
-    "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
-    "crumbs": [
-      "Tests",
-      "Test: Keyboard Shortcuts in Code cell"
-    ]
-  },
-  {
     "objectID": "qwebr-test-escape-html-output-characters.html",
     "href": "qwebr-test-escape-html-output-characters.html",
     "title": "Test: Escape Output with HTML Entities",
@@ -246,10 +235,54 @@
     "href": "qwebr-test-escape-html-output-characters.html#non-interactive",
     "title": "Test: Escape Output with HTML Entities",
     "section": "Non-interactive",
-    "text": "Non-interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Non-interactive\n\nEscape HTML Characters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nLeave characters asis\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
       "Test: Escape Output with HTML Entities"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "title": "Test: Keyboard Shortcuts in Code cell",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
+    "crumbs": [
+      "Tests",
+      "Test: Keyboard Shortcuts in Code cell"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-stderr-result-suppression.html",
+    "href": "qwebr-test-output-stderr-result-suppression.html",
+    "title": "Test: STDErr & Result Output Suppression",
+    "section": "",
+    "text": "Test options for disabling standard error (warning: false or message: false) and results = 'hide'",
+    "crumbs": [
+      "Tests",
+      "Test: STDErr & Result Output Suppression"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-stderr-result-suppression.html#interactive",
+    "href": "qwebr-test-output-stderr-result-suppression.html#interactive",
+    "title": "Test: STDErr & Result Output Suppression",
+    "section": "Interactive",
+    "text": "Interactive\n\nSuppresion with hide\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nSuppression with warning\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nSuppression with message\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: STDErr & Result Output Suppression"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-stderr-result-suppression.html#non-interactive",
+    "href": "qwebr-test-output-stderr-result-suppression.html#non-interactive",
+    "title": "Test: STDErr & Result Output Suppression",
+    "section": "Non-interactive",
+    "text": "Non-interactive\n\nSuppresion with hide\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nSuppression with warning\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nSuppression with message\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: STDErr & Result Output Suppression"
     ]
   },
   {
@@ -333,7 +366,7 @@
     "href": "qwebr-test-output-graph.html#interactive",
     "title": "Test: Graphics Output",
     "section": "Interactive",
-    "text": "Interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
       "Test: Graphics Output"
@@ -344,7 +377,7 @@
     "href": "qwebr-test-output-graph.html#non-interactive",
     "title": "Test: Graphics Output",
     "section": "Non-interactive",
-    "text": "Non-interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Non-interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
       "Test: Graphics Output"

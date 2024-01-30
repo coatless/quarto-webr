@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-01">
+<meta name="dcterms.date" content="2024-01-30">
 
-<title>quarto-webr – Deployment Templates</title>
+<title>quarto-webr – Code Cell Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -89,7 +123,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-deployment-templates.html">Deployment</a></li><li class="breadcrumb-item"><a href="./qwebr-deployment-templates.html">Templates</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-cell-options.html">Code Cell Options</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -145,7 +179,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-cell-options.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Code Cell Options</span></a>
   </div>
 </li>
@@ -238,7 +272,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Templates</span></a>
   </div>
 </li>
@@ -307,20 +341,19 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#html-document-template" id="toc-html-document-template" class="nav-link active" data-scroll-target="#html-document-template">HTML Document Template</a></li>
-  <li><a href="#revealjs-presentation-template" id="toc-revealjs-presentation-template" class="nav-link" data-scroll-target="#revealjs-presentation-template">RevealJS Presentation Template</a></li>
-  <li><a href="#website-template" id="toc-website-template" class="nav-link" data-scroll-target="#website-template">Website Template</a></li>
-  <li><a href="#blog-template" id="toc-blog-template" class="nav-link" data-scroll-target="#blog-template">Blog Template</a></li>
-  <li><a href="#book-template" id="toc-book-template" class="nav-link" data-scroll-target="#book-template">Book Template</a></li>
+  <li><a href="#webr" id="toc-webr" class="nav-link active" data-scroll-target="#webr">webR</a></li>
+  <li><a href="#cell-output" id="toc-cell-output" class="nav-link" data-scroll-target="#cell-output">Cell Output</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-deployment-templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-cell-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-deployment-templates.html">Deployment</a></li><li class="breadcrumb-item"><a href="./qwebr-deployment-templates.html">Templates</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-cell-options.html">Code Cell Options</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Deployment Templates</h1>
+<h1 class="title">Code Cell Options</h1>
+<p class="subtitle lead">Supported Cell Options in <code>{webr-r}</code> Blocks</p>
 </div>
 
 
@@ -331,7 +364,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2023</p>
+      <p class="date">January 30, 2024</p>
     </div>
   </div>
   
@@ -349,18 +382,16 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </header>
 
 
-<p>Discover a range of sample deployment templates for the <code>quarto-webr</code> extension at our GitHub repository <a href="https://github.com/coatless/quarto-webr/tree/main/examples">here</a>. These templates serve as convenient starting points for various web-based projects that harness the power of the <code>quarto-webr</code> extension, enabling interactive data analysis inside of a web browser. Whether you’re embarking on an individual report, creating an interactive website, or compiling a digital book, these templates simplify the process, making it effortless to kickstart your own projects.</p>
-<section id="html-document-template" class="level1">
-<h1>HTML Document Template</h1>
-<p>This template is designed for creating standalone HTML documents with interactive webR functionality. It’s suitable for individual reports or interactive documents.</p>
-<ul>
-<li><strong>Example</strong>: You can find an example of an HTML document template <a href="https://quarto-webr.thecoatlessprofessor.com/examples/html-document/">here</a>.</li>
-<li><strong>Source Code</strong>: Access the source code for this template <a href="https://github.com/coatless/quarto-webr/tree/main/examples/html-document">here</a>.</li>
-</ul>
-</section>
-<section id="revealjs-presentation-template" class="level1">
-<h1>RevealJS Presentation Template</h1>
-<p>This template is designed for creating standalone RevealJS presentations with interactive webR functionality. It’s suitable for creating lecture slides.</p>
+<p>This article provides an in-depth overview of cell options supported in <code>{webr-r}</code> code blocks. These options play a crucial role in influencing the execution and output of executable code blocks. It’s important to note that these cell options are specified within comments at the top of a code block by using a hashpipe <code>#| option: value</code>.</p>
+<p>Here’s an example of how you can use these options:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| results: 'asis'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-width: 5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in"># R code here</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the cell options <code>results</code> is set to <code>'asis'</code>, and <code>fig-width</code> is set to <code>5</code> inches.</p>
+<p>These options can be customized to tailor the behavior of the code block based on your specific requirements. Understanding and using these options effectively can enhance the overall control and presentation of your code outputs.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -371,37 +402,136 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This template requires a <a href="https://quarto.org/docs/download/prerelease"><strong>pre-release</strong> version of Quarto that is 1.4.502 or greater</a> that contains an updated copy of <code>pandoc</code>. For more details, please see <a href="https://github.com/coatless/quarto-webr/issues/14">Issue #14</a>.</p>
+<p>The <code>{quarto-webr}</code> extension does not support all of the cell options from <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">Quarto</a> or <a href="https://yihui.org/knitr/options/">Knitr</a>. Please consult below for details on what is available.</p>
 </div>
 </div>
-<ul>
-<li><strong>Example</strong>: You can find an example of a RevealJS presentation template <a href="https://quarto-webr.thecoatlessprofessor.com/examples/revealjs/">here</a>.</li>
-<li><strong>Source Code</strong>: Access the source code for this template <a href="https://github.com/coatless/quarto-webr/tree/main/examples/revealjs">here</a>.</li>
-</ul>
+<section id="webr" class="level2">
+<h2 class="anchored" data-anchor-id="webr">webR</h2>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>context</code></td>
+<td><code>"interactive"</code></td>
+<td>Describe how the cell should operate on the page through either <code>"interactive"</code> (Runnable code editor), <code>"output"</code> (Output only of executed at runtime), or <code>"setup"</code> (execute code without seeing output at runtime).</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>context</code> option is unique to the <code>{quarto-webr}</code> extension. For more details, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
+</div>
+</div>
 </section>
-<section id="website-template" class="level1">
-<h1>Website Template</h1>
-<p>This template is meant for building interactive websites with multiple webR-powered pages. It’s ideal for websites that have multiple piece of web content that requires interactive data analysis at the “top-level”.</p>
-<ul>
-<li><strong>Example</strong>: Explore an example of a website template <a href="https://quarto-webr.thecoatlessprofessor.com/examples/website/">here</a>.</li>
-<li><strong>Source Code</strong>: Access the source code for this template <a href="https://github.com/coatless/quarto-webr/tree/main/examples/website">here</a>.</li>
-</ul>
+<section id="cell-output" class="level2">
+<h2 class="anchored" data-anchor-id="cell-output">Cell Output</h2>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>results</code></td>
+<td><code>'markup'</code></td>
+<td>Controls how to display the text results through either: <code>'markup'</code> (Mark up text output with appropriate environments), <code>'asis'</code> (Write text output as-is, raw text results directly into the output document), or <code>'hide'</code> (Hide text output).</td>
+</tr>
+<tr class="even">
+<td><code>warning</code></td>
+<td><code>true</code></td>
+<td>Preserve standard error output (<code>warning()</code>, <code>message()</code>, or <code>stop()</code>) in the output.</td>
+</tr>
+<tr class="odd">
+<td><code>message</code></td>
+<td><code>true</code></td>
+<td>See prior entry.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the present time, we cannot differentiate between the type of condition being sent to standard error. Thus, if either <code>warning</code> or <code>message</code> is set to <code>false</code>, the output for both will be surpressed.</p>
+</div>
+</div>
 </section>
-<section id="blog-template" class="level1">
-<h1>Blog Template</h1>
-<p>For users who want to periodically use webR on their Quarto blog, please use the following template.</p>
-<ul>
-<li><strong>Example</strong>: Explore an example of a blog website template <a href="https://quarto-webr.thecoatlessprofessor.com/examples/blog/">here</a>.</li>
-<li><strong>Source Code</strong>: Access the source code for this template <a href="https://github.com/coatless/quarto-webr/tree/main/examples/blog">here</a>.</li>
-</ul>
-</section>
-<section id="book-template" class="level1">
-<h1>Book Template</h1>
-<p>The book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.</p>
-<ul>
-<li><strong>Example</strong>: You can view an example of a book template <a href="https://quarto-webr.thecoatlessprofessor.com/examples/book">here</a>.</li>
-<li><strong>Source Code</strong>: Access the source code for this template <a href="https://github.com/coatless/quarto-webr/tree/main/examples/book">here</a>.</li>
-</ul>
+<section id="figures" class="level2">
+<h2 class="anchored" data-anchor-id="figures">Figures</h2>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dpi</code></td>
+<td>72</td>
+<td>Dots per inch to use in calculating pixel values for <code>fig-height</code> and <code>fig-width</code>, e.g.&nbsp;<code>dpi * inches = pixels</code>.</td>
+</tr>
+<tr class="even">
+<td><code>fig-width</code></td>
+<td>7</td>
+<td>Width of the plot (in inches)</td>
+</tr>
+<tr class="odd">
+<td><code>fig-height</code></td>
+<td>5</td>
+<td>Height of the plot (in inches)</td>
+</tr>
+<tr class="even">
+<td><code>out-width</code></td>
+<td><code>"700px"</code></td>
+<td>Width of the plot in the output document, which can be different from its physical <code>fig-width</code> such as <code>"100%"</code> or <code>"250px"</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>out-height</code></td>
+<td><code>""</code></td>
+<td>Height of the plot in the output document, similar to <code>out-width</code>.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -799,4 +929,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-deployment-templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-cell-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

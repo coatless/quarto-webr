@@ -77,18 +77,60 @@
     ]
   },
   {
-    "objectID": "demos/qwebr-non-interactive-areas.html",
-    "href": "demos/qwebr-non-interactive-areas.html",
-    "title": "Demo: Revamped Noninteractive Areas",
+    "objectID": "demos/qwebr-long-running-execution-interactive-locking.html",
+    "href": "demos/qwebr-long-running-execution-interactive-locking.html",
+    "title": "Demo: Locking interactive code",
     "section": "",
-    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by about 1/2 of a second to show how the document is responding.\n\n\n\nPackage dependencies\nThe quarto-webr extension is set to automatically install and load the ggplot2 and dplyr packages by specifying a packages key in the document’s header.\n\n\nSetup a hidden ggplot2 object\nFrom there, we’re going to use the context: setup hidden cell to create a ggplot2 object that uses the mtcars data set with the aesthetic mappings of x = wt and y = mpg called g.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nGenerate a graph\nLet’s move from setup to generating and displaying results by using g object created in setup within an output context:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nRe-use prior graph object\nLet’s also re-use the base g but change the aesthetics so that colour is now present.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nWork with a hidden setup object\nFinally, let’s make sure we can do some interesting things with the interactive session.\n\n\n\n\n\n\nNote\n\n\n\nChanges inside of interactive cells do not propagate backwards in the document.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by 5 seconds by adding Sys.sleep() to emphasize code cell locking.\n\n\n\nSay Hi\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nCalculate\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHelp!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html",
+    "href": "demos/qwebr-code-cell-options.html",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "In this document, we will explore and demonstrate the various cell options available in {webr-r} code blocks. These options allow you to customize the behavior and appearance of your code outputs. These options can only be set during the authoring stage of the document.\n\n\nThe context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results.\n\n\n\nThe results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```\n\n\n\n\n\n\nThe fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThe out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThese examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#context-option",
+    "href": "demos/qwebr-code-cell-options.html#context-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results."
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#results-option",
+    "href": "demos/qwebr-code-cell-options.html#results-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
+    "href": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
+    "href": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#conclusion",
+    "href": "demos/qwebr-code-cell-options.html#conclusion",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "These examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
   },
   {
     "objectID": "demos/qwebr-feature-demos.html",
     "href": "demos/qwebr-feature-demos.html",
     "title": "Feature Demonstrations",
     "section": "",
-    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nUsing Custom Repositories for R WASM Package binaries\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
+    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nInitial Code Cell Option Support\nUsing Custom Repositories for R WASM Package binaries\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
     "crumbs": [
       "Demos",
       "Feature Demos"
@@ -135,7 +177,7 @@
     "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or _quarto.yml file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
+      "Document Options"
     ]
   },
   {
@@ -146,7 +188,7 @@
     "text": "Document YAML\nTo fine-tune webR to the specific needs of a document, place inside your document’s YAML header the webr key. Specifying options this way allows webR to be setup with unique options confined to only that document.\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nwebr: \n  show-startup-message: false    # Disable displaying status of webR initialization\n  packages: ['ggplot2', 'dplyr'] # Install R packages on document open\nfilters:\n  - webr\n---",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
+      "Document Options"
     ]
   },
   {
@@ -157,7 +199,7 @@
     "text": "Global Configuration\nIf you have multiple pages that use webR, we suggest setting global options inside of the _quarto.yml file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the _quarto.yml should look like:\nproject:\n  type: book\n\nbook:\n  title: \"Sample quarto-webr Book Project\"\n  # ... more options\n\n# Set default options for every bookpage that may or may not include webR.\nwebr: \n  show-startup-message: false    # Disable displaying status of webR initialization\n  packages: ['ggplot2', 'dplyr'] # Install R packages on document open\n\n# Attach webR extension for the project\nfilters:\n  - webr\n\n\n\n\n\n\nNote\n\n\n\nIf a webR code cell is not present on a website, blog, or book page, then the quarto-webr extension will not setup webR on the page.\n\n\nYou can see full examples of setting a global option under the Deployment Templates page.",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
+      "Document Options"
     ]
   },
   {
@@ -168,7 +210,7 @@
     "text": "webR options\nBy specifying various WebROptions options in the document YAML, you can create a personalized webR experience\n\nhome-dir\n\nDescription: Set the WebAssembly user’s home directory and initial working directory.\nDefault Value: '/home/web_user'\nDocumentation: homeDir\n\n\n\nbase-url\n\nDescription: Define the base URL for downloading R WebAssembly binaries.\nDefault Value: 'https://webr.r-wasm.org/[version]/'\nDocumentation: baseUrl\n\n\n\nchannel-type\n\nDescription: Specify the communication channel type to interact with webR.\nDefault Value: \"automatic\" (0)\nPossible Values: \"automatic\" (0), \"shared-array-buffer\" (1), \"service-worker\" (2), \"post-message\" (3).\nDocumentation: channelType\n\n\n\n\n\n\n\nNote\n\n\n\nWe recommend using the \"post-message\" channel when GitHub Pages or Quarto Pub serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (readline(), menu(), browser(), etc.). For more details, please see Communication Channels\n\n\n\n\nservice-worker-url\n\nDescription: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.\nDefault Value: ''\nDocumentation: serviceWorkerUrl",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
+      "Document Options"
     ]
   },
   {
@@ -179,7 +221,7 @@
     "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\nrepos\n\nDescription: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: https://repo.r-wasm.org/.\nDefault Value: ['https://repo.r-wasm.org/']\nExample: ['https://username.r-universe.dev', 'https://username.github.io/reponame'] will cause webR to first look for the package on r-universe.dev, then move to looking at the package on GitHub Pages, before finally landing on the official repository.\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\nExample: ['ggplot2', 'dplyr'] will cause ggplot2 and dplyr to be installed.\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
     "crumbs": [
       "Getting Started",
-      "Customization Options"
+      "Document Options"
     ]
   },
   {
@@ -414,7 +456,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Internal JavaScript functions used by the extension have been significantly changed.\n\n\n\n\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).\n\n\n\n\n\nAdded new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)\n\n\n\n\n\nPrevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page. (#102, #106)\nFixed setup and output contexts not syncing with values found in packages. (#114, #105, #88)\nFixed unexpected input error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be LF (\\n) and, thus preventing CRLF (\\r\\n) from entering the picture. (#94 huge thank you and h/t to @ute. Thanks also to @alexCardazzi for initial reporting).\n\n\n\n\n\nNew section with demos of the Quarto extension’s features. (#128)\nAdded a demo on non-interactive code cells. (#128)\nAdded a demo on using custom repositories to install R WASM package binaries. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
+    "text": "Internal JavaScript functions used by the extension have been significantly changed.\n\n\n\n\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nInitial code cell option support for changing figure width and height (dpi, fig-width, fig-height, out-width, & out-height), suppressing standard error messages generated by warning(), message(), and stop() (warning: false or message: false), and allowing content to appear as-is (results: 'asis'). (#104, #125)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).\n\n\n\n\n\nAdded new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nAdded the keyboard shortcut for Run Code – Shift + Enter – to mouseover text for the Run Code button. (#91)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)\n\n\n\n\n\nPrevented HTML output being shown as HTML by replacing HTML characters like &lt;, &gt;, &, etc., with their corresponding HTML entities. (#115, h/t @gvelasq)\nFixed display of text found after a code cell in RevealJS appearing off the page. (#102, #106)\nFixed setup and output contexts not syncing with values found in packages. (#114, #105, #88)\nFixed unexpected input error appearing spuriously on Windows machines by enforcing the end-of-line (EOL) character to be LF (\\n) and, thus preventing CRLF (\\r\\n) from entering the picture. (#94 huge thank you and h/t to @ute. Thanks also to @alexCardazzi for initial reporting).\n\n\n\n\n\nNew section with demos of the Quarto extension’s features. (#128)\nAdded a demo on non-interactive code cells. (#128)\nAdded a demo on using custom repositories to install R WASM package binaries. (#128)\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nMinor documentation tweaks.\n\n\n\n\n\nAdded an instructive error message regarding whether template files are missing. (#107)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -436,7 +478,7 @@
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
     "section": "",
-    "text": "Optimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).",
+    "text": "Optimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nInitial code cell option support for changing figure width and height (dpi, fig-width, fig-height, out-width, & out-height), suppressing standard error messages generated by warning(), message(), and stop() (warning: false or message: false), and allowing content to appear as-is (results: 'asis'). (#104, #125)\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -447,7 +489,7 @@
     "href": "qwebr-release-notes.html#changes",
     "title": "Release Notes",
     "section": "",
-    "text": "Added new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)",
+    "text": "Added new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nAdded the keyboard shortcut for Run Code – Shift + Enter – to mouseover text for the Run Code button. (#91)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -999,11 +1041,55 @@
     "text": "Alternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
   },
   {
-    "objectID": "demos/qwebr-long-running-execution-interactive-locking.html",
-    "href": "demos/qwebr-long-running-execution-interactive-locking.html",
-    "title": "Demo: Locking interactive code",
+    "objectID": "demos/qwebr-non-interactive-areas.html",
+    "href": "demos/qwebr-non-interactive-areas.html",
+    "title": "Demo: Revamped Noninteractive Areas",
     "section": "",
-    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by 5 seconds by adding Sys.sleep() to emphasize code cell locking.\n\n\n\nSay Hi\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nCalculate\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHelp!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by about 1/2 of a second to show how the document is responding.\n\n\n\nPackage dependencies\nThe quarto-webr extension is set to automatically install and load the ggplot2 and dplyr packages by specifying a packages key in the document’s header.\n\n\nSetup a hidden ggplot2 object\nFrom there, we’re going to use the context: setup hidden cell to create a ggplot2 object that uses the mtcars data set with the aesthetic mappings of x = wt and y = mpg called g.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nGenerate a graph\nLet’s move from setup to generating and displaying results by using g object created in setup within an output context:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nRe-use prior graph object\nLet’s also re-use the base g but change the aesthetics so that colour is now present.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nWork with a hidden setup object\nFinally, let’s make sure we can do some interesting things with the interactive session.\n\n\n\n\n\n\nNote\n\n\n\nChanges inside of interactive cells do not propagate backwards in the document.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "qwebr-cell-options.html",
+    "href": "qwebr-cell-options.html",
+    "title": "Code Cell Options",
+    "section": "",
+    "text": "This article provides an in-depth overview of cell options supported in {webr-r} code blocks. These options play a crucial role in influencing the execution and output of executable code blocks. It’s important to note that these cell options are specified within comments at the top of a code block by using a hashpipe #| option: value.\nHere’s an example of how you can use these options:\nIn this example, the cell options results is set to 'asis', and fig-width is set to 5 inches.\nThese options can be customized to tailor the behavior of the code block based on your specific requirements. Understanding and using these options effectively can enhance the overall control and presentation of your code outputs.",
+    "crumbs": [
+      "Getting Started",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#webr",
+    "href": "qwebr-cell-options.html#webr",
+    "title": "Code Cell Options",
+    "section": "webR",
+    "text": "webR\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\n\"interactive\"\nDescribe how the cell should operate on the page through either \"interactive\" (Runnable code editor), \"output\" (Output only of executed at runtime), or \"setup\" (execute code without seeing output at runtime).\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe context option is unique to the {quarto-webr} extension. For more details, please see Hiding and Executing Code.",
+    "crumbs": [
+      "Getting Started",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#cell-output",
+    "href": "qwebr-cell-options.html#cell-output",
+    "title": "Code Cell Options",
+    "section": "Cell Output",
+    "text": "Cell Output\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nresults\n'markup'\nControls how to display the text results through either: 'markup' (Mark up text output with appropriate environments), 'asis' (Write text output as-is, raw text results directly into the output document), or 'hide' (Hide text output).\n\n\nwarning\ntrue\nPreserve standard error output (warning(), message(), or stop()) in the output.\n\n\nmessage\ntrue\nSee prior entry.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAt the present time, we cannot differentiate between the type of condition being sent to standard error. Thus, if either warning or message is set to false, the output for both will be surpressed.",
+    "crumbs": [
+      "Getting Started",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#figures",
+    "href": "qwebr-cell-options.html#figures",
+    "title": "Code Cell Options",
+    "section": "Figures",
+    "text": "Figures\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ndpi\n72\nDots per inch to use in calculating pixel values for fig-height and fig-width, e.g. dpi * inches = pixels.\n\n\nfig-width\n7\nWidth of the plot (in inches)\n\n\nfig-height\n5\nHeight of the plot (in inches)\n\n\nout-width\n\"700px\"\nWidth of the plot in the output document, which can be different from its physical fig-width such as \"100%\" or \"250px\".\n\n\nout-height\n\"\"\nHeight of the plot in the output document, similar to out-width.",
+    "crumbs": [
+      "Getting Started",
+      "Code Cell Options"
+    ]
   },
   {
     "objectID": "qwebr-theming.html",

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr – qwebr-test-status-header-no-title</title>
+<title>Test Suite for quarto-webr – Test: STDErr &amp; Result Output Suppression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello hidden title world!\")","id":1,"options":{"out-width":"700px","message":"true","context":"interactive","fig-height":5,"warning":"true","results":"markup","fig-width":7,"dpi":72,"out-height":""}}];
+globalThis.qwebrCellDetails = [{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"interactive","fig-height":5,"dpi":72,"warning":"true","results":"hide","fig-width":7,"out-width":"700px","message":"true","out-height":""},"id":1},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"interactive","fig-height":5,"dpi":72,"warning":"false","results":"markup","fig-width":7,"out-width":"700px","message":"true","out-height":""},"id":2},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"interactive","fig-height":5,"dpi":72,"warning":"true","results":"markup","fig-width":7,"out-width":"700px","message":"false","out-height":""},"id":3},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"output","fig-height":5,"dpi":72,"warning":"true","results":"hide","fig-width":7,"out-width":"700px","message":"true","out-height":""},"id":4},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"output","fig-height":5,"dpi":72,"warning":"false","results":"markup","fig-width":7,"out-width":"700px","message":"true","out-height":""},"id":5},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"context":"output","fig-height":5,"dpi":72,"warning":"true","results":"markup","fig-width":7,"out-width":"700px","message":"false","out-height":""},"id":6}];
 
 </script>
 <script type="module">
@@ -910,7 +910,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-status-header-no-title.html">Qwebr Test Status Header No Title</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-output-stderr-result-suppression.html">Test: STDErr &amp; Result Output Suppression</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1031,7 +1031,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-output-stderr-result-suppression.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-test-output-stderr-result-suppression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: STDErr &amp; Result Output Suppression</span></a>
   </div>
 </li>
@@ -1073,7 +1073,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-status-header-no-title.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-test-status-header-no-title.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Qwebr Test Status Header No Title</span></a>
   </div>
 </li>
@@ -1276,14 +1276,64 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-output-stderr-result-suppression.html">Test: STDErr &amp; Result Output Suppression</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Test: STDErr &amp; Result Output Suppression</h1>
+</div>
 
 
 
-<p>Ensure that the webR code cell initializes a status even if a title is omitted.</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Test options for disabling standard error (<code>warning: false</code> or <code>message: false</code>) and <code>results = 'hide'</code></p>
+<section id="interactive" class="level2">
+<h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="suppresion-with-hide" class="level3">
+<h3 class="anchored" data-anchor-id="suppresion-with-hide">Suppresion with hide</h3>
 <div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="suppression-with-warning" class="level3">
+<h3 class="anchored" data-anchor-id="suppression-with-warning">Suppression with warning</h3>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="suppression-with-message" class="level3">
+<h3 class="anchored" data-anchor-id="suppression-with-message">Suppression with message</h3>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</section>
+<section id="non-interactive" class="level2">
+<h2 class="anchored" data-anchor-id="non-interactive">Non-interactive</h2>
+<section id="suppresion-with-hide-1" class="level3">
+<h3 class="anchored" data-anchor-id="suppresion-with-hide-1">Suppresion with hide</h3>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="suppression-with-warning-1" class="level3">
+<h3 class="anchored" data-anchor-id="suppression-with-warning-1">Suppression with warning</h3>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="suppression-with-message-1" class="level3">
+<h3 class="anchored" data-anchor-id="suppression-with-message-1">Suppression with message</h3>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

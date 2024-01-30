@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.5">
+<meta name="generator" content="quarto-1.5.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"context":"setup"}},{"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"setup","fig-height":5,"message":"true","warning":"true","results":"markup","out-width":"700px","dpi":72,"fig-width":7,"out-height":""},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"context":"interactive","fig-height":5,"message":"true","warning":"true","results":"markup","out-width":"700px","dpi":72,"fig-width":7,"out-height":""},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -660,6 +660,11 @@ globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
       .replace(/'/g, "&#039;");
   };
 
+// Passthrough results
+globalThis.qwebrIdentity = function(x) {
+    return x;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -708,13 +713,26 @@ globalThis.qwebrComputeEngine = async function(
     // Create a pager variable for help/file contents
     let pager = [];
 
+    // Handle how output is processed
+    let processOutput;
+
+    if (options.results == "markup") {
+        processOutput = qwebrEscapeHTMLCharacters;
+    } else {
+        processOutput = qwebrIdentity;
+    }
+
     // ---- 
+    // Convert from Inches to Pixels by using DPI (dots per inch)
+    // for bitmap devices (dpi * inches = pixels)
+    let fig_width = options["fig-width"] * options["dpi"]
+    let fig_height = options["fig-height"] * options["dpi"]
 
     // Initialize webR
     await mainWebR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
-    await mainWebR.evalRVoid(`webr::canvas(width=${options["fig-width"]}, height=${options["fig-height"]})`);
+    await mainWebR.evalRVoid(`webr::canvas(width=${fig_width}, height=${fig_height})`);
 
     const result = await mainWebRCodeShelter.captureR(codeToRun, {
         withAutoprint: true,
@@ -726,17 +744,26 @@ globalThis.qwebrComputeEngine = async function(
     // -----
 
     // Start attempting to parse the result data
-    try {
+    processResultOutput:try {
 
         // Stop creating images
         await mainWebR.evalRVoid("dev.off()");
+        
+        // Avoid running through output processing
+        if (options.results === "hide") { 
+            break processResultOutput; 
+        }
 
         // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+        // Require both `warning` and `message` to be true to display `STDErr`. 
         const out = result.output
-        .filter(evt => evt.type === "stdout" || evt.type === "stderr")
+        .filter(
+            evt => evt.type === "stdout" || 
+            ( evt.type === "stderr" && (options.warning === "true" && options.message === "true")) 
+        )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${qwebrEscapeHTMLCharacters(evt.data)}</code>`;
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
         })
         .join("\n");
 
@@ -755,11 +782,15 @@ globalThis.qwebrComputeEngine = async function(
             if (msg.data.event === 'canvasImage') {
                 canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
             } else if (msg.data.event === 'canvasNewPage') {
+
                 // Generate a new canvas element
                 canvas = document.createElement("canvas");
-                canvas.setAttribute("width", 2 * options["fig-width"]);
-                canvas.setAttribute("height", 2 * options["fig-height"]);
-                canvas.style.width = "700px";
+                canvas.setAttribute("width", 2 * fig_width);
+                canvas.setAttribute("height", 2 * fig_height);
+                canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
+                if (options["out-height"]) {
+                    canvas.style.height = options["out-height"];
+                }
                 canvas.style.display = "block";
                 canvas.style.margin = "auto";
             }
@@ -819,12 +850,18 @@ globalThis.qwebrComputeEngine = async function(
 globalThis.qwebrExecuteCode = async function (
     codeToRun,
     id,
-    evalType = EvalTypes.Interactive,
     options = {}) {
 
     // If options are not passed, we fall back on the bare minimum to handle the computation
     if (qwebrIsObjectEmpty(options)) {
-        options = { "fig-width": 504, "fig-height": 360 };
+        options = { 
+            "context": "interactive", 
+            "fig-width": 7, "fig-height": 5, 
+            "out-width": "700px", "out-height": "", 
+            "dpi": 72,
+            "results": "markup", 
+            "warning": "true", "message": "true",
+        };
     }
 
     // Next, we access the compute areas values
@@ -840,7 +877,7 @@ globalThis.qwebrExecuteCode = async function (
         btn.disabled = true;
     });
 
-    if (evalType == EvalTypes.Interactive) {
+    if (options.context == EvalTypes.Interactive) {
         // Emphasize the active code cell
         elements.runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
     }
@@ -853,7 +890,7 @@ globalThis.qwebrExecuteCode = async function (
         btn.disabled = false;
     });
 
-    if (evalType == EvalTypes.Interactive) {
+    if (options.context == EvalTypes.Interactive) {
         // Revert to the initial code cell state
         elements.runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
     }
@@ -994,6 +1031,12 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-output-stderr-result-suppression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: STDErr &amp; Result Output Suppression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Autoload Package</span></a>
   </div>
@@ -1075,6 +1118,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   const initialCode = cellData.code;
   const qwebrCounter = cellData.id;
+  const qwebrOptions = cellData.options;
 
   // Retrieve the previously created document elements
   let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
@@ -1105,8 +1149,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Store the official div container ID
     editor.__qwebrEditorId = `qwebr-editor-${qwebrCounter}`;
 
-    // Store the initial code value
+    // Store the initial code value and options
     editor.__qwebrinitialCode = initialCode;
+    editor.__qwebrOptions = qwebrOptions;
 
     // Set at the model level the preferred end of line (EOL) character to LF.
     // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
@@ -1148,7 +1193,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
 
         // Retrieve all text inside the editor
-        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter);
+        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
       });
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
@@ -1177,14 +1222,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
           }
           
           // Run the entire line of code.
-          qwebrExecuteCode(currentLine, editor.__qwebrCounter,
-            EvalTypes.Interactive);
+          qwebrExecuteCode(currentLine, editor.__qwebrCounter, editor.__qwebrOptions);
 
           // Move cursor to new position
           editor.setPosition(newPosition);
         } else {
           // Code to run when Ctrl+Enter is pressed with selected code
-          qwebrExecuteCode(selectedText, editor.__qwebrCounter, EvalTypes.Interactive);
+          qwebrExecuteCode(selectedText, editor.__qwebrCounter, editor.__qwebrOptions);
         }
       });
     }
@@ -1209,7 +1253,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the run button
   runButton.onclick = function () {
-    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, EvalTypes.Interactive);
+    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
   };
 
   // Add a click event listener to the reset button
@@ -1735,7 +1779,7 @@ qwebrInstance.then(
       switch (evalType) {
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
-          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
