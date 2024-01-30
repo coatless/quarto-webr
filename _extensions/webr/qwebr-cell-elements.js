@@ -47,13 +47,50 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
   mainDiv.className = 'qwebr-interactive-area';
 
-  // Create button element
-  var button = document.createElement('button');
-  button.className = 'btn btn-default qwebr-button-run';
-  button.disabled = true;
-  button.type = 'button';
-  button.id = 'qwebr-button-run-' + qwebrCounter;
-  button.textContent = '🟡 Loading webR...';
+  // Create toolbar div
+  var toolbarDiv = document.createElement('div');
+  toolbarDiv.className = 'qwebr-editor-toolbar';
+  toolbarDiv.id = 'qwebr-editor-toolbar-' + qwebrCounter;
+
+  // Create a div to hold the left buttons
+  var leftButtonsDiv = document.createElement('div');
+  leftButtonsDiv.className = 'qwebr-editor-toolbar-left-buttons';
+
+  // Create a div to hold the right buttons
+  var rightButtonsDiv = document.createElement('div');
+  rightButtonsDiv.className = 'qwebr-editor-toolbar-right-buttons';
+
+  // Create Run Code button
+  var runCodeButton = document.createElement('button');
+  runCodeButton.className = 'btn btn-default qwebr-button qwebr-button-run';
+  runCodeButton.disabled = true;
+  runCodeButton.type = 'button';
+  runCodeButton.id = 'qwebr-button-run-' + qwebrCounter;
+  runCodeButton.textContent = '🟡 Loading webR...';
+  runCodeButton.title = `Run code (Shift + Enter)`;
+
+  // Append buttons to the leftButtonsDiv
+  leftButtonsDiv.appendChild(runCodeButton);
+
+  // Create Reset button
+  var resetButton = document.createElement('button');
+  resetButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-reset';
+  resetButton.type = 'button';
+  resetButton.id = 'qwebr-button-reset-' + qwebrCounter;
+  resetButton.title = 'Start over';
+  resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+  // Create Copy button
+  var copyButton = document.createElement('button');
+  copyButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-copy';
+  copyButton.type = 'button';
+  copyButton.id = 'qwebr-button-copy-' + qwebrCounter;
+  copyButton.title = 'Copy code';
+  copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+  // Append buttons to the rightButtonsDiv
+  rightButtonsDiv.appendChild(resetButton);
+  rightButtonsDiv.appendChild(copyButton);
 
   // Create console area div
   var consoleAreaDiv = document.createElement('div');
@@ -81,8 +118,12 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
   outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
   outputGraphAreaDiv.className = 'qwebr-output-graph-area';
 
+  // Append buttons to the toolbar
+  toolbarDiv.appendChild(leftButtonsDiv);
+  toolbarDiv.appendChild(rightButtonsDiv);
+
   // Append all elements to the main div
-  mainDiv.appendChild(button);
+  mainDiv.appendChild(toolbarDiv);
   consoleAreaDiv.appendChild(editorDiv);
   consoleAreaDiv.appendChild(outputCodeAreaDiv);
   mainDiv.appendChild(consoleAreaDiv);
