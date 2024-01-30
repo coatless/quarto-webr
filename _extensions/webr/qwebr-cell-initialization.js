@@ -63,7 +63,7 @@ qwebrInstance.then(
       switch (evalType) {
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
-          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, EvalTypes.Output);
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);

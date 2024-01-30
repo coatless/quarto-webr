@@ -9,13 +9,48 @@ filters:
 This webpage tests the interactive and output contexts for showing a graph
 
 ## Interactive
+
+### Default options
 ```{webr-r}
 #| context: interactive
 plot(pressure)
 ```
 
+### Reduced fig height & width
+
+```{webr-r}
+#| context: interactive
+#| fig-height: 6
+#| fig-width: 4
+#| out-width: 600px
+plot(pressure)
+```
+
+
 ## Non-interactive
+
+### Default options
 ```{webr-r}
 #| context: output
+plot(pressure)
+```
+
+### Reduced fig height & width
+```{webr-r}
+#| context: output
+#| fig-height: 5
+#| fig-width: 6
+#| out-width: 500px
+plot(pressure)
+```
+
+
+### Reduced fig height & width
+```{webr-r}
+#| context: output
+#| fig-height: 5
+#| fig-width: 6
+#| out-width: 500px
+#| out-height: 500px
 plot(pressure)
 ```

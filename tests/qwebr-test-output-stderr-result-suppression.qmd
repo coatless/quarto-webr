@@ -1,0 +1,96 @@
+---
+title: "Test: STDErr & Result Output Suppression"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Test options for disabling standard error (`warning: false` or `message: false`) and `results = 'hide'`
+
+## Interactive
+
+### Suppresion with hide
+
+```{webr-r}
+#| context: interactive
+#| results: hide
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+
+### Suppression with warning
+
+```{webr-r}
+#| context: interactive
+#| warning: false
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+
+### Suppression with message
+
+```{webr-r}
+#| context: interactive
+#| message: false
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+
+## Non-interactive
+
+### Suppresion with hide
+
+```{webr-r}
+#| context: output
+#| results: hide
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+
+### Suppression with warning
+
+```{webr-r}
+#| context: output
+#| warning: false
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+
+### Suppression with message
+
+```{webr-r}
+#| context: output
+#| message: false
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```

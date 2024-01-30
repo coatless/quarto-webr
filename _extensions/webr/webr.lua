@@ -57,7 +57,15 @@ local qwebrCapturedCodeBlocks = {}
 
 -- Initialize a table that contains the default cell-level options
 local qwebRDefaultCellOptions = {
-  ["context"] = "interactive"
+  ["context"] = "interactive",
+  ["warning"] = "true",
+  ["message"] = "true",
+  ["results"] = "markup",
+  ["dpi"] = 72,
+  ["fig-width"] = 7,
+  ["fig-height"] = 5,
+  ["out-width"] = "700px",
+  ["out-height"] = ""
 }
 
 ----

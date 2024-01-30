@@ -22,6 +22,8 @@ Ensure HTML output is escaped.
 
 ## Non-interactive
 
+### Escape HTML Characters
+
 ```{webr-r}
 #| context: output
 # This function converts a markdown link into HTML
@@ -32,3 +34,18 @@ Ensure HTML output is escaped.
   writeLines(noquote(paste0('<a href="', url, '" target = "_blank">', text, '</a>')))
 })()
 ```
+
+### Leave characters asis
+
+```{webr-r}
+#| context: output
+#| results: asis
+# This function converts a markdown link into HTML
+"[Posit](https://posit.co)" |> (\(.) {
+  text <- sub("\\].*", "", sub(".*\\[", "", .))
+  url <- sub("\\).*", "", sub(".*\\(", "", .))
+  
+  writeLines(noquote(paste0('<a href="', url, '" target = "_blank">', text, '</a>')))
+})()
+```
+
