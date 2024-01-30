@@ -87,7 +87,6 @@ globalThis.qwebrComputeEngine = async function(
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     await mainWebR.evalRVoid(`webr::canvas(width=${fig_width}, height=${fig_height})`);
-    console.log(options);
 
     const result = await mainWebRCodeShelter.captureR(codeToRun, {
         withAutoprint: true,
@@ -114,7 +113,7 @@ globalThis.qwebrComputeEngine = async function(
         const out = result.output
         .filter(
             evt => evt.type === "stdout" || 
-            ( evt.type === "stderr" && (options.warning == "true" && options.message == "true")) 
+            ( evt.type === "stderr" && (options.warning === "true" && options.message === "true")) 
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
