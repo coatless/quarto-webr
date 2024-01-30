@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.4">
+<meta name="generator" content="quarto-1.5.5">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,6 +76,12 @@ ul.task-list li input[type="checkbox"] {
   background-color: unset !important;
 }
 
+.qwebr-editor-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
   justify-content: center;
   display: flex;
@@ -110,41 +116,46 @@ ul.task-list li input[type="checkbox"] {
   border: 1px solid #EEEEEE;
 }
 
-.qwebr-button-run {
+.qwebr-editor-toolbar {
   background-color: #EEEEEE;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; /* Extra styling for consistency */
+  padding: 0.2rem 0.5rem;
+}
+
+.qwebr-button {
+  background-color: #EEEEEE;
   display: inline-block;
   font-weight: 400;
-  line-height: 1.5;
-  color: #000;
-  text-align: center;
+  line-height: 1;
   text-decoration: none;
-  -webkit-text-decoration: none;
-  -moz-text-decoration: none;
-  -ms-text-decoration: none;
-  -o-text-decoration: none;
-  /* vertical-align: middle; */ /* Prevents a space from appearing between the code cell and button */
-  -webkit-user-select: none;
+  text-align: center;
+  color: #000;
   border-color: #dee2e6;
   border: 1px solid rgba(0,0,0,0);
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  font-size: .9rem;
+  border-radius: 0.25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.qwebr-button-run:hover {
+.qwebr-button:hover {
   color: #000;
-  background-color: #e3e6ea;
-  border-color: #e1e5e9;
+  background-color: #d9dce0;
+  border-color: #c8ccd0;
 }
 
-.qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
+.qwebr-button:disabled,.qwebr-button.disabled,fieldset:disabled .qwebr-button {
   pointer-events: none;
   opacity: .65
 }
+
+.qwebr-button-reset {
+  color: #696969; /*#4682b4;*/
+}
+
+.qwebr-button-copy {
+  color: #696969;
+}
+
 
 /* Custom styling for RevealJS Presentations*/
 
@@ -218,7 +229,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1},{"options":{"context":"interactive"},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2},{"options":{"context":"interactive"},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3},{"options":{"context":"interactive"},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4},{"options":{"context":"interactive"},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5},{"options":{"context":"interactive"},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})"},{"id":2,"options":{"context":"interactive"},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)"},{"id":3,"options":{"context":"interactive"},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)"},{"id":4,"options":{"context":"interactive"},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())"},{"id":5,"options":{"context":"interactive"},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")"},{"id":6,"options":{"context":"interactive"},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")"}];
 
 </script>
 <script type="module">
@@ -365,13 +376,50 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
   mainDiv.className = 'qwebr-interactive-area';
 
-  // Create button element
-  var button = document.createElement('button');
-  button.className = 'btn btn-default qwebr-button-run';
-  button.disabled = true;
-  button.type = 'button';
-  button.id = 'qwebr-button-run-' + qwebrCounter;
-  button.textContent = '🟡 Loading webR...';
+  // Create toolbar div
+  var toolbarDiv = document.createElement('div');
+  toolbarDiv.className = 'qwebr-editor-toolbar';
+  toolbarDiv.id = 'qwebr-editor-toolbar-' + qwebrCounter;
+
+  // Create a div to hold the left buttons
+  var leftButtonsDiv = document.createElement('div');
+  leftButtonsDiv.className = 'qwebr-editor-toolbar-left-buttons';
+
+  // Create a div to hold the right buttons
+  var rightButtonsDiv = document.createElement('div');
+  rightButtonsDiv.className = 'qwebr-editor-toolbar-right-buttons';
+
+  // Create Run Code button
+  var runCodeButton = document.createElement('button');
+  runCodeButton.className = 'btn btn-default qwebr-button qwebr-button-run';
+  runCodeButton.disabled = true;
+  runCodeButton.type = 'button';
+  runCodeButton.id = 'qwebr-button-run-' + qwebrCounter;
+  runCodeButton.textContent = '🟡 Loading webR...';
+  runCodeButton.title = `Run code (Shift + Enter)`;
+
+  // Append buttons to the leftButtonsDiv
+  leftButtonsDiv.appendChild(runCodeButton);
+
+  // Create Reset button
+  var resetButton = document.createElement('button');
+  resetButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-reset';
+  resetButton.type = 'button';
+  resetButton.id = 'qwebr-button-reset-' + qwebrCounter;
+  resetButton.title = 'Start over';
+  resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+  // Create Copy button
+  var copyButton = document.createElement('button');
+  copyButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-copy';
+  copyButton.type = 'button';
+  copyButton.id = 'qwebr-button-copy-' + qwebrCounter;
+  copyButton.title = 'Copy code';
+  copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+  // Append buttons to the rightButtonsDiv
+  rightButtonsDiv.appendChild(resetButton);
+  rightButtonsDiv.appendChild(copyButton);
 
   // Create console area div
   var consoleAreaDiv = document.createElement('div');
@@ -399,8 +447,12 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
   outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
   outputGraphAreaDiv.className = 'qwebr-output-graph-area';
 
+  // Append buttons to the toolbar
+  toolbarDiv.appendChild(leftButtonsDiv);
+  toolbarDiv.appendChild(rightButtonsDiv);
+
   // Append all elements to the main div
-  mainDiv.appendChild(button);
+  mainDiv.appendChild(toolbarDiv);
   consoleAreaDiv.appendChild(editorDiv);
   consoleAreaDiv.appendChild(outputCodeAreaDiv);
   mainDiv.appendChild(consoleAreaDiv);
@@ -931,6 +983,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Retrieve the previously created document elements
   let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
+  let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
+  let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
   
   // Load the Monaco Editor and create an instance
@@ -1063,6 +1117,23 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, EvalTypes.Interactive);
   };
 
+  // Add a click event listener to the reset button
+  copyButton.onclick = function () {
+    // Ensure the editor is in focus
+    editor.focus();
+
+    // Retrieve data
+    const data = editor.getValue();
+    
+    // Set the clipboard contents.
+    navigator.clipboard.writeText(data || "");
+  };
+  
+  // Add a click event listener to the copy button
+  resetButton.onclick = function () {
+    editor.setValue(editor.__qwebrinitialCode);
+  };
+  
 }
 </script>
 
