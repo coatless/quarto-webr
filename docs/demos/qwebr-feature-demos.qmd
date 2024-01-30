@@ -4,6 +4,7 @@ title: "Feature Demonstrations"
 
 Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.
 
+- [Using Custom Repositories for R WASM Package binaries](qwebr-code-cell-options.qmd)
 - [Using Custom Repositories for R WASM Package binaries](qwebr-custom-repository.qmd)
 - [Revamped Noninteractive Areas](qwebr-non-interactive-areas.qmd)
 - [webR in RevealJS](https://quarto-webr.thecoatlessprofessor.com/examples/revealjs)

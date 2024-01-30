@@ -1,0 +1,171 @@
+---
+title: "Demo: Initial Code Cell Option Support"
+engine: knitr
+webr:
+  packages: ['knitr']
+filters:
+  - webr
+---
+
+# Overview
+
+In this document, we will explore and demonstrate the various cell options available in `{webr-r}` code blocks. These options allow you to customize the behavior and appearance of your code outputs. These options can only be set during the authoring stage of the document.
+
+## `context` Option
+
+The `context` option specifies how the cell should operate on the page. Let's use it to create an interactive code editor:
+
+```{webr-r}
+#| context: interactive
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+
+In this code block, the `context: interactive` option is applied, allowing users to interactively input their name. 
+
+Next, let's use the `context: setup` option to create a data set that can be used by later cells.
+
+```{webr-r}
+#| context: setup
+ 
+# Generating a simple table
+data <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)
+```
+
+In a later block, we'll see a `context: output` that will only display the results.
+
+## `results` Option
+
+The `results` option controls how text results are displayed. Let's use it to display raw text output:
+
+````md
+```{webr-r}
+#| context: interactive
+#| results: asis
+knitr::kable(data, "html")
+```
+````
+```{webr-r}
+#| context: interactive
+#| results: asis
+knitr::kable(data, "html")
+```
+
+In the above code block, the `results: asis` option is used to display the raw text output of the `data` dataframe.
+
+If we use `results: markup`, then we'll end up seeing the HTML output: 
+
+````md
+```{webr-r}
+#| context: interactive
+#| results: markup
+
+knitr::kable(data, "html")
+```
+````
+
+
+```{webr-r}
+#| context: interactive
+#| results: markup
+knitr::kable(data, "html")
+```
+
+
+## `fig-width` and `fig-height` Option
+
+The `fig-width` and `fig-height` options control the width and height of the plot generated in the code block. Let's use it to create a plot with a specific width:
+
+````md
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 5
+
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+````
+
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 5
+
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+
+Here, the `fig-width: 5` and `fig-height: 5` option is utilized to set the width of the bar plot.
+
+In comparison, we have the default option of `7`:
+
+````md
+```{webr-r}
+#| context: output
+
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+````
+
+```{webr-r}
+#| context: output
+
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+
+## `out-width` and `out-height` Option
+
+The `out-width` and `out-height` options control physical space the plot will reside in. Let's revisit our previous example and constrain the output area by specifying `out-width: 500px` and `out-height: 400px`.
+
+````md
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 500px
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+````
+
+
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 500px
+#| out-height: 400px
+# Generating a bar plot with a specific width
+barplot(
+  c(2, 4, 6, 8), names.arg = c("A", "B", "C", "D"), 
+  main = "Bar Plot"
+)
+```
+
+## Conclusion
+
+These examples demonstrate the versatility of `{webr-r}` cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.
+
+Feel free to experiment with different combinations of these options to suit your specific needs!
