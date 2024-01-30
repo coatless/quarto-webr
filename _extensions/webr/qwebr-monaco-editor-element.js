@@ -6,6 +6,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   const initialCode = cellData.code;
   const qwebrCounter = cellData.id;
+  const qwebrOptions = cellData.options;
 
   // Retrieve the previously created document elements
   let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
@@ -36,8 +37,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Store the official div container ID
     editor.__qwebrEditorId = `qwebr-editor-${qwebrCounter}`;
 
-    // Store the initial code value
+    // Store the initial code value and options
     editor.__qwebrinitialCode = initialCode;
+    editor.__qwebrOptions = qwebrOptions;
 
     // Set at the model level the preferred end of line (EOL) character to LF.
     // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
@@ -79,7 +81,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
 
         // Retrieve all text inside the editor
-        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter);
+        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
       });
 
       // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
@@ -108,14 +110,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
           }
           
           // Run the entire line of code.
-          qwebrExecuteCode(currentLine, editor.__qwebrCounter,
-            EvalTypes.Interactive);
+          qwebrExecuteCode(currentLine, editor.__qwebrCounter, editor.__qwebrOptions);
 
           // Move cursor to new position
           editor.setPosition(newPosition);
         } else {
           // Code to run when Ctrl+Enter is pressed with selected code
-          qwebrExecuteCode(selectedText, editor.__qwebrCounter, EvalTypes.Interactive);
+          qwebrExecuteCode(selectedText, editor.__qwebrCounter, editor.__qwebrOptions);
         }
       });
     }
@@ -140,7 +141,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the run button
   runButton.onclick = function () {
-    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, EvalTypes.Interactive);
+    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
   };
 
   // Add a click event listener to the reset button

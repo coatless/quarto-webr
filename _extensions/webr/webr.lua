@@ -57,7 +57,15 @@ local qwebrCapturedCodeBlocks = {}
 
 -- Initialize a table that contains the default cell-level options
 local qwebRDefaultCellOptions = {
-  ["context"] = "interactive"
+  ["context"] = "interactive",
+  ["warning"] = "true",
+  ["message"] = "true",
+  ["results"] = "markup",
+  ["dpi"] = 72,
+  ["fig-width"] = 7,
+  ["fig-height"] = 5,
+  ["out-width"] = "700px",
+  ["out-height"] = ""
 }
 
 ----
@@ -102,6 +110,9 @@ local function mergeCellOptions(localOptions)
 
   -- Override default options with local options
   for key, value in pairs(localOptions) do
+    if type(value) == "string" then
+      value = value:gsub("[\"']", "")
+    end
     mergedOptions[key] = value
   end
 

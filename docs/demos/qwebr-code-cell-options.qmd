@@ -1,0 +1,243 @@
+---
+title: "Demo: Initial Code Cell Option Support"
+engine: knitr
+webr:
+  packages: ['knitr', 'plot2']
+  repos:
+   - https://grantmcdermott.r-universe.dev
+filters:
+  - webr
+---
+
+# Overview
+
+In this document, we will explore and demonstrate the various cell options available in `{webr-r}` code blocks. These options allow you to customize the behavior and appearance of your code outputs. These options can only be set during the authoring stage of the document.
+
+## `context` Option
+
+The `context` option specifies how the cell should operate on the page. Let's use it to create an interactive code editor:
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+````
+:::
+
+In this code block, the `context: interactive` option is applied, allowing users to interactively input their name. 
+
+Next, let's use the `context: setup` option to create a data set that can be used by later cells.
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: setup
+ 
+# Generating a simple table
+data <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: setup
+ 
+# Generating a simple table
+data <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 22)
+)
+```
+````
+:::
+
+:::{.callout-note}
+Once a `context:setup` is done running, the visual indicator will be removed from the document.
+:::
+
+In a later block, we'll see a `context: output` that will only display the results.
+
+## `results` Option
+
+The `results` option controls how text results are displayed. Let's use it to display raw text output:
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+#| results: asis
+knitr::kable(data, "html")
+```
+
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+#| results: asis
+knitr::kable(data, "html")
+```
+````
+:::
+
+In the above code block, the `results: asis` option is used to display the raw text output of the `data` dataframe.
+
+If we use `results: markup`, then we'll end up seeing the HTML output: 
+
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+
+```{webr-r}
+#| context: interactive
+#| results: markup
+knitr::kable(data, "html")
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+#| results: markup
+
+knitr::kable(data, "html")
+```
+````
+:::
+
+## `fig-width` and `fig-height` Option
+
+The `fig-width` and `fig-height` options control the width and height of the plot generated in the code block. Let's use it to create a plot with a specific width:
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: output
+#| fig-width: 6
+#| fig-height: 6
+
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: output
+#| fig-width: 6
+#| fig-height: 6
+
+# Generating a bar plot with a specific width
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+````
+:::
+
+Here, the `fig-width: 6` and `fig-height: 6` option is utilized to set the width of the bar plot.
+
+In comparison, we have the default option of `7`:
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: output
+
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: output
+
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+````
+:::
+
+## `out-width` and `out-height` Option
+
+The `out-width` and `out-height` options control physical space the plot will reside in. Let's revisit our previous example and constrain the output area by specifying `out-width: 500px` and `out-height: 500px`.
+
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: output
+#| fig-width: 6
+#| fig-height: 6
+#| out-width: 500px
+#| out-height: 500px
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 500px
+#| out-height: 400px
+plot2::plot2(
+  ~ Petal.Length | Species,
+  data = iris,
+  type = "density",
+  palette = "dark", fill = "by",
+  grid = TRUE,
+  main = "Distribution of petal lengths by species"
+)
+```
+````
+:::
+
+
+## Conclusion
+
+These examples demonstrate the versatility of `{webr-r}` cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.
+
+Feel free to experiment with different combinations of these options to suit your specific needs!
