@@ -110,6 +110,9 @@ local function mergeCellOptions(localOptions)
 
   -- Override default options with local options
   for key, value in pairs(localOptions) do
+    if type(value) == "string" then
+      value = value:gsub("[\"']", "")
+    end
     mergedOptions[key] = value
   end
 
