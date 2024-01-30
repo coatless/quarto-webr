@@ -9,6 +9,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Retrieve the previously created document elements
   let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
+  let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
+  let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
   
   // Load the Monaco Editor and create an instance
@@ -141,4 +143,21 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, EvalTypes.Interactive);
   };
 
+  // Add a click event listener to the reset button
+  copyButton.onclick = function () {
+    // Ensure the editor is in focus
+    editor.focus();
+
+    // Retrieve data
+    const data = editor.getValue();
+    
+    // Set the clipboard contents.
+    navigator.clipboard.writeText(data || "");
+  };
+  
+  // Add a click event listener to the copy button
+  resetButton.onclick = function () {
+    editor.setValue(editor.__qwebrinitialCode);
+  };
+  
 }

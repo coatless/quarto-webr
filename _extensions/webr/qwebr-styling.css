@@ -2,6 +2,12 @@
   background-color: unset !important;
 }
 
+.qwebr-editor-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
   justify-content: center;
   display: flex;
@@ -36,41 +42,46 @@
   border: 1px solid #EEEEEE;
 }
 
-.qwebr-button-run {
+.qwebr-editor-toolbar {
   background-color: #EEEEEE;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; /* Extra styling for consistency */
+  padding: 0.2rem 0.5rem;
+}
+
+.qwebr-button {
+  background-color: #EEEEEE;
   display: inline-block;
   font-weight: 400;
-  line-height: 1.5;
-  color: #000;
-  text-align: center;
+  line-height: 1;
   text-decoration: none;
-  -webkit-text-decoration: none;
-  -moz-text-decoration: none;
-  -ms-text-decoration: none;
-  -o-text-decoration: none;
-  /* vertical-align: middle; */ /* Prevents a space from appearing between the code cell and button */
-  -webkit-user-select: none;
+  text-align: center;
+  color: #000;
   border-color: #dee2e6;
   border: 1px solid rgba(0,0,0,0);
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  font-size: .9rem;
+  border-radius: 0.25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.qwebr-button-run:hover {
+.qwebr-button:hover {
   color: #000;
-  background-color: #e3e6ea;
-  border-color: #e1e5e9;
+  background-color: #d9dce0;
+  border-color: #c8ccd0;
 }
 
-.qwebr-button-run:disabled,.qwebr-button-run.disabled,fieldset:disabled .qwebr-button-run {
+.qwebr-button:disabled,.qwebr-button.disabled,fieldset:disabled .qwebr-button {
   pointer-events: none;
   opacity: .65
 }
+
+.qwebr-button-reset {
+  color: #696969; /*#4682b4;*/
+}
+
+.qwebr-button-copy {
+  color: #696969;
+}
+
 
 /* Custom styling for RevealJS Presentations*/
 
