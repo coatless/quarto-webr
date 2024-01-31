@@ -6,10 +6,11 @@ filters:
   - webr
 ---
 
-Ensure HTML output is escaped.
+Ensure HTML output is escaped or passed t hrough
 
 ## Interactive
 
+### results: markup
 ```{webr-r}
 # This function converts a markdown link into HTML
 "[Posit](https://posit.co)" |> (\(.) {
@@ -22,7 +23,7 @@ Ensure HTML output is escaped.
 
 ## Non-interactive
 
-### Escape HTML Characters
+### results: markup
 
 ```{webr-r}
 #| context: output
@@ -35,11 +36,26 @@ Ensure HTML output is escaped.
 })()
 ```
 
-### Leave characters asis
+### results: asis
 
 ```{webr-r}
 #| context: output
 #| results: asis
+# This function converts a markdown link into HTML
+"[Posit](https://posit.co)" |> (\(.) {
+  text <- sub("\\].*", "", sub(".*\\[", "", .))
+  url <- sub("\\).*", "", sub(".*\\(", "", .))
+  
+  writeLines(noquote(paste0('<a href="', url, '" target = "_blank">', text, '</a>')))
+})()
+```
+
+
+### output: asis
+
+```{webr-r}
+#| context: output
+#| output: asis
 # This function converts a markdown link into HTML
 "[Posit](https://posit.co)" |> (\(.) {
   text <- sub("\\].*", "", sub(".*\\[", "", .))

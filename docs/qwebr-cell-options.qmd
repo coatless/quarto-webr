@@ -28,27 +28,35 @@ These options can be customized to tailor the behavior of the code block based o
 
 
 :::{.callout-important}
-The `{quarto-webr}` extension does not support all of the cell options from [Quarto](https://quarto.org/docs/reference/cells/cells-knitr.html) or [Knitr](https://yihui.org/knitr/options/). Please consult below for details on what is available.
+The `{quarto-webr}` extension does not support all of the cell options from [Quarto](https://quarto.org/docs/reference/cells/cells-knitr.html) or [Knitr](https://yihui.org/knitr/options/). Please consult the tables below for details on what is available.
 :::
 
 ## webR
 
-| Option    | Default Value   | Description                                                                                                                                                                                                            |
-|-----------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `context` | `"interactive"` | Describe how the cell should operate on the page through either `"interactive"` (Runnable code editor), `"output"` (Output only of executed at runtime), or `"setup"` (execute code without seeing output at runtime). |
+| Option    | Default Value | Description                                                                                                                                                                                                      |
+|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `context` | `interactive` | Describe how the cell should operate on the page through either `interactive` (Runnable code editor), `output` (Output only of executed at runtime), or `setup` (execute code without seeing output at runtime). |
 
 
 :::{.callout-note}
 The `context` option is unique to the `{quarto-webr}` extension. For more details, please see [Hiding and Executing Code](qwebr-internal-cell.qmd).
 :::
 
+## Attributes
+
+| Option    | Default Value | Description                                       |
+|-----------|---------------|---------------------------------------------------|
+| `label`   | `''`          | Unique label for code cell. Useful for debugging. |
+| `classes` | `''`          | Classes to apply to cell container                |
+
 ## Cell Output
 
-| Option    | Default Value | Description                                                                                                                                                                                                                                      |
-|-----------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `results` | `'markup'`    | Controls how to display the text results through either: `'markup'` (Mark up text output with appropriate environments), `'asis'` (Write text output as-is, raw text results directly into the output document), or `'hide'` (Hide text output). |
-| `warning` | `true`        | Preserve standard error output (`warning()`, `message()`, or `stop()`) in the output.                                                                                                                                                            |
-| `message` | `true`        | See prior entry.                                                                                                                                                                                                                                 |
+| Option    | Default Value | Description                                                                                                                                                                                                                                |
+|-----------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `results` | `markup`      | Controls how to display the text results through either: `markup` (Mark up text output with appropriate environments), `asis` (Write text output as-is, raw text results directly into the output document), or `hide` (Hide text output). |
+| `output`  | `true`        | Controls inclusion of results: `true` (all results), `false` (no results), or `'asis'` (output as-is, raw text results directly into the output document).                                                                                 |
+| `warning` | `true`        | Preserve standard error output (`warning()`, `message()`, or `stop()`) in the output.                                                                                                                                                      |
+| `message` | `true`        | See prior entry.                                                                                                                                                                                                                           |
 
 
 :::{.callout-important}
@@ -59,8 +67,9 @@ At the present time, we cannot differentiate between the type of condition being
 
 | Option       | Default Value | Description                                                                                                                   |
 |--------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `dpi`        | 72            | Dots per inch to use in calculating pixel values for `fig-height` and `fig-width`, e.g. `dpi * inches = pixels`.              |
-| `fig-width`  | 7             | Width of the plot (in inches)                                                                                                 |
-| `fig-height` | 5             | Height of the plot (in inches)                                                                                                |
-| `out-width`  | `"700px"`     | Width of the plot in the output document, which can be different from its physical `fig-width` such as `"100%"` or `"250px"`. |
+| `fig-cap`    | `""`          | Figure caption that should appear under the canvas                                                                            |
+| `dpi`        | `72`          | Dots per inch to use in calculating pixel values for `fig-height` and `fig-width`, e.g. `dpi * inches = pixels`.              |
+| `fig-width`  | `7`           | Width of the plot (in inches)                                                                                                 |
+| `fig-height` | `5`           | Height of the plot (in inches)                                                                                                |
+| `out-width`  | `700px`       | Width of the plot in the output document, which can be different from its physical `fig-width` such as `"100%"` or `"250px"`. |
 | `out-height` | `""`          | Height of the plot in the output document, similar to `out-width`.                                                            |

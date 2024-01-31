@@ -6,7 +6,7 @@ filters:
   - webr
 ---
 
-Test output classes for standard output and standard error.
+Test output classes for standard output, standard error, and custom `classes` attributes.
 
 ## Interactive
 
@@ -21,8 +21,47 @@ stop("This is a hard error message!")
 
 ## Non-interactive
 
+### No Comment
 ```{webr-r}
 #| context: output
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+### With comment
+
+```{webr-r}
+#| context: output
+#| comment: "## "
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+### With output class custom
+
+```{=html}
+<style>
+.green {
+  background-color: green;
+}
+
+.toad {
+  color: orange;
+}
+</style>
+```
+
+```{webr-r}
+#| context: output
+#| classes: toad green
 cat("Display letters: ")
 print(letters[1:5])
 
