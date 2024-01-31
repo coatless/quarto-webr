@@ -32,6 +32,7 @@ plot(pressure)
 ### Default options
 ```{webr-r}
 #| context: output
+#| fig-cap: Testing out figure captions
 plot(pressure)
 ```
 

@@ -61,7 +61,12 @@ local qwebRDefaultCellOptions = {
   ["warning"] = "true",
   ["message"] = "true",
   ["results"] = "markup",
+  ["output"] = "true",
+  ["comment"] = "",
+  ["label"] = "",
+  ["classes"] = "",
   ["dpi"] = 72,
+  ["fig-cap"] = "",
   ["fig-width"] = 7,
   ["fig-height"] = 5,
   ["out-width"] = "700px",
@@ -558,6 +563,11 @@ local function enableWebRCodeCell(el)
 
   -- Convert webr-specific option commands into attributes
   cellCode, cellOptions = extractCodeBlockOptions(el)
+
+  -- Ensure we have a label representation
+  if cellOptions["label"] == '' then
+    cellOptions["label"] = "unnamed-chunk-" .. qwebrCounter
+  end
 
   -- Remove space left between options and code contents
   cellCode = removeEmptyLinesUntilContent(cellCode)

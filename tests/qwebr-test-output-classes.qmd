@@ -21,8 +21,22 @@ stop("This is a hard error message!")
 
 ## Non-interactive
 
+### No Comment
 ```{webr-r}
 #| context: output
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
+### With comment
+
+```{webr-r}
+#| context: output
+#| comment: "## "
 cat("Display letters: ")
 print(letters[1:5])
 

@@ -6,7 +6,7 @@ filters:
   - webr
 ---
 
-Test options for disabling standard error (`warning: false` or `message: false`) and `results = 'hide'`
+Test options for disabling standard error (`warning: false` or `message: false`), `results: hide`, and `output: false`.
 
 ## Interactive
 
@@ -66,6 +66,20 @@ warning("This is a warning message!")
 
 stop("This is a hard error message!")
 ```
+
+### Suppresion with output 
+
+```{webr-r}
+#| context: output
+#| output: false
+cat("Display letters: ")
+print(letters[1:5])
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
+
 
 
 ### Suppression with warning
