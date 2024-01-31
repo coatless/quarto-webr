@@ -45,7 +45,10 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions)
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = `qwebr-interactive-area ${qwebrOptions.classes}`;
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
 
   // Add a unique cell identifier that users can customize
   if (qwebrOptions.label) {
@@ -142,8 +145,11 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebr
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = `qwebr-noninteractive-area ${qwebrOptions.classes}`;
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
   // Add a unique cell identifier that users can customize
   if (qwebrOptions.label) {
     mainDiv.setAttribute('data-id', qwebrOptions.label);
@@ -181,7 +187,11 @@ globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrO
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = `qwebr-noninteractive-setup-area ${qwebrOptions.classes}`;
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
 
   // Add a unique cell identifier that users can customize
   if (qwebrOptions.label) {
