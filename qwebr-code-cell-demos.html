@@ -272,7 +272,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"1 + 1","id":1},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","id":2},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","id":3},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"35 + ________","id":5},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","id":6},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"webr::install(\"ggplot2\")","id":7},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","id":8},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"name <- \"James\"\nage <- 42","id":9},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"message(name, \" is \", age, \" years old!\")","id":10},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","id":11},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"say_hello(\"Hulya\")","id":12},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"stop(\"This is a hard error\")","id":13},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"variable_not_defined","id":14},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","id":15},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","id":16},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","id":17},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"add_one <- \\(x) x + 1\nadd_one(2)","id":18},{"options":{"out-width":"700px","fig-height":5,"warning":"true","fig-width":7,"out-height":"","message":"true","context":"interactive","dpi":72,"results":"markup"},"code":"","id":19}];
+globalThis.qwebrCellDetails = [{"code":"1 + 1","id":1,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-1","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","id":2,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-2","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","id":3,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-3","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-4","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"35 + ________","id":5,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-5","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","id":6,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-6","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"webr::install(\"ggplot2\")","id":7,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-7","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","id":8,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-8","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"name <- \"James\"\nage <- 42","id":9,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-9","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"message(name, \" is \", age, \" years old!\")","id":10,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-10","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","id":11,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-11","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"say_hello(\"Hulya\")","id":12,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-12","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"stop(\"This is a hard error\")","id":13,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-13","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"variable_not_defined","id":14,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-14","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","id":15,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-15","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","id":16,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-16","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","id":17,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-17","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"add_one <- \\(x) x + 1\nadd_one(2)","id":18,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-18","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}},{"code":"","id":19,"options":{"fig-cap":"","context":"interactive","results":"markup","out-width":"700px","message":"true","label":"unnamed-chunk-19","fig-width":7,"comment":"","warning":"true","output":"true","dpi":72,"fig-height":5,"classes":"","out-height":""}}];
 
 </script>
 <script type="module">
@@ -394,13 +394,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -412,12 +412,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -505,12 +513,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -539,11 +555,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -710,6 +735,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -759,9 +789,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -795,7 +826,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -808,7 +839,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -871,7 +903,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data
@@ -1400,7 +1446,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 30, 2024</p>
+      <p class="date-modified">January 31, 2024</p>
     </div>
   </div>
     

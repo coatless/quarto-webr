@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This blog is a demo showing how to use the quarto-webr extension."
+  },
+  {
     "objectID": "posts/embed-slides/index.html",
     "href": "posts/embed-slides/index.html",
     "title": "Post Containing Slides with Interactive Code",
@@ -19,13 +26,6 @@
     "title": "Post Containing Slides with Interactive Code",
     "section": "Embed Code",
     "text": "Embed Code\nPlace the following code inside of the Quarto Document:\n&lt;style&gt;\n.slide-deck {\n    border: 3px solid #dee2e6;\n    width: 100%;\n    height: 475px;\n}\n&lt;/style&gt;\n\n&lt;div&gt;\n```{=html}\n&lt;iframe class=\"slide-deck\" src=\"path/to/presentation/\"&gt;&lt;/iframe&gt;\n```\n&lt;/div&gt;"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This blog is a demo showing how to use the quarto-webr extension."
   },
   {
     "objectID": "index.html",

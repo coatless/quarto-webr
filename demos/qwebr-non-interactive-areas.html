@@ -236,7 +236,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","out-width":"700px","dpi":72,"results":"markup","fig-height":5,"message":"true","fig-width":7,"context":"setup","out-height":""},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","id":1},{"options":{"warning":"true","out-width":"700px","dpi":72,"results":"markup","fig-height":5,"message":"true","fig-width":7,"context":"output","out-height":""},"code":"g + geom_point()\n\nSys.sleep(0.5)","id":2},{"options":{"warning":"true","out-width":"700px","dpi":72,"results":"markup","fig-height":5,"message":"true","fig-width":7,"context":"output","out-height":""},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","id":3},{"options":{"warning":"true","out-width":"700px","dpi":72,"results":"markup","fig-height":5,"message":"true","fig-width":7,"context":"interactive","out-height":""},"code":"g","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-1","results":"markup","out-width":"700px","warning":"true","classes":"","context":"setup","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":2,"code":"g + geom_point()\n\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-2","results":"markup","out-width":"700px","warning":"true","classes":"","context":"output","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-3","results":"markup","out-width":"700px","warning":"true","classes":"","context":"output","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":4,"code":"g","options":{"out-height":"","label":"unnamed-chunk-4","results":"markup","out-width":"700px","warning":"true","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}}];
 
 </script>
 <script type="module">
@@ -358,13 +358,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -376,12 +376,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -469,12 +477,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -503,11 +519,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -674,6 +699,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -723,9 +753,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -759,7 +790,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -772,7 +803,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -835,7 +867,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data

@@ -272,7 +272,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"meaning_of_life = 42","options":{"message":"true","dpi":72,"context":"setup","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":1},{"code":"meaning_of_life","options":{"message":"true","dpi":72,"context":"interactive","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":2},{"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","options":{"message":"true","dpi":72,"context":"output","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":3},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"message":"true","dpi":72,"context":"output","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":4},{"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")","options":{"message":"true","dpi":72,"context":"setup","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":5},{"code":"# Display the head of the data\nhead(df_penguins)","options":{"message":"true","dpi":72,"context":"interactive","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":6},{"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","options":{"message":"true","dpi":72,"context":"output","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":7},{"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","options":{"message":"true","dpi":72,"context":"setup","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":8},{"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","options":{"message":"true","dpi":72,"context":"interactive","fig-width":7,"out-height":"","out-width":"700px","results":"markup","fig-height":5,"warning":"true"},"id":9}];
+globalThis.qwebrCellDetails = [{"code":"meaning_of_life = 42","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-1","message":"true","fig-width":7,"dpi":72,"context":"setup","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":1},{"code":"meaning_of_life","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-2","message":"true","fig-width":7,"dpi":72,"context":"interactive","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":2},{"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-3","message":"true","fig-width":7,"dpi":72,"context":"output","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":3},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-4","message":"true","fig-width":7,"dpi":72,"context":"output","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":4},{"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\n# Read the data\ndf_penguins = read.csv(\"penguins.csv\")","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-5","message":"true","fig-width":7,"dpi":72,"context":"setup","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":5},{"code":"# Display the head of the data\nhead(df_penguins)","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-6","message":"true","fig-width":7,"dpi":72,"context":"interactive","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":6},{"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-7","message":"true","fig-width":7,"dpi":72,"context":"output","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":7},{"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-8","message":"true","fig-width":7,"dpi":72,"context":"setup","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":8},{"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","options":{"fig-cap":"","comment":"","out-width":"700px","label":"unnamed-chunk-9","message":"true","fig-width":7,"dpi":72,"context":"interactive","fig-height":5,"out-height":"","results":"markup","output":"true","classes":"","warning":"true"},"id":9}];
 
 </script>
 <script type="module">
@@ -394,13 +394,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -412,12 +412,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -505,12 +513,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -539,11 +555,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -710,6 +735,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -759,9 +789,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -795,7 +826,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -808,7 +839,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -871,7 +903,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data
@@ -1394,7 +1440,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 30, 2024</p>
+      <p class="date-modified">January 31, 2024</p>
     </div>
   </div>
     

@@ -270,7 +270,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","out-height":"","fig-height":5,"results":"markup","dpi":72,"warning":"true","context":"interactive","message":"true","fig-width":7},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"out-width":"700px","out-height":"","fig-height":5,"results":"markup","dpi":72,"warning":"true","context":"setup","message":"true","fig-width":7},"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"id":3,"options":{"out-width":"700px","out-height":"","fig-height":5,"results":"asis","dpi":72,"warning":"true","context":"interactive","message":"true","fig-width":7},"code":"knitr::kable(data, \"html\")"},{"id":4,"options":{"out-width":"700px","out-height":"","fig-height":5,"results":"markup","dpi":72,"warning":"true","context":"interactive","message":"true","fig-width":7},"code":"knitr::kable(data, \"html\")"},{"id":5,"options":{"out-width":"700px","out-height":"","fig-height":"6","results":"markup","dpi":72,"warning":"true","context":"output","message":"true","fig-width":"6"},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":6,"options":{"out-width":"700px","out-height":"","fig-height":5,"results":"markup","dpi":72,"warning":"true","context":"output","message":"true","fig-width":7},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":7,"options":{"out-width":"500px","out-height":"500px","fig-height":"6","results":"markup","dpi":72,"warning":"true","context":"output","message":"true","fig-width":"6"},"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"output":"true","warning":"true","comment":"","context":"interactive","dpi":72,"results":"markup","label":"unnamed-chunk-1","fig-height":5,"out-width":"700px","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":""}},{"id":2,"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)","options":{"output":"true","warning":"true","comment":"","context":"setup","dpi":72,"results":"markup","label":"unnamed-chunk-2","fig-height":5,"out-width":"700px","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":""}},{"id":3,"code":"knitr::kable(data, \"html\")","options":{"output":"true","warning":"true","comment":"","context":"interactive","dpi":72,"results":"asis","label":"unnamed-chunk-3","fig-height":5,"out-width":"700px","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":""}},{"id":4,"code":"knitr::kable(data, \"html\")","options":{"output":"true","warning":"true","comment":"","context":"interactive","dpi":72,"results":"markup","label":"unnamed-chunk-4","fig-height":5,"out-width":"700px","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":""}},{"id":5,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"output":"true","warning":"true","comment":"","context":"output","dpi":72,"results":"markup","label":"unnamed-chunk-5","fig-height":"6","out-width":"700px","out-height":"","message":"true","fig-width":"6","fig-cap":"","classes":""}},{"id":6,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"output":"true","warning":"true","comment":"","context":"output","dpi":72,"results":"markup","label":"unnamed-chunk-6","fig-height":5,"out-width":"700px","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":""}},{"id":7,"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"output":"true","warning":"true","comment":"","context":"output","dpi":72,"results":"markup","label":"unnamed-chunk-7","fig-height":"6","out-width":"500px","out-height":"500px","message":"true","fig-width":"6","fig-cap":"","classes":""}}];
 
 </script>
 <script type="module">
@@ -392,13 +392,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -410,12 +410,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -503,12 +511,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -537,11 +553,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -708,6 +733,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -757,9 +787,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -793,7 +824,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -806,7 +837,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -869,7 +901,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data

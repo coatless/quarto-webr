@@ -342,6 +342,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#webr" id="toc-webr" class="nav-link active" data-scroll-target="#webr">webR</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
   <li><a href="#cell-output" id="toc-cell-output" class="nav-link" data-scroll-target="#cell-output">Cell Output</a></li>
   <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
   </ul>
@@ -371,7 +372,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 30, 2024</p>
+      <p class="date-modified">January 31, 2024</p>
     </div>
   </div>
     
@@ -402,7 +403,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>{quarto-webr}</code> extension does not support all of the cell options from <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">Quarto</a> or <a href="https://yihui.org/knitr/options/">Knitr</a>. Please consult below for details on what is available.</p>
+<p>The <code>{quarto-webr}</code> extension does not support all of the cell options from <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">Quarto</a> or <a href="https://yihui.org/knitr/options/">Knitr</a>. Please consult the tables below for details on what is available.</p>
 </div>
 </div>
 <section id="webr" class="level2">
@@ -423,8 +424,8 @@ Important
 <tbody>
 <tr class="odd">
 <td><code>context</code></td>
-<td><code>"interactive"</code></td>
-<td>Describe how the cell should operate on the page through either <code>"interactive"</code> (Runnable code editor), <code>"output"</code> (Output only of executed at runtime), or <code>"setup"</code> (execute code without seeing output at runtime).</td>
+<td><code>interactive</code></td>
+<td>Describe how the cell should operate on the page through either <code>interactive</code> (Runnable code editor), <code>output</code> (Output only of executed at runtime), or <code>setup</code> (execute code without seeing output at runtime).</td>
 </tr>
 </tbody>
 </table>
@@ -441,6 +442,35 @@ Note
 <p>The <code>context</code> option is unique to the <code>{quarto-webr}</code> extension. For more details, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
 </div>
 </div>
+</section>
+<section id="attributes" class="level2">
+<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>label</code></td>
+<td><code>''</code></td>
+<td>Unique label for code cell. Useful for debugging.</td>
+</tr>
+<tr class="even">
+<td><code>classes</code></td>
+<td><code>''</code></td>
+<td>Classes to apply to cell container</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="cell-output" class="level2">
 <h2 class="anchored" data-anchor-id="cell-output">Cell Output</h2>
@@ -460,15 +490,20 @@ Note
 <tbody>
 <tr class="odd">
 <td><code>results</code></td>
-<td><code>'markup'</code></td>
-<td>Controls how to display the text results through either: <code>'markup'</code> (Mark up text output with appropriate environments), <code>'asis'</code> (Write text output as-is, raw text results directly into the output document), or <code>'hide'</code> (Hide text output).</td>
+<td><code>markup</code></td>
+<td>Controls how to display the text results through either: <code>markup</code> (Mark up text output with appropriate environments), <code>asis</code> (Write text output as-is, raw text results directly into the output document), or <code>hide</code> (Hide text output).</td>
 </tr>
 <tr class="even">
+<td><code>output</code></td>
+<td><code>true</code></td>
+<td>Controls inclusion of results: <code>true</code> (all results), <code>false</code> (no results), or <code>'asis'</code> (output as-is, raw text results directly into the output document).</td>
+</tr>
+<tr class="odd">
 <td><code>warning</code></td>
 <td><code>true</code></td>
 <td>Preserve standard error output (<code>warning()</code>, <code>message()</code>, or <code>stop()</code>) in the output.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>message</code></td>
 <td><code>true</code></td>
 <td>See prior entry.</td>
@@ -506,26 +541,31 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
+<td><code>fig-cap</code></td>
+<td><code>""</code></td>
+<td>Figure caption that should appear under the canvas</td>
+</tr>
+<tr class="even">
 <td><code>dpi</code></td>
-<td>72</td>
+<td><code>72</code></td>
 <td>Dots per inch to use in calculating pixel values for <code>fig-height</code> and <code>fig-width</code>, e.g.&nbsp;<code>dpi * inches = pixels</code>.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>fig-width</code></td>
-<td>7</td>
+<td><code>7</code></td>
 <td>Width of the plot (in inches)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>fig-height</code></td>
-<td>5</td>
+<td><code>5</code></td>
 <td>Height of the plot (in inches)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>out-width</code></td>
-<td><code>"700px"</code></td>
+<td><code>700px</code></td>
 <td>Width of the plot in the output document, which can be different from its physical <code>fig-width</code> such as <code>"100%"</code> or <code>"250px"</code>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>out-height</code></td>
 <td><code>""</code></td>
 <td>Height of the plot in the output document, similar to <code>out-width</code>.</td>

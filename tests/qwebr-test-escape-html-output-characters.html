@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"message":"true","results":"markup","fig-height":5,"warning":"true","out-height":"","out-width":"700px","context":"interactive","dpi":72,"fig-width":7},"id":1,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"options":{"message":"true","results":"markup","fig-height":5,"warning":"true","out-height":"","out-width":"700px","context":"output","dpi":72,"fig-width":7},"id":2,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"options":{"message":"true","results":"asis","fig-height":5,"warning":"true","out-height":"","out-width":"700px","context":"output","dpi":72,"fig-width":7},"id":3,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"}];
+globalThis.qwebrCellDetails = [{"options":{"dpi":72,"fig-cap":"","context":"interactive","message":"true","label":"unnamed-chunk-1","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":1},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-2","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":2},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-3","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"asis","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":3},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-4","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"asis"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":4}];
 
 </script>
 <script type="module">
@@ -349,13 +349,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -367,12 +367,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -460,12 +468,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -494,11 +510,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -665,6 +690,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -714,9 +744,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -750,7 +781,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -763,7 +794,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -826,7 +858,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data
@@ -1295,22 +1341,30 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>Ensure HTML output is escaped.</p>
+<p>Ensure HTML output is escaped or passed t hrough</p>
 <section id="interactive" class="level2">
 <h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="results-markup" class="level3">
+<h3 class="anchored" data-anchor-id="results-markup">results: markup</h3>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
+</section>
 <section id="non-interactive" class="level2">
 <h2 class="anchored" data-anchor-id="non-interactive">Non-interactive</h2>
-<section id="escape-html-characters" class="level3">
-<h3 class="anchored" data-anchor-id="escape-html-characters">Escape HTML Characters</h3>
+<section id="results-markup-1" class="level3">
+<h3 class="anchored" data-anchor-id="results-markup-1">results: markup</h3>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="leave-characters-asis" class="level3">
-<h3 class="anchored" data-anchor-id="leave-characters-asis">Leave characters asis</h3>
+<section id="results-asis" class="level3">
+<h3 class="anchored" data-anchor-id="results-asis">results: asis</h3>
 <div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="output-asis" class="level3">
+<h3 class="anchored" data-anchor-id="output-asis">output: asis</h3>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 

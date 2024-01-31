@@ -480,7 +480,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"fig-height":5,"dpi":72,"context":"interactive","results":"markup","message":"true","warning":"true","fig-width":7,"out-width":"700px","out-height":""},"id":1},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"fig-height":5,"dpi":72,"context":"interactive","results":"markup","message":"true","warning":"true","fig-width":7,"out-width":"700px","out-height":""},"id":2},{"code":"message(\"Hello World!\")","options":{"fig-height":5,"dpi":72,"context":"interactive","results":"markup","message":"true","warning":"true","fig-width":7,"out-width":"700px","out-height":""},"id":3},{"code":"2 + 3","options":{"fig-height":5,"dpi":72,"context":"interactive","results":"markup","message":"true","warning":"true","fig-width":7,"out-width":"700px","out-height":""},"id":4}];
+  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","id":1,"options":{"out-height":"","out-width":"700px","context":"interactive","classes":"","warning":"true","results":"markup","comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"dpi":72,"label":"unnamed-chunk-1","fig-width":7}},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","id":2,"options":{"out-height":"","out-width":"700px","context":"interactive","classes":"","warning":"true","results":"markup","comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"dpi":72,"label":"unnamed-chunk-2","fig-width":7}},{"code":"message(\"Hello World!\")","id":3,"options":{"out-height":"","out-width":"700px","context":"interactive","classes":"","warning":"true","results":"markup","comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"dpi":72,"label":"unnamed-chunk-3","fig-width":7}},{"code":"2 + 3","id":4,"options":{"out-height":"","out-width":"700px","context":"interactive","classes":"","warning":"true","results":"markup","comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"dpi":72,"label":"unnamed-chunk-4","fig-width":7}}];
 
   </script>
   <script type="module">
@@ -602,13 +602,13 @@
     let qwebrElement;
     switch ( evalType ) {
       case EvalTypes.Interactive:
-        qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+        qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
         break;
       case EvalTypes.Output: 
-        qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+        qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
         break;
       case EvalTypes.Setup: 
-        qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+        qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
         break;
       default: 
         qwebrElement = document.createElement('div');
@@ -620,12 +620,20 @@
   };
 
   // Function that setups the interactive element creation
-  globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+  globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
     // Create main div element
     var mainDiv = document.createElement('div');
     mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-    mainDiv.className = 'qwebr-interactive-area';
+    mainDiv.className = `qwebr-interactive-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
 
     // Create toolbar div
     var toolbarDiv = document.createElement('div');
@@ -713,12 +721,20 @@
   }
 
   // Function that adds output structure for non-interactive output
-  globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+  globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
     // Create main div element
     var mainDiv = document.createElement('div');
     mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-    mainDiv.className = 'qwebr-noninteractive-area';
-
+    mainDiv.className = `qwebr-noninteractive-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+    
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
+    
     // Create a status container div
     var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -747,11 +763,20 @@
   };
 
   // Function that adds a stub in the page to indicate a setup cell was used.
-  globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+  globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
     // Create main div element
     var mainDiv = document.createElement('div');
     mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-    mainDiv.className = 'qwebr-noninteractive-setup-area';
+    mainDiv.className = `qwebr-noninteractive-setup-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+
+
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
 
     // Create a status container div
     var statusContainer = createLoadingContainer(qwebrCounter);
@@ -918,6 +943,11 @@
       return x;
   };
 
+  // Append a comment
+  globalThis.qwebrPrefixComment = function(x, comment) {
+      return `${comment}${x}`;
+  };
+
   // Function to parse the pager results
   globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -967,9 +997,10 @@
       let pager = [];
 
       // Handle how output is processed
+      let showMarkup = options.results === "markup" && options.output !== "asis";
       let processOutput;
 
-      if (options.results == "markup") {
+      if (showMarkup) {
           processOutput = qwebrEscapeHTMLCharacters;
       } else {
           processOutput = qwebrIdentity;
@@ -1003,7 +1034,7 @@
           await mainWebR.evalRVoid("dev.off()");
           
           // Avoid running through output processing
-          if (options.results === "hide") { 
+          if (options.results === "hide" || options.output === "false") { 
               break processResultOutput; 
           }
 
@@ -1016,7 +1047,8 @@
           )
           .map((evt, index) => {
               const className = `qwebr-output-code-${evt.type}`;
-              return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+              const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+              return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
           })
           .join("\n");
 
@@ -1079,7 +1111,21 @@
 
           // Place the graphics on the canvas
           if (canvas) {
-              elements.outputGraphDiv.appendChild(canvas);
+              // Create figure element
+              const figureElement = document.createElement('figure');
+
+              // Append canvas to figure
+              figureElement.appendChild(canvas);
+
+              if (options['fig-cap']) {
+                  // Create figcaption element
+                  const figcaptionElement = document.createElement('figcaption');
+                  figcaptionElement.innerText = options['fig-cap'];
+                  // Append figcaption to figure
+                  figureElement.appendChild(figcaptionElement);    
+              }
+
+              elements.outputGraphDiv.appendChild(figureElement);
           }
 
           // Display the pager data

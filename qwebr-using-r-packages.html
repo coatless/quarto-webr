@@ -272,7 +272,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"fig-height":5,"out-width":"700px","context":"interactive","fig-width":7,"results":"markup","message":"true","out-height":"","warning":"true","dpi":72}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"fig-height":5,"out-width":"700px","context":"interactive","fig-width":7,"results":"markup","message":"true","out-height":"","warning":"true","dpi":72}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"fig-height":5,"out-width":"700px","context":"interactive","fig-width":7,"results":"markup","message":"true","out-height":"","warning":"true","dpi":72}}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","results":"markup","dpi":72,"warning":"true","context":"interactive","fig-width":7,"output":"true","out-height":"","out-width":"700px","fig-height":5,"comment":"","classes":"","label":"unnamed-chunk-1","fig-cap":""},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1},{"options":{"message":"true","results":"markup","dpi":72,"warning":"true","context":"interactive","fig-width":7,"output":"true","out-height":"","out-width":"700px","fig-height":5,"comment":"","classes":"","label":"unnamed-chunk-2","fig-cap":""},"code":"webr::install(\"ggplot2\")","id":2},{"options":{"message":"true","results":"markup","dpi":72,"warning":"true","context":"interactive","fig-width":7,"output":"true","out-height":"","out-width":"700px","fig-height":5,"comment":"","classes":"","label":"unnamed-chunk-3","fig-cap":""},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3}];
 
 </script>
 <script type="module">
@@ -394,13 +394,13 @@ globalThis.qwebrCreateHTMLElement = function (
   let qwebrElement;
   switch ( evalType ) {
     case EvalTypes.Interactive:
-      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter);
+      qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Output: 
-      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
       break;
     case EvalTypes.Setup: 
-      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter);
+      qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
       break;
     default: 
       qwebrElement = document.createElement('div');
@@ -412,12 +412,20 @@ globalThis.qwebrCreateHTMLElement = function (
 };
 
 // Function that setups the interactive element creation
-globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
+globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
 
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-interactive-area';
+  mainDiv.className = `qwebr-interactive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create toolbar div
   var toolbarDiv = document.createElement('div');
@@ -505,12 +513,20 @@ globalThis.qwebrCreateInteractiveElement = function (qwebrCounter) {
 }
 
 // Function that adds output structure for non-interactive output
-globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
-  mainDiv.className = 'qwebr-noninteractive-area';
-
+  mainDiv.className = `qwebr-noninteractive-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+  
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
+  
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
 
@@ -539,11 +555,20 @@ globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter) {
 };
 
 // Function that adds a stub in the page to indicate a setup cell was used.
-globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter) {
+globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
   // Create main div element
   var mainDiv = document.createElement('div');
   mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
-  mainDiv.className = 'qwebr-noninteractive-setup-area';
+  mainDiv.className = `qwebr-noninteractive-setup-area`;
+  if (qwebrOptions.classes) {
+    mainDiv.className += " " + qwebrOptions.classes
+  }
+
+
+  // Add a unique cell identifier that users can customize
+  if (qwebrOptions.label) {
+    mainDiv.setAttribute('data-id', qwebrOptions.label);
+  }
 
   // Create a status container div
   var statusContainer = createLoadingContainer(qwebrCounter);
@@ -710,6 +735,11 @@ globalThis.qwebrIdentity = function(x) {
     return x;
 };
 
+// Append a comment
+globalThis.qwebrPrefixComment = function(x, comment) {
+    return `${comment}${x}`;
+};
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -759,9 +789,10 @@ globalThis.qwebrComputeEngine = async function(
     let pager = [];
 
     // Handle how output is processed
+    let showMarkup = options.results === "markup" && options.output !== "asis";
     let processOutput;
 
-    if (options.results == "markup") {
+    if (showMarkup) {
         processOutput = qwebrEscapeHTMLCharacters;
     } else {
         processOutput = qwebrIdentity;
@@ -795,7 +826,7 @@ globalThis.qwebrComputeEngine = async function(
         await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
-        if (options.results === "hide") { 
+        if (options.results === "hide" || options.output === "false") { 
             break processResultOutput; 
         }
 
@@ -808,7 +839,8 @@ globalThis.qwebrComputeEngine = async function(
         )
         .map((evt, index) => {
             const className = `qwebr-output-code-${evt.type}`;
-            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${processOutput(evt.data)}</code>`;
+            const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+            return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
         })
         .join("\n");
 
@@ -871,7 +903,21 @@ globalThis.qwebrComputeEngine = async function(
 
         // Place the graphics on the canvas
         if (canvas) {
-            elements.outputGraphDiv.appendChild(canvas);
+            // Create figure element
+            const figureElement = document.createElement('figure');
+
+            // Append canvas to figure
+            figureElement.appendChild(canvas);
+
+            if (options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = options['fig-cap'];
+                // Append figcaption to figure
+                figureElement.appendChild(figcaptionElement);    
+            }
+
+            elements.outputGraphDiv.appendChild(figureElement);
         }
 
         // Display the pager data
@@ -1389,7 +1435,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 30, 2024</p>
+      <p class="date-modified">January 31, 2024</p>
     </div>
   </div>
     
