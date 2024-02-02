@@ -121,6 +121,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -270,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","dpi":72,"fig-width":7,"warning":"true","classes":"","results":"markup","out-height":"","message":"true","comment":"","output":"true","context":"interactive","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr"}];
+globalThis.qwebrCellDetails = [{"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr","id":1,"options":{"out-height":"","classes":"","context":"interactive","warning":"true","fig-height":5,"label":"unnamed-chunk-1","fig-cap":"","output":"true","comment":"","out-width":"700px","message":"true","dpi":72,"results":"markup","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -622,7 +627,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

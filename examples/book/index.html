@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2024-01-31">
+<meta name="dcterms.date" content="2024-02-02">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -81,6 +81,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -230,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","context":"interactive","out-height":"","results":"markup","output":"true","fig-height":5,"label":"unnamed-chunk-1","dpi":72,"warning":"true","out-width":"700px","fig-width":7,"message":"true","comment":"","classes":""},"id":1,"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")"}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","out-width":"700px","dpi":72,"warning":"true","output":"true","fig-cap":"","comment":"","classes":"","fig-height":5,"results":"markup","fig-width":7,"out-height":"","label":"unnamed-chunk-1","context":"interactive"},"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","id":1}];
 
 </script>
 <script type="module">
@@ -582,7 +587,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages
@@ -1239,7 +1244,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 31, 2024</p>
+      <p class="date">February 2, 2024</p>
     </div>
   </div>
   

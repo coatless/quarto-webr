@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","options":{"fig-cap":"","context":"interactive","label":"unnamed-chunk-1","out-width":"700px","output":"true","warning":"true","classes":"","comment":"","results":"markup","dpi":72,"message":"true","fig-width":7,"fig-height":5,"out-height":""},"id":1}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","id":1,"options":{"comment":"","message":"true","results":"markup","output":"true","fig-width":7,"out-height":"","label":"unnamed-chunk-1","fig-cap":"","out-width":"700px","context":"interactive","dpi":72,"warning":"true","fig-height":5,"classes":""}}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

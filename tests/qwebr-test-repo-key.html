@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -205,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['demorwasmbinary', 'visualize'];
+globalThis.qwebrInstallRPackagesList = ['demorwasmbinary', 'visualize', 'fakepkg'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/', 'https://repo.r-wasm.org/'];
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","fig-cap":"","warning":"true","out-width":"700px","context":"output","comment":"","message":"true","fig-width":7,"output":"true","classes":"","out-height":"","dpi":72,"fig-height":5,"label":"unnamed-chunk-1"},"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"fig-cap":"","results":"markup","message":"true","output":"true","comment":"","context":"output","dpi":72,"fig-height":5,"warning":"true","label":"unnamed-chunk-1","out-width":"700px","out-height":"","classes":""},"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

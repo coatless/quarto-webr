@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"dpi":72,"fig-cap":"","context":"interactive","message":"true","label":"unnamed-chunk-1","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":1},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-2","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":2},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-3","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"asis","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":3},{"options":{"dpi":72,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-4","fig-width":7,"comment":"","fig-height":5,"warning":"true","out-width":"700px","out-height":"","classes":"","results":"markup","output":"asis"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","out-width":"700px","dpi":72,"fig-width":7,"fig-height":5,"classes":"","warning":"true","out-height":"","label":"unnamed-chunk-1","message":"true","comment":"","fig-cap":"","context":"interactive","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":2,"options":{"results":"markup","out-width":"700px","dpi":72,"fig-width":7,"fig-height":5,"classes":"","warning":"true","out-height":"","label":"unnamed-chunk-2","message":"true","comment":"","fig-cap":"","context":"output","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":3,"options":{"results":"asis","out-width":"700px","dpi":72,"fig-width":7,"fig-height":5,"classes":"","warning":"true","out-height":"","label":"unnamed-chunk-3","message":"true","comment":"","fig-cap":"","context":"output","output":"true"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":4,"options":{"results":"markup","out-width":"700px","dpi":72,"fig-width":7,"fig-height":5,"classes":"","warning":"true","out-height":"","label":"unnamed-chunk-4","message":"true","comment":"","fig-cap":"","context":"output","output":"asis"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

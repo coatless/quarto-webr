@@ -331,6 +331,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+    display: flex;
   }
 
   .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -480,7 +485,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","fig-cap":"","warning":"true","label":"unnamed-chunk-1","out-height":"","comment":"","results":"markup","output":"true","message":"true","fig-width":7,"dpi":72,"fig-height":5,"classes":"","out-width":"700px"},"code":"print(\"Hello hidden title world!\")"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello hidden title world!\")","options":{"comment":"","message":"true","classes":"","label":"unnamed-chunk-1","dpi":72,"context":"interactive","fig-cap":"","output":"true","warning":"true","results":"markup","out-width":"700px","out-height":"","fig-width":7,"fig-height":5}}];
 
   </script>
   <script type="module">
@@ -832,7 +837,7 @@
 
   // Function to load a single package
   async function qwebrLoadRPackage(packageName) {
-    await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+    await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
   }
 
   // Generic function to process R packages

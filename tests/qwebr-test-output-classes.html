@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":1,"options":{"fig-width":7,"context":"interactive","results":"markup","comment":"","label":"unnamed-chunk-1","fig-height":5,"warning":"true","output":"true","classes":"","dpi":72,"out-width":"700px","message":"true","fig-cap":"","out-height":""}},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":2,"options":{"fig-width":7,"context":"output","results":"markup","comment":"","label":"unnamed-chunk-2","fig-height":5,"warning":"true","output":"true","classes":"","dpi":72,"out-width":"700px","message":"true","fig-cap":"","out-height":""}},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":3,"options":{"fig-width":7,"context":"output","results":"markup","comment":"## ","label":"unnamed-chunk-3","fig-height":5,"warning":"true","output":"true","classes":"","dpi":72,"out-width":"700px","message":"true","fig-cap":"","out-height":""}},{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":4,"options":{"fig-width":7,"context":"output","results":"markup","comment":"","label":"unnamed-chunk-4","fig-height":5,"warning":"true","output":"true","classes":"toad green","dpi":72,"out-width":"700px","message":"true","fig-cap":"","out-height":""}}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","message":"true","comment":"","out-width":"700px","dpi":72,"results":"markup","classes":"","label":"unnamed-chunk-1","fig-height":5,"context":"interactive","fig-cap":"","warning":"true","out-height":"","fig-width":7},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":1},{"options":{"output":"true","message":"true","comment":"","out-width":"700px","dpi":72,"results":"markup","classes":"","label":"unnamed-chunk-2","fig-height":5,"context":"output","fig-cap":"","warning":"true","out-height":"","fig-width":7},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":2},{"options":{"output":"true","message":"true","comment":"## ","out-width":"700px","dpi":72,"results":"markup","classes":"","label":"unnamed-chunk-3","fig-height":5,"context":"output","fig-cap":"","warning":"true","out-height":"","fig-width":7},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":3},{"options":{"output":"true","message":"true","comment":"","out-width":"700px","dpi":72,"results":"markup","classes":"toad green","label":"unnamed-chunk-4","fig-height":5,"context":"output","fig-cap":"","warning":"true","out-height":"","fig-width":7},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":4}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

@@ -123,6 +123,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -272,7 +277,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)","options":{"fig-cap":"","warning":"true","results":"markup","out-width":"700px","context":"interactive","label":"unnamed-chunk-1","dpi":72,"classes":"","message":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","out-height":""}}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","output":"true","warning":"true","out-width":"700px","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-1","fig-height":5,"context":"interactive","fig-cap":"","fig-width":7,"out-height":"","classes":""},"id":1,"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
 
 </script>
 <script type="module">
@@ -624,7 +629,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages
@@ -1439,7 +1444,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 31, 2024</p>
+      <p class="date-modified">February 2, 2024</p>
     </div>
   </div>
     

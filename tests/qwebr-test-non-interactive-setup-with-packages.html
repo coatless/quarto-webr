@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"context":"setup","fig-width":7,"out-height":"","label":"spike-data","fig-height":5,"out-width":"700px","message":"true","comment":"","output":"true","fig-cap":"","dpi":72,"classes":"","results":"markup","warning":"true"}},{"code":"new_mtcars","id":2,"options":{"context":"interactive","fig-width":7,"out-height":"","label":"spike-data","fig-height":5,"out-width":"700px","message":"true","comment":"","output":"true","fig-cap":"","dpi":72,"classes":"","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"results":"markup","fig-width":7,"classes":"","comment":"","dpi":72,"warning":"true","fig-height":5,"output":"true","out-height":"","label":"spike-data","message":"true","out-width":"700px","context":"setup","fig-cap":""}},{"code":"new_mtcars","id":2,"options":{"results":"markup","fig-width":7,"classes":"","comment":"","dpi":72,"warning":"true","fig-height":5,"output":"true","out-height":"","label":"spike-data","message":"true","out-width":"700px","context":"interactive","fig-cap":""}}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

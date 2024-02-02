@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","id":1,"options":{"message":"true","results":"markup","output":"true","dpi":72,"out-height":"","fig-cap":"","label":"unnamed-chunk-1","classes":"","comment":"","context":"interactive","fig-width":7,"fig-height":5,"out-width":"700px","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","context":"interactive","label":"unnamed-chunk-1","dpi":72,"warning":"true","results":"markup","fig-width":7,"message":"true","fig-height":5,"comment":"","classes":"","output":"true","out-height":"","fig-cap":""},"id":1,"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"output","out-width":"700px","output":"true","message":"true","fig-width":7,"warning":"true","dpi":72,"fig-cap":"","results":"markup","out-height":"","fig-height":5,"comment":"","classes":"","label":"unnamed-chunk-1"},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1}];
+globalThis.qwebrCellDetails = [{"options":{"comment":"","results":"markup","message":"true","label":"unnamed-chunk-1","warning":"true","output":"true","out-width":"700px","classes":"","out-height":"","context":"output","fig-cap":"","fig-width":7,"dpi":72,"fig-height":5},"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

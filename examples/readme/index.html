@@ -45,6 +45,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -194,7 +199,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)","id":1,"options":{"comment":"","fig-cap":"","results":"markup","warning":"true","out-width":"700px","output":"true","context":"interactive","label":"unnamed-chunk-1","classes":"","dpi":72,"message":"true","fig-width":7,"fig-height":5,"out-height":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","context":"interactive","results":"markup","dpi":72,"out-height":"","label":"unnamed-chunk-1","fig-cap":"","classes":"","fig-height":5,"out-width":"700px","output":"true","fig-width":7,"message":"true","warning":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)"}];
 
 </script>
 <script type="module">
@@ -546,7 +551,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

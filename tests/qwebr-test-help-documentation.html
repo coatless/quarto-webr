@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"?mean","options":{"output":"true","message":"true","classes":"","context":"interactive","results":"markup","comment":"","out-height":"","warning":"true","fig-height":5,"out-width":"700px","fig-width":7,"label":"unnamed-chunk-1","dpi":72,"fig-cap":""},"id":1},{"code":"?sd","options":{"output":"true","message":"true","classes":"","context":"output","results":"markup","comment":"","out-height":"","warning":"true","fig-height":5,"out-width":"700px","fig-width":7,"label":"unnamed-chunk-2","dpi":72,"fig-cap":""},"id":2}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive","results":"markup","dpi":72,"label":"unnamed-chunk-1","output":"true","classes":"","out-width":"700px","warning":"true","comment":"","fig-cap":"","message":"true","fig-height":5,"out-height":"","fig-width":7},"id":1,"code":"?mean"},{"options":{"context":"output","results":"markup","dpi":72,"label":"unnamed-chunk-2","output":"true","classes":"","out-width":"700px","warning":"true","comment":"","fig-cap":"","message":"true","fig-height":5,"out-height":"","fig-width":7},"id":2,"code":"?sd"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

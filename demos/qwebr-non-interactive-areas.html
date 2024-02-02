@@ -87,6 +87,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -236,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-1","results":"markup","out-width":"700px","warning":"true","classes":"","context":"setup","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":2,"code":"g + geom_point()\n\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-2","results":"markup","out-width":"700px","warning":"true","classes":"","context":"output","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","options":{"out-height":"","label":"unnamed-chunk-3","results":"markup","out-width":"700px","warning":"true","classes":"","context":"output","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}},{"id":4,"code":"g","options":{"out-height":"","label":"unnamed-chunk-4","results":"markup","out-width":"700px","warning":"true","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-height":5,"fig-width":7,"message":"true"}}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","context":"setup","label":"unnamed-chunk-1","comment":"","message":"true","out-width":"700px","out-height":"","fig-height":5,"results":"markup","classes":"","fig-cap":"","dpi":72,"output":"true","fig-width":7},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","id":1},{"options":{"warning":"true","context":"output","label":"unnamed-chunk-2","comment":"","message":"true","out-width":"700px","out-height":"","fig-height":5,"results":"markup","classes":"","fig-cap":"","dpi":72,"output":"true","fig-width":7},"code":"g + geom_point()\n\nSys.sleep(0.5)","id":2},{"options":{"warning":"true","context":"output","label":"unnamed-chunk-3","comment":"","message":"true","out-width":"700px","out-height":"","fig-height":5,"results":"markup","classes":"","fig-cap":"","dpi":72,"output":"true","fig-width":7},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","id":3},{"options":{"warning":"true","context":"interactive","label":"unnamed-chunk-4","comment":"","message":"true","out-width":"700px","out-height":"","fig-height":5,"results":"markup","classes":"","fig-cap":"","dpi":72,"output":"true","fig-width":7},"code":"g","id":4}];
 
 </script>
 <script type="module">
@@ -588,7 +593,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

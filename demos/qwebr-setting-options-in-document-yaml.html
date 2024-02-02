@@ -87,6 +87,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -236,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-height":5,"label":"unnamed-chunk-1","warning":"true","results":"markup","context":"interactive","dpi":72,"comment":"","classes":"","fig-cap":"","message":"true","output":"true","fig-width":7,"out-width":"700px","out-height":""},"code":"library(\"ggplot2\")\n\nggplot()"}];
+globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","warning":"true","context":"interactive","out-width":"700px","results":"markup","comment":"","classes":"","output":"true","fig-width":7,"message":"true","fig-height":5,"label":"unnamed-chunk-1","out-height":"","dpi":72},"code":"library(\"ggplot2\")\n\nggplot()","id":1}];
 
 </script>
 <script type="module">
@@ -588,7 +593,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

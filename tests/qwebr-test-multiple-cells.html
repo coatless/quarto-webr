@@ -78,6 +78,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -227,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"1 + 1 ","id":1,"options":{"message":"true","out-width":"700px","context":"interactive","results":"markup","classes":"","out-height":"","comment":"","dpi":72,"warning":"true","label":"unnamed-chunk-1","fig-height":5,"fig-width":7,"fig-cap":"","output":"true"}},{"code":"plot(pressure)","id":2,"options":{"message":"true","out-width":"700px","context":"interactive","results":"markup","classes":"","out-height":"","comment":"","dpi":72,"warning":"true","label":"unnamed-chunk-2","fig-height":5,"fig-width":7,"fig-cap":"","output":"true"}},{"code":"1 + 1 ","id":3,"options":{"message":"true","out-width":"700px","context":"output","results":"markup","classes":"","out-height":"","comment":"","dpi":72,"warning":"true","label":"unnamed-chunk-3","fig-height":5,"fig-width":7,"fig-cap":"","output":"true"}},{"code":"plot(pressure)","id":4,"options":{"message":"true","out-width":"700px","context":"output","results":"markup","classes":"","out-height":"","comment":"","dpi":72,"warning":"true","label":"unnamed-chunk-4","fig-height":5,"fig-width":7,"fig-cap":"","output":"true"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","classes":"","warning":"true","context":"interactive","fig-width":7,"results":"markup","message":"true","comment":"","label":"unnamed-chunk-1","dpi":72,"fig-cap":"","fig-height":5,"out-height":"","out-width":"700px"},"code":"1 + 1 "},{"id":2,"options":{"output":"true","classes":"","warning":"true","context":"interactive","fig-width":7,"results":"markup","message":"true","comment":"","label":"unnamed-chunk-2","dpi":72,"fig-cap":"","fig-height":5,"out-height":"","out-width":"700px"},"code":"plot(pressure)"},{"id":3,"options":{"output":"true","classes":"","warning":"true","context":"output","fig-width":7,"results":"markup","message":"true","comment":"","label":"unnamed-chunk-3","dpi":72,"fig-cap":"","fig-height":5,"out-height":"","out-width":"700px"},"code":"1 + 1 "},{"id":4,"options":{"output":"true","classes":"","warning":"true","context":"output","fig-width":7,"results":"markup","message":"true","comment":"","label":"unnamed-chunk-4","dpi":72,"fig-cap":"","fig-height":5,"out-height":"","out-width":"700px"},"code":"plot(pressure)"}];
 
 </script>
 <script type="module">
@@ -579,7 +584,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages

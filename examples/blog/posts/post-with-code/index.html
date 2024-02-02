@@ -80,6 +80,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+  display: flex;
 }
 
 .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
@@ -229,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-height":5,"fig-cap":"","warning":"true","results":"markup","fig-width":7,"comment":"","message":"true","dpi":72,"out-width":"700px","label":"unnamed-chunk-1","classes":"","out-height":"","context":"interactive","output":"true"},"code":"print(\"Hello blog Quarto world!\")"}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello blog Quarto world!\")","options":{"warning":"true","message":"true","out-width":"700px","comment":"","context":"interactive","output":"true","fig-width":7,"fig-height":5,"fig-cap":"","classes":"","out-height":"","results":"markup","dpi":72,"label":"unnamed-chunk-1"},"id":1}];
 
 </script>
 <script type="module">
@@ -581,7 +586,7 @@ async function qwebrInstallRPackage(packageName) {
 
 // Function to load a single package
 async function qwebrLoadRPackage(packageName) {
-  await mainWebR.evalRVoid(`if(requireNamespace('${packageName}', quietly = TRUE)) { library(${packageName}); }`);
+  await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
 }
 
 // Generic function to process R packages
