@@ -3,7 +3,7 @@ title: "Test: Repos package key"
 format: html
 engine: knitr
 webr:
-  packages: ['demorwasmbinary', 'visualize']
+  packages: ['demorwasmbinary', 'visualize', 'fakepkg']
   repos: 
     - 'https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/'
 filters:
