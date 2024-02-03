@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.6">
+<meta name="generator" content="quarto-1.5.7">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-1","results":"markup","out-height":"","classes":""},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1},{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-2","results":"markup","out-height":"","classes":""},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2},{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-3","results":"markup","out-height":"","classes":""},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3},{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-4","results":"markup","out-height":"","classes":""},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4},{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-5","results":"markup","out-height":"","classes":""},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5},{"options":{"fig-height":5,"out-width":"700px","comment":"","output":"true","fig-width":7,"context":"interactive","warning":"true","message":"true","dpi":72,"fig-cap":"","label":"unnamed-chunk-6","results":"markup","out-height":"","classes":""},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-1","comment":"","out-height":"","out-width":"700px"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-2","comment":"","out-height":"","out-width":"700px"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-3","comment":"","out-height":"","out-width":"700px"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-4","comment":"","out-height":"","out-width":"700px"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-5","comment":"","out-height":"","out-width":"700px"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-6","comment":"","out-height":"","out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -1691,12 +1691,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" &lt;span="" webr="" demo="" book&lt;="" span&gt;"="">
+      <a href="./index.html" class="pagination-link" aria-label="Quarto Webr Demo Book">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quarto Webr Demo Book</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./slide-embed.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Embed Slides</span>">
+      <a href="./slide-embed.html" class="pagination-link" aria-label="Embed Slides">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Embed Slides</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
