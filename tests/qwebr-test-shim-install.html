@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"output","message":"true","out-height":"","label":"unnamed-chunk-1","fig-height":5,"output":"true","warning":"true","fig-cap":"","out-width":"700px","dpi":72,"results":"markup","fig-width":7,"comment":"","classes":""},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1}];
+globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1,"options":{"dpi":72,"results":"markup","output":"true","fig-width":7,"message":"true","warning":"true","fig-cap":"","comment":"","label":"unnamed-chunk-1","classes":"","context":"output","fig-height":5,"out-width":"700px","out-height":""}}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","comment":"","results":"markup","label":"unnamed-chunk-1","warning":"true","classes":"","message":"true","context":"setup","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","fig-height":5},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"output":"true","comment":"","results":"markup","label":"unnamed-chunk-2","warning":"true","classes":"","message":"true","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","fig-height":5},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"fig-height":5,"message":"true","context":"setup","warning":"true","results":"markup","comment":"","fig-cap":"","dpi":72,"out-height":"","out-width":"700px","label":"unnamed-chunk-1","output":"true","fig-width":7,"classes":""}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"fig-height":5,"message":"true","context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","dpi":72,"out-height":"","out-width":"700px","label":"unnamed-chunk-2","output":"true","fig-width":7,"classes":""}}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-1","comment":"","out-height":"","out-width":"700px"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-2","comment":"","out-height":"","out-width":"700px"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-3","comment":"","out-height":"","out-width":"700px"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-4","comment":"","out-height":"","out-width":"700px"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-5","comment":"","out-height":"","out-width":"700px"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"output":"true","message":"true","context":"interactive","fig-height":5,"dpi":72,"classes":"","fig-width":7,"results":"markup","fig-cap":"","warning":"true","label":"unnamed-chunk-6","comment":"","out-height":"","out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-1"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-2"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-3"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-4"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-5"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-6"}}];
 
 </script>
 <script type="module">
@@ -1208,13 +1208,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

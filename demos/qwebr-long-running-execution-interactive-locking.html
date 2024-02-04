@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds","options":{"message":"true","classes":"","comment":"","warning":"true","output":"true","label":"unnamed-chunk-1","results":"markup","fig-height":5,"context":"interactive","out-height":"","out-width":"700px","fig-cap":"","dpi":72,"fig-width":7},"id":1},{"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds","options":{"message":"true","classes":"","comment":"","warning":"true","output":"true","label":"unnamed-chunk-2","results":"markup","fig-height":5,"context":"interactive","out-height":"","out-width":"700px","fig-cap":"","dpi":72,"fig-width":7},"id":2},{"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds","options":{"message":"true","classes":"","comment":"","warning":"true","output":"true","label":"unnamed-chunk-3","results":"markup","fig-height":5,"context":"interactive","out-height":"","out-width":"700px","fig-cap":"","dpi":72,"fig-width":7},"id":3}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds","options":{"classes":"","context":"interactive","results":"markup","label":"unnamed-chunk-1","out-width":"700px","comment":"","warning":"true","fig-width":7,"fig-height":5,"fig-cap":"","message":"true","out-height":"","output":"true","dpi":72},"id":1},{"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds","options":{"classes":"","context":"interactive","results":"markup","label":"unnamed-chunk-2","out-width":"700px","comment":"","warning":"true","fig-width":7,"fig-height":5,"fig-cap":"","message":"true","out-height":"","output":"true","dpi":72},"id":2},{"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds","options":{"classes":"","context":"interactive","results":"markup","label":"unnamed-chunk-3","out-width":"700px","comment":"","warning":"true","fig-width":7,"fig-height":5,"fig-cap":"","message":"true","out-height":"","output":"true","dpi":72},"id":3}];
 
 </script>
 <script type="module">
@@ -1357,13 +1357,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

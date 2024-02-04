@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"dpi":72,"fig-width":7,"results":"markup","fig-cap":"","out-height":"","out-width":"700px","message":"true","context":"setup","comment":"","output":"true","label":"unnamed-chunk-1","warning":"true","fig-height":5,"classes":""},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"id":2,"options":{"dpi":72,"fig-width":7,"results":"markup","fig-cap":"","out-height":"","out-width":"700px","message":"true","context":"output","comment":"","output":"true","label":"unnamed-chunk-2","warning":"true","fig-height":5,"classes":""},"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"id":3,"options":{"dpi":72,"fig-width":7,"results":"markup","fig-cap":"","out-height":"","out-width":"700px","message":"true","context":"output","comment":"","output":"true","label":"unnamed-chunk-3","warning":"true","fig-height":5,"classes":""},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"id":4,"options":{"dpi":72,"fig-width":7,"results":"markup","fig-cap":"","out-height":"","out-width":"700px","message":"true","context":"interactive","comment":"","output":"true","label":"unnamed-chunk-4","warning":"true","fig-height":5,"classes":""},"code":"g"}];
+globalThis.qwebrCellDetails = [{"options":{"results":"markup","classes":"","warning":"true","comment":"","fig-width":7,"fig-cap":"","label":"unnamed-chunk-1","context":"setup","out-height":"","message":"true","output":"true","fig-height":5,"dpi":72,"out-width":"700px"},"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"options":{"results":"markup","classes":"","warning":"true","comment":"","fig-width":7,"fig-cap":"","label":"unnamed-chunk-2","context":"output","out-height":"","message":"true","output":"true","fig-height":5,"dpi":72,"out-width":"700px"},"id":2,"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"options":{"results":"markup","classes":"","warning":"true","comment":"","fig-width":7,"fig-cap":"","label":"unnamed-chunk-3","context":"output","out-height":"","message":"true","output":"true","fig-height":5,"dpi":72,"out-width":"700px"},"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"options":{"results":"markup","classes":"","warning":"true","comment":"","fig-width":7,"fig-cap":"","label":"unnamed-chunk-4","context":"interactive","out-height":"","message":"true","output":"true","fig-height":5,"dpi":72,"out-width":"700px"},"id":4,"code":"g"}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

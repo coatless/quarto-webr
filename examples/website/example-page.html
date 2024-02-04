@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"results":"markup","warning":"true","context":"interactive","dpi":72,"classes":"","message":"true","fig-cap":"","label":"unnamed-chunk-1","comment":"","fig-width":7,"out-width":"700px","fig-height":5,"output":"true","out-height":""},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","id":1}];
+globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","warning":"true","output":"true","comment":"","out-height":"","out-width":"700px","fig-width":7,"context":"interactive","fig-height":5,"results":"markup","dpi":72,"classes":"","message":"true","fig-cap":""},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","id":1}];
 
 </script>
 <script type="module">
@@ -1215,13 +1215,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

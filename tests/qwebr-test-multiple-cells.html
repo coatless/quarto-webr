@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","message":"true","fig-width":7,"classes":"","warning":"true","out-width":"700px","context":"interactive","results":"markup","output":"true","fig-cap":"","dpi":72,"fig-height":5,"comment":"","out-height":""},"code":"1 + 1 ","id":1},{"options":{"label":"unnamed-chunk-2","message":"true","fig-width":7,"classes":"","warning":"true","out-width":"700px","context":"interactive","results":"markup","output":"true","fig-cap":"","dpi":72,"fig-height":5,"comment":"","out-height":""},"code":"plot(pressure)","id":2},{"options":{"label":"unnamed-chunk-3","message":"true","fig-width":7,"classes":"","warning":"true","out-width":"700px","context":"output","results":"markup","output":"true","fig-cap":"","dpi":72,"fig-height":5,"comment":"","out-height":""},"code":"1 + 1 ","id":3},{"options":{"label":"unnamed-chunk-4","message":"true","fig-width":7,"classes":"","warning":"true","out-width":"700px","context":"output","results":"markup","output":"true","fig-cap":"","dpi":72,"fig-height":5,"comment":"","out-height":""},"code":"plot(pressure)","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","fig-height":5,"message":"true","label":"unnamed-chunk-1","warning":"true","classes":"","out-width":"700px","output":"true","fig-cap":"","comment":"","results":"markup","fig-width":7,"dpi":72,"out-height":""},"code":"1 + 1 "},{"id":2,"options":{"context":"interactive","fig-height":5,"message":"true","label":"unnamed-chunk-2","warning":"true","classes":"","out-width":"700px","output":"true","fig-cap":"","comment":"","results":"markup","fig-width":7,"dpi":72,"out-height":""},"code":"plot(pressure)"},{"id":3,"options":{"context":"output","fig-height":5,"message":"true","label":"unnamed-chunk-3","warning":"true","classes":"","out-width":"700px","output":"true","fig-cap":"","comment":"","results":"markup","fig-width":7,"dpi":72,"out-height":""},"code":"1 + 1 "},{"id":4,"options":{"context":"output","fig-height":5,"message":"true","label":"unnamed-chunk-4","warning":"true","classes":"","out-width":"700px","output":"true","fig-cap":"","comment":"","results":"markup","fig-width":7,"dpi":72,"out-height":""},"code":"plot(pressure)"}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

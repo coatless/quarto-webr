@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"comment":"","classes":"","out-height":"","dpi":72,"fig-height":5,"out-width":"700px","warning":"true","context":"interactive","results":"markup","fig-cap":"","message":"true","output":"true","fig-width":7,"label":"unnamed-chunk-1"},"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","id":1}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","id":1,"options":{"warning":"true","output":"true","classes":"","results":"markup","fig-cap":"","comment":"","label":"unnamed-chunk-1","out-width":"700px","fig-height":5,"out-height":"","fig-width":7,"dpi":72,"message":"true","context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -1215,13 +1215,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

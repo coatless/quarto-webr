@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -277,7 +277,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"fig-width":7,"message":"true","fig-cap":"","classes":"","output":"true","results":"markup","comment":"","out-height":"","context":"interactive","label":"unnamed-chunk-1","warning":"true","dpi":72,"fig-height":5,"out-width":"700px"}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"fig-width":7,"message":"true","fig-cap":"","classes":"","output":"true","results":"markup","comment":"","out-height":"","context":"interactive","label":"unnamed-chunk-2","warning":"true","dpi":72,"fig-height":5,"out-width":"700px"}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"fig-width":7,"message":"true","fig-cap":"","classes":"","output":"true","results":"markup","comment":"","out-height":"","context":"interactive","label":"unnamed-chunk-3","warning":"true","dpi":72,"fig-height":5,"out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"warning":"true","output":"true","label":"unnamed-chunk-1","classes":"","out-width":"700px","comment":"","context":"interactive","dpi":72,"fig-cap":"","message":"true","out-height":"","results":"markup","fig-width":7,"fig-height":5}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"warning":"true","output":"true","label":"unnamed-chunk-2","classes":"","out-width":"700px","comment":"","context":"interactive","dpi":72,"fig-cap":"","message":"true","out-height":"","results":"markup","fig-width":7,"fig-height":5}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"warning":"true","output":"true","label":"unnamed-chunk-3","classes":"","out-width":"700px","comment":"","context":"interactive","dpi":72,"fig-cap":"","message":"true","out-height":"","results":"markup","fig-width":7,"fig-height":5}}];
 
 </script>
 <script type="module">
@@ -1395,13 +1395,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   
@@ -1440,7 +1437,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 3, 2024</p>
+      <p class="date-modified">February 4, 2024</p>
     </div>
   </div>
     

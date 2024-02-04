@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"?mean","options":{"out-width":"700px","classes":"","results":"markup","message":"true","out-height":"","label":"unnamed-chunk-1","output":"true","context":"interactive","fig-width":7,"fig-height":5,"dpi":72,"fig-cap":"","warning":"true","comment":""}},{"id":2,"code":"?sd","options":{"out-width":"700px","classes":"","results":"markup","message":"true","out-height":"","label":"unnamed-chunk-2","output":"true","context":"output","fig-width":7,"fig-height":5,"dpi":72,"fig-cap":"","warning":"true","comment":""}}];
+globalThis.qwebrCellDetails = [{"code":"?mean","id":1,"options":{"dpi":72,"results":"markup","warning":"true","fig-cap":"","output":"true","fig-width":7,"fig-height":5,"label":"unnamed-chunk-1","context":"interactive","message":"true","classes":"","out-height":"","out-width":"700px","comment":""}},{"code":"?sd","id":2,"options":{"dpi":72,"results":"markup","warning":"true","fig-cap":"","output":"true","fig-width":7,"fig-height":5,"label":"unnamed-chunk-2","context":"output","message":"true","classes":"","out-height":"","out-width":"700px","comment":""}}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

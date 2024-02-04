@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2024-02-03">
+<meta name="dcterms.date" content="2024-02-04">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -235,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"out-height":"","classes":"","fig-cap":"","output":"true","message":"true","warning":"true","context":"interactive","label":"unnamed-chunk-1","results":"markup","fig-height":5,"dpi":72,"out-width":"700px","comment":""},"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")"}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","options":{"fig-cap":"","out-height":"","comment":"","out-width":"700px","results":"markup","output":"true","classes":"","warning":"true","message":"true","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","context":"interactive","dpi":72},"id":1}];
 
 </script>
 <script type="module">
@@ -1207,13 +1207,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   
@@ -1244,7 +1241,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2024</p>
+      <p class="date">February 4, 2024</p>
     </div>
   </div>
   

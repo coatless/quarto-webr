@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","label":"unnamed-chunk-1","context":"interactive","fig-width":7,"classes":"","results":"markup","output":"true","message":"true","fig-cap":"","warning":"true","dpi":72,"comment":"","fig-height":5,"out-height":""},"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr"}];
+globalThis.qwebrCellDetails = [{"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr","options":{"out-width":"700px","label":"unnamed-chunk-1","output":"true","results":"markup","classes":"","fig-height":5,"context":"interactive","warning":"true","message":"true","comment":"","dpi":72,"out-height":"","fig-cap":"","fig-width":7},"id":1}];
 
 </script>
 <script type="module">
@@ -1394,13 +1394,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

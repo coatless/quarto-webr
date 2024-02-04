@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(\"ggplot2\")\n\nggplot()","id":1,"options":{"label":"unnamed-chunk-1","out-height":"","warning":"true","output":"true","message":"true","context":"interactive","results":"markup","dpi":72,"comment":"","classes":"","fig-width":7,"fig-cap":"","out-width":"700px","fig-height":5}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","fig-width":7,"output":"true","fig-cap":"","message":"true","warning":"true","classes":"","label":"unnamed-chunk-1","out-height":"","dpi":72,"results":"markup","out-width":"700px","comment":"","fig-height":5},"code":"library(\"ggplot2\")\n\nggplot()"}];
 
 </script>
 <script type="module">
@@ -1355,13 +1355,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

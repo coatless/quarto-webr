@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-height":5,"message":"true","results":"markup","out-height":"","label":"unnamed-chunk-1","warning":"true","dpi":72,"context":"interactive","fig-cap":"","comment":"","output":"true","out-width":"700px","fig-width":7,"classes":""},"id":1,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"options":{"fig-height":5,"message":"true","results":"markup","out-height":"","label":"unnamed-chunk-2","warning":"true","dpi":72,"context":"output","fig-cap":"","comment":"","output":"true","out-width":"700px","fig-width":7,"classes":""},"id":2,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"options":{"fig-height":5,"message":"true","results":"asis","out-height":"","label":"unnamed-chunk-3","warning":"true","dpi":72,"context":"output","fig-cap":"","comment":"","output":"true","out-width":"700px","fig-width":7,"classes":""},"id":3,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"options":{"fig-height":5,"message":"true","results":"markup","out-height":"","label":"unnamed-chunk-4","warning":"true","dpi":72,"context":"output","fig-cap":"","comment":"","output":"asis","out-width":"700px","fig-width":7,"classes":""},"id":4,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"}];
+globalThis.qwebrCellDetails = [{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-1","out-height":"","warning":"true","out-width":"700px","context":"interactive","fig-height":5,"comment":"","results":"markup","dpi":72,"classes":"","output":"true","fig-width":7,"message":"true","fig-cap":""},"id":1},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-2","out-height":"","warning":"true","out-width":"700px","context":"output","fig-height":5,"comment":"","results":"markup","dpi":72,"classes":"","output":"true","fig-width":7,"message":"true","fig-cap":""},"id":2},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-3","out-height":"","warning":"true","out-width":"700px","context":"output","fig-height":5,"comment":"","results":"asis","dpi":72,"classes":"","output":"true","fig-width":7,"message":"true","fig-cap":""},"id":3},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-4","out-height":"","warning":"true","out-width":"700px","context":"output","fig-height":5,"comment":"","results":"markup","dpi":72,"classes":"","output":"asis","fig-width":7,"message":"true","fig-cap":""},"id":4}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

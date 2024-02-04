@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"warning":"true","out-height":"","message":"true","context":"setup","comment":"","results":"markup","classes":"","output":"true","label":"spike-data","fig-width":7,"fig-cap":"","fig-height":5,"dpi":72,"out-width":"700px"},"id":1},{"code":"new_mtcars","options":{"warning":"true","out-height":"","message":"true","context":"interactive","comment":"","results":"markup","classes":"","output":"true","label":"spike-data","fig-width":7,"fig-cap":"","fig-height":5,"dpi":72,"out-width":"700px"},"id":2}];
+globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"message":"true","results":"markup","label":"spike-data","warning":"true","classes":"","context":"setup","output":"true","fig-height":5,"dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","out-width":"700px"}},{"code":"new_mtcars","id":2,"options":{"message":"true","results":"markup","label":"spike-data","warning":"true","classes":"","context":"interactive","output":"true","fig-height":5,"dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

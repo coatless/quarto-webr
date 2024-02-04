@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.7">
+  <meta name="generator" content="quarto-1.5.8">
 
   <title>Test Suite for quarto-webr – Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -485,7 +485,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"fig-width":7,"out-height":"","output":"true","results":"markup","fig-cap":"","out-width":"700px","fig-height":5,"message":"true","label":"unnamed-chunk-1","classes":"","comment":"","context":"interactive","dpi":72,"warning":"true"},"id":1},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"fig-width":7,"out-height":"","output":"true","results":"markup","fig-cap":"","out-width":"700px","fig-height":5,"message":"true","label":"unnamed-chunk-2","classes":"","comment":"","context":"interactive","dpi":72,"warning":"true"},"id":2},{"code":"message(\"Hello World!\")","options":{"fig-width":7,"out-height":"","output":"true","results":"markup","fig-cap":"","out-width":"700px","fig-height":5,"message":"true","label":"unnamed-chunk-3","classes":"","comment":"","context":"interactive","dpi":72,"warning":"true"},"id":3},{"code":"2 + 3","options":{"fig-width":7,"out-height":"","output":"true","results":"markup","fig-cap":"","out-width":"700px","fig-height":5,"message":"true","label":"unnamed-chunk-4","classes":"","comment":"","context":"interactive","dpi":72,"warning":"true"},"id":4}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"label":"unnamed-chunk-1","message":"true","fig-height":5,"dpi":72,"classes":"","results":"markup","context":"interactive","warning":"true","fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","output":"true","comment":""}},{"id":2,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"label":"unnamed-chunk-2","message":"true","fig-height":5,"dpi":72,"classes":"","results":"markup","context":"interactive","warning":"true","fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","output":"true","comment":""}},{"id":3,"code":"message(\"Hello World!\")","options":{"label":"unnamed-chunk-3","message":"true","fig-height":5,"dpi":72,"classes":"","results":"markup","context":"interactive","warning":"true","fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","output":"true","comment":""}},{"id":4,"code":"2 + 3","options":{"label":"unnamed-chunk-4","message":"true","fig-height":5,"dpi":72,"classes":"","results":"markup","context":"interactive","warning":"true","fig-width":7,"fig-cap":"","out-height":"","out-width":"700px","output":"true","comment":""}}];
 
   </script>
   <script type="module">
@@ -1362,13 +1362,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

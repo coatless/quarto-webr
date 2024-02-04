@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1,"options":{"warning":"true","comment":"","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":7,"message":"true","label":"unnamed-chunk-1","output":"true","results":"markup","out-height":"","fig-height":5}},{"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)","id":2,"options":{"warning":"true","comment":"","context":"setup","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":7,"message":"true","label":"unnamed-chunk-2","output":"true","results":"markup","out-height":"","fig-height":5}},{"code":"knitr::kable(data, \"html\")","id":3,"options":{"warning":"true","comment":"","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":7,"message":"true","label":"unnamed-chunk-3","output":"true","results":"asis","out-height":"","fig-height":5}},{"code":"knitr::kable(data, \"html\")","id":4,"options":{"warning":"true","comment":"","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":7,"message":"true","label":"unnamed-chunk-4","output":"true","results":"markup","out-height":"","fig-height":5}},{"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":5,"options":{"warning":"true","comment":"","context":"output","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":"6","message":"true","label":"unnamed-chunk-5","output":"true","results":"markup","out-height":"","fig-height":"6"}},{"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":6,"options":{"warning":"true","comment":"","context":"output","dpi":72,"out-width":"700px","fig-cap":"","classes":"","fig-width":7,"message":"true","label":"unnamed-chunk-6","output":"true","results":"markup","out-height":"","fig-height":5}},{"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":7,"options":{"warning":"true","comment":"","context":"output","dpi":72,"out-width":"500px","fig-cap":"","classes":"","fig-width":"6","message":"true","label":"unnamed-chunk-7","output":"true","results":"markup","out-height":"500px","fig-height":"6"}}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-1","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"context":"setup","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-2","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":2,"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-3","results":"asis","fig-width":7,"message":"true","out-width":"700px"},"id":3,"code":"knitr::kable(data, \"html\")"},{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-4","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":4,"code":"knitr::kable(data, \"html\")"},{"options":{"context":"output","fig-height":"6","comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-5","results":"markup","fig-width":"6","message":"true","out-width":"700px"},"id":5,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"context":"output","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-6","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":6,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"context":"output","fig-height":"6","comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"500px","label":"unnamed-chunk-7","results":"markup","fig-width":"6","message":"true","out-width":"500px"},"id":7,"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
 
 </script>
 <script type="module">
@@ -1396,13 +1396,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   

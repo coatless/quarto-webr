@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.7">
+<meta name="generator" content="quarto-1.5.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"ggplot()","id":1,"options":{"comment":"","label":"unnamed-chunk-1","out-height":"","context":"interactive","fig-cap":"","fig-height":5,"out-width":"700px","output":"true","message":"true","warning":"true","results":"markup","dpi":72,"fig-width":7,"classes":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","fig-cap":"","fig-height":5,"message":"true","comment":"","fig-width":7,"out-height":"","context":"interactive","label":"unnamed-chunk-1","warning":"true","dpi":72,"out-width":"700px","classes":"","output":"true"},"code":"ggplot()"}];
 
 </script>
 <script type="module">
@@ -1309,13 +1309,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
   // Add a click event listener to the reset button
   copyButton.onclick = function () {
-    // Ensure the editor is in focus
-    editor.focus();
-
-    // Retrieve data
+    // Retrieve current code data
     const data = editor.getValue();
     
-    // Set the clipboard contents.
+    // Write code data onto the clipboard.
     navigator.clipboard.writeText(data || "");
   };
   
