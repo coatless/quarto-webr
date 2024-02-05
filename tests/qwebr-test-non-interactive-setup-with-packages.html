@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","comment":"","context":"setup","fig-width":7,"results":"markup","fig-cap":"","label":"spike-data","classes":"","output":"true","out-height":"","dpi":72,"fig-height":5,"autorun":"true","out-width":"700px","message":"true"},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"warning":"true","comment":"","context":"interactive","fig-width":7,"results":"markup","fig-cap":"","label":"spike-data","classes":"","output":"true","out-height":"","dpi":72,"fig-height":5,"autorun":"false","out-width":"700px","message":"true"},"id":2,"code":"new_mtcars"}];
+globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","context":"setup","comment":"","message":"true","fig-width":7,"warning":"true","label":"spike-data","output":"true","out-height":"","results":"markup","dpi":72,"fig-cap":"","classes":"","autorun":"true","fig-height":5},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"out-width":"700px","context":"interactive","comment":"","message":"true","fig-width":7,"warning":"true","label":"spike-data","output":"true","out-height":"","results":"markup","dpi":72,"fig-cap":"","classes":"","autorun":"false","fig-height":5},"id":2,"code":"new_mtcars"}];
 
 </script>
 <script type="module">
