@@ -10,8 +10,17 @@ Test page for verifying cell context options set explicitly with `context`.
 
 ## Interactive
 
+### Static
 ```{webr-r}
 #| context: interactive
+1 + 1
+```
+
+### Autorun
+
+```{webr-r}
+#| context: interactive
+#| autorun: true
 1 + 1
 ```
 

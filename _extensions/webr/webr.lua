@@ -64,6 +64,7 @@ local qwebRDefaultCellOptions = {
   ["output"] = "true",
   ["comment"] = "",
   ["label"] = "",
+  ["autorun"] = "",
   ["classes"] = "",
   ["dpi"] = 72,
   ["fig-cap"] = "",
@@ -567,6 +568,14 @@ local function enableWebRCodeCell(el)
   -- Ensure we have a label representation
   if cellOptions["label"] == '' then
     cellOptions["label"] = "unnamed-chunk-" .. qwebrCounter
+  end
+  -- Set autorun to false if interactive
+  if cellOptions["autorun"] == "" then
+    if cellOptions["context"] == "interactive" then
+      cellOptions["autorun"] = "false"
+    else
+      cellOptions["autorun"] = "true"
+    end
   end
 
   -- Remove space left between options and code contents

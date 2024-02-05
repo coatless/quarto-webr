@@ -20,7 +20,8 @@ format:
 - Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. ([#120](https://github.com/coatless/quarto-webr/pull/120))
 - Redesigned non-interactive cells to provide improved reliability and visual cues. ([#120](https://github.com/coatless/quarto-webr/pull/120))
 - Interactive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. ([#91](https://github.com/coatless/quarto-webr/issues/91))
-- Initial [code cell option](https://quarto-webr.thecoatlessprofessor.com/qwebr-cell-options.html) support ([#104](https://github.com/coatless/quarto-webr/issues/104), [#117](https://github.com/coatless/quarto-webr/issues/117), [#125](https://github.com/coatless/quarto-webr/issues/125)):
+- Initial [code cell option](https://quarto-webr.thecoatlessprofessor.com/qwebr-cell-options.html) support ([#104](https://github.com/coatless/quarto-webr/issues/104), [#117](https://github.com/coatless/quarto-webr/issues/117), [#125](https://github.com/coatless/quarto-webr/issues/125), [#151](https://github.com/coatless/quarto-webr/issues/151)):
+  - quarto-webR: `context` and `autorun`.
   - Attributes: `label` and `classes`.
   - Figures: `fig-cap`, `dpi`, `fig-width`, `fig-height`, `out-width`, & `out-height`.
   - Cell output: `warning`/`message`, `results`, and `output`
@@ -50,6 +51,8 @@ format:
 - Added a demo for showing [initial code cell option support](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-code-cell-options.html). ([#141](https://github.com/coatless/quarto-webr/pull/141))
 - Modified the RevealJS presentation YAML to include an option to disable the webR status message header ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Updated [blog posts](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html#blog-posts) on [community examples](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html) page ([#135](https://github.com/coatless/quarto-webr/pull/135))
+- Updated [Hiding and Executing Code
+](https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html) to use [panel sets](https://quarto.org/docs/output-formats/html-basics.html#tabsets) when displaying output from `{quarto-webr}` and showing the underlying code.
 - Minor documentation tweaks.
 
 ## Deployment
