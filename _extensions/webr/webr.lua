@@ -529,7 +529,7 @@ local function enableWebRCodeCell(el)
   
   -- Verify the element has attributes and the document type is HTML
   -- not sure if this will work with an epub (may need html:js)
-  if not (el.attr and quarto.doc.is_format("html")) then
+  if not (el.attr and (quarto.doc.is_format("html") or quarto.doc.is_format("markdown"))) then
     return el
   end
 

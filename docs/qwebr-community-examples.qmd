@@ -78,6 +78,10 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Blog posts
 
+
+- [Claudiu Papasteri](https://github.com/ClaudiuPapasteri)'s post on [Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?](https://claudiu.psychlab.eu/post/hugo-blogdown-interactive-code-chunk-webr-quarto/). Feb 5th, 2024.
+  - [Source](https://github.com/ClaudiuPapasteri/cpapasteri.github.io/tree/5697e7366fab31d17ab41665e37a0839bc9e1bab/content/post/2024-02-05-hugo-blogdown-posts-with-in-browser-interactive-code-chunks-using-webr-and-quarto)
+- [Cara Thompson](https://github.com/cararthompson)'s post on [A quick experiment with WebR: how much can I do in under an hour?](https://www.cararthompson.com/posts/2024-02-01-experimenting-with-webr/). Feb 2nd, 2024.
 - [Matt Dray](https://www.matt-dray.com/)'s post on [Pseudo-apps in the browser with WebR and Quarto?](https://www.rostrum.blog/posts/2024-01-20-webr-remote/). Jan 20th, 2024.
   - [Source](https://github.com/matt-dray/rostrum-blog-2/tree/9a533bd968743c429a2376288c1600dd20a158b7/posts/2024-01-20-webr-remote)
 - [James Goldie](https://github.com/jimjam-slam)'s post on [Your new R package? Write a WebR blog post for it](https://jamesgoldie.dev/writing/your-new-r-package-webr/). Jan 19th, 2024.
