@@ -267,7 +267,7 @@
     "href": "qwebr-test-internal-cell.html#interactive",
     "title": "Test: Cell Context Options",
     "section": "Interactive",
-    "text": "Interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Interactive\n\nStatic\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nAutorun\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
       "Test: Cell Context Options"

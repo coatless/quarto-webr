@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2024-02-04">
+<meta name="dcterms.date" content="2024-02-05">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -235,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","options":{"fig-cap":"","out-height":"","comment":"","out-width":"700px","results":"markup","output":"true","classes":"","warning":"true","message":"true","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","context":"interactive","dpi":72},"id":1}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","options":{"dpi":72,"classes":"","comment":"","fig-height":5,"warning":"true","output":"true","label":"unnamed-chunk-1","results":"markup","context":"interactive","out-width":"700px","message":"true","out-height":"","fig-width":7,"fig-cap":"","autorun":"false"},"id":1}];
 
 </script>
 <script type="module">
@@ -1241,7 +1241,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 4, 2024</p>
+      <p class="date">February 5, 2024</p>
     </div>
   </div>
   
@@ -1696,7 +1696,7 @@ qwebrCellDetails.map(
 // Identify non-interactive cells (in order)
 const filteredEntries = qwebrCellDetails.filter(entry => {
   const contextOption = entry.options && entry.options.context;
-  return ['output', 'setup'].includes(contextOption);
+  return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
@@ -1732,35 +1732,49 @@ qwebrInstance.then(
       const cellCode = entry.code;
       const qwebrCounter = entry.id;
 
-      // Disable further global status updates
-      const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
-      activeContainer.classList.remove('qwebr-cell-needs-evaluation');
-      activeContainer.classList.add('qwebr-cell-evaluated');
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+        activeContainer.classList.add('qwebr-cell-evaluated');
 
-      // Update status on the code cell
-      const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-      activeStatus.innerText = " Evaluating hidden code cell...";
-      activeStatus.classList.remove('qwebr-cell-needs-evaluation');
-      activeStatus.classList.add('qwebr-cell-evaluated');
+        // Update status on the code cell
+        const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+        activeStatus.innerText = " Evaluating hidden code cell...";
+        activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+        activeStatus.classList.add('qwebr-cell-evaluated');
+      }
 
       switch (evalType) {
+        case 'interactive':
+          // TODO: Make this more standardized.
+          // At the moment, we're overriding the interactive status update by pretending its
+          // output-like. 
+          const tempOptions = entry.options;
+          tempOptions["context"] = "output"
+          // Run the code in a non-interactive state that is geared to displaying output
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+          break;
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
           await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-          //activeDiv.textContent = "Computing hidden webR Startup ...";
           // Run the code in a non-interactive state with all output thrown away
           await mainWebR.evalRVoid(`${cellCode}`);
-          //activeDiv.textContent = "";
           break;
         default: 
           break; 
       }
-      // Disable visibility
-      activeContainer.style.visibility = 'hidden';
-      activeContainer.style.display = 'none';
+
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        // Disable visibility
+        activeContainer.style.visibility = 'hidden';
+        activeContainer.style.display = 'none';
+      }
     }
   }
 ).then(

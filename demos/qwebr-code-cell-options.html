@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-1","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"context":"setup","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-2","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":2,"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-3","results":"asis","fig-width":7,"message":"true","out-width":"700px"},"id":3,"code":"knitr::kable(data, \"html\")"},{"options":{"context":"interactive","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-4","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":4,"code":"knitr::kable(data, \"html\")"},{"options":{"context":"output","fig-height":"6","comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-5","results":"markup","fig-width":"6","message":"true","out-width":"700px"},"id":5,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"context":"output","fig-height":5,"comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"","label":"unnamed-chunk-6","results":"markup","fig-width":7,"message":"true","out-width":"700px"},"id":6,"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"context":"output","fig-height":"6","comment":"","fig-cap":"","classes":"","dpi":72,"warning":"true","output":"true","out-height":"500px","label":"unnamed-chunk-7","results":"markup","fig-width":"6","message":"true","out-width":"500px"},"id":7,"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"autorun":"false","fig-height":5,"out-height":"","classes":"","context":"interactive","label":"unnamed-chunk-1","results":"markup","warning":"true","message":"true","fig-width":7,"fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"autorun":"true","fig-height":5,"out-height":"","classes":"","context":"setup","label":"unnamed-chunk-2","results":"markup","warning":"true","message":"true","fig-width":7,"fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"id":3,"options":{"autorun":"false","fig-height":5,"out-height":"","classes":"","context":"interactive","label":"unnamed-chunk-3","results":"asis","warning":"true","message":"true","fig-width":7,"fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":"knitr::kable(data, \"html\")"},{"id":4,"options":{"autorun":"false","fig-height":5,"out-height":"","classes":"","context":"interactive","label":"unnamed-chunk-4","results":"markup","warning":"true","message":"true","fig-width":7,"fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":"knitr::kable(data, \"html\")"},{"id":5,"options":{"autorun":"true","fig-height":"6","out-height":"","classes":"","context":"output","label":"unnamed-chunk-5","results":"markup","warning":"true","message":"true","fig-width":"6","fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":6,"options":{"autorun":"true","fig-height":5,"out-height":"","classes":"","context":"output","label":"unnamed-chunk-6","results":"markup","warning":"true","message":"true","fig-width":7,"fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"700px"},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":7,"options":{"autorun":"true","fig-height":"6","out-height":"500px","classes":"","context":"output","label":"unnamed-chunk-7","results":"markup","warning":"true","message":"true","fig-width":"6","fig-cap":"","output":"true","comment":"","dpi":72,"out-width":"500px"},"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
 
 </script>
 <script type="module">
@@ -2029,7 +2029,7 @@ qwebrCellDetails.map(
 // Identify non-interactive cells (in order)
 const filteredEntries = qwebrCellDetails.filter(entry => {
   const contextOption = entry.options && entry.options.context;
-  return ['output', 'setup'].includes(contextOption);
+  return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
@@ -2065,35 +2065,49 @@ qwebrInstance.then(
       const cellCode = entry.code;
       const qwebrCounter = entry.id;
 
-      // Disable further global status updates
-      const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
-      activeContainer.classList.remove('qwebr-cell-needs-evaluation');
-      activeContainer.classList.add('qwebr-cell-evaluated');
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+        activeContainer.classList.add('qwebr-cell-evaluated');
 
-      // Update status on the code cell
-      const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-      activeStatus.innerText = " Evaluating hidden code cell...";
-      activeStatus.classList.remove('qwebr-cell-needs-evaluation');
-      activeStatus.classList.add('qwebr-cell-evaluated');
+        // Update status on the code cell
+        const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+        activeStatus.innerText = " Evaluating hidden code cell...";
+        activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+        activeStatus.classList.add('qwebr-cell-evaluated');
+      }
 
       switch (evalType) {
+        case 'interactive':
+          // TODO: Make this more standardized.
+          // At the moment, we're overriding the interactive status update by pretending its
+          // output-like. 
+          const tempOptions = entry.options;
+          tempOptions["context"] = "output"
+          // Run the code in a non-interactive state that is geared to displaying output
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+          break;
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
           await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-          //activeDiv.textContent = "Computing hidden webR Startup ...";
           // Run the code in a non-interactive state with all output thrown away
           await mainWebR.evalRVoid(`${cellCode}`);
-          //activeDiv.textContent = "";
           break;
         default: 
           break; 
       }
-      // Disable visibility
-      activeContainer.style.visibility = 'hidden';
-      activeContainer.style.display = 'none';
+
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        // Disable visibility
+        activeContainer.style.visibility = 'hidden';
+        activeContainer.style.display = 'none';
+      }
     }
   }
 ).then(

@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"1 + 1","options":{"message":"true","context":"interactive","fig-height":5,"fig-cap":"","output":"true","results":"markup","label":"unnamed-chunk-1","classes":"","out-height":"","out-width":"700px","comment":"","dpi":72,"fig-width":7,"warning":"true"}},{"id":2,"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","options":{"message":"true","context":"setup","fig-height":5,"fig-cap":"","output":"true","results":"markup","label":"unnamed-chunk-2","classes":"","out-height":"","out-width":"700px","comment":"","dpi":72,"fig-width":7,"warning":"true"}},{"id":3,"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","options":{"message":"true","context":"output","fig-height":5,"fig-cap":"","output":"true","results":"markup","label":"unnamed-chunk-3","classes":"","out-height":"","out-width":"700px","comment":"","dpi":72,"fig-width":7,"warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"1 + 1","options":{"fig-height":5,"results":"markup","autorun":"false","label":"unnamed-chunk-1","comment":"","output":"true","classes":"","context":"interactive","out-width":"700px","out-height":"","warning":"true","fig-width":7,"dpi":72,"message":"true","fig-cap":""},"id":1},{"code":"1 + 1","options":{"fig-height":5,"results":"markup","autorun":"true","label":"unnamed-chunk-2","comment":"","output":"true","classes":"","context":"interactive","out-width":"700px","out-height":"","warning":"true","fig-width":7,"dpi":72,"message":"true","fig-cap":""},"id":2},{"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","options":{"fig-height":5,"results":"markup","autorun":"true","label":"unnamed-chunk-3","comment":"","output":"true","classes":"","context":"setup","out-width":"700px","out-height":"","warning":"true","fig-width":7,"dpi":72,"message":"true","fig-cap":""},"id":3},{"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","options":{"fig-height":5,"results":"markup","autorun":"true","label":"unnamed-chunk-4","comment":"","output":"true","classes":"","context":"output","out-width":"700px","out-height":"","warning":"true","fig-width":7,"dpi":72,"message":"true","fig-cap":""},"id":4}];
 
 </script>
 <script type="module">
@@ -1346,19 +1346,27 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Test page for verifying cell context options set explicitly with <code>context</code>.</p>
 <section id="interactive" class="level2">
 <h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="static" class="level3">
+<h3 class="anchored" data-anchor-id="static">Static</h3>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="autorun" class="level3">
+<h3 class="anchored" data-anchor-id="autorun">Autorun</h3>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>Hidden cell that sets <code>x</code> and <code>y</code> vector values.</p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="output" class="level2">
 <h2 class="anchored" data-anchor-id="output">Output</h2>
 <p>Hidden cell that retrieves previously set <code>x</code> and <code>y</code> vector values and displays the data.</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
@@ -1789,7 +1797,7 @@ qwebrCellDetails.map(
 // Identify non-interactive cells (in order)
 const filteredEntries = qwebrCellDetails.filter(entry => {
   const contextOption = entry.options && entry.options.context;
-  return ['output', 'setup'].includes(contextOption);
+  return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
@@ -1825,35 +1833,49 @@ qwebrInstance.then(
       const cellCode = entry.code;
       const qwebrCounter = entry.id;
 
-      // Disable further global status updates
-      const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
-      activeContainer.classList.remove('qwebr-cell-needs-evaluation');
-      activeContainer.classList.add('qwebr-cell-evaluated');
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+        activeContainer.classList.add('qwebr-cell-evaluated');
 
-      // Update status on the code cell
-      const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-      activeStatus.innerText = " Evaluating hidden code cell...";
-      activeStatus.classList.remove('qwebr-cell-needs-evaluation');
-      activeStatus.classList.add('qwebr-cell-evaluated');
+        // Update status on the code cell
+        const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+        activeStatus.innerText = " Evaluating hidden code cell...";
+        activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+        activeStatus.classList.add('qwebr-cell-evaluated');
+      }
 
       switch (evalType) {
+        case 'interactive':
+          // TODO: Make this more standardized.
+          // At the moment, we're overriding the interactive status update by pretending its
+          // output-like. 
+          const tempOptions = entry.options;
+          tempOptions["context"] = "output"
+          // Run the code in a non-interactive state that is geared to displaying output
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+          break;
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
           await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-          //activeDiv.textContent = "Computing hidden webR Startup ...";
           // Run the code in a non-interactive state with all output thrown away
           await mainWebR.evalRVoid(`${cellCode}`);
-          //activeDiv.textContent = "";
           break;
         default: 
           break; 
       }
-      // Disable visibility
-      activeContainer.style.visibility = 'hidden';
-      activeContainer.style.display = 'none';
+
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        // Disable visibility
+        activeContainer.style.visibility = 'hidden';
+        activeContainer.style.display = 'none';
+      }
     }
   }
 ).then(

@@ -341,7 +341,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#webr" id="toc-webr" class="nav-link active" data-scroll-target="#webr">webR</a></li>
+  <li><a href="#quarto-webr" id="toc-quarto-webr" class="nav-link active" data-scroll-target="#quarto-webr">quarto-webr</a></li>
   <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
   <li><a href="#cell-output" id="toc-cell-output" class="nav-link" data-scroll-target="#cell-output">Cell Output</a></li>
   <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
@@ -372,7 +372,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 4, 2024</p>
+      <p class="date-modified">February 5, 2024</p>
     </div>
   </div>
     
@@ -406,8 +406,8 @@ Important
 <p>The <code>{quarto-webr}</code> extension does not support all of the cell options from <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">Quarto</a> or <a href="https://yihui.org/knitr/options/">Knitr</a>. Please consult the tables below for details on what is available.</p>
 </div>
 </div>
-<section id="webr" class="level2">
-<h2 class="anchored" data-anchor-id="webr">webR</h2>
+<section id="quarto-webr" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-webr">quarto-webr</h2>
 <table class="table">
 <colgroup>
 <col style="width: 4%">
@@ -427,6 +427,11 @@ Important
 <td><code>interactive</code></td>
 <td>Describe how the cell should operate on the page through either <code>interactive</code> (Runnable code editor), <code>output</code> (Output only of executed at runtime), or <code>setup</code> (execute code without seeing output at runtime).</td>
 </tr>
+<tr class="even">
+<td><code>autorun</code></td>
+<td><code>false</code></td>
+<td>Allow <code>interactive</code> cells to be run during document initialization without a user pressing run code.</td>
+</tr>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -439,7 +444,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>context</code> option is unique to the <code>{quarto-webr}</code> extension. For more details, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
+<p>Options listed here are unique to the <code>{quarto-webr}</code> extension. For more details, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
 </div>
 </div>
 </section>

@@ -550,7 +550,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-1","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-2","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":2,"code":"plot(pressure)"},{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-3","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":3,"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-4","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":4,"code":"?mean"},{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-5","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":5,"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"options":{"classes":"","output":"true","results":"markup","out-height":"","warning":"true","context":"interactive","fig-cap":"","message":"true","out-width":"700px","label":"unnamed-chunk-6","fig-height":5,"fig-width":7,"dpi":72,"comment":""},"id":6,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-1","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-2","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"plot(pressure)"},{"id":3,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-3","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"id":4,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-4","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"?mean"},{"id":5,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-5","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"id":6,"options":{"warning":"true","message":"true","dpi":72,"fig-height":5,"classes":"","out-width":"700px","output":"true","comment":"","fig-width":7,"label":"unnamed-chunk-6","fig-cap":"","autorun":"false","results":"markup","out-height":"","context":"interactive"},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
 
   </script>
   <script type="module">
@@ -1927,7 +1927,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Identify non-interactive cells (in order)
     const filteredEntries = qwebrCellDetails.filter(entry => {
       const contextOption = entry.options && entry.options.context;
-      return ['output', 'setup'].includes(contextOption);
+      return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
     });
 
     // Condition non-interactive cells to only be run after webR finishes its initialization.
@@ -1963,35 +1963,49 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
           const cellCode = entry.code;
           const qwebrCounter = entry.id;
 
-          // Disable further global status updates
-          const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
-          activeContainer.classList.remove('qwebr-cell-needs-evaluation');
-          activeContainer.classList.add('qwebr-cell-evaluated');
+          if (['output', 'setup'].includes(evalType)) {
+            // Disable further global status updates
+            const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+            activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+            activeContainer.classList.add('qwebr-cell-evaluated');
 
-          // Update status on the code cell
-          const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-          activeStatus.innerText = " Evaluating hidden code cell...";
-          activeStatus.classList.remove('qwebr-cell-needs-evaluation');
-          activeStatus.classList.add('qwebr-cell-evaluated');
+            // Update status on the code cell
+            const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+            activeStatus.innerText = " Evaluating hidden code cell...";
+            activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+            activeStatus.classList.add('qwebr-cell-evaluated');
+          }
 
           switch (evalType) {
+            case 'interactive':
+              // TODO: Make this more standardized.
+              // At the moment, we're overriding the interactive status update by pretending its
+              // output-like. 
+              const tempOptions = entry.options;
+              tempOptions["context"] = "output"
+              // Run the code in a non-interactive state that is geared to displaying output
+              await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+              break;
             case 'output':
               // Run the code in a non-interactive state that is geared to displaying output
               await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
               break;
             case 'setup':
               const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-              //activeDiv.textContent = "Computing hidden webR Startup ...";
               // Run the code in a non-interactive state with all output thrown away
               await mainWebR.evalRVoid(`${cellCode}`);
-              //activeDiv.textContent = "";
               break;
             default: 
               break; 
           }
-          // Disable visibility
-          activeContainer.style.visibility = 'hidden';
-          activeContainer.style.display = 'none';
+
+          if (['output', 'setup'].includes(evalType)) {
+            // Disable further global status updates
+            const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+            // Disable visibility
+            activeContainer.style.visibility = 'hidden';
+            activeContainer.style.display = 'none';
+          }
         }
       }
     ).then(

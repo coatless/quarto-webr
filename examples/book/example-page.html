@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-1"}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-2"}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-3"}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-4"}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-5"}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"warning":"true","results":"markup","classes":"","fig-height":5,"fig-cap":"","dpi":72,"fig-width":7,"context":"interactive","comment":"","out-height":"","message":"true","output":"true","out-width":"700px","label":"unnamed-chunk-6"}}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"label":"unnamed-chunk-1","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":1},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"label":"unnamed-chunk-2","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":2},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"label":"unnamed-chunk-3","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":3},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"label":"unnamed-chunk-4","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":4},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"label":"unnamed-chunk-5","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":5},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"label":"unnamed-chunk-6","autorun":"false","fig-cap":"","out-width":"700px","comment":"","dpi":72,"warning":"true","context":"interactive","results":"markup","message":"true","output":"true","classes":"","fig-height":5,"out-height":"","fig-width":7},"id":6}];
 
 </script>
 <script type="module">
@@ -1735,7 +1735,7 @@ qwebrCellDetails.map(
 // Identify non-interactive cells (in order)
 const filteredEntries = qwebrCellDetails.filter(entry => {
   const contextOption = entry.options && entry.options.context;
-  return ['output', 'setup'].includes(contextOption);
+  return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
 });
 
 // Condition non-interactive cells to only be run after webR finishes its initialization.
@@ -1771,35 +1771,49 @@ qwebrInstance.then(
       const cellCode = entry.code;
       const qwebrCounter = entry.id;
 
-      // Disable further global status updates
-      const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
-      activeContainer.classList.remove('qwebr-cell-needs-evaluation');
-      activeContainer.classList.add('qwebr-cell-evaluated');
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+        activeContainer.classList.add('qwebr-cell-evaluated');
 
-      // Update status on the code cell
-      const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
-      activeStatus.innerText = " Evaluating hidden code cell...";
-      activeStatus.classList.remove('qwebr-cell-needs-evaluation');
-      activeStatus.classList.add('qwebr-cell-evaluated');
+        // Update status on the code cell
+        const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+        activeStatus.innerText = " Evaluating hidden code cell...";
+        activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+        activeStatus.classList.add('qwebr-cell-evaluated');
+      }
 
       switch (evalType) {
+        case 'interactive':
+          // TODO: Make this more standardized.
+          // At the moment, we're overriding the interactive status update by pretending its
+          // output-like. 
+          const tempOptions = entry.options;
+          tempOptions["context"] = "output"
+          // Run the code in a non-interactive state that is geared to displaying output
+          await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+          break;
         case 'output':
           // Run the code in a non-interactive state that is geared to displaying output
           await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
           break;
         case 'setup':
           const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
-          //activeDiv.textContent = "Computing hidden webR Startup ...";
           // Run the code in a non-interactive state with all output thrown away
           await mainWebR.evalRVoid(`${cellCode}`);
-          //activeDiv.textContent = "";
           break;
         default: 
           break; 
       }
-      // Disable visibility
-      activeContainer.style.visibility = 'hidden';
-      activeContainer.style.display = 'none';
+
+      if (['output', 'setup'].includes(evalType)) {
+        // Disable further global status updates
+        const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+        // Disable visibility
+        activeContainer.style.visibility = 'hidden';
+        activeContainer.style.display = 'none';
+      }
     }
   }
 ).then(

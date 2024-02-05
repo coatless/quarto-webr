@@ -455,7 +455,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 4, 2024</p>
+      <p class="date-modified">February 5, 2024</p>
     </div>
   </div>
     
@@ -481,8 +481,9 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li>Implemented a custom JSON format for code cell data and option sharing between Quarto and webR. (<a href="https://github.com/coatless/quarto-webr/pull/120">#120</a>)</li>
 <li>Redesigned non-interactive cells to provide improved reliability and visual cues. (<a href="https://github.com/coatless/quarto-webr/pull/120">#120</a>)</li>
 <li>Interactive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (<a href="https://github.com/coatless/quarto-webr/issues/91">#91</a>)</li>
-<li>Initial <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-cell-options.html">code cell option</a> support (<a href="https://github.com/coatless/quarto-webr/issues/104">#104</a>, <a href="https://github.com/coatless/quarto-webr/issues/117">#117</a>, <a href="https://github.com/coatless/quarto-webr/issues/125">#125</a>):
+<li>Initial <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-cell-options.html">code cell option</a> support (<a href="https://github.com/coatless/quarto-webr/issues/104">#104</a>, <a href="https://github.com/coatless/quarto-webr/issues/117">#117</a>, <a href="https://github.com/coatless/quarto-webr/issues/125">#125</a>, <a href="https://github.com/coatless/quarto-webr/issues/151">#151</a>):
 <ul>
+<li>quarto-webR: <code>context</code> and <code>autorun</code>.</li>
 <li>Attributes: <code>label</code> and <code>classes</code>.</li>
 <li>Figures: <code>fig-cap</code>, <code>dpi</code>, <code>fig-width</code>, <code>fig-height</code>, <code>out-width</code>, &amp; <code>out-height</code>.</li>
 <li>Cell output: <code>warning</code>/<code>message</code>, <code>results</code>, and <code>output</code></li>
@@ -519,6 +520,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 <li>Added a demo for showing <a href="https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-code-cell-options.html">initial code cell option support</a>. (<a href="https://github.com/coatless/quarto-webr/pull/141">#141</a>)</li>
 <li>Modified the RevealJS presentation YAML to include an option to disable the webR status message header (<a href="https://github.com/coatless/quarto-webr/issues/110">#110</a>)</li>
 <li>Updated <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html#blog-posts">blog posts</a> on <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html">community examples</a> page (<a href="https://github.com/coatless/quarto-webr/pull/135">#135</a>)</li>
+<li>Updated <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-internal-cell.html">Hiding and Executing Code</a> to use <a href="https://quarto.org/docs/output-formats/html-basics.html#tabsets">panel sets</a> when displaying output from <code>{quarto-webr}</code> and showing the underlying code.</li>
 <li>Minor documentation tweaks.</li>
 </ul>
 </section>
