@@ -36,21 +36,41 @@ Please note that the contents of the hidden code cell can be viewed if the web p
 
 You can create hidden setup code cells within your document using the special comment `#| context: setup`. The code within these cells executes discreetly in the background without displaying the code or its output.
 
+:::  {.panel-tabset group="setupIntro"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: setup
+meaning_of_life = 42
+```
+#### Cell Code
 ```{{webr-r}}
 #| context: setup
 meaning_of_life = 42
 ```
+:::
+
+:::{.callout-note}
+Once a `context:setup` is done running, the visual indicator will be removed from the document.
+:::
 
 In the example above, we've pre-loaded the `meaning_of_life` variable with a value of `42`. If you proceed to run the subsequent code cell, you'll observe the value of `meaning_of_life` being displayed as `42`.
 
+:::  {.panel-tabset group="setupIntro"}
+#### `{quarto-webr}` Output
 ```{webr-r}
-#| context: setup
-meaning_of_life = 42
-```
-
-```{webr-r}
+#| context: interactive
+#| autorun: true
 meaning_of_life
 ```
+#### Cell Code
+```{{webr-r}}
+#| context: interactive
+#| autorun: true
+meaning_of_life
+```
+:::
+
+
 
 By incorporating the `setup` hidden code cell for data loading and preprocessing, you enhance the user experience by providing them with an accessible and interactive environment for working with the data while maintaining a clutter-free and organized document structure.
 
@@ -61,34 +81,25 @@ You also have the choice of crafting an output-only code cell within your `quart
 
 For instance, the following code cell suppresses the creation of the matrix; but, displays the end result.
 
-```{{webr-r}}
-#| context: output
-mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)
-mat2x2
-```
-
+:::  {.panel-tabset group="outputIntro"}
+#### `{quarto-webr}` Output
 ```{webr-r}
 #| context: output
 mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)
 mat2x2
 ```
-
+#### Cell Code
+```{{webr-r}}
+#| context: output
+mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)
+mat2x2
+```
+:::
 
 In the next example, the code used to generate the graph is suppressed. 
 
-```{{webr-r}}
-#| context: output
-plot(
-  mpg ~ wt,
-  data = mtcars,
-  col = "blue", 
-  xlab = "Miles/(US) gallon",
-  ylab = "Weight (1000 lbs)",
-  main = "Miles per Gallon and Weight of Cars",
-  sub = "Source: 1974 Motor Trend US magazine."
-)
-```
-
+:::  {.panel-tabset group="outputIntro"}
+#### `{quarto-webr}` Output
 ```{webr-r}
 #| context: output
 plot(
@@ -101,6 +112,21 @@ plot(
   sub = "Source: 1974 Motor Trend US magazine."
 )
 ```
+#### Cell Code
+```{{webr-r}}
+#| context: output
+plot(
+  mpg ~ wt,
+  data = mtcars,
+  col = "blue", 
+  xlab = "Miles/(US) gallon",
+  ylab = "Weight (1000 lbs)",
+  main = "Miles per Gallon and Weight of Cars",
+  sub = "Source: 1974 Motor Trend US magazine."
+)
+```
+:::
+
 
 By using `output` code cells, you maintain a streamlined and comprehensible document, focusing on the outcome rather than the intricate data processing steps. This approach will enhance the readability and clarity of your content, making it more accessible and informative to your audience.
 
@@ -114,6 +140,20 @@ The `setup` hidden code cell is a powerful tool for seamlessly pre-loading and p
 
 In the following example, we demonstrate the process of loading and preprocessing a dataset. First, we download the dataset from an external source and save it as `'penguins.csv'` in the virtual webR file system. Next, we read the data into a data frame named `df_penguins`. All these operations occur silently in the background, ensuring that your document remains clean and focused on the data's application.
 
+:::  {.panel-tabset group="setupDataDemo"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: setup
+
+# Download a dataset
+download.file(
+  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
+  'penguins.csv'
+)
+
+df_penguins = read.csv("penguins.csv")
+```
+#### Cell Code
 ```{{webr-r}}
 #| context: setup
 
@@ -123,27 +163,46 @@ download.file(
   'penguins.csv'
 )
 
-# Read the data
 df_penguins = read.csv("penguins.csv")
 ```
+:::
 
+Next, let's setup an interactive cell that can be modified and run. 
+
+:::  {.panel-tabset group="setupDataDemo"}
+#### `{quarto-webr}` Output
 ```{webr-r}
-#| context: setup
-
-# Download a dataset
-download.file(
-  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',
-  'penguins.csv'
-)
-
-# Read the data
-df_penguins = read.csv("penguins.csv")
-```
-
-```{webr-r}
+#| context: interactive
 # Display the head of the data
 head(df_penguins)
 ```
+#### Cell Code
+```{{webr-r}}
+#| context: interactive
+# Display the head of the data
+head(df_penguins)
+```
+:::
+
+In this case, we may want to encourage the "Run code" functionality by having the interactive cell automatically run during document initialization by using `#| autorun: true`.
+
+:::  {.panel-tabset group="setupDataDemo"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+#| autorun: true
+# Display the head of the data
+head(df_penguins)
+```
+#### Cell Code
+```{{webr-r}}
+#| context: interactive
+#| autorun: true
+# Display the head of the data
+head(df_penguins)
+```
+:::
+
 
 ::: {.callout-note}
 If the setup code relies on specific R packages, we **strongly** recommend specifying the required packages in the document's YAML. This approach informs users that the webpage is not yet ready and communicates a clear status update at the top. For example:
@@ -164,18 +223,8 @@ You can use the output hidden code cell to generate summarized information about
 
 For instance, in the code cell below, we transform the `mtcars` dataset, converting variables, and then promptly produce a summary of the modified data. 
 
-```{{webr-r}}
-#| context: output
-mtcars2 <- within(mtcars, {
-   vs <- factor(vs, labels = c("V", "S"))
-   am <- factor(am, labels = c("automatic", "manual"))
-   cyl  <- ordered(cyl)
-   gear <- ordered(gear)
-   carb <- ordered(carb)
-})
-summary(mtcars2)
-```
-
+:::  {.panel-tabset group="hiddenSummarizationDemo"}
+#### `{quarto-webr}` Output
 ```{webr-r}
 #| context: output
 
@@ -189,6 +238,19 @@ mtcars2 <- within(mtcars, {
 
 summary(mtcars2)
 ```
+#### Cell Code
+```{{webr-r}}
+#| context: output
+mtcars2 <- within(mtcars, {
+   vs <- factor(vs, labels = c("V", "S"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+})
+summary(mtcars2)
+```
+:::
 
 
 ## Hidden Solution Checking of Student Work
