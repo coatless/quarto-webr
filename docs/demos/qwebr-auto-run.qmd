@@ -1,0 +1,136 @@
+---
+title: "Demo: Autorun Interactive Code Cells"
+engine: knitr
+webr:
+  packages: ['ggplot2', 'gapminder']
+filters:
+  - webr
+---
+
+# Overview
+
+This demo showcases the functionality of automatically executing code within an interactive area, revealing output before any modifications can be made to the document.
+
+## `autorun` Option
+
+The `autorun` option works in tandem with the `interactive` context, enabling a non-interactive execution of code within the editable code area before any changes can be made to the area.
+
+To illustrate, let's imagine a situation where you are prompted to modify the statement "Hello ___!" In the default view of an interactive cell, the results are not initially displayed.
+
+:::  {.panel-tabset group="autoRunExmple"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+````
+:::
+
+By including `#| autorun: true`, we enable the display of results when the document first loads. Revisiting the previous example, the editable code area now presents a distinct output, prompting the user to "Fill in the blanks":
+
+:::  {.panel-tabset group="autoRunExmple"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+#| autorun: true
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+#| autorun: true
+# Write your name here by replace ___
+name <- "_____"
+print(paste0("Hello, ", name, "!"))
+```
+````
+:::
+
+
+## Target Practice 
+
+One key use of the non-interactive areas is to generate a targeted outcome and have iterative attempts to reach the desired output. 
+
+For example, consider the `gapminder` data set.
+
+::: {.panel-tabset group="gapminderRecreate"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: output
+data("gapminder", package = "gapminder")
+head(gapminder)
+```
+#### Cell Code
+```{{webr-r}}
+#| context: output
+data("gapminder", package = "gapminder")
+head(gapminder)
+```
+:::
+
+How can we use `gapminder` data to re-create the following `ggplot2` graph?
+
+
+::: {.panel-tabset}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: output
+#| fig-width: 5
+#| fig-height: 3
+#| out-width: 500px
+ggplot(gapminder, aes(lifeExp)) + 
+ geom_density(aes(fill=continent), alpha=1/4) + theme_bw() 
+```
+#### Cell Code
+```{{webr-r}}
+#| context: output
+#| fig-width: 5
+#| fig-height: 3
+#| out-width: 500px
+ggplot(gapminder, aes(lifeExp)) + 
+ geom_density(aes(fill=continent), alpha=1/4) + theme_bw() 
+```
+:::
+
+We've provided a code area for you to explore creating different kinds of graphs and have already run its contents! 
+
+::: {.panel-tabset}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+#| autorun: true
+#| fig-width: 5
+#| fig-height: 3
+#| out-width: 500px
+ggplot(gapminder, aes(lifeExp)) + 
+  theme_bw() 
+```
+#### Cell Code
+```{{webr-r}}
+#| context: interactive
+#| autorun: true
+#| fig-width: 5
+#| fig-height: 3
+#| out-width: 500px
+ggplot(gapminder, aes(lifeExp)) + 
+  theme_bw() 
+```
+:::
+
+# Fin
+
+This demo illustrated the ease with which an interactive editable code area can seamlessly transition into a non-interactive mode, allow its results to be shown when the page loads.
+
