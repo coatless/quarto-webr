@@ -8,11 +8,12 @@ format:
     toc: true
 ---
 
-# 0.4.0: Ball of Yarn (??-??-????) [DEV]
+# 0.4.0: Ball of Yarn (02-05-2024)
 
 ## Breaking changes
 
 - Internal JavaScript functions used by the extension have been significantly changed.
+- JavaScript initialization procedure has been further refined.
 
 ## Features
 
@@ -50,6 +51,7 @@ format:
 - Added a demo on [non-interactive code cells](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-non-interactive-areas.html). ([#128](https://github.com/coatless/quarto-webr/pull/128))
 - Added a demo on [using custom repositories to install R WASM package binaries](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-custom-repository.html). ([#128](https://github.com/coatless/quarto-webr/pull/132))
 - Added a demo for showing [initial code cell option support](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-code-cell-options.html). ([#141](https://github.com/coatless/quarto-webr/pull/141))
+- Added a demo for showing [autorunning interactive code cells](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-auto-run.html).
 - Modified the RevealJS presentation YAML to include an option to disable the webR status message header ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Updated [blog posts](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html#blog-posts) on [community examples](https://quarto-webr.thecoatlessprofessor.com/qwebr-community-examples.html) page ([#135](https://github.com/coatless/quarto-webr/pull/135))
 - Updated [Hiding and Executing Code
