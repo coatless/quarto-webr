@@ -32,6 +32,7 @@ format:
 - Added new CSS IDs governing the webR initialization state. ([#110](https://github.com/coatless/quarto-webr/issues/110))
 - Added shim that overrides `install.packages()` with `webr::install()` through `webr::shim_install()` this requires webR v0.2.2 to be in use. ([#122](https://github.com/coatless/quarto-webr/issues/122))
 - Added the keyboard shortcut for Run Code -- `Shift + Enter` -- to mouseover text for the Run Code button. ([#91](https://github.com/coatless/quarto-webr/pulls/138))
+- Allow `{webr-r}` code cell to propagate into Quarto `markdown` formats for `hugo-md`. ([#150](https://github.com/coatless/quarto-webr/issues/150), h/t [@ClaudiuPapasteri](https://github.com/ClaudiuPapasteri))
 - Updated the version of the MonacoEditor from 0.43.0 to 0.45.0. ([#130](https://github.com/coatless/quarto-webr/pull/130))
 - Updated the version of the FontAwesome from 6.4.2 to 6.5.1. ([#131](https://github.com/coatless/quarto-webr/pull/131))
 
