@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup","results":"markup","classes":"","label":"spike-data","message":"true","output":"true","comment":"","autorun":"true","warning":"true","dpi":72,"out-width":"700px","fig-cap":"","fig-height":5,"fig-width":7,"out-height":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"context":"interactive","results":"markup","classes":"","label":"spike-data","message":"true","output":"true","comment":"","autorun":"false","warning":"true","dpi":72,"out-width":"700px","fig-cap":"","fig-height":5,"fig-width":7,"out-height":""},"code":"new_mtcars","id":2}];
+globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"message":"true","output":"true","dpi":72,"fig-height":5,"out-width":"700px","label":"spike-data","warning":"true","context":"setup","out-height":"","comment":"","autorun":"true","fig-cap":"","fig-width":7,"classes":"","results":"markup"},"id":1},{"code":"new_mtcars","options":{"message":"true","output":"true","dpi":72,"fig-height":5,"out-width":"700px","label":"spike-data","warning":"true","context":"interactive","out-height":"","comment":"","autorun":"false","fig-cap":"","fig-width":7,"classes":"","results":"markup"},"id":2}];
 
 </script>
 <script type="module">
