@@ -2,7 +2,7 @@
 title: "Demo: Initial Code Cell Option Support"
 engine: knitr
 webr:
-  packages: ['knitr', 'plot2']
+  packages: ['knitr', 'tinyplot']
   repos:
    - https://grantmcdermott.r-universe.dev
 filters:
@@ -129,7 +129,7 @@ The `fig-width` and `fig-height` options control the width and height of the plo
 #| fig-width: 6
 #| fig-height: 6
 
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
@@ -146,7 +146,7 @@ plot2::plot2(
 #| fig-height: 6
 
 # Generating a bar plot with a specific width
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
@@ -167,7 +167,7 @@ In comparison, we have the default option of `7`:
 ```{webr-r}
 #| context: output
 
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
@@ -181,7 +181,7 @@ plot2::plot2(
 ```{webr-r}
 #| context: output
 
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
@@ -206,7 +206,7 @@ The `out-width` and `out-height` options control physical space the plot will re
 #| fig-height: 6
 #| out-width: 500px
 #| out-height: 500px
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
@@ -223,7 +223,7 @@ plot2::plot2(
 #| fig-height: 5
 #| out-width: 500px
 #| out-height: 400px
-plot2::plot2(
+tinyplot::tinyplot(
   ~ Petal.Length | Species,
   data = iris,
   type = "density",
