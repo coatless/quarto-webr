@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.8">
+<meta name="generator" content="quarto-1.5.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -253,7 +253,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['knitr', 'plot2'];
+globalThis.qwebrInstallRPackagesList = ['knitr', 'tinyplot'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://grantmcdermott.r-universe.dev', 'https://repo.r-wasm.org/'];
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","context":"interactive","message":"true","fig-width":7,"warning":"true","out-height":"","fig-height":5,"out-width":"700px","classes":"","autorun":"false","output":"true","label":"unnamed-chunk-1","comment":"","dpi":72,"results":"markup"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1},{"options":{"fig-cap":"","context":"setup","message":"true","fig-width":7,"warning":"true","out-height":"","fig-height":5,"out-width":"700px","classes":"","autorun":"true","output":"true","label":"unnamed-chunk-2","comment":"","dpi":72,"results":"markup"},"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)","id":2},{"options":{"fig-cap":"","context":"interactive","message":"true","fig-width":7,"warning":"true","out-height":"","fig-height":5,"out-width":"700px","classes":"","autorun":"false","output":"true","label":"unnamed-chunk-3","comment":"","dpi":72,"results":"asis"},"code":"knitr::kable(data, \"html\")","id":3},{"options":{"fig-cap":"","context":"interactive","message":"true","fig-width":7,"warning":"true","out-height":"","fig-height":5,"out-width":"700px","classes":"","autorun":"false","output":"true","label":"unnamed-chunk-4","comment":"","dpi":72,"results":"markup"},"code":"knitr::kable(data, \"html\")","id":4},{"options":{"fig-cap":"","context":"output","message":"true","fig-width":"6","warning":"true","out-height":"","fig-height":"6","out-width":"700px","classes":"","autorun":"true","output":"true","label":"unnamed-chunk-5","comment":"","dpi":72,"results":"markup"},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":5},{"options":{"fig-cap":"","context":"output","message":"true","fig-width":7,"warning":"true","out-height":"","fig-height":5,"out-width":"700px","classes":"","autorun":"true","output":"true","label":"unnamed-chunk-6","comment":"","dpi":72,"results":"markup"},"code":"\nplot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":6},{"options":{"fig-cap":"","context":"output","message":"true","fig-width":"6","warning":"true","out-height":"500px","fig-height":"6","out-width":"500px","classes":"","autorun":"true","output":"true","label":"unnamed-chunk-7","comment":"","dpi":72,"results":"markup"},"code":"plot2::plot2(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","id":7}];
+globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"comment":"","fig-height":5,"output":"true","warning":"true","context":"interactive","results":"markup","classes":"","label":"unnamed-chunk-1","dpi":72,"out-width":"700px","message":"true","autorun":"false","fig-width":7,"out-height":"","fig-cap":""},"id":1},{"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)","options":{"comment":"","fig-height":5,"output":"true","warning":"true","context":"setup","results":"markup","classes":"","label":"unnamed-chunk-2","dpi":72,"out-width":"700px","message":"true","autorun":"true","fig-width":7,"out-height":"","fig-cap":""},"id":2},{"code":"knitr::kable(data, \"html\")","options":{"comment":"","fig-height":5,"output":"true","warning":"true","context":"interactive","results":"asis","classes":"","label":"unnamed-chunk-3","dpi":72,"out-width":"700px","message":"true","autorun":"false","fig-width":7,"out-height":"","fig-cap":""},"id":3},{"code":"knitr::kable(data, \"html\")","options":{"comment":"","fig-height":5,"output":"true","warning":"true","context":"interactive","results":"markup","classes":"","label":"unnamed-chunk-4","dpi":72,"out-width":"700px","message":"true","autorun":"false","fig-width":7,"out-height":"","fig-cap":""},"id":4},{"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","fig-height":"6","output":"true","warning":"true","context":"output","results":"markup","classes":"","label":"unnamed-chunk-5","dpi":72,"out-width":"700px","message":"true","autorun":"true","fig-width":"6","out-height":"","fig-cap":""},"id":5},{"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","fig-height":5,"output":"true","warning":"true","context":"output","results":"markup","classes":"","label":"unnamed-chunk-6","dpi":72,"out-width":"700px","message":"true","autorun":"true","fig-width":7,"out-height":"","fig-cap":""},"id":6},{"code":"tinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","fig-height":"6","output":"true","warning":"true","context":"output","results":"markup","classes":"","label":"unnamed-chunk-7","dpi":72,"out-width":"500px","message":"true","autorun":"true","fig-width":"6","out-height":"500px","fig-cap":""},"id":7}];
 
 </script>
 <script type="module">
@@ -1547,7 +1547,7 @@ Note
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-height: 6</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in"># Generating a bar plot with a specific width</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">plot2::plot2(</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">tinyplot::tinyplot(</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">  ~ Petal.Length | Species,</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">  data = iris,</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">  type = "density",</span></span>
@@ -1572,7 +1572,7 @@ Note
 <div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: output</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot2::plot2(</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">tinyplot::tinyplot(</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">  ~ Petal.Length | Species,</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">  data = iris,</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">  type = "density",</span></span>
@@ -1602,7 +1602,7 @@ Note
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-height: 5</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: 500px</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-height: 400px</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">plot2::plot2(</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">tinyplot::tinyplot(</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">  ~ Petal.Length | Species,</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">  data = iris,</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">  type = "density",</span></span>
