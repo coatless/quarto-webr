@@ -1,6 +1,6 @@
 name: Example
 description: Contribute an Example
-labels: [community-example]
+labels: ['t: documentation', 't: community-example']
 title: "[Example]: "
 body:
   - type: markdown

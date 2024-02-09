@@ -1,6 +1,6 @@
 name: Question
 description: Ask a question
-labels: [q&a]
+labels: ['t: question', 's: question-needs-answer']
 title: "[Q&A]: "
 body:
   - type: markdown
