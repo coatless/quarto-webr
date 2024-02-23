@@ -70,6 +70,32 @@ print("Hello quarto-webr World!")
 
 By using these shortcuts, you can run code conveniently and efficiently. This practice can also help you become familiar with keyboard shortcuts when transitioning to integrated development environments (IDEs) like [RStudio](https://posit.co/products/open-source/rstudio/) or [Visual Studio Code with R](https://code.visualstudio.com/docs/languages/r).
 
+
+## Preventing Modifications to Code
+
+Code cells can be locked to their initial state by specifying `#| read-only: true`. The next code cell has such a feature implemented. Try modifying the expression `1 + 1` to any other value.
+
+::: {.panel-tabset}
+## `{quarto-webr}` Output
+
+```{webr-r}
+#| read-only: true
+1 + 1
+```
+
+## Cell code
+
+```{{webr-r}}
+#| read-only: true
+1 + 1
+```
+:::
+
+:::{.callout-note}
+This option can be paired with `autorun: true` to avoid having the user press the "Run code" button to see the output.
+:::
+
+
 ## Create a Graph with Base R
 
 For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore "What if ..." scenarios. For instance, what if we try changing the value `blue` to `orange` and run the code again.

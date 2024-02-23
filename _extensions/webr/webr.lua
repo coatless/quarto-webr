@@ -65,6 +65,7 @@ local qwebRDefaultCellOptions = {
   ["comment"] = "",
   ["label"] = "",
   ["autorun"] = "",
+  ["read-only"] = "false",
   ["classes"] = "",
   ["dpi"] = 72,
   ["fig-cap"] = "",

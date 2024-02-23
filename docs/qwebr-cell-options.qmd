@@ -33,10 +33,11 @@ The `{quarto-webr}` extension does not support all of the cell options from [Qua
 
 ## quarto-webr
 
-| Option    | Default Value | Description                                                                                                                                                                                                      |
-|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `context` | `interactive` | Describe how the cell should operate on the page through either `interactive` (Runnable code editor), `output` (Output only of executed at runtime), or `setup` (execute code without seeing output at runtime). |
-| `autorun` | `false`       | Allow `interactive` cells to be run during document initialization without a user pressing run code.                                                                                                             |
+| Option      | Default Value | Description                                                                                                                                                                                                      |
+|-------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `context`   | `interactive` | Describe how the cell should operate on the page through either `interactive` (Runnable code editor), `output` (Output only of executed at runtime), or `setup` (execute code without seeing output at runtime). |
+| `autorun`   | `false`       | Allow `interactive` cells to be run during document initialization without a user pressing run code.                                                                                                             |
+| `read-only` | `false`       | Prevent code in `interactive` cells from being modified by disallowing code input.                                                                                                                               |
 
 
 :::{.callout-note}

@@ -8,6 +8,17 @@ format:
     toc: true
 ---
 
+
+# 0.4.x-dev.1: ???????????? (??-??-??) [DEV]
+
+## Features
+
+- `read-only` is a new code cell option that prevents changes to code inside of an  `interactive` context. 
+
+## Bug fixes
+
+## Documentation
+
 # 0.4.0: Ball of Yarn (02-05-2024)
 
 ## Breaking changes
