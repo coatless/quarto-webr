@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.9">
+<meta name="generator" content="quarto-1.5.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"classes":"","fig-cap":"","results":"markup","context":"setup","label":"unnamed-chunk-1","message":"true","out-width":"700px","fig-width":7,"output":"true","warning":"true","autorun":"true","fig-height":5,"out-height":"","dpi":72,"comment":""}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"classes":"","fig-cap":"","results":"markup","context":"interactive","label":"unnamed-chunk-2","message":"true","out-width":"700px","fig-width":7,"output":"true","warning":"true","autorun":"false","fig-height":5,"out-height":"","dpi":72,"comment":""}}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"comment":"","fig-width":7,"fig-height":5,"label":"unnamed-chunk-1","context":"setup","classes":"","dpi":72,"results":"markup","autorun":"true","warning":"true","out-width":"700px","message":"true","out-height":"","read-only":"false","output":"true","fig-cap":""},"id":1},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"comment":"","fig-width":7,"fig-height":5,"label":"unnamed-chunk-2","context":"interactive","classes":"","dpi":72,"results":"markup","autorun":"false","warning":"true","out-width":"700px","message":"true","out-height":"","read-only":"false","output":"true","fig-cap":""},"id":2}];
 
 </script>
 <script type="module">
@@ -1191,7 +1191,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       },
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+      hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+      readOnly: qwebrOptions['read-only'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
@@ -1432,6 +1433,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1466,7 +1485,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

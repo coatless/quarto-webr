@@ -7,18 +7,18 @@
     "text": "This is a post with interactive code on a Quarto Blog through the quarto-webr extension. The configuration setup for the quarto-webr extension is taken care of in the _quarto.yml file to avoid needing to re-specify options multiple times.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This blog is a demo showing how to use the quarto-webr extension."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "blog",
     "section": "",
     "text": "Post Containing Slides with Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 13, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 12, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This blog is a demo showing how to use the quarto-webr extension."
   },
   {
     "objectID": "posts/embed-slides/index.html",

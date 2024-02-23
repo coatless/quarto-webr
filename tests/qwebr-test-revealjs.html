@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.9">
+  <meta name="generator" content="quarto-1.5.20">
 
   <title>Test Suite for quarto-webr – Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -485,7 +485,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"context":"interactive","fig-cap":"","fig-height":5,"message":"true","classes":"","warning":"true","dpi":72,"autorun":"false","comment":"","label":"unnamed-chunk-1","out-width":"700px","fig-width":7,"output":"true","results":"markup","out-height":""},"id":1},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"context":"interactive","fig-cap":"","fig-height":5,"message":"true","classes":"","warning":"true","dpi":72,"autorun":"false","comment":"","label":"unnamed-chunk-2","out-width":"700px","fig-width":7,"output":"true","results":"markup","out-height":""},"id":2},{"code":"message(\"Hello World!\")","options":{"context":"interactive","fig-cap":"","fig-height":5,"message":"true","classes":"","warning":"true","dpi":72,"autorun":"false","comment":"","label":"unnamed-chunk-3","out-width":"700px","fig-width":7,"output":"true","results":"markup","out-height":""},"id":3},{"code":"2 + 3","options":{"context":"interactive","fig-cap":"","fig-height":5,"message":"true","classes":"","warning":"true","dpi":72,"autorun":"false","comment":"","label":"unnamed-chunk-4","out-width":"700px","fig-width":7,"output":"true","results":"markup","out-height":""},"id":4}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","out-height":"","results":"markup","context":"interactive","read-only":"false","fig-height":5,"warning":"true","autorun":"false","dpi":72,"fig-width":7,"classes":"","comment":"","output":"true","out-width":"700px","fig-cap":"","message":"true"},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"label":"unnamed-chunk-2","out-height":"","results":"markup","context":"interactive","read-only":"false","fig-height":5,"warning":"true","autorun":"false","dpi":72,"fig-width":7,"classes":"","comment":"","output":"true","out-width":"700px","fig-cap":"","message":"true"},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"},{"id":3,"options":{"label":"unnamed-chunk-3","out-height":"","results":"markup","context":"interactive","read-only":"false","fig-height":5,"warning":"true","autorun":"false","dpi":72,"fig-width":7,"classes":"","comment":"","output":"true","out-width":"700px","fig-cap":"","message":"true"},"code":"message(\"Hello World!\")"},{"id":4,"options":{"label":"unnamed-chunk-4","out-height":"","results":"markup","context":"interactive","read-only":"false","fig-height":5,"warning":"true","autorun":"false","dpi":72,"fig-width":7,"classes":"","comment":"","output":"true","out-width":"700px","fig-cap":"","message":"true"},"code":"2 + 3"}];
 
   </script>
   <script type="module">
@@ -1244,7 +1244,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       },
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+      hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+      readOnly: qwebrOptions['read-only'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
@@ -1754,6 +1755,24 @@ Presentation Lead
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1790,7 +1809,11 @@ Presentation Lead
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

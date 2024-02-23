@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.9">
+<meta name="generator" content="quarto-1.5.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -277,7 +277,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-1","message":"true","out-width":"700px","fig-height":5,"context":"setup","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":1,"code":"meaning_of_life = 42"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-2","message":"true","out-width":"700px","fig-height":5,"context":"interactive","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":2,"code":"meaning_of_life"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-3","message":"true","out-width":"700px","fig-height":5,"context":"output","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":3,"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-4","message":"true","out-width":"700px","fig-height":5,"context":"output","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":4,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-5","message":"true","out-width":"700px","fig-height":5,"context":"setup","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":5,"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-6","message":"true","out-width":"700px","fig-height":5,"context":"interactive","warning":"true","output":"true","autorun":"false","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":6,"code":"# Display the head of the data\nhead(df_penguins)"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-7","message":"true","out-width":"700px","fig-height":5,"context":"interactive","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":7,"code":"# Display the head of the data\nhead(df_penguins)"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-8","message":"true","out-width":"700px","fig-height":5,"context":"output","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":8,"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-9","message":"true","out-width":"700px","fig-height":5,"context":"setup","warning":"true","output":"true","autorun":"true","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":9,"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}"},{"options":{"fig-width":7,"dpi":72,"label":"unnamed-chunk-10","message":"true","out-width":"700px","fig-height":5,"context":"interactive","warning":"true","output":"true","autorun":"false","comment":"","fig-cap":"","out-height":"","results":"markup","classes":""},"id":10,"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"setup","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-1","output":"true","message":"true","fig-cap":"","comment":""},"code":"meaning_of_life = 42"},{"id":2,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"interactive","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-2","output":"true","message":"true","fig-cap":"","comment":""},"code":"meaning_of_life"},{"id":3,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"output","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-3","output":"true","message":"true","fig-cap":"","comment":""},"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2"},{"id":4,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"output","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-4","output":"true","message":"true","fig-cap":"","comment":""},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"id":5,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"setup","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-5","output":"true","message":"true","fig-cap":"","comment":""},"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")"},{"id":6,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"false","out-width":"700px","warning":"true","fig-width":7,"context":"interactive","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-6","output":"true","message":"true","fig-cap":"","comment":""},"code":"# Display the head of the data\nhead(df_penguins)"},{"id":7,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"interactive","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-7","output":"true","message":"true","fig-cap":"","comment":""},"code":"# Display the head of the data\nhead(df_penguins)"},{"id":8,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"output","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-8","output":"true","message":"true","fig-cap":"","comment":""},"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)"},{"id":9,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"true","out-width":"700px","warning":"true","fig-width":7,"context":"setup","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-9","output":"true","message":"true","fig-cap":"","comment":""},"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}"},{"id":10,"options":{"read-only":"false","out-height":"","dpi":72,"autorun":"false","out-width":"700px","warning":"true","fig-width":7,"context":"interactive","results":"markup","classes":"","fig-height":5,"label":"unnamed-chunk-10","output":"true","message":"true","fig-cap":"","comment":""},"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)"}];
 
 </script>
 <script type="module">
@@ -1282,7 +1282,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       },
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+      hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+      readOnly: qwebrOptions['read-only'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
@@ -1442,7 +1443,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 9, 2024</p>
+      <p class="date-modified">February 23, 2024</p>
     </div>
   </div>
     
@@ -1851,6 +1852,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1885,7 +1904,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

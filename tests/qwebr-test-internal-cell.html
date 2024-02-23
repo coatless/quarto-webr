@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.9">
+<meta name="generator" content="quarto-1.5.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"classes":"","message":"true","fig-cap":"","output":"true","context":"interactive","results":"markup","dpi":72,"out-width":"700px","out-height":"","label":"unnamed-chunk-1","comment":"","fig-height":5,"warning":"true","fig-width":7,"autorun":"false"},"code":"1 + 1"},{"id":2,"options":{"classes":"","message":"true","fig-cap":"","output":"true","context":"interactive","results":"markup","dpi":72,"out-width":"700px","out-height":"","label":"unnamed-chunk-2","comment":"","fig-height":5,"warning":"true","fig-width":7,"autorun":"true"},"code":"1 + 1"},{"id":3,"options":{"classes":"","message":"true","fig-cap":"","output":"true","context":"setup","results":"markup","dpi":72,"out-width":"700px","out-height":"","label":"unnamed-chunk-3","comment":"","fig-height":5,"warning":"true","fig-width":7,"autorun":"true"},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":4,"options":{"classes":"","message":"true","fig-cap":"","output":"true","context":"output","results":"markup","dpi":72,"out-width":"700px","out-height":"","label":"unnamed-chunk-4","comment":"","fig-height":5,"warning":"true","fig-width":7,"autorun":"true"},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","classes":"","out-height":"","autorun":"false","fig-cap":"","label":"unnamed-chunk-1","results":"markup","comment":"","message":"true","fig-width":7,"context":"interactive","dpi":72,"out-width":"700px","fig-height":5,"read-only":"false","output":"true"},"code":"1 + 1"},{"id":2,"options":{"warning":"true","classes":"","out-height":"","autorun":"true","fig-cap":"","label":"unnamed-chunk-2","results":"markup","comment":"","message":"true","fig-width":7,"context":"interactive","dpi":72,"out-width":"700px","fig-height":5,"read-only":"false","output":"true"},"code":"1 + 1"},{"id":3,"options":{"warning":"true","classes":"","out-height":"","autorun":"true","fig-cap":"","label":"unnamed-chunk-3","results":"markup","comment":"","message":"true","fig-width":7,"context":"interactive","dpi":72,"out-width":"700px","fig-height":5,"read-only":"true","output":"true"},"code":"1 + 1"},{"id":4,"options":{"warning":"true","classes":"","out-height":"","autorun":"true","fig-cap":"","label":"unnamed-chunk-4","results":"markup","comment":"","message":"true","fig-width":7,"context":"setup","dpi":72,"out-width":"700px","fig-height":5,"read-only":"false","output":"true"},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":5,"options":{"warning":"true","classes":"","out-height":"","autorun":"true","fig-cap":"","label":"unnamed-chunk-5","results":"markup","comment":"","message":"true","fig-width":7,"context":"output","dpi":72,"out-width":"700px","fig-height":5,"read-only":"false","output":"true"},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
 
 </script>
 <script type="module">
@@ -1191,7 +1191,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       },
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
-      hideCursorInOverviewRuler: true  // Remove cursor indictor in right hand side scroll bar
+      hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+      readOnly: qwebrOptions['read-only'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
@@ -1356,17 +1357,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
+<section id="read-only" class="level3">
+<h3 class="anchored" data-anchor-id="read-only">Read-only</h3>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>Hidden cell that sets <code>x</code> and <code>y</code> vector values.</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="output" class="level2">
 <h2 class="anchored" data-anchor-id="output">Output</h2>
 <p>Hidden cell that retrieves previously set <code>x</code> and <code>y</code> vector values and displays the data.</p>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
@@ -1452,6 +1458,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1486,7 +1510,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

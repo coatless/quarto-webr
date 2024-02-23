@@ -1,13 +1,24 @@
 [
   {
-    "objectID": "qwebr-test-non-interactive-setup-with-packages-and-interactive.html",
-    "href": "qwebr-test-non-interactive-setup-with-packages-and-interactive.html",
-    "title": "Test: Setup Cell with Packages for Interactive",
+    "objectID": "qwebr-test-shim-install.html",
+    "href": "qwebr-test-shim-install.html",
+    "title": "Test: Install Packages Shim",
     "section": "",
-    "text": "The following hidden cell should setup a ggplot2 theme and set variables:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe next cell should handle graphing values with a theme being set:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Setup Cell with Packages for Interactive"
+      "Test: Install Packages Shim"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-shim-install.html#non-interactive",
+    "href": "qwebr-test-shim-install.html#non-interactive",
+    "title": "Test: Install Packages Shim",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Install Packages Shim"
     ]
   },
   {
@@ -44,80 +55,14 @@
     ]
   },
   {
-    "objectID": "qwebr-test-service-worker.html",
-    "href": "qwebr-test-service-worker.html",
-    "title": "Test: Service Worker",
+    "objectID": "qwebr-test-status-header-no-title.html",
+    "href": "qwebr-test-status-header-no-title.html",
+    "title": "Test Suite for quarto-webr",
     "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Service Worker"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-packages-autoload.html",
-    "href": "qwebr-test-packages-autoload.html",
-    "title": "Test: Autoload Package",
-    "section": "",
-    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Autoload Package"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-output-graph.html",
-    "href": "qwebr-test-output-graph.html",
-    "title": "Test: Graphics Output",
-    "section": "",
-    "text": "This webpage tests the interactive and output contexts for showing a graph",
-    "crumbs": [
-      "Tests",
-      "Test: Graphics Output"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-output-graph.html#interactive",
-    "href": "qwebr-test-output-graph.html#interactive",
-    "title": "Test: Graphics Output",
-    "section": "Interactive",
-    "text": "Interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Graphics Output"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-output-graph.html#non-interactive",
-    "href": "qwebr-test-output-graph.html#non-interactive",
-    "title": "Test: Graphics Output",
-    "section": "Non-interactive",
-    "text": "Non-interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Graphics Output"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
-    "title": "Test: Keyboard Shortcuts in Code cell",
-    "section": "",
-    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
-    "crumbs": [
-      "Tests",
-      "Test: Keyboard Shortcuts in Code cell"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-non-interactive-context-with-packages.html",
-    "href": "qwebr-test-non-interactive-context-with-packages.html",
-    "title": "Test: Load and Use Packages used in Context",
-    "section": "",
-    "text": "This document disables autoloading of the packages and manually loads the package inside of the context output.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNext, we should be able to retrieve the prior cells value\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Load and Use Packages used in Context"
+      "Qwebr Test Status Header No Title"
     ]
   },
   {
@@ -132,17 +77,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-status-header-no-title.html",
-    "href": "qwebr-test-status-header-no-title.html",
-    "title": "Test Suite for quarto-webr",
-    "section": "",
-    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Qwebr Test Status Header No Title"
-    ]
-  },
-  {
     "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
     "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
     "title": "Test: No Startup Status Present in RevealJS Presentations",
@@ -154,14 +88,14 @@
     ]
   },
   {
-    "objectID": "qwebr-test-packages-multi.html",
-    "href": "qwebr-test-packages-multi.html",
-    "title": "Test: Packages Key with Autoloading",
+    "objectID": "qwebr-test-non-interactive-setup-with-packages.html",
+    "href": "qwebr-test-non-interactive-setup-with-packages.html",
+    "title": "Test: Packages used in Hidden Setup",
     "section": "",
-    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Perform data manipulations on mtcars in a non-interactive cell…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen we print it to see how it looks:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Packages Key with Autoloading"
+      "Test: Packages used in Hidden Setup"
     ]
   },
   {
@@ -198,58 +132,102 @@
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html",
-    "href": "qwebr-test-help-documentation.html",
-    "title": "Test: Help Documentation",
+    "objectID": "qwebr-test-repo-key.html",
+    "href": "qwebr-test-repo-key.html",
+    "title": "Test: Repos package key",
     "section": "",
-    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts.",
+    "text": "This document tests the repos key meta option by attempting to download a package demorwasmbinary from a custom repository at:\nhttps://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\nAnd, then, falls back on the main webR repository for a second package visualize.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
+      "Test: Repos package key"
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html#interactive",
-    "href": "qwebr-test-help-documentation.html#interactive",
-    "title": "Test: Help Documentation",
+    "objectID": "qwebr-test-internal-cell.html",
+    "href": "qwebr-test-internal-cell.html",
+    "title": "Test: Cell Context Options",
+    "section": "",
+    "text": "Test page for verifying cell context options set explicitly with context.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-internal-cell.html#interactive",
+    "href": "qwebr-test-internal-cell.html#interactive",
+    "title": "Test: Cell Context Options",
     "section": "Interactive",
-    "text": "Interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Interactive\n\nStatic\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nAutorun\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nRead-only\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
+      "Test: Cell Context Options"
     ]
   },
   {
-    "objectID": "qwebr-test-help-documentation.html#non-interactive",
-    "href": "qwebr-test-help-documentation.html#non-interactive",
-    "title": "Test: Help Documentation",
+    "objectID": "qwebr-test-internal-cell.html#setup",
+    "href": "qwebr-test-internal-cell.html#setup",
+    "title": "Test: Cell Context Options",
+    "section": "Setup",
+    "text": "Setup\nHidden cell that sets x and y vector values.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-internal-cell.html#output",
+    "href": "qwebr-test-internal-cell.html#output",
+    "title": "Test: Cell Context Options",
+    "section": "Output",
+    "text": "Output\nHidden cell that retrieves previously set x and y vector values and displays the data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Cell Context Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-non-interactive-context-with-packages.html",
+    "href": "qwebr-test-non-interactive-context-with-packages.html",
+    "title": "Test: Load and Use Packages used in Context",
+    "section": "",
+    "text": "This document disables autoloading of the packages and manually loads the package inside of the context output.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNext, we should be able to retrieve the prior cells value\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Load and Use Packages used in Context"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html",
+    "href": "qwebr-test-output-graph.html",
+    "title": "Test: Graphics Output",
+    "section": "",
+    "text": "This webpage tests the interactive and output contexts for showing a graph",
+    "crumbs": [
+      "Tests",
+      "Test: Graphics Output"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html#interactive",
+    "href": "qwebr-test-output-graph.html#interactive",
+    "title": "Test: Graphics Output",
+    "section": "Interactive",
+    "text": "Interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Graphics Output"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-output-graph.html#non-interactive",
+    "href": "qwebr-test-output-graph.html#non-interactive",
+    "title": "Test: Graphics Output",
     "section": "Non-interactive",
-    "text": "Non-interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Non-interactive\n\nDefault options\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nReduced fig height & width\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Help Documentation"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-shim-install.html",
-    "href": "qwebr-test-shim-install.html",
-    "title": "Test: Install Packages Shim",
-    "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Install Packages Shim"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-shim-install.html#non-interactive",
-    "href": "qwebr-test-shim-install.html#non-interactive",
-    "title": "Test: Install Packages Shim",
-    "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Install Packages Shim"
+      "Test: Graphics Output"
     ]
   },
   {
@@ -307,50 +285,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-internal-cell.html",
-    "href": "qwebr-test-internal-cell.html",
-    "title": "Test: Cell Context Options",
-    "section": "",
-    "text": "Test page for verifying cell context options set explicitly with context.",
-    "crumbs": [
-      "Tests",
-      "Test: Cell Context Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-internal-cell.html#interactive",
-    "href": "qwebr-test-internal-cell.html#interactive",
-    "title": "Test: Cell Context Options",
-    "section": "Interactive",
-    "text": "Interactive\n\nStatic\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nAutorun\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Cell Context Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-internal-cell.html#setup",
-    "href": "qwebr-test-internal-cell.html#setup",
-    "title": "Test: Cell Context Options",
-    "section": "Setup",
-    "text": "Setup\nHidden cell that sets x and y vector values.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Cell Context Options"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-internal-cell.html#output",
-    "href": "qwebr-test-internal-cell.html#output",
-    "title": "Test: Cell Context Options",
-    "section": "Output",
-    "text": "Output\nHidden cell that retrieves previously set x and y vector values and displays the data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Cell Context Options"
-    ]
-  },
-  {
     "objectID": "qwebr-test-escape-html-output-characters.html",
     "href": "qwebr-test-escape-html-output-characters.html",
     "title": "Test: Escape Output with HTML Entities",
@@ -381,6 +315,39 @@
     "crumbs": [
       "Tests",
       "Test: Escape Output with HTML Entities"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-packages-autoload.html",
+    "href": "qwebr-test-packages-autoload.html",
+    "title": "Test: Autoload Package",
+    "section": "",
+    "text": "This webpage tests the autoload-packages key meta option by not loading the requested packages.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Autoload Package"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-non-interactive-setup-with-packages-and-interactive.html",
+    "href": "qwebr-test-non-interactive-setup-with-packages-and-interactive.html",
+    "title": "Test: Setup Cell with Packages for Interactive",
+    "section": "",
+    "text": "The following hidden cell should setup a ggplot2 theme and set variables:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe next cell should handle graphing values with a theme being set:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Setup Cell with Packages for Interactive"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-packages-multi.html",
+    "href": "qwebr-test-packages-multi.html",
+    "title": "Test: Packages Key with Autoloading",
+    "section": "",
+    "text": "This webpage tests the packages key meta option with the default of autoload-packages removing the need for a library() call.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Packages Key with Autoloading"
     ]
   },
   {
@@ -417,17 +384,6 @@
     ]
   },
   {
-    "objectID": "qwebr-test-repo-key.html",
-    "href": "qwebr-test-repo-key.html",
-    "title": "Test: Repos package key",
-    "section": "",
-    "text": "This document tests the repos key meta option by attempting to download a package demorwasmbinary from a custom repository at:\nhttps://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\nAnd, then, falls back on the main webR repository for a second package visualize.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Repos package key"
-    ]
-  },
-  {
     "objectID": "qwebr-test-status-header-suppressed-html copy.html",
     "href": "qwebr-test-status-header-suppressed-html copy.html",
     "title": "Test: No Startup Status Present in HTML Documents",
@@ -439,14 +395,58 @@
     ]
   },
   {
-    "objectID": "qwebr-test-non-interactive-setup-with-packages.html",
-    "href": "qwebr-test-non-interactive-setup-with-packages.html",
-    "title": "Test: Packages used in Hidden Setup",
+    "objectID": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "href": "qwebr-test-interactive-with-keyboard-shortcut.html",
+    "title": "Test: Keyboard Shortcuts in Code cell",
     "section": "",
-    "text": "Perform data manipulations on mtcars in a non-interactive cell…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen we print it to see how it looks:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nRun selected code using either:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nRun the entire code by clicking the “Run code” button or pressing Shift+↩︎.",
     "crumbs": [
       "Tests",
-      "Test: Packages used in Hidden Setup"
+      "Test: Keyboard Shortcuts in Code cell"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-service-worker.html",
+    "href": "qwebr-test-service-worker.html",
+    "title": "Test: Service Worker",
+    "section": "",
+    "text": "This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Service Worker"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html",
+    "href": "qwebr-test-help-documentation.html",
+    "title": "Test: Help Documentation",
+    "section": "",
+    "text": "Test pager event support by verifying help documentation works in the interactive and non-interactive contexts.",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html#interactive",
+    "href": "qwebr-test-help-documentation.html#interactive",
+    "title": "Test: Help Documentation",
+    "section": "Interactive",
+    "text": "Interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-help-documentation.html#non-interactive",
+    "href": "qwebr-test-help-documentation.html#non-interactive",
+    "title": "Test: Help Documentation",
+    "section": "Non-interactive",
+    "text": "Non-interactive\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Help Documentation"
     ]
   }
 ]
