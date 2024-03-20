@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.20">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-1","classes":""}},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-2","classes":""}},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-3","classes":""}},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-4","classes":""}},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-5","classes":""}},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6,"options":{"results":"markup","context":"interactive","autorun":"false","fig-cap":"","dpi":72,"message":"true","output":"true","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-height":5,"fig-width":7,"out-height":"","label":"unnamed-chunk-6","classes":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"dpi":72,"label":"unnamed-chunk-1","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}},{"id":2,"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"dpi":72,"label":"unnamed-chunk-2","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}},{"id":3,"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"dpi":72,"label":"unnamed-chunk-3","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}},{"id":4,"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"dpi":72,"label":"unnamed-chunk-4","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}},{"id":5,"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"dpi":72,"label":"unnamed-chunk-5","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}},{"id":6,"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"dpi":72,"label":"unnamed-chunk-6","output":"true","message":"true","fig-height":5,"autorun":"false","warning":"true","results":"markup","fig-cap":"","read-only":"false","classes":"","out-height":"","out-width":"700px","context":"interactive","fig-width":7,"comment":""}}];
 
 </script>
 <script type="module">
@@ -1335,18 +1335,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1378,7 +1367,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1386,7 +1397,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

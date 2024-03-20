@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.20">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"results":"markup","fig-height":5,"dpi":72,"fig-cap":"","context":"interactive","warning":"true","label":"unnamed-chunk-1","message":"true","comment":"","out-height":"","output":"true","classes":"","read-only":"false","autorun":"false","out-width":"700px"},"code":"plot(pressure)"},{"id":2,"options":{"fig-width":"4","results":"markup","fig-height":"6","dpi":72,"fig-cap":"","context":"interactive","warning":"true","label":"unnamed-chunk-2","message":"true","comment":"","out-height":"","output":"true","classes":"","read-only":"false","autorun":"false","out-width":"600px"},"code":"plot(pressure)"},{"id":3,"options":{"fig-width":7,"results":"markup","fig-height":5,"dpi":72,"fig-cap":"Testing out figure captions","context":"output","warning":"true","label":"unnamed-chunk-3","message":"true","comment":"","out-height":"","output":"true","classes":"","read-only":"false","autorun":"true","out-width":"700px"},"code":"plot(pressure)"},{"id":4,"options":{"fig-width":"6","results":"markup","fig-height":"5","dpi":72,"fig-cap":"","context":"output","warning":"true","label":"unnamed-chunk-4","message":"true","comment":"","out-height":"","output":"true","classes":"","read-only":"false","autorun":"true","out-width":"500px"},"code":"plot(pressure)"},{"id":5,"options":{"fig-width":"6","results":"markup","fig-height":"5","dpi":72,"fig-cap":"","context":"output","warning":"true","label":"unnamed-chunk-5","message":"true","comment":"","out-height":"500px","output":"true","classes":"","read-only":"false","autorun":"true","out-width":"500px"},"code":"plot(pressure)"}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","comment":"","dpi":72,"warning":"true","fig-width":7,"context":"interactive","fig-cap":"","autorun":"false","classes":"","out-width":"700px","output":"true","results":"markup","read-only":"false","fig-height":5,"label":"unnamed-chunk-1","out-height":""},"code":"plot(pressure)","id":1},{"options":{"message":"true","comment":"","dpi":72,"warning":"true","fig-width":"4","context":"interactive","fig-cap":"","autorun":"false","classes":"","out-width":"600px","output":"true","results":"markup","read-only":"false","fig-height":"6","label":"unnamed-chunk-2","out-height":""},"code":"plot(pressure)","id":2},{"options":{"message":"true","comment":"","dpi":72,"warning":"true","fig-width":7,"context":"output","fig-cap":"Testing out figure captions","autorun":"true","classes":"","out-width":"700px","output":"true","results":"markup","read-only":"false","fig-height":5,"label":"unnamed-chunk-3","out-height":""},"code":"plot(pressure)","id":3},{"options":{"message":"true","comment":"","dpi":72,"warning":"true","fig-width":"6","context":"output","fig-cap":"","autorun":"true","classes":"","out-width":"500px","output":"true","results":"markup","read-only":"false","fig-height":"5","label":"unnamed-chunk-4","out-height":""},"code":"plot(pressure)","id":4},{"options":{"message":"true","comment":"","dpi":72,"warning":"true","fig-width":"6","context":"output","fig-cap":"","autorun":"true","classes":"","out-width":"500px","output":"true","results":"markup","read-only":"false","fig-height":"5","label":"unnamed-chunk-5","out-height":"500px"},"code":"plot(pressure)","id":5}];
 
 </script>
 <script type="module">
@@ -1415,18 +1415,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1458,7 +1447,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1466,7 +1477,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

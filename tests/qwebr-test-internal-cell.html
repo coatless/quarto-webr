@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.20">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"1 + 1","options":{"autorun":"false","label":"unnamed-chunk-1","fig-height":5,"out-width":"700px","dpi":72,"warning":"true","results":"markup","fig-cap":"","context":"interactive","classes":"","read-only":"false","fig-width":7,"output":"true","message":"true","out-height":"","comment":""}},{"id":2,"code":"1 + 1","options":{"autorun":"true","label":"unnamed-chunk-2","fig-height":5,"out-width":"700px","dpi":72,"warning":"true","results":"markup","fig-cap":"","context":"interactive","classes":"","read-only":"false","fig-width":7,"output":"true","message":"true","out-height":"","comment":""}},{"id":3,"code":"1 + 1","options":{"autorun":"true","label":"unnamed-chunk-3","fig-height":5,"out-width":"700px","dpi":72,"warning":"true","results":"markup","fig-cap":"","context":"interactive","classes":"","read-only":"true","fig-width":7,"output":"true","message":"true","out-height":"","comment":""}},{"id":4,"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","options":{"autorun":"true","label":"unnamed-chunk-4","fig-height":5,"out-width":"700px","dpi":72,"warning":"true","results":"markup","fig-cap":"","context":"setup","classes":"","read-only":"false","fig-width":7,"output":"true","message":"true","out-height":"","comment":""}},{"id":5,"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","options":{"autorun":"true","label":"unnamed-chunk-5","fig-height":5,"out-width":"700px","dpi":72,"warning":"true","results":"markup","fig-cap":"","context":"output","classes":"","read-only":"false","fig-width":7,"output":"true","message":"true","out-height":"","comment":""}}];
+globalThis.qwebrCellDetails = [{"code":"1 + 1","id":1,"options":{"output":"true","warning":"true","message":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-1","comment":"","fig-height":5,"autorun":"false","dpi":72,"classes":"","context":"interactive","fig-cap":"","out-height":"","results":"markup","read-only":"false"}},{"code":"1 + 1","id":2,"options":{"output":"true","warning":"true","message":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-2","comment":"","fig-height":5,"autorun":"true","dpi":72,"classes":"","context":"interactive","fig-cap":"","out-height":"","results":"markup","read-only":"false"}},{"code":"1 + 1","id":3,"options":{"output":"true","warning":"true","message":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-3","comment":"","fig-height":5,"autorun":"true","dpi":72,"classes":"","context":"interactive","fig-cap":"","out-height":"","results":"markup","read-only":"true"}},{"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","id":4,"options":{"output":"true","warning":"true","message":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-4","comment":"","fig-height":5,"autorun":"true","dpi":72,"classes":"","context":"setup","fig-cap":"","out-height":"","results":"markup","read-only":"false"}},{"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","id":5,"options":{"output":"true","warning":"true","message":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-5","comment":"","fig-height":5,"autorun":"true","dpi":72,"classes":"","context":"output","fig-cap":"","out-height":"","results":"markup","read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -1414,18 +1414,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1457,7 +1446,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1465,7 +1476,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
