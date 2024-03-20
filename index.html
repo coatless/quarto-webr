@@ -241,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","id":1,"options":{"comment":"","fig-width":7,"message":"true","context":"interactive","label":"unnamed-chunk-1","out-height":"","classes":"","output":"true","dpi":72,"fig-cap":"","results":"markup","fig-height":5,"warning":"true","out-width":"700px","read-only":"false","autorun":"false"}}];
+globalThis.qwebrCellDetails = [{"options":{"dpi":72,"context":"interactive","output":"true","read-only":"false","label":"unnamed-chunk-1","message":"true","out-width":"700px","comment":"","results":"markup","fig-width":7,"fig-cap":"","classes":"","autorun":"false","warning":"true","out-height":"","fig-height":5},"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","id":1}];
 
 </script>
 <script type="module">
@@ -1391,6 +1391,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>At its core, the <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code> extension</a> is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using <a href="https://docs.r-wasm.org/webr/latest/evaluating.html">webR’s JavaScript API</a>, granting you unparalleled freedom to harness the power of R in innovative ways.</p>
 <p>With this in mind, let’s dive in and kickstart your journey with interactive code cells by <a href="./qwebr-first-steps.html">creating our very first webR-powered Quarto document</a> or <a href="./qwebr-code-cell-demos.html">exploring some examples</a>!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
+</div>
+</div>
 
 
 
