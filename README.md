@@ -1,10 +1,13 @@
 # webR Extension for Quarto
 
-This extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [RevealJS](https://quarto.org/docs/presentations/revealjs/), [Websites](https://quarto.org/docs/websites/), [Blogs](https://quarto.org/docs/websites/website-blog.html), and [Books](https://quarto.org/docs/books). 
+This community developed Quarto extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [RevealJS](https://quarto.org/docs/presentations/revealjs/), [Websites](https://quarto.org/docs/websites/), [Blogs](https://quarto.org/docs/websites/website-blog.html), and [Books](https://quarto.org/docs/books). 
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/JIQZIZ8.gif)
 
 Take a look at a live example of the extension in action [here](https://quarto-webr.thecoatlessprofessor.com/examples/readme)! To delve deeper into the extension's capabilities, see our comprehensive [documentation website](https://quarto-webr.thecoatlessprofessor.com/).
+
+> [!NOTE]
+> Please note that the `{quarto-webr}` Quarto extension is a community-driven initiative and is **not** affiliated with Posit, Quarto, or the main [webR](https://docs.r-wasm.org/webr/latest/) project. Its evolution and maintenance stem solely from the collective efforts of community members.
 
 ## Background
 

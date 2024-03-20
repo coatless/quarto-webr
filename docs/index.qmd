@@ -22,3 +22,7 @@ summary(model)
 At its core, the [`quarto-webr` extension](https://github.com/coatless/quarto-webr) is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server.  Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it's worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using [webR's JavaScript API](https://docs.r-wasm.org/webr/latest/evaluating.html), granting you unparalleled freedom to harness the power of R in innovative ways.
 
 With this in mind, let's dive in and kickstart your journey with interactive code cells by [creating our very first webR-powered Quarto document](qwebr-first-steps.qmd) or [exploring some examples](qwebr-code-cell-demos.qmd)!
+
+:::{.callout-important}
+This Quarto extension is open source software and is **not affiliated with** Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.
+:::
