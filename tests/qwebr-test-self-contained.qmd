@@ -1,0 +1,25 @@
+---
+title: "Test: embed-resources"
+format:
+  html:
+    embed-resources: true
+engine: knitr
+filters:
+  - webr
+---
+
+Ensure `embed-resources` option correctly puts a copy of FontAwesome in the document.
+
+## Interactive
+```{webr-r}
+1 + 1
+```
+
+## Non-interactive
+
+```{webr-r}
+#| context: output
+Sys.sleep(3)
+
+print("Sleep successful! Did you see the R logo?")
+```
