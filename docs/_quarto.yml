@@ -27,7 +27,7 @@ website:
             text: Hiding and Executing Code
           - href: qwebr-loading-data.qmd
             text: Loading Data      
-      - section: "Getting Started"
+      - section: "Options Reference"
         contents:
           - href: qwebr-meta-options.qmd
             text: Document Options
