@@ -6,7 +6,7 @@
     "section": "",
     "text": "The quarto-webr extension empowers you to tailor your webR environment to meet your unique requirements. By configuring various options in your document’s YAML header or _quarto.yml file, you can structure the webR experience on a per-page or per-project basis. Below, we explore these customization options and how to implement them.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Document Options"
     ]
   },
@@ -17,7 +17,7 @@
     "section": "Document YAML",
     "text": "Document YAML\nTo fine-tune webR to the specific needs of a document, place inside your document’s YAML header the webr key. Specifying options this way allows webR to be setup with unique options confined to only that document.\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nwebr: \n  show-startup-message: false    # Disable displaying status of webR initialization\n  packages: ['ggplot2', 'dplyr'] # Install R packages on document open\nfilters:\n  - webr\n---",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Document Options"
     ]
   },
@@ -28,7 +28,7 @@
     "section": "Global Configuration",
     "text": "Global Configuration\nIf you have multiple pages that use webR, we suggest setting global options inside of the _quarto.yml file. This option is appropriate for Websites, Blogs, or Books. For instance, if you have a book project, the _quarto.yml should look like:\nproject:\n  type: book\n\nbook:\n  title: \"Sample quarto-webr Book Project\"\n  # ... more options\n\n# Set default options for every bookpage that may or may not include webR.\nwebr: \n  show-startup-message: false    # Disable displaying status of webR initialization\n  packages: ['ggplot2', 'dplyr'] # Install R packages on document open\n\n# Attach webR extension for the project\nfilters:\n  - webr\n\n\n\n\n\n\nNote\n\n\n\nIf a webR code cell is not present on a website, blog, or book page, then the quarto-webr extension will not setup webR on the page.\n\n\nYou can see full examples of setting a global option under the Deployment Templates page.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Document Options"
     ]
   },
@@ -39,7 +39,7 @@
     "section": "webR options",
     "text": "webR options\nBy specifying various WebROptions options in the document YAML, you can create a personalized webR experience\n\nhome-dir\n\nDescription: Set the WebAssembly user’s home directory and initial working directory.\nDefault Value: '/home/web_user'\nDocumentation: homeDir\n\n\n\nbase-url\n\nDescription: Define the base URL for downloading R WebAssembly binaries.\nDefault Value: 'https://webr.r-wasm.org/[version]/'\nDocumentation: baseUrl\n\n\n\nchannel-type\n\nDescription: Specify the communication channel type to interact with webR.\nDefault Value: \"automatic\" (0)\nPossible Values: \"automatic\" (0), \"shared-array-buffer\" (1), \"service-worker\" (2), \"post-message\" (3).\nDocumentation: channelType\n\n\n\n\n\n\n\nNote\n\n\n\nWe recommend using the \"post-message\" channel when GitHub Pages or Quarto Pub serve the webR-enabled document. Note that this option prevents the interruption of running R code and the use of nested R REPLs (readline(), menu(), browser(), etc.). For more details, please see Communication Channels\n\n\n\n\nservice-worker-url\n\nDescription: Set the base URL for loading JavaScript worker scripts when using the ServiceWorker communication channel mode.\nDefault Value: ''\nDocumentation: serviceWorkerUrl",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Document Options"
     ]
   },
@@ -50,7 +50,7 @@
     "section": "Native Extension Options",
     "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\nrepos\n\nDescription: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: https://repo.r-wasm.org/.\nDefault Value: ['https://repo.r-wasm.org/']\nExample: ['https://username.r-universe.dev', 'https://username.github.io/reponame'] will cause webR to first look for the package on r-universe.dev, then move to looking at the package on GitHub Pages, before finally landing on the official repository.\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\nExample: ['ggplot2', 'dplyr'] will cause ggplot2 and dplyr to be installed.\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Document Options"
     ]
   },
@@ -790,7 +790,7 @@
     "section": "",
     "text": "This article provides an in-depth overview of cell options supported in {webr-r} code blocks. These options play a crucial role in influencing the execution and output of executable code blocks. It’s important to note that these cell options are specified within comments at the top of a code block by using a hashpipe #| option: value.\nHere’s an example of how you can use these options:\nIn this example, the cell options results is set to 'asis', and fig-width is set to 5 inches.\nThese options can be customized to tailor the behavior of the code block based on your specific requirements. Understanding and using these options effectively can enhance the overall control and presentation of your code outputs.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Code Cell Options"
     ]
   },
@@ -801,7 +801,7 @@
     "section": "quarto-webr",
     "text": "quarto-webr\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\ninteractive\nDescribe how the cell should operate on the page through either interactive (Runnable code editor), output (Output only of executed at runtime), or setup (execute code without seeing output at runtime).\n\n\nautorun\nfalse\nAllow interactive cells to be run during document initialization without a user pressing run code.\n\n\nread-only\nfalse\nPrevent code in interactive cells from being modified by disallowing code input.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOptions listed here are unique to the {quarto-webr} extension. For more details, please see Hiding and Executing Code.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Code Cell Options"
     ]
   },
@@ -812,7 +812,7 @@
     "section": "Attributes",
     "text": "Attributes\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nlabel\n''\nUnique label for code cell. Useful for debugging.\n\n\nclasses\n''\nClasses to apply to cell container",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Code Cell Options"
     ]
   },
@@ -823,7 +823,7 @@
     "section": "Cell Output",
     "text": "Cell Output\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nresults\nmarkup\nControls how to display the text results through either: markup (Mark up text output with appropriate environments), asis (Write text output as-is, raw text results directly into the output document), or hide (Hide text output).\n\n\noutput\ntrue\nControls inclusion of results: true (all results), false (no results), or 'asis' (output as-is, raw text results directly into the output document).\n\n\nwarning\ntrue\nPreserve standard error output (warning(), message(), or stop()) in the output.\n\n\nmessage\ntrue\nSee prior entry.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAt the present time, we cannot differentiate between the type of condition being sent to standard error. Thus, if either warning or message is set to false, the output for both will be surpressed.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Code Cell Options"
     ]
   },
@@ -834,7 +834,7 @@
     "section": "Figures",
     "text": "Figures\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nfig-cap\n\"\"\nFigure caption that should appear under the canvas\n\n\ndpi\n72\nDots per inch to use in calculating pixel values for fig-height and fig-width, e.g. dpi * inches = pixels.\n\n\nfig-width\n7\nWidth of the plot (in inches)\n\n\nfig-height\n5\nHeight of the plot (in inches)\n\n\nout-width\n700px\nWidth of the plot in the output document, which can be different from its physical fig-width such as \"100%\" or \"250px\".\n\n\nout-height\n\"\"\nHeight of the plot in the output document, similar to out-width.",
     "crumbs": [
-      "Getting Started",
+      "Options Reference",
       "Code Cell Options"
     ]
   },
