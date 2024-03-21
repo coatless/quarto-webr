@@ -67,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
 .monaco-editor pre {
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1,"options":{"warning":"true","fig-height":5,"results":"markup","out-height":"","label":"unnamed-chunk-1","context":"output","classes":"","message":"true","output":"true","out-width":"700px","read-only":"false","autorun":"true","comment":"","fig-cap":"","dpi":72,"fig-width":7}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","options":{"out-height":"","message":"true","results":"markup","dpi":72,"autorun":"true","context":"output","output":"true","fig-cap":"","warning":"true","out-width":"700px","read-only":"false","classes":"","fig-height":5,"comment":"","fig-width":7,"label":"unnamed-chunk-1"}}];
 
 </script>
 <script type="module">
@@ -1108,6 +1108,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-revealjs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: webR in RevealJS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: embed-resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">

@@ -67,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
 .monaco-editor pre {
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"context":"setup","message":"true","results":"markup","classes":"","output":"true","read-only":"false","fig-width":7,"warning":"true","fig-height":5,"label":"unnamed-chunk-1","out-height":"","dpi":72,"fig-cap":"","out-width":"700px","autorun":"true","comment":""}},{"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"context":"interactive","message":"true","results":"markup","classes":"","output":"true","read-only":"false","fig-width":7,"warning":"true","fig-height":5,"label":"unnamed-chunk-2","out-height":"","dpi":72,"fig-cap":"","out-width":"700px","autorun":"false","comment":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"results":"markup","label":"unnamed-chunk-1","context":"setup","warning":"true","autorun":"true","out-width":"700px","comment":"","fig-width":7,"out-height":"","output":"true","fig-height":5,"read-only":"false","classes":"","fig-cap":"","message":"true","dpi":72}},{"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"results":"markup","label":"unnamed-chunk-2","context":"interactive","warning":"true","autorun":"false","out-width":"700px","comment":"","fig-width":7,"out-height":"","output":"true","fig-height":5,"read-only":"false","classes":"","fig-cap":"","message":"true","dpi":72}}];
 
 </script>
 <script type="module">
@@ -1108,6 +1108,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-revealjs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: webR in RevealJS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: embed-resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
