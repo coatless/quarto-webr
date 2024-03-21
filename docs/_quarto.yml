@@ -21,14 +21,18 @@ website:
         contents:
           - href: qwebr-first-steps.qmd
             text: Your first webR-powered Quarto document
-          - href: qwebr-meta-options.qmd
-            text: Document Options
-          - href: qwebr-cell-options.qmd
-            text: Code Cell Options
           - href: qwebr-using-r-packages.qmd
             text: Using R Packages
           - href: qwebr-internal-cell.qmd
             text: Hiding and Executing Code
+          - href: qwebr-loading-data.qmd
+            text: Loading Data      
+      - section: "Getting Started"
+        contents:
+          - href: qwebr-meta-options.qmd
+            text: Document Options
+          - href: qwebr-cell-options.qmd
+            text: Code Cell Options
       - section: "Support"
         contents:
           - href: qwebr-troubleshooting.qmd

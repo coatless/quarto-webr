@@ -1,0 +1,56 @@
+---
+title: "Accessing and Using Data in webR"
+subtitle: "Possible avenues for Data Retrieval"
+author: "James Joseph Balamuta"
+date: "01-14-2024"
+date-modified: last-modified
+format: 
+  html:
+    toc: true
+engine: knitr
+filters:
+- webr
+---
+
+# Overview
+
+[webR](https://docs.r-wasm.org/webr/latest/) is a [WebAssembly](https://webassembly.org/)-powered version of [R](https://r-project.org), allowing users to run R code in web browsers. There are changes required to accommodate using data in within this web environment. This documentation entry guides you through the process of retrieving data in webR. 
+
+::: {.callout-note}
+Before proceeding, take note of the following considerations: 
+
+1. **Security Protocol:** webR necessitates data retrieval via the [HyperText Transfer Protocol Secure (HTTPS)](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS) protocol to ensure secure connections and the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) being enabled.
+2. **Package Compatibility:** In the absence of websockets within webR, packages reliant on `{curl}` methods may require adaptation or alternative solutions.
+:::
+
+## Retrieving Data Using HTTPS
+
+When retrieving data in webR, it is imperative to adhere to the HTTPS protocol. Begin by downloading the data using the `download.file()` function and subsequently reading it into R utilizing a relative path. Follow this example:
+
+```r
+url <- "https://example.com/data.csv"
+download.file(url, "data.csv")
+```
+
+This action saves the file into webR's virtual file system to be read into R's analysis environment. Replace `"https://example.com/data.csv"` with the actual URL of your desired data source.
+
+### Base R 
+
+For optimized performance, leverage base R's `read.*()` functions, as they do not necessitate additional package dependencies. 
+
+```r
+data <- read.csv("data.csv")
+```
+
+### Tidyverse
+
+Alternatively, you can use `tidyverse`-based functions like `readr::read_csv()`.
+
+:::{.callout-note}
+Note that employing `tidyverse` or `readr` functions entails additional package downloads at the session's outset.
+:::
+
+```r
+install.packages("readr")
+data <- readr::read_csv("data.csv")
+```
