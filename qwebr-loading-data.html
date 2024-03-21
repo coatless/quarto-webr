@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-01">
+<meta name="author" content="James Joseph Balamuta">
+<meta name="dcterms.date" content="2024-01-14">
 
-<title>quarto-webr – Frequently Asked Questions</title>
+<title>quarto-webr – Accessing and Using Data in webR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -89,7 +124,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-troubleshooting.html">Support</a></li><li class="breadcrumb-item"><a href="./qwebr-faq.html">FAQ</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-loading-data.html">Loading Data</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -151,7 +186,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-loading-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-loading-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Loading Data</span></a>
   </div>
 </li>
@@ -197,7 +232,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -324,34 +359,41 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#stability-and-long-term-support" id="toc-stability-and-long-term-support" class="nav-link active" data-scroll-target="#stability-and-long-term-support">Stability and Long Term Support</a></li>
-  <li><a href="#improving-performance" id="toc-improving-performance" class="nav-link" data-scroll-target="#improving-performance">Improving Performance</a></li>
-  <li><a href="#webr-limitations" id="toc-webr-limitations" class="nav-link" data-scroll-target="#webr-limitations">webR Limitations</a></li>
-  <li><a href="#state-of-accessibility" id="toc-state-of-accessibility" class="nav-link" data-scroll-target="#state-of-accessibility">State of Accessibility</a></li>
-  <li><a href="#package-usage" id="toc-package-usage" class="nav-link" data-scroll-target="#package-usage">Package Usage</a></li>
-  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
-  <li><a href="#styling" id="toc-styling" class="nav-link" data-scroll-target="#styling">Styling</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#retrieving-data-using-https" id="toc-retrieving-data-using-https" class="nav-link" data-scroll-target="#retrieving-data-using-https">Retrieving Data Using HTTPS</a>
+  <ul class="collapse">
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-faq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-loading-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-troubleshooting.html">Support</a></li><li class="breadcrumb-item"><a href="./qwebr-faq.html">FAQ</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-loading-data.html">Loading Data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Frequently Asked Questions</h1>
-<p class="subtitle lead">Find Answers to Common Queries About <code>quarto-webr</code> Extension</p>
+<h1 class="title">Accessing and Using Data in webR</h1>
+<p class="subtitle lead">Possible avenues for Data Retrieval</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>James Joseph Balamuta </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2023</p>
+      <p class="date">January 14, 2024</p>
     </div>
   </div>
   
@@ -369,79 +411,59 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </header>
 
 
-<p>Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the <code>quarto-webr</code> extension. If you can’t find the answer you’re looking for, don’t hesitate to reach out to our community for additional support by opening a <a href="https://github.com/coatless/quarto-webr/issues/new?assignees=&amp;labels=q%26a&amp;projects=&amp;template=question.yml&amp;title=%5BQ%26A%5D%3A+">question</a> or a <a href="https://github.com/coatless/quarto-webr/issues/new?assignees=&amp;labels=bug%2Ctriage-needed&amp;projects=&amp;template=bug-report.yml&amp;title=%5BBug%5D%3A+">bug report</a> on the <a href="https://github.com/coatless/quarto-webr/issues">issue tracker</a>.</p>
-<section id="stability-and-long-term-support" class="level1">
-<h1>Stability and Long Term Support</h1>
-<blockquote class="blockquote">
-<p>Q. Would you say the quarto-webr extension API is stable? Thinking about starting to convert course notes and wondering where the project is in terms of stability.</p>
-</blockquote>
-<p>Yes, the <code>quarto-webr</code> extension API can be considered stable for most practical purposes. It has undergone significant development and testing to ensure that it functions reliably and consistently within the Quarto framework. You can confidently start converting your course notes and materials using this extension.</p>
-<p>However, it’s important to keep in mind a few considerations:</p>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p><a href="https://docs.r-wasm.org/webr/latest/">webR</a> is a <a href="https://webassembly.org/">WebAssembly</a>-powered version of <a href="https://r-project.org">R</a>, allowing users to run R code in web browsers. There are changes required to accommodate using data in within this web environment. This documentation entry guides you through the process of retrieving data in webR.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before proceeding, take note of the following considerations:</p>
 <ol type="1">
-<li><p><strong>Dependency on Quarto and webR projects:</strong> The <code>quarto-webr</code> extension relies on the main <code>webR</code> project for its core functionality. While we actively maintain the <code>quarto-webr</code> extension and aim to keep it compatible with the latest versions of Quarto and <code>webR</code>, we cannot control what happens upstream at either project. Changes or updates to either project may occasionally require adjustments in the extension. For the most part, these adjustments will be largely hidden.</p></li>
-<li><p><strong>Version compatibility:</strong> It’s important to note that the version of the R client and R packages that is downloaded for <code>webR</code> execution may affect your materials. It’s advisable to periodically review and update your teaching materials, especially when major changes occur in R version or R package contents, just as before.</p></li>
-<li><p><strong>Start with a small set:</strong> When converting your course materials, it’s a good practice to start with a small set of materials as a pilot. This allows you to familiarize yourself with the extension’s functionality and raise/address any specific issues that may arise during the conversion process. Once you are comfortable with the workflow and have tested your materials, you should proceed with converting the rest of your course content.</p></li>
+<li><strong>Security Protocol:</strong> webR necessitates data retrieval via the <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTPS">HyperText Transfer Protocol Secure (HTTPS)</a> protocol to ensure secure connections and the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a> being enabled.</li>
+<li><strong>Package Compatibility:</strong> In the absence of websockets within webR, packages reliant on <code>{curl}</code> methods may require adaptation or alternative solutions.</li>
 </ol>
+</div>
+</div>
+<section id="retrieving-data-using-https" class="level2">
+<h2 class="anchored" data-anchor-id="retrieving-data-using-https">Retrieving Data Using HTTPS</h2>
+<p>When retrieving data in webR, it is imperative to adhere to the HTTPS protocol. Begin by downloading the data using the <code>download.file()</code> function and subsequently reading it into R utilizing a relative path. Follow this example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://example.com/data.csv"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This action saves the file into webR’s virtual file system to be read into R’s analysis environment. Replace <code>"https://example.com/data.csv"</code> with the actual URL of your desired data source.</p>
+<section id="base-r" class="level3">
+<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
+<p>For optimized performance, leverage base R’s <code>read.*()</code> functions, as they do not necessitate additional package dependencies.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="improving-performance" class="level1">
-<h1>Improving Performance</h1>
-<blockquote class="blockquote">
-<ol start="17" type="A">
-<li>What are your plans, if any, for scaling webR to handle complex content faster?</li>
-</ol>
-</blockquote>
-<p>For handling complex content, we recommend setting the <code>channel-type</code> option to the <a href="./qwebr-communication-channels.html#sec-shared-array-buffer"><code>'shared-array-buffer'</code></a>, which can significantly speed up its execution. This environment requires the proper configuration of HTTP headers for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">Cross-Origin Embedder Policy (COEP)</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy">Cross-Origin Opener Policy (COOP)</a>. By setting these headers correctly, you can already achieve notable speed improvements when working with webR.</p>
-<p>However, for further enhancements and speed optimizations beyond what the COEP and COOP headers provide, we recommend keeping an eye on the <a href="https://docs.r-wasm.org/webr/latest/">main webR project’s documentation</a>. The core webR project continuously works on improving performance and scalability, so any future advancements in handling complex content faster will likely originate from their developments.</p>
-</section>
-<section id="webr-limitations" class="level1">
-<h1>webR Limitations</h1>
-<blockquote class="blockquote">
-<p>Q. I noticed that built in docs with ? don’t work in webR. Are there any other known issues? How long to feature parity?</p>
-</blockquote>
-<p>Regarding feature parity with the main <code>webR</code> project, it’s important to understand that <code>quarto-webr</code> inherits the same limitations and capabilities as the core <code>webR</code> technology. Efforts to address these limitations and bring feature parity will depend on the ongoing development of <code>webR</code> itself and the evolution of WebAssembly and web browser capabilities. While there may be progress in mitigating some of these limitations over time, achieving complete feature parity may be a complex and ongoing process. In the case of help documentation, we added support in <code>quarto-webr</code> v0.3.7.</p>
-<p>The known limitations at this time are:</p>
-<ol type="1">
-<li><p><strong>Package Installation</strong>: Installing packages from source within <code>webR</code> is not currently supported. This limitation is unlikely to change in the near future as it would require a complete C and Fortran compiler toolchain to run within the browser. As a result, the only supported way to install R packages in <code>webR</code> is by providing pre-compiled WebAssembly binaries.</p></li>
-<li><p><strong>Graphics Device</strong>: The <code>webr::canvas()</code> graphics device relies on OffscreenCanvas support in the web browser or JavaScript engine running <code>webR</code>. This means that a modern and up-to-date browser is required for plotting with this device. Older browsers without OffscreenCanvas support can still create plots using the Cairo-based graphics devices, such as <code>png()</code>.</p></li>
-<li><p><strong>Communication Channels</strong>: <code>webR</code> relies on communication channels for interaction. Without cross-origin isolation, it falls back to the ServiceWorker communication channel, which may result in reduced performance or require additional setup.</p></li>
-<li><p><strong>Interruption of Running Code</strong>: Interruption of running R code and the use of nested R REPLs (such as <code>readline()</code>, <code>menu()</code>, <code>browser()</code>, etc.) are unsupported when using the PostMessage communication channel.</p></li>
-<li><p><strong>System Command</strong>: The <code>system()</code> command is not implemented in webR, which means that executing system-level commands from within R code or packages is not possible.</p></li>
-</ol>
-</section>
-<section id="state-of-accessibility" class="level1">
-<h1>State of Accessibility</h1>
-<blockquote class="blockquote">
-<p>Q. You mentioned there has been some work on accessibility. I’m curious what the current state of accessibility is? What are the known issues?</p>
-</blockquote>
-<p>Accessibility is an important aspect of webR, and we are committed to ensuring that the tool is usable by individuals with disabilities. To address accessibility concerns, we have engaged the expertise of <a href="https://github.com/jooyoungseo">JooYoung Seo</a>, an Assistant Professor in the School of Information Sciences (iSchool) at the University of Illinois Urbana-Champaign. JooYoung specializes in accessibility within Data Science and has been instrumental in conducting periodic accessibility reviews of webR.</p>
-<p>One of the primary areas of focus has been making sure that screen readers can easily identify and interact with code cells on the page. This ensures that individuals with visual impairments can effectively use webR. While we’ve made significant strides in improving accessibility, we continue to work on addressing any known issues and enhancing the overall accessibility of the tool. We are committed to providing an inclusive and user-friendly experience for all users, and JooYoung’s expertise has been invaluable in this regard.</p>
-</section>
-<section id="package-usage" class="level1">
-<h1>Package Usage</h1>
-<blockquote class="blockquote">
-<p>Q. Does the use of R packages cause any issues for you when teaching content with webR and Quarto?</p>
-</blockquote>
-<p>When teaching content with <code>webR</code> and Quarto, the use of R packages is certainly supported. However, it’s important to be aware of a few considerations that can help ensure a smooth teaching experience.</p>
-<p>In a typical R environment, packages are installed once and are available for subsequent sessions using <code>library()</code> or <code>require()</code>. In <code>webR</code>, packages are installed on each session. This means that each <code>webR</code> session starts with a clean slate, and packages need to be installed again for that specific session.</p>
-<p>To optimize this process and avoid unnecessary downloads, it’s recommended to use the <code>webr::install()</code> function instead of the standard <code>install.packages()</code> function. <code>webr::install()</code> checks if a package is already installed and does not re-download it if it’s already available. This can significantly speed up the package installation process when working with <code>webR</code> and Quarto.</p>
-<p>One way to simplify the teaching process and prevent students from working while packages are being installed is to use the built-in <a href="./qwebr-using-r-packages.html#install-r-packages-on-document-open"><code>packages</code> option</a> in the document’s header. This option hides the installation process from students and ensures that the required packages are pre-installed when they access the document.</p>
-<p>Finally, it’s worth noting that the R packages available to <code>webR</code> may not always be the latest versions that you can get from CRAN (the Comprehensive R Archive Network). Therefore, it’s a good practice to check the package versions and ensure compatibility with your teaching materials.</p>
-</section>
-<section id="debugging" class="level1">
-<h1>Debugging</h1>
-<blockquote class="blockquote">
-<p>Q. How are error messages, etc. communicated in webr’s interface? Would it be easy for a student to debug without the tools that are available in the RStudio?</p>
-</blockquote>
-<p>Error messages, warnings, and other diagnostic information are presented in the output of a <code>quarto-webr</code> interface, just like in a standard R environment. These messages appear directly below the code cell that generated them. While <code>quarto-webr</code> provides a user-friendly interface for working with R in a web browser, it does not offer advanced debugging tools like <code>debug()</code>, <code>debugonce()</code>, <code>debuggingState()</code>, or <code>setBreakpoint()</code>. Therefore, debugging in <code>quarto-webr</code> is primarily reliant on interpreting the error messages and warnings displayed in the output. For students familiar with RStudio’s debugging tools, transitioning to <code>quarto-webr</code> may require an adjustment to debugging practices. However, the clear presentation of error messages in the output makes it relatively straightforward for students to identify and address issues in their code.</p>
-</section>
-<section id="styling" class="level1">
-<h1>Styling</h1>
-<blockquote class="blockquote">
-<p>Q. Is it possible to style the UI elements the quarto-webr extension add to your document? Do they get affected by styling/theme changes so things look coherent?</p>
-</blockquote>
-<p>Certainly! You have the flexibility to style the UI elements added by the <code>quarto-webr</code> extension to your document. For more details, please see <a href="./qwebr-theming.html">Theming Elements</a>.</p>
+<section id="tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
+<p>Alternatively, you can use <code>tidyverse</code>-based functions like <code>readr::read_csv()</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that employing <code>tidyverse</code> or <code>readr</code> functions entails additional package downloads at the session’s outset.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -870,4 +892,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-faq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-loading-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

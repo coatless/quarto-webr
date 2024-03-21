@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-1","warning":"true","read-only":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"context":"interactive","classes":"","fig-cap":"","fig-height":5,"autorun":"false","fig-width":7},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-2","warning":"true","read-only":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"context":"setup","classes":"","fig-cap":"","fig-height":5,"autorun":"true","fig-width":7},"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"id":3,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-3","warning":"true","read-only":"false","out-width":"700px","results":"asis","out-height":"","dpi":72,"context":"interactive","classes":"","fig-cap":"","fig-height":5,"autorun":"false","fig-width":7},"code":"knitr::kable(data, \"html\")"},{"id":4,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-4","warning":"true","read-only":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"context":"interactive","classes":"","fig-cap":"","fig-height":5,"autorun":"false","fig-width":7},"code":"knitr::kable(data, \"html\")"},{"id":5,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-5","warning":"true","read-only":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"context":"output","classes":"","fig-cap":"","fig-height":"6","autorun":"true","fig-width":"6"},"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":6,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-6","warning":"true","read-only":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"context":"output","classes":"","fig-cap":"","fig-height":5,"autorun":"true","fig-width":7},"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":7,"options":{"message":"true","output":"true","comment":"","label":"unnamed-chunk-7","warning":"true","read-only":"false","out-width":"500px","results":"markup","out-height":"500px","dpi":72,"context":"output","classes":"","fig-cap":"","fig-height":"6","autorun":"true","fig-width":"6"},"code":"tinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"comment":"","context":"interactive","warning":"true","out-height":"","fig-height":5,"output":"true","fig-width":7,"out-width":"700px","dpi":72,"label":"unnamed-chunk-1","read-only":"false","classes":"","autorun":"false","results":"markup","fig-cap":"","message":"true"}},{"id":2,"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)","options":{"comment":"","context":"setup","warning":"true","out-height":"","fig-height":5,"output":"true","fig-width":7,"out-width":"700px","dpi":72,"label":"unnamed-chunk-2","read-only":"false","classes":"","autorun":"true","results":"markup","fig-cap":"","message":"true"}},{"id":3,"code":"knitr::kable(data, \"html\")","options":{"comment":"","context":"interactive","warning":"true","out-height":"","fig-height":5,"output":"true","fig-width":7,"out-width":"700px","dpi":72,"label":"unnamed-chunk-3","read-only":"false","classes":"","autorun":"false","results":"asis","fig-cap":"","message":"true"}},{"id":4,"code":"knitr::kable(data, \"html\")","options":{"comment":"","context":"interactive","warning":"true","out-height":"","fig-height":5,"output":"true","fig-width":7,"out-width":"700px","dpi":72,"label":"unnamed-chunk-4","read-only":"false","classes":"","autorun":"false","results":"markup","fig-cap":"","message":"true"}},{"id":5,"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","context":"output","warning":"true","out-height":"","fig-height":"6","output":"true","fig-width":"6","out-width":"700px","dpi":72,"label":"unnamed-chunk-5","read-only":"false","classes":"","autorun":"true","results":"markup","fig-cap":"","message":"true"}},{"id":6,"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","context":"output","warning":"true","out-height":"","fig-height":5,"output":"true","fig-width":7,"out-width":"700px","dpi":72,"label":"unnamed-chunk-6","read-only":"false","classes":"","autorun":"true","results":"markup","fig-cap":"","message":"true"}},{"id":7,"code":"tinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)","options":{"comment":"","context":"output","warning":"true","out-height":"500px","fig-height":"6","output":"true","fig-width":"6","out-width":"500px","dpi":72,"label":"unnamed-chunk-7","read-only":"false","classes":"","autorun":"true","results":"markup","fig-cap":"","message":"true"}}];
 
 </script>
 <script type="module">
@@ -1056,18 +1056,6 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Document Options</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Cell Options</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using R Packages</span></a>
   </div>
@@ -1078,17 +1066,46 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text">Hiding and Executing Code</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-loading-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Support</span></a>
+ <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Document Options</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code Cell Options</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Support</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
@@ -1111,13 +1128,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
@@ -1146,13 +1163,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
@@ -1175,13 +1192,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Extra Information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-release-notes.html" class="sidebar-item-text sidebar-link">

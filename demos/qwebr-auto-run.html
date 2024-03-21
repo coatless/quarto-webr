@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1,"options":{"label":"unnamed-chunk-1","output":"true","fig-height":5,"comment":"","fig-cap":"","results":"markup","dpi":72,"context":"interactive","autorun":"false","read-only":"false","out-height":"","warning":"true","message":"true","classes":"","fig-width":7,"out-width":"700px"}},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":2,"options":{"label":"unnamed-chunk-2","output":"true","fig-height":5,"comment":"","fig-cap":"","results":"markup","dpi":72,"context":"interactive","autorun":"true","read-only":"false","out-height":"","warning":"true","message":"true","classes":"","fig-width":7,"out-width":"700px"}},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","id":3,"options":{"label":"unnamed-chunk-3","output":"true","fig-height":5,"comment":"","fig-cap":"","results":"markup","dpi":72,"context":"output","autorun":"true","read-only":"false","out-height":"","warning":"true","message":"true","classes":"","fig-width":7,"out-width":"700px"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","id":4,"options":{"label":"unnamed-chunk-4","output":"true","fig-height":"3","comment":"","fig-cap":"","results":"markup","dpi":72,"context":"output","autorun":"true","read-only":"false","out-height":"","warning":"true","message":"true","classes":"","fig-width":"5","out-width":"500px"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","id":5,"options":{"label":"unnamed-chunk-5","output":"true","fig-height":"3","comment":"","fig-cap":"","results":"markup","dpi":72,"context":"interactive","autorun":"true","read-only":"false","out-height":"","warning":"true","message":"true","classes":"","fig-width":"5","out-width":"500px"}}];
+globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"out-width":"700px","classes":"","read-only":"false","output":"true","warning":"true","fig-width":7,"fig-cap":"","label":"unnamed-chunk-1","comment":"","results":"markup","message":"true","context":"interactive","out-height":"","fig-height":5,"dpi":72,"autorun":"false"},"id":1},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"out-width":"700px","classes":"","read-only":"false","output":"true","warning":"true","fig-width":7,"fig-cap":"","label":"unnamed-chunk-2","comment":"","results":"markup","message":"true","context":"interactive","out-height":"","fig-height":5,"dpi":72,"autorun":"true"},"id":2},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","options":{"out-width":"700px","classes":"","read-only":"false","output":"true","warning":"true","fig-width":7,"fig-cap":"","label":"unnamed-chunk-3","comment":"","results":"markup","message":"true","context":"output","out-height":"","fig-height":5,"dpi":72,"autorun":"true"},"id":3},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","options":{"out-width":"500px","classes":"","read-only":"false","output":"true","warning":"true","fig-width":"5","fig-cap":"","label":"unnamed-chunk-4","comment":"","results":"markup","message":"true","context":"output","out-height":"","fig-height":"3","dpi":72,"autorun":"true"},"id":4},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","options":{"out-width":"500px","classes":"","read-only":"false","output":"true","warning":"true","fig-width":"5","fig-cap":"","label":"unnamed-chunk-5","comment":"","results":"markup","message":"true","context":"interactive","out-height":"","fig-height":"3","dpi":72,"autorun":"true"},"id":5}];
 
 </script>
 <script type="module">
@@ -1056,18 +1056,6 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Document Options</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Cell Options</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using R Packages</span></a>
   </div>
@@ -1078,17 +1066,46 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text">Hiding and Executing Code</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-loading-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Support</span></a>
+ <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Document Options</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code Cell Options</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Support</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
@@ -1111,13 +1128,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
@@ -1146,13 +1163,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
@@ -1175,13 +1192,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Extra Information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
