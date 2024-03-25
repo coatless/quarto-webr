@@ -14,18 +14,22 @@ filters:
 
 # Overview
 
-[webR](https://docs.r-wasm.org/webr/latest/) is a [WebAssembly](https://webassembly.org/)-powered version of [R](https://r-project.org), allowing users to run R code in web browsers. There are changes required to accommodate using data in within this web environment. This documentation entry guides you through the process of retrieving data in webR. 
+When working with data in [webR](https://docs.r-wasm.org/webr/latest/), there are some tricks to using data in the web environment. This documentation entry guides you through a few changes related to accessing data.
+
+## Accessing Data through R Data Packages
+
+One approach to accessing data is to store the data inside of an [R data package](https://thecoatlessprofessor.com/programming/r/creating-an-r-data-package/). This kind of R package consists solely of data in an R ready format with the added benefit of help documentation. If the data package is on CRAN, chances are there is a version available for webR on the [main repository (warning not a mobile data friendly link)](https://repo.r-wasm.org/) and, thus, can be accessed using `install.packages("pkg")` or added to the documents `packages` key. Otherwise, the R package will need to be converted, deployed, and accessed through GitHub Pages by following the advice to [setup a custom package repository](qwebr-using-r-packages.qmd#custom-repositories).
+
+## Retrieving Data from the Web
 
 ::: {.callout-note}
-Before proceeding, take note of the following considerations: 
+Before proceeding, take note of the following considerations when working with remote data: 
 
 1. **Security Protocol:** webR necessitates data retrieval via the [HyperText Transfer Protocol Secure (HTTPS)](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS) protocol to ensure secure connections and the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) being enabled.
 2. **Package Compatibility:** In the absence of websockets within webR, packages reliant on `{curl}` methods may require adaptation or alternative solutions.
 :::
 
-## Retrieving Data Using HTTPS
-
-When retrieving data in webR, it is imperative to adhere to the HTTPS protocol. Begin by downloading the data using the `download.file()` function and subsequently reading it into R utilizing a relative path. Follow this example:
+When retrieving data in webR, it is imperative to always use links that use [HyperText Transfer Protocol Secure (HTTPS)](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS). From there, the data at the HTTPS URL can be downloaded using the `download.file()` function and subsequently reading it into R utilizing a relative path. Follow this example:
 
 ```r
 url <- "https://example.com/data.csv"
@@ -44,10 +48,10 @@ data <- read.csv("data.csv")
 
 ### Tidyverse
 
-Alternatively, you can use `tidyverse`-based functions like `readr::read_csv()`.
+Alternatively, you can use `tidyverse`-based functions like `readr::read_*()`.
 
 :::{.callout-note}
-Note that employing `tidyverse` or `readr` functions entails additional package downloads at the session's outset.
+Note that employing `tidyverse` or `readr` functions entails additional package downloads at the session's outset or immediately preceeding the function usage.
 :::
 
 ```r
