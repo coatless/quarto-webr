@@ -361,7 +361,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
-  <li><a href="#retrieving-data-using-https" id="toc-retrieving-data-using-https" class="nav-link" data-scroll-target="#retrieving-data-using-https">Retrieving Data Using HTTPS</a>
+  <li><a href="#accessing-data-in-an-r-packages" id="toc-accessing-data-in-an-r-packages" class="nav-link" data-scroll-target="#accessing-data-in-an-r-packages">Accessing Data in an R Packages</a></li>
+  <li><a href="#retrieving-data-from-the-web" id="toc-retrieving-data-from-the-web" class="nav-link" data-scroll-target="#retrieving-data-from-the-web">Retrieving Data from the Web</a>
   <ul class="collapse">
   <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
   <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a></li>
@@ -413,7 +414,13 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p><a href="https://docs.r-wasm.org/webr/latest/">webR</a> is a <a href="https://webassembly.org/">WebAssembly</a>-powered version of <a href="https://r-project.org">R</a>, allowing users to run R code in web browsers. There are changes required to accommodate using data in within this web environment. This documentation entry guides you through the process of retrieving data in webR.</p>
+<p>When working with data in <a href="https://docs.r-wasm.org/webr/latest/">webR</a>, there are some tricks to using data in the web environment. This documentation entry guides you through a few changes related to accessing data.</p>
+<section id="accessing-data-in-an-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-data-in-an-r-packages">Accessing Data in an R Packages</h2>
+<p>One approach to accessing data is to store the data inside of an <a href="https://thecoatlessprofessor.com/programming/r/creating-an-r-data-package/">R data package</a>. This kind of R package consists solely of data in an R ready format with the added benefit of help documentation. If the data package is on CRAN, chances are there is a version available for webR on the <a href="https://repo.r-wasm.org/">main repository (warning not a mobile data friendly link)</a> and, thus, can be accessed using <code>install.packages("pkg")</code> or added to the documents <code>packages</code> key. Otherwise, the R package will need to be converted, deployed, and accessed through GitHub Pages by following the advice to <a href="./qwebr-using-r-packages.html#custom-repositories">setup a custom package repository</a>.</p>
+</section>
+<section id="retrieving-data-from-the-web" class="level2">
+<h2 class="anchored" data-anchor-id="retrieving-data-from-the-web">Retrieving Data from the Web</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -424,16 +431,14 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before proceeding, take note of the following considerations:</p>
+<p>Before proceeding, take note of the following considerations when working with remote data:</p>
 <ol type="1">
 <li><strong>Security Protocol:</strong> webR necessitates data retrieval via the <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTPS">HyperText Transfer Protocol Secure (HTTPS)</a> protocol to ensure secure connections and the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a> being enabled.</li>
 <li><strong>Package Compatibility:</strong> In the absence of websockets within webR, packages reliant on <code>{curl}</code> methods may require adaptation or alternative solutions.</li>
 </ol>
 </div>
 </div>
-<section id="retrieving-data-using-https" class="level2">
-<h2 class="anchored" data-anchor-id="retrieving-data-using-https">Retrieving Data Using HTTPS</h2>
-<p>When retrieving data in webR, it is imperative to adhere to the HTTPS protocol. Begin by downloading the data using the <code>download.file()</code> function and subsequently reading it into R utilizing a relative path. Follow this example:</p>
+<p>When retrieving data in webR, it is imperative to always use links that use <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTPS">HyperText Transfer Protocol Secure (HTTPS)</a>. From there, the data at the HTTPS URL can be downloaded using the <code>download.file()</code> function and subsequently reading it into R utilizing a relative path. Follow this example:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://example.com/data.csv"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url, <span class="st">"data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This action saves the file into webR’s virtual file system to be read into R’s analysis environment. Replace <code>"https://example.com/data.csv"</code> with the actual URL of your desired data source.</p>
@@ -444,7 +449,7 @@ Note
 </section>
 <section id="tidyverse" class="level3">
 <h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
-<p>Alternatively, you can use <code>tidyverse</code>-based functions like <code>readr::read_csv()</code>.</p>
+<p>Alternatively, you can use <code>tidyverse</code>-based functions like <code>readr::read_*()</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -455,7 +460,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that employing <code>tidyverse</code> or <code>readr</code> functions entails additional package downloads at the session’s outset.</p>
+<p>Note that employing <code>tidyverse</code> or <code>readr</code> functions entails additional package downloads at the session’s outset or immediately preceeding the function usage.</p>
 </div>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>)</span>
