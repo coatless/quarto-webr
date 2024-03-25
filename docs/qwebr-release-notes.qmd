@@ -9,10 +9,11 @@ format:
 ---
 
 
-# 0.4.x-dev.1: ???????????? (??-??-??) [DEV]
+# 0.4.1-dev.2: ???????????? (??-??-??) [DEV]
 
 ## Features
 
+- Upgraded the embedded version of webR to v0.3.1. ([#165](https://github.com/coatless/quarto-webr/issues/165))
 - `read-only` is a new code cell option that prevents changes to code inside of an  `interactive` context. 
 
 ## Bug fixes

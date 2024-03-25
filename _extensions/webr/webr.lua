@@ -12,7 +12,7 @@ local hasDoneWebRSetup = false
 -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html
 
 -- Define a base compatibile version
-local baseVersionWebR = "0.2.2"
+local baseVersionWebR = "0.3.1"
 
 -- Define where WebR can be found
 local baseUrl = "https://webr.r-wasm.org/v".. baseVersionWebR .."/"

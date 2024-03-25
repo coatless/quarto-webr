@@ -92,9 +92,13 @@ globalThis.qwebrComputeEngine = async function(
     await mainWebR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
-    await mainWebR.evalRVoid(`webr::canvas(width=${fig_width}, height=${fig_height})`);
-
-    const result = await mainWebRCodeShelter.captureR(codeToRun, {
+    // Evaluate the R code
+    // Remove the active canvas silently
+    const result = await mainWebRCodeShelter.captureR(
+        `webr::canvas(width=${fig_width}, height=${fig_height})
+        ${codeToRun}
+        invisible(dev.off())
+        `, {
         withAutoprint: true,
         captureStreams: true,
         captureConditions: false//,
@@ -105,9 +109,6 @@ globalThis.qwebrComputeEngine = async function(
 
     // Start attempting to parse the result data
     processResultOutput:try {
-
-        // Stop creating images
-        await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
         if (options.results === "hide" || options.output === "false") { 
