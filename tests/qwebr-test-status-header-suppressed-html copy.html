@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"message":"true","context":"interactive","label":"unnamed-chunk-1","autorun":"false","comment":"","out-height":"","classes":"","output":"true","fig-width":7,"results":"markup","dpi":72,"fig-height":5,"fig-cap":"","read-only":"false","warning":"true","out-width":"700px"},"code":"print(\"Hello hidden title world!\")","id":1}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello hidden title world!\")","options":{"out-width":"700px","results":"markup","output":"true","classes":"","fig-cap":"","context":"interactive","message":"true","warning":"true","fig-width":7,"fig-height":5,"comment":"","out-height":"","autorun":"false","label":"unnamed-chunk-1","dpi":72,"read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

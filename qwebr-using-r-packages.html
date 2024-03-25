@@ -111,7 +111,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -277,7 +277,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","message":"true","fig-width":7,"comment":"","warning":"true","results":"markup","read-only":"false","fig-cap":"","autorun":"false","classes":"","context":"interactive","label":"unnamed-chunk-1","dpi":72,"out-width":"700px","fig-height":5,"out-height":""},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"output":"true","message":"true","fig-width":7,"comment":"","warning":"true","results":"markup","read-only":"false","fig-cap":"","autorun":"false","classes":"","context":"interactive","label":"unnamed-chunk-2","dpi":72,"out-width":"700px","fig-height":5,"out-height":""},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"output":"true","message":"true","fig-width":7,"comment":"","warning":"true","results":"markup","read-only":"false","fig-cap":"","autorun":"false","classes":"","context":"interactive","label":"unnamed-chunk-3","dpi":72,"out-width":"700px","fig-height":5,"out-height":""},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"autorun":"false","results":"markup","fig-width":7,"comment":"","read-only":"false","message":"true","warning":"true","output":"true","classes":"","label":"unnamed-chunk-1","fig-height":5,"fig-cap":"","dpi":72,"context":"interactive","out-height":"","out-width":"700px"},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"autorun":"false","results":"markup","fig-width":7,"comment":"","read-only":"false","message":"true","warning":"true","output":"true","classes":"","label":"unnamed-chunk-2","fig-height":5,"fig-cap":"","dpi":72,"context":"interactive","out-height":"","out-width":"700px"},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"autorun":"false","results":"markup","fig-width":7,"comment":"","read-only":"false","message":"true","warning":"true","output":"true","classes":"","label":"unnamed-chunk-3","fig-height":5,"fig-cap":"","dpi":72,"context":"interactive","out-height":"","out-width":"700px"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1254,13 +1254,13 @@ globalThis.qwebrExecuteCode = async function (
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

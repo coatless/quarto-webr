@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1,"options":{"dpi":72,"autorun":"true","warning":"true","label":"unnamed-chunk-1","message":"true","results":"markup","out-width":"700px","output":"true","fig-width":7,"context":"output","read-only":"false","fig-height":5,"classes":"","fig-cap":"","comment":"","out-height":""}}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","autorun":"true","dpi":72,"context":"output","fig-height":5,"warning":"true","out-width":"700px","results":"markup","label":"unnamed-chunk-1","out-height":"","message":"true","fig-width":7,"fig-cap":"","classes":"","read-only":"false","comment":""},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

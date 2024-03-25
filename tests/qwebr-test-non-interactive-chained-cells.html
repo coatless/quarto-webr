@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1,"options":{"output":"true","message":"true","fig-width":7,"out-width":"700px","warning":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-1","out-height":"","context":"setup","read-only":"false","classes":"","dpi":72,"fig-height":5,"autorun":"true","comment":""}},{"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2,"options":{"output":"true","message":"true","fig-width":7,"out-width":"700px","warning":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-2","out-height":"","context":"output","read-only":"false","classes":"","dpi":72,"fig-height":5,"autorun":"true","comment":""}},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3,"options":{"output":"true","message":"true","fig-width":7,"out-width":"700px","warning":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-3","out-height":"","context":"output","read-only":"false","classes":"","dpi":72,"fig-height":5,"autorun":"true","comment":""}},{"code":"g","id":4,"options":{"output":"true","message":"true","fig-width":7,"out-width":"700px","warning":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-4","out-height":"","context":"interactive","read-only":"false","classes":"","dpi":72,"fig-height":5,"autorun":"false","comment":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"out-height":"","output":"true","message":"true","warning":"true","label":"unnamed-chunk-1","autorun":"true","fig-cap":"","context":"setup","out-width":"700px","read-only":"false","classes":"","dpi":72,"comment":"","results":"markup","fig-height":5,"fig-width":7},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"id":2,"options":{"out-height":"","output":"true","message":"true","warning":"true","label":"unnamed-chunk-2","autorun":"true","fig-cap":"","context":"output","out-width":"700px","read-only":"false","classes":"","dpi":72,"comment":"","results":"markup","fig-height":5,"fig-width":7},"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"id":3,"options":{"out-height":"","output":"true","message":"true","warning":"true","label":"unnamed-chunk-3","autorun":"true","fig-cap":"","context":"output","out-width":"700px","read-only":"false","classes":"","dpi":72,"comment":"","results":"markup","fig-height":5,"fig-width":7},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"id":4,"options":{"out-height":"","output":"true","message":"true","warning":"true","label":"unnamed-chunk-4","autorun":"false","fig-cap":"","context":"interactive","out-width":"700px","read-only":"false","classes":"","dpi":72,"comment":"","results":"markup","fig-height":5,"fig-width":7},"code":"g"}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"output":"true","fig-width":7,"label":"unnamed-chunk-1","results":"markup","dpi":72,"out-width":"700px","fig-height":5,"context":"setup","classes":"","message":"true","out-height":"","fig-cap":"","autorun":"true","comment":"","warning":"true","read-only":"false"},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1},{"options":{"output":"true","fig-width":7,"label":"unnamed-chunk-2","results":"markup","dpi":72,"out-width":"700px","fig-height":5,"context":"interactive","classes":"","message":"true","out-height":"","fig-cap":"","autorun":"false","comment":"","warning":"true","read-only":"false"},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"fig-width":7,"comment":"","context":"setup","label":"unnamed-chunk-1","autorun":"true","results":"markup","out-width":"700px","fig-cap":"","classes":"","message":"true","fig-height":5,"output":"true","warning":"true","read-only":"false","dpi":72,"out-height":""}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"fig-width":7,"comment":"","context":"interactive","label":"unnamed-chunk-2","autorun":"false","results":"markup","out-width":"700px","fig-cap":"","classes":"","message":"true","fig-height":5,"output":"true","warning":"true","read-only":"false","dpi":72,"out-height":""}}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

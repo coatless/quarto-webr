@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"message":"true","warning":"true","label":"unnamed-chunk-1","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1},{"options":{"message":"true","warning":"true","label":"unnamed-chunk-2","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2},{"options":{"message":"true","warning":"true","label":"unnamed-chunk-3","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3},{"options":{"message":"true","warning":"true","label":"unnamed-chunk-4","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4},{"options":{"message":"true","warning":"true","label":"unnamed-chunk-5","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5},{"options":{"message":"true","warning":"true","label":"unnamed-chunk-6","classes":"","context":"interactive","output":"true","dpi":72,"fig-cap":"","comment":"","fig-width":7,"out-height":"","read-only":"false","out-width":"700px","results":"markup","fig-height":5,"autorun":"false"},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-1","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-2","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-3","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-4","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-5","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6,"options":{"dpi":72,"out-height":"","output":"true","warning":"true","read-only":"false","autorun":"false","classes":"","results":"markup","label":"unnamed-chunk-6","out-width":"700px","context":"interactive","fig-width":7,"message":"true","fig-cap":"","fig-height":5,"comment":""}}];
 
 </script>
 <script type="module">
@@ -1050,13 +1050,13 @@ globalThis.qwebrExecuteCode = async function (
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

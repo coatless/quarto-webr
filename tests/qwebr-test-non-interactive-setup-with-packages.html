@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-height":5,"dpi":72,"fig-cap":"","warning":"true","message":"true","comment":"","results":"markup","read-only":"false","classes":"","out-height":"","label":"spike-data","autorun":"true","out-width":"700px","output":"true","fig-width":7,"context":"setup"},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"id":2,"options":{"fig-height":5,"dpi":72,"fig-cap":"","warning":"true","message":"true","comment":"","results":"markup","read-only":"false","classes":"","out-height":"","label":"spike-data","autorun":"false","out-width":"700px","output":"true","fig-width":7,"context":"interactive"},"code":"new_mtcars"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"fig-cap":"","context":"setup","comment":"","out-height":"","label":"spike-data","dpi":72,"fig-height":5,"out-width":"700px","results":"markup","output":"true","message":"true","classes":"","read-only":"false","fig-width":7,"autorun":"true","warning":"true"}},{"id":2,"code":"new_mtcars","options":{"fig-cap":"","context":"interactive","comment":"","out-height":"","label":"spike-data","dpi":72,"fig-height":5,"out-width":"700px","results":"markup","output":"true","message":"true","classes":"","read-only":"false","fig-width":7,"autorun":"false","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

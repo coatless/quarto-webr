@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","message":"true","comment":"","out-height":"","out-width":"700px","autorun":"true","label":"unnamed-chunk-1","results":"markup","fig-cap":"","context":"output","fig-height":5,"read-only":"false","fig-width":7,"output":"true","classes":"","dpi":72},"id":1,"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"output","message":"true","output":"true","out-height":"","fig-cap":"","dpi":72,"fig-height":5,"label":"unnamed-chunk-1","warning":"true","results":"markup","autorun":"true","comment":"","classes":"","fig-width":7,"read-only":"false","out-width":"700px"},"id":1,"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>

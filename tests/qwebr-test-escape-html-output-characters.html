@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 <style type="text/css">
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"message":"true","out-height":"","fig-cap":"","warning":"true","autorun":"false","context":"interactive","out-width":"700px","label":"unnamed-chunk-1","fig-height":5,"results":"markup","classes":"","output":"true","dpi":72,"comment":"","fig-width":7,"read-only":"false"}},{"id":2,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"message":"true","out-height":"","fig-cap":"","warning":"true","autorun":"true","context":"output","out-width":"700px","label":"unnamed-chunk-2","fig-height":5,"results":"markup","classes":"","output":"true","dpi":72,"comment":"","fig-width":7,"read-only":"false"}},{"id":3,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"message":"true","out-height":"","fig-cap":"","warning":"true","autorun":"true","context":"output","out-width":"700px","label":"unnamed-chunk-3","fig-height":5,"results":"asis","classes":"","output":"true","dpi":72,"comment":"","fig-width":7,"read-only":"false"}},{"id":4,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"message":"true","out-height":"","fig-cap":"","warning":"true","autorun":"true","context":"output","out-width":"700px","label":"unnamed-chunk-4","fig-height":5,"results":"markup","classes":"","output":"asis","dpi":72,"comment":"","fig-width":7,"read-only":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"output":"true","comment":"","dpi":72,"fig-height":5,"autorun":"false","label":"unnamed-chunk-1","warning":"true","context":"interactive","classes":"","out-height":"","fig-width":7,"fig-cap":"","message":"true","results":"markup","read-only":"false","out-width":"700px"},"id":1},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"output":"true","comment":"","dpi":72,"fig-height":5,"autorun":"true","label":"unnamed-chunk-2","warning":"true","context":"output","classes":"","out-height":"","fig-width":7,"fig-cap":"","message":"true","results":"markup","read-only":"false","out-width":"700px"},"id":2},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"output":"true","comment":"","dpi":72,"fig-height":5,"autorun":"true","label":"unnamed-chunk-3","warning":"true","context":"output","classes":"","out-height":"","fig-width":7,"fig-cap":"","message":"true","results":"asis","read-only":"false","out-width":"700px"},"id":3},{"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"output":"asis","comment":"","dpi":72,"fig-height":5,"autorun":"true","label":"unnamed-chunk-4","warning":"true","context":"output","classes":"","out-height":"","fig-width":7,"fig-cap":"","message":"true","results":"markup","read-only":"false","out-width":"700px"},"id":4}];
 
 </script>
 <script type="module">
@@ -1157,13 +1157,13 @@ globalThis.qwebrExecuteCode = async function (
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
     paths: {
-      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
 </script>
