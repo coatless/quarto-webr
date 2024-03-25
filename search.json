@@ -132,7 +132,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "read-only is a new code cell option that prevents changes to code inside of an interactive context.",
+    "text": "Upgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -143,7 +143,7 @@
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
     "section": "",
-    "text": "read-only is a new code cell option that prevents changes to code inside of an interactive context.",
+    "text": "Upgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.",
     "crumbs": [
       "Extra Information",
       "Release Notes"

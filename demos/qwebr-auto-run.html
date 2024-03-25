@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.5.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -268,14 +268,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.2.2/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","fig-width":7,"results":"markup","out-height":"","fig-height":5,"comment":"","message":"true","autorun":"false","output":"true","context":"interactive","warning":"true","classes":"","read-only":"false","out-width":"700px","dpi":72,"fig-cap":""},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"label":"unnamed-chunk-2","fig-width":7,"results":"markup","out-height":"","fig-height":5,"comment":"","message":"true","autorun":"true","output":"true","context":"interactive","warning":"true","classes":"","read-only":"false","out-width":"700px","dpi":72,"fig-cap":""},"id":2,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"label":"unnamed-chunk-3","fig-width":7,"results":"markup","out-height":"","fig-height":5,"comment":"","message":"true","autorun":"true","output":"true","context":"output","warning":"true","classes":"","read-only":"false","out-width":"700px","dpi":72,"fig-cap":""},"id":3,"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"options":{"label":"unnamed-chunk-4","fig-width":"5","results":"markup","out-height":"","fig-height":"3","comment":"","message":"true","autorun":"true","output":"true","context":"output","warning":"true","classes":"","read-only":"false","out-width":"500px","dpi":72,"fig-cap":""},"id":4,"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"options":{"label":"unnamed-chunk-5","fig-width":"5","results":"markup","out-height":"","fig-height":"3","comment":"","message":"true","autorun":"true","output":"true","context":"interactive","warning":"true","classes":"","read-only":"false","out-width":"500px","dpi":72,"fig-cap":""},"id":5,"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
+globalThis.qwebrCellDetails = [{"options":{"dpi":72,"comment":"","results":"markup","out-width":"700px","label":"unnamed-chunk-1","warning":"true","message":"true","autorun":"false","context":"interactive","read-only":"false","classes":"","out-height":"","output":"true","fig-cap":"","fig-height":5,"fig-width":7},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"dpi":72,"comment":"","results":"markup","out-width":"700px","label":"unnamed-chunk-2","warning":"true","message":"true","autorun":"true","context":"interactive","read-only":"false","classes":"","out-height":"","output":"true","fig-cap":"","fig-height":5,"fig-width":7},"id":2,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"dpi":72,"comment":"","results":"markup","out-width":"700px","label":"unnamed-chunk-3","warning":"true","message":"true","autorun":"true","context":"output","read-only":"false","classes":"","out-height":"","output":"true","fig-cap":"","fig-height":5,"fig-width":7},"id":3,"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"options":{"dpi":72,"comment":"","results":"markup","out-width":"500px","label":"unnamed-chunk-4","warning":"true","message":"true","autorun":"true","context":"output","read-only":"false","classes":"","out-height":"","output":"true","fig-cap":"","fig-height":"3","fig-width":"5"},"id":4,"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"options":{"dpi":72,"comment":"","results":"markup","out-width":"500px","label":"unnamed-chunk-5","warning":"true","message":"true","autorun":"true","context":"interactive","read-only":"false","classes":"","out-height":"","output":"true","fig-cap":"","fig-height":"3","fig-width":"5"},"id":5,"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
 
 </script>
 <script type="module">
@@ -783,10 +783,8 @@ globalThis.qwebrComputeEngine = async function(
     // 1. We setup a canvas device to write to by making a namespace call into the {webr} package
     // 2. We use values inside of the options array to set the figure size.
     // 3. We capture the output stream information (STDOUT and STERR)
-    // 4. While parsing the results, we disable image creation.
-
-    // Create a canvas variable for graphics
-    let canvas = undefined;
+    // 4. We disable the current device's image creation.
+    // 5. Piece-wise parse the results into the different output areas
 
     // Create a pager variable for help/file contents
     let pager = [];
@@ -811,9 +809,14 @@ globalThis.qwebrComputeEngine = async function(
     await mainWebR.init();
 
     // Setup a webR canvas by making a namespace call into the {webr} package
-    await mainWebR.evalRVoid(`webr::canvas(width=${fig_width}, height=${fig_height})`);
-
-    const result = await mainWebRCodeShelter.captureR(codeToRun, {
+    // Evaluate the R code
+    // Remove the active canvas silently
+    const result = await mainWebRCodeShelter.captureR(
+        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
+        .webr_cvs_id <- dev.cur()
+        ${codeToRun}
+        invisible(dev.off(.webr_cvs_id))
+        `, {
         withAutoprint: true,
         captureStreams: true,
         captureConditions: false//,
@@ -824,9 +827,6 @@ globalThis.qwebrComputeEngine = async function(
 
     // Start attempting to parse the result data
     processResultOutput:try {
-
-        // Stop creating images
-        await mainWebR.evalRVoid("dev.off()");
         
         // Avoid running through output processing
         if (options.results === "hide" || options.output === "false") { 
@@ -849,33 +849,10 @@ globalThis.qwebrComputeEngine = async function(
 
 
         // Clean the state
-        // We're now able to process both graphics and pager events.
+        // We're now able to process pager events.
         // As a result, we cannot maintain a true 1-to-1 output order 
         // without individually feeding each line
         const msgs = await mainWebR.flush();
-
-        // Output each image event stored
-        msgs.forEach((msg) => {
-        // Determine if old canvas can be used or a new canvas is required.
-        if (msg.type === 'canvas'){
-            // Add image to the current canvas
-            if (msg.data.event === 'canvasImage') {
-                canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-            } else if (msg.data.event === 'canvasNewPage') {
-
-                // Generate a new canvas element
-                canvas = document.createElement("canvas");
-                canvas.setAttribute("width", 2 * fig_width);
-                canvas.setAttribute("height", 2 * fig_height);
-                canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
-                if (options["out-height"]) {
-                    canvas.style.height = options["out-height"];
-                }
-                canvas.style.display = "block";
-                canvas.style.margin = "auto";
-            }
-        } 
-        });
 
         // Use `map` to process the filtered "pager" events asynchronously
         const pager = await Promise.all(
@@ -904,13 +881,37 @@ globalThis.qwebrComputeEngine = async function(
 
         elements.outputCodeDiv.appendChild(pre);
 
-        // Place the graphics on the canvas
-        if (canvas) {
+        // Determine if we have graphs to display
+        if (result.images.length > 0) {
             // Create figure element
             const figureElement = document.createElement('figure');
 
-            // Append canvas to figure
-            figureElement.appendChild(canvas);
+            // Place each rendered graphic onto a canvas element
+            result.images.forEach((img) => {
+                // Construct canvas for object
+                const canvas = document.createElement("canvas");
+
+                // Set canvas size to image
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                // Apply output truncations
+                canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
+                if (options["out-height"]) {
+                    canvas.style.height = options["out-height"];
+                }
+
+                // Apply styling
+                canvas.style.display = "block";
+                canvas.style.margin = "auto";
+
+                // Draw image onto Canvas
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+          
+                // Append canvas to figure output area
+                figureElement.appendChild(canvas);
+            });
 
             if (options['fig-cap']) {
                 // Create figcaption element

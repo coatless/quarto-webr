@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.25">
+  <meta name="generator" content="quarto-1.5.26">
 
   <title>quarto-webr Demo RevealJS Document</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -543,14 +543,14 @@
 
   // Describe the webR settings that should be used
   globalThis.qwebrCustomizedWebROptions = {
-    "baseURL": "https://webr.r-wasm.org/v0.2.2/",
+    "baseURL": "https://webr.r-wasm.org/v0.3.1/",
     "serviceWorkerUrl": "",
     "homedir": "/home/web_user", 
     "channelType": "ChannelType.Automatic"
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-1","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-2","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"plot(pressure)"},{"id":3,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-3","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"id":4,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-4","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"?mean"},{"id":5,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-5","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"id":6,"options":{"out-width":"700px","fig-height":5,"message":"true","output":"true","dpi":72,"autorun":"false","read-only":"false","classes":"","label":"unnamed-chunk-6","context":"interactive","comment":"","out-height":"","fig-cap":"","fig-width":7,"warning":"true","results":"markup"},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-1","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-2","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"plot(pressure)"},{"id":3,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-3","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"id":4,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-4","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"?mean"},{"id":5,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-5","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"id":6,"options":{"comment":"","context":"interactive","label":"unnamed-chunk-6","fig-height":5,"results":"markup","classes":"","warning":"true","output":"true","autorun":"false","fig-cap":"","read-only":"false","out-height":"","fig-width":7,"message":"true","out-width":"700px","dpi":72},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
 
   </script>
   <script type="module">
@@ -1058,10 +1058,8 @@
       // 1. We setup a canvas device to write to by making a namespace call into the {webr} package
       // 2. We use values inside of the options array to set the figure size.
       // 3. We capture the output stream information (STDOUT and STERR)
-      // 4. While parsing the results, we disable image creation.
-
-      // Create a canvas variable for graphics
-      let canvas = undefined;
+      // 4. We disable the current device's image creation.
+      // 5. Piece-wise parse the results into the different output areas
 
       // Create a pager variable for help/file contents
       let pager = [];
@@ -1086,9 +1084,14 @@
       await mainWebR.init();
 
       // Setup a webR canvas by making a namespace call into the {webr} package
-      await mainWebR.evalRVoid(`webr::canvas(width=${fig_width}, height=${fig_height})`);
-
-      const result = await mainWebRCodeShelter.captureR(codeToRun, {
+      // Evaluate the R code
+      // Remove the active canvas silently
+      const result = await mainWebRCodeShelter.captureR(
+          `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
+          .webr_cvs_id <- dev.cur()
+          ${codeToRun}
+          invisible(dev.off(.webr_cvs_id))
+          `, {
           withAutoprint: true,
           captureStreams: true,
           captureConditions: false//,
@@ -1099,9 +1102,6 @@
 
       // Start attempting to parse the result data
       processResultOutput:try {
-
-          // Stop creating images
-          await mainWebR.evalRVoid("dev.off()");
           
           // Avoid running through output processing
           if (options.results === "hide" || options.output === "false") { 
@@ -1124,33 +1124,10 @@
 
 
           // Clean the state
-          // We're now able to process both graphics and pager events.
+          // We're now able to process pager events.
           // As a result, we cannot maintain a true 1-to-1 output order 
           // without individually feeding each line
           const msgs = await mainWebR.flush();
-
-          // Output each image event stored
-          msgs.forEach((msg) => {
-          // Determine if old canvas can be used or a new canvas is required.
-          if (msg.type === 'canvas'){
-              // Add image to the current canvas
-              if (msg.data.event === 'canvasImage') {
-                  canvas.getContext('2d').drawImage(msg.data.image, 0, 0);
-              } else if (msg.data.event === 'canvasNewPage') {
-
-                  // Generate a new canvas element
-                  canvas = document.createElement("canvas");
-                  canvas.setAttribute("width", 2 * fig_width);
-                  canvas.setAttribute("height", 2 * fig_height);
-                  canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
-                  if (options["out-height"]) {
-                      canvas.style.height = options["out-height"];
-                  }
-                  canvas.style.display = "block";
-                  canvas.style.margin = "auto";
-              }
-          } 
-          });
 
           // Use `map` to process the filtered "pager" events asynchronously
           const pager = await Promise.all(
@@ -1179,13 +1156,37 @@
 
           elements.outputCodeDiv.appendChild(pre);
 
-          // Place the graphics on the canvas
-          if (canvas) {
+          // Determine if we have graphs to display
+          if (result.images.length > 0) {
               // Create figure element
               const figureElement = document.createElement('figure');
 
-              // Append canvas to figure
-              figureElement.appendChild(canvas);
+              // Place each rendered graphic onto a canvas element
+              result.images.forEach((img) => {
+                  // Construct canvas for object
+                  const canvas = document.createElement("canvas");
+
+                  // Set canvas size to image
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+
+                  // Apply output truncations
+                  canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
+                  if (options["out-height"]) {
+                      canvas.style.height = options["out-height"];
+                  }
+
+                  // Apply styling
+                  canvas.style.display = "block";
+                  canvas.style.margin = "auto";
+
+                  // Draw image onto Canvas
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(img, 0, 0, img.width, img.height);
+            
+                  // Append canvas to figure output area
+                  figureElement.appendChild(canvas);
+              });
 
               if (options['fig-cap']) {
                   // Create figcaption element
