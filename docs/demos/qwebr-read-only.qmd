@@ -1,0 +1,94 @@
+---
+title: "Demo: Read-Only Code Cells"
+engine: knitr
+filters:
+  - webr
+---
+
+# Overview
+
+This demo shows how a code cell can be placed into a read-only mode. 
+
+## `read-only` Option
+
+The `read-only` option modifies the `interactive` context such that changes to the cell's code is not possible. 
+
+For example, try modifying the value associated with `age` in the following cell. 
+
+:::  {.panel-tabset group="readOnlyExmple"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| context: interactive
+#| read-only: true
+# Try modifying the age variable
+age <- 42
+cat("Your age is: ", age, fill = TRUE)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+#| read-only: true
+# Try modifying age
+age <- 42
+cat("Your age is: ", age, fill = TRUE)
+```
+````
+:::
+
+We can pair `read-only` with `autorun` to create a constrained example allowing us to focus on a single piece of the code. 
+
+For example, let's say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:
+
+1. one cell exposing changes to the number of samples, e.g. `n`; and,
+2. a second cell containing graphing code that is restricted from being modified.
+
+
+:::  {.panel-tabset group="readOnlyExmple"}
+#### `{quarto-webr}` Output
+
+Try different values for `n` by modifying the assignment statement.
+```{webr-r}
+#| context: interactive
+#| autorun: true
+# Experiment with different sample sizes and, then,
+# re-run the next code cell.
+n <- 100
+```
+
+Then, run re-run the graph:
+```{webr-r}
+#| context: interactive
+#| autorun: true
+#| read-only: true
+samples = rnorm(n)
+hist(samples,
+  main = "Randomly Sampled Normal Distribution",
+  sub = paste("Based on", n, "samples"),
+  xlab = "Sample Value"
+)
+```
+
+#### Cell Code
+````md
+```{webr-r}
+#| context: interactive
+#| autorun: true
+# Experiment with different sample sizes and, then,
+# re-run the next code cell.
+n <- 100
+```
+```{webr-r}
+#| context: interactive
+#| autorun: true
+#| read-only: true
+# Experiment with different sample sizes and, then,
+# re-run the next code cell.
+n <- 100
+```
+````
+:::
+
+# Fin
+
+In this demo, we saw the possibility of preventing modifications to a code cell area. 

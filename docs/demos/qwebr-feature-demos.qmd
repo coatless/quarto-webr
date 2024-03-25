@@ -4,6 +4,7 @@ title: "Feature Demonstrations"
 
 Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.
 
+- [Read-only Interactive Code Cells](qwebr-read-only.qmd)
 - [Autorun Interactive Code Cells](qwebr-auto-run.qmd)
 - [Initial Code Cell Option Support](qwebr-code-cell-options.qmd)
 - [Using Custom Repositories for R WASM Package binaries](qwebr-custom-repository.qmd)
