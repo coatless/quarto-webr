@@ -1212,8 +1212,8 @@
     ]
   },
   {
-    "objectID": "qwebr-loading-data.html#accessing-data-in-an-r-packages",
-    "href": "qwebr-loading-data.html#accessing-data-in-an-r-packages",
+    "objectID": "qwebr-loading-data.html#accessing-data-through-r-data-packages",
+    "href": "qwebr-loading-data.html#accessing-data-through-r-data-packages",
     "title": "Accessing and Using Data in webR",
     "section": "",
     "text": "One approach to accessing data is to store the data inside of an R data package. This kind of R package consists solely of data in an R ready format with the added benefit of help documentation. If the data package is on CRAN, chances are there is a version available for webR on the main repository (warning not a mobile data friendly link) and, thus, can be accessed using install.packages(\"pkg\") or added to the documents packages key. Otherwise, the R package will need to be converted, deployed, and accessed through GitHub Pages by following the advice to setup a custom package repository.",
