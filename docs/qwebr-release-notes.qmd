@@ -8,8 +8,7 @@ format:
     toc: true
 ---
 
-
-# 0.4.1-dev.2: ???????????? (??-??-??) [DEV]
+# 0.4.1: Vivid Montage (03-25-2024)
 
 ## Features
 
@@ -18,7 +17,16 @@ format:
 
 ## Bug fixes
 
+- Fixed FontAwesome icons not appearing if `embed-resources: true` was set. ([#95](https://github.com/coatless/quarto-webr/issues/95))
+
+:::{.callout-note}
+The `embed-resources` option only works if the communication channel is either `"automatic"` (default), `"post-message"`, or `"shared-array-buffer"`. Do not attempt to use it with `"service-workers"`.
+:::
+
 ## Documentation
+
+- Updated documentation using `plot2` to `tinyplot` due to a name change upstream.
+- Added a new section on using data within `{webr-r}` code blocks.
 
 # 0.4.0: Ball of Yarn (02-05-2024)
 
