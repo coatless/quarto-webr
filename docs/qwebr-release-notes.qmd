@@ -23,6 +23,10 @@ format:
 The `embed-resources` option only works if the communication channel is either `"automatic"` (default), `"post-message"`, or `"shared-array-buffer"`. Do not attempt to use it with `"service-workers"`.
 :::
 
+## Changes
+
+- Upgrade monaco-editor from 0.45.0 to 0.47.0 ([#170](https://github.com/coatless/quarto-webr/pulls/170))
+
 ## Documentation
 
 - Updated documentation using `plot2` to `tinyplot` due to a name change upstream.
