@@ -1,0 +1,34 @@
+---
+title: webR in Quarto HTML Documents
+format: revealjs
+engine: knitr
+
+webr:
+  celldefaults:
+    editor-font-size: '40pt'
+    out-width: "100%"
+
+filters:
+  - webr
+    
+---
+
+This is a webR-enabled code cell in a Quarto HTML document.
+I set the editor font size to huge 40 points (original is 17.5 points)
+
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+
+summary(fit)
+```
+
+## Now with font size option set in cell
+
+This is a webR-enabled code cell in a Quarto HTML document.
+
+```{webr-r}
+#| editor-font-size: "25pt"
+fit = lm(mpg ~ am, data = mtcars)
+
+summary(fit)
+```
