@@ -36,6 +36,8 @@ cat("Your age is: ", age, fill = TRUE)
 ````
 :::
 
+## Constraining Modifications
+
 We can pair `read-only` with `autorun` to create a constrained example allowing us to focus on a single piece of the code. 
 
 For example, let's say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:
@@ -51,12 +53,14 @@ Try different values for `n` by modifying the assignment statement.
 ```{webr-r}
 #| context: interactive
 #| autorun: true
-# Experiment with different sample sizes and, then,
-# re-run the next code cell.
+# Experiment with different sample sizes by
+# changing the n value and re-running the code
+# cell.
 n <- 100
 ```
 
-Then, run re-run the graph:
+Then, press "Run Code" to recreate the graph and see how the distribution changed:
+
 ```{webr-r}
 #| context: interactive
 #| autorun: true
@@ -74,17 +78,21 @@ hist(samples,
 ```{webr-r}
 #| context: interactive
 #| autorun: true
-# Experiment with different sample sizes and, then,
-# re-run the next code cell.
+# Experiment with different sample sizes by
+# changing the n value and re-running the code
+# cell.
 n <- 100
 ```
 ```{webr-r}
 #| context: interactive
 #| autorun: true
 #| read-only: true
-# Experiment with different sample sizes and, then,
-# re-run the next code cell.
-n <- 100
+samples = rnorm(n)
+hist(samples,
+  main = "Randomly Sampled Normal Distribution",
+  sub = paste("Based on", n, "samples"),
+  xlab = "Sample Value"
+)
 ```
 ````
 :::
