@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.26">
+<meta name="generator" content="quarto-1.5.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","options":{"out-width":"700px","dpi":72,"fig-width":7,"classes":"","message":"true","results":"markup","out-height":"","fig-cap":"","context":"interactive","autorun":"false","fig-height":5,"read-only":"true","label":"unnamed-chunk-1","output":"true","warning":"true","comment":""},"id":1},{"code":"# Experiment with different sample sizes and, then,\n# re-run the next code cell.\nn <- 100","options":{"out-width":"700px","dpi":72,"fig-width":7,"classes":"","message":"true","results":"markup","out-height":"","fig-cap":"","context":"interactive","autorun":"true","fig-height":5,"read-only":"false","label":"unnamed-chunk-2","output":"true","warning":"true","comment":""},"id":2},{"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","options":{"out-width":"700px","dpi":72,"fig-width":7,"classes":"","message":"true","results":"markup","out-height":"","fig-cap":"","context":"interactive","autorun":"true","fig-height":5,"read-only":"true","label":"unnamed-chunk-3","output":"true","warning":"true","comment":""},"id":3}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","autorun":"false","fig-height":5,"label":"unnamed-chunk-1","fig-cap":"","results":"markup","output":"true","fig-width":7,"message":"true","out-height":"","classes":"","out-width":"700px","context":"interactive","dpi":72,"read-only":"true","comment":""},"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","id":1},{"options":{"warning":"true","autorun":"true","fig-height":5,"label":"unnamed-chunk-2","fig-cap":"","results":"markup","output":"true","fig-width":7,"message":"true","out-height":"","classes":"","out-width":"700px","context":"interactive","dpi":72,"read-only":"false","comment":""},"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","id":2},{"options":{"warning":"true","autorun":"true","fig-height":5,"label":"unnamed-chunk-3","fig-cap":"","results":"markup","output":"true","fig-width":7,"message":"true","out-height":"","classes":"","out-width":"700px","context":"interactive","dpi":72,"read-only":"true","comment":""},"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","id":3}];
 
 </script>
 <script type="module">
@@ -1245,6 +1245,7 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
   <li><a href="#read-only-option" id="toc-read-only-option" class="nav-link" data-scroll-target="#read-only-option"><code>read-only</code> Option</a></li>
+  <li><a href="#constraining-modifications" id="toc-constraining-modifications" class="nav-link" data-scroll-target="#constraining-modifications">Constraining Modifications</a></li>
   </ul></li>
   <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
   </ul>
@@ -1471,6 +1472,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </div>
+</section>
+<section id="constraining-modifications" class="level2">
+<h2 class="anchored" data-anchor-id="constraining-modifications">Constraining Modifications</h2>
 <p>We can pair <code>read-only</code> with <code>autorun</code> to create a constrained example allowing us to focus on a single piece of the code.</p>
 <p>For example, let’s say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:</p>
 <ol type="1">
@@ -1484,7 +1488,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Try different values for <code>n</code> by modifying the assignment statement.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Then, run re-run the graph:</p>
+<p>Then, press “Run Code” to recreate the graph and see how the distribution changed:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
@@ -1492,18 +1496,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: interactive</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Experiment with different sample sizes and, then,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in"># re-run the next code cell.</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 100</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: interactive</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">#| read-only: true</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in"># Experiment with different sample sizes and, then,</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in"># re-run the next code cell.</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 100</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Experiment with different sample sizes by</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in"># changing the n value and re-running the code</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in"># cell.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 100</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: interactive</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">#| read-only: true</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">samples = rnorm(n)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="in">hist(samples,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">  main = "Randomly Sampled Normal Distribution",</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="in">  sub = paste("Based on", n, "samples"),</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab = "Sample Value"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

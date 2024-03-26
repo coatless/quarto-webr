@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.26">
+<meta name="generator" content="quarto-1.5.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","comment":"","message":"true","label":"spike-data","results":"markup","fig-cap":"","dpi":72,"context":"setup","autorun":"true","classes":"","output":"true","fig-height":5,"warning":"true","fig-width":7,"out-width":"700px","out-height":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"id":2,"options":{"read-only":"false","comment":"","message":"true","label":"spike-data","results":"markup","fig-cap":"","dpi":72,"context":"interactive","autorun":"false","classes":"","output":"true","fig-height":5,"warning":"true","fig-width":7,"out-width":"700px","out-height":""},"code":"new_mtcars"}];
+globalThis.qwebrCellDetails = [{"options":{"comment":"","autorun":"true","results":"markup","warning":"true","read-only":"false","context":"setup","fig-cap":"","dpi":72,"message":"true","classes":"","output":"true","fig-height":5,"out-width":"700px","label":"spike-data","fig-width":7,"out-height":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"comment":"","autorun":"false","results":"markup","warning":"true","read-only":"false","context":"interactive","fig-cap":"","dpi":72,"message":"true","classes":"","output":"true","fig-height":5,"out-width":"700px","label":"spike-data","fig-width":7,"out-height":""},"code":"new_mtcars","id":2}];
 
 </script>
 <script type="module">
