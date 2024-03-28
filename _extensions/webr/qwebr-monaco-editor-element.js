@@ -1,5 +1,27 @@
+// (ute) patched to have monaco take font size from current environment
+// font size can be scaled by font-scale.
+// TODO
+// ideally, font-scale set in code should influence output, too.
+// this should also be applicable to quarto-r-code cells
+// maybe file an feature request with quarto? code cells
+// are really small by default. Of course, you want to cram
+// a lot of code on slides ;-)
+// TODO (if this seems sensible): adjust size of buttons.
+// this is probably possible by css (em units?)
+
 // Global dictionary to store Monaco Editor instances
 globalThis.qwebrEditorInstances = {};
+
+
+// suggestion (Ute) 
+// Getting current font size, with fall back to 17.5 as before 
+function getCurrentFontSize (element){
+const currentfontsize  = parseInt(window
+    .getComputedStyle(element)
+    .getPropertyValue('font-size')) ?? 17.5;     
+//console.log("trying to get current font size: "+currentfontsize)
+return currentfontsize
+}
 
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
@@ -14,6 +36,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
   
+  const currentfontsize = getCurrentFontSize(editorDiv); 
+//  console.log ("editordiv fontsize:" + currentfontsize); 
+//  console.log ("  scale by:" + qwebrOptions['font-scale']); 
+//  console.log ("  should result in "+
+//  qwebrOptions['font-scale'] * currentfontsize ?? '17.5');
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -26,7 +54,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
+      fontSize: qwebrOptions['font-scale'] * currentfontsize ?? '17.5',    // Bootstrap is 1 rem. one mights skip ??-part
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false

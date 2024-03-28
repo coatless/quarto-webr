@@ -72,7 +72,10 @@ local qwebRDefaultCellOptions = {
   ["fig-width"] = 7,
   ["fig-height"] = 5,
   ["out-width"] = "700px",
-  ["out-height"] = ""
+  ["out-height"] = "",
+-- suggestion (ute): make a parameter for editor font size. Maybe choose a better name
+  ["editor-font-size"] = "17.5pt",
+  ["font-scale"] = 1
 }
 
 ----
@@ -170,6 +173,13 @@ function setWebRInitializationOptions(meta)
     return meta
   end
 
+  -- suggestion (ute) : allow to change global defaults for code cells
+  if isVariablePopulated(webr["celldefaults"]) then
+    for index, value in pairs(webr.celldefaults) do
+      qwebRDefaultCellOptions[index] = pandoc.utils.stringify(value)
+    end
+  end
+  
   -- The base URL used for downloading R WebAssembly binaries 
   -- https://webr.r-wasm.org/[version]/webr.mjs
   -- Documentation:
