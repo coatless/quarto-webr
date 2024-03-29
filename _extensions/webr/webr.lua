@@ -169,10 +169,10 @@ function setWebRInitializationOptions(meta)
   if isVariableEmpty(webr) then
     return meta
   end
-  
-  -- suggestion (ute) : allow to change global defaults for code cells
-  if isVariablePopulated(webr["celldefaults"]) then
-    for index, value in pairs(webr.celldefaults) do
+
+  -- Allow modification of code cells global defaults 
+  if isVariablePopulated(webr["cell-defaults"]) then
+    for index, value in pairs(webr["cell-defaults"]) do
       qwebRDefaultCellOptions[index] = pandoc.utils.stringify(value)
     end
   end
