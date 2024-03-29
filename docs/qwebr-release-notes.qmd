@@ -8,6 +8,20 @@ format:
     toc: true
 ---
 
+# 0.4.2-dev.1: ??????? (??-??-??)
+
+:::{.callout-note}
+Features listed under the `-dev` version have not yet been solidified and may change at any point.
+:::
+
+## Features
+
+- Added `cell-defaults` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
+
+## Bug fixes
+
+## Documentation
+
 # 0.4.1: Vivid Montage (03-25-2024)
 
 ## Features
