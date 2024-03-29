@@ -112,12 +112,27 @@ The extension also provides native options that affect its behavior:
 - **Description**: Determines whether COOP and COEP headers are in use for faster page loads.
 - **Default Value**: `false`
 
+### `cell-defaults`
+
+- **Description**: Modifies default cell options for `{webr-r}` cells.
+- **Default Value**: Please see [Code Cell Options](qwebr-cell-options.qmd) for individual cell option defaults.
+- **Example:** 
+
+```yaml
+webr:
+  cell-defaults:
+    autorun: true
+    fig-height: 400
+    fig-width: 300
+```
+
+This modifies the default cell options for `autorun`, `fig-width`, and `fig-height` for all cells in the document. 
+
 ### `repos`
 
 - **Description**: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: <https://repo.r-wasm.org/>.
 - **Default Value**: `['https://repo.r-wasm.org/']`
 - **Example**: `['https://username.r-universe.dev', 'https://username.github.io/reponame']` will cause webR to first look for the package on `r-universe.dev`, then move to looking at the package on GitHub Pages, before finally landing on the official repository.
-
 
 ### `packages`
 
