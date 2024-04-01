@@ -16,7 +16,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Features
 
-- Added `cell-defaults` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
+- Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
 ## Bug fixes
 

@@ -106,21 +106,24 @@ The extension also provides native options that affect its behavior:
 
 - **Description**: Controls the display of the WebR initialization state in the document header.
 - **Default Value**: `true`
+- **Demo Document**: [Setting Options in Document Header](demos/qwebr-setting-options-in-document-yaml.qmd)
 
 ### `show-header-message`
 
 - **Description**: Determines whether COOP and COEP headers are in use for faster page loads.
 - **Default Value**: `false`
+- **Demo Document**: [Setting Options in Document Header](demos/qwebr-setting-options-in-document-yaml.qmd)
 
-### `cell-defaults`
+### `cell-options`
 
 - **Description**: Modifies default cell options for `{webr-r}` cells.
 - **Default Value**: Please see [Code Cell Options](qwebr-cell-options.qmd) for individual cell option defaults.
+- **Demo Document**: [Set Global Cell Options](demos/qwebr-global-cell-defaults.qmd)
 - **Example:** 
 
 ```yaml
 webr:
-  cell-defaults:
+  cell-options:
     autorun: true
     fig-height: 400
     fig-width: 300
@@ -132,16 +135,19 @@ This modifies the default cell options for `autorun`, `fig-width`, and `fig-heig
 
 - **Description**: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: <https://repo.r-wasm.org/>.
 - **Default Value**: `['https://repo.r-wasm.org/']`
+- **Demo Document**: [Custom R WASM Package Repository](demos/qwebr-custom-repository.qmd)
 - **Example**: `['https://username.r-universe.dev', 'https://username.github.io/reponame']` will cause webR to first look for the package on `r-universe.dev`, then move to looking at the package on GitHub Pages, before finally landing on the official repository.
 
 ### `packages`
 
 - **Description**: Specifies R packages to install automatically when the document opens.
 - **Default Value**: `[]`
+- **Demo Document**: [Setting Options in Document Header](demos/qwebr-setting-options-in-document-yaml.qmd)
 - **Example:** `['ggplot2', 'dplyr']` will cause `ggplot2` and `dplyr` to be installed.
 
 ### `autoload-packages`
 
 - **Description**: The `autoload-packages` option allows you to control whether R packages specified in the `packages` document option will be automatically loaded using `library()` calls when the document opens. By default, this option is set to `true`, meaning that packages listed in the `packages` option will be automatically loaded. If you set it to `false`, you will need to include a code cell with `library(package)` function calls for each package in `packages`.
 - **Default Value**: `true`
+- **Demo Document**: [Setting Options in Document Header](demos/qwebr-setting-options-in-document-yaml.qmd)
 

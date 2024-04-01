@@ -2,7 +2,7 @@
 title: "Demo: Set Global Cell Options"
 engine: knitr
 webr:
-  cell-defaults:
+  cell-options:
     out-width: "100%"
     autorun: true
     read-only: true
@@ -17,13 +17,13 @@ This feature is currently experimental and is included in 0.4.2-dev.1 build of `
 
 This demo illustrates how to set cell-level options for the entire document by specifying them in the document header. Once established, these options govern the behavior and appearance of `{webr-r}` code cells. However, they can be overridden locally by specifying cell options within individual `{webr-r}` cells.
 
-## `cell-defaults` Document Key 
+## `cell-options` Document Key 
 
 To establish default cell behavior, you can utilize the `cell-defaults` subkey in `webr`. For instance, consider the following structure:
 
 ```yaml
 webr:
-  cell-defaults:
+  cell-options:
     <cell-option>: <value>
 ```
 
@@ -38,7 +38,7 @@ An example use case is to prevent modifications to interactive code cells while 
 title: "Demo: Set Global Cell Options"
 engine: knitr
 webr:
-  cell-defaults:
+  cell-options:
     out-width: "100%"
     autorun: true
     read-only: true
