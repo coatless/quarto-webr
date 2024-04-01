@@ -1,0 +1,44 @@
+---
+title: "Test: Setting Global Cell Options"
+format: html
+engine: knitr
+webr: 
+  cell-options:
+    comment: "## "
+    autorun: true
+filters:
+  - webr
+---
+
+Check that the global options array is correctly parsed and that local values of the cell can still override a global option.
+
+## Interactive
+
+### Global
+```{webr-r}
+print("test")
+```
+
+### Local
+
+```{webr-r}
+#| comment: ""
+print("test")
+```
+
+
+## Non-interactive
+
+### Global
+```{webr-r}
+#| context: output
+print("test")
+```
+
+### Local
+
+```{webr-r}
+#| context: output
+#| comment: ""
+print("test")
+```

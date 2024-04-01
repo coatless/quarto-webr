@@ -1,0 +1,87 @@
+---
+title: "Demo: Set Global Cell Options"
+engine: knitr
+webr:
+  cell-options:
+    out-width: "100%"
+    autorun: true
+    read-only: true
+filters:
+  - webr
+---
+
+:::{.callout-important}
+This feature is currently experimental and is included in 0.4.2-dev.1 build of `{quarto-webr}`.
+:::
+
+# Overview
+
+This demo illustrates how to set cell-level options for the entire document by specifying them in the document header. Once established, these options govern the behavior and appearance of `{webr-r}` code cells. However, they can be overridden locally by specifying cell options within individual `{webr-r}` cells.
+
+## `cell-options` Document Key 
+
+To establish default cell behavior, you can utilize the `cell-options` subkey in `webr`. For instance, consider the following structure:
+
+```yaml
+webr:
+  cell-options:
+    <cell-option>: <value>
+```
+
+Here, `<cell-option>` and `<value>` represent one of the [supported cell options](../qwebr-cell-options.qmd).
+
+## Restricting Access 
+
+An example use case is to prevent modifications to interactive code cells while ensuring their content is executed. In this document, we've defined the global behavior with:
+
+```md
+---
+title: "Demo: Set Global Cell Options"
+engine: knitr
+webr:
+  cell-options:
+    out-width: "100%"
+    autorun: true
+    read-only: true
+filters:
+  - webr
+---
+```
+
+Let's observe the outcome with a cell like this:
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+#### Cell Code
+````md
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+summary(fit)
+```
+````
+:::
+
+Attempting to modify the cell will be ineffective. However, in the subsequent cell, we've specified a local option that overrides the document's default, allowing modification. Feel free to try modifying the cell below.
+
+:::  {.panel-tabset group="language"}
+#### `{quarto-webr}` Output
+```{webr-r}
+#| read-only: false
+plot(fit)
+```
+#### Cell Code
+````md
+```{webr-r}
+#| read-only: false
+plot(fit)
+```
+````
+:::
+
+# Conclusion
+
+This approach eliminates the need to repeatedly specify options across multiple cells within the document, consolidating them in a single location. Should the need arise, you can always override the behavior by specifying a local value for the cell.

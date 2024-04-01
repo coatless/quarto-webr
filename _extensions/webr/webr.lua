@@ -170,6 +170,14 @@ function setWebRInitializationOptions(meta)
     return meta
   end
 
+  -- Allow modification of code cells global defaults 
+  if isVariablePopulated(webr["cell-options"]) then
+    for index, value in pairs(webr["cell-options"]) do
+      qwebRDefaultCellOptions[index] = pandoc.utils.stringify(value)
+    end
+  end
+
+
   -- The base URL used for downloading R WebAssembly binaries 
   -- https://webr.r-wasm.org/[version]/webr.mjs
   -- Documentation:
