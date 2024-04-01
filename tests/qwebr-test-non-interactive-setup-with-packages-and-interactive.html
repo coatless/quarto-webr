@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"label":"unnamed-chunk-1","message":"true","output":"true","results":"markup","read-only":"false","warning":"true","context":"setup","fig-cap":"","classes":"","comment":"","dpi":72,"autorun":"true","out-height":"","fig-height":5,"out-width":"700px"},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"fig-width":7,"label":"unnamed-chunk-2","message":"true","output":"true","results":"markup","read-only":"false","warning":"true","context":"interactive","fig-cap":"","classes":"","comment":"","dpi":72,"autorun":"false","out-height":"","fig-height":5,"out-width":"700px"},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"options":{"read-only":"false","out-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"message":"true","autorun":"true","context":"setup","out-width":"700px","label":"unnamed-chunk-1","output":"true","fig-width":7,"warning":"true","results":"markup","classes":""},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"read-only":"false","out-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"message":"true","autorun":"false","context":"interactive","out-width":"700px","label":"unnamed-chunk-2","output":"true","fig-width":7,"warning":"true","results":"markup","classes":""},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -1019,6 +1019,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

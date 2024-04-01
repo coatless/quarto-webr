@@ -48,7 +48,7 @@
     "href": "qwebr-meta-options.html#native-extension-options",
     "title": "Customization Options",
     "section": "Native Extension Options",
-    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\n\n\n\nrepos\n\nDescription: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: https://repo.r-wasm.org/.\nDefault Value: ['https://repo.r-wasm.org/']\nExample: ['https://username.r-universe.dev', 'https://username.github.io/reponame'] will cause webR to first look for the package on r-universe.dev, then move to looking at the package on GitHub Pages, before finally landing on the official repository.\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\nExample: ['ggplot2', 'dplyr'] will cause ggplot2 and dplyr to be installed.\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true",
+    "text": "Native Extension Options\nThe extension also provides native options that affect its behavior:\n\nshow-startup-message\n\nDescription: Controls the display of the WebR initialization state in the document header.\nDefault Value: true\nDemo Document: Setting Options in Document Header\n\n\n\nshow-header-message\n\nDescription: Determines whether COOP and COEP headers are in use for faster page loads.\nDefault Value: false\nDemo Document: Setting Options in Document Header\n\n\n\ncell-options\n\nDescription: Modifies default cell options for {webr-r} cells.\nDefault Value: Please see Code Cell Options for individual cell option defaults.\nDemo Document: Set Global Cell Options\nExample:\n\nwebr:\n  cell-options:\n    autorun: true\n    fig-height: 400\n    fig-width: 300\nThis modifies the default cell options for autorun, fig-width, and fig-height for all cells in the document.\n\n\nrepos\n\nDescription: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: https://repo.r-wasm.org/.\nDefault Value: ['https://repo.r-wasm.org/']\nDemo Document: Custom R WASM Package Repository\nExample: ['https://username.r-universe.dev', 'https://username.github.io/reponame'] will cause webR to first look for the package on r-universe.dev, then move to looking at the package on GitHub Pages, before finally landing on the official repository.\n\n\n\npackages\n\nDescription: Specifies R packages to install automatically when the document opens.\nDefault Value: []\nDemo Document: Setting Options in Document Header\nExample: ['ggplot2', 'dplyr'] will cause ggplot2 and dplyr to be installed.\n\n\n\nautoload-packages\n\nDescription: The autoload-packages option allows you to control whether R packages specified in the packages document option will be automatically loaded using library() calls when the document opens. By default, this option is set to true, meaning that packages listed in the packages option will be automatically loaded. If you set it to false, you will need to include a code cell with library(package) function calls for each package in packages.\nDefault Value: true\nDemo Document: Setting Options in Document Header",
     "crumbs": [
       "Options Reference",
       "Document Options"
@@ -132,7 +132,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Upgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.\n\n\n\n\n\nFixed FontAwesome icons not appearing if embed-resources: true was set. (#95)\n\n\n\n\n\n\n\nNote\n\n\n\nThe embed-resources option only works if the communication channel is either \"automatic\" (default), \"post-message\", or \"shared-array-buffer\". Do not attempt to use it with \"service-workers\".\n\n\n\n\n\n\nUpgrade monaco-editor from 0.45.0 to 0.47.0 (#170)\n\n\n\n\n\nUpdated documentation using plot2 to tinyplot due to a name change upstream.\nAdded a new section on using data within {webr-r} code blocks.",
+    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -143,18 +143,29 @@
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
     "section": "",
-    "text": "Upgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.",
+    "text": "Added cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bug-fixes",
-    "href": "qwebr-release-notes.html#bug-fixes",
+    "objectID": "qwebr-release-notes.html#features-1",
+    "href": "qwebr-release-notes.html#features-1",
     "title": "Release Notes",
-    "section": "",
-    "text": "Fixed FontAwesome icons not appearing if embed-resources: true was set. (#95)\n\n\n\n\n\n\n\nNote\n\n\n\nThe embed-resources option only works if the communication channel is either \"automatic\" (default), \"post-message\", or \"shared-array-buffer\". Do not attempt to use it with \"service-workers\".",
+    "section": "Features",
+    "text": "Features\n\nUpgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#bug-fixes-1",
+    "href": "qwebr-release-notes.html#bug-fixes-1",
+    "title": "Release Notes",
+    "section": "Bug fixes",
+    "text": "Bug fixes\n\nFixed FontAwesome icons not appearing if embed-resources: true was set. (#95)\n\n\n\n\n\n\n\nNote\n\n\n\nThe embed-resources option only works if the communication channel is either \"automatic\" (default), \"post-message\", or \"shared-array-buffer\". Do not attempt to use it with \"service-workers\".",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -164,19 +175,19 @@
     "objectID": "qwebr-release-notes.html#changes",
     "href": "qwebr-release-notes.html#changes",
     "title": "Release Notes",
-    "section": "",
-    "text": "Upgrade monaco-editor from 0.45.0 to 0.47.0 (#170)",
+    "section": "Changes",
+    "text": "Changes\n\nUpgrade monaco-editor from 0.45.0 to 0.47.0 (#170)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation",
-    "href": "qwebr-release-notes.html#documentation",
+    "objectID": "qwebr-release-notes.html#documentation-1",
+    "href": "qwebr-release-notes.html#documentation-1",
     "title": "Release Notes",
-    "section": "",
-    "text": "Updated documentation using plot2 to tinyplot due to a name change upstream.\nAdded a new section on using data within {webr-r} code blocks.",
+    "section": "Documentation",
+    "text": "Documentation\n\nUpdated documentation using plot2 to tinyplot due to a name change upstream.\nAdded a new section on using data within {webr-r} code blocks.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -194,8 +205,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-1",
-    "href": "qwebr-release-notes.html#features-1",
+    "objectID": "qwebr-release-notes.html#features-2",
+    "href": "qwebr-release-notes.html#features-2",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nInitial code cell option support (#104, #117, #125, #151):\n\nquarto-webR: context and autorun.\nAttributes: label and classes.\nFigures: fig-cap, dpi, fig-width, fig-height, out-width, & out-height.\nCell output: warning/message, results, and output\n\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).",
@@ -227,8 +238,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-1",
-    "href": "qwebr-release-notes.html#documentation-1",
+    "objectID": "qwebr-release-notes.html#documentation-2",
+    "href": "qwebr-release-notes.html#documentation-2",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nNew section discussing code cell options in {webr-r} cells.\nNew section with demos of the Quarto extension’s features. (#128)\nAdded a demo on non-interactive code cells. (#128)\nAdded a demo on using custom repositories to install R WASM package binaries. (#128)\nAdded a demo for showing initial code cell option support. (#141)\nAdded a demo for showing autorunning interactive code cells.\nModified the RevealJS presentation YAML to include an option to disable the webR status message header (#110)\nUpdated blog posts on community examples page (#135)\nUpdated Hiding and Executing Code to use panel sets when displaying output from {quarto-webr} and showing the underlying code.\nMinor documentation tweaks.",
@@ -260,8 +271,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-2",
-    "href": "qwebr-release-notes.html#features-2",
+    "objectID": "qwebr-release-notes.html#features-3",
+    "href": "qwebr-release-notes.html#features-3",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the embedded version of webR to v0.2.2. (#96)",
@@ -282,8 +293,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-2",
-    "href": "qwebr-release-notes.html#documentation-2",
+    "objectID": "qwebr-release-notes.html#documentation-3",
+    "href": "qwebr-release-notes.html#documentation-3",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nUpdated documentation to reflect the removal of webr-worker.js and webr-serviceworker.js scripts. (#59)\nAdded a section on setting global extension settings using _quarto.yml to the meta options (#46)\nAdded slide embedding CSS class alongside examples.\nUpdated GIF on the README to show the UI improvements.\nMinor documentation tweaks.",
@@ -293,8 +304,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-3",
-    "href": "qwebr-release-notes.html#features-3",
+    "objectID": "qwebr-release-notes.html#features-4",
+    "href": "qwebr-release-notes.html#features-4",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nAdded autoload-packages document meta option key that will automatically load packages specified in the packages key. The default value is true. (#75)\n\nThis feature simplifies the use of packages, eliminating the need to call library() in interactive code cells or setup code cells, as the specified packages will be loaded automatically.\n\nAdded new output classes to differentiate between STDOUT and STDERR text. (#60, #89)\n\nError and warning messages will now appear red and regular output will appear black.",
@@ -315,8 +326,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-3",
-    "href": "qwebr-release-notes.html#documentation-3",
+    "objectID": "qwebr-release-notes.html#documentation-4",
+    "href": "qwebr-release-notes.html#documentation-4",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded a subsection to using two keyboard shortcuts into the interactive code cell demo.\nEmphasized the extension must be in the same directory or contained within a Quarto project as the Quarto document being used. (#79, #26)\nAdded an RevealJS presentation example. (#83)\nAdded examples of embedding a RevealJS presentation inside of a website and book project. (#83)\nAdded an example of using the extension with a Blog website. (#81)\nAdded documentation on theming quarto elements. (#89)\nMiscellaneous documentation typo fixes.",
@@ -337,8 +348,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-4",
-    "href": "qwebr-release-notes.html#features-4",
+    "objectID": "qwebr-release-notes.html#features-5",
+    "href": "qwebr-release-notes.html#features-5",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nAdded a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running. (#64, #17)\nImproved status updates about installing R packages specified in the document’s package key. (#68)\nFully supported pager event types. (#58)\n\nWith this update, looking at R help documentation for a function is now possible.",
@@ -359,8 +370,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-4",
-    "href": "qwebr-release-notes.html#documentation-4",
+    "objectID": "qwebr-release-notes.html#documentation-5",
+    "href": "qwebr-release-notes.html#documentation-5",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded an examples/ directory containing examples for HTML Documents, Books, and Websites. (#53)\nAdded a documentation page that contains the extension updates and release dates.\nAdded an FAQ page covering questions from posit::conf(2023). (#56)",
@@ -403,8 +414,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-5",
-    "href": "qwebr-release-notes.html#documentation-5",
+    "objectID": "qwebr-release-notes.html#documentation-6",
+    "href": "qwebr-release-notes.html#documentation-6",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded a walkthrough video to the getting started page.\nAdded a new page containing community examples of the quarto-webr extension in the wild.\nAdded an example on fill-in-the-blank usage.\nClarified how interactive code cells could be used to explore what-if scenarios.\nMinor documentation fixes.",
@@ -425,8 +436,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-5",
-    "href": "qwebr-release-notes.html#features-5",
+    "objectID": "qwebr-release-notes.html#features-6",
+    "href": "qwebr-release-notes.html#features-6",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nNew documentation website is available at: https://quarto-webr.thecoatlessprofessor.com\nDocument option channel-type sets the communication channel webR uses.\n\nchannel-type: automatic (default): Communicates using either shared-array-buffer or service-worker.\nchannel-type: shared-buffer-array: Fastest communication option, but requires setting up HTTP headers.\nchannel-type: service-worker: Slower communication option and requires worker scripts to be next to the rendered document.\nchannel-type: post-message: Easiest setup option at the expense of being unable to interrupt the R process or accept user-input.\n\nCode cell option context controls whether the code and output are shown or suppressed.\n\ncontext: interactive(default) shows both code and output.\ncontext: setup suppresses both code and output.\ncontext: output suppresses code but shows its output.\nTo use the new hidden code cell feature, the code cell needs #| context: &lt;value&gt; like so:\n\n\n```{webr-r}\n#| context: setup\n\nmy_hidden_variable = 11\n```",
@@ -447,8 +458,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-6",
-    "href": "qwebr-release-notes.html#documentation-6",
+    "objectID": "qwebr-release-notes.html#documentation-7",
+    "href": "qwebr-release-notes.html#documentation-7",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nCreated the docs folder inside the repository to host the documentation website.\nMoved documentation from the README.md file onto separate web pages.\n\nAcknowledgements now has a dedicated page thanking contributors and collaborators.\nDeveloper resources expands on the reference resources.\nUsing R packages describes the best practices for using R’s ecosystem of extensions\nCustomization Options describes the document level options available to be set in document’s YAML field.\n\nAdded new documentation entries for hidden code cell evaluation and communication channels.\nAdded a rendered version of the README example to the website.\nIncorporated additional examples into the “Exploring Interactive Code Cells” demo document.",
@@ -546,8 +557,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-6",
-    "href": "qwebr-release-notes.html#features-6",
+    "objectID": "qwebr-release-notes.html#features-7",
+    "href": "qwebr-release-notes.html#features-7",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nCode editing areas on the Quarto document now use the Monaco Editor for improved accessibility.\nExecute code using keyboard shortcuts:\n\nRun selected code using: [Cmd + Enter] on macOS or [Ctrl+Enter] on Windows\nRun the entire code area using: [Shift+Enter]\n\nDynamically growing code editor as new lines are added.\nAnnouncing the status changes of webR initialization states through arias.",
@@ -557,8 +568,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-7",
-    "href": "qwebr-release-notes.html#features-7",
+    "objectID": "qwebr-release-notes.html#features-8",
+    "href": "qwebr-release-notes.html#features-8",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the version of webR to use v0.1.1.\nSet options directly inside the document’s YAML header to control webR:\n\nSupport is available for setting the following WebR.WebROptions options:\n\nhome-dir: The WebAssembly user’s home directory and initial working directory (Documentation). Default: '/home/web_user'.\nbase-url: The base URL used for downloading R WebAssembly binaries. (Documentation). Default: 'https://webr.r-wasm.org/[version]/'.\nservice-worker-url: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (Documentation). Default: ''.\n\n\nwebR initialization status stages are now described and shown as stoplights (inspired by Bob Rudis)\n\nshow-startup-message: Display in the document header the state of WebR initialization. Default: true\nshow-header-message: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: false\n\n\n\n\n\nNew status lighting",
@@ -590,8 +601,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#documentation-7",
-    "href": "qwebr-release-notes.html#documentation-7",
+    "objectID": "qwebr-release-notes.html#documentation-8",
+    "href": "qwebr-release-notes.html#documentation-8",
     "title": "Release Notes",
     "section": "Documentation",
     "text": "Documentation\n\nAdded details on how to host webR content\nAdded additional examples and details in the webr-demo.qmd file.",
@@ -601,8 +612,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#bug-fixes-1",
-    "href": "qwebr-release-notes.html#bug-fixes-1",
+    "objectID": "qwebr-release-notes.html#bug-fixes-2",
+    "href": "qwebr-release-notes.html#bug-fixes-2",
     "title": "Release Notes",
     "section": "Bug Fixes",
     "text": "Bug Fixes\n\nFixed the error of figure margins too large due to canvas sizing issues.\nRemoved the attempt to switch between / and '' if COOP and COEP are not present. Defaults to relative directory.",
@@ -612,8 +623,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-8",
-    "href": "qwebr-release-notes.html#features-8",
+    "objectID": "qwebr-release-notes.html#features-9",
+    "href": "qwebr-release-notes.html#features-9",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nEnable webR code cells inside of a Quarto document.\n\n\n\n\nquarto-webr Filter in Action",
@@ -689,216 +700,179 @@
     ]
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html",
-    "href": "demos/qwebr-code-cell-options.html",
-    "title": "Demo: Initial Code Cell Option Support",
+    "objectID": "demos/qwebr-global-cell-defaults.html",
+    "href": "demos/qwebr-global-cell-defaults.html",
+    "title": "Demo: Set Global Cell Options",
     "section": "",
-    "text": "In this document, we will explore and demonstrate the various cell options available in {webr-r} code blocks. These options allow you to customize the behavior and appearance of your code outputs. These options can only be set during the authoring stage of the document.\n\n\nThe context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results.\n\n\n\nThe results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```\n\n\n\n\n\n\nThe fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThe out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThese examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
+    "text": "Important\n\n\n\nThis feature is currently experimental and is included in 0.4.2-dev.1 build of {quarto-webr}."
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html#context-option",
-    "href": "demos/qwebr-code-cell-options.html#context-option",
-    "title": "Demo: Initial Code Cell Option Support",
-    "section": "",
-    "text": "The context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results."
+    "objectID": "demos/qwebr-global-cell-defaults.html#cell-options-document-key",
+    "href": "demos/qwebr-global-cell-defaults.html#cell-options-document-key",
+    "title": "Demo: Set Global Cell Options",
+    "section": "cell-options Document Key",
+    "text": "cell-options Document Key\nTo establish default cell behavior, you can utilize the cell-options subkey in webr. For instance, consider the following structure:\nwebr:\n  cell-options:\n    &lt;cell-option&gt;: &lt;value&gt;\nHere, &lt;cell-option&gt; and &lt;value&gt; represent one of the supported cell options."
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html#results-option",
-    "href": "demos/qwebr-code-cell-options.html#results-option",
-    "title": "Demo: Initial Code Cell Option Support",
-    "section": "",
-    "text": "The results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```"
+    "objectID": "demos/qwebr-global-cell-defaults.html#restricting-access",
+    "href": "demos/qwebr-global-cell-defaults.html#restricting-access",
+    "title": "Demo: Set Global Cell Options",
+    "section": "Restricting Access",
+    "text": "Restricting Access\nAn example use case is to prevent modifications to interactive code cells while ensuring their content is executed. In this document, we’ve defined the global behavior with:\n---\ntitle: \"Demo: Set Global Cell Options\"\nengine: knitr\nwebr:\n  cell-options:\n    out-width: \"100%\"\n    autorun: true\n    read-only: true\nfilters:\n  - webr\n---\nLet’s observe the outcome with a cell like this:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\n\n\nAttempting to modify the cell will be ineffective. However, in the subsequent cell, we’ve specified a local option that overrides the document’s default, allowing modification. Feel free to try modifying the cell below.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| read-only: false\nplot(fit)\n```"
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
-    "href": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
-    "title": "Demo: Initial Code Cell Option Support",
+    "objectID": "demos/qwebr-setting-options-in-document-yaml.html",
+    "href": "demos/qwebr-setting-options-in-document-yaml.html",
+    "title": "Demo: Setting Options in Document Header",
     "section": "",
-    "text": "The fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+    "text": "Demo\nwebR-enabled code cells are established by using {webr-r} in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
-    "href": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
-    "title": "Demo: Initial Code Cell Option Support",
+    "objectID": "demos/qwebr-non-interactive-areas.html",
+    "href": "demos/qwebr-non-interactive-areas.html",
+    "title": "Demo: Revamped Noninteractive Areas",
     "section": "",
-    "text": "The out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by about 1/2 of a second to show how the document is responding.\n\n\n\nPackage dependencies\nThe quarto-webr extension is set to automatically install and load the ggplot2 and dplyr packages by specifying a packages key in the document’s header.\n\n\nSetup a hidden ggplot2 object\nFrom there, we’re going to use the context: setup hidden cell to create a ggplot2 object that uses the mtcars data set with the aesthetic mappings of x = wt and y = mpg called g.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nGenerate a graph\nLet’s move from setup to generating and displaying results by using g object created in setup within an output context:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nRe-use prior graph object\nLet’s also re-use the base g but change the aesthetics so that colour is now present.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nWork with a hidden setup object\nFinally, let’s make sure we can do some interesting things with the interactive session.\n\n\n\n\n\n\nNote\n\n\n\nChanges inside of interactive cells do not propagate backwards in the document.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "demos/qwebr-code-cell-options.html#conclusion",
-    "href": "demos/qwebr-code-cell-options.html#conclusion",
-    "title": "Demo: Initial Code Cell Option Support",
+    "objectID": "demos/qwebr-read-only.html",
+    "href": "demos/qwebr-read-only.html",
+    "title": "Demo: Read-Only Code Cells",
     "section": "",
-    "text": "These examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
+    "text": "This demo shows how a code cell can be placed into a read-only mode.\n\n\nThe read-only option modifies the interactive context such that changes to the cell’s code is not possible.\nFor example, try modifying the value associated with age in the following cell.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| read-only: true\n# Try modifying age\nage &lt;- 42\ncat(\"Your age is: \", age, fill = TRUE)\n```\n\n\n\n\n\n\nWe can pair read-only with autorun to create a constrained example allowing us to focus on a single piece of the code.\nFor example, let’s say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:\n\none cell exposing changes to the number of samples, e.g. n; and,\na second cell containing graphing code that is restricted from being modified.\n\n\n{quarto-webr} OutputCell Code\n\n\nTry different values for n by modifying the assignment statement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen, press “Run Code” to recreate the graph and see how the distribution changed:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn &lt;- 100\n```\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| read-only: true\nsamples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)\n```"
   },
   {
-    "objectID": "demos/qwebr-feature-demos.html",
-    "href": "demos/qwebr-feature-demos.html",
-    "title": "Feature Demonstrations",
+    "objectID": "demos/qwebr-read-only.html#read-only-option",
+    "href": "demos/qwebr-read-only.html#read-only-option",
+    "title": "Demo: Read-Only Code Cells",
     "section": "",
-    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nRead-only Interactive Code Cells\nAutorun Interactive Code Cells\nInitial Code Cell Option Support\nUsing Custom Repositories for R WASM Package binaries\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
+    "text": "The read-only option modifies the interactive context such that changes to the cell’s code is not possible.\nFor example, try modifying the value associated with age in the following cell.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| read-only: true\n# Try modifying age\nage &lt;- 42\ncat(\"Your age is: \", age, fill = TRUE)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-read-only.html#constraining-modifications",
+    "href": "demos/qwebr-read-only.html#constraining-modifications",
+    "title": "Demo: Read-Only Code Cells",
+    "section": "",
+    "text": "We can pair read-only with autorun to create a constrained example allowing us to focus on a single piece of the code.\nFor example, let’s say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:\n\none cell exposing changes to the number of samples, e.g. n; and,\na second cell containing graphing code that is restricted from being modified.\n\n\n{quarto-webr} OutputCell Code\n\n\nTry different values for n by modifying the assignment statement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen, press “Run Code” to recreate the graph and see how the distribution changed:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn &lt;- 100\n```\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| read-only: true\nsamples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-custom-repository.html",
+    "href": "demos/qwebr-custom-repository.html",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "In this example, we add a custom R WASM Package repository that contains demorwasmbinary R WASM package. The package is not available from the main webR repository.\nThe source of the custom repository can be viewed here and the rendered website using {pkgdown} can be viewed here. Another approach would be to use r-universe.dev to automatically build and supply R WASM package binaries.\n\n\nTo automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present.\n\n\n\n\n\nAlternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+  },
+  {
+    "objectID": "demos/qwebr-custom-repository.html#specify-repos-key",
+    "href": "demos/qwebr-custom-repository.html#specify-repos-key",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "To automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present."
+  },
+  {
+    "objectID": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
+    "href": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
+    "title": "Demo: Custom R WASM Package Repository",
+    "section": "",
+    "text": "Alternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+  },
+  {
+    "objectID": "qwebr-developer-resources.html",
+    "href": "qwebr-developer-resources.html",
+    "title": "Developer Resources",
+    "section": "",
+    "text": "Are you eager to contribute to the development of the quarto-webr extension or explore ways to modify it to suit your needs? This resource page is your guide to invaluable tools and references that will empower you on your development journey.",
     "crumbs": [
-      "Demos",
-      "Feature Demos"
+      "Extra Information",
+      "Developer Resources"
     ]
   },
   {
-    "objectID": "demos/qwebr-auto-run.html",
-    "href": "demos/qwebr-auto-run.html",
-    "title": "Demo: Autorun Interactive Code Cells",
+    "objectID": "qwebr-developer-resources.html#mastering-webr",
+    "href": "qwebr-developer-resources.html#mastering-webr",
+    "title": "Developer Resources",
+    "section": "Mastering webR",
+    "text": "Mastering webR\nBefore diving into extension development, it’s essential to understand the core of what powers the quarto-webr extension: webR. These webR resources will be your trusty companions:\n\nwebR Documentation: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR’s features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.\nwebR Source Code: For the technically curious, webR’s GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.\nBob Rudis’ Experiments with webR: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.\n\nThese resources empower you to master webR, whether you’re just starting out or you’re a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.",
+    "crumbs": [
+      "Extra Information",
+      "Developer Resources"
+    ]
+  },
+  {
+    "objectID": "qwebr-developer-resources.html#quarto-development-ecosystem",
+    "href": "qwebr-developer-resources.html#quarto-development-ecosystem",
+    "title": "Developer Resources",
+    "section": "Quarto Development Ecosystem",
+    "text": "Quarto Development Ecosystem\nFor those interested in extending the quarto-webr extension or exploring broader extension development within the Quarto ecosystem, we recommend exploring the following supplementary resources.\n\nQuarto Documentation\nGet acquainted with Quarto’s official extension documentation to deepen your understanding.\n\nFilters Documentation: Learn the art of creating filters for Quarto documents, enabling you to customize content generation.\nLua Development Tips: Access development tips specific to Lua scripting within Quarto extensions.\nLua API: Explore the Lua API documentation to understand how to interact with Quarto’s core functionality programmatically.\n\n\n\nRelated Extensions\nFor those intrigued by the broader world of extension development, we suggest the following Quarto extensions that can inspire your journey into extension development and functionality:\n\nquarto-ext/shinylive: Explore the shinylive extension’s codebase to understand how interactive content is implemented within Quarto documents.\nmcanouil/quarto-elevator: Delve into the quarto-elevator extension to gain insights into adding new features to Quarto documents.\nshafayetShafee/downloadthis: Investigate the downloadthis extension to see how it facilitates downloads within Quarto documents.\n\nThere are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: https://quarto.org/docs/extensions/\n\n\nPandoc Essentials\nPandoc plays a pivotal role in Quarto’s document conversion process. To deepen your knowledge of Quarto, consider these Pandoc resources:\n\nExample Filters: Draw inspiration from Pandoc’s example filters to see how custom filters can be applied to your Quarto documents.\nCodeBlock: Understand the significance of the CodeBlock element in Pandoc, often used for implementing extensions and custom functionality.",
+    "crumbs": [
+      "Extra Information",
+      "Developer Resources"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html",
+    "href": "qwebr-cell-options.html",
+    "title": "Code Cell Options",
     "section": "",
-    "text": "This demo showcases the functionality of automatically executing code within an interactive area, revealing output before any modifications can be made to the document.\n\n\nThe autorun option works in tandem with the interactive context, enabling a non-interactive execution of code within the editable code area before any changes can be made to the area.\nTo illustrate, let’s imagine a situation where you are prompted to modify the statement “Hello ___!” In the default view of an interactive cell, the results are not initially displayed.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nBy including #| autorun: true, we enable the display of results when the document first loads. Revisiting the previous example, the editable code area now presents a distinct output, prompting the user to “Fill in the blanks”:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\n\n\n\nOne key use of the non-interactive areas is to generate a targeted outcome and have iterative attempts to reach the desired output.\nFor example, consider the gapminder data set.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\ndata(\"gapminder\", package = \"gapminder\")\nhead(gapminder)\n```\n\n\n\nHow can we use gapminder data to re-create the following ggplot2 graph?\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() \n```\n\n\n\nWe’ve provided a code area for you to explore creating different kinds of graphs and have already run its contents!\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n  theme_bw() \n```"
+    "text": "This article provides an in-depth overview of cell options supported in {webr-r} code blocks. These options play a crucial role in influencing the execution and output of executable code blocks. It’s important to note that these cell options are specified within comments at the top of a code block by using a hashpipe #| option: value.\nHere’s an example of how you can use these options:\nIn this example, the cell options results is set to 'asis', and fig-width is set to 5 inches.\nThese options can be customized to tailor the behavior of the code block based on your specific requirements. Understanding and using these options effectively can enhance the overall control and presentation of your code outputs.",
+    "crumbs": [
+      "Options Reference",
+      "Code Cell Options"
+    ]
   },
   {
-    "objectID": "demos/qwebr-auto-run.html#autorun-option",
-    "href": "demos/qwebr-auto-run.html#autorun-option",
-    "title": "Demo: Autorun Interactive Code Cells",
+    "objectID": "qwebr-cell-options.html#quarto-webr",
+    "href": "qwebr-cell-options.html#quarto-webr",
+    "title": "Code Cell Options",
+    "section": "quarto-webr",
+    "text": "quarto-webr\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\ninteractive\nDescribe how the cell should operate on the page through either interactive (Runnable code editor), output (Output only of executed at runtime), or setup (execute code without seeing output at runtime).\n\n\nautorun\nfalse\nAllow interactive cells to be run during document initialization without a user pressing run code.\n\n\nread-only\nfalse\nPrevent code in interactive cells from being modified by disallowing code input.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOptions listed here are unique to the {quarto-webr} extension. For more details, please see Hiding and Executing Code.",
+    "crumbs": [
+      "Options Reference",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#attributes",
+    "href": "qwebr-cell-options.html#attributes",
+    "title": "Code Cell Options",
+    "section": "Attributes",
+    "text": "Attributes\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nlabel\n''\nUnique label for code cell. Useful for debugging.\n\n\nclasses\n''\nClasses to apply to cell container",
+    "crumbs": [
+      "Options Reference",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#cell-output",
+    "href": "qwebr-cell-options.html#cell-output",
+    "title": "Code Cell Options",
+    "section": "Cell Output",
+    "text": "Cell Output\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nresults\nmarkup\nControls how to display the text results through either: markup (Mark up text output with appropriate environments), asis (Write text output as-is, raw text results directly into the output document), or hide (Hide text output).\n\n\noutput\ntrue\nControls inclusion of results: true (all results), false (no results), or 'asis' (output as-is, raw text results directly into the output document).\n\n\nwarning\ntrue\nPreserve standard error output (warning(), message(), or stop()) in the output.\n\n\nmessage\ntrue\nSee prior entry.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAt the present time, we cannot differentiate between the type of condition being sent to standard error. Thus, if either warning or message is set to false, the output for both will be surpressed.",
+    "crumbs": [
+      "Options Reference",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-cell-options.html#figures",
+    "href": "qwebr-cell-options.html#figures",
+    "title": "Code Cell Options",
+    "section": "Figures",
+    "text": "Figures\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nfig-cap\n\"\"\nFigure caption that should appear under the canvas\n\n\ndpi\n72\nDots per inch to use in calculating pixel values for fig-height and fig-width, e.g. dpi * inches = pixels.\n\n\nfig-width\n7\nWidth of the plot (in inches)\n\n\nfig-height\n5\nHeight of the plot (in inches)\n\n\nout-width\n700px\nWidth of the plot in the output document, which can be different from its physical fig-width such as \"100%\" or \"250px\".\n\n\nout-height\n\"\"\nHeight of the plot in the output document, similar to out-width.",
+    "crumbs": [
+      "Options Reference",
+      "Code Cell Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-troubleshooting.html",
+    "href": "qwebr-troubleshooting.html",
+    "title": "Troubleshooting",
     "section": "",
-    "text": "The autorun option works in tandem with the interactive context, enabling a non-interactive execution of code within the editable code area before any changes can be made to the area.\nTo illustrate, let’s imagine a situation where you are prompted to modify the statement “Hello ___!” In the default view of an interactive cell, the results are not initially displayed.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nBy including #| autorun: true, we enable the display of results when the document first loads. Revisiting the previous example, the editable code area now presents a distinct output, prompting the user to “Fill in the blanks”:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```"
-  },
-  {
-    "objectID": "demos/qwebr-auto-run.html#target-practice",
-    "href": "demos/qwebr-auto-run.html#target-practice",
-    "title": "Demo: Autorun Interactive Code Cells",
-    "section": "",
-    "text": "One key use of the non-interactive areas is to generate a targeted outcome and have iterative attempts to reach the desired output.\nFor example, consider the gapminder data set.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\ndata(\"gapminder\", package = \"gapminder\")\nhead(gapminder)\n```\n\n\n\nHow can we use gapminder data to re-create the following ggplot2 graph?\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() \n```\n\n\n\nWe’ve provided a code area for you to explore creating different kinds of graphs and have already run its contents!\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n  theme_bw() \n```"
-  },
-  {
-    "objectID": "demos/qwebr-long-running-execution-interactive-locking.html",
-    "href": "demos/qwebr-long-running-execution-interactive-locking.html",
-    "title": "Demo: Locking interactive code",
-    "section": "",
-    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by 5 seconds by adding Sys.sleep() to emphasize code cell locking.\n\n\n\nSay Hi\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nCalculate\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHelp!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "qwebr-first-steps.html",
-    "href": "qwebr-first-steps.html",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "",
-    "text": "To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like quarto-webr within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.",
+    "text": "As this is an exciting new frontier, we’re learning as we go. Or as my friend Lawrence says, “I like to build airplanes in the air-”. In the spirit of learning, let’s address some common issues you may come across…\n\nStuck at Loading webR…\nProblem: If you encounter the message Loading webR... above your code cell instead of Run code, it’s likely due to missing worker files (webr-worker.js and webr-serviceworker.js) in the document’s root or a relative directory.\nSolution: To resolve this issue, make sure that these worker files are located in the same directory as your Quarto document. Here’s the recommended directory structure:\n.\n├── demo-quarto-webr.qmd\n├── webr-serviceworker.js\n└── webr-worker.js\nIf you still encounter the error after confirming the file placement, check the output of the preview command in either the Terminal or RStudio’s Background Jobs tab. The output might resemble the following:\nquarto preview --no-browser --no-watch-inputs\n\nWatching files for changes \nGET: /website/posts/index.html\n /website/posts/webr-serviceworker.js (404: Not Found)\n /website/posts/webr-worker.js (404: Not Found)\nThis indicates that the webr-serviceworker.js and webr-worker.js files are missing during the rendering stage of your document. To fix this, add the resources key to your document header, explicitly specifying these two JavaScript files like so:\n---\ntitle: \"My Post\"\nresources:\n  - webr-serviceworker.js\n  - webr-worker.js\nfilters:\n  - webr\n---\n\n\n\n\n\n\nNote\n\n\n\nWe’ve informed the Quarto team about this issue regarding automatic inclusion of extension registered dependencies.\n\n\nIf the problem persists, you can specify the location of the worker files using the service-worker-url option in the document’s YAML header or set the channel-type option to \"post-message\". You can see an example of the later here.\n\n\nUnable to Render the Quarto File\nProblem: When I add the webr value to the filter section, my Quarto document fails to render and displays a lengthy error message.\nSolution: Quarto extensions are project-specific, which means you must install the extension for each new project you create. To resolve this issue, ensure that your project directory structure includes an _extensions directory with the appropriate extension files, as shown below:\n.\n├── _extensions\n│   └── coatless\n│       └── webr\n│           ├── _extension.yml\n│           ├── ...\n│           └── webr.lua\n└── test-document.qmd\nIf your directory is missing the _extensions/ folder, please install the webr extension by following the instructions in Install the quarto-webr extension video.\nStarting from Quarto v1.4, you will receive an improved error message that emphasizes the extension’s absence from your current working directory.\n\n\nMissing extension error for Quarto v1.4 and later\nFATAL (/Applications/quarto/share/filters/main.lua:129) An error occurred:\nCould not run /Users/jjb/github/demo-webr/webr as a JSON filter.\nPlease make sure the file exists and is executable.\n\nDid you intend 'webr' as a Lua filter in an extension?\nIf so, make sure you've spelled the name of the extension correctly.\n\nThe original Pandoc error follows below.\nError running filter /Users/jjb/github/demo-webr/webr:\nCould not find executable /Users/jjb/github/demo-webr/webr\n\n\nIn versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.\n\n\nMissing extension error for Quarto v1.3 and earlier\nError running filter /Applications/quarto/share/filters/main.lua:\nError running filter /Users/jjb/github/demo-webr/webr:\nCould not find executable /Users/jjb/github/demo-webr/webr\nstack traceback:\n        /Applications/quarto/share/filters/main.lua:4030: in function &lt;/Applications/quarto/share/filters/main.lua:4009&gt;\n        [C]: in ?\n        [C]: in method 'walk'\n        /Applications/quarto/share/filters/main.lua:171: in function 'run_emulated_filter'\n        /Applications/quarto/share/filters/main.lua:449: in local 'callback'\n        /Applications/quarto/share/filters/main.lua:454: in upvalue 'run_emulated_filter_chain'\n        /Applications/quarto/share/filters/main.lua:495: in function &lt;/Applications/quarto/share/filters/main.lua:476&gt;\nstack traceback:\n        /Applications/quarto/share/filters/main.lua:171: in function 'run_emulated_filter'\n        /Applications/quarto/share/filters/main.lua:449: in local 'callback'\n        /Applications/quarto/share/filters/main.lua:454: in upvalue 'run_emulated_filter_chain'\n        /Applications/quarto/share/filters/main.lua:495: in function &lt;/Applications/quarto/share/filters/main.lua:476&gt;\n\n\n\n\nDirectly Accessing Rendered HTML\nProblem: When I directly open the rendered HTML document in a web browser, webR components are not loaded due to security reasons.\nSolution: When you use quarto preview or quarto render, the rendered HTML document is served by mimicking a server running under https://localhost/. In this context, everything usually works fine if you follow the directory structure mentioned above.\nHowever, if you directly open the rendered HTML document (e.g., demo-quarto-web.html) in a web browser, you may encounter issues with WebR components not loading due to security restrictions. This behavior is explained further in this StackOverflow answer.\nTo address this problem and avoid the need for a local Quarto installation to open the rendered file directly, you have a few options:\n\nUse Chrome’s --allow-file-access-from-files access: You can modify your Chrome shortcut to include the --allow-file-access-from-files flag. This allows local files to access other local files, potentially resolving the issue.\nUse the WebServer for Chrome Extension: Install the WebServer for Chrome extension to serve your HTML files. This extension sets up a local web server that doesn’t have the same security restrictions as directly opening files.\nUse NPM to Obtain local-web-server: Install the local-web-server package from npm, which is a lightweight, no-configuration-required HTTP server. You can use it to serve your HTML files without encountering security restrictions.\n\n\n\nSpeed Up webR\nProblem: WebR documents are not performing as efficiently as expected.\nSolution: To optimize the performance of webR documents, it’s essential to set appropriate HTTP headers for COOP and COEP. These headers help speed up the process and ensure a smoother user experience.\nHere are the recommended COOP and COEP headers to use:\nCross-Origin-Opener-Policy: same-origin\nCross-Origin-Embedder-Policy: require-corp\nBy configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the \"shared-array-buffer\" channel type documentation.\n\n\nEngine Registration\nProblem: When using the knitr engine instead of the jupyter engine and the original tag {webr} instead of {webr-r}, a warning message may appear in the render processing output:\nWarning message:\nIn get_engine(options$engine) :\n  Unknown language engine 'webr' (must be registered via knit_engines$set()).\nSolution: The warning message about the unknown language engine ‘webr’ is purely cosmetic and does not affect the functionality of the webr filter. It is merely an aesthetic issue and does not impact the execution of code cells.\nThis warning occurs because the knitr engine is not initially aware of the webr engine. However, this lack of awareness does not cause any functional problems. The webr filter will operate as expected despite this warning.\nWhile the warning is not critical, it may be addressed in future updates for aesthetic reasons. Nevertheless, you can safely disregard this warning message as it does not interfere with the functionality of your webR documents.",
     "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-first-steps.html#workflow-video",
-    "href": "qwebr-first-steps.html#workflow-video",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Workflow Video",
-    "text": "Workflow Video",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-first-steps.html#installation",
-    "href": "qwebr-first-steps.html#installation",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Installation",
-    "text": "Installation\nTo use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again.",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-first-steps.html#usage",
-    "href": "qwebr-first-steps.html#usage",
-    "title": "Making your first webR-powered Quarto document",
-    "section": "Usage",
-    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.",
-    "crumbs": [
-      "Getting Started",
-      "Your first webR-powered Quarto document"
-    ]
-  },
-  {
-    "objectID": "qwebr-theming.html",
-    "href": "qwebr-theming.html",
-    "title": "Theming Elements",
-    "section": "",
-    "text": "Note\n\n\n\nThis section of the documentation is tailored to those with a deeper understanding of web design. If you’re new to these concepts, don’t worry; you can still create fantastic documents using the quarto-webr extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.\nOn this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.",
-    "crumbs": [
-      "Deployment",
-      "Theming Elements"
-    ]
-  },
-  {
-    "objectID": "qwebr-theming.html#css-class-and-id-identifiers",
-    "href": "qwebr-theming.html#css-class-and-id-identifiers",
-    "title": "Theming Elements",
-    "section": "CSS Class and ID Identifiers",
-    "text": "CSS Class and ID Identifiers\nTo effectively style web-based documents created with the extension, you’ll need to understand the unique id and class attributes associated with different content areas. There are two key areas to every Quarto document that uses the quarto-webr extension: header and code cells. The header is where status and debug information can be found whereas the code cell portion is where R code is actively run using webR.\nLet’s turn our attention to the document’s header. By default, the webR initialization state is displayed in the header. This can be turned off by setting the show-startup-message: false meta option..\n\nStatus Area: This represents the area we dynamic add to the document using JavaScript and stores the Status Title and Status Message\n\nid: #qwebr-status-message-area\n\nStatus Title: This element contains the header of the status text.\n\nid: #qwebr-status-message-title\n\nStatus Message: This element is updated with the document status updates.\n\nid: #qwebr-status-message-body\n\n\nWith this in mind, we next focus on improving how content is being displayed through code cells. There are two primary context types where code content is displayed to users:\n\nInteractive Area: This area encompasses the Code Editor, Code Output, and the Graph Output Area under the interactive context.\n\nid: #qwebr-interactive-area-{{ID}}\nclass: .qwebr-interactive-area\n\nNon-Interactive Area: This includes the Code Output and the Graph Output Area under the output context.\n\nid: #qwebr-noninteractive-area-{{ID}}\nclass: .qwebr-noninteractive-area\n\n\nWithin the interactive section, you’ll find elements that are displayed when users request results:\n\nRun Button: This button triggers the execution of your R code.\n\nid: #qwebr-button-run-{{ID}}\nclass: .qwebr-button-run\n\nConsole Area: This area contains the Code Editor and Code Output.\n\nid: #qwebr-console-area-{{ID}}\nclass: .qwebr-console-area\n\nCode Editor: You use this area to input and edit your R code.\n\nid: #qwebr-editor-{{ID}}\nclass: .qwebr-editor\n\n\nAcross both contexts, you’ll find shared output element classes and names:\n\nCode Output Area: This is where the results and output of your R code are displayed.\n\nid: #qwebr-output-code-area-{{ID}}\nclass: .qwebr-output-code-area\n\nCode Output Standard Output: Results from standard output (STDOUT) are stored here.\n\nid: #qwebr-output-code-stdout-{{ID}}\nclass: .qwebr-output-code-stdout\n\nCode Output Standard Error: Each line of results from standard error (STDERR) when running your code is stored here.\n\nid: #qwebr-output-code-stderr-{{ID}}\nclass: .qwebr-output-code-stderr\n\nGraph Output Area: Any graphical output of your R code is displayed in this area.\n\nid: #qwebr-output-graph-area-{{ID}}\nclass: .qwebr-output-graph-area\n\n\nThe {ID} in these identifiers represents the instance of the element on the page, whether it’s the first, second, or nth occurrence. You can customize their appearance by targeting the specific id or class attributes in your document’s CSS, or you can include a separate CSS file to align with your design preferences.",
-    "crumbs": [
-      "Deployment",
-      "Theming Elements"
-    ]
-  },
-  {
-    "objectID": "qwebr-theming.html#css-html-structure",
-    "href": "qwebr-theming.html#css-html-structure",
-    "title": "Theming Elements",
-    "section": "CSS & HTML Structure",
-    "text": "CSS & HTML Structure\n\nInteractive Area Structure\n&lt;div id=\"qwebr-interactive-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n  &lt;button class=\"btn btn-default qwebr-button-run\" disabled type=\"button\" id=\"qwebr-button-run-{{ID}}\"&gt;&lt;/button&gt;\n  &lt;div id=\"qwebr-console-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n    &lt;div id=\"qwebr-editor-{{ID}}\" class=\"qwebr-editor\"&gt;\n      &lt;div class=\"monaco-editor ...\"&gt;&lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n      &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\nNon-interactive Area Structure\n&lt;div id=\"qwebr-noninteractive-area-{{ID}}\" class=\"qwebr-noninteractive-area\"&gt;\n   &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n   &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n   &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\" aria-live=\"assertive\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;",
-    "crumbs": [
-      "Deployment",
-      "Theming Elements"
-    ]
-  },
-  {
-    "objectID": "qwebr-theming.html#custom-embedded-styles",
-    "href": "qwebr-theming.html#custom-embedded-styles",
-    "title": "Theming Elements",
-    "section": "Custom Embedded Styles",
-    "text": "Custom Embedded Styles\nFor instance, you can insert new CSS elements by using the following method:\n```{=html}\n&lt;style&gt;\n.qwebr-code-output-stdout {background-color: powderblue;}\n.qwebr-button-run   {color: blue;}\n&lt;/style&gt;\n```",
-    "crumbs": [
-      "Deployment",
-      "Theming Elements"
-    ]
-  },
-  {
-    "objectID": "qwebr-theming.html#external-theme-support",
-    "href": "qwebr-theming.html#external-theme-support",
-    "title": "Theming Elements",
-    "section": "External Theme Support",
-    "text": "External Theme Support\nFurthermore, if you are using a Quarto theme, you can make use of theme-specific styling options to ensure that these UI elements align with the overall theme of your document.\n---\ntitle: My post\nformat:\n  html: \n    theme:\n      - cosmo\n      - custom.scss\n---",
-    "crumbs": [
-      "Deployment",
-      "Theming Elements"
-    ]
-  },
-  {
-    "objectID": "qwebr-using-r-packages.html",
-    "href": "qwebr-using-r-packages.html",
-    "title": "Using R Packages",
-    "section": "",
-    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
-    "objectID": "qwebr-using-r-packages.html#custom-repositories",
-    "href": "qwebr-using-r-packages.html#custom-repositories",
-    "title": "Using R Packages",
-    "section": "Custom Repositories",
-    "text": "Custom Repositories\nIf an R package is not available on the main webR repository (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.\nWe have the following guides:\n\nOrg-focused webR/WASM Package Repository without a {pkgdown} website\nUnified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website\nSeparate GitHub Action Deployment onto gh-pages branch of R WASM Package binaries and {pkgdown} website\n\nAnother approach would be to use r-universe.dev to automatically build and supply R WASM package binaries.\nOnce done, please make sure to specify where the custom repository is by using the repos key under the webr option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the r-universe, by using:\n---\nwebr:\n  repos:\n    - https://username.github.io/reponame\n    - https://username.r-universe.dev\n---\n\n\n\n\n\n\nNote\n\n\n\nThe {quarto-webr} extension is setup to always check whether an R package is available at the main repository even without it being specified in the repos key.",
-    "crumbs": [
-      "Getting Started",
-      "Using R Packages"
-    ]
-  },
-  {
-    "objectID": "qwebr-community-examples.html",
-    "href": "qwebr-community-examples.html",
-    "title": "Community Examples",
-    "section": "",
-    "text": "Welcome to the Community Examples page for the quarto-webr extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the quarto-webr extension. These examples showcase real-world use cases, highlighting the extension’s adaptability and functionality across various fields. You may also find references to examples from the main webR project here as well.\nExplore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community’s contributions and discover how you can leverage the full potential of quarto-webr in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you’ll find valuable insights and ideas within the community’s projects.\nDo you have your own project or example that incorporates quarto-webr? We invite you to contribute to this growing collection of community-driven projects by submitting a pull request or creating an issue. Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of quarto-webr.\n\nVideos\n\nquarto-webr: Your first webR-powered Quarto Document (RStudio)\nEli E. Holmes’ coverage of webR + Quarto on her EEHolmes-DataScience YouTube channel\n\nDemo of webR quarto extension along with Codespaces on Mar 14, 2023 and her test repository\nWebR + Quarto Demo: Running R right in the browser! on Mar 10, 2023 (Note: This uses an earlier Proof of Concept document. Not the quarto extension!)\n\n\n\n\nTeaching Materials / Workshops\n\nBruno Rodrigues’ use of the extension in his notes for Building Reproducible Analytical Pipelines.\n\nSource repository\n\nDavid Brocker’s conversion of his PY 3600: Statistical Methods course materials. Oct 23rd, 2023.\n\nSource repository\n\nMine Çetinkaya-Rundel’s Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials. Sept 18, 2023 @ posit::conf(2023)\n\nEx 1.1: UN Votes, Page Source\nFull workshop materials at source repository and deployed website example’s source repository\n\nEthan White’s experimental interactive version of Data Carpentry for Biologists. Mar 13th, 2023.\n\n\n\nTalks\n\nNicola Rennie’s talk on Teaching statistics interactively with webR. Nov 22th, 2023 @ RSS/RoSE UK Statistics Education Meeting 2023\n\nSlides and Source code\n\nGeorge Stagg’s talk on Shiny Without a Server: webR & Shinylive brief mention of quarto-webr as a quick onboarding option. Oct 18, 2023 @ Jumping Rivers Shiny in Production 2023 Conference\n\nVideo (38:07)\n\nGeorge Stagg’s talk on the Magic with WebAssembly and webR mentioning quarto-webr as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)\n\nVideo (19:22)\n\nJames Balamuta’s talk on Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR. Sep 19, 2023 @ posit::conf(2023)\n\nVideo (20:35)\n\nGeorge Stagg’s talk on the Introduction to webR mentioning quarto-webr as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)\nNicola Rennie’s talk on Teaching statistics interactively with webR. Sept 7th, 2023 @ RSS International Conference 2023\n\nSlides and Source code\n\nbob Rudis’ talk on 🕸️ Into the WebR-Verse incorporating a demo of the quarto-webr extension. Jul 13th, 2023 @ New York R Conference 2023\n\nVideo (21:01) and Source code\nboB used a cool trick to embed the demo in his revealjs slides.\n\nMaria Tackett’s talk on Using Quarto for Making and Organizing Teaching Materials during the Teaching (with) Quarto Session. Aug 7, 2023 @ JSM 2023\n\nSlides and Source code\nWebR Demo on Quarto Pub\n\n\n\n\nTextbooks\n\nDaniel E. Weeks incorporated webR exercises into various parts of the HuGen2071. Fall 2023.\n\nBook source\n\nDaren Eiri uses interctive code cells in Condition Handling with Logging chapter.\n\nBook Source and Chapter Source\n\n\n\n\nNotebooks\n\nGeorge Stagg’s notebook example showing tidymodels workflow using webR\n\ntidymodels starter article without webR Preprocess your data with recipes\n\n\n\n\nSocial media posts\n\nJeffrey Perkel post on Mastodon with a quick ggplot2 demo. Dec 14th, 2023\nNien Xiang Tou post on LinkedIn and Mastodon\nLinh Nguyen’s post on LinkedIn and Twitter describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the quarto-webr extension. Sept 22, 2023\nJoe Chelladurai mentioning a similiar integration on mastodon for his newly developed The School of Data. Jul 11th, 2023\nNicola Rennie’s tweet showing live coding with webR. May 5th, 2023\nbob Rudis’ kind praise of the extension. Apr 2nd, 2023\n\n\n\nBlog posts\n\nClaudiu Papasteri’s post on Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?. Feb 5th, 2024.\n\nSource\n\nCara Thompson’s post on A quick experiment with WebR: how much can I do in under an hour?. Feb 2nd, 2024.\nMatt Dray’s post on Pseudo-apps in the browser with WebR and Quarto?. Jan 20th, 2024.\n\nSource\n\nJames Goldie’s post on Your new R package? Write a WebR blog post for it. Jan 19th, 2024.\n\nSource\n\nIsabella Velásquez’s post on Six not-so-basic base R functions. Jan 16th, 2024.\n\nSource\n\nWolfgang Huber’s post on Horseshoes in multi-dimensional scaling. Jan 6th, 2024.\n\nSource\n\nAlex Hayes’s post on the accumulation of small risks. Dec 23rd, 2023.\n\nSource\n\nThomas Sandmann’s post on Embedding R into Quarto documents with quarto-webr. Nov 18th, 2023.\n\nExample document: Intersecting Differential expression results.\nSource\n\nChi Zhang’s post Use WebR in your existing quarto website. Oct 1st, 2023.\nJavier Orraca-Deatcu’s post titled webR via Quarto Extensions. Aug 23rd, 2023.\nGeorge Stagg’s mention of the extension in his webR 0.2.0 announcement. Aug 8th, 2023.\nEthan White’s use to create a portal for Tidy Tuesday. May 2nd, 2023\nMatt Dray’s post on Playgrounds with WebR and Quarto. Mar 16th, 2023\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\nSource\n\nEthan White’s post on Playgrounds with WebR and Quarto. Mar 13th, 2023.\n\n\n\nPress\n\nR Weekly podcast included a reference to the Proof of Concept document/extension during episode 115, which was dedicated to the webR 0.1.0 announcement.\n\nR weekly 115 (2023-W11)",
-    "crumbs": [
-      "Demos",
-      "Community Examples"
+      "Support",
+      "Troubleshooting"
     ]
   },
   {
@@ -1067,159 +1041,217 @@
     ]
   },
   {
-    "objectID": "qwebr-troubleshooting.html",
-    "href": "qwebr-troubleshooting.html",
-    "title": "Troubleshooting",
+    "objectID": "qwebr-community-examples.html",
+    "href": "qwebr-community-examples.html",
+    "title": "Community Examples",
     "section": "",
-    "text": "As this is an exciting new frontier, we’re learning as we go. Or as my friend Lawrence says, “I like to build airplanes in the air-”. In the spirit of learning, let’s address some common issues you may come across…\n\nStuck at Loading webR…\nProblem: If you encounter the message Loading webR... above your code cell instead of Run code, it’s likely due to missing worker files (webr-worker.js and webr-serviceworker.js) in the document’s root or a relative directory.\nSolution: To resolve this issue, make sure that these worker files are located in the same directory as your Quarto document. Here’s the recommended directory structure:\n.\n├── demo-quarto-webr.qmd\n├── webr-serviceworker.js\n└── webr-worker.js\nIf you still encounter the error after confirming the file placement, check the output of the preview command in either the Terminal or RStudio’s Background Jobs tab. The output might resemble the following:\nquarto preview --no-browser --no-watch-inputs\n\nWatching files for changes \nGET: /website/posts/index.html\n /website/posts/webr-serviceworker.js (404: Not Found)\n /website/posts/webr-worker.js (404: Not Found)\nThis indicates that the webr-serviceworker.js and webr-worker.js files are missing during the rendering stage of your document. To fix this, add the resources key to your document header, explicitly specifying these two JavaScript files like so:\n---\ntitle: \"My Post\"\nresources:\n  - webr-serviceworker.js\n  - webr-worker.js\nfilters:\n  - webr\n---\n\n\n\n\n\n\nNote\n\n\n\nWe’ve informed the Quarto team about this issue regarding automatic inclusion of extension registered dependencies.\n\n\nIf the problem persists, you can specify the location of the worker files using the service-worker-url option in the document’s YAML header or set the channel-type option to \"post-message\". You can see an example of the later here.\n\n\nUnable to Render the Quarto File\nProblem: When I add the webr value to the filter section, my Quarto document fails to render and displays a lengthy error message.\nSolution: Quarto extensions are project-specific, which means you must install the extension for each new project you create. To resolve this issue, ensure that your project directory structure includes an _extensions directory with the appropriate extension files, as shown below:\n.\n├── _extensions\n│   └── coatless\n│       └── webr\n│           ├── _extension.yml\n│           ├── ...\n│           └── webr.lua\n└── test-document.qmd\nIf your directory is missing the _extensions/ folder, please install the webr extension by following the instructions in Install the quarto-webr extension video.\nStarting from Quarto v1.4, you will receive an improved error message that emphasizes the extension’s absence from your current working directory.\n\n\nMissing extension error for Quarto v1.4 and later\nFATAL (/Applications/quarto/share/filters/main.lua:129) An error occurred:\nCould not run /Users/jjb/github/demo-webr/webr as a JSON filter.\nPlease make sure the file exists and is executable.\n\nDid you intend 'webr' as a Lua filter in an extension?\nIf so, make sure you've spelled the name of the extension correctly.\n\nThe original Pandoc error follows below.\nError running filter /Users/jjb/github/demo-webr/webr:\nCould not find executable /Users/jjb/github/demo-webr/webr\n\n\nIn versions prior to Quarto v1.4, including v1.3 and earlier, the error message may differ, but it typically signals that the extension is either missing or not executable.\n\n\nMissing extension error for Quarto v1.3 and earlier\nError running filter /Applications/quarto/share/filters/main.lua:\nError running filter /Users/jjb/github/demo-webr/webr:\nCould not find executable /Users/jjb/github/demo-webr/webr\nstack traceback:\n        /Applications/quarto/share/filters/main.lua:4030: in function &lt;/Applications/quarto/share/filters/main.lua:4009&gt;\n        [C]: in ?\n        [C]: in method 'walk'\n        /Applications/quarto/share/filters/main.lua:171: in function 'run_emulated_filter'\n        /Applications/quarto/share/filters/main.lua:449: in local 'callback'\n        /Applications/quarto/share/filters/main.lua:454: in upvalue 'run_emulated_filter_chain'\n        /Applications/quarto/share/filters/main.lua:495: in function &lt;/Applications/quarto/share/filters/main.lua:476&gt;\nstack traceback:\n        /Applications/quarto/share/filters/main.lua:171: in function 'run_emulated_filter'\n        /Applications/quarto/share/filters/main.lua:449: in local 'callback'\n        /Applications/quarto/share/filters/main.lua:454: in upvalue 'run_emulated_filter_chain'\n        /Applications/quarto/share/filters/main.lua:495: in function &lt;/Applications/quarto/share/filters/main.lua:476&gt;\n\n\n\n\nDirectly Accessing Rendered HTML\nProblem: When I directly open the rendered HTML document in a web browser, webR components are not loaded due to security reasons.\nSolution: When you use quarto preview or quarto render, the rendered HTML document is served by mimicking a server running under https://localhost/. In this context, everything usually works fine if you follow the directory structure mentioned above.\nHowever, if you directly open the rendered HTML document (e.g., demo-quarto-web.html) in a web browser, you may encounter issues with WebR components not loading due to security restrictions. This behavior is explained further in this StackOverflow answer.\nTo address this problem and avoid the need for a local Quarto installation to open the rendered file directly, you have a few options:\n\nUse Chrome’s --allow-file-access-from-files access: You can modify your Chrome shortcut to include the --allow-file-access-from-files flag. This allows local files to access other local files, potentially resolving the issue.\nUse the WebServer for Chrome Extension: Install the WebServer for Chrome extension to serve your HTML files. This extension sets up a local web server that doesn’t have the same security restrictions as directly opening files.\nUse NPM to Obtain local-web-server: Install the local-web-server package from npm, which is a lightweight, no-configuration-required HTTP server. You can use it to serve your HTML files without encountering security restrictions.\n\n\n\nSpeed Up webR\nProblem: WebR documents are not performing as efficiently as expected.\nSolution: To optimize the performance of webR documents, it’s essential to set appropriate HTTP headers for COOP and COEP. These headers help speed up the process and ensure a smoother user experience.\nHere are the recommended COOP and COEP headers to use:\nCross-Origin-Opener-Policy: same-origin\nCross-Origin-Embedder-Policy: require-corp\nBy configuring these headers, you enforce a same-origin policy for cross-origin windows and ensure that cross-origin iframes are required to have a COEP policy that allows cross-origin embedding. For more detailed instructions on setting up these headers, please refer to the \"shared-array-buffer\" channel type documentation.\n\n\nEngine Registration\nProblem: When using the knitr engine instead of the jupyter engine and the original tag {webr} instead of {webr-r}, a warning message may appear in the render processing output:\nWarning message:\nIn get_engine(options$engine) :\n  Unknown language engine 'webr' (must be registered via knit_engines$set()).\nSolution: The warning message about the unknown language engine ‘webr’ is purely cosmetic and does not affect the functionality of the webr filter. It is merely an aesthetic issue and does not impact the execution of code cells.\nThis warning occurs because the knitr engine is not initially aware of the webr engine. However, this lack of awareness does not cause any functional problems. The webr filter will operate as expected despite this warning.\nWhile the warning is not critical, it may be addressed in future updates for aesthetic reasons. Nevertheless, you can safely disregard this warning message as it does not interfere with the functionality of your webR documents.",
+    "text": "Welcome to the Community Examples page for the quarto-webr extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the quarto-webr extension. These examples showcase real-world use cases, highlighting the extension’s adaptability and functionality across various fields. You may also find references to examples from the main webR project here as well.\nExplore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community’s contributions and discover how you can leverage the full potential of quarto-webr in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you’ll find valuable insights and ideas within the community’s projects.\nDo you have your own project or example that incorporates quarto-webr? We invite you to contribute to this growing collection of community-driven projects by submitting a pull request or creating an issue. Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of quarto-webr.\n\nVideos\n\nquarto-webr: Your first webR-powered Quarto Document (RStudio)\nEli E. Holmes’ coverage of webR + Quarto on her EEHolmes-DataScience YouTube channel\n\nDemo of webR quarto extension along with Codespaces on Mar 14, 2023 and her test repository\nWebR + Quarto Demo: Running R right in the browser! on Mar 10, 2023 (Note: This uses an earlier Proof of Concept document. Not the quarto extension!)\n\n\n\n\nTeaching Materials / Workshops\n\nBruno Rodrigues’ use of the extension in his notes for Building Reproducible Analytical Pipelines.\n\nSource repository\n\nDavid Brocker’s conversion of his PY 3600: Statistical Methods course materials. Oct 23rd, 2023.\n\nSource repository\n\nMine Çetinkaya-Rundel’s Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials. Sept 18, 2023 @ posit::conf(2023)\n\nEx 1.1: UN Votes, Page Source\nFull workshop materials at source repository and deployed website example’s source repository\n\nEthan White’s experimental interactive version of Data Carpentry for Biologists. Mar 13th, 2023.\n\n\n\nTalks\n\nNicola Rennie’s talk on Teaching statistics interactively with webR. Nov 22th, 2023 @ RSS/RoSE UK Statistics Education Meeting 2023\n\nSlides and Source code\n\nGeorge Stagg’s talk on Shiny Without a Server: webR & Shinylive brief mention of quarto-webr as a quick onboarding option. Oct 18, 2023 @ Jumping Rivers Shiny in Production 2023 Conference\n\nVideo (38:07)\n\nGeorge Stagg’s talk on the Magic with WebAssembly and webR mentioning quarto-webr as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)\n\nVideo (19:22)\n\nJames Balamuta’s talk on Dynamic Interactions:Empowering Educators and Researchers with Interactive Quarto Documents Using webR. Sep 19, 2023 @ posit::conf(2023)\n\nVideo (20:35)\n\nGeorge Stagg’s talk on the Introduction to webR mentioning quarto-webr as an easy onboarding option. Sep 18, 2023 @ posit::conf(2023)\nNicola Rennie’s talk on Teaching statistics interactively with webR. Sept 7th, 2023 @ RSS International Conference 2023\n\nSlides and Source code\n\nbob Rudis’ talk on 🕸️ Into the WebR-Verse incorporating a demo of the quarto-webr extension. Jul 13th, 2023 @ New York R Conference 2023\n\nVideo (21:01) and Source code\nboB used a cool trick to embed the demo in his revealjs slides.\n\nMaria Tackett’s talk on Using Quarto for Making and Organizing Teaching Materials during the Teaching (with) Quarto Session. Aug 7, 2023 @ JSM 2023\n\nSlides and Source code\nWebR Demo on Quarto Pub\n\n\n\n\nTextbooks\n\nDaniel E. Weeks incorporated webR exercises into various parts of the HuGen2071. Fall 2023.\n\nBook source\n\nDaren Eiri uses interctive code cells in Condition Handling with Logging chapter.\n\nBook Source and Chapter Source\n\n\n\n\nNotebooks\n\nGeorge Stagg’s notebook example showing tidymodels workflow using webR\n\ntidymodels starter article without webR Preprocess your data with recipes\n\n\n\n\nSocial media posts\n\nJeffrey Perkel post on Mastodon with a quick ggplot2 demo. Dec 14th, 2023\nNien Xiang Tou post on LinkedIn and Mastodon\nLinh Nguyen’s post on LinkedIn and Twitter describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the quarto-webr extension. Sept 22, 2023\nJoe Chelladurai mentioning a similiar integration on mastodon for his newly developed The School of Data. Jul 11th, 2023\nNicola Rennie’s tweet showing live coding with webR. May 5th, 2023\nbob Rudis’ kind praise of the extension. Apr 2nd, 2023\n\n\n\nBlog posts\n\nClaudiu Papasteri’s post on Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?. Feb 5th, 2024.\n\nSource\n\nCara Thompson’s post on A quick experiment with WebR: how much can I do in under an hour?. Feb 2nd, 2024.\nMatt Dray’s post on Pseudo-apps in the browser with WebR and Quarto?. Jan 20th, 2024.\n\nSource\n\nJames Goldie’s post on Your new R package? Write a WebR blog post for it. Jan 19th, 2024.\n\nSource\n\nIsabella Velásquez’s post on Six not-so-basic base R functions. Jan 16th, 2024.\n\nSource\n\nWolfgang Huber’s post on Horseshoes in multi-dimensional scaling. Jan 6th, 2024.\n\nSource\n\nAlex Hayes’s post on the accumulation of small risks. Dec 23rd, 2023.\n\nSource\n\nThomas Sandmann’s post on Embedding R into Quarto documents with quarto-webr. Nov 18th, 2023.\n\nExample document: Intersecting Differential expression results.\nSource\n\nChi Zhang’s post Use WebR in your existing quarto website. Oct 1st, 2023.\nJavier Orraca-Deatcu’s post titled webR via Quarto Extensions. Aug 23rd, 2023.\nGeorge Stagg’s mention of the extension in his webR 0.2.0 announcement. Aug 8th, 2023.\nEthan White’s use to create a portal for Tidy Tuesday. May 2nd, 2023\nMatt Dray’s post on Playgrounds with WebR and Quarto. Mar 16th, 2023\n\nA Parsing Playground for R Code on Netlify and the repository powering it.\nSource\n\nEthan White’s post on Playgrounds with WebR and Quarto. Mar 13th, 2023.\n\n\n\nPress\n\nR Weekly podcast included a reference to the Proof of Concept document/extension during episode 115, which was dedicated to the webR 0.1.0 announcement.\n\nR weekly 115 (2023-W11)",
     "crumbs": [
-      "Support",
-      "Troubleshooting"
+      "Demos",
+      "Community Examples"
     ]
   },
   {
-    "objectID": "qwebr-cell-options.html",
-    "href": "qwebr-cell-options.html",
-    "title": "Code Cell Options",
+    "objectID": "qwebr-using-r-packages.html",
+    "href": "qwebr-using-r-packages.html",
+    "title": "Using R Packages",
     "section": "",
-    "text": "This article provides an in-depth overview of cell options supported in {webr-r} code blocks. These options play a crucial role in influencing the execution and output of executable code blocks. It’s important to note that these cell options are specified within comments at the top of a code block by using a hashpipe #| option: value.\nHere’s an example of how you can use these options:\nIn this example, the cell options results is set to 'asis', and fig-width is set to 5 inches.\nThese options can be customized to tailor the behavior of the code block based on your specific requirements. Understanding and using these options effectively can enhance the overall control and presentation of your code outputs.",
+    "text": "Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, quarto-webr avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.",
     "crumbs": [
-      "Options Reference",
-      "Code Cell Options"
+      "Getting Started",
+      "Using R Packages"
     ]
   },
   {
-    "objectID": "qwebr-cell-options.html#quarto-webr",
-    "href": "qwebr-cell-options.html#quarto-webr",
-    "title": "Code Cell Options",
-    "section": "quarto-webr",
-    "text": "quarto-webr\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\ninteractive\nDescribe how the cell should operate on the page through either interactive (Runnable code editor), output (Output only of executed at runtime), or setup (execute code without seeing output at runtime).\n\n\nautorun\nfalse\nAllow interactive cells to be run during document initialization without a user pressing run code.\n\n\nread-only\nfalse\nPrevent code in interactive cells from being modified by disallowing code input.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOptions listed here are unique to the {quarto-webr} extension. For more details, please see Hiding and Executing Code.",
+    "objectID": "qwebr-using-r-packages.html#custom-repositories",
+    "href": "qwebr-using-r-packages.html#custom-repositories",
+    "title": "Using R Packages",
+    "section": "Custom Repositories",
+    "text": "Custom Repositories\nIf an R package is not available on the main webR repository (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.\nWe have the following guides:\n\nOrg-focused webR/WASM Package Repository without a {pkgdown} website\nUnified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website\nSeparate GitHub Action Deployment onto gh-pages branch of R WASM Package binaries and {pkgdown} website\n\nAnother approach would be to use r-universe.dev to automatically build and supply R WASM package binaries.\nOnce done, please make sure to specify where the custom repository is by using the repos key under the webr option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the r-universe, by using:\n---\nwebr:\n  repos:\n    - https://username.github.io/reponame\n    - https://username.r-universe.dev\n---\n\n\n\n\n\n\nNote\n\n\n\nThe {quarto-webr} extension is setup to always check whether an R package is available at the main repository even without it being specified in the repos key.",
     "crumbs": [
-      "Options Reference",
-      "Code Cell Options"
+      "Getting Started",
+      "Using R Packages"
     ]
   },
   {
-    "objectID": "qwebr-cell-options.html#attributes",
-    "href": "qwebr-cell-options.html#attributes",
-    "title": "Code Cell Options",
-    "section": "Attributes",
-    "text": "Attributes\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nlabel\n''\nUnique label for code cell. Useful for debugging.\n\n\nclasses\n''\nClasses to apply to cell container",
+    "objectID": "qwebr-theming.html",
+    "href": "qwebr-theming.html",
+    "title": "Theming Elements",
+    "section": "",
+    "text": "Note\n\n\n\nThis section of the documentation is tailored to those with a deeper understanding of web design. If you’re new to these concepts, don’t worry; you can still create fantastic documents using the quarto-webr extension. This part is for those who want to take their styling to the next level and have knowledge of HTML and CSS.\nOn this page, we delve into the world of web design to enhance the visual aesthetics and styling of web-based documents created with the Quarto-WebR extension. While prior knowledge of these topics is not mandatory for using the extension, a good understanding can empower you to create documents that effectively convey valuable insights and captivate your audience with a visually appealing design tailored to your preferences. Whether you want to seamlessly integrate your document with your personal brand or align it with your organization’s style guidelines, this page serves as your expert guide, leading you through the process of crafting a visually captivating and cohesive user experience. The focus here is on explaining the HTML structure and predefined CSS classes that will help you achieve the visual results you desire.",
     "crumbs": [
-      "Options Reference",
-      "Code Cell Options"
+      "Deployment",
+      "Theming Elements"
     ]
   },
   {
-    "objectID": "qwebr-cell-options.html#cell-output",
-    "href": "qwebr-cell-options.html#cell-output",
-    "title": "Code Cell Options",
-    "section": "Cell Output",
-    "text": "Cell Output\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nresults\nmarkup\nControls how to display the text results through either: markup (Mark up text output with appropriate environments), asis (Write text output as-is, raw text results directly into the output document), or hide (Hide text output).\n\n\noutput\ntrue\nControls inclusion of results: true (all results), false (no results), or 'asis' (output as-is, raw text results directly into the output document).\n\n\nwarning\ntrue\nPreserve standard error output (warning(), message(), or stop()) in the output.\n\n\nmessage\ntrue\nSee prior entry.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAt the present time, we cannot differentiate between the type of condition being sent to standard error. Thus, if either warning or message is set to false, the output for both will be surpressed.",
+    "objectID": "qwebr-theming.html#css-class-and-id-identifiers",
+    "href": "qwebr-theming.html#css-class-and-id-identifiers",
+    "title": "Theming Elements",
+    "section": "CSS Class and ID Identifiers",
+    "text": "CSS Class and ID Identifiers\nTo effectively style web-based documents created with the extension, you’ll need to understand the unique id and class attributes associated with different content areas. There are two key areas to every Quarto document that uses the quarto-webr extension: header and code cells. The header is where status and debug information can be found whereas the code cell portion is where R code is actively run using webR.\nLet’s turn our attention to the document’s header. By default, the webR initialization state is displayed in the header. This can be turned off by setting the show-startup-message: false meta option..\n\nStatus Area: This represents the area we dynamic add to the document using JavaScript and stores the Status Title and Status Message\n\nid: #qwebr-status-message-area\n\nStatus Title: This element contains the header of the status text.\n\nid: #qwebr-status-message-title\n\nStatus Message: This element is updated with the document status updates.\n\nid: #qwebr-status-message-body\n\n\nWith this in mind, we next focus on improving how content is being displayed through code cells. There are two primary context types where code content is displayed to users:\n\nInteractive Area: This area encompasses the Code Editor, Code Output, and the Graph Output Area under the interactive context.\n\nid: #qwebr-interactive-area-{{ID}}\nclass: .qwebr-interactive-area\n\nNon-Interactive Area: This includes the Code Output and the Graph Output Area under the output context.\n\nid: #qwebr-noninteractive-area-{{ID}}\nclass: .qwebr-noninteractive-area\n\n\nWithin the interactive section, you’ll find elements that are displayed when users request results:\n\nRun Button: This button triggers the execution of your R code.\n\nid: #qwebr-button-run-{{ID}}\nclass: .qwebr-button-run\n\nConsole Area: This area contains the Code Editor and Code Output.\n\nid: #qwebr-console-area-{{ID}}\nclass: .qwebr-console-area\n\nCode Editor: You use this area to input and edit your R code.\n\nid: #qwebr-editor-{{ID}}\nclass: .qwebr-editor\n\n\nAcross both contexts, you’ll find shared output element classes and names:\n\nCode Output Area: This is where the results and output of your R code are displayed.\n\nid: #qwebr-output-code-area-{{ID}}\nclass: .qwebr-output-code-area\n\nCode Output Standard Output: Results from standard output (STDOUT) are stored here.\n\nid: #qwebr-output-code-stdout-{{ID}}\nclass: .qwebr-output-code-stdout\n\nCode Output Standard Error: Each line of results from standard error (STDERR) when running your code is stored here.\n\nid: #qwebr-output-code-stderr-{{ID}}\nclass: .qwebr-output-code-stderr\n\nGraph Output Area: Any graphical output of your R code is displayed in this area.\n\nid: #qwebr-output-graph-area-{{ID}}\nclass: .qwebr-output-graph-area\n\n\nThe {ID} in these identifiers represents the instance of the element on the page, whether it’s the first, second, or nth occurrence. You can customize their appearance by targeting the specific id or class attributes in your document’s CSS, or you can include a separate CSS file to align with your design preferences.",
     "crumbs": [
-      "Options Reference",
-      "Code Cell Options"
+      "Deployment",
+      "Theming Elements"
     ]
   },
   {
-    "objectID": "qwebr-cell-options.html#figures",
-    "href": "qwebr-cell-options.html#figures",
-    "title": "Code Cell Options",
-    "section": "Figures",
-    "text": "Figures\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\nfig-cap\n\"\"\nFigure caption that should appear under the canvas\n\n\ndpi\n72\nDots per inch to use in calculating pixel values for fig-height and fig-width, e.g. dpi * inches = pixels.\n\n\nfig-width\n7\nWidth of the plot (in inches)\n\n\nfig-height\n5\nHeight of the plot (in inches)\n\n\nout-width\n700px\nWidth of the plot in the output document, which can be different from its physical fig-width such as \"100%\" or \"250px\".\n\n\nout-height\n\"\"\nHeight of the plot in the output document, similar to out-width.",
+    "objectID": "qwebr-theming.html#css-html-structure",
+    "href": "qwebr-theming.html#css-html-structure",
+    "title": "Theming Elements",
+    "section": "CSS & HTML Structure",
+    "text": "CSS & HTML Structure\n\nInteractive Area Structure\n&lt;div id=\"qwebr-interactive-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n  &lt;button class=\"btn btn-default qwebr-button-run\" disabled type=\"button\" id=\"qwebr-button-run-{{ID}}\"&gt;&lt;/button&gt;\n  &lt;div id=\"qwebr-console-area-{{ID}}\" class=\"qwebr-interactive-area\"&gt;\n    &lt;div id=\"qwebr-editor-{{ID}}\" class=\"qwebr-editor\"&gt;\n      &lt;div class=\"monaco-editor ...\"&gt;&lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n      &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\nNon-interactive Area Structure\n&lt;div id=\"qwebr-noninteractive-area-{{ID}}\" class=\"qwebr-noninteractive-area\"&gt;\n   &lt;div id=\"qwebr-output-code-area-{{ID}}\" class=\"qwebr-output-code-area\" aria-live=\"assertive\"&gt;\n   &lt;pre style=\"visibility: hidden\"&gt;&lt;/pre&gt;\n   &lt;/div&gt;\n  &lt;div id=\"qwebr-output-graph-area-{{ID}}\" class=\"qwebr-output-graph-area\" aria-live=\"assertive\"&gt;\n  &lt;/div&gt;\n&lt;/div&gt;",
     "crumbs": [
-      "Options Reference",
-      "Code Cell Options"
+      "Deployment",
+      "Theming Elements"
     ]
   },
   {
-    "objectID": "qwebr-developer-resources.html",
-    "href": "qwebr-developer-resources.html",
-    "title": "Developer Resources",
-    "section": "",
-    "text": "Are you eager to contribute to the development of the quarto-webr extension or explore ways to modify it to suit your needs? This resource page is your guide to invaluable tools and references that will empower you on your development journey.",
+    "objectID": "qwebr-theming.html#custom-embedded-styles",
+    "href": "qwebr-theming.html#custom-embedded-styles",
+    "title": "Theming Elements",
+    "section": "Custom Embedded Styles",
+    "text": "Custom Embedded Styles\nFor instance, you can insert new CSS elements by using the following method:\n```{=html}\n&lt;style&gt;\n.qwebr-code-output-stdout {background-color: powderblue;}\n.qwebr-button-run   {color: blue;}\n&lt;/style&gt;\n```",
     "crumbs": [
-      "Extra Information",
-      "Developer Resources"
+      "Deployment",
+      "Theming Elements"
     ]
   },
   {
-    "objectID": "qwebr-developer-resources.html#mastering-webr",
-    "href": "qwebr-developer-resources.html#mastering-webr",
-    "title": "Developer Resources",
-    "section": "Mastering webR",
-    "text": "Mastering webR\nBefore diving into extension development, it’s essential to understand the core of what powers the quarto-webr extension: webR. These webR resources will be your trusty companions:\n\nwebR Documentation: This comprehensive documentation is your gateway to a deep understanding of webR. It provides profound insights into webR’s features, usage, and capabilities. Dive into practical examples, comprehensive guides, and everything you need to become a webR expert.\nwebR Source Code: For the technically curious, webR’s GitHub source code repository offers transparency into the development of webR. Here, you can review, contribute, and engage with the vibrant webR community to enhance its capabilities.\nBob Rudis’ Experiments with webR: Many different projects that explore a variety of use cases for webR. These experiments make use of the underlying webR JavaScript API.\n\nThese resources empower you to master webR, whether you’re just starting out or you’re a seasoned developer eager to contribute. Remember, webR is a versatile tool that can be used independently or alongside the Quarto extension to unlock the magic of interactive code cells in HTML documents.",
+    "objectID": "qwebr-theming.html#external-theme-support",
+    "href": "qwebr-theming.html#external-theme-support",
+    "title": "Theming Elements",
+    "section": "External Theme Support",
+    "text": "External Theme Support\nFurthermore, if you are using a Quarto theme, you can make use of theme-specific styling options to ensure that these UI elements align with the overall theme of your document.\n---\ntitle: My post\nformat:\n  html: \n    theme:\n      - cosmo\n      - custom.scss\n---",
     "crumbs": [
-      "Extra Information",
-      "Developer Resources"
+      "Deployment",
+      "Theming Elements"
     ]
   },
   {
-    "objectID": "qwebr-developer-resources.html#quarto-development-ecosystem",
-    "href": "qwebr-developer-resources.html#quarto-development-ecosystem",
-    "title": "Developer Resources",
-    "section": "Quarto Development Ecosystem",
-    "text": "Quarto Development Ecosystem\nFor those interested in extending the quarto-webr extension or exploring broader extension development within the Quarto ecosystem, we recommend exploring the following supplementary resources.\n\nQuarto Documentation\nGet acquainted with Quarto’s official extension documentation to deepen your understanding.\n\nFilters Documentation: Learn the art of creating filters for Quarto documents, enabling you to customize content generation.\nLua Development Tips: Access development tips specific to Lua scripting within Quarto extensions.\nLua API: Explore the Lua API documentation to understand how to interact with Quarto’s core functionality programmatically.\n\n\n\nRelated Extensions\nFor those intrigued by the broader world of extension development, we suggest the following Quarto extensions that can inspire your journey into extension development and functionality:\n\nquarto-ext/shinylive: Explore the shinylive extension’s codebase to understand how interactive content is implemented within Quarto documents.\nmcanouil/quarto-elevator: Delve into the quarto-elevator extension to gain insights into adding new features to Quarto documents.\nshafayetShafee/downloadthis: Investigate the downloadthis extension to see how it facilitates downloads within Quarto documents.\n\nThere are many more Quarto extensions to explore and learn from. For an up-to-date list, visit: https://quarto.org/docs/extensions/\n\n\nPandoc Essentials\nPandoc plays a pivotal role in Quarto’s document conversion process. To deepen your knowledge of Quarto, consider these Pandoc resources:\n\nExample Filters: Draw inspiration from Pandoc’s example filters to see how custom filters can be applied to your Quarto documents.\nCodeBlock: Understand the significance of the CodeBlock element in Pandoc, often used for implementing extensions and custom functionality.",
+    "objectID": "qwebr-first-steps.html",
+    "href": "qwebr-first-steps.html",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "",
+    "text": "To get started, we highly recommend watching our walkthrough video. This video provides an in-depth breakdown of how to use a Quarto extension like quarto-webr within a Quarto document. Following that, delve into the subsequent sections that highlight crucial workflow changes for incorporating webR functionality into your Quarto HTML documents. We strongly encourage you to bookmark this page, as it serves as an invaluable reference for users of all expertise levels.",
     "crumbs": [
-      "Extra Information",
-      "Developer Resources"
+      "Getting Started",
+      "Your first webR-powered Quarto document"
     ]
   },
   {
-    "objectID": "demos/qwebr-custom-repository.html",
-    "href": "demos/qwebr-custom-repository.html",
-    "title": "Demo: Custom R WASM Package Repository",
-    "section": "",
-    "text": "In this example, we add a custom R WASM Package repository that contains demorwasmbinary R WASM package. The package is not available from the main webR repository.\nThe source of the custom repository can be viewed here and the rendered website using {pkgdown} can be viewed here. Another approach would be to use r-universe.dev to automatically build and supply R WASM package binaries.\n\n\nTo automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present.\n\n\n\n\n\nAlternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+    "objectID": "qwebr-first-steps.html#workflow-video",
+    "href": "qwebr-first-steps.html#workflow-video",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Workflow Video",
+    "text": "Workflow Video",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
-    "objectID": "demos/qwebr-custom-repository.html#specify-repos-key",
-    "href": "demos/qwebr-custom-repository.html#specify-repos-key",
-    "title": "Demo: Custom R WASM Package Repository",
-    "section": "",
-    "text": "To automatically have the package installed and loaded like normal, please specify the name of the package in packages and where the custom repository is in repos.\nFor this example, we would specify:\n---\nwebr:\n  packages: ['demorwasmbinary']\n  repos:\n    - https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\n---\n\n\n\n\n\n\nNote\n\n\n\nThis version will ensure that any webr-r code cells inside of the document are not run prior to the package being present."
+    "objectID": "qwebr-first-steps.html#installation",
+    "href": "qwebr-first-steps.html#installation",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Installation",
+    "text": "Installation\nTo use this extension in a Quarto project, install it from within the project’s working directory by typing into Terminal:\nquarto add coatless/quarto-webr\n\n\n\nDemonstration of using the Terminal tab to install the extension.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto extensions are project-specific installations and are not stored in a global library, unlike R packages. This means that for every new Quarto project or directory where you create a Quarto Document, you’ll need to install the extension again.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
-    "objectID": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
-    "href": "demos/qwebr-custom-repository.html#specify-repos-in-webrinstall",
-    "title": "Demo: Custom R WASM Package Repository",
-    "section": "",
-    "text": "Alternatively, we can avoid registering a repository and directly install from a custom repository by using webr::install(pkg, repos = \"...\").\nFor example, we can re-create the above statement using:\n```{webr-r}\n# context: setup\n# Install the binary from a custom repository\nwebr::install(\n  \"demorwasmbinary\", \n  repos = \"https://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\"\n)\n\nlibrary(\"demorwasmbinary\")\n```"
+    "objectID": "qwebr-first-steps.html#usage",
+    "href": "qwebr-first-steps.html#usage",
+    "title": "Making your first webR-powered Quarto document",
+    "section": "Usage",
+    "text": "Usage\nOnce the extension is successfully installed, you can begin utilizing it in your Quarto documents located within the same working directory as the _extensions folder. To activate the webR functionality in those documents, follow these steps:\n\nAdd webr Filter: In the header of your Quarto document, add the webr filter to the list of filters:\n\nfilters:\n  - webr\n\nUse {webr-r} Code Blocks: Write your R code within code blocks marked with {webr-r}. Here’s an example:\n\n---\ntitle: webR in Quarto HTML Documents\nformat: html\nengine: knitr\nfilters:\n  - webr\n---\n\nThis is a webr-enabled code cell in a Quarto HTML document.\n\n```{webr-r}\nfit = lm(mpg ~ am, data = mtcars)\nsummary(fit)\n```\n\nRender Your Document: You can now render your Quarto document by clicking on  Render (or use the keyboard shortcut ⇧⌘K on macOS or Ctrl+Shift+K on Windows/Linux). The document will execute under engine: knitr by default, but you can specify a different engine if needed.\n\n\n\n\n\n\n\nNote\n\n\n\nIf an engine is not specified, Quarto will attempt to use the jupyter compute engine by default. This may cause an error if jupyter is not installed on your computer.",
+    "crumbs": [
+      "Getting Started",
+      "Your first webR-powered Quarto document"
+    ]
   },
   {
-    "objectID": "demos/qwebr-read-only.html",
-    "href": "demos/qwebr-read-only.html",
-    "title": "Demo: Read-Only Code Cells",
+    "objectID": "demos/qwebr-long-running-execution-interactive-locking.html",
+    "href": "demos/qwebr-long-running-execution-interactive-locking.html",
+    "title": "Demo: Locking interactive code",
     "section": "",
-    "text": "This demo shows how a code cell can be placed into a read-only mode.\n\n\nThe read-only option modifies the interactive context such that changes to the cell’s code is not possible.\nFor example, try modifying the value associated with age in the following cell.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| read-only: true\n# Try modifying age\nage &lt;- 42\ncat(\"Your age is: \", age, fill = TRUE)\n```\n\n\n\n\n\n\nWe can pair read-only with autorun to create a constrained example allowing us to focus on a single piece of the code.\nFor example, let’s say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:\n\none cell exposing changes to the number of samples, e.g. n; and,\na second cell containing graphing code that is restricted from being modified.\n\n\n{quarto-webr} OutputCell Code\n\n\nTry different values for n by modifying the assignment statement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen, press “Run Code” to recreate the graph and see how the distribution changed:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn &lt;- 100\n```\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| read-only: true\nsamples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)\n```"
+    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by 5 seconds by adding Sys.sleep() to emphasize code cell locking.\n\n\n\nSay Hi\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nCalculate\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHelp!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "demos/qwebr-read-only.html#read-only-option",
-    "href": "demos/qwebr-read-only.html#read-only-option",
-    "title": "Demo: Read-Only Code Cells",
+    "objectID": "demos/qwebr-auto-run.html",
+    "href": "demos/qwebr-auto-run.html",
+    "title": "Demo: Autorun Interactive Code Cells",
     "section": "",
-    "text": "The read-only option modifies the interactive context such that changes to the cell’s code is not possible.\nFor example, try modifying the value associated with age in the following cell.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| read-only: true\n# Try modifying age\nage &lt;- 42\ncat(\"Your age is: \", age, fill = TRUE)\n```"
+    "text": "This demo showcases the functionality of automatically executing code within an interactive area, revealing output before any modifications can be made to the document.\n\n\nThe autorun option works in tandem with the interactive context, enabling a non-interactive execution of code within the editable code area before any changes can be made to the area.\nTo illustrate, let’s imagine a situation where you are prompted to modify the statement “Hello ___!” In the default view of an interactive cell, the results are not initially displayed.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nBy including #| autorun: true, we enable the display of results when the document first loads. Revisiting the previous example, the editable code area now presents a distinct output, prompting the user to “Fill in the blanks”:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\n\n\n\nOne key use of the non-interactive areas is to generate a targeted outcome and have iterative attempts to reach the desired output.\nFor example, consider the gapminder data set.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\ndata(\"gapminder\", package = \"gapminder\")\nhead(gapminder)\n```\n\n\n\nHow can we use gapminder data to re-create the following ggplot2 graph?\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() \n```\n\n\n\nWe’ve provided a code area for you to explore creating different kinds of graphs and have already run its contents!\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n  theme_bw() \n```"
   },
   {
-    "objectID": "demos/qwebr-read-only.html#constraining-modifications",
-    "href": "demos/qwebr-read-only.html#constraining-modifications",
-    "title": "Demo: Read-Only Code Cells",
+    "objectID": "demos/qwebr-auto-run.html#autorun-option",
+    "href": "demos/qwebr-auto-run.html#autorun-option",
+    "title": "Demo: Autorun Interactive Code Cells",
     "section": "",
-    "text": "We can pair read-only with autorun to create a constrained example allowing us to focus on a single piece of the code.\nFor example, let’s say we want to understand what happens when we increase the number of observations randomly sampled from a normal distribution. We could define two interactive cells:\n\none cell exposing changes to the number of samples, e.g. n; and,\na second cell containing graphing code that is restricted from being modified.\n\n\n{quarto-webr} OutputCell Code\n\n\nTry different values for n by modifying the assignment statement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen, press “Run Code” to recreate the graph and see how the distribution changed:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn &lt;- 100\n```\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| read-only: true\nsamples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)\n```"
+    "text": "The autorun option works in tandem with the interactive context, enabling a non-interactive execution of code within the editable code area before any changes can be made to the area.\nTo illustrate, let’s imagine a situation where you are prompted to modify the statement “Hello ___!” In the default view of an interactive cell, the results are not initially displayed.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nBy including #| autorun: true, we enable the display of results when the document first loads. Revisiting the previous example, the editable code area now presents a distinct output, prompting the user to “Fill in the blanks”:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```"
   },
   {
-    "objectID": "demos/qwebr-non-interactive-areas.html",
-    "href": "demos/qwebr-non-interactive-areas.html",
-    "title": "Demo: Revamped Noninteractive Areas",
+    "objectID": "demos/qwebr-auto-run.html#target-practice",
+    "href": "demos/qwebr-auto-run.html#target-practice",
+    "title": "Demo: Autorun Interactive Code Cells",
     "section": "",
-    "text": "Important\n\n\n\nWe’ve slowed down each cell’s execution time by about 1/2 of a second to show how the document is responding.\n\n\n\nPackage dependencies\nThe quarto-webr extension is set to automatically install and load the ggplot2 and dplyr packages by specifying a packages key in the document’s header.\n\n\nSetup a hidden ggplot2 object\nFrom there, we’re going to use the context: setup hidden cell to create a ggplot2 object that uses the mtcars data set with the aesthetic mappings of x = wt and y = mpg called g.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nGenerate a graph\nLet’s move from setup to generating and displaying results by using g object created in setup within an output context:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nRe-use prior graph object\nLet’s also re-use the base g but change the aesthetics so that colour is now present.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nWork with a hidden setup object\nFinally, let’s make sure we can do some interesting things with the interactive session.\n\n\n\n\n\n\nNote\n\n\n\nChanges inside of interactive cells do not propagate backwards in the document.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "One key use of the non-interactive areas is to generate a targeted outcome and have iterative attempts to reach the desired output.\nFor example, consider the gapminder data set.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\ndata(\"gapminder\", package = \"gapminder\")\nhead(gapminder)\n```\n\n\n\nHow can we use gapminder data to re-create the following ggplot2 graph?\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() \n```\n\n\n\nWe’ve provided a code area for you to explore creating different kinds of graphs and have already run its contents!\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| autorun: true\n#| fig-width: 5\n#| fig-height: 3\n#| out-width: 500px\nggplot(gapminder, aes(lifeExp)) + \n  theme_bw() \n```"
   },
   {
-    "objectID": "demos/qwebr-setting-options-in-document-yaml.html",
-    "href": "demos/qwebr-setting-options-in-document-yaml.html",
-    "title": "Demo: Setting Options in Document Header",
+    "objectID": "demos/qwebr-feature-demos.html",
+    "href": "demos/qwebr-feature-demos.html",
+    "title": "Feature Demonstrations",
     "section": "",
-    "text": "Demo\nwebR-enabled code cells are established by using {webr-r} in a Quarto HTML document.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.\n\nSet Global Cell Options\nRead-only Interactive Code Cells\nAutorun Interactive Code Cells\nInitial Code Cell Option Support\nUsing Custom Repositories for R WASM Package binaries\nRevamped Noninteractive Areas\nwebR in RevealJS\nLocking interactive areas when long runtime is present\nSetting Options in Document Header\nwebR in Quarto HTML Documents",
+    "crumbs": [
+      "Demos",
+      "Feature Demos"
+    ]
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html",
+    "href": "demos/qwebr-code-cell-options.html",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "In this document, we will explore and demonstrate the various cell options available in {webr-r} code blocks. These options allow you to customize the behavior and appearance of your code outputs. These options can only be set during the authoring stage of the document.\n\n\nThe context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results.\n\n\n\nThe results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```\n\n\n\n\n\n\nThe fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThe out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\n\n\n\nThese examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#context-option",
+    "href": "demos/qwebr-code-cell-options.html#context-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The context option specifies how the cell should operate on the page. Let’s use it to create an interactive code editor:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n\n# Write your name here by replace ___\nname &lt;- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))\n```\n\n\n\nIn this code block, the context: interactive option is applied, allowing users to interactively input their name.\nNext, let’s use the context: setup option to create a data set that can be used by later cells.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: setup\n \n# Generating a simple table\ndata &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOnce a context:setup is done running, the visual indicator will be removed from the document.\n\n\nIn a later block, we’ll see a context: output that will only display the results."
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#results-option",
+    "href": "demos/qwebr-code-cell-options.html#results-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The results option controls how text results are displayed. Let’s use it to display raw text output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: asis\nknitr::kable(data, \"html\")\n```\n\n\n\nIn the above code block, the results: asis option is used to display the raw text output of the data dataframe.\nIf we use results: markup, then we’ll end up seeing the HTML output:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: interactive\n#| results: markup\n\nknitr::kable(data, \"html\")\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
+    "href": "demos/qwebr-code-cell-options.html#fig-width-and-fig-height-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The fig-width and fig-height options control the width and height of the plot generated in the code block. Let’s use it to create a plot with a specific width:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 6\n#| fig-height: 6\n\n# Generating a bar plot with a specific width\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```\n\n\n\nHere, the fig-width: 6 and fig-height: 6 option is utilized to set the width of the bar plot.\nIn comparison, we have the default option of 7:\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
+    "href": "demos/qwebr-code-cell-options.html#out-width-and-out-height-option",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "The out-width and out-height options control physical space the plot will reside in. Let’s revisit our previous example and constrain the output area by specifying out-width: 500px and out-height: 500px.\n\n{quarto-webr} OutputCell Code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| context: output\n#| fig-width: 5\n#| fig-height: 5\n#| out-width: 500px\n#| out-height: 400px\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)\n```"
+  },
+  {
+    "objectID": "demos/qwebr-code-cell-options.html#conclusion",
+    "href": "demos/qwebr-code-cell-options.html#conclusion",
+    "title": "Demo: Initial Code Cell Option Support",
+    "section": "",
+    "text": "These examples demonstrate the versatility of {webr-r} cell options in customizing code block behavior and output. By incorporating these options into your documents, you can enhance the interactivity and visual presentation of your R code.\nFeel free to experiment with different combinations of these options to suit your specific needs!"
   },
   {
     "objectID": "qwebr-extension-website.html",

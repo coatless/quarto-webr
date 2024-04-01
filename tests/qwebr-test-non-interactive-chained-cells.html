@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-height":5,"context":"setup","results":"markup","comment":"","label":"unnamed-chunk-1","warning":"true","fig-cap":"","output":"true","message":"true","out-width":"700px","read-only":"false","out-height":"","dpi":72,"classes":"","fig-width":7,"autorun":"true"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"id":2,"options":{"fig-height":5,"context":"output","results":"markup","comment":"","label":"unnamed-chunk-2","warning":"true","fig-cap":"","output":"true","message":"true","out-width":"700px","read-only":"false","out-height":"","dpi":72,"classes":"","fig-width":7,"autorun":"true"},"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"id":3,"options":{"fig-height":5,"context":"output","results":"markup","comment":"","label":"unnamed-chunk-3","warning":"true","fig-cap":"","output":"true","message":"true","out-width":"700px","read-only":"false","out-height":"","dpi":72,"classes":"","fig-width":7,"autorun":"true"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"id":4,"options":{"fig-height":5,"context":"interactive","results":"markup","comment":"","label":"unnamed-chunk-4","warning":"true","fig-cap":"","output":"true","message":"true","out-width":"700px","read-only":"false","out-height":"","dpi":72,"classes":"","fig-width":7,"autorun":"false"},"code":"g"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"autorun":"true","comment":"","out-width":"700px","results":"markup","warning":"true","fig-height":5,"read-only":"false","output":"true","fig-cap":"","message":"true","context":"setup","out-height":"","classes":"","label":"unnamed-chunk-1","dpi":72,"fig-width":7},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"id":2,"options":{"autorun":"true","comment":"","out-width":"700px","results":"markup","warning":"true","fig-height":5,"read-only":"false","output":"true","fig-cap":"","message":"true","context":"output","out-height":"","classes":"","label":"unnamed-chunk-2","dpi":72,"fig-width":7},"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"id":3,"options":{"autorun":"true","comment":"","out-width":"700px","results":"markup","warning":"true","fig-height":5,"read-only":"false","output":"true","fig-cap":"","message":"true","context":"output","out-height":"","classes":"","label":"unnamed-chunk-3","dpi":72,"fig-width":7},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"id":4,"options":{"autorun":"false","comment":"","out-width":"700px","results":"markup","warning":"true","fig-height":5,"read-only":"false","output":"true","fig-cap":"","message":"true","context":"interactive","out-height":"","classes":"","label":"unnamed-chunk-4","dpi":72,"fig-width":7},"code":"g"}];
 
 </script>
 <script type="module">
@@ -1019,6 +1019,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

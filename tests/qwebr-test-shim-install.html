@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1,"options":{"comment":"","label":"unnamed-chunk-1","warning":"true","context":"output","message":"true","read-only":"false","output":"true","dpi":72,"autorun":"true","out-height":"","out-width":"700px","fig-height":5,"classes":"","results":"markup","fig-cap":"","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"options":{"comment":"","message":"true","fig-width":7,"output":"true","warning":"true","results":"markup","out-height":"","read-only":"false","dpi":72,"fig-cap":"","label":"unnamed-chunk-1","context":"output","classes":"","fig-height":5,"out-width":"700px","autorun":"true"},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1}];
 
 </script>
 <script type="module">
@@ -1019,6 +1019,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

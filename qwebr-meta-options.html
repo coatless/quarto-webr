@@ -374,6 +374,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#show-startup-message" id="toc-show-startup-message" class="nav-link" data-scroll-target="#show-startup-message"><code>show-startup-message</code></a></li>
   <li><a href="#show-header-message" id="toc-show-header-message" class="nav-link" data-scroll-target="#show-header-message"><code>show-header-message</code></a></li>
+  <li><a href="#cell-options" id="toc-cell-options" class="nav-link" data-scroll-target="#cell-options"><code>cell-options</code></a></li>
   <li><a href="#repos" id="toc-repos" class="nav-link" data-scroll-target="#repos"><code>repos</code></a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><code>packages</code></a></li>
   <li><a href="#autoload-packages" id="toc-autoload-packages" class="nav-link" data-scroll-target="#autoload-packages"><code>autoload-packages</code></a></li>
@@ -412,7 +413,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 26, 2024</p>
+      <p class="date-modified">April 1, 2024</p>
     </div>
   </div>
     
@@ -532,6 +533,7 @@ Note
 <ul>
 <li><strong>Description</strong>: Controls the display of the WebR initialization state in the document header.</li>
 <li><strong>Default Value</strong>: <code>true</code></li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-setting-options-in-document-yaml.html">Setting Options in Document Header</a></li>
 </ul>
 </section>
 <section id="show-header-message" class="level3">
@@ -539,13 +541,30 @@ Note
 <ul>
 <li><strong>Description</strong>: Determines whether COOP and COEP headers are in use for faster page loads.</li>
 <li><strong>Default Value</strong>: <code>false</code></li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-setting-options-in-document-yaml.html">Setting Options in Document Header</a></li>
 </ul>
+</section>
+<section id="cell-options" class="level3">
+<h3 class="anchored" data-anchor-id="cell-options"><code>cell-options</code></h3>
+<ul>
+<li><strong>Description</strong>: Modifies default cell options for <code>{webr-r}</code> cells.</li>
+<li><strong>Default Value</strong>: Please see <a href="./qwebr-cell-options.html">Code Cell Options</a> for individual cell option defaults.</li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-global-cell-defaults.html">Set Global Cell Options</a></li>
+<li><strong>Example:</strong></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cell-options</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">autorun</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">400</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This modifies the default cell options for <code>autorun</code>, <code>fig-width</code>, and <code>fig-height</code> for all cells in the document.</p>
 </section>
 <section id="repos" class="level3">
 <h3 class="anchored" data-anchor-id="repos"><code>repos</code></h3>
 <ul>
 <li><strong>Description</strong>: Specify the repository locations to search for R packages when trying to install them in array form. Regardless of values specified, we will always conclude by checking to see if the package is present in the main webR repository: <a href="https://repo.r-wasm.org/" class="uri">https://repo.r-wasm.org/</a>.</li>
 <li><strong>Default Value</strong>: <code>['https://repo.r-wasm.org/']</code></li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-custom-repository.html">Custom R WASM Package Repository</a></li>
 <li><strong>Example</strong>: <code>['https://username.r-universe.dev', 'https://username.github.io/reponame']</code> will cause webR to first look for the package on <code>r-universe.dev</code>, then move to looking at the package on GitHub Pages, before finally landing on the official repository.</li>
 </ul>
 </section>
@@ -554,6 +573,7 @@ Note
 <ul>
 <li><strong>Description</strong>: Specifies R packages to install automatically when the document opens.</li>
 <li><strong>Default Value</strong>: <code>[]</code></li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-setting-options-in-document-yaml.html">Setting Options in Document Header</a></li>
 <li><strong>Example:</strong> <code>['ggplot2', 'dplyr']</code> will cause <code>ggplot2</code> and <code>dplyr</code> to be installed.</li>
 </ul>
 </section>
@@ -562,6 +582,7 @@ Note
 <ul>
 <li><strong>Description</strong>: The <code>autoload-packages</code> option allows you to control whether R packages specified in the <code>packages</code> document option will be automatically loaded using <code>library()</code> calls when the document opens. By default, this option is set to <code>true</code>, meaning that packages listed in the <code>packages</code> option will be automatically loaded. If you set it to <code>false</code>, you will need to include a code cell with <code>library(package)</code> function calls for each package in <code>packages</code>.</li>
 <li><strong>Default Value</strong>: <code>true</code></li>
+<li><strong>Demo Document</strong>: <a href="./demos/qwebr-setting-options-in-document-yaml.html">Setting Options in Document Header</a></li>
 </ul>
 
 

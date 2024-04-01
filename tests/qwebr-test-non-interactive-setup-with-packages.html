@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"comment":"","autorun":"true","results":"markup","warning":"true","read-only":"false","context":"setup","fig-cap":"","dpi":72,"message":"true","classes":"","output":"true","fig-height":5,"out-width":"700px","label":"spike-data","fig-width":7,"out-height":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"comment":"","autorun":"false","results":"markup","warning":"true","read-only":"false","context":"interactive","fig-cap":"","dpi":72,"message":"true","classes":"","output":"true","fig-height":5,"out-width":"700px","label":"spike-data","fig-width":7,"out-height":""},"code":"new_mtcars","id":2}];
+globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"context":"setup","label":"spike-data","autorun":"true","output":"true","out-width":"700px","read-only":"false","warning":"true","comment":"","fig-height":5,"results":"markup","fig-width":7,"message":"true","dpi":72,"out-height":"","fig-cap":"","classes":""}},{"code":"new_mtcars","id":2,"options":{"context":"interactive","label":"spike-data","autorun":"false","output":"true","out-width":"700px","read-only":"false","warning":"true","comment":"","fig-height":5,"results":"markup","fig-width":7,"message":"true","dpi":72,"out-height":"","fig-cap":"","classes":""}}];
 
 </script>
 <script type="module">
@@ -1019,6 +1019,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

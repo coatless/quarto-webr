@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng","options":{"label":"unnamed-chunk-1","dpi":72,"output":"true","comment":"","fig-height":5,"warning":"true","results":"markup","autorun":"true","message":"true","fig-width":7,"context":"output","out-width":"700px","classes":"","fig-cap":"","read-only":"false","out-height":""}},{"id":2,"code":"g + aes(color = factor(cyl))","options":{"label":"unnamed-chunk-2","dpi":72,"output":"true","comment":"","fig-height":5,"warning":"true","results":"markup","autorun":"false","message":"true","fig-width":7,"context":"interactive","out-width":"700px","classes":"","fig-cap":"","read-only":"false","out-height":""}}];
+globalThis.qwebrCellDetails = [{"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng","id":1,"options":{"warning":"true","dpi":72,"label":"unnamed-chunk-1","classes":"","comment":"","output":"true","out-height":"","read-only":"false","results":"markup","autorun":"true","message":"true","out-width":"700px","fig-cap":"","context":"output","fig-width":7,"fig-height":5}},{"code":"g + aes(color = factor(cyl))","id":2,"options":{"warning":"true","dpi":72,"label":"unnamed-chunk-2","classes":"","comment":"","output":"true","out-height":"","read-only":"false","results":"markup","autorun":"false","message":"true","out-width":"700px","fig-cap":"","context":"interactive","fig-width":7,"fig-height":5}}];
 
 </script>
 <script type="module">
@@ -1019,6 +1019,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
