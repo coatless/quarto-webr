@@ -3,7 +3,7 @@ title: "Test: Setting Global Cell Options"
 format: html
 engine: knitr
 webr: 
-  cell-defaults:
+  cell-options:
     comment: "## "
     autorun: true
 filters:
