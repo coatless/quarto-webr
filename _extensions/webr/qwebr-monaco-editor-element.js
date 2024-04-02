@@ -54,7 +54,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: qwebrOptions['font-scale'] * currentfontsize ?? '17.5',    // Bootstrap is 1 rem. one mights skip ??-part
+      fontSize: qwebrOptions['editor-font-scale'] * currentfontsize ?? '17.5',    // Bootstrap is 1 rem. one mights skip ??-part
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false
