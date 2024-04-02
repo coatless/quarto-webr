@@ -4,6 +4,7 @@ title: "Feature Demonstrations"
 
 Below is a list of different demonstrations of the extensions features. These demos were created to showcase different feature releases.
 
+- [Editor Options](qwebr-editor-options.qmd)
 - [Set Global Cell Options](qwebr-global-cell-defaults.qmd)
 - [Read-only Interactive Code Cells](qwebr-read-only.qmd)
 - [Autorun Interactive Code Cells](qwebr-auto-run.qmd)

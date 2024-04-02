@@ -1,0 +1,139 @@
+---
+title: "Demo: Editor Options"
+format: 
+  html:
+    fontsize: "80%"
+engine: knitr
+webr:
+  cell-options:
+    editor-font-scale: 0.95
+filters:
+  - webr
+---
+
+:::{.callout-important}
+These features are currently experimental and are included in the 0.4.2-dev.2 build of `{quarto-webr}`.
+:::
+
+# Overview
+
+This feature demo introduces new options for styling the interactive editor associated with `{webr-r}` code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area.
+
+:::{.callout-note}
+These options are only configurable during the document authoring stage.
+:::
+
+## `editor-font-scale` Option
+
+The editor area now inherits font size from Quarto's `fontsize` theme option, ensuring consistency with other elements on the page. You can adjust the font size for the editor relative to Quarto's output by setting the `editor-font-scale` option. When `editor-font-scale` is:
+
+- Equal to 1 (`= 1`), the editor's font size matches the `fontsize` value.
+- Less than 1 (`< 1`), the editor's font size is smaller than the `fontsize` value.
+- Greater than 1 (`> 1`), the editor's font size is larger than the `fontsize` value.
+
+### Default Size
+
+By default, we set `editor-font-scale` to 1, aligning the editor font size with the `fontsize` value.
+
+Let's consider a standard code cell that fits a linear model and obtains the confidence intervals for one or more parameters in a fitted model:
+
+```{r}
+#| echo: true
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+Now, let's observe the effect with `editor-font-scale: 1`:
+
+```{webr-r}
+#| autorun: true
+#| editor-font-scale: 1
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+Notice the consistency in font sizes.
+
+### Reducing Editor Size
+
+To decrease the font size, we set a value between `0 < editor-font-size < 1`. For example, let's set `editor-font-scale` to 0.5:
+
+```{webr-r}
+#| autorun: true
+#| editor-font-scale: 0.5
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+### Increasing Editor Size
+
+To increase the font size, we set a value between `editor-font-size > 1`. For example, let's set `editor-font-scale` to 2:
+
+```{webr-r}
+#| autorun: true
+#| editor-font-scale: 2
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+### Scaling Content Areas
+
+In this example, we create a custom area using a [Div block in Quarto](https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans) and set the div's font size to 150%. Consequently, the editor inherits the font size within the area.
+
+:::  {.panel-tabset group="scaledEditor"}
+#### `{quarto-webr}` Output
+::: {#big-text style="font-size: 150%"}
+
+##### Quarto code cell for R
+
+```{r}
+#| echo: true
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+##### webR code cell under quarto-webr
+
+```{webr-r}
+#| autorun: true
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+:::
+
+#### Cell Code
+````md
+
+::: {#big-text style="font-size: 150%"}
+
+Quarto code cell for R
+
+```{r}
+#| echo: true
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+
+webR code cell under quarto-webr
+
+```{webr-r}
+#| autorun: true
+fit = lm(mpg ~ am, data = mtcars)
+
+confint(fit)
+```
+:::
+
+````
+:::
+
+# Fin
+
+Just the beginning!
