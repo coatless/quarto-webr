@@ -1,26 +1,17 @@
-// (ute) patched to have monaco take font size from current environment
-// font size can be scaled by font-scale.
-// TODO
-// ideally, font-scale set in code should influence output, too.
-// this should also be applicable to quarto-r-code cells
-// maybe file an feature request with quarto? code cells
-// are really small by default. Of course, you want to cram
-// a lot of code on slides ;-)
-// TODO (if this seems sensible): adjust size of buttons.
-// this is probably possible by css (em units?)
 
 // Global dictionary to store Monaco Editor instances
 globalThis.qwebrEditorInstances = {};
 
+// Function that obtains the font size for a given element 
+function qwebrCurrentFontSizeOnElement (element, cssProperty = 'font-size') {
 
-// suggestion (Ute) 
-// Getting current font size, with fall back to 17.5 as before 
-function getCurrentFontSize (element){
-const currentfontsize  = parseInt(window
+  const currentFontSize = parseFloat(
+    window
     .getComputedStyle(element)
-    .getPropertyValue('font-size')) ?? 17.5;     
-//console.log("trying to get current font size: "+currentfontsize)
-return currentfontsize
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
 }
 
 // Function that builds and registers a Monaco Editor instance    
@@ -36,11 +27,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
   
-  const currentfontsize = getCurrentFontSize(editorDiv); 
-//  console.log ("editordiv fontsize:" + currentfontsize); 
-//  console.log ("  scale by:" + qwebrOptions['font-scale']); 
-//  console.log ("  should result in "+
-//  qwebrOptions['font-scale'] * currentfontsize ?? '17.5');
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` or if we can
+  // directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size": "font-size";
+  const editorFontSize = qwebrCurrentFontSizeOnElement(editorDiv, cssProperty); 
 
   // Load the Monaco Editor and create an instance
   let editor;
@@ -54,8 +45,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: qwebrOptions['editor-font-scale'] * currentfontsize ?? '17.5',    // Bootstrap is 1 rem. one mights skip ??-part
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrOptions['editor-font-scale'] * editorFontSize ?? 17.5,    // Bootstrap is 1 rem.
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false
     });
