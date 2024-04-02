@@ -73,9 +73,7 @@ local qwebRDefaultCellOptions = {
   ["fig-height"] = 5,
   ["out-width"] = "700px",
   ["out-height"] = "",
--- suggestion (ute): make a parameter for editor font size. Maybe choose a better name
-  ["editor-font-size"] = "17.5pt",
-  ["font-scale"] = 1
+  ["editor-font-scale"] = 1
 }
 
 ----
