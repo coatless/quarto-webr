@@ -5,6 +5,35 @@ globalThis.EvalTypes = Object.freeze({
   Output: 'output',
 });
 
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
+
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
   cellData
