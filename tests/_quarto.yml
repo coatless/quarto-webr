@@ -23,6 +23,11 @@ website:
       - icon: github
         href: https://github.com/coatless/quarto-webr
 
+# Allow quarto to switch between light and dark themes.
+theme:
+  light: flatly
+  dark: darkly
+
 # Set the language that should be used for Quarto websites
 # https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/language
 # lang: en
