@@ -25,7 +25,7 @@ website:
 
 # Allow quarto to switch between light and dark themes.
 theme:
-  light: flatly
+  light: cosmo
   dark: darkly
 
 # Set the language that should be used for Quarto websites

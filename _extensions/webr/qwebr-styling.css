@@ -154,10 +154,16 @@ body.reveal.quarto-dark pre div code.qwebr-output-code-stdout {
 
 
 /* Create a border around console and output (does not effect graphs) */
-.reveal div.qwebr-console-area {
+body.reveal.quarto-light div.qwebr-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
+
+body.reveal.quarto-dark div.qwebr-console-area {
+  border: 1px solid #111;
+  box-shadow: 2px 2px 10px #111;
+}
+
 
 /* Cap output height and allow text to scroll */
 /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */

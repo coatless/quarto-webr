@@ -2,7 +2,9 @@
 title: "Test: webR in RevealJS"
 subtitle: "Examining State"
 authors: "Presentation Lead"
-format: revealjs
+format: 
+  revealjs:
+    theme: dark
 engine: knitr
 filters:
   - webr

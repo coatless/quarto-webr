@@ -141,7 +141,7 @@ The Monaco editor used by `{quarto-webr}` to power interactive code cells respec
 
 ```yaml
 theme:
-  light: flatly
+  light: cosmo
   dark: darkly
 ```
 
@@ -150,3 +150,13 @@ Once set, a clickable toggle will appear on the page that can switch between the
 :::{.callout-note}
 The Monaco editor's theme automatically adjusts based on the document's theme. It uses a light theme (`vs`) in light mode and a dark theme (`vs-dark`) in dark mode.
 :::
+
+### RevealJS
+
+For RevealJS, please note you may only specify [a single RevealJS theme](https://quarto.org/docs/presentations/revealjs/themes.html#using-themes) at a time. We recommend specifying either `default` (for light mode) or `dark` (for dark mode). 
+
+```yaml
+format:
+  revealjs:
+    theme: default
+```

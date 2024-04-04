@@ -78,5 +78,5 @@ format:
 
 # Allow quarto to switch between light and dark themes.
 theme:
-  light: flatly
+  light: cosmo
   dark: darkly
