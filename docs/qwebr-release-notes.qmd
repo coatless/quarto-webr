@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.1: ??????? (??-??-??)
+# 0.4.2-dev.2: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
@@ -18,7 +18,12 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
+- Added `editor-max-height` cell option to limit growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
+
+
 ## Bug fixes
+
+- Prevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor's content instead of being the exact amount. ([#164](https://github.com/coatless/quarto-webr/issues/164))
 
 ## Documentation
 
