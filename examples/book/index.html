@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2024-04-01">
+<meta name="dcterms.date" content="2024-04-04">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -235,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","id":1,"options":{"results":"markup","out-height":"","label":"unnamed-chunk-1","message":"true","comment":"","out-width":"700px","fig-width":7,"classes":"","fig-height":5,"output":"true","read-only":"false","context":"interactive","dpi":72,"warning":"true","fig-cap":"","autorun":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","options":{"out-width":"700px","out-height":"","fig-height":5,"label":"unnamed-chunk-1","output":"true","context":"interactive","fig-cap":"","fig-width":7,"dpi":72,"warning":"true","read-only":"false","comment":"","results":"markup","classes":"","autorun":"false","message":"true","editor-max-height":""},"id":1}];
 
 </script>
 <script type="module">
@@ -1118,10 +1118,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 
@@ -1243,7 +1251,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 1, 2024</p>
+      <p class="date">April 4, 2024</p>
     </div>
   </div>
   

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"1 + 1 ","options":{"output":"true","read-only":"false","out-height":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","label":"unnamed-chunk-1","classes":"","comment":"","dpi":72,"fig-height":5,"results":"markup","warning":"true","out-width":"700px","autorun":"false"}},{"id":2,"code":"plot(pressure)","options":{"output":"true","read-only":"false","out-height":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","label":"unnamed-chunk-2","classes":"","comment":"","dpi":72,"fig-height":5,"results":"markup","warning":"true","out-width":"700px","autorun":"false"}},{"id":3,"code":"1 + 1 ","options":{"output":"true","read-only":"false","out-height":"","fig-width":7,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-3","classes":"","comment":"","dpi":72,"fig-height":5,"results":"markup","warning":"true","out-width":"700px","autorun":"true"}},{"id":4,"code":"plot(pressure)","options":{"output":"true","read-only":"false","out-height":"","fig-width":7,"fig-cap":"","context":"output","message":"true","label":"unnamed-chunk-4","classes":"","comment":"","dpi":72,"fig-height":5,"results":"markup","warning":"true","out-width":"700px","autorun":"true"}}];
+globalThis.qwebrCellDetails = [{"options":{"comment":"","warning":"true","context":"interactive","fig-width":7,"read-only":"false","editor-max-height":"","results":"markup","label":"unnamed-chunk-1","message":"true","fig-cap":"","out-width":"700px","output":"true","autorun":"false","dpi":72,"out-height":"","fig-height":5,"classes":""},"id":1,"code":"1 + 1 "},{"options":{"comment":"","warning":"true","context":"interactive","fig-width":7,"read-only":"false","editor-max-height":"","results":"markup","label":"unnamed-chunk-2","message":"true","fig-cap":"","out-width":"700px","output":"true","autorun":"false","dpi":72,"out-height":"","fig-height":5,"classes":""},"id":2,"code":"plot(pressure)"},{"options":{"comment":"","warning":"true","context":"output","fig-width":7,"read-only":"false","editor-max-height":"","results":"markup","label":"unnamed-chunk-3","message":"true","fig-cap":"","out-width":"700px","output":"true","autorun":"true","dpi":72,"out-height":"","fig-height":5,"classes":""},"id":3,"code":"1 + 1 "},{"options":{"comment":"","warning":"true","context":"output","fig-width":7,"read-only":"false","editor-max-height":"","results":"markup","label":"unnamed-chunk-4","message":"true","fig-cap":"","out-width":"700px","output":"true","autorun":"true","dpi":72,"out-height":"","fig-height":5,"classes":""},"id":4,"code":"plot(pressure)"}];
 
 </script>
 <script type="module">
@@ -962,7 +962,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-multiple-cells.html">Test: Multiple webR cells</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-multiple-cells.html">Test: Multiple webR cells</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1015,6 +1015,12 @@ globalThis.qwebrExecuteCode = async function (
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-editor-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Editor Options</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
@@ -1232,10 +1238,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 
@@ -1338,7 +1352,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-multiple-cells.html">Test: Multiple webR cells</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-multiple-cells.html">Test: Multiple webR cells</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Test: Multiple webR cells</h1>
 </div>

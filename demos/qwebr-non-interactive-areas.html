@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,7 +241,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","options":{"results":"markup","message":"true","read-only":"false","fig-height":5,"warning":"true","output":"true","context":"setup","label":"unnamed-chunk-1","classes":"","comment":"","out-width":"700px","autorun":"true","dpi":72,"fig-width":7,"fig-cap":"","out-height":""},"id":1},{"code":"g + geom_point()\n\nSys.sleep(0.5)","options":{"results":"markup","message":"true","read-only":"false","fig-height":5,"warning":"true","output":"true","context":"output","label":"unnamed-chunk-2","classes":"","comment":"","out-width":"700px","autorun":"true","dpi":72,"fig-width":7,"fig-cap":"","out-height":""},"id":2},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","options":{"results":"markup","message":"true","read-only":"false","fig-height":5,"warning":"true","output":"true","context":"output","label":"unnamed-chunk-3","classes":"","comment":"","out-width":"700px","autorun":"true","dpi":72,"fig-width":7,"fig-cap":"","out-height":""},"id":3},{"code":"g","options":{"results":"markup","message":"true","read-only":"false","fig-height":5,"warning":"true","output":"true","context":"interactive","label":"unnamed-chunk-4","classes":"","comment":"","out-width":"700px","autorun":"false","dpi":72,"fig-width":7,"fig-cap":"","out-height":""},"id":4}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","autorun":"true","fig-height":5,"dpi":72,"fig-width":7,"message":"true","out-height":"","editor-max-height":"","context":"setup","warning":"true","fig-cap":"","classes":"","label":"unnamed-chunk-1","results":"markup","out-width":"700px","read-only":"false","comment":""},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","id":1},{"options":{"output":"true","autorun":"true","fig-height":5,"dpi":72,"fig-width":7,"message":"true","out-height":"","editor-max-height":"","context":"output","warning":"true","fig-cap":"","classes":"","label":"unnamed-chunk-2","results":"markup","out-width":"700px","read-only":"false","comment":""},"code":"g + geom_point()\n\nSys.sleep(0.5)","id":2},{"options":{"output":"true","autorun":"true","fig-height":5,"dpi":72,"fig-width":7,"message":"true","out-height":"","editor-max-height":"","context":"output","warning":"true","fig-cap":"","classes":"","label":"unnamed-chunk-3","results":"markup","out-width":"700px","read-only":"false","comment":""},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","id":3},{"options":{"output":"true","autorun":"false","fig-height":5,"dpi":72,"fig-width":7,"message":"true","out-height":"","editor-max-height":"","context":"interactive","warning":"true","fig-cap":"","classes":"","label":"unnamed-chunk-4","results":"markup","out-width":"700px","read-only":"false","comment":""},"code":"g","id":4}];
 
 </script>
 <script type="module">
@@ -1287,10 +1287,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

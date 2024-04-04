@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","options":{"message":"true","out-height":"","comment":"","autorun":"false","read-only":"true","classes":"","fig-width":7,"dpi":72,"fig-cap":"","results":"markup","fig-height":5,"context":"interactive","warning":"true","label":"unnamed-chunk-1","out-width":"700px","output":"true"},"id":1},{"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","options":{"message":"true","out-height":"","comment":"","autorun":"true","read-only":"false","classes":"","fig-width":7,"dpi":72,"fig-cap":"","results":"markup","fig-height":5,"context":"interactive","warning":"true","label":"unnamed-chunk-2","out-width":"700px","output":"true"},"id":2},{"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","options":{"message":"true","out-height":"","comment":"","autorun":"true","read-only":"true","classes":"","fig-width":7,"dpi":72,"fig-cap":"","results":"markup","fig-height":5,"context":"interactive","warning":"true","label":"unnamed-chunk-3","out-width":"700px","output":"true"},"id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","dpi":72,"fig-cap":"","editor-max-height":"","autorun":"false","context":"interactive","fig-height":5,"results":"markup","message":"true","warning":"true","out-width":"700px","read-only":"true","comment":"","output":"true","out-height":"","fig-width":7,"classes":""},"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)"},{"id":2,"options":{"label":"unnamed-chunk-2","dpi":72,"fig-cap":"","editor-max-height":"","autorun":"true","context":"interactive","fig-height":5,"results":"markup","message":"true","warning":"true","out-width":"700px","read-only":"false","comment":"","output":"true","out-height":"","fig-width":7,"classes":""},"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100"},{"id":3,"options":{"label":"unnamed-chunk-3","dpi":72,"fig-cap":"","editor-max-height":"","autorun":"true","context":"interactive","fig-height":5,"results":"markup","message":"true","warning":"true","out-width":"700px","read-only":"true","comment":"","output":"true","out-height":"","fig-width":7,"classes":""},"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)"}];
 
 </script>
 <script type="module">
@@ -1322,10 +1322,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

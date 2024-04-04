@@ -186,69 +186,25 @@
     ]
   },
   {
-    "objectID": "qwebr-test-shim-install.html",
-    "href": "qwebr-test-shim-install.html",
-    "title": "Test: Install Packages Shim",
+    "objectID": "qwebr-test-editor-options.html",
+    "href": "qwebr-test-editor-options.html",
+    "title": "Test: Editor Options",
     "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Check that the editor responses correctly to options being set.",
     "crumbs": [
       "Tests",
-      "Test: Install Packages Shim"
+      "Test: Editor Options"
     ]
   },
   {
-    "objectID": "qwebr-test-shim-install.html#non-interactive",
-    "href": "qwebr-test-shim-install.html#non-interactive",
-    "title": "Test: Install Packages Shim",
-    "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "qwebr-test-editor-options.html#interactive",
+    "href": "qwebr-test-editor-options.html#interactive",
+    "title": "Test: Editor Options",
+    "section": "Interactive",
+    "text": "Interactive\n\nSingle line\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nUncapped height\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nHeight cap\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Tests",
-      "Test: Install Packages Shim"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-status-header-no-title.html",
-    "href": "qwebr-test-status-header-no-title.html",
-    "title": "Test Suite for quarto-webr",
-    "section": "",
-    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Qwebr Test Status Header No Title"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-non-interactive-setup-with-packages.html",
-    "href": "qwebr-test-non-interactive-setup-with-packages.html",
-    "title": "Test: Packages used in Hidden Setup",
-    "section": "",
-    "text": "Perform data manipulations on mtcars in a non-interactive cell…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen we print it to see how it looks:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Packages used in Hidden Setup"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
-    "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
-    "title": "Test: No Startup Status Present in RevealJS Presentations",
-    "section": "webR in RevealJS",
-    "text": "webR in RevealJS\nEnsure that the webR code cell initializes even if the webR status bar is disabled.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: No Startup Status Present in RevealJS Presentations"
-    ]
-  },
-  {
-    "objectID": "qwebr-test-repo-key.html",
-    "href": "qwebr-test-repo-key.html",
-    "title": "Test: Repos package key",
-    "section": "",
-    "text": "This document tests the repos key meta option by attempting to download a package demorwasmbinary from a custom repository at:\nhttps://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\nAnd, then, falls back on the main webR repository for a second package visualize.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Tests",
-      "Test: Repos package key"
+      "Test: Editor Options"
     ]
   },
   {
@@ -282,6 +238,72 @@
     "crumbs": [
       "Tests",
       "Test: embed-resources"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-repo-key.html",
+    "href": "qwebr-test-repo-key.html",
+    "title": "Test: Repos package key",
+    "section": "",
+    "text": "This document tests the repos key meta option by attempting to download a package demorwasmbinary from a custom repository at:\nhttps://tutorials.thecoatlessprofessor.com/webr-unified-gh-workflow/\nAnd, then, falls back on the main webR repository for a second package visualize.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Repos package key"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
+    "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
+    "title": "Test: No Startup Status Present in RevealJS Presentations",
+    "section": "webR in RevealJS",
+    "text": "webR in RevealJS\nEnsure that the webR code cell initializes even if the webR status bar is disabled.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: No Startup Status Present in RevealJS Presentations"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-non-interactive-setup-with-packages.html",
+    "href": "qwebr-test-non-interactive-setup-with-packages.html",
+    "title": "Test: Packages used in Hidden Setup",
+    "section": "",
+    "text": "Perform data manipulations on mtcars in a non-interactive cell…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThen we print it to see how it looks:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Packages used in Hidden Setup"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-status-header-no-title.html",
+    "href": "qwebr-test-status-header-no-title.html",
+    "title": "Test Suite for quarto-webr",
+    "section": "",
+    "text": "Ensure that the webR code cell initializes a status even if a title is omitted.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Qwebr Test Status Header No Title"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-shim-install.html",
+    "href": "qwebr-test-shim-install.html",
+    "title": "Test: Install Packages Shim",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Install Packages Shim"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-shim-install.html#non-interactive",
+    "href": "qwebr-test-shim-install.html#non-interactive",
+    "title": "Test: Install Packages Shim",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Install Packages Shim"
     ]
   },
   {

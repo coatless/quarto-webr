@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -358,7 +358,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dev.1---" id="toc-dev.1---" class="nav-link active" data-scroll-target="#dev.1---">0.4.2-dev.1: ??????? (??-??-??)</a>
+  <li><a href="#dev.2---" id="toc-dev.2---" class="nav-link active" data-scroll-target="#dev.2---">0.4.2-dev.2: ??????? (??-??-??)</a>
   <ul class="collapse">
   <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
   <li><a href="#bug-fixes" id="toc-bug-fixes" class="nav-link" data-scroll-target="#bug-fixes">Bug fixes</a></li>
@@ -485,7 +485,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 1, 2024</p>
+      <p class="date-modified">April 4, 2024</p>
     </div>
   </div>
     
@@ -496,8 +496,8 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
 </header>
 
 
-<section id="dev.1---" class="level1">
-<h1>0.4.2-dev.1: ??????? (??-??-??)</h1>
+<section id="dev.2---" class="level1">
+<h1>0.4.2-dev.2: ??????? (??-??-??)</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -514,11 +514,15 @@ Note
 <section id="features" class="level2">
 <h2 class="anchored" data-anchor-id="features">Features</h2>
 <ul>
-<li>Added <code>cell-options</code> document-level option to specify global defaults for <code>{webr-r}</code> options (<a href="https://github.com/coatless/quarto-webr/pulls/173">#173</a>, thanks <a href="https://github.com/ute">ute</a>!)</li>
+<li><p>Added <code>cell-options</code> document-level option to specify global defaults for <code>{webr-r}</code> options (<a href="https://github.com/coatless/quarto-webr/pulls/173">#173</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
+<li><p>Added <code>editor-max-height</code> cell option to limit growth of the editor window. (<a href="https://github.com/coatless/quarto-webr/pulls/173">#177</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
 </ul>
 </section>
 <section id="bug-fixes" class="level2">
 <h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>Prevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (<a href="https://github.com/coatless/quarto-webr/issues/164">#164</a>)</li>
+</ul>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>

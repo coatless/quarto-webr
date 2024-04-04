@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.27">
+  <meta name="generator" content="quarto-1.5.28">
 
   <title>quarto-webr Demo RevealJS Document</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -550,7 +550,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-1","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-2","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":2,"code":"plot(pressure)"},{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-3","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":3,"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-4","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":4,"code":"?mean"},{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-5","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":5,"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"options":{"message":"true","fig-width":7,"comment":"","out-height":"","autorun":"false","output":"true","dpi":72,"context":"interactive","out-width":"700px","label":"unnamed-chunk-6","read-only":"false","classes":"","fig-cap":"","fig-height":5,"warning":"true","results":"markup"},"id":6,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
+  globalThis.qwebrCellDetails = [{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-1","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-2","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":2,"code":"plot(pressure)"},{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-3","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":3,"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-4","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":4,"code":"?mean"},{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-5","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":5,"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"options":{"fig-height":5,"classes":"","read-only":"false","message":"true","editor-max-height":"","output":"true","autorun":"false","comment":"","label":"unnamed-chunk-6","fig-cap":"","out-height":"","warning":"true","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-width":7},"id":6,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
 
   </script>
   <script type="module">
@@ -1338,10 +1338,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

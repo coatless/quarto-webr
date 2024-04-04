@@ -132,7 +132,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)",
+    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)\nAdded editor-max-height cell option to limit growth of the editor window. (#177, thanks ute!)\n\n\n\n\n\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -143,7 +143,18 @@
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
     "section": "",
-    "text": "Added cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)",
+    "text": "Added cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)\nAdded editor-max-height cell option to limit growth of the editor window. (#177, thanks ute!)",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#bug-fixes",
+    "href": "qwebr-release-notes.html#bug-fixes",
+    "title": "Release Notes",
+    "section": "",
+    "text": "Prevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -825,7 +836,7 @@
     "href": "qwebr-cell-options.html#quarto-webr",
     "title": "Code Cell Options",
     "section": "quarto-webr",
-    "text": "quarto-webr\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\ninteractive\nDescribe how the cell should operate on the page through either interactive (Runnable code editor), output (Output only of executed at runtime), or setup (execute code without seeing output at runtime).\n\n\nautorun\nfalse\nAllow interactive cells to be run during document initialization without a user pressing run code.\n\n\nread-only\nfalse\nPrevent code in interactive cells from being modified by disallowing code input.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOptions listed here are unique to the {quarto-webr} extension. For more details, please see Hiding and Executing Code.",
+    "text": "quarto-webr\n\n\n\n\n\n\n\n\nOption\nDefault Value\nDescription\n\n\n\n\ncontext\ninteractive\nDescribe how the cell should operate on the page through either interactive (Runnable code editor), output (Output only of executed at runtime), or setup (execute code without seeing output at runtime).\n\n\nautorun\nfalse\nAllow interactive cells to be run during document initialization without a user pressing run code.\n\n\nread-only\nfalse\nPrevent code in interactive cells from being modified by disallowing code input.\n\n\neditor-max-height\n0\nSet a threshold to prevent infinite growth of the editor window.\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nOptions listed here are unique to the {quarto-webr} extension. For details regarding context, please see Hiding and Executing Code.",
     "crumbs": [
       "Options Reference",
       "Code Cell Options"

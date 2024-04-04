@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.27">
+  <meta name="generator" content="quarto-1.5.28">
 
   <title>Test Suite for quarto-webr – Test: No Startup Status Present in RevealJS Presentations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -485,7 +485,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","warning":"true","context":"interactive","message":"true","autorun":"false","out-width":"700px","results":"markup","out-height":"","dpi":72,"fig-width":7,"classes":"","output":"true","comment":"","read-only":"false","fig-cap":"","fig-height":5},"id":1,"code":"print(\"Hello hidden title world!\")"}];
+  globalThis.qwebrCellDetails = [{"code":"print(\"Hello hidden title world!\")","options":{"out-width":"700px","results":"markup","context":"interactive","warning":"true","fig-height":5,"fig-cap":"","editor-max-height":"","message":"true","output":"true","comment":"","dpi":72,"out-height":"","classes":"","autorun":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-1"},"id":1}];
 
   </script>
   <script type="module">
@@ -1273,10 +1273,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

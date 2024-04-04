@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -199,7 +199,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","classes":"","out-width":"700px","autorun":"false","fig-height":5,"context":"interactive","out-height":"","output":"true","read-only":"false","message":"true","results":"markup","fig-width":7,"comment":"","warning":"true","dpi":72,"fig-cap":""},"id":1,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","output":"true","label":"unnamed-chunk-1","read-only":"false","fig-cap":"","classes":"","context":"interactive","editor-max-height":"","fig-height":5,"message":"true","autorun":"false","warning":"true","out-height":"","dpi":72,"results":"markup","fig-width":7,"comment":""},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)"}];
 
 </script>
 <script type="module">
@@ -994,10 +994,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"read-only":"false","message":"true","fig-height":5,"results":"markup","out-width":"700px","out-height":"","label":"unnamed-chunk-1","warning":"true","context":"interactive","fig-cap":"","output":"true","autorun":"false","dpi":72,"classes":"","comment":"","fig-width":7},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"read-only":"false","message":"true","fig-height":5,"results":"markup","out-width":"700px","out-height":"","label":"unnamed-chunk-2","warning":"true","context":"interactive","fig-cap":"","output":"true","autorun":"true","dpi":72,"classes":"","comment":"","fig-width":7},"id":2,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"read-only":"false","message":"true","fig-height":5,"results":"markup","out-width":"700px","out-height":"","label":"unnamed-chunk-3","warning":"true","context":"output","fig-cap":"","output":"true","autorun":"true","dpi":72,"classes":"","comment":"","fig-width":7},"id":3,"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"options":{"read-only":"false","message":"true","fig-height":"3","results":"markup","out-width":"500px","out-height":"","label":"unnamed-chunk-4","warning":"true","context":"output","fig-cap":"","output":"true","autorun":"true","dpi":72,"classes":"","comment":"","fig-width":"5"},"id":4,"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"options":{"read-only":"false","message":"true","fig-height":"3","results":"markup","out-width":"500px","out-height":"","label":"unnamed-chunk-5","warning":"true","context":"interactive","fig-cap":"","output":"true","autorun":"true","dpi":72,"classes":"","comment":"","fig-width":"5"},"id":5,"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
+globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"context":"interactive","fig-height":5,"fig-width":7,"autorun":"false","dpi":72,"read-only":"false","output":"true","classes":"","out-height":"","fig-cap":"","message":"true","label":"unnamed-chunk-1","out-width":"700px","warning":"true","comment":"","results":"markup","editor-max-height":""},"id":1},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"context":"interactive","fig-height":5,"fig-width":7,"autorun":"true","dpi":72,"read-only":"false","output":"true","classes":"","out-height":"","fig-cap":"","message":"true","label":"unnamed-chunk-2","out-width":"700px","warning":"true","comment":"","results":"markup","editor-max-height":""},"id":2},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","options":{"context":"output","fig-height":5,"fig-width":7,"autorun":"true","dpi":72,"read-only":"false","output":"true","classes":"","out-height":"","fig-cap":"","message":"true","label":"unnamed-chunk-3","out-width":"700px","warning":"true","comment":"","results":"markup","editor-max-height":""},"id":3},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","options":{"context":"output","fig-height":"3","fig-width":"5","autorun":"true","dpi":72,"read-only":"false","output":"true","classes":"","out-height":"","fig-cap":"","message":"true","label":"unnamed-chunk-4","out-width":"500px","warning":"true","comment":"","results":"markup","editor-max-height":""},"id":4},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","options":{"context":"interactive","fig-height":"3","fig-width":"5","autorun":"true","dpi":72,"read-only":"false","output":"true","classes":"","out-height":"","fig-cap":"","message":"true","label":"unnamed-chunk-5","out-width":"500px","warning":"true","comment":"","results":"markup","editor-max-height":""},"id":5}];
 
 </script>
 <script type="module">
@@ -1322,10 +1322,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

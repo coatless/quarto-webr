@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -232,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"read-only":"false","out-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"message":"true","autorun":"true","context":"setup","out-width":"700px","label":"unnamed-chunk-1","output":"true","fig-width":7,"warning":"true","results":"markup","classes":""},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"read-only":"false","out-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"message":"true","autorun":"false","context":"interactive","out-width":"700px","label":"unnamed-chunk-2","output":"true","fig-width":7,"warning":"true","results":"markup","classes":""},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"options":{"results":"markup","label":"unnamed-chunk-1","comment":"","editor-max-height":"","autorun":"true","fig-cap":"","dpi":72,"read-only":"false","classes":"","out-width":"700px","fig-height":5,"message":"true","output":"true","fig-width":7,"context":"setup","out-height":"","warning":"true"},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"results":"markup","label":"unnamed-chunk-2","comment":"","editor-max-height":"","autorun":"false","fig-cap":"","dpi":72,"read-only":"false","classes":"","out-width":"700px","fig-height":5,"message":"true","output":"true","fig-width":7,"context":"interactive","out-height":"","warning":"true"},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -962,7 +962,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html">Test: Setup Cell with Packages for Interactive</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html">Test: Setup Cell with Packages for Interactive</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1015,6 +1015,12 @@ globalThis.qwebrExecuteCode = async function (
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-editor-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Editor Options</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
@@ -1232,10 +1238,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 
@@ -1338,7 +1352,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-escape-html-output-characters.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html">Test: Setup Cell with Packages for Interactive</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html">Test: Setup Cell with Packages for Interactive</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Test: Setup Cell with Packages for Interactive</h1>
 </div>

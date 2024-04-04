@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,7 +275,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)","id":1,"options":{"output":"true","out-height":"","warning":"true","dpi":72,"context":"interactive","out-width":"100%","label":"unnamed-chunk-1","message":"true","results":"markup","autorun":"true","classes":"","comment":"","fig-width":7,"fig-cap":"","read-only":"true","fig-height":5}},{"code":"plot(fit)","id":2,"options":{"output":"true","out-height":"","warning":"true","dpi":72,"context":"interactive","out-width":"100%","label":"unnamed-chunk-2","message":"true","results":"markup","autorun":"true","classes":"","comment":"","fig-width":7,"fig-cap":"","read-only":"false","fig-height":5}}];
+globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)","id":1,"options":{"read-only":"true","fig-height":5,"fig-cap":"","output":"true","out-width":"100%","context":"interactive","message":"true","fig-width":7,"label":"unnamed-chunk-1","dpi":72,"editor-max-height":"","warning":"true","comment":"","out-height":"","autorun":"true","classes":"","results":"markup"}},{"code":"plot(fit)","id":2,"options":{"read-only":"false","fig-height":5,"fig-cap":"","output":"true","out-width":"100%","context":"interactive","message":"true","fig-width":7,"label":"unnamed-chunk-2","dpi":72,"editor-max-height":"","warning":"true","comment":"","out-height":"","autorun":"true","classes":"","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -1322,10 +1322,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

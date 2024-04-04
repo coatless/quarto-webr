@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.27">
+  <meta name="generator" content="quarto-1.5.28">
 
   <title>Test Suite for quarto-webr – Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -485,7 +485,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"comment":"","classes":"","label":"unnamed-chunk-1","results":"markup","message":"true","read-only":"false","warning":"true","fig-cap":"","out-height":"","dpi":72,"out-width":"700px","context":"interactive","output":"true","autorun":"false","fig-height":5},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"fig-width":7,"comment":"","classes":"","label":"unnamed-chunk-2","results":"markup","message":"true","read-only":"false","warning":"true","fig-cap":"","out-height":"","dpi":72,"out-width":"700px","context":"interactive","output":"true","autorun":"false","fig-height":5},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"},{"id":3,"options":{"fig-width":7,"comment":"","classes":"","label":"unnamed-chunk-3","results":"markup","message":"true","read-only":"false","warning":"true","fig-cap":"","out-height":"","dpi":72,"out-width":"700px","context":"interactive","output":"true","autorun":"false","fig-height":5},"code":"message(\"Hello World!\")"},{"id":4,"options":{"fig-width":7,"comment":"","classes":"","label":"unnamed-chunk-4","results":"markup","message":"true","read-only":"false","warning":"true","fig-cap":"","out-height":"","dpi":72,"out-width":"700px","context":"interactive","output":"true","autorun":"false","fig-height":5},"code":"2 + 3"}];
+  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","id":1,"options":{"read-only":"false","output":"true","comment":"","results":"markup","out-width":"700px","message":"true","warning":"true","autorun":"false","context":"interactive","fig-width":7,"fig-cap":"","dpi":72,"classes":"","fig-height":5,"editor-max-height":"","label":"unnamed-chunk-1","out-height":""}},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","id":2,"options":{"read-only":"false","output":"true","comment":"","results":"markup","out-width":"700px","message":"true","warning":"true","autorun":"false","context":"interactive","fig-width":7,"fig-cap":"","dpi":72,"classes":"","fig-height":5,"editor-max-height":"","label":"unnamed-chunk-2","out-height":""}},{"code":"message(\"Hello World!\")","id":3,"options":{"read-only":"false","output":"true","comment":"","results":"markup","out-width":"700px","message":"true","warning":"true","autorun":"false","context":"interactive","fig-width":7,"fig-cap":"","dpi":72,"classes":"","fig-height":5,"editor-max-height":"","label":"unnamed-chunk-3","out-height":""}},{"code":"2 + 3","id":4,"options":{"read-only":"false","output":"true","comment":"","results":"markup","out-width":"700px","message":"true","warning":"true","autorun":"false","context":"interactive","fig-width":7,"fig-cap":"","dpi":72,"classes":"","fig-height":5,"editor-max-height":"","label":"unnamed-chunk-4","out-height":""}}];
 
   </script>
   <script type="module">
@@ -1273,10 +1273,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 

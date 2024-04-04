@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James Joseph Balamuta">
-<meta name="dcterms.date" content="2023-03-14">
 
-<title>quarto-webr – Exploring Interactive Code Cells</title>
+<title>Test Suite for quarto-webr – Test: Editor Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -102,15 +66,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S8CXP9TZG0"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
-</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
@@ -277,7 +232,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"1 + 1","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-1","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":1},{"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-2","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":2},{"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-3","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":3},{"code":"1 + 1","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-4","context":"interactive","read-only":"true","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":4},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-5","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":5},{"code":"35 + ________","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-6","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":6},{"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-7","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":7},{"code":"webr::install(\"ggplot2\")","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-8","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":8},{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-9","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":9},{"code":"name <- \"James\"\nage <- 42","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-10","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":10},{"code":"message(name, \" is \", age, \" years old!\")","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-11","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":11},{"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-12","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":12},{"code":"say_hello(\"Hulya\")","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-13","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":13},{"code":"stop(\"This is a hard error\")","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-14","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":14},{"code":"variable_not_defined","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-15","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":15},{"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-16","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":16},{"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-17","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":17},{"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-18","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":18},{"code":"add_one <- \\(x) x + 1\nadd_one(2)","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-19","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":19},{"code":"","options":{"output":"true","fig-cap":"","out-width":"700px","classes":"","editor-max-height":"","message":"true","label":"unnamed-chunk-20","context":"interactive","read-only":"false","dpi":72,"autorun":"false","fig-height":5,"out-height":"","warning":"true","results":"markup","comment":"","fig-width":7},"id":20}];
+globalThis.qwebrCellDetails = [{"options":{"out-height":"","fig-height":5,"autorun":"false","warning":"true","read-only":"false","fig-width":7,"output":"true","context":"interactive","dpi":72,"classes":"","label":"unnamed-chunk-1","comment":"","message":"true","fig-cap":"","out-width":"700px","editor-max-height":"","results":"markup"},"code":"print(\"test\")","id":1},{"options":{"out-height":"","fig-height":5,"autorun":"false","warning":"true","read-only":"false","fig-width":7,"output":"true","context":"interactive","dpi":72,"classes":"","label":"unnamed-chunk-2","comment":"","message":"true","fig-cap":"","out-width":"700px","editor-max-height":"","results":"markup"},"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":2},{"options":{"out-height":"","fig-height":5,"autorun":"false","warning":"true","read-only":"false","fig-width":7,"output":"true","context":"interactive","dpi":72,"classes":"","label":"unnamed-chunk-3","comment":"","message":"true","fig-cap":"","out-width":"700px","editor-max-height":"80","results":"markup"},"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":3}];
 
 </script>
 <script type="module">
@@ -998,7 +953,7 @@ globalThis.qwebrExecuteCode = async function (
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -1007,7 +962,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/">Demos</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Test: Editor Options</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1022,9 +977,8 @@ globalThis.qwebrExecuteCode = async function (
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">quarto-webr</a> 
+      <a href="./">Test Suite for quarto-webr</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/coatless/quarto-webr/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -1040,10 +994,22 @@ globalThis.qwebrExecuteCode = async function (
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./../../" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Main Website</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Getting Started</span></a>
+ <span class="menu-text">Tests</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1051,183 +1017,146 @@ globalThis.qwebrExecuteCode = async function (
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-first-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Your first webR-powered Quarto document</span></a>
+  <a href="./qwebr-test-editor-options.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Test: Editor Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using R Packages</span></a>
+  <a href="./qwebr-test-escape-html-output-characters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Escape Output with HTML Entities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-internal-cell.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hiding and Executing Code</span></a>
+  <a href="./qwebr-test-global-cell-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setting Global Cell Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-loading-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Loading Data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Options Reference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-meta-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Document Options</span></a>
+  <a href="./qwebr-test-help-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Help Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-cell-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Code Cell Options</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Support</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
+  <a href="./qwebr-test-interactive-with-keyboard-shortcut.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Keyboard Shortcuts in Code cell</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAQ</span></a>
+  <a href="./qwebr-test-internal-cell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Cell Context Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://github.com/coatless/quarto-webr/issues/new" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Submit an issue</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README Demo</span></a>
+  <a href="./qwebr-test-multiple-cells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Multiple webR cells</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  <a href="./qwebr-test-non-interactive-chained-cells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Chained Non-interactive Areas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./demos/qwebr-feature-demos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Feature Demos</span></a>
+  <a href="./qwebr-test-non-interactive-context-with-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Load and Use Packages used in Context</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-community-examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Community Examples</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Templates</span></a>
+  <a href="./qwebr-test-non-interactive-setup-with-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Packages used in Hidden Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-theming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Theming Elements</span></a>
+  <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Communication Channels</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Extra Information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-release-notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Release Notes</span></a>
+  <a href="./qwebr-test-output-classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: CSS Output Classes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-acknowledgements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Acknowledgements</span></a>
+  <a href="./qwebr-test-output-graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Graphics Output</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-developer-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Developer Resources</span></a>
+  <a href="./qwebr-test-output-stderr-result-suppression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: STDErr &amp; Result Output Suppression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-extension-website.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Extension Website Notes</span></a>
+  <a href="./qwebr-test-packages-autoload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Autoload Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://quarto-webr.thecoatlessprofessor.com/tests/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Test Suite</span></a>
+  <a href="./qwebr-test-packages-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Packages Key with Autoloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-repo-key.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Repos package key</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-revealjs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: webR in RevealJS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: embed-resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-shim-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Install Packages Shim</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-no-title.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Qwebr Test Status Header No Title</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-suppressed-html copy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: No Startup Status Present in HTML Documents</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-status-header-suppressed-revealjs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: No Startup Status Present in RevealJS Presentations</span></a>
   </div>
 </li>
       </ul>
@@ -1237,33 +1166,7 @@ globalThis.qwebrExecuteCode = async function (
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#creating-webr-enabled-code-cells" id="toc-creating-webr-enabled-code-cells" class="nav-link active" data-scroll-target="#creating-webr-enabled-code-cells">Creating webR-Enabled Code Cells</a></li>
-  <li><a href="#sample-use-cases" id="toc-sample-use-cases" class="nav-link" data-scroll-target="#sample-use-cases">Sample Use Cases</a>
-  <ul class="collapse">
-  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
-  <li><a href="#line-by-line-execution" id="toc-line-by-line-execution" class="nav-link" data-scroll-target="#line-by-line-execution">Line-by-line Execution</a></li>
-  <li><a href="#preventing-modifications-to-code" id="toc-preventing-modifications-to-code" class="nav-link" data-scroll-target="#preventing-modifications-to-code">Preventing Modifications to Code</a></li>
-  <li><a href="#create-a-graph-with-base-r" id="toc-create-a-graph-with-base-r" class="nav-link" data-scroll-target="#create-a-graph-with-base-r">Create a Graph with Base R</a></li>
-  <li><a href="#fill-in-the-blanks" id="toc-fill-in-the-blanks" class="nav-link" data-scroll-target="#fill-in-the-blanks">Fill in the Blanks</a></li>
-  <li><a href="#data-wrangle-in-real-time" id="toc-data-wrangle-in-real-time" class="nav-link" data-scroll-target="#data-wrangle-in-real-time">Data Wrangle in Real Time</a></li>
-  <li><a href="#working-with-r-packages" id="toc-working-with-r-packages" class="nav-link" data-scroll-target="#working-with-r-packages">Working with R Packages</a></li>
-  <li><a href="#variable-definitions-and-reuse" id="toc-variable-definitions-and-reuse" class="nav-link" data-scroll-target="#variable-definitions-and-reuse">Variable Definitions and Reuse</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  <li><a href="#handling-errors-and-warnings" id="toc-handling-errors-and-warnings" class="nav-link" data-scroll-target="#handling-errors-and-warnings">Handling Errors and Warnings</a></li>
-  <li><a href="#escaping-characters-in-a-string" id="toc-escaping-characters-in-a-string" class="nav-link" data-scroll-target="#escaping-characters-in-a-string">Escaping Characters in a String</a></li>
-  <li><a href="#anonymous-function-definition" id="toc-anonymous-function-definition" class="nav-link" data-scroll-target="#anonymous-function-definition">Anonymous Function Definition</a></li>
-  <li><a href="#empty-code-cell" id="toc-empty-code-cell" class="nav-link" data-scroll-target="#empty-code-cell">Empty Code Cell</a></li>
-  <li><a href="#pre-rendered-code-cell" id="toc-pre-rendered-code-cell" class="nav-link" data-scroll-target="#pre-rendered-code-cell">Pre-rendered Code Cell</a></li>
-  </ul></li>
-  <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-code-cell-demos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
@@ -1449,36 +1352,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/">Demos</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Test: Editor Options</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exploring Interactive Code Cells</h1>
-<p class="subtitle lead">Unleash the Power of Interactive R Code in Your Quarto Documents</p>
+<h1 class="title">Test: Editor Options</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James Joseph Balamuta </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 14, 2023</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 4, 2024</p>
-    </div>
-  </div>
     
   </div>
   
@@ -1487,200 +1371,26 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>Welcome to the world of interactive code cells, unlocked by the <code>quarto-webr</code> extension. These cells allow you to run R code directly within your Quarto HTML documents, enabling real-time computations, dynamic visualizations, and more. Let’s explore the impressive capabilities webR offers.</p>
-<section id="creating-webr-enabled-code-cells" class="level1">
-<h1>Creating webR-Enabled Code Cells</h1>
-<p>To create a webR-enabled code cell, simply use the <code>{webr-r}</code> tag in your Quarto HTML document, like this:</p>
+<p>Check that the editor responses correctly to options being set.</p>
+<section id="interactive" class="level2">
+<h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="single-line" class="level3">
+<h3 class="anchored" data-anchor-id="single-line">Single line</h3>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>For example, the code cell above, powered by <code>webr</code>, was generated by entering the following into the Quarto document:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sample-use-cases" class="level1">
-<h1>Sample Use Cases</h1>
-<p>Now, let’s delve into some practical scenarios where interactive code cells shine.</p>
-<section id="fit-a-linear-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
-<p>We begin by using the “Hello World” example of statistics: fitting and analyzing a linear regression.</p>
+<section id="uncapped-height" class="level3">
+<h3 class="anchored" data-anchor-id="uncapped-height">Uncapped height</h3>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="line-by-line-execution" class="level2">
-<h2 class="anchored" data-anchor-id="line-by-line-execution">Line-by-line Execution</h2>
-<p>In this section, we’ll explore the built-in keyboard shortcuts for executing code within the interactive code cell. You can run either the selected code or specific lines or the entire cell with the following keyboard shortcuts:</p>
-<ul>
-<li>Run selected code:
-<ul>
-<li>macOS: <kbd>⌘</kbd> + <kbd>↩︎/Return</kbd></li>
-<li>Windows/Linux: <kbd>Ctrl</kbd> + <kbd>↩︎/Enter</kbd></li>
-</ul></li>
-<li>To run the entire code cell, you can simply click the “Run code” button, or use the keyboard shortcut:
-<ul>
-<li><kbd>Shift</kbd> + <kbd>↩︎</kbd></li>
-</ul></li>
-</ul>
-<p>Feel free to try it out in the following code cell:</p>
+<section id="height-cap" class="level3">
+<h3 class="anchored" data-anchor-id="height-cap">Height cap</h3>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>By using these shortcuts, you can run code conveniently and efficiently. This practice can also help you become familiar with keyboard shortcuts when transitioning to integrated development environments (IDEs) like <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> or <a href="https://code.visualstudio.com/docs/languages/r">Visual Studio Code with R</a>.</p>
-</section>
-<section id="preventing-modifications-to-code" class="level2">
-<h2 class="anchored" data-anchor-id="preventing-modifications-to-code">Preventing Modifications to Code</h2>
-<p>Code cells can be locked to their initial state by specifying <code>#| read-only: true</code>. The next code cell has such a feature implemented. Try modifying the expression <code>1 + 1</code> to any other value.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><code>{quarto-webr}</code> Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cell code</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| read-only: true</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This option can be paired with <code>autorun: true</code> to avoid having the user press the “Run code” button to see the output.</p>
-</div>
-</div>
-</section>
-<section id="create-a-graph-with-base-r" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-graph-with-base-r">Create a Graph with Base R</h2>
-<p>For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value <code>blue</code> to <code>orange</code> and run the code again.</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="fill-in-the-blanks" class="level2">
-<h2 class="anchored" data-anchor-id="fill-in-the-blanks">Fill in the Blanks</h2>
-<p>Another approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:</p>
-<blockquote class="blockquote">
-<p>Fill in the blank to have the following expression add up to <strong>42</strong>.</p>
-</blockquote>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="data-wrangle-in-real-time" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangle-in-real-time">Data Wrangle in Real Time</h2>
-<p>Data manipulation is a crucial part of data analysis. In this example, we’ll modify a data set in real-time and view the results. It’s like changing ingredients while cooking to get the perfect dish!</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="working-with-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-r-packages">Working with R Packages</h2>
-<p>You can incorporate R packages available in webR by installing them interactively using <code>webr::install()</code> within a <code>{webr-r}</code> code cell or by specifying them in the document’s YAML. Once you’ve installed a package, you can harness its power just as you would in a traditional R environment. For more details, please refer to <a href="./qwebr-using-r-packages.html">Using R Packages</a>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please note that installing certain packages, such as <code>ggplot2</code>, may take some time depending on the <a href="./qwebr-communication-channels.html">communication channel</a> being used.</p>
-</div>
-</div>
-<p>Let’s take <code>ggplot2</code> as an example:</p>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>With <code>ggplot2</code> now installed, let’s create a graph with it!</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="variable-definitions-and-reuse" class="level2">
-<h2 class="anchored" data-anchor-id="variable-definitions-and-reuse">Variable Definitions and Reuse</h2>
-<p>Define variables in one code cell and reuse them in subsequent cells:</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<p>Functions can similarly be defined and used in one code cell or multiple code cells.</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The function definition must be run before calling the function. Otherwise, there will be an error that is generated.</p>
-</div>
-</div>
-</section>
-<section id="handling-errors-and-warnings" class="level2">
-<h2 class="anchored" data-anchor-id="handling-errors-and-warnings">Handling Errors and Warnings</h2>
-<p>When webR encounters an error while running R code, the error and warning messages are displayed to the user.</p>
-<p>For example, if the routine has a hard stop, the execution immediately ends, and the message is shared.</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Similarly, if a variable is not found, then the code stops being evaluated and returns an error.</p>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Unlike errors, warning messages are allowed to propagate into the output without stopping the computation.</p>
-<div id="qwebr-insertion-location-16"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This is even the case inside of complex functions.</p>
-<div id="qwebr-insertion-location-17"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="escaping-characters-in-a-string" class="level2">
-<h2 class="anchored" data-anchor-id="escaping-characters-in-a-string">Escaping Characters in a String</h2>
-<p>Handle special characters in strings with ease:</p>
-<div id="qwebr-insertion-location-18"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="anonymous-function-definition" class="level2">
-<h2 class="anchored" data-anchor-id="anonymous-function-definition">Anonymous Function Definition</h2>
-<p>Define and use anonymous functions seamlessly:</p>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="empty-code-cell" class="level2">
-<h2 class="anchored" data-anchor-id="empty-code-cell">Empty Code Cell</h2>
-<p>Define an empty code cell by simply leaving it blank.</p>
-<div id="qwebr-insertion-location-20"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="pre-rendered-code-cell" class="level2">
-<h2 class="anchored" data-anchor-id="pre-rendered-code-cell">Pre-rendered Code Cell</h2>
-<p>Any code using the usual <code>{r}</code> tag will be executed, and its output saved, just as if you were rendering a Quarto document without the webR extension:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hello!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Hello!</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="fin" class="level1">
-<h1>Fin</h1>
-<p>These are just some of the powerful features and capabilities that webR brings to your Quarto HTML documents, making your data analysis and presentation more dynamic and engaging. Have an interesting example to share? Let us know <a href="https://github.com/coatless/quarto-webr/issues">at our issue tracker</a>!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -2105,7 +1815,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-code-cell-demos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script type="module">
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Test suite for quarto-webr.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/coatless/quarto-webr">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {

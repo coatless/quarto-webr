@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.27">
+<meta name="generator" content="quarto-1.5.28">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -234,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-1","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})"},{"id":2,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-2","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)"},{"id":3,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-3","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)"},{"id":4,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-4","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())"},{"id":5,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-5","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")"},{"id":6,"options":{"autorun":"false","out-width":"700px","read-only":"false","classes":"","results":"markup","comment":"","label":"unnamed-chunk-6","warning":"true","fig-height":5,"context":"interactive","dpi":72,"fig-width":7,"out-height":"","output":"true","fig-cap":"","message":"true"},"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")"}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-1","classes":"","fig-height":5,"out-height":"","context":"interactive"}},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-2","classes":"","fig-height":5,"out-height":"","context":"interactive"}},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-3","classes":"","fig-height":5,"out-height":"","context":"interactive"}},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-4","classes":"","fig-height":5,"out-height":"","context":"interactive"}},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-5","classes":"","fig-height":5,"out-height":"","context":"interactive"}},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6,"options":{"fig-width":7,"autorun":"false","read-only":"false","out-width":"700px","dpi":72,"results":"markup","message":"true","fig-cap":"","warning":"true","comment":"","editor-max-height":"","output":"true","label":"unnamed-chunk-6","classes":"","fig-height":5,"out-height":"","context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -1119,10 +1119,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
-      const contentHeight = editor.getContentHeight();
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
       // We're avoiding a width change
       //editorDiv.style.width = `${width}px`;
-      editorDiv.style.height = `${contentHeight}px`;
+      editorDiv.style.height = `${editorHeight}px`;
       try {
         ignoreEvent = true;
 
