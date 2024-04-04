@@ -134,3 +134,19 @@ format:
       - custom.scss
 ---
 ```
+
+## Light and Dark Mode
+
+The Monaco editor used by `{quarto-webr}` to power interactive code cells respects [Quarto's light and dark theme modes](https://quarto.org/docs/output-formats/html-themes.html#dark-mode). To apply light and dark themes on a Quarto website, specify the following settings in the `_quarto.yml` configuration file:
+
+```yaml
+theme:
+  light: flatly
+  dark: darkly
+```
+
+Once set, a clickable toggle will appear on the page that can switch between these modes. This toggle modifies CSS classes on the `body` HTML element, adding `.quarto-light` for light mode and `.quarto-dark` for dark mode.
+
+:::{.callout-note}
+The Monaco editor's theme automatically adjusts based on the document's theme. It uses a light theme (`vs`) in light mode and a dark theme (`vs-dark`) in dark mode.
+:::

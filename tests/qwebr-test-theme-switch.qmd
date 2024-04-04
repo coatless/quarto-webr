@@ -1,0 +1,25 @@
+---
+title: "Test: Light and Dark Mode"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Test classes for Quarto's light and dark mode.
+
+Toggle the switch to see: editor change from `vs` to `vs-dark` and standard output.
+
+## Interactive
+
+```{webr-r}
+#| autorun: true
+cat("Display letters: ")
+print(letters[1:5])
+
+plot(1:5)
+
+warning("This is a warning message!")
+
+stop("This is a hard error message!")
+```
