@@ -1,5 +1,5 @@
-// Global dictionary to store Monaco Editor instances
-globalThis.qwebrEditorInstances = {};
+// Global array to store Monaco Editor instances
+globalThis.qwebrEditorInstances = [];
 
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
