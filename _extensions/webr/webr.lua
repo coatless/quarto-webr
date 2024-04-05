@@ -73,7 +73,8 @@ local qwebRDefaultCellOptions = {
   ["fig-height"] = 5,
   ["out-width"] = "700px",
   ["out-height"] = "",
-  ["editor-max-height"] = ""
+  ["editor-max-height"] = "",
+  ["editor-quick-suggestions"] = "false"
 }
 
 ----
