@@ -8,8 +8,7 @@ filters:
 
 Check that the editor responses correctly to options being set. 
 
-## Interactive
-
+## Adaptive Container Constraints 
 
 ### Single line
 
@@ -17,9 +16,7 @@ Check that the editor responses correctly to options being set.
 print("test")
 ```
 
-
 ### Uncapped height
-
 
 ```{webr-r}
 print("test")
@@ -28,7 +25,6 @@ print("test")
 c(1, 3, 4)
 print("line 5")
 ```
-
 
 ### Height cap
 
@@ -39,4 +35,15 @@ print("test")
 1 + 1
 c(1, 3, 4)
 print("line 5")
+```
+
+## Autosuggetions
+
+Opt-in to auto suggestions.
+
+```{webr-r}
+#| editor-quick-suggestions: true
+my_long_variable = 1
+
+prin
 ```
