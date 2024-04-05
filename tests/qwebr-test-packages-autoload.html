@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Must call the library statement\nlibrary('ggplot2')","options":{"context":"interactive","autorun":"false","dpi":72,"message":"true","out-height":"","editor-max-height":"","warning":"true","label":"unnamed-chunk-1","comment":"","classes":"","fig-cap":"","read-only":"false","output":"true","fig-height":5,"fig-width":7,"out-width":"700px","results":"markup"}}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","message":"true","editor-quick-suggestions":"false","context":"interactive","editor-max-height":"","output":"true","autorun":"false","fig-cap":"","label":"unnamed-chunk-1","out-width":"700px","read-only":"false","fig-width":7,"dpi":72,"classes":"","out-height":"","results":"markup","comment":"","fig-height":5},"id":1,"code":"# Must call the library statement\nlibrary('ggplot2')"}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

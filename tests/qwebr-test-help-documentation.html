@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"?mean","id":1,"options":{"output":"true","context":"interactive","comment":"","fig-cap":"","fig-height":5,"editor-max-height":"","out-width":"700px","dpi":72,"out-height":"","read-only":"false","warning":"true","results":"markup","autorun":"false","label":"unnamed-chunk-1","fig-width":7,"classes":"","message":"true"}},{"code":"?sd","id":2,"options":{"output":"true","context":"output","comment":"","fig-cap":"","fig-height":5,"editor-max-height":"","out-width":"700px","dpi":72,"out-height":"","read-only":"false","warning":"true","results":"markup","autorun":"true","label":"unnamed-chunk-2","fig-width":7,"classes":"","message":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"?mean","options":{"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"false","editor-max-height":"","fig-height":5,"read-only":"false","output":"true","editor-quick-suggestions":"false","fig-width":7,"context":"interactive","classes":"","fig-cap":"","warning":"true","label":"unnamed-chunk-1","message":"true","dpi":72},"id":1},{"code":"?sd","options":{"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"true","editor-max-height":"","fig-height":5,"read-only":"false","output":"true","editor-quick-suggestions":"false","fig-width":7,"context":"output","classes":"","fig-cap":"","warning":"true","label":"unnamed-chunk-2","message":"true","dpi":72},"id":2}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

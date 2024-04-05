@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","comment":"","out-height":"","classes":"","out-width":"700px","context":"output","fig-height":5,"fig-cap":"","warning":"true","message":"true","read-only":"false","results":"markup","dpi":72,"editor-max-height":"","autorun":"true","fig-width":7,"output":"true"},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1}];
+globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","id":1,"options":{"classes":"","out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"true","output":"true","read-only":"false","message":"true","editor-max-height":"","dpi":72,"warning":"true","fig-cap":"","results":"markup","fig-height":5,"context":"output","comment":"","out-width":"700px","label":"unnamed-chunk-1"}}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

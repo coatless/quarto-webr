@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"autorun":"true","warning":"true","comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"fig-height":5,"message":"true","fig-cap":"","context":"output","dpi":72,"results":"markup","label":"unnamed-chunk-1","output":"true","read-only":"false","editor-max-height":""},"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-cap":"","warning":"true","autorun":"true","fig-height":5,"output":"true","out-height":"","message":"true","fig-width":7,"dpi":72,"context":"output","results":"markup","out-width":"700px","read-only":"false","classes":"","editor-quick-suggestions":"false","comment":"","editor-max-height":"","label":"unnamed-chunk-1"},"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

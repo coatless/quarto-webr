@@ -271,7 +271,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","id":1,"options":{"out-width":"700px","message":"true","fig-cap":"","out-height":"","autorun":"false","dpi":72,"fig-width":7,"results":"markup","label":"unnamed-chunk-1","editor-max-height":"","comment":"","fig-height":5,"classes":"","output":"true","context":"interactive","warning":"true","read-only":"false"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","options":{"context":"interactive","editor-max-height":"","out-height":"","autorun":"false","fig-height":5,"fig-cap":"","label":"unnamed-chunk-1","classes":"","dpi":72,"read-only":"false","out-width":"700px","message":"true","fig-width":7,"results":"markup","comment":"","output":"true","warning":"true","editor-quick-suggestions":"false"}}];
 
 </script>
 <script type="module">
@@ -1182,7 +1182,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

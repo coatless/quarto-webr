@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","fig-cap":"","fig-width":7,"editor-max-height":"","out-height":"","dpi":72,"autorun":"true","comment":"","fig-height":5,"classes":"","output":"true","results":"markup","out-width":"700px","context":"output","warning":"true","message":"true","label":"unnamed-chunk-1"},"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng"},{"id":2,"options":{"read-only":"false","fig-cap":"","fig-width":7,"editor-max-height":"","out-height":"","dpi":72,"autorun":"false","comment":"","fig-height":5,"classes":"","output":"true","results":"markup","out-width":"700px","context":"interactive","warning":"true","message":"true","label":"unnamed-chunk-2"},"code":"g + aes(color = factor(cyl))"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng","options":{"warning":"true","out-height":"","context":"output","fig-height":5,"autorun":"true","message":"true","fig-width":7,"read-only":"false","out-width":"700px","classes":"","label":"unnamed-chunk-1","dpi":72,"fig-cap":"","output":"true","results":"markup","comment":"","editor-quick-suggestions":"false","editor-max-height":""}},{"id":2,"code":"g + aes(color = factor(cyl))","options":{"warning":"true","out-height":"","context":"interactive","fig-height":5,"autorun":"false","message":"true","fig-width":7,"read-only":"false","out-width":"700px","classes":"","label":"unnamed-chunk-2","dpi":72,"fig-cap":"","output":"true","results":"markup","comment":"","editor-quick-suggestions":"false","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"message":"true","fig-width":7,"out-height":"","read-only":"false","results":"markup","dpi":72,"fig-cap":"","comment":"","classes":"","editor-max-height":"","output":"true","warning":"true","label":"unnamed-chunk-1","out-width":"700px","context":"interactive","fig-height":5,"autorun":"true"},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"editor-max-height":"","results":"markup","dpi":72,"fig-cap":"","fig-height":5,"comment":"","fig-width":7,"autorun":"true","message":"true","out-width":"700px","classes":"","warning":"true","editor-quick-suggestions":"false","context":"interactive","output":"true","read-only":"false","out-height":"","label":"unnamed-chunk-1"},"id":1,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")"}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

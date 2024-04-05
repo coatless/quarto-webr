@@ -361,7 +361,11 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto-webr" id="toc-quarto-webr" class="nav-link active" data-scroll-target="#quarto-webr">quarto-webr</a></li>
+  <li><a href="#quarto-webr" id="toc-quarto-webr" class="nav-link active" data-scroll-target="#quarto-webr">quarto-webr</a>
+  <ul class="collapse">
+  <li><a href="#run-options" id="toc-run-options" class="nav-link" data-scroll-target="#run-options">Run Options</a></li>
+  <li><a href="#monaco-editor-options" id="toc-monaco-editor-options" class="nav-link" data-scroll-target="#monaco-editor-options">Monaco Editor Options</a></li>
+  </ul></li>
   <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
   <li><a href="#cell-output" id="toc-cell-output" class="nav-link" data-scroll-target="#cell-output">Cell Output</a></li>
   <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
@@ -428,11 +432,26 @@ Important
 </div>
 <section id="quarto-webr" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-webr">quarto-webr</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Options listed here are unique to the <code>{quarto-webr}</code> extension and do not have a Quarto equivalent.</p>
+</div>
+</div>
+<section id="run-options" class="level3">
+<h3 class="anchored" data-anchor-id="run-options">Run Options</h3>
 <table class="table">
 <colgroup>
+<col style="width: 11%">
 <col style="width: 5%">
-<col style="width: 6%">
-<col style="width: 88%">
+<col style="width: 83%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -452,16 +471,6 @@ Important
 <td><code>false</code></td>
 <td>Allow <code>interactive</code> cells to be run during document initialization without a user pressing run code.</td>
 </tr>
-<tr class="odd">
-<td><code>read-only</code></td>
-<td><code>false</code></td>
-<td>Prevent code in <code>interactive</code> cells from being modified by disallowing code input.</td>
-</tr>
-<tr class="even">
-<td><code>editor-max-height</code></td>
-<td><code>0</code></td>
-<td>Set a threshold to prevent infinite growth of the editor window.</td>
-</tr>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -474,9 +483,32 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Options listed here are unique to the <code>{quarto-webr}</code> extension. For details regarding <code>context</code>, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
+<p>For details regarding run options, please see <a href="./qwebr-internal-cell.html">Hiding and Executing Code</a>.</p>
 </div>
 </div>
+</section>
+<section id="monaco-editor-options" class="level3">
+<h3 class="anchored" data-anchor-id="monaco-editor-options">Monaco Editor Options</h3>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<div class="line-block"><code>read-only</code> | <code>false</code> | Prevent code in <code>interactive</code> cells from being modified by disallowing code input. |<br>
+<code>editor-max-height</code> | <code>0</code> | Set a threshold to prevent infinite growth of the editor window. |<br>
+<code>editor-quick-suggestions</code> | <code>false</code> | Show a list of autocomplete variables and/or functions based on what was typed. |</div>
+</section>
 </section>
 <section id="attributes" class="level2">
 <h2 class="anchored" data-anchor-id="attributes">Attributes</h2>

@@ -282,7 +282,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","id":1,"options":{"out-height":"","results":"markup","fig-width":7,"warning":"true","classes":"","label":"unnamed-chunk-1","dpi":72,"comment":"","fig-cap":"","message":"true","output":"true","read-only":"false","context":"setup","fig-height":5,"editor-max-height":"","autorun":"true","out-width":"700px"}},{"code":"g + geom_point()\n\nSys.sleep(0.5)","id":2,"options":{"out-height":"","results":"markup","fig-width":7,"warning":"true","classes":"","label":"unnamed-chunk-2","dpi":72,"comment":"","fig-cap":"","message":"true","output":"true","read-only":"false","context":"output","fig-height":5,"editor-max-height":"","autorun":"true","out-width":"700px"}},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","id":3,"options":{"out-height":"","results":"markup","fig-width":7,"warning":"true","classes":"","label":"unnamed-chunk-3","dpi":72,"comment":"","fig-cap":"","message":"true","output":"true","read-only":"false","context":"output","fig-height":5,"editor-max-height":"","autorun":"true","out-width":"700px"}},{"code":"g","id":4,"options":{"out-height":"","results":"markup","fig-width":7,"warning":"true","classes":"","label":"unnamed-chunk-4","dpi":72,"comment":"","fig-cap":"","message":"true","output":"true","read-only":"false","context":"interactive","fig-height":5,"editor-max-height":"","autorun":"false","out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","fig-width":7,"autorun":"true","comment":"","out-width":"700px","output":"true","label":"unnamed-chunk-1","context":"setup","warning":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","fig-height":5,"dpi":72,"results":"markup","message":"true","out-height":"","classes":""},"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)"},{"options":{"fig-cap":"","fig-width":7,"autorun":"true","comment":"","out-width":"700px","output":"true","label":"unnamed-chunk-2","context":"output","warning":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","fig-height":5,"dpi":72,"results":"markup","message":"true","out-height":"","classes":""},"id":2,"code":"g + geom_point()\n\nSys.sleep(0.5)"},{"options":{"fig-cap":"","fig-width":7,"autorun":"true","comment":"","out-width":"700px","output":"true","label":"unnamed-chunk-3","context":"output","warning":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","fig-height":5,"dpi":72,"results":"markup","message":"true","out-height":"","classes":""},"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)"},{"options":{"fig-cap":"","fig-width":7,"autorun":"false","comment":"","out-width":"700px","output":"true","label":"unnamed-chunk-4","context":"interactive","warning":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","fig-height":5,"dpi":72,"results":"markup","message":"true","out-height":"","classes":""},"id":4,"code":"g"}];
 
 </script>
 <script type="module">
@@ -1346,7 +1346,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

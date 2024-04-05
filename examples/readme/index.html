@@ -238,7 +238,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)","id":1,"options":{"dpi":72,"fig-width":7,"message":"true","results":"markup","editor-max-height":"","context":"interactive","out-height":"","autorun":"false","read-only":"false","output":"true","fig-cap":"","warning":"true","classes":"","comment":"","fig-height":5,"label":"unnamed-chunk-1","out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","fig-width":7,"comment":"","output":"true","fig-cap":"","read-only":"false","editor-quick-suggestions":"false","label":"unnamed-chunk-1","dpi":72,"editor-max-height":"","autorun":"false","out-height":"","fig-height":5,"context":"interactive","classes":"","results":"markup","message":"true","warning":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nsummary(fit)","id":1}];
 
 </script>
 <script type="module">
@@ -1050,7 +1050,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

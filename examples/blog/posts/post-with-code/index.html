@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"classes":"","fig-height":5,"editor-max-height":"","out-width":"700px","fig-cap":"","comment":"","message":"true","label":"unnamed-chunk-1","warning":"true","dpi":72,"out-height":"","context":"interactive","read-only":"false","output":"true","autorun":"false","results":"markup"},"code":"print(\"Hello blog Quarto world!\")"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","read-only":"false","autorun":"false","out-height":"","label":"unnamed-chunk-1","fig-cap":"","results":"markup","message":"true","warning":"true","classes":"","output":"true","fig-height":5,"editor-quick-suggestions":"false","out-width":"700px","editor-max-height":"","comment":"","dpi":72,"fig-width":7},"code":"print(\"Hello blog Quarto world!\")"}];
 
 </script>
 <script type="module">
@@ -1159,7 +1159,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"test\")","id":1,"options":{"warning":"true","autorun":"true","fig-width":7,"output":"true","results":"markup","out-width":"700px","fig-height":5,"message":"true","editor-max-height":"","label":"unnamed-chunk-1","out-height":"","comment":"##","context":"interactive","classes":"","read-only":"false","dpi":72,"fig-cap":""}},{"code":"print(\"test\")","id":2,"options":{"warning":"true","autorun":"true","fig-width":7,"output":"true","results":"markup","out-width":"700px","fig-height":5,"message":"true","editor-max-height":"","label":"unnamed-chunk-2","out-height":"","comment":"","context":"interactive","classes":"","read-only":"false","dpi":72,"fig-cap":""}},{"code":"print(\"test\")","id":3,"options":{"warning":"true","autorun":"true","fig-width":7,"output":"true","results":"markup","out-width":"700px","fig-height":5,"message":"true","editor-max-height":"","label":"unnamed-chunk-3","out-height":"","comment":"##","context":"output","classes":"","read-only":"false","dpi":72,"fig-cap":""}},{"code":"print(\"test\")","id":4,"options":{"warning":"true","autorun":"true","fig-width":7,"output":"true","results":"markup","out-width":"700px","fig-height":5,"message":"true","editor-max-height":"","label":"unnamed-chunk-4","out-height":"","comment":"","context":"output","classes":"","read-only":"false","dpi":72,"fig-cap":""}}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","context":"interactive","read-only":"false","fig-height":5,"dpi":72,"autorun":"true","editor-quick-suggestions":"false","out-width":"700px","comment":"##","out-height":"","output":"true","classes":"","label":"unnamed-chunk-1","fig-cap":"","fig-width":7,"results":"markup","editor-max-height":"","warning":"true"},"code":"print(\"test\")","id":1},{"options":{"message":"true","context":"interactive","read-only":"false","fig-height":5,"dpi":72,"autorun":"true","editor-quick-suggestions":"false","out-width":"700px","comment":"","out-height":"","output":"true","classes":"","label":"unnamed-chunk-2","fig-cap":"","fig-width":7,"results":"markup","editor-max-height":"","warning":"true"},"code":"print(\"test\")","id":2},{"options":{"message":"true","context":"output","read-only":"false","fig-height":5,"dpi":72,"autorun":"true","editor-quick-suggestions":"false","out-width":"700px","comment":"##","out-height":"","output":"true","classes":"","label":"unnamed-chunk-3","fig-cap":"","fig-width":7,"results":"markup","editor-max-height":"","warning":"true"},"code":"print(\"test\")","id":3},{"options":{"message":"true","context":"output","read-only":"false","fig-height":5,"dpi":72,"autorun":"true","editor-quick-suggestions":"false","out-width":"700px","comment":"","out-height":"","output":"true","classes":"","label":"unnamed-chunk-4","fig-cap":"","fig-width":7,"results":"markup","editor-max-height":"","warning":"true"},"code":"print(\"test\")","id":4}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

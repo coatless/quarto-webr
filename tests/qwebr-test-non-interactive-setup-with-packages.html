@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"dpi":72,"fig-width":7,"fig-height":5,"classes":"","fig-cap":"","output":"true","label":"spike-data","autorun":"true","out-width":"700px","read-only":"false","comment":"","context":"setup","warning":"true","results":"markup","editor-max-height":"","message":"true","out-height":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"dpi":72,"fig-width":7,"fig-height":5,"classes":"","fig-cap":"","output":"true","label":"spike-data","autorun":"false","out-width":"700px","read-only":"false","comment":"","context":"interactive","warning":"true","results":"markup","editor-max-height":"","message":"true","out-height":""},"code":"new_mtcars","id":2}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","editor-max-height":"","fig-cap":"","read-only":"false","output":"true","label":"spike-data","classes":"","out-width":"700px","context":"setup","fig-width":7,"dpi":72,"message":"true","warning":"true","editor-quick-suggestions":"false","autorun":"true","fig-height":5,"out-height":"","comment":""},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"id":2,"options":{"results":"markup","editor-max-height":"","fig-cap":"","read-only":"false","output":"true","label":"spike-data","classes":"","out-width":"700px","context":"interactive","fig-width":7,"dpi":72,"message":"true","warning":"true","editor-quick-suggestions":"false","autorun":"false","fig-height":5,"out-height":"","comment":""},"code":"new_mtcars"}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

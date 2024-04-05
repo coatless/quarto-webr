@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"test\")","options":{"label":"unnamed-chunk-1","autorun":"false","out-height":"","fig-height":5,"editor-max-height":"","output":"true","fig-width":7,"dpi":72,"out-width":"700px","warning":"true","message":"true","fig-cap":"","results":"markup","context":"interactive","read-only":"false","classes":"","comment":""},"id":1},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"label":"unnamed-chunk-2","autorun":"false","out-height":"","fig-height":5,"editor-max-height":"","output":"true","fig-width":7,"dpi":72,"out-width":"700px","warning":"true","message":"true","fig-cap":"","results":"markup","context":"interactive","read-only":"false","classes":"","comment":""},"id":2},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"label":"unnamed-chunk-3","autorun":"false","out-height":"","fig-height":5,"editor-max-height":"80","output":"true","fig-width":7,"dpi":72,"out-width":"700px","warning":"true","message":"true","fig-cap":"","results":"markup","context":"interactive","read-only":"false","classes":"","comment":""},"id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"test\")","options":{"editor-quick-suggestions":"false","fig-height":5,"warning":"true","read-only":"false","out-height":"","label":"unnamed-chunk-1","classes":"","editor-max-height":"","fig-cap":"","dpi":72,"autorun":"false","fig-width":7,"message":"true","out-width":"700px","output":"true","comment":"","context":"interactive","results":"markup"}},{"id":2,"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"editor-quick-suggestions":"false","fig-height":5,"warning":"true","read-only":"false","out-height":"","label":"unnamed-chunk-2","classes":"","editor-max-height":"","fig-cap":"","dpi":72,"autorun":"false","fig-width":7,"message":"true","out-width":"700px","output":"true","comment":"","context":"interactive","results":"markup"}},{"id":3,"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"editor-quick-suggestions":"false","fig-height":5,"warning":"true","read-only":"false","out-height":"","label":"unnamed-chunk-3","classes":"","editor-max-height":"80","fig-cap":"","dpi":72,"autorun":"false","fig-width":7,"message":"true","out-width":"700px","output":"true","comment":"","context":"interactive","results":"markup"}},{"id":4,"code":"my_long_variable = 1\n\nprin","options":{"editor-quick-suggestions":"true","fig-height":5,"warning":"true","read-only":"false","out-height":"","label":"unnamed-chunk-4","classes":"","editor-max-height":"","fig-cap":"","dpi":72,"autorun":"false","fig-width":7,"message":"true","out-width":"700px","output":"true","comment":"","context":"interactive","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -1303,7 +1303,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       fontSize: '17.5pt',              // Bootstrap is 1 rem
       renderLineHighlight: "none",     // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
-      readOnly: qwebrOptions['read-only'] ?? false
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
@@ -1464,8 +1465,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 
 <p>Check that the editor responses correctly to options being set.</p>
-<section id="interactive" class="level2">
-<h2 class="anchored" data-anchor-id="interactive">Interactive</h2>
+<section id="adaptive-container-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="adaptive-container-constraints">Adaptive Container Constraints</h2>
 <section id="single-line" class="level3">
 <h3 class="anchored" data-anchor-id="single-line">Single line</h3>
 <div id="qwebr-insertion-location-1"></div>
@@ -1480,9 +1481,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 class="anchored" data-anchor-id="height-cap">Height cap</h3>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-
-
 </section>
+</section>
+<section id="autosuggetions" class="level2">
+<h2 class="anchored" data-anchor-id="autosuggetions">Autosuggetions</h2>
+<p>Opt-in to auto suggestions.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+
+
 </section>
 
 </main> <!-- /main -->
