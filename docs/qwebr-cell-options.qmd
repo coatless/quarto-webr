@@ -33,16 +33,33 @@ The `{quarto-webr}` extension does not support all of the cell options from [Qua
 
 ## quarto-webr
 
-| Option      | Default Value | Description                                                                                                                                                                                                      |
-|-------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `context`   | `interactive` | Describe how the cell should operate on the page through either `interactive` (Runnable code editor), `output` (Output only of executed at runtime), or `setup` (execute code without seeing output at runtime). |
-| `autorun`   | `false`       | Allow `interactive` cells to be run during document initialization without a user pressing run code.                                                                                                             |
-| `read-only` | `false`       | Prevent code in `interactive` cells from being modified by disallowing code input.                                                                                                                               |
+:::{.callout-note}
+Options listed here are unique to the `{quarto-webr}` extension and do not have a Quarto equivalent.
+:::
+
+### Run Options
+
+| Option                     | Default Value | Description                                                                                                                                                                                                      |
+|----------------------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `context`                  | `interactive` | Describe how the cell should operate on the page through either `interactive` (Runnable code editor), `output` (Output only of executed at runtime), or `setup` (execute code without seeing output at runtime). |
+| `autorun`                  | `false`       | Allow `interactive` cells to be run during document initialization without a user pressing run code.                                                                                                             |
 
 
 :::{.callout-note}
-Options listed here are unique to the `{quarto-webr}` extension. For more details, please see [Hiding and Executing Code](qwebr-internal-cell.qmd).
+For details regarding run options, please see [Hiding and Executing Code](qwebr-internal-cell.qmd).
 :::
+
+
+### Monaco Editor Options
+
+| Option                     | Default Value | Description                                                                                                                                                                                                      |
+|----------------------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+| `read-only`                | `false`       | Prevent code in `interactive` cells from being modified by disallowing code input.                                                                                                                               |
+| `editor-max-height`        | `0`           | Set a threshold to prevent infinite growth of the editor window.                                                                                                                                                 |
+| `editor-quick-suggestions` | `false`       | Show a list of autocomplete variables and/or functions based on what was typed.                                                                                                                                  |
+
+
 
 ## Attributes
 

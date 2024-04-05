@@ -2,7 +2,9 @@
 title: "Test: No Startup Status Present in RevealJS Presentations"
 subtitle: "Examining State"
 authors: "Presentation Lead"
-format: revealjs
+format: 
+  revealjs:
+    theme: default
 engine: knitr
 webr: 
   show-startup-message: false

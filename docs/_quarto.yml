@@ -74,5 +74,9 @@ website:
 
 format:
   html:
-    theme: cosmo
     toc: true
+
+# Allow quarto to switch between light and dark themes.
+theme:
+  light: cosmo
+  dark: darkly

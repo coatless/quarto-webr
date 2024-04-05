@@ -73,7 +73,9 @@ local qwebRDefaultCellOptions = {
   ["fig-height"] = 5,
   ["out-width"] = "700px",
   ["out-height"] = "",
-  ["editor-font-scale"] = 1
+  ["editor-font-scale"] = 1,
+  ["editor-max-height"] = "",
+  ["editor-quick-suggestions"] = "false"
 }
 
 ----
@@ -437,6 +439,8 @@ local function ensureWebRSetup()
 
   -- Insert the monaco editor initialization
   quarto.doc.include_file("before-body", "qwebr-monaco-editor-init.html")
+
+  includeFileInHTMLTag("before-body", "qwebr-theme-switch.js", "js")
 
   -- Insert the extension styling for defined elements
   includeFileInHTMLTag("before-body", "qwebr-monaco-editor-element.js", "js")

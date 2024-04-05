@@ -35,43 +35,72 @@
   color: #0d9c29
 }
 
-.qwebr-output-code-stdout {
+body.quarto-light .qwebr-output-code-stdout {
   color: #111;
+}
+
+body.quarto-dark .qwebr-output-code-stdout {
+  color: #EEE;
 }
 
 .qwebr-output-code-stderr {
   color: #db4133;
 }
 
-.qwebr-editor {
+body.quarto-light .qwebr-editor {
   border: 1px solid #EEEEEE;
 }
 
-.qwebr-editor-toolbar {
+body.quarto-light .qwebr-editor-toolbar {
   background-color: #EEEEEE;
   padding: 0.2rem 0.5rem;
 }
 
+body.quarto-dark .qwebr-editor {
+  border: 1px solid #111;
+}
+
+body.quarto-dark .qwebr-editor-toolbar {
+  background-color: #111;
+  padding: 0.2rem 0.5rem;
+}
+
 .qwebr-button {
-  background-color: #EEEEEE;
   display: inline-block;
   font-weight: 400;
   line-height: 1;
   text-decoration: none;
   text-align: center;
-  color: #000;
-  border-color: #dee2e6;
-  border: 1px solid rgba(0,0,0,0);
   padding: 0.375rem 0.75rem;
   font-size: .9rem;
   border-radius: 0.25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.qwebr-button:hover {
+body.quarto-light .qwebr-button {
+  background-color: #EEEEEE;
+  color: #000;
+  border-color: #dee2e6;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+body.quarto-dark .qwebr-button {
+  background-color: #111;
+  color: #EEE;
+  border-color: #dee2e6;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+body.quarto-light .qwebr-button:hover {
   color: #000;
   background-color: #d9dce0;
   border-color: #c8ccd0;
+}
+
+body.quarto-dark .qwebr-button:hover {
+  color: #d9dce0;
+  background-color: #323232;
+  border-color: #d9dce0;
 }
 
 .qwebr-button:disabled,.qwebr-button.disabled,fieldset:disabled .qwebr-button {
@@ -111,8 +140,12 @@
   display: contents;
 }
 
-.reveal pre div code.qwebr-output-code-stdout {
+body.reveal.quarto-light pre div code.qwebr-output-code-stdout {
   color: #111;
+}
+
+body.reveal.quarto-dark pre div code.qwebr-output-code-stdout {
+  color: #EEEEEE;
 }
 
 .reveal pre div code.qwebr-output-code-stderr {
@@ -121,10 +154,16 @@
 
 
 /* Create a border around console and output (does not effect graphs) */
-.reveal div.qwebr-console-area {
+body.reveal.quarto-light div.qwebr-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
+
+body.reveal.quarto-dark div.qwebr-console-area {
+  border: 1px solid #111;
+  box-shadow: 2px 2px 10px #111;
+}
+
 
 /* Cap output height and allow text to scroll */
 /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
