@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="JJB">
-<meta name="dcterms.date" content="2024-04-05">
+<meta name="dcterms.date" content="2024-04-08">
 
 <title>Sample quarto-webr Book Project</title>
 <style>
@@ -274,7 +274,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"dpi":72,"fig-height":5,"label":"unnamed-chunk-1","classes":"","read-only":"false","out-width":"700px","editor-quick-suggestions":"false","context":"interactive","output":"true","autorun":"false","fig-cap":"","editor-max-height":"","fig-width":7,"warning":"true","out-height":"","comment":"","message":"true","results":"markup"},"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","id":1}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello there! Welcome to a quarto-webR powered book!\")","options":{"editor-font-scale":1,"classes":"","message":"true","results":"markup","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-1","output":"true","autorun":"false","context":"interactive","dpi":72,"editor-max-height":"","comment":"","fig-width":7,"out-height":"","fig-cap":"","out-width":"700px","fig-height":5,"read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -378,6 +378,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -872,6 +901,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1158,7 +1194,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1171,8 +1207,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
@@ -1335,7 +1371,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 5, 2024</p>
+      <p class="date">April 8, 2024</p>
     </div>
   </div>
   

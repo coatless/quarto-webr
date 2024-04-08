@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","out-height":"","out-width":"700px","read-only":"false","autorun":"false","fig-width":7,"context":"interactive","message":"true","warning":"true","comment":"","fig-height":5,"fig-cap":"","editor-max-height":"","dpi":72,"label":"unnamed-chunk-1","editor-quick-suggestions":"false","classes":"","results":"markup"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":2,"options":{"output":"true","out-height":"","out-width":"700px","read-only":"false","autorun":"true","fig-width":7,"context":"output","message":"true","warning":"true","comment":"","fig-height":5,"fig-cap":"","editor-max-height":"","dpi":72,"label":"unnamed-chunk-2","editor-quick-suggestions":"false","classes":"","results":"markup"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":3,"options":{"output":"true","out-height":"","out-width":"700px","read-only":"false","autorun":"true","fig-width":7,"context":"output","message":"true","warning":"true","comment":"","fig-height":5,"fig-cap":"","editor-max-height":"","dpi":72,"label":"unnamed-chunk-3","editor-quick-suggestions":"false","classes":"","results":"asis"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"},{"id":4,"options":{"output":"asis","out-height":"","out-width":"700px","read-only":"false","autorun":"true","fig-width":7,"context":"output","message":"true","warning":"true","comment":"","fig-height":5,"fig-cap":"","editor-max-height":"","dpi":72,"label":"unnamed-chunk-4","editor-quick-suggestions":"false","classes":"","results":"markup"},"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-1","fig-height":5,"results":"markup","fig-cap":"","editor-font-scale":1,"context":"interactive","out-width":"700px","message":"true","autorun":"false","classes":"","editor-max-height":"","dpi":72,"fig-width":7,"output":"true","editor-quick-suggestions":"false","comment":"","read-only":"false","out-height":"","warning":"true"}},{"id":2,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-2","fig-height":5,"results":"markup","fig-cap":"","editor-font-scale":1,"context":"output","out-width":"700px","message":"true","autorun":"true","classes":"","editor-max-height":"","dpi":72,"fig-width":7,"output":"true","editor-quick-suggestions":"false","comment":"","read-only":"false","out-height":"","warning":"true"}},{"id":3,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-3","fig-height":5,"results":"asis","fig-cap":"","editor-font-scale":1,"context":"output","out-width":"700px","message":"true","autorun":"true","classes":"","editor-max-height":"","dpi":72,"fig-width":7,"output":"true","editor-quick-suggestions":"false","comment":"","read-only":"false","out-height":"","warning":"true"}},{"id":4,"code":"# This function converts a markdown link into HTML\n\"[Posit](https://posit.co)\" |> (\\(.) {\n  text <- sub(\"\\\\].*\", \"\", sub(\".*\\\\[\", \"\", .))\n  url <- sub(\"\\\\).*\", \"\", sub(\".*\\\\(\", \"\", .))\n  \n  writeLines(noquote(paste0('<a href=\"', url, '\" target = \"_blank\">', text, '</a>')))\n})()","options":{"label":"unnamed-chunk-4","fig-height":5,"results":"markup","fig-cap":"","editor-font-scale":1,"context":"output","out-width":"700px","message":"true","autorun":"true","classes":"","editor-max-height":"","dpi":72,"fig-width":7,"output":"asis","editor-quick-suggestions":"false","comment":"","read-only":"false","out-height":"","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -377,6 +377,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -871,6 +900,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1287,7 +1323,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1300,8 +1336,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false

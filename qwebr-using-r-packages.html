@@ -318,7 +318,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"message":"true","warning":"true","fig-cap":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","autorun":"false","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","dpi":72,"classes":"","editor-max-height":"","out-height":"","output":"true","fig-height":5,"results":"markup","comment":""}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"message":"true","warning":"true","fig-cap":"","editor-quick-suggestions":"false","label":"unnamed-chunk-2","autorun":"false","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","dpi":72,"classes":"","editor-max-height":"","out-height":"","output":"true","fig-height":5,"results":"markup","comment":""}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"message":"true","warning":"true","fig-cap":"","editor-quick-suggestions":"false","label":"unnamed-chunk-3","autorun":"false","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","dpi":72,"classes":"","editor-max-height":"","out-height":"","output":"true","fig-height":5,"results":"markup","comment":""}}];
+globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-1","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-2","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-3","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}}];
 
 </script>
 <script type="module">
@@ -422,6 +422,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -916,6 +945,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1366,7 +1402,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1379,8 +1415,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
@@ -1551,7 +1587,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 5, 2024</p>
+      <p class="date-modified">April 8, 2024</p>
     </div>
   </div>
     

@@ -318,7 +318,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-1","context":"setup","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":1,"code":"meaning_of_life = 42"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-2","context":"interactive","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":2,"code":"meaning_of_life"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-3","context":"output","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":3,"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-4","context":"output","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":4,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-5","context":"setup","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":5,"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-6","context":"interactive","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"false","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":6,"code":"# Display the head of the data\nhead(df_penguins)"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-7","context":"interactive","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":7,"code":"# Display the head of the data\nhead(df_penguins)"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-8","context":"output","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":8,"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-9","context":"setup","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"true","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":9,"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}"},{"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"label":"unnamed-chunk-10","context":"interactive","comment":"","results":"markup","warning":"true","dpi":72,"autorun":"false","fig-width":7,"out-height":"","message":"true","output":"true","read-only":"false","classes":"","editor-max-height":"","out-width":"700px"},"id":10,"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"meaning_of_life = 42","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-1","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"setup","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":2,"code":"meaning_of_life","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-2","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"interactive","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":3,"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-3","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"output","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":4,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-4","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"output","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":5,"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-5","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"setup","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":6,"code":"# Display the head of the data\nhead(df_penguins)","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-6","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"interactive","fig-height":5,"results":"markup","autorun":"false","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":7,"code":"# Display the head of the data\nhead(df_penguins)","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-7","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"interactive","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":8,"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-8","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"output","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":9,"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-9","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"setup","fig-height":5,"results":"markup","autorun":"true","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}},{"id":10,"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","options":{"read-only":"false","fig-width":7,"label":"unnamed-chunk-10","comment":"","output":"true","fig-cap":"","classes":"","message":"true","editor-font-scale":1,"context":"interactive","fig-height":5,"results":"markup","autorun":"false","out-width":"700px","editor-quick-suggestions":"false","out-height":"","warning":"true","editor-max-height":"","dpi":72}}];
 
 </script>
 <script type="module">
@@ -422,6 +422,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -916,6 +945,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1371,7 +1407,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1384,8 +1420,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
@@ -1556,7 +1592,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 5, 2024</p>
+      <p class="date-modified">April 8, 2024</p>
     </div>
   </div>
     

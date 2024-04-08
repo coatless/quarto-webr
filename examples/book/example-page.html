@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","id":1,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-1","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","id":2,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-2","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","id":3,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-3","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","id":4,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-4","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","id":5,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-5","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","id":6,"options":{"fig-width":7,"message":"true","label":"unnamed-chunk-6","editor-quick-suggestions":"false","classes":"","output":"true","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","out-height":"","read-only":"false","warning":"true","fig-cap":"","fig-height":5,"editor-max-height":"","dpi":72}}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-1","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":1},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-2","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":2},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-3","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":3},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-4","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":4},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-5","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":5},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-6","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":6}];
 
 </script>
 <script type="module">
@@ -377,6 +377,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -871,6 +900,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1159,7 +1195,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1172,8 +1208,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false

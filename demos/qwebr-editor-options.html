@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr – Demo: Revamped Noninteractive Areas</title>
+<title>quarto-webr – Demo: Editor Options</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -260,7 +294,7 @@ body.reveal.quarto-dark div.qwebr-console-area {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['ggplot2', 'dplyr'];
+globalThis.qwebrInstallRPackagesList = [''];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -282,7 +316,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","options":{"comment":"","editor-font-scale":1,"autorun":"true","fig-width":7,"warning":"true","fig-height":5,"editor-quick-suggestions":"false","out-height":"","message":"true","classes":"","label":"unnamed-chunk-1","context":"setup","read-only":"false","output":"true","fig-cap":"","results":"markup","editor-max-height":"","out-width":"700px","dpi":72}},{"id":2,"code":"g + geom_point()\n\nSys.sleep(0.5)","options":{"comment":"","editor-font-scale":1,"autorun":"true","fig-width":7,"warning":"true","fig-height":5,"editor-quick-suggestions":"false","out-height":"","message":"true","classes":"","label":"unnamed-chunk-2","context":"output","read-only":"false","output":"true","fig-cap":"","results":"markup","editor-max-height":"","out-width":"700px","dpi":72}},{"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","options":{"comment":"","editor-font-scale":1,"autorun":"true","fig-width":7,"warning":"true","fig-height":5,"editor-quick-suggestions":"false","out-height":"","message":"true","classes":"","label":"unnamed-chunk-3","context":"output","read-only":"false","output":"true","fig-cap":"","results":"markup","editor-max-height":"","out-width":"700px","dpi":72}},{"id":4,"code":"g","options":{"comment":"","editor-font-scale":1,"autorun":"false","fig-width":7,"warning":"true","fig-height":5,"editor-quick-suggestions":"false","out-height":"","message":"true","classes":"","label":"unnamed-chunk-4","context":"interactive","read-only":"false","output":"true","fig-cap":"","results":"markup","editor-max-height":"","out-width":"700px","dpi":72}}];
+globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-1","editor-font-scale":"1","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":1},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-2","editor-font-scale":"0.5","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":2},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-3","editor-font-scale":"2","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":3},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-4","editor-font-scale":"0.95","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":4}];
 
 </script>
 <script type="module">
@@ -1286,13 +1320,19 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#package-dependencies" id="toc-package-dependencies" class="nav-link active" data-scroll-target="#package-dependencies">Package dependencies</a></li>
-  <li><a href="#setup-a-hidden-ggplot2-object" id="toc-setup-a-hidden-ggplot2-object" class="nav-link" data-scroll-target="#setup-a-hidden-ggplot2-object">Setup a hidden ggplot2 object</a></li>
-  <li><a href="#generate-a-graph" id="toc-generate-a-graph" class="nav-link" data-scroll-target="#generate-a-graph">Generate a graph</a></li>
-  <li><a href="#re-use-prior-graph-object" id="toc-re-use-prior-graph-object" class="nav-link" data-scroll-target="#re-use-prior-graph-object">Re-use prior graph object</a></li>
-  <li><a href="#work-with-a-hidden-setup-object" id="toc-work-with-a-hidden-setup-object" class="nav-link" data-scroll-target="#work-with-a-hidden-setup-object">Work with a hidden setup object</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#editor-font-scale-option" id="toc-editor-font-scale-option" class="nav-link" data-scroll-target="#editor-font-scale-option"><code>editor-font-scale</code> Option</a>
+  <ul class="collapse">
+  <li><a href="#default-size" id="toc-default-size" class="nav-link" data-scroll-target="#default-size">Default Size</a></li>
+  <li><a href="#reducing-editor-size" id="toc-reducing-editor-size" class="nav-link" data-scroll-target="#reducing-editor-size">Reducing Editor Size</a></li>
+  <li><a href="#increasing-editor-size" id="toc-increasing-editor-size" class="nav-link" data-scroll-target="#increasing-editor-size">Increasing Editor Size</a></li>
+  <li><a href="#scaling-content-areas" id="toc-scaling-content-areas" class="nav-link" data-scroll-target="#scaling-content-areas">Scaling Content Areas</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#fin" id="toc-fin" class="nav-link" data-scroll-target="#fin">Fin</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/demos/qwebr-non-interactive-areas.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/demos/qwebr-editor-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -1526,7 +1566,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Demo: Revamped Noninteractive Areas</h1>
+<h1 class="title">Demo: Editor Options</h1>
 </div>
 
 
@@ -1553,34 +1593,12 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We’ve slowed down each cell’s execution time by about 1/2 of a second to show how the document is responding.</p>
+<p>These features are currently experimental and are included in the 0.4.2-dev.2 build of <code>{quarto-webr}</code>.</p>
 </div>
 </div>
-<section id="package-dependencies" class="level1">
-<h1>Package dependencies</h1>
-<p>The <code>quarto-webr</code> extension is set to automatically install and load the <code>ggplot2</code> and <code>dplyr</code> packages by specifying a <code>packages</code> key in the document’s header.</p>
-</section>
-<section id="setup-a-hidden-ggplot2-object" class="level1">
-<h1>Setup a hidden ggplot2 object</h1>
-<p>From there, we’re going to use the <code>context: setup</code> hidden cell to create a <code>ggplot2</code> object that uses the <code>mtcars</code> data set with the aesthetic mappings of <code>x = wt</code> and <code>y = mpg</code> called <code>g</code>.</p>
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="generate-a-graph" class="level1">
-<h1>Generate a graph</h1>
-<p>Let’s move from setup to generating and displaying results by using <code>g</code> object created in <code>setup</code> within an <code>output</code> context:</p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="re-use-prior-graph-object" class="level1">
-<h1>Re-use prior graph object</h1>
-<p>Let’s also re-use the base <code>g</code> but change the aesthetics so that colour is now present.</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="work-with-a-hidden-setup-object" class="level1">
-<h1>Work with a hidden setup object</h1>
-<p>Finally, let’s make sure we can do some interesting things with the interactive session.</p>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>This feature demo introduces new options for styling the interactive editor associated with <code>{webr-r}</code> code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1591,11 +1609,120 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Changes inside of interactive cells do not propagate backwards in the document.</p>
+<p>These options are only configurable during the document authoring stage.</p>
 </div>
 </div>
+<section id="editor-font-scale-option" class="level2">
+<h2 class="anchored" data-anchor-id="editor-font-scale-option"><code>editor-font-scale</code> Option</h2>
+<p>The editor area now inherits font size from Quarto’s <code>fontsize</code> theme option, ensuring consistency with other elements on the page. You can adjust the font size for the editor relative to Quarto’s output by setting the <code>editor-font-scale</code> option. When <code>editor-font-scale</code> is:</p>
+<ul>
+<li>Equal to 1 (<code>= 1</code>), the editor’s font size matches the <code>fontsize</code> value.</li>
+<li>Less than 1 (<code>&lt; 1</code>), the editor’s font size is smaller than the <code>fontsize</code> value.</li>
+<li>Greater than 1 (<code>&gt; 1</code>), the editor’s font size is larger than the <code>fontsize</code> value.</li>
+</ul>
+<section id="default-size" class="level3">
+<h3 class="anchored" data-anchor-id="default-size">Default Size</h3>
+<p>By default, we set <code>editor-font-scale</code> to 1, aligning the editor font size with the <code>fontsize</code> value.</p>
+<p>Let’s consider a standard code cell that fits a linear model and obtains the confidence intervals for one or more parameters in a fitted model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               2.5 %   97.5 %
+(Intercept) 14.85062 19.44411
+am           3.64151 10.84837</code></pre>
+</div>
+</div>
+<p>Now, let’s observe the effect with <code>editor-font-scale: 1</code>:</p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Notice the consistency in font sizes.</p>
+</section>
+<section id="reducing-editor-size" class="level3">
+<h3 class="anchored" data-anchor-id="reducing-editor-size">Reducing Editor Size</h3>
+<p>To decrease the font size, we set a value between <code>0 &lt; editor-font-size &lt; 1</code>. For example, let’s set <code>editor-font-scale</code> to 0.5:</p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="increasing-editor-size" class="level3">
+<h3 class="anchored" data-anchor-id="increasing-editor-size">Increasing Editor Size</h3>
+<p>To increase the font size, we set a value between <code>editor-font-size &gt; 1</code>. For example, let’s set <code>editor-font-scale</code> to 2:</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="scaling-content-areas" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-content-areas">Scaling Content Areas</h3>
+<p>In this example, we create a custom area using a <a href="https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans">Div block in Quarto</a> and set the div’s font size to 150%. Consequently, the editor inherits the font size within the area.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="scaledEditor">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><code>{quarto-webr}</code> Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content" data-group="scaledEditor">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="big-text" style="font-size: 150%">
+<section id="quarto-code-cell-for-r" class="level5">
+<h5 class="anchored" data-anchor-id="quarto-code-cell-for-r">Quarto code cell for R</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               2.5 %   97.5 %
+(Intercept) 14.85062 19.44411
+am           3.64151 10.84837</code></pre>
+</div>
+</div>
+</section>
+<section id="webr-code-cell-under-quarto-webr" class="level5">
+<h5 class="anchored" data-anchor-id="webr-code-cell-under-quarto-webr">webR code cell under quarto-webr</h5>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>::: {#big-text style="font-size: 150%"}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Quarto code cell for R</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>::: {.cell-output .cell-output-stdout}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="in">               2.5 %   97.5 %</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="in">(Intercept) 14.85062 19.44411</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="in">am           3.64151 10.84837</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>webR code cell under quarto-webr</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="fin" class="level1">
+<h1>Fin</h1>
+<p>Just the beginning!</p>
 
 
 </section>
@@ -2166,7 +2293,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/demos/qwebr-non-interactive-areas.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script type="module">
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/coatless/quarto-webr/edit/main/docs/demos/qwebr-editor-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/coatless/quarto-webr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {

@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"test\")","id":1,"options":{"classes":"","comment":"","results":"markup","message":"true","editor-quick-suggestions":"false","out-height":"","fig-cap":"","read-only":"false","editor-max-height":"","label":"unnamed-chunk-1","out-width":"700px","fig-width":7,"autorun":"false","warning":"true","dpi":72,"context":"interactive","output":"true","fig-height":5}},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":2,"options":{"classes":"","comment":"","results":"markup","message":"true","editor-quick-suggestions":"false","out-height":"","fig-cap":"","read-only":"false","editor-max-height":"","label":"unnamed-chunk-2","out-width":"700px","fig-width":7,"autorun":"false","warning":"true","dpi":72,"context":"interactive","output":"true","fig-height":5}},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":3,"options":{"classes":"","comment":"","results":"markup","message":"true","editor-quick-suggestions":"false","out-height":"","fig-cap":"","read-only":"false","editor-max-height":"80","label":"unnamed-chunk-3","out-width":"700px","fig-width":7,"autorun":"false","warning":"true","dpi":72,"context":"interactive","output":"true","fig-height":5}},{"code":"my_long_variable = 1\n\nprin","id":4,"options":{"classes":"","comment":"","results":"markup","message":"true","editor-quick-suggestions":"true","out-height":"","fig-cap":"","read-only":"false","editor-max-height":"","label":"unnamed-chunk-4","out-width":"700px","fig-width":7,"autorun":"false","warning":"true","dpi":72,"context":"interactive","output":"true","fig-height":5}}];
+globalThis.qwebrCellDetails = [{"code":"print(\"test\")","id":1,"options":{"editor-max-height":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"out-height":"","editor-quick-suggestions":"false","editor-font-scale":1,"output":"true","dpi":72,"context":"interactive","label":"unnamed-chunk-1","autorun":"false","read-only":"false","comment":"","results":"markup","classes":"","fig-height":5,"fig-cap":""}},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":2,"options":{"editor-max-height":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"out-height":"","editor-quick-suggestions":"false","editor-font-scale":1,"output":"true","dpi":72,"context":"interactive","label":"unnamed-chunk-2","autorun":"false","read-only":"false","comment":"","results":"markup","classes":"","fig-height":5,"fig-cap":""}},{"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","id":3,"options":{"editor-max-height":"80","out-width":"700px","warning":"true","message":"true","fig-width":7,"out-height":"","editor-quick-suggestions":"false","editor-font-scale":1,"output":"true","dpi":72,"context":"interactive","label":"unnamed-chunk-3","autorun":"false","read-only":"false","comment":"","results":"markup","classes":"","fig-height":5,"fig-cap":""}},{"code":"my_long_variable = 1\n\nprin","id":4,"options":{"editor-max-height":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"out-height":"","editor-quick-suggestions":"true","editor-font-scale":1,"output":"true","dpi":72,"context":"interactive","label":"unnamed-chunk-4","autorun":"false","read-only":"false","comment":"","results":"markup","classes":"","fig-height":5,"fig-cap":""}}];
 
 </script>
 <script type="module">
@@ -377,6 +377,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -871,6 +900,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1287,7 +1323,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1300,8 +1336,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false

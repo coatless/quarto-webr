@@ -316,7 +316,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive","editor-max-height":"","read-only":"false","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","label":"unnamed-chunk-1","out-width":"700px","autorun":"false","fig-height":5,"out-height":"","comment":"","message":"true","classes":"","results":"markup","dpi":72,"warning":"true","output":"true"},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"context":"interactive","editor-max-height":"","read-only":"false","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","label":"unnamed-chunk-2","out-width":"700px","autorun":"true","fig-height":5,"out-height":"","comment":"","message":"true","classes":"","results":"markup","dpi":72,"warning":"true","output":"true"},"id":2,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"context":"output","editor-max-height":"","read-only":"false","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","label":"unnamed-chunk-3","out-width":"700px","autorun":"true","fig-height":5,"out-height":"","comment":"","message":"true","classes":"","results":"markup","dpi":72,"warning":"true","output":"true"},"id":3,"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"options":{"context":"output","editor-max-height":"","read-only":"false","editor-quick-suggestions":"false","fig-width":"5","fig-cap":"","label":"unnamed-chunk-4","out-width":"500px","autorun":"true","fig-height":"3","out-height":"","comment":"","message":"true","classes":"","results":"markup","dpi":72,"warning":"true","output":"true"},"id":4,"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"options":{"context":"interactive","editor-max-height":"","read-only":"false","editor-quick-suggestions":"false","fig-width":"5","fig-cap":"","label":"unnamed-chunk-5","out-width":"500px","autorun":"true","fig-height":"3","out-height":"","comment":"","message":"true","classes":"","results":"markup","dpi":72,"warning":"true","output":"true"},"id":5,"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
+globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1,"options":{"label":"unnamed-chunk-1","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"interactive","autorun":"false","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":2,"options":{"label":"unnamed-chunk-2","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"interactive","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","id":3,"options":{"label":"unnamed-chunk-3","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"output","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","id":4,"options":{"label":"unnamed-chunk-4","fig-width":"5","out-width":"500px","classes":"","fig-cap":"","context":"output","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":"3","out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","id":5,"options":{"label":"unnamed-chunk-5","fig-width":"5","out-width":"500px","classes":"","fig-cap":"","context":"interactive","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":"3","out-height":"","editor-quick-suggestions":"false","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -420,6 +420,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -914,6 +943,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1365,7 +1401,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1378,8 +1414,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false

@@ -316,7 +316,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"classes":"","fig-width":7,"results":"markup","autorun":"true","label":"unnamed-chunk-1","context":"interactive","dpi":72,"warning":"true","comment":"","read-only":"true","out-height":"","fig-height":5,"message":"true","output":"true","fig-cap":"","editor-quick-suggestions":"false","editor-max-height":"","out-width":"100%"},"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)"},{"id":2,"options":{"classes":"","fig-width":7,"results":"markup","autorun":"true","label":"unnamed-chunk-2","context":"interactive","dpi":72,"warning":"true","comment":"","read-only":"false","out-height":"","fig-height":5,"message":"true","output":"true","fig-cap":"","editor-quick-suggestions":"false","editor-max-height":"","out-width":"100%"},"code":"plot(fit)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"true","classes":"","warning":"true","message":"true","output":"true","editor-quick-suggestions":"false","autorun":"true","editor-font-scale":1,"out-width":"100%","label":"unnamed-chunk-1","comment":"","dpi":72,"out-height":"","fig-cap":"","results":"markup","fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":""},"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)"},{"id":2,"options":{"read-only":"false","classes":"","warning":"true","message":"true","output":"true","editor-quick-suggestions":"false","autorun":"true","editor-font-scale":1,"out-width":"100%","label":"unnamed-chunk-2","comment":"","dpi":72,"out-height":"","fig-cap":"","results":"markup","fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":""},"code":"plot(fit)"}];
 
 </script>
 <script type="module">
@@ -420,6 +420,35 @@ globalThis.EvalTypes = Object.freeze({
   Setup: 'setup',
   Output: 'output',
 });
+
+// Function that obtains the font size for a given element 
+globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+  const currentFontSize = parseFloat(
+    window
+    .getComputedStyle(element)
+    .getPropertyValue(cssProperty)
+  );
+  
+  return currentFontSize;
+}
+
+// Function to determine font scaling
+globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+  // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+  // or if we can directly use the document's `font-size`.
+  const cssProperty = document.body.classList.contains('reveal') ? 
+    "--r-main-font-size" : "font-size";
+  
+  // Get the current font size on the div element
+  const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+  // Determine the scaled font size value
+  const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+  return scaledFontSize;
+}
+
 
 // Function that dispatches the creation request
 globalThis.qwebrCreateHTMLElement = function (
@@ -914,6 +943,13 @@ globalThis.qwebrComputeEngine = async function(
             // Display results as HTML elements to retain output styling
             const div = document.createElement("div");
             div.innerHTML = out;
+
+            // Calculate a scaled font-size value
+            const scaledFontSize = qwebrScaledFontSize(
+                elements.outputCodeDiv, options);
+
+            // Override output code cell size
+            pre.style.fontSize = `${scaledFontSize}px`;
             pre.appendChild(div);
         } else {
             // If nothing is present, hide the element.
@@ -1365,7 +1401,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
   let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
   let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
-  
+
   // Load the Monaco Editor and create an instance
   let editor;
   require(['vs/editor/editor.main'], function () {
@@ -1378,8 +1414,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       minimap: {
         enabled: false
       },
-      fontSize: '17.5pt',              // Bootstrap is 1 rem
-      renderLineHighlight: "none",     // Disable current line highlighting
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
       quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
