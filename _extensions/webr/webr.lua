@@ -455,7 +455,7 @@ local function ensureWebRSetup()
   -- Note: We're not able to use embed-resources due to the web assembly binary and the potential for additional service worker files.
   quarto.doc.include_text("in-header", [[
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   ]])
 
   -- Insert the extension styling for defined elements
