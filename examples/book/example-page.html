@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-1","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":1},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-2","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":2},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-3","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":3},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-4","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":4},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-5","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":5},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"dpi":72,"comment":"","results":"markup","fig-cap":"","message":"true","label":"unnamed-chunk-6","out-width":"700px","editor-font-scale":1,"out-height":"","editor-quick-suggestions":"false","fig-width":7,"autorun":"false","editor-max-height":"","read-only":"false","classes":"","warning":"true","context":"interactive","output":"true","fig-height":5},"id":6}];
+globalThis.qwebrCellDetails = [{"code":"within(mtcars, {\n    mtcars[order(cyl, disp), , drop = FALSE]\n})","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-1","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":1},{"code":"library(dplyr)\nmtcars |> \n    arrange(cyl, disp)","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-2","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":2},{"code":"mtcars_by <- by(mtcars, mtcars$cyl, function(df) {\n  with(df, data.frame(cyl = cyl[[1]], mean = mean(disp), n = nrow(df)))\n})\ndo.call(rbind, mtcars_by)","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-3","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":3},{"code":"library(dplyr)\n\nmtcars |> \n  group_by(cyl) |> \n  summarise(mean = mean(disp), n = n())","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-4","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":4},{"code":"plot(mtcars$wt, mtcars$mpg,\n   main = \"Scatterplot in Base R\",\n   xlab = \"Car Weight\", ylab = \"MPG\", \n   col = \"blue\", lwd = 1)\nabline(lm(mtcars$mpg ~ mtcars$wt), col = \"red\")","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-5","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":5},{"code":"library(ggplot2)\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(size=2, color=\"blue\", stroke=1) + \n  geom_smooth(method=lm, color=\"red\") +\n  ggtitle(\"Scatterplot in ggplot2\") +\n  xlab(\"Car Weight\")","options":{"read-only":"false","output":"true","comment":"","editor-quick-suggestions":"false","out-width":"700px","autorun":"false","warning":"true","fig-cap":"","classes":"","fig-width":7,"fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-6","message":"true","editor-max-height":"","dpi":72,"editor-font-scale":1,"out-height":""},"id":6}];
 
 </script>
 <script type="module">
@@ -835,20 +835,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

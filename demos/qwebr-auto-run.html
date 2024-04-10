@@ -309,14 +309,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1,"options":{"label":"unnamed-chunk-1","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"interactive","autorun":"false","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":2,"options":{"label":"unnamed-chunk-2","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"interactive","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","id":3,"options":{"label":"unnamed-chunk-3","fig-width":7,"out-width":"700px","classes":"","fig-cap":"","context":"output","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":5,"out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","id":4,"options":{"label":"unnamed-chunk-4","fig-width":"5","out-width":"500px","classes":"","fig-cap":"","context":"output","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":"3","out-height":"","editor-quick-suggestions":"false","results":"markup"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","id":5,"options":{"label":"unnamed-chunk-5","fig-width":"5","out-width":"500px","classes":"","fig-cap":"","context":"interactive","autorun":"true","output":"true","comment":"","dpi":72,"editor-max-height":"","warning":"true","editor-font-scale":1,"read-only":"false","message":"true","fig-height":"3","out-height":"","editor-quick-suggestions":"false","results":"markup"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"dpi":72,"warning":"true","read-only":"false","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-1","results":"markup","autorun":"false","fig-cap":"","message":"true","editor-font-scale":1,"comment":"","fig-width":7,"classes":"","fig-height":5,"context":"interactive","output":"true"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"dpi":72,"warning":"true","read-only":"false","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-2","results":"markup","autorun":"true","fig-cap":"","message":"true","editor-font-scale":1,"comment":"","fig-width":7,"classes":"","fig-height":5,"context":"interactive","output":"true"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":3,"options":{"dpi":72,"warning":"true","read-only":"false","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-3","results":"markup","autorun":"true","fig-cap":"","message":"true","editor-font-scale":1,"comment":"","fig-width":7,"classes":"","fig-height":5,"context":"output","output":"true"},"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"id":4,"options":{"dpi":72,"warning":"true","read-only":"false","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","out-width":"500px","label":"unnamed-chunk-4","results":"markup","autorun":"true","fig-cap":"","message":"true","editor-font-scale":1,"comment":"","fig-width":"5","classes":"","fig-height":"3","context":"output","output":"true"},"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"id":5,"options":{"dpi":72,"warning":"true","read-only":"false","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","out-width":"500px","label":"unnamed-chunk-5","results":"markup","autorun":"true","fig-cap":"","message":"true","editor-font-scale":1,"comment":"","fig-width":"5","classes":"","fig-height":"3","context":"interactive","output":"true"},"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
 
 </script>
 <script type="module">
@@ -878,20 +878,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

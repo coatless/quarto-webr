@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive","results":"markup","message":"true","autorun":"false","comment":"","out-width":"700px","label":"unnamed-chunk-1","fig-width":7,"fig-cap":"","editor-quick-suggestions":"false","read-only":"false","output":"true","editor-max-height":"","classes":"","warning":"true","editor-font-scale":1,"fig-height":5,"dpi":72,"out-height":""},"code":"plot(pressure)","id":1},{"options":{"context":"interactive","results":"markup","message":"true","autorun":"false","comment":"","out-width":"600px","label":"unnamed-chunk-2","fig-width":"4","fig-cap":"","editor-quick-suggestions":"false","read-only":"false","output":"true","editor-max-height":"","classes":"","warning":"true","editor-font-scale":1,"fig-height":"6","dpi":72,"out-height":""},"code":"plot(pressure)","id":2},{"options":{"context":"output","results":"markup","message":"true","autorun":"true","comment":"","out-width":"700px","label":"unnamed-chunk-3","fig-width":7,"fig-cap":"Testing out figure captions","editor-quick-suggestions":"false","read-only":"false","output":"true","editor-max-height":"","classes":"","warning":"true","editor-font-scale":1,"fig-height":5,"dpi":72,"out-height":""},"code":"plot(pressure)","id":3},{"options":{"context":"output","results":"markup","message":"true","autorun":"true","comment":"","out-width":"500px","label":"unnamed-chunk-4","fig-width":"6","fig-cap":"","editor-quick-suggestions":"false","read-only":"false","output":"true","editor-max-height":"","classes":"","warning":"true","editor-font-scale":1,"fig-height":"5","dpi":72,"out-height":""},"code":"plot(pressure)","id":4},{"options":{"context":"output","results":"markup","message":"true","autorun":"true","comment":"","out-width":"500px","label":"unnamed-chunk-5","fig-width":"6","fig-cap":"","editor-quick-suggestions":"false","read-only":"false","output":"true","editor-max-height":"","classes":"","warning":"true","editor-font-scale":1,"fig-height":"5","dpi":72,"out-height":"500px"},"code":"plot(pressure)","id":5}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-cap":"","warning":"true","message":"true","context":"interactive","read-only":"false","fig-height":5,"editor-font-scale":1,"results":"markup","fig-width":7,"label":"unnamed-chunk-1","classes":"","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","out-width":"700px","dpi":72,"autorun":"false"},"code":"plot(pressure)"},{"id":2,"options":{"fig-cap":"","warning":"true","message":"true","context":"interactive","read-only":"false","fig-height":"6","editor-font-scale":1,"results":"markup","fig-width":"4","label":"unnamed-chunk-2","classes":"","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","out-width":"600px","dpi":72,"autorun":"false"},"code":"plot(pressure)"},{"id":3,"options":{"fig-cap":"Testing out figure captions","warning":"true","message":"true","context":"output","read-only":"false","fig-height":5,"editor-font-scale":1,"results":"markup","fig-width":7,"label":"unnamed-chunk-3","classes":"","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","out-width":"700px","dpi":72,"autorun":"true"},"code":"plot(pressure)"},{"id":4,"options":{"fig-cap":"","warning":"true","message":"true","context":"output","read-only":"false","fig-height":"5","editor-font-scale":1,"results":"markup","fig-width":"6","label":"unnamed-chunk-4","classes":"","editor-max-height":"","editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","out-width":"500px","dpi":72,"autorun":"true"},"code":"plot(pressure)"},{"id":5,"options":{"fig-cap":"","warning":"true","message":"true","context":"output","read-only":"false","fig-height":"5","editor-font-scale":1,"results":"markup","fig-width":"6","label":"unnamed-chunk-5","classes":"","editor-max-height":"","editor-quick-suggestions":"false","out-height":"500px","output":"true","comment":"","out-width":"500px","dpi":72,"autorun":"true"},"code":"plot(pressure)"}];
 
 </script>
 <script type="module">
@@ -835,20 +835,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

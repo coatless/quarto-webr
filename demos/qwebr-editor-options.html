@@ -309,14 +309,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-1","editor-font-scale":"1","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":1},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-2","editor-font-scale":"0.5","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":2},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-3","editor-font-scale":"2","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":3},{"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"label":"unnamed-chunk-4","editor-font-scale":"0.95","read-only":"false","fig-width":7,"comment":"","classes":"","editor-max-height":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","fig-height":5,"autorun":"true","results":"markup","out-height":"","editor-quick-suggestions":"false","output":"true"},"id":4}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","editor-font-scale":"1","context":"interactive","out-width":"700px","fig-width":7,"fig-height":5,"editor-max-height":"","label":"unnamed-chunk-1","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","read-only":"false","results":"markup","autorun":"true","fig-cap":"","classes":"","message":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","id":1},{"options":{"warning":"true","editor-font-scale":"0.5","context":"interactive","out-width":"700px","fig-width":7,"fig-height":5,"editor-max-height":"","label":"unnamed-chunk-2","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","read-only":"false","results":"markup","autorun":"true","fig-cap":"","classes":"","message":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","id":2},{"options":{"warning":"true","editor-font-scale":"2","context":"interactive","out-width":"700px","fig-width":7,"fig-height":5,"editor-max-height":"","label":"unnamed-chunk-3","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","read-only":"false","results":"markup","autorun":"true","fig-cap":"","classes":"","message":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","id":3},{"options":{"warning":"true","editor-font-scale":"0.95","context":"interactive","out-width":"700px","fig-width":7,"fig-height":5,"editor-max-height":"","label":"unnamed-chunk-4","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","comment":"","read-only":"false","results":"markup","autorun":"true","fig-cap":"","classes":"","message":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","id":4}];
 
 </script>
 <script type="module">
@@ -878,20 +878,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

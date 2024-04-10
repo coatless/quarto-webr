@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"?mean","options":{"fig-cap":"","warning":"true","classes":"","results":"markup","label":"unnamed-chunk-1","out-width":"700px","read-only":"false","autorun":"false","context":"interactive","fig-height":5,"editor-max-height":"","editor-font-scale":1,"out-height":"","comment":"","output":"true","message":"true","fig-width":7,"editor-quick-suggestions":"false","dpi":72},"id":1},{"code":"?sd","options":{"fig-cap":"","warning":"true","classes":"","results":"markup","label":"unnamed-chunk-2","out-width":"700px","read-only":"false","autorun":"true","context":"output","fig-height":5,"editor-max-height":"","editor-font-scale":1,"out-height":"","comment":"","output":"true","message":"true","fig-width":7,"editor-quick-suggestions":"false","dpi":72},"id":2}];
+globalThis.qwebrCellDetails = [{"code":"?mean","options":{"warning":"true","label":"unnamed-chunk-1","autorun":"false","editor-quick-suggestions":"false","classes":"","results":"markup","out-width":"700px","editor-font-scale":1,"fig-width":7,"message":"true","dpi":72,"fig-height":5,"output":"true","editor-max-height":"","fig-cap":"","read-only":"false","context":"interactive","comment":"","out-height":""},"id":1},{"code":"?sd","options":{"warning":"true","label":"unnamed-chunk-2","autorun":"true","editor-quick-suggestions":"false","classes":"","results":"markup","out-width":"700px","editor-font-scale":1,"fig-width":7,"message":"true","dpi":72,"fig-height":5,"output":"true","editor-max-height":"","fig-cap":"","read-only":"false","context":"output","comment":"","out-height":""},"id":2}];
 
 </script>
 <script type="module">
@@ -835,20 +835,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","editor-font-scale":1,"context":"setup","out-height":"","editor-max-height":"","autorun":"true","out-width":"700px","message":"true","read-only":"false","classes":"","dpi":72,"label":"unnamed-chunk-1","fig-width":7,"editor-quick-suggestions":"false","output":"true","comment":"","results":"markup","fig-height":5,"fig-cap":""},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"warning":"true","editor-font-scale":1,"context":"interactive","out-height":"","editor-max-height":"","autorun":"false","out-width":"700px","message":"true","read-only":"false","classes":"","dpi":72,"label":"unnamed-chunk-2","fig-width":7,"editor-quick-suggestions":"false","output":"true","comment":"","results":"markup","fig-height":5,"fig-cap":""},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"output":"true","editor-quick-suggestions":"false","dpi":72,"label":"unnamed-chunk-1","out-width":"700px","message":"true","editor-max-height":"","classes":"","autorun":"true","warning":"true","results":"markup","comment":"","context":"setup","editor-font-scale":1,"fig-cap":"","out-height":"","read-only":"false","fig-height":5},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"fig-width":7,"output":"true","editor-quick-suggestions":"false","dpi":72,"label":"unnamed-chunk-2","out-width":"700px","message":"true","editor-max-height":"","classes":"","autorun":"false","warning":"true","results":"markup","comment":"","context":"interactive","editor-font-scale":1,"fig-cap":"","out-height":"","read-only":"false","fig-height":5},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -835,20 +835,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

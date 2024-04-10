@@ -311,14 +311,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.PostMessage"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"interactive","editor-font-scale":1,"fig-height":5,"label":"unnamed-chunk-1","dpi":72,"results":"markup","out-width":"700px","classes":"","read-only":"false","autorun":"false","fig-cap":"","comment":"","editor-quick-suggestions":"false","warning":"true","message":"true","fig-width":7,"editor-max-height":"","out-height":"","output":"true"},"id":1,"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","fig-height":5,"editor-font-scale":1,"output":"true","fig-width":7,"message":"true","out-height":"","autorun":"false","results":"markup","warning":"true","comment":"","editor-quick-suggestions":"false","dpi":72,"fig-cap":"","read-only":"false","classes":"","editor-max-height":"","out-width":"700px","context":"interactive"},"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
 
 </script>
 <script type="module">
@@ -880,20 +880,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 
@@ -1591,7 +1608,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 8, 2024</p>
+      <p class="date-modified">April 10, 2024</p>
     </div>
   </div>
     

@@ -311,14 +311,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-1","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-2","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"fig-width":7,"autorun":"false","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","comment":"","fig-height":5,"results":"markup","context":"interactive","label":"unnamed-chunk-3","message":"true","classes":"","out-width":"700px","output":"true","editor-font-scale":1,"dpi":72,"read-only":"false","out-height":"","fig-cap":""}}];
+globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"dpi":72,"editor-max-height":"","message":"true","fig-height":5,"out-height":"","label":"unnamed-chunk-1","comment":"","classes":"","warning":"true","results":"markup","fig-cap":"","editor-quick-suggestions":"false","context":"interactive","fig-width":7,"read-only":"false","autorun":"false","output":"true","editor-font-scale":1,"out-width":"700px"}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"dpi":72,"editor-max-height":"","message":"true","fig-height":5,"out-height":"","label":"unnamed-chunk-2","comment":"","classes":"","warning":"true","results":"markup","fig-cap":"","editor-quick-suggestions":"false","context":"interactive","fig-width":7,"read-only":"false","autorun":"false","output":"true","editor-font-scale":1,"out-width":"700px"}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"dpi":72,"editor-max-height":"","message":"true","fig-height":5,"out-height":"","label":"unnamed-chunk-3","comment":"","classes":"","warning":"true","results":"markup","fig-cap":"","editor-quick-suggestions":"false","context":"interactive","fig-width":7,"read-only":"false","autorun":"false","output":"true","editor-font-scale":1,"out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -880,20 +880,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 
@@ -1587,7 +1604,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 8, 2024</p>
+      <p class="date-modified">April 10, 2024</p>
     </div>
   </div>
     

@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"read-only":"false","label":"unnamed-chunk-1","message":"true","context":"setup","out-height":"","results":"markup","classes":"","editor-font-scale":1,"fig-cap":"","comment":"","autorun":"true","dpi":72,"output":"true","fig-width":7,"warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1},{"options":{"read-only":"false","label":"unnamed-chunk-2","message":"true","context":"output","out-height":"","results":"markup","classes":"","editor-font-scale":1,"fig-cap":"","comment":"","autorun":"true","dpi":72,"output":"true","fig-width":7,"warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false"},"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2},{"options":{"read-only":"false","label":"unnamed-chunk-3","message":"true","context":"output","out-height":"","results":"markup","classes":"","editor-font-scale":1,"fig-cap":"","comment":"","autorun":"true","dpi":72,"output":"true","fig-width":7,"warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3},{"options":{"read-only":"false","label":"unnamed-chunk-4","message":"true","context":"interactive","out-height":"","results":"markup","classes":"","editor-font-scale":1,"fig-cap":"","comment":"","autorun":"false","dpi":72,"output":"true","fig-width":7,"warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false"},"code":"g","id":4}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","options":{"label":"unnamed-chunk-1","output":"true","classes":"","fig-cap":"","warning":"true","message":"true","editor-max-height":"","fig-height":5,"comment":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"out-height":"","dpi":72,"editor-font-scale":1,"autorun":"true","out-width":"700px","context":"setup","results":"markup"}},{"id":2,"code":"g + geom_point()\n\nSys.sleep(0.25)","options":{"label":"unnamed-chunk-2","output":"true","classes":"","fig-cap":"","warning":"true","message":"true","editor-max-height":"","fig-height":5,"comment":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"out-height":"","dpi":72,"editor-font-scale":1,"autorun":"true","out-width":"700px","context":"output","results":"markup"}},{"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","options":{"label":"unnamed-chunk-3","output":"true","classes":"","fig-cap":"","warning":"true","message":"true","editor-max-height":"","fig-height":5,"comment":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"out-height":"","dpi":72,"editor-font-scale":1,"autorun":"true","out-width":"700px","context":"output","results":"markup"}},{"id":4,"code":"g","options":{"label":"unnamed-chunk-4","output":"true","classes":"","fig-cap":"","warning":"true","message":"true","editor-max-height":"","fig-height":5,"comment":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"out-height":"","dpi":72,"editor-font-scale":1,"autorun":"false","out-width":"700px","context":"interactive","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -835,20 +835,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

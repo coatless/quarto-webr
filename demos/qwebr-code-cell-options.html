@@ -309,14 +309,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":5,"fig-cap":"","context":"interactive","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-1","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"false","fig-width":7,"read-only":"false"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":5,"fig-cap":"","context":"setup","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-2","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"true","fig-width":7,"read-only":"false"},"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"id":3,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":5,"fig-cap":"","context":"interactive","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-3","results":"asis","editor-quick-suggestions":"false","dpi":72,"autorun":"false","fig-width":7,"read-only":"false"},"code":"knitr::kable(data, \"html\")"},{"id":4,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":5,"fig-cap":"","context":"interactive","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-4","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"false","fig-width":7,"read-only":"false"},"code":"knitr::kable(data, \"html\")"},{"id":5,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":"6","fig-cap":"","context":"output","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-5","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"true","fig-width":"6","read-only":"false"},"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":6,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"","fig-height":5,"fig-cap":"","context":"output","comment":"","warning":"true","editor-max-height":"","out-width":"700px","label":"unnamed-chunk-6","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"true","fig-width":7,"read-only":"false"},"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"id":7,"options":{"message":"true","editor-font-scale":1,"output":"true","classes":"","out-height":"500px","fig-height":"6","fig-cap":"","context":"output","comment":"","warning":"true","editor-max-height":"","out-width":"500px","label":"unnamed-chunk-7","results":"markup","editor-quick-suggestions":"false","dpi":72,"autorun":"true","fig-width":"6","read-only":"false"},"code":"tinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
+globalThis.qwebrCellDetails = [{"options":{"editor-font-scale":1,"fig-width":7,"context":"interactive","autorun":"false","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-1","editor-quick-suggestions":"false","fig-height":5,"out-height":"","classes":"","output":"true"},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"editor-font-scale":1,"fig-width":7,"context":"setup","autorun":"true","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-2","editor-quick-suggestions":"false","fig-height":5,"out-height":"","classes":"","output":"true"},"id":2,"code":" \n# Generating a simple table\ndata <- data.frame(\n  Name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  Age = c(25, 30, 22)\n)"},{"options":{"editor-font-scale":1,"fig-width":7,"context":"interactive","autorun":"false","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"asis","comment":"","label":"unnamed-chunk-3","editor-quick-suggestions":"false","fig-height":5,"out-height":"","classes":"","output":"true"},"id":3,"code":"knitr::kable(data, \"html\")"},{"options":{"editor-font-scale":1,"fig-width":7,"context":"interactive","autorun":"false","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-4","editor-quick-suggestions":"false","fig-height":5,"out-height":"","classes":"","output":"true"},"id":4,"code":"knitr::kable(data, \"html\")"},{"options":{"editor-font-scale":1,"fig-width":"6","context":"output","autorun":"true","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-5","editor-quick-suggestions":"false","fig-height":"6","out-height":"","classes":"","output":"true"},"id":5,"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"editor-font-scale":1,"fig-width":7,"context":"output","autorun":"true","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"700px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-6","editor-quick-suggestions":"false","fig-height":5,"out-height":"","classes":"","output":"true"},"id":6,"code":"\ntinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"},{"options":{"editor-font-scale":1,"fig-width":"6","context":"output","autorun":"true","editor-max-height":"","fig-cap":"","read-only":"false","out-width":"500px","warning":"true","message":"true","dpi":72,"results":"markup","comment":"","label":"unnamed-chunk-7","editor-quick-suggestions":"false","fig-height":"6","out-height":"500px","classes":"","output":"true"},"id":7,"code":"tinyplot::tinyplot(\n  ~ Petal.Length | Species,\n  data = iris,\n  type = \"density\",\n  palette = \"dark\", fill = \"by\",\n  grid = TRUE,\n  main = \"Distribution of petal lengths by species\"\n)"}];
 
 </script>
 <script type="module">
@@ -878,20 +878,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 

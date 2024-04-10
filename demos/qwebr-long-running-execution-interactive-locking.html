@@ -275,14 +275,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.1/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds","id":1,"options":{"classes":"","fig-cap":"","autorun":"false","editor-quick-suggestions":"false","read-only":"false","editor-font-scale":1,"context":"interactive","warning":"true","dpi":72,"editor-max-height":"","out-height":"","message":"true","results":"markup","comment":"","output":"true","label":"unnamed-chunk-1","out-width":"700px","fig-width":7,"fig-height":5}},{"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds","id":2,"options":{"classes":"","fig-cap":"","autorun":"false","editor-quick-suggestions":"false","read-only":"false","editor-font-scale":1,"context":"interactive","warning":"true","dpi":72,"editor-max-height":"","out-height":"","message":"true","results":"markup","comment":"","output":"true","label":"unnamed-chunk-2","out-width":"700px","fig-width":7,"fig-height":5}},{"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds","id":3,"options":{"classes":"","fig-cap":"","autorun":"false","editor-quick-suggestions":"false","read-only":"false","editor-font-scale":1,"context":"interactive","warning":"true","dpi":72,"editor-max-height":"","out-height":"","message":"true","results":"markup","comment":"","output":"true","label":"unnamed-chunk-3","out-width":"700px","fig-width":7,"fig-height":5}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-quick-suggestions":"false","read-only":"false","warning":"true","out-height":"","comment":"","editor-font-scale":1,"context":"interactive","editor-max-height":"","message":"true","dpi":72,"classes":"","out-width":"700px","results":"markup","label":"unnamed-chunk-1","output":"true","fig-height":5,"autorun":"false","fig-cap":"","fig-width":7}},{"id":2,"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-quick-suggestions":"false","read-only":"false","warning":"true","out-height":"","comment":"","editor-font-scale":1,"context":"interactive","editor-max-height":"","message":"true","dpi":72,"classes":"","out-width":"700px","results":"markup","label":"unnamed-chunk-2","output":"true","fig-height":5,"autorun":"false","fig-cap":"","fig-width":7}},{"id":3,"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-quick-suggestions":"false","read-only":"false","warning":"true","out-height":"","comment":"","editor-font-scale":1,"context":"interactive","editor-max-height":"","message":"true","dpi":72,"classes":"","out-width":"700px","results":"markup","label":"unnamed-chunk-3","output":"true","fig-height":5,"autorun":"false","fig-cap":"","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -844,20 +844,37 @@ globalThis.qwebrComputeEngine = async function(
     // Initialize webR
     await mainWebR.init();
 
+    // Configure capture output
+    let captureOutputOptions = {
+        withAutoprint: true,
+        captureStreams: true,
+        captureConditions: false,
+        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+    };
+    
+    // Determine if the browser supports OffScreen
+    if (typeof OffscreenCanvas !== 'undefined') {
+        // Mirror default options of webr::canvas()
+        // with changes to figure height and width.
+        captureOutputOptions.captureGraphics = {
+            width: fig_width,
+            height: fig_height,
+            bg: "white", // default: transparent
+            pointsize: 12,
+            capture: true
+        };
+    }  else {
+        // Disable generating graphics
+        captureOutputOptions.captureGraphics = false;
+    }
+
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
     // Remove the active canvas silently
     const result = await mainWebRCodeShelter.captureR(
-        `webr::canvas(width=${fig_width}, height=${fig_height}, capture = TRUE)
-        .webr_cvs_id <- dev.cur()
-        ${codeToRun}
-        invisible(dev.off(.webr_cvs_id))
-        `, {
-        withAutoprint: true,
-        captureStreams: true,
-        captureConditions: false//,
-        // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
-    });
+        `${codeToRun}`,
+        captureOutputOptions
+    );
 
     // -----
 
