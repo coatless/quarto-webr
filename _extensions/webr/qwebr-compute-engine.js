@@ -98,7 +98,7 @@ globalThis.qwebrComputeEngine = async function(
     };
     
     // Determine if the browser supports OffScreen
-    if (typeof OffscreenCanvas !== 'undefined') {
+    if (qwebrOffScreenCanvasSupport()) {
         // Mirror default options of webr::canvas()
         // with changes to figure height and width.
         captureOutputOptions.captureGraphics = {
