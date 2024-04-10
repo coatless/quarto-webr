@@ -521,7 +521,12 @@ Note
 <li><p>Added <code>cell-options</code> document-level option to specify global defaults for <code>{webr-r}</code> options (<a href="https://github.com/coatless/quarto-webr/pulls/173">#173</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
 <li><p>Added <code>editor-max-height</code> cell option to limit growth of the editor window. (<a href="https://github.com/coatless/quarto-webr/issues/177">#177</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
 <li><p>Added <code>editor-quick-suggestions</code> cell option to enable autocomplete menu suggestions. (<a href="https://github.com/coatless/quarto-webr/issues/182">#182</a>, thanks <a href="https://github.com/egenn">egenn</a>!)</p></li>
-<li><p>Added the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (<a href="https://github.com/coatless/quarto-webr/issues/176">#176</a>,)</p></li>
+<li><p>Added the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (<a href="https://github.com/coatless/quarto-webr/issues/176">#176</a>)</p></li>
+<li><p>Enabled non-graphical computation within a <code>webr-r</code> cell when <code>OffScreenCanvas</code> is not available. (<a href="https://github.com/coatless/quarto-webr/issues/155">#155</a>, thanks for raising it <a href="https://github.com/mccarthy-m-g"><span class="citation" data-cites="mccarthy-m-g">@mccarthy-m-g</span></a>)</p>
+<ul>
+<li>If <code>OffScreenCanvas</code> is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.</li>
+<li>The <a href="https://caniuse.com/offscreencanvas">majority of modern browsers</a> now have support for <code>OffScreenCanvas</code>. This previously effected users still on iOS 16 (Safari 16 and earlier).</li>
+</ul></li>
 </ul>
 </section>
 <section id="bug-fixes" class="level2">

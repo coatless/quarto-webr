@@ -589,13 +589,17 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","id":1,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-1","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}},{"code":"plot(pressure)","id":2,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-2","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}},{"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-3","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}},{"code":"?mean","id":4,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-4","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}},{"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")","id":5,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-5","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","id":6,"options":{"classes":"","warning":"true","autorun":"false","editor-max-height":"","out-height":"","out-width":"700px","editor-font-scale":1,"comment":"","message":"true","read-only":"false","results":"markup","label":"unnamed-chunk-6","fig-cap":"","output":"true","fig-width":7,"context":"interactive","editor-quick-suggestions":"false","dpi":72,"fig-height":5}}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-1","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}},{"id":2,"code":"plot(pressure)","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-2","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}},{"id":3,"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-3","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}},{"id":4,"code":"?mean","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-4","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}},{"id":5,"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-5","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}},{"id":6,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"autorun":"false","comment":"","context":"interactive","classes":"","out-height":"","editor-max-height":"","warning":"true","fig-height":5,"output":"true","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":1,"label":"unnamed-chunk-6","read-only":"false","dpi":72,"editor-quick-suggestions":"false","out-width":"700px","results":"markup"}}];
 
   </script>
   <script type="module">
   // Declare startupMessageQWebR globally
   globalThis.qwebrStartupMessage = document.createElement("p");
 
+  // Verify if OffScreenCanvas is supported
+  globalThis.qwebrOffScreenCanvasSupport = function() {
+    return typeof OffscreenCanvas !== 'undefined'
+  }
 
   // Function to set the button text
   globalThis.qwebrSetInteractiveButtonState = function(buttonText, enableCodeButton = true) {
@@ -619,15 +623,86 @@
       <span>${message}</span>`;
   }
 
+  function qwebrPlaceMessageContents(content, html_location = "title-block-header", revealjs_location = "title-slide") {
+
+    // Get references to header elements
+    const headerHTML = document.getElementById(html_location);
+    const headerRevealJS = document.getElementById(revealjs_location);
+
+    // Determine where to insert the quartoTitleMeta element
+    if (headerHTML || headerRevealJS) {
+      // Append to the existing "title-block-header" element or "title-slide" div
+      (headerHTML || headerRevealJS).appendChild(content);
+    } else {
+      // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
+      const monacoScript = document.getElementById("qwebr-monaco-editor-init");
+      const header = document.createElement("header");
+      header.setAttribute("id", "title-block-header");
+      header.appendChild(content);
+      monacoScript.after(header);
+    }
+  }
+
+
+  function qwebrOffScreenCanvasSupportWarningMessage() {
+    
+    // Verify canvas is supported.
+    if(qwebrOffScreenCanvasSupport()) return;
+
+    // Create the main container div
+    var calloutContainer = document.createElement('div');
+    calloutContainer.classList.add('callout', 'callout-style-default', 'callout-warning', 'callout-titled');
+
+    // Create the header div
+    var headerDiv = document.createElement('div');
+    headerDiv.classList.add('callout-header', 'd-flex', 'align-content-center');
+
+    // Create the icon container div
+    var iconContainer = document.createElement('div');
+    iconContainer.classList.add('callout-icon-container');
+
+    // Create the icon element
+    var iconElement = document.createElement('i');
+    iconElement.classList.add('callout-icon');
+
+    // Append the icon element to the icon container
+    iconContainer.appendChild(iconElement);
+
+    // Create the title container div
+    var titleContainer = document.createElement('div');
+    titleContainer.classList.add('callout-title-container', 'flex-fill');
+    titleContainer.innerText = 'Warning: Web Browser Does Not Support Graphing!';
+
+    // Append the icon container and title container to the header div
+    headerDiv.appendChild(iconContainer);
+    headerDiv.appendChild(titleContainer);
+
+    // Create the body container div
+    var bodyContainer = document.createElement('div');
+    bodyContainer.classList.add('callout-body-container', 'callout-body');
+
+    // Create the paragraph element for the body content
+    var paragraphElement = document.createElement('p');
+    paragraphElement.innerHTML = 'This web browser does not have support for displaying graphs through the <code>quarto-webr</code> extension since it lacks an <code>OffScreenCanvas</code>. Please upgrade your web browser to one that supports <code>OffScreenCanvas</code>.';
+
+    // Append the paragraph element to the body container
+    bodyContainer.appendChild(paragraphElement);
+
+    // Append the header div and body container to the main container div
+    calloutContainer.appendChild(headerDiv);
+    calloutContainer.appendChild(bodyContainer);
+
+    // Append the main container div to the document depending on format
+    qwebrPlaceMessageContents(calloutContainer, "title-block-header"); 
+
+  }
+
+
   // Function that attaches the document status message and diagnostics
   function displayStartupMessage(showStartupMessage, showHeaderMessage) {
     if (!showStartupMessage) {
       return;
     }
-
-    // Get references to header elements
-    const headerHTML = document.getElementById("title-block-header");
-    const headerRevealJS = document.getElementById("title-slide");
 
     // Create the outermost div element for metadata
     const quartoTitleMeta = document.createElement("div");
@@ -670,21 +745,12 @@
     firstInnerDiv.appendChild(secondInnerDivContents);
     quartoTitleMeta.appendChild(firstInnerDiv);
 
-    // Determine where to insert the quartoTitleMeta element
-    if (headerHTML || headerRevealJS) {
-      // Append to the existing "title-block-header" element or "title-slide" div
-      (headerHTML || headerRevealJS).appendChild(quartoTitleMeta);
-    } else {
-      // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
-      const monacoScript = document.getElementById("qwebr-monaco-editor-init");
-      const header = document.createElement("header");
-      header.setAttribute("id", "title-block-header");
-      header.appendChild(quartoTitleMeta);
-      monacoScript.after(header);
-    }
+    // Place message on webpage
+    qwebrPlaceMessageContents(quartoTitleMeta); 
   }
 
   displayStartupMessage(qwebrShowStartupMessage, qwebrShowHeaderMessage);
+  qwebrOffScreenCanvasSupportWarningMessage();
   </script>
   <script type="module">
   // Supported Evaluation Types for Context
@@ -1160,7 +1226,7 @@
       };
       
       // Determine if the browser supports OffScreen
-      if (typeof OffscreenCanvas !== 'undefined') {
+      if (qwebrOffScreenCanvasSupport()) {
           // Mirror default options of webr::canvas()
           // with changes to figure height and width.
           captureOutputOptions.captureGraphics = {
