@@ -24,7 +24,12 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added `editor-quick-suggestions` cell option to enable autocomplete menu suggestions. ([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
 
-- Added the ability to have the monaco editor switch between Quarto's light and dark theme modes. ([#176](https://github.com/coatless/quarto-webr/issues/176),)
+- Added the ability to have the monaco editor switch between Quarto's light and dark theme modes. ([#176](https://github.com/coatless/quarto-webr/issues/176))
+
+- Enabled non-graphical computation within a `webr-r` cell when `OffScreenCanvas` is not available. ([#155](https://github.com/coatless/quarto-webr/issues/155), thanks for raising it [@mccarthy-m-g](https://github.com/mccarthy-m-g))
+  - If `OffScreenCanvas` is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.
+  - The [majority of modern browsers](https://caniuse.com/offscreencanvas) now have support for `OffScreenCanvas`. This previously effected users still on iOS 16 (Safari 16 and earlier).
+
 
 ## Bug fixes
 
