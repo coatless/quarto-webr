@@ -34,6 +34,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 ## Changes
 
 - Added [Lua type annotations](https://luals.github.io/wiki/annotations/) and function documentation into the Quarto extensions' Lua filter. ([#190](https://github.com/coatless/quarto-webr/pulls/190))
+- Updated the version of the FontAwesome from 6.5.1 to 6.5.2. ([#191](https://github.com/coatless/quarto-webr/pull/191))
+
 
 ## Bug fixes
 
