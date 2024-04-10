@@ -31,6 +31,10 @@ Features listed under the `-dev` version have not yet been solidified and may ch
   - The [majority of modern browsers](https://caniuse.com/offscreencanvas) now have support for `OffScreenCanvas`. This previously effected users still on iOS 16 (Safari 16 and earlier).
 
 
+## Changes
+
+- Added [Lua type annotations](https://luals.github.io/wiki/annotations/) and function documentation into the Quarto extensions' Lua filter. ([#190](https://github.com/coatless/quarto-webr/pulls/190))
+
 ## Bug fixes
 
 - Prevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor's content instead of being the exact amount. ([#164](https://github.com/coatless/quarto-webr/issues/164))

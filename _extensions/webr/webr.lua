@@ -1,61 +1,79 @@
-----
---- Setup variables for default initialization
+-----
+---- Setup variables for default initialization
 
--- Define a variable to check if webR is present.
+--- Define a variable to check if webR is present.
+---@type boolean
 local missingWebRCell = true
 
--- Define a variable to check if webR was initialized for the page
+--- Define a variable to check if webR was initialized for the page
+---@type boolean
 local hasDoneWebRSetup = false
 
---- Setup default initialization values
--- Default values taken from:
--- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html
+---- Setup default initialization values
+--- Default values taken from:
+--- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html
 
--- Define a base compatibile version
+--- Define a base compatibile version
+---@type string
 local baseVersionWebR = "0.3.2"
 
--- Define where WebR can be found
+--- Define where webR can be found
+---@type string
 local baseUrl = "https://webr.r-wasm.org/v".. baseVersionWebR .."/"
+
+--- Define where webR service workers are located
+---@type string
 local serviceWorkerUrl = ""
 
--- Define the webR communication protocol
+--- Define the webR communication protocol
+---@type string
 local channelType = "ChannelType.Automatic"
 
--- Define a variable to suppress exporting service workers if not required.
--- (e.g. skipped for PostMessage or SharedArrayBuffer)
+--- Define a variable to suppress exporting service workers if not required.
+--- (e.g. skipped for PostMessage or SharedArrayBuffer)
+---@type boolean
 local hasServiceWorkerFiles = true
 
--- Define user directory
+--- Define user directory
+---@type string
 local homeDir = "/home/web_user"
 
--- Define whether a startup message should be displayed
+--- Define whether a startup message should be displayed
+---@type string
 local showStartUpMessage = "true"
 
--- Define whether header type messages should be displayed
+--- Define whether header type messages should be displayed
+---@type string
 local showHeaderMessage = "false"
 
--- Define a default repository URL
+--- Define a default repository URL
+---@type string
 local defaultRepoURL = "'https://repo.r-wasm.org/'"
 
--- Define possible repo URLs
+--- Define possible repo URLs
+---@type string
 local rPackageRepoURLS = defaultRepoURL
 
--- Define an empty string if no packages need to be installed.
+--- Define an empty string if no packages need to be installed.
+---@type string
 local installRPackagesList = "''"
 
--- Define whether R packages should automatically be loaded
+--- Define whether R packages should automatically be loaded
+---@type string
 local autoloadRPackages = "true"
-----
 
---- Setup variables for tracking number of code cells
+-----
 
--- Define a counter variable
+---- Setup variables for tracking number of code cells
+
+--- Define a counter variable
+---@type integer
 local qwebrCounter = 0
 
--- Initialize a table to store the CodeBlock elements
+--- Initialize a table to store the CodeBlock elements
 local qwebrCapturedCodeBlocks = {}
 
--- Initialize a table that contains the default cell-level options
+--- Initialize a table that contains the default cell-level options
 local qwebRDefaultCellOptions = {
   ["context"] = "interactive",
   ["warning"] = "true",
@@ -78,21 +96,27 @@ local qwebRDefaultCellOptions = {
   ["editor-quick-suggestions"] = "false"
 }
 
-----
---- Process initialization
+-----
+---- Process initialization
 
--- Check if variable missing or an empty string
+--- Check if variable missing or an empty string
+---@param s string | nil
+---@return boolean
 local function isVariableEmpty(s)
   return s == nil or s == ''
 end
 
--- Check if variable is present
+--- Check if variable is present
+---@param s string | nil
+---@return boolean
 local function isVariablePopulated(s)
   return not isVariableEmpty(s)
 end
 
--- Copy the top level value and its direct children
--- Details: http://lua-users.org/wiki/CopyTable
+--- Copy the top level value and its direct children
+--- Details: http://lua-users.org/wiki/CopyTable
+---@param original any
+---@return any
 local function shallowcopy(original)
   -- Determine if its a table
   if type(original) == 'table' then
@@ -109,11 +133,16 @@ local function shallowcopy(original)
   end
 end
 
--- Custom method for cloning a table with a shallow copy.
+--- Custom method for cloning a table with a shallow copy.
+---@param original table
+---@return table
 function table.clone(original)
   return shallowcopy(original)
 end
 
+--- Merge local cell options with global cell options 
+---@param localOptions any
+---@return table
 local function mergeCellOptions(localOptions)
   -- Copy default options to the mergedOptions table
   local mergedOptions = table.clone(qwebRDefaultCellOptions)
@@ -130,7 +159,9 @@ local function mergeCellOptions(localOptions)
   return mergedOptions
 end
 
--- Convert the communication channel meta option into a WebROptions.channelType option
+--- Convert the communication channel meta option into a WebROptions.channelType option
+---@param input string | integer | nil
+---@return string
 local function convertMetaChannelTypeToWebROption(input)
   -- Create a table of conditions
   local conditions = {
@@ -149,17 +180,19 @@ local function convertMetaChannelTypeToWebROption(input)
 end
 
 
--- Parse the different webr options set in the YAML frontmatter, e.g.
---
--- ```yaml
--- ----
--- webr:
---   base-url: https://webr.r-wasm.org/[version]
---   service-worker-url: path/to/workers/{webr-serviceworker.js, webr-worker.js}
--- ----
--- ```
---
--- 
+--- Parse the different webr options set in the YAML frontmatter, e.g.
+---
+--- ```yaml
+--- ----
+--- webr:
+---   base-url: https://webr.r-wasm.org/[version]
+---   service-worker-url: path/to/workers/{webr-serviceworker.js, webr-worker.js}
+--- ----
+--- ```
+---
+---
+---@param meta any
+---@return any 
 function setWebRInitializationOptions(meta)
 
   -- Let's explore the meta variable data! 
@@ -267,7 +300,9 @@ function setWebRInitializationOptions(meta)
 end
 
 
--- Obtain a template file
+--- Obtain the contents in a template file
+---@param template string
+---@return string | nil
 local function readTemplateFile(template)
   -- Establish a hardcoded path to where the .html partial resides
   -- Note, this should be at the same level as the lua filter.
@@ -301,10 +336,13 @@ local function readTemplateFile(template)
   return content
 end
 
-----
+-----
 
--- Define a function to replace keywords given by {{ WORD }}
--- Is there a better lua-approach?
+--- Define a function to replace keywords given by {{ WORD }}
+--- Is there a better lua-approach?
+---@param contents string
+---@param substitutions string
+---@return string
 local function substitute_in_file(contents, substitutions)
 
   -- Substitute values in the contents of the file
@@ -314,20 +352,10 @@ local function substitute_in_file(contents, substitutions)
   return contents
 end
 
--- Define a function that escape control sequence
-local function escapeControlSequences(str)
-  -- Perform a global replacement on the control sequence character
-  return str:gsub("[\\%c]", function(c)
-    if c == "\\" then
-      -- Escape backslash
-      return "\\\\"
-    end
-  end)
-end
+-----
 
-----
-
--- Pass document-level data into the header to initialize the document.
+--- Pass document-level data into the header to initialize the document.
+---@return string
 local function initializationWebRDocumentSettings()
 
   -- Setup different WebR specific initialization variables
@@ -354,6 +382,10 @@ local function initializationWebRDocumentSettings()
   return initializedWebRConfiguration
 end
 
+---Obtain an opening and closing HTML tag for JS or CSS content
+---@param tag any
+---@return string | nil
+---@return string | nil
 local function generateHTMLElement(tag)
   -- Store a map containing opening and closing tabs
   local tagMappings = {
@@ -372,9 +404,14 @@ local function generateHTMLElement(tag)
   end
 end
 
--- Custom functions to include values into Quarto
--- https://quarto.org/docs/extensions/lua-api.html#includes
+---- Custom functions to include values into Quarto
+---- https://quarto.org/docs/extensions/lua-api.html#includes
 
+---Place text content into an appropriate HTML element
+---for the content.
+---@param location any
+---@param text any
+---@param tag any
 local function includeTextInHTMLTag(location, text, tag)
 
   -- Obtain the HTML element opening and closing tag
@@ -385,6 +422,11 @@ local function includeTextInHTMLTag(location, text, tag)
 
 end
 
+---Read information from a template file and place it into the appropriate HTML element
+---for the content.
+---@param location string
+---@param file string
+---@param tag string
 local function includeFileInHTMLTag(location, file, tag)
 
   -- Obtain the HTML element opening and closing tag
@@ -398,7 +440,7 @@ local function includeFileInHTMLTag(location, file, tag)
 
 end
 
--- Setup WebR's pre-requisites once per document.
+--- Setup WebR's pre-requisites once per document.
 local function ensureWebRSetup()
   
   -- If we've included the initialization, then bail.
@@ -467,13 +509,18 @@ local function ensureWebRSetup()
 
 end
 
+---Design an HTML Element location in the document using the current cell ID. 
+---@param counter integer
+---@return string
 local function qwebrJSCellInsertionCode(counter)
   local insertionLocation = '<div id="qwebr-insertion-location-' .. counter ..'"></div>\n'
   local noscriptWarning = '<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>'
   return insertionLocation .. noscriptWarning
 end 
 
--- Remove lines with only whitespace until the first non-whitespace character is detected.
+--- Remove lines with only whitespace until the first non-whitespace character is detected.
+---@param codeText table
+---@return table
 local function removeEmptyLinesUntilContent(codeText)
   -- Iterate through each line in the codeText table
   for _, value in ipairs(codeText) do
@@ -495,7 +542,10 @@ local function removeEmptyLinesUntilContent(codeText)
   return codeText
 end
 
--- Extract Quarto code cell options from the block's text
+--- Extract Quarto code cell options from the block's text
+---@param block pandoc.CodeBlock
+---@return string
+---@return table
 local function extractCodeBlockOptions(block)
   
   -- Access the text aspect of the code block
@@ -532,7 +582,9 @@ local function extractCodeBlockOptions(block)
   return cellCode, cellOptions
 end
 
--- Replace the code cell with a webR editor
+--- Replace the code cell with a webR-powered cell
+---@param el pandoc.CodeBlock
+---@return pandoc.CodeBlock | pandoc.RawInline
 local function enableWebRCodeCell(el)
       
   -- Let's see what's going on here:
@@ -609,6 +661,9 @@ local function enableWebRCodeCell(el)
   return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
 end
 
+---Add webR setup into the Quarto document if cell is detected
+---@param doc pandoc.Doc
+---@return pandoc.Doc
 local function stitchDocument(doc)
 
   -- Do not attach webR as the page lacks any active webR cells
