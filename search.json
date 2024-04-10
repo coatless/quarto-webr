@@ -898,7 +898,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nUpgraded to webR v0.3.2 (#187!)\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)\nAdded editor-max-height cell option to limit growth of the editor window. (#177, thanks ute!)\nAdded editor-quick-suggestions cell option to enable autocomplete menu suggestions. (#182, thanks egenn!)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).\n\n\n\n\n\n\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
+    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nUpgraded to webR v0.3.2 (#187!)\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)\nAdded editor-max-height cell option to limit growth of the editor window. (#177, thanks ute!)\nAdded editor-quick-suggestions cell option to enable autocomplete menu suggestions. (#182, thanks egenn!)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).\n\n\n\n\n\n\nAdded Lua type annotations and function documentation into the Quarto extensions’ Lua filter. (#190)\n\n\n\n\n\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -910,6 +910,17 @@
     "title": "Release Notes",
     "section": "",
     "text": "Upgraded to webR v0.3.2 (#187!)\nAdded cell-options document-level option to specify global defaults for {webr-r} options (#173, thanks ute!)\nAdded editor-max-height cell option to limit growth of the editor window. (#177, thanks ute!)\nAdded editor-quick-suggestions cell option to enable autocomplete menu suggestions. (#182, thanks egenn!)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
+    "objectID": "qwebr-release-notes.html#changes",
+    "href": "qwebr-release-notes.html#changes",
+    "title": "Release Notes",
+    "section": "",
+    "text": "Added Lua type annotations and function documentation into the Quarto extensions’ Lua filter. (#190)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -949,8 +960,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#changes",
-    "href": "qwebr-release-notes.html#changes",
+    "objectID": "qwebr-release-notes.html#changes-1",
+    "href": "qwebr-release-notes.html#changes-1",
     "title": "Release Notes",
     "section": "Changes",
     "text": "Changes\n\nUpgrade monaco-editor from 0.45.0 to 0.47.0 (#170)",
@@ -993,8 +1004,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#changes-1",
-    "href": "qwebr-release-notes.html#changes-1",
+    "objectID": "qwebr-release-notes.html#changes-2",
+    "href": "qwebr-release-notes.html#changes-2",
     "title": "Release Notes",
     "section": "Changes",
     "text": "Changes\n\nAdded new CSS IDs governing the webR initialization state. (#110)\nAdded shim that overrides install.packages() with webr::install() through webr::shim_install() this requires webR v0.2.2 to be in use. (#122)\nAdded the keyboard shortcut for Run Code – Shift + Enter – to mouseover text for the Run Code button. (#91)\nAllow {webr-r} code cell to propagate into Quarto markdown formats for hugo-md. (#150, h/t @ClaudiuPapasteri)\nUpdated the version of the MonacoEditor from 0.43.0 to 0.45.0. (#130)\nUpdated the version of the FontAwesome from 6.4.2 to 6.5.1. (#131)",

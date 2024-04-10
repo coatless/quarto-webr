@@ -364,6 +364,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#dev.3---" id="toc-dev.3---" class="nav-link active" data-scroll-target="#dev.3---">0.4.2-dev.3: ??????? (??-??-??)</a>
   <ul class="collapse">
   <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a></li>
   <li><a href="#bug-fixes" id="toc-bug-fixes" class="nav-link" data-scroll-target="#bug-fixes">Bug fixes</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   </ul></li>
@@ -371,14 +372,14 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#features-1" id="toc-features-1" class="nav-link" data-scroll-target="#features-1">Features</a></li>
   <li><a href="#bug-fixes-1" id="toc-bug-fixes-1" class="nav-link" data-scroll-target="#bug-fixes-1">Bug fixes</a></li>
-  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a></li>
+  <li><a href="#changes-1" id="toc-changes-1" class="nav-link" data-scroll-target="#changes-1">Changes</a></li>
   <li><a href="#documentation-1" id="toc-documentation-1" class="nav-link" data-scroll-target="#documentation-1">Documentation</a></li>
   </ul></li>
   <li><a href="#ball-of-yarn-02-05-2024" id="toc-ball-of-yarn-02-05-2024" class="nav-link" data-scroll-target="#ball-of-yarn-02-05-2024">0.4.0: Ball of Yarn (02-05-2024)</a>
   <ul class="collapse">
   <li><a href="#breaking-changes" id="toc-breaking-changes" class="nav-link" data-scroll-target="#breaking-changes">Breaking changes</a></li>
   <li><a href="#features-2" id="toc-features-2" class="nav-link" data-scroll-target="#features-2">Features</a></li>
-  <li><a href="#changes-1" id="toc-changes-1" class="nav-link" data-scroll-target="#changes-1">Changes</a></li>
+  <li><a href="#changes-2" id="toc-changes-2" class="nav-link" data-scroll-target="#changes-2">Changes</a></li>
   <li><a href="#bugfixes" id="toc-bugfixes" class="nav-link" data-scroll-target="#bugfixes">Bugfixes</a></li>
   <li><a href="#documentation-2" id="toc-documentation-2" class="nav-link" data-scroll-target="#documentation-2">Documentation</a></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
@@ -529,6 +530,12 @@ Note
 </ul></li>
 </ul>
 </section>
+<section id="changes" class="level2">
+<h2 class="anchored" data-anchor-id="changes">Changes</h2>
+<ul>
+<li>Added <a href="https://luals.github.io/wiki/annotations/">Lua type annotations</a> and function documentation into the Quarto extensions’ Lua filter. (<a href="https://github.com/coatless/quarto-webr/pulls/190">#190</a>)</li>
+</ul>
+</section>
 <section id="bug-fixes" class="level2">
 <h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
 <ul>
@@ -567,8 +574,8 @@ Note
 </div>
 </div>
 </section>
-<section id="changes" class="level2">
-<h2 class="anchored" data-anchor-id="changes">Changes</h2>
+<section id="changes-1" class="level2">
+<h2 class="anchored" data-anchor-id="changes-1">Changes</h2>
 <ul>
 <li>Upgrade monaco-editor from 0.45.0 to 0.47.0 (<a href="https://github.com/coatless/quarto-webr/pulls/170">#170</a>)</li>
 </ul>
@@ -607,8 +614,8 @@ Note
 <li>Added <code>repos</code> document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main <a href="https://repo.r-wasm.org/">webR repository</a> (<a href="https://github.com/coatless/quarto-webr/issues/124">#124</a>, <a href="https://github.com/coatless/quarto-webr/pull/132">#132</a>).</li>
 </ul>
 </section>
-<section id="changes-1" class="level2">
-<h2 class="anchored" data-anchor-id="changes-1">Changes</h2>
+<section id="changes-2" class="level2">
+<h2 class="anchored" data-anchor-id="changes-2">Changes</h2>
 <ul>
 <li>Added new CSS IDs governing the webR initialization state. (<a href="https://github.com/coatless/quarto-webr/issues/110">#110</a>)</li>
 <li>Added shim that overrides <code>install.packages()</code> with <code>webr::install()</code> through <code>webr::shim_install()</code> this requires webR v0.2.2 to be in use. (<a href="https://github.com/coatless/quarto-webr/issues/122">#122</a>)</li>
