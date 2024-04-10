@@ -16,6 +16,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Features
 
+- Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187)!)
+
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
 - Added `editor-max-height` cell option to limit growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
