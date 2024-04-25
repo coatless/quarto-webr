@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.3: ??????? (??-??-??)
+# 0.4.2-dev.5: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
@@ -16,7 +16,9 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Features
 
-- Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187)!)
+- Upgraded to webR v0.3.3 ([#187](https://github.com/coatless/quarto-webr/pulls/187))
+
+- Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
 
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
