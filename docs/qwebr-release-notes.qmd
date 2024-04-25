@@ -16,7 +16,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Features
 
-- Upgraded to webR v0.3.3 ([#187](https://github.com/coatless/quarto-webr/pulls/187))
+- Upgraded to webR v0.3.3 ([#196](https://github.com/coatless/quarto-webr/pulls/196))
 
 - Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
 
