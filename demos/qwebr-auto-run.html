@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.28">
+<meta name="generator" content="quarto-1.5.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -309,14 +309,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.2/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-max-height":"","context":"interactive","results":"markup","comment":"","fig-height":5,"classes":"","out-height":"","message":"true","dpi":72,"autorun":"false","editor-font-scale":1,"output":"true","fig-cap":"","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-1","fig-width":7,"out-width":"700px","read-only":"false"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":2,"options":{"editor-max-height":"","context":"interactive","results":"markup","comment":"","fig-height":5,"classes":"","out-height":"","message":"true","dpi":72,"autorun":"true","editor-font-scale":1,"output":"true","fig-cap":"","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-2","fig-width":7,"out-width":"700px","read-only":"false"},"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"id":3,"options":{"editor-max-height":"","context":"output","results":"markup","comment":"","fig-height":5,"classes":"","out-height":"","message":"true","dpi":72,"autorun":"true","editor-font-scale":1,"output":"true","fig-cap":"","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-3","fig-width":7,"out-width":"700px","read-only":"false"},"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"id":4,"options":{"editor-max-height":"","context":"output","results":"markup","comment":"","fig-height":"3","classes":"","out-height":"","message":"true","dpi":72,"autorun":"true","editor-font-scale":1,"output":"true","fig-cap":"","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-4","fig-width":"5","out-width":"500px","read-only":"false"},"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"id":5,"options":{"editor-max-height":"","context":"interactive","results":"markup","comment":"","fig-height":"3","classes":"","out-height":"","message":"true","dpi":72,"autorun":"true","editor-font-scale":1,"output":"true","fig-cap":"","editor-quick-suggestions":"false","warning":"true","label":"unnamed-chunk-5","fig-width":"5","out-width":"500px","read-only":"false"},"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
+globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"dpi":72,"message":"true","fig-cap":"","classes":"","autorun":"false","context":"interactive","fig-width":7,"out-height":"","comment":"","fig-height":5,"output":"true","label":"unnamed-chunk-1","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","warning":"true","read-only":"false","editor-font-scale":1,"out-width":"700px"},"id":1},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","options":{"dpi":72,"message":"true","fig-cap":"","classes":"","autorun":"true","context":"interactive","fig-width":7,"out-height":"","comment":"","fig-height":5,"output":"true","label":"unnamed-chunk-2","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","warning":"true","read-only":"false","editor-font-scale":1,"out-width":"700px"},"id":2},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","options":{"dpi":72,"message":"true","fig-cap":"","classes":"","autorun":"true","context":"output","fig-width":7,"out-height":"","comment":"","fig-height":5,"output":"true","label":"unnamed-chunk-3","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","warning":"true","read-only":"false","editor-font-scale":1,"out-width":"700px"},"id":3},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","options":{"dpi":72,"message":"true","fig-cap":"","classes":"","autorun":"true","context":"output","fig-width":"5","out-height":"","comment":"","fig-height":"3","output":"true","label":"unnamed-chunk-4","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","warning":"true","read-only":"false","editor-font-scale":1,"out-width":"500px"},"id":4},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","options":{"dpi":72,"message":"true","fig-cap":"","classes":"","autorun":"true","context":"interactive","fig-width":"5","out-height":"","comment":"","fig-height":"3","output":"true","label":"unnamed-chunk-5","results":"markup","editor-max-height":"","editor-quick-suggestions":"false","warning":"true","read-only":"false","editor-font-scale":1,"out-width":"500px"},"id":5}];
 
 </script>
 <script type="module">
