@@ -85,8 +85,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 **English**
 
-- [David Kaplan](https://github.com/dtkaplan)'s book [Lessons in Statistical Thinking](https://dtkaplan.github.io/Lessons-in-statistical-thinking/)
-  - [Book source](https://github.com/dtkaplan/Lessons-in-statistical-thinking)
+- [Daniel Kaplan](https://github.com/dtkaplan)'s book [Lessons in Statistical Thinking](https://dtkaplan.github.io/Lessons-in-statistical-thinking/)
+  - [Book source](https://github.com/dtkaplan/Lessons-in-statistical-thinking). Spring 2024.
 - [Dylan Spicker](https://github.com/DylanSpicker)'s course note book [STAT 1793: Course Notes](https://dylanspicker.github.io/STAT1793-course-notes/). Spring 2024.
   - [Book source](https://github.com/DylanSpicker/STAT1793-course-notes)
 - [Dmitry Kondrashov]()'s notes on [Quantifying Life](https://dkon1.github.io/quant_life_quarto/). Spring 2024.
