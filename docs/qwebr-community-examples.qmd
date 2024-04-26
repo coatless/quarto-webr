@@ -25,6 +25,10 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Teaching Materials / Workshops
 
+- Faculty of Medicine, University of Oslo's [MF9130E - Introductory Course in Statistics](https://www.uio.no/studier/emner/medisin/med/MF9130E/). Spring 2024.
+  - [Sample Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_distribution.html) and [source repo](https://github.com/ocbe-uio/teaching_mf9130e) announced on [Linkedin](https://www.linkedin.com/posts/andreaczhang_webr-rstats-quarto-activity-7183880219089334272-AZaq) 
+- [Jerid Francom](https://github.com/francojc)'s course [LIN 380/680: Quantitative Text Analysis for Linguistics](https://lin-380-s24.github.io/). Spring 2024.
+  - [Sample lecture](https://lin-380-s24.github.io/slides/day-07.html#/) and [source repo](https://github.com/lin-380-s24/lin-380-s24.github.io)
 - [Bruno Rodrigues](https://www.brodrigues.co/)' use of the extension in his notes for [Building Reproducible Analytical Pipelines](https://rap4mads.eu/).
   - [Source repository](https://github.com/b-rodrigues/rap4mads_2023)
 - [David Brocker](https://davidabrocker.com/)'s conversion of his [PY 3600: Statistical Methods](https://davidbrocker.github.io/DBPSYC3400/) course materials. Oct 23rd, 2023.
