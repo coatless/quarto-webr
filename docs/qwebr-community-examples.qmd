@@ -25,6 +25,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Teaching Materials / Workshops
 
+**English**
+
 - [E.D. Gennatas](https://egenn.lambdamd.org/)'s tech demo with [progressive reveal tutorials](https://rtemis.org/pdsx/rdemo.html). Spring 2024.
 - Faculty of Medicine, University of Oslo's [MF9130E - Introductory Course in Statistics](https://www.uio.no/studier/emner/medisin/med/MF9130E/). Spring 2024.
   - [Sample Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_distribution.html) and [source repo](https://github.com/ocbe-uio/teaching_mf9130e) announced on [Linkedin](https://www.linkedin.com/posts/andreaczhang_webr-rstats-quarto-activity-7183880219089334272-AZaq) 
@@ -73,6 +75,11 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Maria Tackett](https://maria-tackett.netlify.app/)'s talk on [Using Quarto for Making and Organizing Teaching Materials](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/) during the [Teaching (with) Quarto](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/) Session. Aug 7, 2023 @ JSM 2023
   - [Slides](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/) and [Source code](https://github.com/mine-cetinkaya-rundel/teach-with-quarto/tree/main/talks/5-teaching-materials)
   - [WebR Demo](https://maria.quarto.pub/webr-demo/) on [Quarto Pub](https://quarto.pub)
+
+**Turkish**
+
+- [Alper Yilmaz](https://github.com/alperyilmaz)'s lecture notes for [MBG1032 Biyoistatistik](https://alperyilmaz.github.io/biostats-webr). Spring 2024.
+  - [Source](https://github.com/alperyilmaz/biostats-webr)
 
 # Textbooks
 
@@ -135,6 +142,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 **English**
 
+- Rodolfo Lourenzutti's tutorial post on [A/B Testing](https://lourenzutti.github.io/tutorials/AB-testing/ab-test.html). Apr 3rd, 2024.
+  - [Source](https://github.com/Lourenzutti/lourenzutti.github.io/blob/master/tutorials/AB-testing/ab-test.qmd)
 - [Claudiu Papasteri](https://github.com/ClaudiuPapasteri)'s post on [Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?](https://claudiu.psychlab.eu/post/hugo-blogdown-interactive-code-chunk-webr-quarto/). Feb 5th, 2024.
   - [Source](https://github.com/ClaudiuPapasteri/cpapasteri.github.io/tree/5697e7366fab31d17ab41665e37a0839bc9e1bab/content/post/2024-02-05-hugo-blogdown-posts-with-in-browser-interactive-code-chunks-using-webr-and-quarto)
 - [Cara Thompson](https://github.com/cararthompson)'s post on [A quick experiment with WebR: how much can I do in under an hour?](https://www.cararthompson.com/posts/2024-02-01-experimenting-with-webr/). Feb 2nd, 2024.
@@ -151,6 +160,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Thomas Sandmann](https://www.linkedin.com/in/thomas-sandmann)'s post on [Embedding R into Quarto documents with quarto-webr](https://tomsing1.github.io/blog/posts/quarto-webr/). Nov 18th, 2023.
   - Example document: [Intersecting Differential expression results](https://tomsing1.github.io/blog/posts/quarto-webr/quarto_webr_example.html).
   - [Source](https://github.com/tomsing1/blog/blob/ae4b593152f09366a39a133d7bee9a95d739d394/posts/quarto-webr/index.qmd)
+- [Pedro Aphalo](https://github.com/aphalo)'s website called [Using R for Photobiology](https://www.r4photobiology.info).  Nov 11th, 2023.
+  - [Demo: Linear Models Introduction](https://www.r4photobiology.info/pages/linear-models-intro.html) and [website source](https://github.com/aphalo/r4p-blog)
 - [Chi Zhang](https://andreaczhang.github.io/)'s post [Use WebR in your existing quarto website](https://andreaczhang.github.io/blog/technotes_20231001_qt_webr/). Oct 1st, 2023.
 - [Javier Orraca-Deatcu](https://www.javierorracadeatcu.com/)'s post titled [webR via Quarto Extensions](https://www.javierorracadeatcu.com/posts/2023-08-23-webr-via-quarto-extensions/). Aug 23rd, 2023.
 - [George Stagg](https://gws.phd/)'s mention of the extension in his [webR 0.2.0 announcement](https://www.tidyverse.org/blog/2023/08/webr-0-2-0/). Aug 8th, 2023.
