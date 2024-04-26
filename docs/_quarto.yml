@@ -21,6 +21,8 @@ website:
         contents:
           - href: qwebr-first-steps.qmd
             text: Your first webR-powered Quarto document
+          - href: qwebr-code-cell-demos.qmd
+            text: Exploring Interactive Code Cells
           - href: qwebr-using-r-packages.qmd
             text: Using R Packages
           - href: qwebr-internal-cell.qmd
@@ -33,20 +35,8 @@ website:
             text: Document Options
           - href: qwebr-cell-options.qmd
             text: Code Cell Options
-      - section: "Support"
-        contents:
-          - href: qwebr-troubleshooting.qmd
-            text: Troubleshooting
-          - href: qwebr-faq.qmd
-            text: FAQ
-          - href: https://github.com/coatless/quarto-webr/issues/new
-            text: Submit an issue
       - section: "Demos"
         contents:
-          - href: https://quarto-webr.thecoatlessprofessor.com/examples/readme/
-            text: README Demo      
-          - href: qwebr-code-cell-demos.qmd
-            text: Exploring Interactive Code Cells
           - href: demos/qwebr-feature-demos.qmd
             text: Feature Demos
           - href: qwebr-community-examples.qmd
@@ -59,6 +49,14 @@ website:
             text: Theming Elements
           - href: qwebr-communication-channels.qmd
             text: Communication Channels
+      - section: "Support"
+        contents:
+          - href: qwebr-troubleshooting.qmd
+            text: Troubleshooting
+          - href: qwebr-faq.qmd
+            text: FAQ
+          - href: https://github.com/coatless/quarto-webr/issues/new
+            text: Submit an issue
       - section: "Extra Information"
         contents:
           - href: qwebr-release-notes.qmd
