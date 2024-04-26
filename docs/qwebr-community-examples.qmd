@@ -25,10 +25,17 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Teaching Materials / Workshops
 
+- [E.D. Gennatas](https://egenn.lambdamd.org/)'s tech demo with [progressive reveal tutorials](https://rtemis.org/pdsx/rdemo.html). Spring 2024.
 - Faculty of Medicine, University of Oslo's [MF9130E - Introductory Course in Statistics](https://www.uio.no/studier/emner/medisin/med/MF9130E/). Spring 2024.
   - [Sample Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_distribution.html) and [source repo](https://github.com/ocbe-uio/teaching_mf9130e) announced on [Linkedin](https://www.linkedin.com/posts/andreaczhang_webr-rstats-quarto-activity-7183880219089334272-AZaq) 
 - [Jerid Francom](https://github.com/francojc)'s course [LIN 380/680: Quantitative Text Analysis for Linguistics](https://lin-380-s24.github.io/). Spring 2024.
   - [Sample lecture](https://lin-380-s24.github.io/slides/day-07.html#/) and [source repo](https://github.com/lin-380-s24/lin-380-s24.github.io)
+- [Kevin Middleton](https://github.com/kmiddleton)'s guided practice [Quantitative Exercises in Genetics](https://biosc-2200.github.io/). Spring 2024.
+  - [Course repo](https://github.com/BIOSC-2200/BIOSC-2200.github.io)
+- [Jason Hilton](https://github.com/jasonhilton)'s part of the course [RESM3002: Advanced Social Data Science](https://jasonhilton.github.io/R_intro/). Spring 2024.
+  - [Lecture: Introduction to R](https://jasonhilton.github.io/R_intro/Introduction-to-R.html) and [course repo](https://github.com/jasonhilton/R_intro).
+- [Martine Jansen](https://github.com/MMJansen)'s workshop talk on [Creating slides with Quarto by Slides (PDF)](https://github.com/MMJansen/workshop_quarto_slides/blob/main/workshop_quarto_slides.pdf). Feb 24th, 2024. [VVSOR](https://www.vvsor.nl/statistics-communication/events/workshop-series-quarto/).
+  - [Source](https://github.com/MMJansen/workshop_quarto_slides)
 - [Bruno Rodrigues](https://www.brodrigues.co/)' use of the extension in his notes for [Building Reproducible Analytical Pipelines](https://rap4mads.eu/).
   - [Source repository](https://github.com/b-rodrigues/rap4mads_2023)
 - [David Brocker](https://davidabrocker.com/)'s conversion of his [PY 3600: Statistical Methods](https://davidbrocker.github.io/DBPSYC3400/) course materials. Oct 23rd, 2023.
@@ -36,12 +43,21 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Mine Çetinkaya-Rundel](https://mine-cr.com/)'s [Teaching Data Science Masterclass: Organizing, publishing, and sharing of course materials](https://posit-conf-2023.github.io/teach-ds-masterclass/materials/course-materials). Sept 18, 2023 @ posit::conf(2023)
   - [Ex 1.1: UN Votes](https://data-sci-101.github.io/ae/ae-01-unvotes.html), [Page Source](https://github.com/data-sci-101/data-sci-101.github.io/blob/main/ae/ae-01-unvotes.qmd)
   - Full workshop materials at [source repository](https://github.com/posit-conf-2023/teach-ds-masterclass) and deployed website example's [source repository](https://github.com/data-sci-101/data-sci-101.github.io)
+- LMU Open Science Center (OSC)'s [Quarto Workshop](https://florianpargent.github.io/Quarto_LMU_OSC/). Summer 2023.
+  - [Demo page](https://florianpargent.github.io/mywebr/) and [source](https://github.com/FlorianPargent/mywebr)
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s experimental interactive version of [Data Carpentry for Biologists](https://interactive-lessons.weecology.org/). Mar 13th, 2023.
+
+**Spanish**
+
+- [Javier Arántegui](https://github.com/runjaj)'s course [Calidad 2023-24](https://runjaj.quarto.pub/calidad-23-24-gcta) contained short R Tutorials with examples using `quarto-webr`
+  - [Lecture: Introduction to R (Spanish)](https://runjaj.quarto.pub/calidad-23-24-gcta/intro_R.html), [Lecture: Acceptance Sampling](https://runjaj.quarto.pub/calidad-23-24-gcta/intro_AcceptanceSampling.html), and [mastodon tweet](https://mastodon.social/@runjaj/112241537253261459).
 
 # Talks
 
 - [Nicola Rennie](https://nrennie.rbind.io/)'s talk on [Teaching statistics interactively with webR](https://nrennie.rbind.io/talks/rss-conference-teaching-webr/). Nov 22th, 2023 @ RSS/RoSE UK Statistics Education Meeting 2023
   - [Slides](https://teaching-with-webr.netlify.app/#/title-slide) and [Source code](https://github.com/nrennie/teaching-with-webR)
+- [Mickaël CANOUIL, Ph.D.](https://github.com/mcanouil)'s talk on [Quarto: A Not So Gentle Introduction](https://m.canouil.dev/gentle-intro-to-quarto) uses the `quarto-webr` extension as an example extension for Quarto. Oct 19th, 2023.
+  - [Source](https://github.com/mcanouil/gentle-intro-to-quarto)
 - [George Stagg](https://gws.phd)'s talk on [Shiny Without a Server: webR & Shinylive](https://georgestagg.github.io/shiny-without-a-server-2023/) brief mention of `quarto-webr` as a quick onboarding option. Oct 18, 2023 @ Jumping Rivers Shiny in Production 2023 Conference
   - [Video (38:07)](https://www.youtube.com/watch?v=GlZKReTx8GA)
 - [George Stagg](https://gws.phd)'s talk on the [Magic with WebAssembly and webR](https://gws.quarto.pub/magic-with-wasm-and-webr/#/title-slide) mentioning `quarto-webr` as an easy onboarding option. Sep 20, 2023 @ posit::conf(2023)
@@ -60,10 +76,28 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Textbooks
 
+**English**
+
+- [David Kaplan](https://github.com/dtkaplan)'s book [Lessons in Statistical Thinking](https://dtkaplan.github.io/Lessons-in-statistical-thinking/)
+  - [Book source](https://github.com/dtkaplan/Lessons-in-statistical-thinking)
+- [Dylan Spicker](https://github.com/DylanSpicker)'s course note book [STAT 1793: Course Notes](https://dylanspicker.github.io/STAT1793-course-notes/). Spring 2024.
+  - [Book source](https://github.com/DylanSpicker/STAT1793-course-notes)
+- [Dmitry Kondrashov]()'s notes on [Quantifying Life](https://dkon1.github.io/quant_life_quarto/). Spring 2024.
+  - [Book source](https://github.com/dkon1/quant_life_quarto)
 - [Daniel E. Weeks](https://www.sph.pitt.edu/directory/daniel-weeks) incorporated webR exercises into various parts of the [HuGen2071](https://danieleweeks.github.io/HuGen2071). Fall 2023.
   - [Book source](https://github.com/DanielEWeeks/HuGen2071)
 - [Daren Eiri](https://www.linkedin.com/in/dareneiri/) uses interctive code cells in [Condition Handling with Logging](https://dareneiri.github.io/positconf2023/source_files/ConditionHandlingWithLogging) chapter.
   - [Book Source](https://github.com/dareneiri/positconf2023) and [Chapter Source](https://github.com/dareneiri/positconf2023/blob/main/source_files/ConditionHandlingWithLogging.qmd)
+
+**Japanese**
+
+- [Socihi Matsuura](https://so-ichi.com/) incorporated `quarto-webr` as part of [R for Accounting Research](https://ma2ura.github.io/R4A/)'s practice problems. Spring 2024.
+   - [Book source](https://github.com/ma2ura/R4A)
+
+**Korean**
+
+- [이광춘 (Kwangchun Lee)](https://github.com/statkclee)'s book [ChatGPT Data Science](https://r2bit.com/gpt-ds/)
+  - [Book source](https://github.com/bit2r/gpt-ds)
 
 # Notebooks
 
@@ -72,6 +106,10 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 # Social media posts
 
+**English**
+
+- [Alberto Caimo](https://twitter.com/albertocaimo)'s post on [Twitter (also known as X)](https://twitter.com/albertocaimo/status/1777271918900682916) showing an example exploring Beta-binomial distributions.
+- [John Hill](https://bsky.app/profile/johnghill.bsky.social)'s' post on [BlueSky](https://bsky.app/profile/johnghill.bsky.social/post/3klwxylzxhc2p) discussing the potential for using `quarto-webr` in UK social science quant methods courses.
 - [Jeffrey Perkel](https://github.com/jperkel) post on [Mastodon](https://mastodon.social/@jperkel@sciencemastodon.com/111581346220627969) with a [quick ggplot2 demo](https://jperkel.github.io/). Dec 14th, 2023
 - [Nien Xiang Tou](https://www.nienxiangtou.com/) post on [LinkedIn](https://www.linkedin.com/posts/nien-xiang-tou-phd-a15594184_quarto-webr-rstats-activity-7121412832021123072-BWW3) and [Mastodon](https://mastodon.social/@Nxrunning@fosstodon.org/111284901156764484)
 - [Linh Nguyen](https://nguyenllpsych.github.io/)'s post on [LinkedIn](https://www.linkedin.com/posts/nguyenllpsych_positconf2023-activity-7111101659509899265-CTay?utm_source=share&utm_medium=member_desktop) and [Twitter](https://twitter.com/nguyenllpsych/status/1705357201400066141) describing how she used knowledge at posit::conf(2023) to convert existing R notes to use the `quarto-webr` extension. Sept 22, 2023
@@ -79,9 +117,23 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Nicola Rennie](https://nrennie.rbind.io/)'s tweet showing [live coding with webR](https://twitter.com/nrennie35/status/1654509541499850752). May 5th, 2023
 - [bob Rudis](https://rud.is/)' kind [praise](https://mastodon.social/@hrbrmstr/110130242863636605) of the extension. Apr 2nd, 2023
 
+**Japanese**
+
+- [st4tditt0](https://twitter.com/st4tditt0) post on [Twitter (also known as X)](https://twitter.com/st4tditt0/status/1781598487634993534) with a [quick favorite package deni](https://statditto.com/posts/fav_package_dragon/). Apr 20, 2024.
+
+**Spanish**
+
+- [Alejandro Romero](https://twitter.com/ale_romero0)'s post on [Twitter (also known as X)](https://twitter.com/ale_romero0/status/1750027847794639107) showing [Implementación de los Autómatas Celulares de @stephen_wolfram en R](https://alejandroromerog.github.io/blog/ACW/). Jan 23, 2024.
+
+**French**
+
+- [Lino Galiana](https://github.com/linogaliana) in [Infolettre n°17](https://ssphub.netlify.app/infolettre/infolettre_17/) for the [Service Statistique Publique (SSP)](https://ssphub.netlify.app/) regarding `quarto-webr` for Quarto. Discussed on [LinkedIn](https://www.linkedin.com/posts/linogaliana_infolettre-n17-activity-7168558434794065920--p4h).
+  - [Source](https://github.com/InseeFrLab/ssphub/blob/9e770b610461289f0f86e1436ecdb7d77bdadd5a/infolettre/infolettre_17/index.qmd#L415)
+
 
 # Blog posts
 
+**English**
 
 - [Claudiu Papasteri](https://github.com/ClaudiuPapasteri)'s post on [Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?](https://claudiu.psychlab.eu/post/hugo-blogdown-interactive-code-chunk-webr-quarto/). Feb 5th, 2024.
   - [Source](https://github.com/ClaudiuPapasteri/cpapasteri.github.io/tree/5697e7366fab31d17ab41665e37a0839bc9e1bab/content/post/2024-02-05-hugo-blogdown-posts-with-in-browser-interactive-code-chunks-using-webr-and-quarto)
@@ -108,7 +160,13 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
   - [Source](https://github.com/matt-dray/rostrum-blog-2/tree/9a533bd968743c429a2376288c1600dd20a158b7/posts/2023-03-16-webr-quarto)
 - [Ethan White](https://www.weecology.org/author/ethan-white/)'s post on [Playgrounds with WebR and Quarto](https://jabberwocky.weecology.org/2023/03/13/a-brief-introduction-to-using-webr-and-quarto-for-client-side-interactive-lesson-material/). Mar 13th, 2023.
 
+**Chinese**
+
+- [Shixiang Wang](https://github.com/ShixiangWang)'s post on [Combining quarto publishing system and webr technology](https://shixiangwang.netlify.app/posts/2023-10-09-webr-in-quarto/).
+  - [Source](https://github.com/ShixiangWang/ShixiangWang.github.io/tree/main/posts/2023-10-09-webr-in-quarto)
+
 # Press
 
+- Briefly mentioned in the Nature Technology Feature [No installation required: how WebAssembly is changing scientific computing](https://www.nature.com/articles/d41586-024-00725-1) by [Jeffrey M. Perkel](https://github.com/jperkel) (Technology editor, Springer Nature).
 - [R Weekly podcast](https://rweekly.fireside.fm) included a reference to the Proof of Concept document/extension during [episode 115](https://rweekly.fireside.fm/115?t=763), which was dedicated to the webR 0.1.0 announcement.
    - [R weekly 115 (2023-W11)](https://rweekly.org/2023-W11.html)
