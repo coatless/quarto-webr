@@ -6,7 +6,7 @@
     "section": "",
     "text": "Welcome to the world of interactive code cells, unlocked by the quarto-webr extension. These cells allow you to run R code directly within your Quarto HTML documents, enabling real-time computations, dynamic visualizations, and more. Let’s explore the impressive capabilities webR offers.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -17,7 +17,7 @@
     "section": "Fit a Linear Regression Model",
     "text": "Fit a Linear Regression Model\nWe begin by using the “Hello World” example of statistics: fitting and analyzing a linear regression.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -28,7 +28,7 @@
     "section": "Line-by-line Execution",
     "text": "Line-by-line Execution\nIn this section, we’ll explore the built-in keyboard shortcuts for executing code within the interactive code cell. You can run either the selected code or specific lines or the entire cell with the following keyboard shortcuts:\n\nRun selected code:\n\nmacOS: ⌘ + ↩︎/Return\nWindows/Linux: Ctrl + ↩︎/Enter\n\nTo run the entire code cell, you can simply click the “Run code” button, or use the keyboard shortcut:\n\nShift + ↩︎\n\n\nFeel free to try it out in the following code cell:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBy using these shortcuts, you can run code conveniently and efficiently. This practice can also help you become familiar with keyboard shortcuts when transitioning to integrated development environments (IDEs) like RStudio or Visual Studio Code with R.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -39,7 +39,7 @@
     "section": "Preventing Modifications to Code",
     "text": "Preventing Modifications to Code\nCode cells can be locked to their initial state by specifying #| read-only: true. The next code cell has such a feature implemented. Try modifying the expression 1 + 1 to any other value.\n\n{quarto-webr} OutputCell code\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n```{webr-r}\n#| read-only: true\n1 + 1\n```\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis option can be paired with autorun: true to avoid having the user press the “Run code” button to see the output.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -50,7 +50,7 @@
     "section": "Create a Graph with Base R",
     "text": "Create a Graph with Base R\nFor this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value blue to orange and run the code again.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -61,7 +61,7 @@
     "section": "Fill in the Blanks",
     "text": "Fill in the Blanks\nAnother approach is to purposely leave out part of a command during an exercise to afford students structure in solving it. For example, we could have the question of:\n\nFill in the blank to have the following expression add up to 42.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -72,7 +72,7 @@
     "section": "Data Wrangle in Real Time",
     "text": "Data Wrangle in Real Time\nData manipulation is a crucial part of data analysis. In this example, we’ll modify a data set in real-time and view the results. It’s like changing ingredients while cooking to get the perfect dish!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -83,7 +83,7 @@
     "section": "Working with R Packages",
     "text": "Working with R Packages\nYou can incorporate R packages available in webR by installing them interactively using webr::install() within a {webr-r} code cell or by specifying them in the document’s YAML. Once you’ve installed a package, you can harness its power just as you would in a traditional R environment. For more details, please refer to Using R Packages.\n\n\n\n\n\n\nNote\n\n\n\nPlease note that installing certain packages, such as ggplot2, may take some time depending on the communication channel being used.\n\n\nLet’s take ggplot2 as an example:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWith ggplot2 now installed, let’s create a graph with it!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -94,7 +94,7 @@
     "section": "Variable Definitions and Reuse",
     "text": "Variable Definitions and Reuse\nDefine variables in one code cell and reuse them in subsequent cells:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -105,7 +105,7 @@
     "section": "Functions",
     "text": "Functions\nFunctions can similarly be defined and used in one code cell or multiple code cells.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nNote\n\n\n\nThe function definition must be run before calling the function. Otherwise, there will be an error that is generated.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -116,7 +116,7 @@
     "section": "Handling Errors and Warnings",
     "text": "Handling Errors and Warnings\nWhen webR encounters an error while running R code, the error and warning messages are displayed to the user.\nFor example, if the routine has a hard stop, the execution immediately ends, and the message is shared.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSimilarly, if a variable is not found, then the code stops being evaluated and returns an error.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nUnlike errors, warning messages are allowed to propagate into the output without stopping the computation.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThis is even the case inside of complex functions.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -127,7 +127,7 @@
     "section": "Escaping Characters in a String",
     "text": "Escaping Characters in a String\nHandle special characters in strings with ease:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -138,7 +138,7 @@
     "section": "Anonymous Function Definition",
     "text": "Anonymous Function Definition\nDefine and use anonymous functions seamlessly:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -149,7 +149,7 @@
     "section": "Empty Code Cell",
     "text": "Empty Code Cell\nDefine an empty code cell by simply leaving it blank.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },
@@ -160,7 +160,7 @@
     "section": "Pre-rendered Code Cell",
     "text": "Pre-rendered Code Cell\nAny code using the usual {r} tag will be executed, and its output saved, just as if you were rendering a Quarto document without the webR extension:\n\nmessage(\"Hello!\")\n\nHello!",
     "crumbs": [
-      "Demos",
+      "Getting Started",
       "Exploring Interactive Code Cells"
     ]
   },

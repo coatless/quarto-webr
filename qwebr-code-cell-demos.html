@@ -318,7 +318,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-1","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":1,"code":"1 + 1"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-2","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":2,"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-3","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":3,"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-4","dpi":72,"read-only":"true","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":4,"code":"1 + 1"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-5","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":5,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-6","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":6,"code":"35 + ________"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-7","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":7,"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-8","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":8,"code":"webr::install(\"ggplot2\")"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-9","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":9,"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-10","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":10,"code":"name <- \"James\"\nage <- 42"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-11","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":11,"code":"message(name, \" is \", age, \" years old!\")"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-12","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":12,"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-13","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":13,"code":"say_hello(\"Hulya\")"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-14","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":14,"code":"stop(\"This is a hard error\")"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-15","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":15,"code":"variable_not_defined"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-16","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":16,"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-17","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":17,"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-18","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":18,"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-19","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":19,"code":"add_one <- \\(x) x + 1\nadd_one(2)"},{"options":{"classes":"","editor-quick-suggestions":"false","out-height":"","fig-width":7,"autorun":"false","results":"markup","comment":"","editor-font-scale":1,"warning":"true","message":"true","context":"interactive","label":"unnamed-chunk-20","dpi":72,"read-only":"false","output":"true","fig-height":5,"out-width":"700px","editor-max-height":"","fig-cap":""},"id":20,"code":""}];
+globalThis.qwebrCellDetails = [{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-1","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"1 + 1","id":1},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-2","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","id":2},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-3","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","id":3},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-4","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"true","editor-font-scale":1,"results":"markup"},"code":"1 + 1","id":4},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-5","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":5},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-6","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"35 + ________","id":6},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-7","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","id":7},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-8","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"webr::install(\"ggplot2\")","id":8},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-9","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","id":9},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-10","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"name <- \"James\"\nage <- 42","id":10},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-11","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"message(name, \" is \", age, \" years old!\")","id":11},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-12","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","id":12},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-13","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"say_hello(\"Hulya\")","id":13},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-14","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"stop(\"This is a hard error\")","id":14},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-15","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"variable_not_defined","id":15},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-16","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","id":16},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-17","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","id":17},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-18","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","id":18},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-19","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"add_one <- \\(x) x + 1\nadd_one(2)","id":19},{"options":{"fig-height":5,"message":"true","comment":"","label":"unnamed-chunk-20","classes":"","editor-max-height":"","context":"interactive","fig-cap":"","dpi":72,"editor-quick-suggestions":"false","out-height":"","output":"true","fig-width":7,"autorun":"false","out-width":"700px","warning":"true","read-only":"false","editor-font-scale":1,"results":"markup"},"code":"","id":20}];
 
 </script>
 <script type="module">
@@ -1167,7 +1167,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/">Demos</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1218,6 +1218,12 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Using R Packages</span></a>
   </div>
@@ -1262,53 +1268,12 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Support</span></a>
+ <span class="menu-text">Demos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAQ</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/coatless/quarto-webr/issues/new" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Submit an issue</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README Demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Exploring Interactive Code Cells</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./demos/qwebr-feature-demos.html" class="sidebar-item-text sidebar-link">
@@ -1325,13 +1290,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
@@ -1348,6 +1313,35 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Support</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/coatless/quarto-webr/issues/new" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Submit an issue</span></a>
   </div>
 </li>
       </ul>
@@ -1655,7 +1649,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/">Demos</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-code-cell-demos.html">Exploring Interactive Code Cells</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Exploring Interactive Code Cells</h1>
 <p class="subtitle lead">Unleash the Power of Interactive R Code in Your Quarto Documents</p>

@@ -318,7 +318,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"context":"interactive","autorun":"false","comment":"","warning":"true","fig-width":7,"output":"true","read-only":"false","editor-font-scale":1,"out-width":"700px","editor-quick-suggestions":"false","dpi":72,"label":"unnamed-chunk-1","classes":"","fig-cap":"","fig-height":5,"results":"markup","out-height":"","editor-max-height":"","message":"true"}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"context":"interactive","autorun":"false","comment":"","warning":"true","fig-width":7,"output":"true","read-only":"false","editor-font-scale":1,"out-width":"700px","editor-quick-suggestions":"false","dpi":72,"label":"unnamed-chunk-2","classes":"","fig-cap":"","fig-height":5,"results":"markup","out-height":"","editor-max-height":"","message":"true"}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"context":"interactive","autorun":"false","comment":"","warning":"true","fig-width":7,"output":"true","read-only":"false","editor-font-scale":1,"out-width":"700px","editor-quick-suggestions":"false","dpi":72,"label":"unnamed-chunk-3","classes":"","fig-cap":"","fig-height":5,"results":"markup","out-height":"","editor-max-height":"","message":"true"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","read-only":"false","warning":"true","context":"interactive","out-height":"","label":"unnamed-chunk-1","editor-max-height":"","output":"true","dpi":72,"fig-cap":"","classes":"","fig-width":7,"out-width":"700px","results":"markup","autorun":"false","editor-font-scale":1,"fig-height":5,"message":"true","editor-quick-suggestions":"false"},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"comment":"","read-only":"false","warning":"true","context":"interactive","out-height":"","label":"unnamed-chunk-2","editor-max-height":"","output":"true","dpi":72,"fig-cap":"","classes":"","fig-width":7,"out-width":"700px","results":"markup","autorun":"false","editor-font-scale":1,"fig-height":5,"message":"true","editor-quick-suggestions":"false"},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"comment":"","read-only":"false","warning":"true","context":"interactive","out-height":"","label":"unnamed-chunk-3","editor-max-height":"","output":"true","dpi":72,"fig-cap":"","classes":"","fig-width":7,"out-width":"700px","results":"markup","autorun":"false","editor-font-scale":1,"fig-height":5,"message":"true","editor-quick-suggestions":"false"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1218,6 +1218,12 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring Interactive Code Cells</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-using-r-packages.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Using R Packages</span></a>
   </div>
@@ -1262,53 +1268,12 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Support</span></a>
+ <span class="menu-text">Demos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAQ</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/coatless/quarto-webr/issues/new" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Submit an issue</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://quarto-webr.thecoatlessprofessor.com/examples/readme/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">README Demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./qwebr-code-cell-demos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring Interactive Code Cells</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./demos/qwebr-feature-demos.html" class="sidebar-item-text sidebar-link">
@@ -1325,13 +1290,13 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qwebr-deployment-templates.html" class="sidebar-item-text sidebar-link">
@@ -1348,6 +1313,35 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-communication-channels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Communication Channels</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Support</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/coatless/quarto-webr/issues/new" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Submit an issue</span></a>
   </div>
 </li>
       </ul>
