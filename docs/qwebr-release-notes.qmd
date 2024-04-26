@@ -45,6 +45,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Documentation
 
+- Updated community examples covering `quarto-webr` uses in 2024 Q1 ([#193](https://github.com/coatless/quarto-webr/issues/193)).
+
 # 0.4.1: Vivid Montage (03-25-2024)
 
 ## Features
