@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.31">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","warning":"true","classes":"","context":"output","output":"true","comment":"","out-height":"","label":"unnamed-chunk-1","results":"markup","autorun":"true","dpi":72,"fig-cap":"","editor-quick-suggestions":"false","fig-width":7,"editor-font-scale":1,"editor-max-height":"","out-width":"700px","fig-height":5,"message":"true"},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","options":{"out-width":"700px","out-height":"","output":"true","context":"output","editor-max-height":"","read-only":"false","fig-height":5,"comment":"","autorun":"true","classes":"","editor-quick-suggestions":"false","fig-cap":"","editor-font-scale":1,"label":"unnamed-chunk-1","message":"true","dpi":72,"warning":"true","results":"markup","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -1119,13 +1119,13 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-shim-install.html">Test: Install Packages Shim</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -1169,9 +1169,9 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Tests</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>

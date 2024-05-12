@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.31">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"fig-height":5,"message":"true","classes":"","warning":"true","autorun":"true","out-height":"","label":"unnamed-chunk-1","out-width":"700px","output":"true","context":"setup","fig-cap":"","comment":"","read-only":"false","results":"markup","dpi":72,"editor-font-scale":1,"editor-quick-suggestions":"false","editor-max-height":""},"id":1,"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)"},{"options":{"fig-width":7,"fig-height":5,"message":"true","classes":"","warning":"true","autorun":"true","out-height":"","label":"unnamed-chunk-2","out-width":"700px","output":"true","context":"output","fig-cap":"","comment":"","read-only":"false","results":"markup","dpi":72,"editor-font-scale":1,"editor-quick-suggestions":"false","editor-max-height":""},"id":2,"code":"g + geom_point()\n\nSys.sleep(0.25)"},{"options":{"fig-width":7,"fig-height":5,"message":"true","classes":"","warning":"true","autorun":"true","out-height":"","label":"unnamed-chunk-3","out-width":"700px","output":"true","context":"output","fig-cap":"","comment":"","read-only":"false","results":"markup","dpi":72,"editor-font-scale":1,"editor-quick-suggestions":"false","editor-max-height":""},"id":3,"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)"},{"options":{"fig-width":7,"fig-height":5,"message":"true","classes":"","warning":"true","autorun":"false","out-height":"","label":"unnamed-chunk-4","out-width":"700px","output":"true","context":"interactive","fig-cap":"","comment":"","read-only":"false","results":"markup","dpi":72,"editor-font-scale":1,"editor-quick-suggestions":"false","editor-max-height":""},"id":4,"code":"g"}];
+globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","options":{"output":"true","editor-max-height":"","fig-cap":"","label":"unnamed-chunk-1","classes":"","autorun":"true","warning":"true","fig-width":7,"results":"markup","fig-height":5,"context":"setup","read-only":"false","message":"true","dpi":72,"editor-quick-suggestions":"false","comment":"","editor-font-scale":1,"out-width":"700px","out-height":""},"id":1},{"code":"g + geom_point()\n\nSys.sleep(0.25)","options":{"output":"true","editor-max-height":"","fig-cap":"","label":"unnamed-chunk-2","classes":"","autorun":"true","warning":"true","fig-width":7,"results":"markup","fig-height":5,"context":"output","read-only":"false","message":"true","dpi":72,"editor-quick-suggestions":"false","comment":"","editor-font-scale":1,"out-width":"700px","out-height":""},"id":2},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","options":{"output":"true","editor-max-height":"","fig-cap":"","label":"unnamed-chunk-3","classes":"","autorun":"true","warning":"true","fig-width":7,"results":"markup","fig-height":5,"context":"output","read-only":"false","message":"true","dpi":72,"editor-quick-suggestions":"false","comment":"","editor-font-scale":1,"out-width":"700px","out-height":""},"id":3},{"code":"g","options":{"output":"true","editor-max-height":"","fig-cap":"","label":"unnamed-chunk-4","classes":"","autorun":"false","warning":"true","fig-width":7,"results":"markup","fig-height":5,"context":"interactive","read-only":"false","message":"true","dpi":72,"editor-quick-suggestions":"false","comment":"","editor-font-scale":1,"out-width":"700px","out-height":""},"id":4}];
 
 </script>
 <script type="module">
@@ -1119,13 +1119,13 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-non-interactive-chained-cells.html">Test: Chained Non-interactive Areas</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -1169,9 +1169,9 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Tests</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>

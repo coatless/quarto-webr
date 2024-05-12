@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.31">
+<meta name="generator" content="quarto-1.5.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -318,7 +318,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"output":"true","label":"unnamed-chunk-1","message":"true","results":"markup","out-height":"","editor-max-height":"","out-width":"700px","fig-height":5,"dpi":72,"editor-font-scale":1,"comment":"","classes":"","fig-width":7,"warning":"true","read-only":"false","fig-cap":"","context":"interactive","editor-quick-suggestions":"false","autorun":"false"},"id":1},{"code":"webr::install(\"ggplot2\")","options":{"output":"true","label":"unnamed-chunk-2","message":"true","results":"markup","out-height":"","editor-max-height":"","out-width":"700px","fig-height":5,"dpi":72,"editor-font-scale":1,"comment":"","classes":"","fig-width":7,"warning":"true","read-only":"false","fig-cap":"","context":"interactive","editor-quick-suggestions":"false","autorun":"false"},"id":2},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"output":"true","label":"unnamed-chunk-3","message":"true","results":"markup","out-height":"","editor-max-height":"","out-width":"700px","fig-height":5,"dpi":72,"editor-font-scale":1,"comment":"","classes":"","fig-width":7,"warning":"true","read-only":"false","fig-cap":"","context":"interactive","editor-quick-suggestions":"false","autorun":"false"},"id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"classes":"","editor-max-height":"","comment":"","label":"unnamed-chunk-1","warning":"true","fig-cap":"","out-width":"700px","autorun":"false","fig-height":5,"output":"true","results":"markup","message":"true","editor-quick-suggestions":"false","dpi":72,"read-only":"false","out-height":"","fig-width":7,"context":"interactive","editor-font-scale":1},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"classes":"","editor-max-height":"","comment":"","label":"unnamed-chunk-2","warning":"true","fig-cap":"","out-width":"700px","autorun":"false","fig-height":5,"output":"true","results":"markup","message":"true","editor-quick-suggestions":"false","dpi":72,"read-only":"false","out-height":"","fig-width":7,"context":"interactive","editor-font-scale":1},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"classes":"","editor-max-height":"","comment":"","label":"unnamed-chunk-3","warning":"true","fig-cap":"","out-width":"700px","autorun":"false","fig-height":5,"output":"true","results":"markup","message":"true","editor-quick-suggestions":"false","dpi":72,"read-only":"false","out-height":"","fig-width":7,"context":"interactive","editor-font-scale":1},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1164,13 +1164,13 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-using-r-packages.html">Using R Packages</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -1203,9 +1203,9 @@ globalThis.qwebrExecuteCode = async function (
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1244,9 +1244,9 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Options Reference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1267,9 +1267,9 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Demos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1290,9 +1290,9 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1319,9 +1319,9 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Support</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1348,9 +1348,9 @@ globalThis.qwebrExecuteCode = async function (
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Extra Information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1664,7 +1664,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 26, 2024</p>
+      <p class="date-modified">May 12, 2024</p>
     </div>
   </div>
     
