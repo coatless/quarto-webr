@@ -8,17 +8,24 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.5: ??????? (??-??-??)
+# 0.4.2-dev.6: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
 :::
+
+## Breaking Changes
+
+- We've update the minimum Quarto requirement to 1.4.554.
+  - This version of Quarto is apart of the latest RStudio IDE (Version: 2024.04.0, Date: 2024-04-29).
 
 ## Features
 
 - Upgraded to webR v0.3.3 ([#196](https://github.com/coatless/quarto-webr/pulls/196))
 
 - Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
+
+- Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
 
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
