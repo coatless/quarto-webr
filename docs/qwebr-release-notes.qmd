@@ -31,6 +31,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added `editor-max-height` cell option to limit growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
 
+- Added `editor-font-scale` cell option to scale the code cell size relative to the page font size. Default is `1` for HTML Documents, Books, and Websites and `0.5` for Revealjs Slides. ([#172](https://github.com/coatless/quarto-webr/issues/172) & [#209](https://github.com/coatless/quarto-webr/pull/209), thanks [ute](https://github.com/ute)!)
+
 - Added `editor-quick-suggestions` cell option to enable autocomplete menu suggestions. ([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
 
 - Added the ability to have the monaco editor switch between Quarto's light and dark theme modes. ([#176](https://github.com/coatless/quarto-webr/issues/176))
