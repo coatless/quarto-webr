@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "blog",
-    "section": "",
-    "text": "Post Containing Slides with Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 13, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 12, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/embed-slides/index.html",
     "href": "posts/embed-slides/index.html",
     "title": "Post Containing Slides with Interactive Code",
@@ -26,6 +19,13 @@
     "title": "Post Containing Slides with Interactive Code",
     "section": "Embed Code",
     "text": "Embed Code\nPlace the following code inside of the Quarto Document:\n&lt;style&gt;\n.slide-deck {\n    border: 3px solid #dee2e6;\n    width: 100%;\n    height: 475px;\n}\n&lt;/style&gt;\n\n&lt;div&gt;\n```{=html}\n&lt;iframe class=\"slide-deck\" src=\"path/to/presentation/\"&gt;&lt;/iframe&gt;\n```\n&lt;/div&gt;"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "Post Containing Slides with Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 13, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Interactive Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 12, 2023\n\n\nJames Balamuta\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
