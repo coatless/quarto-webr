@@ -32,7 +32,7 @@ local channelType = "ChannelType.Automatic"
 --- Define a variable to suppress exporting service workers if not required.
 --- (e.g. skipped for PostMessage or SharedArrayBuffer)
 ---@type boolean
-local hasServiceWorkerFiles = true
+local hasServiceWorkerFiles = false
 
 --- Define user directory
 ---@type string
