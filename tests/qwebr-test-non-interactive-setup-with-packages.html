@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.5.45">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Suite for quarto-webr – Test: Packages used in Hidden Setup</title>
+<title>Test: Packages used in Hidden Setup – Test Suite for quarto-webr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup","fig-height":5,"classes":"","out-height":"","fig-cap":"","comment":"","out-width":"700px","editor-quick-suggestions":"false","message":"true","warning":"true","results":"markup","output":"true","autorun":"true","label":"spike-data","dpi":72,"read-only":"false","editor-max-height":"","fig-width":7,"editor-font-scale":"1"},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"context":"interactive","fig-height":5,"classes":"","out-height":"","fig-cap":"","comment":"","out-width":"700px","editor-quick-suggestions":"false","message":"true","warning":"true","results":"markup","output":"true","autorun":"false","label":"spike-data","dpi":72,"read-only":"false","editor-max-height":"","fig-width":7,"editor-font-scale":"1"},"code":"new_mtcars","id":2}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","autorun":"true","context":"setup","editor-max-height":"","results":"markup","editor-font-scale":"1","classes":"","fig-cap":"","comment":"","fig-width":7,"fig-height":5,"out-width":"700px","dpi":72,"message":"true","label":"spike-data","warning":"true","read-only":"false","out-height":"","editor-quick-suggestions":"false"},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"output":"true","autorun":"false","context":"interactive","editor-max-height":"","results":"markup","editor-font-scale":"1","classes":"","fig-cap":"","comment":"","fig-width":7,"fig-height":5,"out-width":"700px","dpi":72,"message":"true","label":"spike-data","warning":"true","read-only":"false","out-height":"","editor-quick-suggestions":"false"},"id":2,"code":"new_mtcars"}];
 
 </script>
 <script type="module">

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.5.45">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-webr – Demo: Read-Only Code Cells</title>
+<title>Demo: Read-Only Code Cells – quarto-webr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -316,7 +316,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","options":{"fig-height":5,"editor-max-height":"","dpi":72,"results":"markup","context":"interactive","warning":"true","read-only":"true","comment":"","out-width":"700px","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","message":"true","output":"true","classes":"","editor-font-scale":"1","autorun":"false","out-height":"","label":"unnamed-chunk-1"},"id":1},{"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","options":{"fig-height":5,"editor-max-height":"","dpi":72,"results":"markup","context":"interactive","warning":"true","read-only":"false","comment":"","out-width":"700px","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","message":"true","output":"true","classes":"","editor-font-scale":"1","autorun":"true","out-height":"","label":"unnamed-chunk-2"},"id":2},{"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","options":{"fig-height":5,"editor-max-height":"","dpi":72,"results":"markup","context":"interactive","warning":"true","read-only":"true","comment":"","out-width":"700px","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","message":"true","output":"true","classes":"","editor-font-scale":"1","autorun":"true","out-height":"","label":"unnamed-chunk-3"},"id":3}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","autorun":"false","label":"unnamed-chunk-1","dpi":72,"message":"true","fig-height":5,"results":"markup","editor-font-scale":"1","output":"true","editor-max-height":"","comment":"","read-only":"true","out-width":"700px","classes":"","fig-cap":"","fig-width":7,"out-height":"","context":"interactive","editor-quick-suggestions":"false"},"id":1,"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)"},{"options":{"warning":"true","autorun":"true","label":"unnamed-chunk-2","dpi":72,"message":"true","fig-height":5,"results":"markup","editor-font-scale":"1","output":"true","editor-max-height":"","comment":"","read-only":"false","out-width":"700px","classes":"","fig-cap":"","fig-width":7,"out-height":"","context":"interactive","editor-quick-suggestions":"false"},"id":2,"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100"},{"options":{"warning":"true","autorun":"true","label":"unnamed-chunk-3","dpi":72,"message":"true","fig-height":5,"results":"markup","editor-font-scale":"1","output":"true","editor-max-height":"","comment":"","read-only":"true","out-width":"700px","classes":"","fig-cap":"","fig-width":7,"out-height":"","context":"interactive","editor-quick-suggestions":"false"},"id":3,"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)"}];
 
 </script>
 <script type="module">
