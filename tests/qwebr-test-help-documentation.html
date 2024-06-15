@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","fig-cap":"","context":"interactive","classes":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-height":5,"editor-quick-suggestions":"false","editor-font-scale":"1","label":"unnamed-chunk-1","dpi":72,"results":"markup","fig-width":7,"comment":"","out-width":"700px","editor-max-height":"","out-height":""},"code":"?mean"},{"id":2,"options":{"message":"true","fig-cap":"","context":"output","classes":"","autorun":"true","output":"true","warning":"true","read-only":"false","fig-height":5,"editor-quick-suggestions":"false","editor-font-scale":"1","label":"unnamed-chunk-2","dpi":72,"results":"markup","fig-width":7,"comment":"","out-width":"700px","editor-max-height":"","out-height":""},"code":"?sd"}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","read-only":"false","classes":"","out-height":"","fig-cap":"","dpi":72,"autorun":"false","editor-max-height":"","message":"true","output":"true","fig-height":5,"out-width":"700px","label":"unnamed-chunk-1","comment":"","editor-quick-suggestions":"false","results":"markup","fig-width":7,"editor-font-scale":"1","context":"interactive"},"id":1,"code":"?mean"},{"options":{"warning":"true","read-only":"false","classes":"","out-height":"","fig-cap":"","dpi":72,"autorun":"true","editor-max-height":"","message":"true","output":"true","fig-height":5,"out-width":"700px","label":"unnamed-chunk-2","comment":"","editor-quick-suggestions":"false","results":"markup","fig-width":7,"editor-font-scale":"1","context":"output"},"id":2,"code":"?sd"}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">

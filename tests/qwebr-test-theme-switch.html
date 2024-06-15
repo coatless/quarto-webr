@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","results":"markup","editor-max-height":"","out-width":"700px","editor-quick-suggestions":"false","warning":"true","classes":"","editor-font-scale":"1","autorun":"true","context":"interactive","fig-height":5,"output":"true","label":"unnamed-chunk-1","comment":"","dpi":72,"fig-width":7,"read-only":"false","out-height":"","message":"true"},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":1}];
+globalThis.qwebrCellDetails = [{"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","id":1,"options":{"fig-width":7,"warning":"true","read-only":"false","out-width":"700px","out-height":"","editor-quick-suggestions":"false","editor-max-height":"","fig-height":5,"autorun":"true","editor-font-scale":"1","context":"interactive","results":"markup","classes":"","message":"true","output":"true","dpi":72,"comment":"","label":"unnamed-chunk-1","fig-cap":""}}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">

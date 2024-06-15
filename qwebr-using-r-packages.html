@@ -311,14 +311,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"output":"true","editor-font-scale":"1","comment":"","autorun":"false","context":"interactive","fig-cap":"","classes":"","editor-max-height":"","results":"markup","dpi":72,"out-height":"","out-width":"700px","warning":"true","editor-quick-suggestions":"false","fig-height":5,"message":"true","fig-width":7,"label":"unnamed-chunk-1","read-only":"false"},"id":1},{"code":"webr::install(\"ggplot2\")","options":{"output":"true","editor-font-scale":"1","comment":"","autorun":"false","context":"interactive","fig-cap":"","classes":"","editor-max-height":"","results":"markup","dpi":72,"out-height":"","out-width":"700px","warning":"true","editor-quick-suggestions":"false","fig-height":5,"message":"true","fig-width":7,"label":"unnamed-chunk-2","read-only":"false"},"id":2},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"output":"true","editor-font-scale":"1","comment":"","autorun":"false","context":"interactive","fig-cap":"","classes":"","editor-max-height":"","results":"markup","dpi":72,"out-height":"","out-width":"700px","warning":"true","editor-quick-suggestions":"false","fig-height":5,"message":"true","fig-width":7,"label":"unnamed-chunk-3","read-only":"false"},"id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1","message":"true","fig-cap":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","fig-width":7,"comment":"","context":"interactive","classes":"","results":"markup","fig-height":5,"autorun":"false","out-height":"","label":"unnamed-chunk-1"},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])"},{"id":2,"options":{"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1","message":"true","fig-cap":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","fig-width":7,"comment":"","context":"interactive","classes":"","results":"markup","fig-height":5,"autorun":"false","out-height":"","label":"unnamed-chunk-2"},"code":"webr::install(\"ggplot2\")"},{"id":3,"options":{"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1","message":"true","fig-cap":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","fig-width":7,"comment":"","context":"interactive","classes":"","results":"markup","fig-height":5,"autorun":"false","out-height":"","label":"unnamed-chunk-3"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"}];
 
 </script>
 <script type="module">
@@ -1664,7 +1664,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 12, 2024</p>
+      <p class="date-modified">June 15, 2024</p>
     </div>
   </div>
     

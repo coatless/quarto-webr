@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"out-height":"","warning":"true","comment":"","output":"true","classes":"","results":"markup","message":"true","autorun":"true","fig-width":7,"fig-cap":"","fig-height":5,"label":"unnamed-chunk-1","dpi":72,"out-width":"700px","editor-quick-suggestions":"false","context":"output","editor-max-height":"","read-only":"false","editor-font-scale":"1"},"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","options":{"editor-quick-suggestions":"false","label":"unnamed-chunk-1","comment":"","editor-max-height":"","results":"markup","output":"true","out-width":"700px","autorun":"true","fig-height":5,"context":"output","message":"true","warning":"true","out-height":"","fig-width":7,"dpi":72,"classes":"","fig-cap":"","editor-font-scale":"1","read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">

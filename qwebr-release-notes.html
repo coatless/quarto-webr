@@ -484,7 +484,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 12, 2024</p>
+      <p class="date-modified">June 15, 2024</p>
     </div>
   </div>
     
@@ -526,6 +526,7 @@ Note
 <li><p>Upgraded to webR v0.3.2 (<a href="https://github.com/coatless/quarto-webr/issues/187">#187</a>)</p></li>
 <li><p>Increase the minimum Quarto version requirement to 1.4.554. (<a href="https://github.com/coatless/quarto-webr/issues/198">#198</a>).</p></li>
 <li><p>Added <code>cell-options</code> document-level option to specify global defaults for <code>{webr-r}</code> options (<a href="https://github.com/coatless/quarto-webr/pulls/173">#173</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
+<li><p>Added <code>version</code> document-level option to specify what version of webR should be used. (<a href="https://github.com/coatless/quarto-webr/issues/211">#211</a>)</p></li>
 <li><p>Added <code>editor-max-height</code> cell option to limit growth of the editor window. (<a href="https://github.com/coatless/quarto-webr/issues/177">#177</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
 <li><p>Added <code>editor-font-scale</code> cell option to scale the code cell size relative to the page font size. Default is <code>1</code> for HTML Documents, Books, and Websites and <code>0.5</code> for Revealjs Slides. (<a href="https://github.com/coatless/quarto-webr/issues/172">#172</a> &amp; <a href="https://github.com/coatless/quarto-webr/pull/209">#209</a>, thanks <a href="https://github.com/ute">ute</a>!)</p></li>
 <li><p>Added <code>editor-quick-suggestions</code> cell option to enable autocomplete menu suggestions. (<a href="https://github.com/coatless/quarto-webr/issues/182">#182</a>, thanks <a href="https://github.com/egenn">egenn</a>!)</p></li>
@@ -542,6 +543,7 @@ Note
 <ul>
 <li>Added <a href="https://luals.github.io/wiki/annotations/">Lua type annotations</a> and function documentation into the Quarto extensions’ Lua filter. (<a href="https://github.com/coatless/quarto-webr/pulls/190">#190</a>)</li>
 <li>Avoided distributing <code>webr-serviceworker.js</code> and <code>webr-worker.js</code> when <code>channel-type</code> is not <code>service-worker</code>. (<a href="https://github.com/coatless/quarto-webr/pulls/210">#210</a>)</li>
+<li>Dynamically write <code>webr-serviceworker.js</code> and <code>webr-worker.js</code> files based on the version chosen (<a href="https://github.com/coatless/quarto-webr/pulls/212">#212</a>)</li>
 <li>Updated the version of the FontAwesome from 6.5.1 to 6.5.2. (<a href="https://github.com/coatless/quarto-webr/pull/191">#191</a>)</li>
 </ul>
 </section>

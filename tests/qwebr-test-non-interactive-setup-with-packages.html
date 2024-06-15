@@ -273,7 +273,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"output":"true","autorun":"true","context":"setup","editor-max-height":"","results":"markup","editor-font-scale":"1","classes":"","fig-cap":"","comment":"","fig-width":7,"fig-height":5,"out-width":"700px","dpi":72,"message":"true","label":"spike-data","warning":"true","read-only":"false","out-height":"","editor-quick-suggestions":"false"},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"output":"true","autorun":"false","context":"interactive","editor-max-height":"","results":"markup","editor-font-scale":"1","classes":"","fig-cap":"","comment":"","fig-width":7,"fig-height":5,"out-width":"700px","dpi":72,"message":"true","label":"spike-data","warning":"true","read-only":"false","out-height":"","editor-quick-suggestions":"false"},"id":2,"code":"new_mtcars"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"fig-height":5,"warning":"true","message":"true","output":"true","context":"setup","out-width":"700px","editor-max-height":"","comment":"","label":"spike-data","results":"markup","classes":"","autorun":"true","dpi":72,"read-only":"false","fig-cap":"","fig-width":7,"out-height":"","editor-quick-suggestions":"false","editor-font-scale":"1"}},{"id":2,"code":"new_mtcars","options":{"fig-height":5,"warning":"true","message":"true","output":"true","context":"interactive","out-width":"700px","editor-max-height":"","comment":"","label":"spike-data","results":"markup","classes":"","autorun":"false","dpi":72,"read-only":"false","fig-cap":"","fig-width":7,"out-height":"","editor-quick-suggestions":"false","editor-font-scale":"1"}}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">

@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"results":"markup","fig-height":5,"editor-max-height":"","context":"interactive","editor-font-scale":"1","editor-quick-suggestions":"false","label":"unnamed-chunk-1","classes":"","out-width":"700px","autorun":"false","out-height":"","fig-width":7,"read-only":"false","output":"true","comment":"","fig-cap":"","warning":"true","dpi":72,"message":"true"}},{"id":2,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"results":"markup","fig-height":5,"editor-max-height":"","context":"output","editor-font-scale":"1","editor-quick-suggestions":"false","label":"unnamed-chunk-2","classes":"","out-width":"700px","autorun":"true","out-height":"","fig-width":7,"read-only":"false","output":"true","comment":"","fig-cap":"","warning":"true","dpi":72,"message":"true"}},{"id":3,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"results":"markup","fig-height":5,"editor-max-height":"","context":"output","editor-font-scale":"1","editor-quick-suggestions":"false","label":"unnamed-chunk-3","classes":"","out-width":"700px","autorun":"true","out-height":"","fig-width":7,"read-only":"false","output":"true","comment":"## ","fig-cap":"","warning":"true","dpi":72,"message":"true"}},{"id":4,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"results":"markup","fig-height":5,"editor-max-height":"","context":"output","editor-font-scale":"1","editor-quick-suggestions":"false","label":"unnamed-chunk-4","classes":"toad green","out-width":"700px","autorun":"true","out-height":"","fig-width":7,"read-only":"false","output":"true","comment":"","fig-cap":"","warning":"true","dpi":72,"message":"true"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"out-height":"","results":"markup","editor-quick-suggestions":"false","fig-width":7,"comment":"","editor-font-scale":"1","classes":"","warning":"true","editor-max-height":"","out-width":"700px","output":"true","fig-height":5,"label":"unnamed-chunk-1","read-only":"false","autorun":"false","message":"true","fig-cap":"","dpi":72,"context":"interactive"}},{"id":2,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"out-height":"","results":"markup","editor-quick-suggestions":"false","fig-width":7,"comment":"","editor-font-scale":"1","classes":"","warning":"true","editor-max-height":"","out-width":"700px","output":"true","fig-height":5,"label":"unnamed-chunk-2","read-only":"false","autorun":"true","message":"true","fig-cap":"","dpi":72,"context":"output"}},{"id":3,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"out-height":"","results":"markup","editor-quick-suggestions":"false","fig-width":7,"comment":"## ","editor-font-scale":"1","classes":"","warning":"true","editor-max-height":"","out-width":"700px","output":"true","fig-height":5,"label":"unnamed-chunk-3","read-only":"false","autorun":"true","message":"true","fig-cap":"","dpi":72,"context":"output"}},{"id":4,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"out-height":"","results":"markup","editor-quick-suggestions":"false","fig-width":7,"comment":"","editor-font-scale":"1","classes":"toad green","warning":"true","editor-max-height":"","out-width":"700px","output":"true","fig-height":5,"label":"unnamed-chunk-4","read-only":"false","autorun":"true","message":"true","fig-cap":"","dpi":72,"context":"output"}}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">

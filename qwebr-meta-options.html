@@ -363,6 +363,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
   <li><a href="#webr-options" id="toc-webr-options" class="nav-link" data-scroll-target="#webr-options">webR options</a>
   <ul class="collapse">
   <li><a href="#home-dir" id="toc-home-dir" class="nav-link" data-scroll-target="#home-dir"><code>home-dir</code></a></li>
+  <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version"><code>version</code></a></li>
   <li><a href="#base-url" id="toc-base-url" class="nav-link" data-scroll-target="#base-url"><code>base-url</code></a></li>
   <li><a href="#channel-type" id="toc-channel-type" class="nav-link" data-scroll-target="#channel-type"><code>channel-type</code></a></li>
   <li><a href="#service-worker-url" id="toc-service-worker-url" class="nav-link" data-scroll-target="#service-worker-url"><code>service-worker-url</code></a></li>
@@ -410,7 +411,7 @@ gtag('config', 'G-S8CXP9TZG0', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 12, 2024</p>
+      <p class="date-modified">June 15, 2024</p>
     </div>
   </div>
     
@@ -483,11 +484,18 @@ Note
 <li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir">homeDir</a></li>
 </ul>
 </section>
+<section id="version" class="level3">
+<h3 class="anchored" data-anchor-id="version"><code>version</code></h3>
+<ul>
+<li><strong>Description</strong>: Define the version that should be used for the R WebAssembly binaries.</li>
+<li><strong>Default Value</strong>: <code>0.3.3</code> (version keyed by the extension)</li>
+</ul>
+</section>
 <section id="base-url" class="level3">
 <h3 class="anchored" data-anchor-id="base-url"><code>base-url</code></h3>
 <ul>
 <li><strong>Description</strong>: Define the base URL for downloading R WebAssembly binaries.</li>
-<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/[version]/'</code></li>
+<li><strong>Default Value</strong>: <code>'https://webr.r-wasm.org/v[version]/'</code></li>
 <li><strong>Documentation</strong>: <a href="https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl">baseUrl</a></li>
 </ul>
 </section>

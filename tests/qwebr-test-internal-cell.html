@@ -266,14 +266,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"classes":"","warning":"true","output":"true","out-height":"","label":"unnamed-chunk-1","editor-max-height":"","editor-font-scale":"1","read-only":"false","dpi":72,"results":"markup","message":"true","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","comment":"","context":"interactive","fig-height":5,"autorun":"false","out-width":"700px"},"code":"1 + 1"},{"id":2,"options":{"classes":"","warning":"true","output":"true","out-height":"","label":"unnamed-chunk-2","editor-max-height":"","editor-font-scale":"1","read-only":"false","dpi":72,"results":"markup","message":"true","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","comment":"","context":"interactive","fig-height":5,"autorun":"true","out-width":"700px"},"code":"1 + 1"},{"id":3,"options":{"classes":"","warning":"true","output":"true","out-height":"","label":"unnamed-chunk-3","editor-max-height":"","editor-font-scale":"1","read-only":"true","dpi":72,"results":"markup","message":"true","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","comment":"","context":"interactive","fig-height":5,"autorun":"true","out-width":"700px"},"code":"1 + 1"},{"id":4,"options":{"classes":"","warning":"true","output":"true","out-height":"","label":"unnamed-chunk-4","editor-max-height":"","editor-font-scale":"1","read-only":"false","dpi":72,"results":"markup","message":"true","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","comment":"","context":"setup","fig-height":5,"autorun":"true","out-width":"700px"},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":5,"options":{"classes":"","warning":"true","output":"true","out-height":"","label":"unnamed-chunk-5","editor-max-height":"","editor-font-scale":"1","read-only":"false","dpi":72,"results":"markup","message":"true","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","comment":"","context":"output","fig-height":5,"autorun":"true","out-width":"700px"},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","message":"true","out-height":"","context":"interactive","fig-width":7,"results":"markup","editor-max-height":"","comment":"","read-only":"false","warning":"true","classes":"","editor-font-scale":"1","output":"true","autorun":"false","dpi":72,"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"1 + 1"},{"id":2,"options":{"label":"unnamed-chunk-2","message":"true","out-height":"","context":"interactive","fig-width":7,"results":"markup","editor-max-height":"","comment":"","read-only":"false","warning":"true","classes":"","editor-font-scale":"1","output":"true","autorun":"true","dpi":72,"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"1 + 1"},{"id":3,"options":{"label":"unnamed-chunk-3","message":"true","out-height":"","context":"interactive","fig-width":7,"results":"markup","editor-max-height":"","comment":"","read-only":"true","warning":"true","classes":"","editor-font-scale":"1","output":"true","autorun":"true","dpi":72,"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"1 + 1"},{"id":4,"options":{"label":"unnamed-chunk-4","message":"true","out-height":"","context":"setup","fig-width":7,"results":"markup","editor-max-height":"","comment":"","read-only":"false","warning":"true","classes":"","editor-font-scale":"1","output":"true","autorun":"true","dpi":72,"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":5,"options":{"label":"unnamed-chunk-5","message":"true","out-height":"","context":"output","fig-width":7,"results":"markup","editor-max-height":"","comment":"","read-only":"false","warning":"true","classes":"","editor-font-scale":"1","output":"true","autorun":"true","dpi":72,"editor-quick-suggestions":"false","fig-cap":"","fig-height":5,"out-width":"700px"},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
 
 </script>
 <script type="module">
@@ -1286,6 +1286,18 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-built-in.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run built-in webR version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Run latest version</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./qwebr-test-self-contained.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: embed-resources</span></a>
   </div>
@@ -1294,6 +1306,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-service-worker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Service Worker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-service-worker-version.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Service Worker with Version</span></a>
   </div>
 </li>
           <li class="sidebar-item">
