@@ -27,7 +27,10 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
 
+
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
+
+- Added `version` document-level option to specify what version of webR should be used. ([#211](https://github.com/coatless/quarto-webr/issues/211))
 
 - Added `editor-max-height` cell option to limit growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
 
@@ -46,6 +49,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added [Lua type annotations](https://luals.github.io/wiki/annotations/) and function documentation into the Quarto extensions' Lua filter. ([#190](https://github.com/coatless/quarto-webr/pulls/190))
 - Avoided distributing `webr-serviceworker.js` and `webr-worker.js` when `channel-type` is not `service-worker`. ([#210](https://github.com/coatless/quarto-webr/pulls/210))
+- Dynamically write `webr-serviceworker.js` and `webr-worker.js` files based on the version chosen ([#212](https://github.com/coatless/quarto-webr/pulls/212))
 - Updated the version of the FontAwesome from 6.5.1 to 6.5.2. ([#191](https://github.com/coatless/quarto-webr/pull/191))
 
 
