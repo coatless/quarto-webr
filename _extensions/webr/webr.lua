@@ -213,6 +213,14 @@ local function writeWebRWorker()
   writeFile(contents, "webr-worker.js")
 end
 
+local function specifyBaseUrl()
+  if baseVersionWebR == "latest" then
+    baseUrl = baseUrl .. "latest/"
+  else 
+    baseUrl = baseUrl .. "v" .. baseVersionWebR .. "/"
+  end
+end
+
 --- Parse the different webr options set in the YAML frontmatter, e.g.
 ---
 --- ```yaml
@@ -236,6 +244,7 @@ function setWebRInitializationOptions(meta)
 
   -- Does this exist? If not, just return meta as we'll just use the defaults.
   if isVariableEmpty(webr) then
+    specifyBaseUrl()
     return meta
   end
 
@@ -255,11 +264,7 @@ function setWebRInitializationOptions(meta)
     baseVersionWebR = pandoc.utils.stringify(webr["version"])
   end
 
-  if baseVersionWebR == "latest" then
-    baseUrl = baseUrl .. "latest/"
-  else 
-    baseUrl = baseUrl .. "v" .. baseVersionWebR .. "/"
-  end
+  specifyBaseUrl()
 
   -- The base URL used for downloading R WebAssembly binaries 
   -- https://webr.r-wasm.org/[version]/webr.mjs
