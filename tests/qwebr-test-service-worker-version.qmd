@@ -1,0 +1,25 @@
+---
+title: "Test: Service Worker with Version"
+format: 
+  html:
+    resources:
+      - webr-serviceworker.js
+      - webr-worker.js
+engine: knitr
+webr:
+  channel-type: "service-worker"
+  version: "latest"
+filters:
+  - webr
+---
+
+This is a webr-enabled code cell in a Quarto HTML document that is set to use the service-worker option under the `latest` version of webR.
+
+```{webr-r}
+#| autorun: true
+-3 + 5
+
+utils::packageVersion("webr")
+
+print("Hello service worker model!")
+```

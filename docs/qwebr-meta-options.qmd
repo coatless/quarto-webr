@@ -73,10 +73,15 @@ By specifying various `WebROptions` options in the document YAML, you can create
 - **Default Value**: `'/home/web_user'`
 - **Documentation**: [homeDir](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir)
 
+### `version`
+
+- **Description**: Define the version that should be used for the R WebAssembly binaries.
+- **Default Value**: `0.3.3` (version keyed by the extension)
+
 ### `base-url`
 
 - **Description**: Define the base URL for downloading R WebAssembly binaries.
-- **Default Value**: `'https://webr.r-wasm.org/[version]/'`
+- **Default Value**: `'https://webr.r-wasm.org/v[version]/'`
 - **Documentation**: [baseUrl](https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl)
 
 ### `channel-type`

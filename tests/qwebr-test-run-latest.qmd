@@ -1,0 +1,16 @@
+---
+title: "Test: Run latest version"
+format: html
+engine: knitr
+filters:
+  - webr
+webr:
+  version: 'latest'
+---
+
+Test to see if the version key works under the latest version: 
+
+```{webr-r}
+#| context: output
+utils::packageVersion("webr")
+```

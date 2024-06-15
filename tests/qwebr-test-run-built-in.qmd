@@ -1,0 +1,14 @@
+---
+title: "Test: Run built-in webR version"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Test to see if the `version` is respected under the built-in value: 
+
+```{webr-r}
+#| context: output
+utils::packageVersion("webr")
+```
