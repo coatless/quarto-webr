@@ -19,7 +19,7 @@ local baseVersionWebR = "0.3.3"
 
 --- Define where webR can be found
 ---@type string
-local baseUrl = "https://webr.r-wasm.org/v".. baseVersionWebR .."/"
+local baseUrl = "https://webr.r-wasm.org/"
 
 --- Define where webR service workers are located
 ---@type string
@@ -179,6 +179,39 @@ local function convertMetaChannelTypeToWebROption(input)
   return conditions[input] or "ChannelType.Automatic"
 end
 
+--- Write a file to disk
+---@param contents string | nil
+---@param file_name string
+function writeFile(contents, file_name)
+  -- Force resolve file name
+  file_name = quarto.utils.resolve_path(file_name) 
+
+  -- Open the file in write mode
+  local file = io.open(file_name, "w")
+  
+  -- Check if the file was opened successfully
+  if not file then
+    quarto.log.error("Unable to open file for writing at '" .. file_name .. "'")
+  end
+
+  -- Write contents to the file
+  file:write(contents .. "\n")
+    
+  -- Close the file
+  file:close()
+end
+
+--- Write a serviceworker file for webR to disk
+local function writeWebRServiceWorker()
+  local contents = "importScripts('" .. baseUrl .. "webr-serviceworker.js');"
+  writeFile(contents, "webr-serviceworker.js")
+end
+
+--- Write a worker file for webR to disk
+local function writeWebRWorker()
+  local contents = "importScripts('" .. baseUrl .. "webr-worker.js');"
+  writeFile(contents, "webr-worker.js")
+end
 
 --- Parse the different webr options set in the YAML frontmatter, e.g.
 ---
@@ -213,6 +246,20 @@ function setWebRInitializationOptions(meta)
     end
   end
 
+  
+  -- The base URL used for downloading R WebAssembly binaries 
+  -- https://webr.r-wasm.org/[version]/webr.mjs
+  -- Documentation:
+  -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
+  if isVariablePopulated(webr["version"]) then
+    baseVersionWebR = pandoc.utils.stringify(webr["version"])
+  end
+
+  if baseVersionWebR == "latest" then
+    baseUrl = baseUrl .. "latest/"
+  else 
+    baseUrl = baseUrl .. "v" .. baseVersionWebR .. "/"
+  end
 
   -- The base URL used for downloading R WebAssembly binaries 
   -- https://webr.r-wasm.org/[version]/webr.mjs
@@ -220,6 +267,9 @@ function setWebRInitializationOptions(meta)
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
   if isVariablePopulated(webr["base-url"]) then
     baseUrl = pandoc.utils.stringify(webr["base-url"])
+    if isVariablePopulated(webr["version"]) then
+      quarto.log.warning("Please do not specify both `base-url` and `version`. Using the `base-url` value to obtain webR.")
+    end 
   end
 
   -- The communication channel mode webR uses to connect R with the web browser 
@@ -492,17 +542,20 @@ local function ensureWebRSetup()
   if hasServiceWorkerFiles then 
     -- Copy the two web workers into the directory
     -- https://quarto.org/docs/extensions/lua-api.html#dependencies
+    
+    -- Dynamically create the webr worker and serviceworker when needed.
+    writeWebRWorker() 
+    writeWebRServiceWorker()
+    
     quarto.doc.add_html_dependency({
       name = "webr-worker",
       version = baseVersionWebR,
-      seviceworkers = {"webr-worker.js"}, -- Kept to avoid error text.
       serviceworkers = {"webr-worker.js"}
     })
 
     quarto.doc.add_html_dependency({
       name = "webr-serviceworker",
       version = baseVersionWebR,
-      seviceworkers = {"webr-serviceworker.js"}, -- Kept to avoid error text.
       serviceworkers = {"webr-serviceworker.js"}
     })
   end
