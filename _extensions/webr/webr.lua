@@ -247,8 +247,8 @@ function setWebRInitializationOptions(meta)
   end
 
   
-  -- The base URL used for downloading R WebAssembly binaries 
-  -- https://webr.r-wasm.org/[version]/webr.mjs
+  -- The version number used to access the webr.mjs on the baseURL 
+  -- https://webr.r-wasm.org/v[version]/webr.mjs
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
   if isVariablePopulated(webr["version"]) then
