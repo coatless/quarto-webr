@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","autorun":"false","context":"interactive","fig-cap":"","editor-max-height":"","output":"true","comment":"","out-width":"700px","warning":"true","message":"true","out-height":"","classes":"","read-only":"false","label":"unnamed-chunk-1","results":"markup","editor-font-scale":"1","dpi":72},"code":"library(\"ggplot2\")\n\nggplot()","id":1}];
+globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","editor-quick-suggestions":"false","warning":"true","read-only":"false","fig-width":7,"results":"markup","editor-font-scale":"1","editor-max-height":"","fig-cap":"","label":"unnamed-chunk-1","editor-word-wrap":"true","output":"true","message":"true","autorun":"false","classes":"","dpi":72,"context":"interactive","out-height":"","comment":"","fig-height":5},"code":"library(\"ggplot2\")\n\nggplot()","id":1}];
 
 </script>
 <script type="module">
@@ -1893,7 +1893,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"dpi":72,"classes":"","message":"true","out-height":"","read-only":"false","autorun":"true","fig-height":5,"out-width":"700px","output":"true","editor-quick-suggestions":"false","fig-width":7,"editor-max-height":"","comment":"","warning":"true","fig-cap":"","results":"markup","context":"setup","editor-font-scale":"1","label":"unnamed-chunk-1"},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"dpi":72,"classes":"","message":"true","out-height":"","read-only":"false","autorun":"false","fig-height":5,"out-width":"700px","output":"true","editor-quick-suggestions":"false","fig-width":7,"editor-max-height":"","comment":"","warning":"true","fig-cap":"","results":"markup","context":"interactive","editor-font-scale":"1","label":"unnamed-chunk-2"},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"options":{"read-only":"false","fig-width":7,"editor-font-scale":"1","dpi":72,"out-height":"","warning":"true","classes":"","label":"unnamed-chunk-1","fig-height":5,"autorun":"true","fig-cap":"","out-width":"700px","comment":"","output":"true","message":"true","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"setup","editor-max-height":""},"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"options":{"read-only":"false","fig-width":7,"editor-font-scale":"1","dpi":72,"out-height":"","warning":"true","classes":"","label":"unnamed-chunk-2","fig-height":5,"autorun":"false","fig-cap":"","out-width":"700px","comment":"","output":"true","message":"true","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"interactive","editor-max-height":""},"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

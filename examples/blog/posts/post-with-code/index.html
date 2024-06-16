@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"classes":"","fig-cap":"","warning":"true","out-width":"700px","message":"true","output":"true","label":"unnamed-chunk-1","autorun":"false","editor-font-scale":"1","context":"interactive","fig-height":5,"dpi":72,"fig-width":7,"editor-quick-suggestions":"false","results":"markup","out-height":"","read-only":"false","comment":"","editor-max-height":""},"id":1,"code":"print(\"Hello blog Quarto world!\")"}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive","message":"true","output":"true","label":"unnamed-chunk-1","editor-font-scale":"1","editor-max-height":"","read-only":"false","autorun":"false","classes":"","comment":"","dpi":72,"editor-quick-suggestions":"false","editor-word-wrap":"true","results":"markup","fig-height":5,"out-width":"700px","out-height":"","fig-width":7,"warning":"true","fig-cap":""},"id":1,"code":"print(\"Hello blog Quarto world!\")"}];
 
 </script>
 <script type="module">
@@ -1716,7 +1716,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

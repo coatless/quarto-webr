@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")","options":{"comment":"","message":"true","fig-cap":"","autorun":"true","fig-width":7,"context":"interactive","dpi":72,"editor-font-scale":"1","fig-height":5,"results":"markup","out-height":"","editor-quick-suggestions":"false","warning":"true","editor-max-height":"","read-only":"false","classes":"","out-width":"700px","output":"true","label":"unnamed-chunk-1"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","label":"unnamed-chunk-1","editor-font-scale":"1","comment":"","context":"interactive","warning":"true","fig-cap":"","autorun":"true","read-only":"false","classes":"","message":"true","editor-word-wrap":"true","out-height":"","results":"markup","fig-height":5,"dpi":72,"fig-width":7,"out-width":"700px","editor-max-height":"","editor-quick-suggestions":"false"},"code":"cat(\"Display letters: \")\nprint(letters[1:5])\n\nplot(1:5)\n\nwarning(\"This is a warning message!\")\n\nstop(\"This is a hard error message!\")"}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

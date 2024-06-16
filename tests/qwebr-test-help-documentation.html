@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"?mean","options":{"out-width":"700px","output":"true","comment":"","results":"markup","autorun":"false","editor-quick-suggestions":"false","fig-height":5,"editor-max-height":"","out-height":"","label":"unnamed-chunk-1","editor-font-scale":"1","fig-cap":"","warning":"true","message":"true","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7},"id":1},{"code":"?sd","options":{"out-width":"700px","output":"true","comment":"","results":"markup","autorun":"true","editor-quick-suggestions":"false","fig-height":5,"editor-max-height":"","out-height":"","label":"unnamed-chunk-2","editor-font-scale":"1","fig-cap":"","warning":"true","message":"true","classes":"","read-only":"false","context":"output","dpi":72,"fig-width":7},"id":2}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"?mean","options":{"fig-height":5,"output":"true","context":"interactive","message":"true","fig-width":7,"label":"unnamed-chunk-1","out-width":"700px","classes":"","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","out-height":"","warning":"true","fig-cap":"","comment":"","editor-quick-suggestions":"false","autorun":"false","dpi":72,"editor-max-height":"","read-only":"false"}},{"id":2,"code":"?sd","options":{"fig-height":5,"output":"true","context":"output","message":"true","fig-width":7,"label":"unnamed-chunk-2","out-width":"700px","classes":"","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","out-height":"","warning":"true","fig-cap":"","comment":"","editor-quick-suggestions":"false","autorun":"true","dpi":72,"editor-max-height":"","read-only":"false"}}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

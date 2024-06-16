@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"-3 + 5\n\nutils::packageVersion(\"webr\")\n\nprint(\"Hello service worker model!\")","id":1,"options":{"fig-width":7,"editor-max-height":"","fig-cap":"","comment":"","classes":"","message":"true","editor-font-scale":"1","warning":"true","read-only":"false","fig-height":5,"autorun":"true","out-width":"700px","dpi":72,"results":"markup","context":"interactive","label":"unnamed-chunk-1","output":"true","out-height":"","editor-quick-suggestions":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"-3 + 5\n\nutils::packageVersion(\"webr\")\n\nprint(\"Hello service worker model!\")","options":{"editor-quick-suggestions":"false","context":"interactive","dpi":72,"results":"markup","out-width":"700px","classes":"","read-only":"false","output":"true","editor-font-scale":"1","out-height":"","fig-cap":"","message":"true","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-1","warning":"true","comment":"","fig-width":7,"editor-word-wrap":"true","autorun":"true"},"id":1}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

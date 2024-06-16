@@ -392,7 +392,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr","options":{"read-only":"false","context":"interactive","editor-quick-suggestions":"false","classes":"","fig-cap":"","dpi":72,"editor-font-scale":"1","autorun":"false","fig-width":7,"out-width":"700px","results":"markup","label":"unnamed-chunk-1","message":"true","output":"true","comment":"","warning":"true","out-height":"","editor-max-height":"","fig-height":5},"id":1}];
+globalThis.qwebrCellDetails = [{"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr","id":1,"options":{"fig-width":7,"editor-word-wrap":"true","message":"true","classes":"","output":"true","comment":"","read-only":"false","autorun":"false","context":"interactive","warning":"true","label":"unnamed-chunk-1","fig-height":5,"dpi":72,"editor-max-height":"","fig-cap":"","results":"markup","out-width":"700px","out-height":"","editor-font-scale":"1","editor-quick-suggestions":"false"}}];
 
 </script>
 <script type="module">
@@ -1932,7 +1932,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

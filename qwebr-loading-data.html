@@ -394,7 +394,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"results":"markup","out-width":"700px","editor-max-height":"","warning":"true","editor-font-scale":"1","message":"true","dpi":72,"comment":"","out-height":"","context":"interactive","fig-height":5,"editor-quick-suggestions":"false","output":"true","read-only":"false","classes":"","autorun":"true","label":"unnamed-chunk-1","fig-cap":""},"id":1,"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
+globalThis.qwebrCellDetails = [{"options":{"editor-font-scale":"1","warning":"true","label":"unnamed-chunk-1","editor-max-height":"","results":"markup","autorun":"true","output":"true","fig-cap":"","classes":"","dpi":72,"fig-height":5,"comment":"","fig-width":7,"read-only":"false","out-width":"700px","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false","message":"true","context":"interactive"},"id":1,"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
 
 </script>
 <script type="module">
@@ -1942,7 +1942,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

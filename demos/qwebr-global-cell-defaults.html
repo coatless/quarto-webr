@@ -392,7 +392,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","warning":"true","message":"true","fig-cap":"","out-height":"","context":"interactive","editor-max-height":"","editor-font-scale":"1","out-width":"100%","read-only":"true","fig-width":7,"editor-quick-suggestions":"false","output":"true","dpi":72,"comment":"","label":"unnamed-chunk-1","classes":"","fig-height":5,"autorun":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)"},{"id":2,"options":{"results":"markup","warning":"true","message":"true","fig-cap":"","out-height":"","context":"interactive","editor-max-height":"","editor-font-scale":"1","out-width":"100%","read-only":"false","fig-width":7,"editor-quick-suggestions":"false","output":"true","dpi":72,"comment":"","label":"unnamed-chunk-2","classes":"","fig-height":5,"autorun":"true"},"code":"plot(fit)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)","options":{"label":"unnamed-chunk-1","editor-quick-suggestions":"false","out-height":"","editor-font-scale":"1","results":"markup","classes":"","read-only":"true","editor-max-height":"","output":"true","fig-height":5,"message":"true","comment":"","editor-word-wrap":"true","warning":"true","fig-width":7,"autorun":"true","context":"interactive","out-width":"100%","fig-cap":"","dpi":72}},{"id":2,"code":"plot(fit)","options":{"label":"unnamed-chunk-2","editor-quick-suggestions":"false","out-height":"","editor-font-scale":"1","results":"markup","classes":"","read-only":"false","editor-max-height":"","output":"true","fig-height":5,"message":"true","comment":"","editor-word-wrap":"true","warning":"true","fig-width":7,"autorun":"true","context":"interactive","out-width":"100%","fig-cap":"","dpi":72}}];
 
 </script>
 <script type="module">
@@ -1932,7 +1932,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

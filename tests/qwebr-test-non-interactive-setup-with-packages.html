@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"message":"true","fig-width":7,"warning":"true","comment":"","fig-height":5,"fig-cap":"","output":"true","out-height":"","dpi":72,"out-width":"700px","classes":"","context":"setup","editor-font-scale":"1","read-only":"false","editor-quick-suggestions":"false","results":"markup","autorun":"true","editor-max-height":"","label":"spike-data"}},{"code":"new_mtcars","id":2,"options":{"message":"true","fig-width":7,"warning":"true","comment":"","fig-height":5,"fig-cap":"","output":"true","out-height":"","dpi":72,"out-width":"700px","classes":"","context":"interactive","editor-font-scale":"1","read-only":"false","editor-quick-suggestions":"false","results":"markup","autorun":"false","editor-max-height":"","label":"spike-data"}}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","comment":"","autorun":"true","fig-cap":"","editor-word-wrap":"true","warning":"true","classes":"","message":"true","results":"markup","context":"setup","editor-max-height":"","out-height":"","fig-height":5,"read-only":"false","out-width":"700px","dpi":72,"label":"spike-data","fig-width":7,"editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"output":"true","comment":"","autorun":"false","fig-cap":"","editor-word-wrap":"true","warning":"true","classes":"","message":"true","results":"markup","context":"interactive","editor-max-height":"","out-height":"","fig-height":5,"read-only":"false","out-width":"700px","dpi":72,"label":"spike-data","fig-width":7,"editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"new_mtcars","id":2}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

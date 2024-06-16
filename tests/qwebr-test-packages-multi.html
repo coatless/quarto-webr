@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"classes":"","autorun":"false","results":"markup","editor-quick-suggestions":"false","output":"true","context":"interactive","out-height":"","comment":"","dpi":72,"fig-cap":"","editor-font-scale":"1","read-only":"false","message":"true","out-width":"700px","editor-max-height":"","warning":"true","fig-height":5,"label":"unnamed-chunk-1"},"code":"ggplot()"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"ggplot()","options":{"editor-font-scale":"1","output":"true","out-width":"700px","comment":"","read-only":"false","fig-height":5,"label":"unnamed-chunk-1","results":"markup","message":"true","editor-word-wrap":"true","warning":"true","out-height":"","classes":"","dpi":72,"fig-width":7,"autorun":"false","fig-cap":"","context":"interactive","editor-quick-suggestions":"false","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

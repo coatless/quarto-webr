@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","options":{"dpi":72,"context":"interactive","editor-quick-suggestions":"false","autorun":"false","fig-height":5,"fig-cap":"","out-height":"","editor-font-scale":"1","message":"true","warning":"true","label":"unnamed-chunk-1","out-width":"700px","classes":"","read-only":"false","output":"true","comment":"","fig-width":7,"editor-max-height":"","results":"markup"}}];
+globalThis.qwebrCellDetails = [{"options":{"results":"markup","label":"unnamed-chunk-1","output":"true","autorun":"false","fig-width":7,"editor-font-scale":"1","editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","out-height":"","out-width":"700px","editor-max-height":"","context":"interactive","classes":"","warning":"true","message":"true","fig-height":5,"read-only":"false","dpi":72,"fig-cap":""},"id":1,"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)"}];
 
 </script>
 <script type="module">
@@ -1887,7 +1887,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts

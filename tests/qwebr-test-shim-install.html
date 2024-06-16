@@ -349,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","fig-width":7,"comment":"","autorun":"true","editor-max-height":"","fig-height":5,"results":"markup","out-height":"","dpi":72,"message":"true","classes":"","label":"unnamed-chunk-1","out-width":"700px","output":"true","context":"output","editor-font-scale":"1","read-only":"false","fig-cap":"","editor-quick-suggestions":"false"},"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
+globalThis.qwebrCellDetails = [{"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","options":{"read-only":"false","message":"true","results":"markup","fig-height":5,"editor-word-wrap":"true","warning":"true","editor-font-scale":"1","dpi":72,"out-height":"","editor-max-height":"","comment":"","autorun":"true","fig-cap":"","classes":"","out-width":"700px","context":"output","editor-quick-suggestions":"false","output":"true","fig-width":7,"label":"unnamed-chunk-1"},"id":1}];
 
 </script>
 <script type="module">
@@ -1878,7 +1878,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
       renderLineHighlight: "none",      // Disable current line highlighting
       hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
       readOnly: qwebrOptions['read-only'] ?? false,
-      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
     });
 
     // Store the official counter ID to be used in keyboard shortcuts
