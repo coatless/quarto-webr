@@ -24,6 +24,13 @@ globalThis.qwebrPrefixComment = function(x, comment) {
     return `${comment}${x}`;
 };
 
+// Function to store the code in the history
+globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
+    qwebrRCommandHistory.push(
+        `# Ran code in ${options.label} at ${new Date().toLocaleString()} ----\n${codeToRun}`
+    );
+}
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -112,6 +119,9 @@ globalThis.qwebrComputeEngine = async function(
         // Disable generating graphics
         captureOutputOptions.captureGraphics = false;
     }
+
+    // Store the code to run in history
+    qwebrLogCodeToHistory(codeToRun, options);
 
     // Setup a webR canvas by making a namespace call into the {webr} package
     // Evaluate the R code
