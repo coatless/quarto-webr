@@ -25,6 +25,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs' "Tools" menu. ([#148](https://github.com/coatless/quarto-webr/issues/148))
 
+- Added a mouse over button to allow for downloading an image when generated. ([#147](https://github.com/coatless/quarto-webr/issues/147))
+
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
 - Added `version` document-level option to specify what version of webR should be used. ([#211](https://github.com/coatless/quarto-webr/issues/211))

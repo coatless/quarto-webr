@@ -31,6 +31,27 @@ globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
     );
 }
 
+// Function to attach a download button onto the canvas
+// allowing the user to download the image.
+function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+    // Create the download button
+    const downloadButton = document.createElement('button');
+    downloadButton.className = 'qwebr-canvas-image-download-btn';
+    downloadButton.textContent = 'Download Image';
+    canvasContainer.appendChild(downloadButton);
+
+    // Trigger a download of the image when the button is clicked
+    downloadButton.addEventListener('click', function() {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'qwebr-canvas-image.png';
+        link.click();
+    });
+  }
+  
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -198,13 +219,19 @@ globalThis.qwebrComputeEngine = async function(
 
         // Determine if we have graphs to display
         if (result.images.length > 0) {
+
             // Create figure element
-            const figureElement = document.createElement('figure');
+            const figureElement = document.createElement("figure");
+            figureElement.className = "qwebr-canvas-image";
 
             // Place each rendered graphic onto a canvas element
             result.images.forEach((img) => {
+
                 // Construct canvas for object
                 const canvas = document.createElement("canvas");
+
+                // Add an image download button
+                qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                 // Set canvas size to image
                 canvas.width = img.width;
@@ -226,8 +253,9 @@ globalThis.qwebrComputeEngine = async function(
           
                 // Append canvas to figure output area
                 figureElement.appendChild(canvas);
-            });
 
+            });
+            
             if (options['fig-cap']) {
                 // Create figcaption element
                 const figcaptionElement = document.createElement('figcaption');
@@ -235,8 +263,9 @@ globalThis.qwebrComputeEngine = async function(
                 // Append figcaption to figure
                 figureElement.appendChild(figcaptionElement);    
             }
-
+        
             elements.outputGraphDiv.appendChild(figureElement);
+
         }
 
         // Display the pager data
