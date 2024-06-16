@@ -29,6 +29,21 @@ function populateCommandHistoryModal() {
     document.getElementById("qwebr-command-history-contents").innerHTML = qwebrFormatRHistory() || "No commands have been executed yet.";
 }
 
+// Function to format the current date and time to
+// a string with the format YYYY-MM-DD-HH-MM-SS
+function formatDateTime() {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+}
+
 
 // Function to convert document title with datetime to a safe filename
 function safeFileName() {
@@ -36,10 +51,10 @@ function safeFileName() {
     let pageTitle = document.title;
 
     // Combine the current page title with the current date and time
-    let pageNameWithDateTime = `Rhistory-${pageTitle}-${new Date().toISOString()}`;
+    let pageNameWithDateTime = `Rhistory-${pageTitle}-${formatDateTime()}`;
 
     // Replace unsafe characters with safe alternatives
-    let safeFilename = decodeURI(pageNameWithDateTime);
+    let safeFilename = pageNameWithDateTime.replace(/[\\/:\*\?! "<>\|]/g, '-');
 
     return safeFilename;
 }
