@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.6: ??????? (??-??-??)
+# 0.4.2-dev.7: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
@@ -23,10 +23,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Upgraded to webR v0.3.3 ([#196](https://github.com/coatless/quarto-webr/pulls/196))
 
-- Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
-
-- Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
-
+- Added ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs' "Tools" menu. ([#148](https://github.com/coatless/quarto-webr/issues/148))
 
 - Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
 
@@ -47,6 +44,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Changes
 
+- Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
+- Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
 - Added [Lua type annotations](https://luals.github.io/wiki/annotations/) and function documentation into the Quarto extensions' Lua filter. ([#190](https://github.com/coatless/quarto-webr/pulls/190))
 - Avoided distributing `webr-serviceworker.js` and `webr-worker.js` when `channel-type` is not `service-worker`. ([#210](https://github.com/coatless/quarto-webr/pulls/210))
 - Dynamically write `webr-serviceworker.js` and `webr-worker.js` files based on the version chosen ([#212](https://github.com/coatless/quarto-webr/pulls/212))
