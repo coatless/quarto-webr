@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"label":"unnamed-chunk-1","warning":"true","autorun":"true","read-only":"false","comment":"","out-height":"","fig-height":5,"fig-width":7,"results":"markup","classes":"","message":"true","editor-max-height":"","fig-cap":"","editor-quick-suggestions":"false","output":"true","dpi":72,"editor-font-scale":"1","out-width":"700px","context":"output"},"id":1,"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()"}];
+globalThis.qwebrCellDetails = [{"code":"\nprint(paste0(\"Check if we are in webR with non-CRAN package demorwasmbinary: \", demorwasmbinary::in_webr()))\n\nprint(\"Creating a graph with a package on CRAN\")\nvisualize::visualize.norm()","id":1,"options":{"fig-cap":"","results":"markup","read-only":"false","context":"output","out-height":"","label":"unnamed-chunk-1","autorun":"true","message":"true","output":"true","out-width":"700px","warning":"true","fig-width":7,"dpi":72,"editor-max-height":"","classes":"","comment":"","editor-font-scale":"1","editor-quick-suggestions":"false","fig-height":5}}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

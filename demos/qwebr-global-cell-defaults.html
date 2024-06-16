@@ -368,7 +368,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"warning":"true","output":"true","dpi":72,"context":"interactive","editor-max-height":"","fig-height":5,"results":"markup","out-height":"","out-width":"100%","label":"unnamed-chunk-1","fig-cap":"","classes":"","message":"true","editor-quick-suggestions":"false","comment":"","editor-font-scale":"1","autorun":"true","read-only":"true"},"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)"},{"id":2,"options":{"fig-width":7,"warning":"true","output":"true","dpi":72,"context":"interactive","editor-max-height":"","fig-height":5,"results":"markup","out-height":"","out-width":"100%","label":"unnamed-chunk-2","fig-cap":"","classes":"","message":"true","editor-quick-suggestions":"false","comment":"","editor-font-scale":"1","autorun":"true","read-only":"false"},"code":"plot(fit)"}];
+globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ am, data = mtcars)\nsummary(fit)","id":1,"options":{"editor-quick-suggestions":"false","classes":"","comment":"","fig-height":5,"fig-width":7,"read-only":"true","dpi":72,"message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-1","editor-max-height":"","out-height":"","context":"interactive","warning":"true","results":"markup","autorun":"true","out-width":"100%","fig-cap":""}},{"code":"plot(fit)","id":2,"options":{"editor-quick-suggestions":"false","classes":"","comment":"","fig-height":5,"fig-width":7,"read-only":"false","dpi":72,"message":"true","output":"true","editor-font-scale":"1","label":"unnamed-chunk-2","editor-max-height":"","out-height":"","context":"interactive","warning":"true","results":"markup","autorun":"true","out-width":"100%","fig-cap":""}}];
 
 </script>
 <script type="module">
@@ -723,6 +723,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

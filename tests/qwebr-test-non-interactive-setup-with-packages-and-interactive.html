@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-font-scale":"1","label":"unnamed-chunk-1","dpi":72,"fig-width":7,"message":"true","context":"setup","results":"markup","comment":"","fig-height":5,"read-only":"false","out-height":"","editor-max-height":"","out-width":"700px","editor-quick-suggestions":"false","classes":"","autorun":"true","output":"true","warning":"true","fig-cap":""},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"editor-font-scale":"1","label":"unnamed-chunk-2","dpi":72,"fig-width":7,"message":"true","context":"interactive","results":"markup","comment":"","fig-height":5,"read-only":"false","out-height":"","editor-max-height":"","out-width":"700px","editor-quick-suggestions":"false","classes":"","autorun":"false","output":"true","warning":"true","fig-cap":""},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"warning":"true","comment":"","editor-font-scale":"1","message":"true","classes":"","out-height":"","results":"markup","autorun":"true","output":"true","fig-cap":"","dpi":72,"fig-width":7,"fig-height":5,"label":"unnamed-chunk-1","context":"setup","read-only":"false","out-width":"700px","editor-max-height":"","editor-quick-suggestions":"false"}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"warning":"true","comment":"","editor-font-scale":"1","message":"true","classes":"","out-height":"","results":"markup","autorun":"false","output":"true","fig-cap":"","dpi":72,"fig-width":7,"fig-height":5,"label":"unnamed-chunk-2","context":"interactive","read-only":"false","out-width":"700px","editor-max-height":"","editor-quick-suggestions":"false"}}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

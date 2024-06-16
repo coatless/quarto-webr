@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"results":"markup","warning":"true","read-only":"false","out-width":"700px","label":"unnamed-chunk-1","classes":"","comment":"","message":"true","editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false","dpi":72,"fig-cap":"","editor-max-height":"","fig-width":7,"context":"output","autorun":"true","fig-height":5,"output":"true"},"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
+globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","editor-quick-suggestions":"false","fig-width":7,"results":"markup","dpi":72,"out-height":"","label":"unnamed-chunk-1","editor-max-height":"","output":"true","read-only":"false","out-width":"700px","editor-font-scale":"1","fig-height":5,"warning":"true","comment":"","context":"output","autorun":"true","message":"true","classes":""},"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

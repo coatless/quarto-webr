@@ -334,7 +334,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-max-height":"","autorun":"false","output":"true","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-1","fig-cap":"","editor-font-scale":"1","fig-width":7,"fig-height":5,"comment":"","read-only":"false","dpi":72,"classes":"","warning":"true","message":"true","results":"markup","out-height":"","context":"interactive"},"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds"},{"id":2,"options":{"editor-max-height":"","autorun":"false","output":"true","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-2","fig-cap":"","editor-font-scale":"1","fig-width":7,"fig-height":5,"comment":"","read-only":"false","dpi":72,"classes":"","warning":"true","message":"true","results":"markup","out-height":"","context":"interactive"},"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds"},{"id":3,"options":{"editor-max-height":"","autorun":"false","output":"true","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-3","fig-cap":"","editor-font-scale":"1","fig-width":7,"fig-height":5,"comment":"","read-only":"false","dpi":72,"classes":"","warning":"true","message":"true","results":"markup","out-height":"","context":"interactive"},"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds"}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello {quarto-webr} world!\")\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-max-height":"","out-width":"700px","fig-width":7,"dpi":72,"results":"markup","fig-height":5,"fig-cap":"","comment":"","autorun":"false","classes":"","message":"true","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","warning":"true","label":"unnamed-chunk-1","out-height":""},"id":1},{"code":"-3 + 5\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-max-height":"","out-width":"700px","fig-width":7,"dpi":72,"results":"markup","fig-height":5,"fig-cap":"","comment":"","autorun":"false","classes":"","message":"true","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","warning":"true","label":"unnamed-chunk-2","out-height":""},"id":2},{"code":"?mean\nSys.sleep(5) # Sleep for 5 seconds","options":{"editor-max-height":"","out-width":"700px","fig-width":7,"dpi":72,"results":"markup","fig-height":5,"fig-cap":"","comment":"","autorun":"false","classes":"","message":"true","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","warning":"true","label":"unnamed-chunk-3","out-height":""},"id":3}];
 
 </script>
 <script type="module">
@@ -689,6 +689,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

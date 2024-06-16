@@ -370,7 +370,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","fig-width":7,"dpi":72,"output":"true","editor-max-height":"","warning":"true","editor-quick-suggestions":"false","autorun":"false","message":"true","editor-font-scale":"1","comment":"","context":"interactive","results":"markup","out-width":"700px","fig-height":5,"read-only":"false","classes":"","out-height":"","label":"unnamed-chunk-1"},"id":1,"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","read-only":"false","warning":"true","fig-height":5,"context":"interactive","comment":"","dpi":72,"editor-max-height":"","autorun":"false","out-width":"700px","message":"true","results":"markup","label":"unnamed-chunk-1","editor-font-scale":"1","fig-width":7,"classes":"","fig-cap":"","editor-quick-suggestions":"false","out-height":""},"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
 
 </script>
 <script type="module">
@@ -725,6 +725,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

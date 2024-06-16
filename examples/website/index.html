@@ -323,7 +323,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","options":{"comment":"","warning":"true","out-height":"","fig-cap":"","classes":"","output":"true","fig-width":7,"dpi":72,"message":"true","fig-height":5,"editor-quick-suggestions":"false","editor-font-scale":"1","label":"unnamed-chunk-1","autorun":"false","editor-max-height":"","results":"markup","context":"interactive","read-only":"false","out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"code":"print(\"Hello there! Welcome to a quarto-webR powered website!\")","id":1,"options":{"label":"unnamed-chunk-1","fig-cap":"","fig-height":5,"warning":"true","comment":"","out-width":"700px","results":"markup","output":"true","classes":"","fig-width":7,"autorun":"false","dpi":72,"editor-quick-suggestions":"false","message":"true","context":"interactive","read-only":"false","out-height":"","editor-font-scale":"1","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -678,6 +678,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

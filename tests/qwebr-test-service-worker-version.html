@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"-3 + 5\n\nutils::packageVersion(\"webr\")\n\nprint(\"Hello service worker model!\")","options":{"classes":"","comment":"","out-width":"700px","output":"true","fig-width":7,"editor-font-scale":"1","fig-height":5,"context":"interactive","autorun":"true","warning":"true","dpi":72,"read-only":"false","out-height":"","message":"true","label":"unnamed-chunk-1","results":"markup","fig-cap":"","editor-max-height":"","editor-quick-suggestions":"false"},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"fig-height":5,"comment":"","message":"true","results":"markup","warning":"true","editor-max-height":"","context":"interactive","label":"unnamed-chunk-1","editor-font-scale":"1","classes":"","read-only":"false","out-height":"","autorun":"true","dpi":72,"editor-quick-suggestions":"false","output":"true","fig-cap":"","out-width":"700px"},"id":1,"code":"-3 + 5\n\nutils::packageVersion(\"webr\")\n\nprint(\"Hello service worker model!\")"}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup","read-only":"false","fig-cap":"","editor-max-height":"","fig-height":5,"out-height":"","fig-width":7,"autorun":"true","editor-font-scale":"1","comment":"","message":"true","editor-quick-suggestions":"false","dpi":72,"results":"markup","output":"true","label":"spike-data","out-width":"700px","classes":"","warning":"true"},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"context":"interactive","read-only":"false","fig-cap":"","editor-max-height":"","fig-height":5,"out-height":"","fig-width":7,"autorun":"false","editor-font-scale":"1","comment":"","message":"true","editor-quick-suggestions":"false","dpi":72,"results":"markup","output":"true","label":"spike-data","out-width":"700px","classes":"","warning":"true"},"id":2,"code":"new_mtcars"}];
+globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","comment":"","label":"spike-data","results":"markup","dpi":72,"editor-quick-suggestions":"false","editor-font-scale":"1","editor-max-height":"","classes":"","output":"true","out-height":"","fig-height":5,"fig-width":7,"context":"setup","autorun":"true","read-only":"false","warning":"true","out-width":"700px","message":"true"},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"fig-cap":"","comment":"","label":"spike-data","results":"markup","dpi":72,"editor-quick-suggestions":"false","editor-font-scale":"1","editor-max-height":"","classes":"","output":"true","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","autorun":"false","read-only":"false","warning":"true","out-width":"700px","message":"true"},"code":"new_mtcars","id":2}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

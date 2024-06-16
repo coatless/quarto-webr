@@ -323,7 +323,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","id":1,"options":{"editor-font-scale":"1","classes":"","fig-height":5,"out-width":"700px","comment":"","output":"true","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","dpi":72,"message":"true","autorun":"false","read-only":"false","editor-max-height":"","results":"markup","label":"unnamed-chunk-1","out-height":"","context":"interactive","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(cyl, hwy))\np + geom_jitter(aes(colour = class))","options":{"comment":"","autorun":"false","out-width":"700px","editor-max-height":"","editor-font-scale":"1","out-height":"","output":"true","fig-height":5,"label":"unnamed-chunk-1","fig-cap":"","read-only":"false","fig-width":7,"editor-quick-suggestions":"false","message":"true","context":"interactive","warning":"true","dpi":72,"results":"markup","classes":""},"id":1}];
 
 </script>
 <script type="module">
@@ -678,6 +678,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

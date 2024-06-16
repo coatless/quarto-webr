@@ -334,7 +334,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","output":"true","classes":"","warning":"true","editor-quick-suggestions":"false","message":"true","fig-height":5,"out-width":"700px","label":"unnamed-chunk-1","editor-max-height":"","editor-font-scale":"1","comment":"","read-only":"false","dpi":72,"autorun":"false","fig-cap":"","fig-width":7,"out-height":"","context":"interactive"},"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)"}];
+globalThis.qwebrCellDetails = [{"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","options":{"read-only":"false","classes":"","label":"unnamed-chunk-1","context":"interactive","editor-quick-suggestions":"false","message":"true","comment":"","dpi":72,"editor-font-scale":"1","warning":"true","results":"markup","output":"true","fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","out-width":"700px","editor-max-height":"","out-height":""},"id":1}];
 
 </script>
 <script type="module">
@@ -689,6 +689,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

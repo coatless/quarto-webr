@@ -368,7 +368,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","editor-max-height":"","dpi":72,"comment":"","results":"markup","message":"true","fig-height":5,"output":"true","autorun":"false","warning":"true","label":"unnamed-chunk-1","read-only":"true","context":"interactive","editor-font-scale":"1","out-height":"","classes":""},"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","id":1},{"options":{"fig-width":7,"out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","editor-max-height":"","dpi":72,"comment":"","results":"markup","message":"true","fig-height":5,"output":"true","autorun":"true","warning":"true","label":"unnamed-chunk-2","read-only":"false","context":"interactive","editor-font-scale":"1","out-height":"","classes":""},"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","id":2},{"options":{"fig-width":7,"out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","editor-max-height":"","dpi":72,"comment":"","results":"markup","message":"true","fig-height":5,"output":"true","autorun":"true","warning":"true","label":"unnamed-chunk-3","read-only":"true","context":"interactive","editor-font-scale":"1","out-height":"","classes":""},"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","id":3}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","options":{"autorun":"false","read-only":"true","label":"unnamed-chunk-1","classes":"","warning":"true","out-height":"","out-width":"700px","fig-cap":"","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","comment":"","dpi":72,"fig-width":7,"message":"true","fig-height":5,"results":"markup","context":"interactive","editor-max-height":""}},{"id":2,"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","options":{"autorun":"true","read-only":"false","label":"unnamed-chunk-2","classes":"","warning":"true","out-height":"","out-width":"700px","fig-cap":"","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","comment":"","dpi":72,"fig-width":7,"message":"true","fig-height":5,"results":"markup","context":"interactive","editor-max-height":""}},{"id":3,"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","options":{"autorun":"true","read-only":"true","label":"unnamed-chunk-3","classes":"","warning":"true","out-height":"","out-width":"700px","fig-cap":"","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","comment":"","dpi":72,"fig-width":7,"message":"true","fig-height":5,"results":"markup","context":"interactive","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -723,6 +723,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

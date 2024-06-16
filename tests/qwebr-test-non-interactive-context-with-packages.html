@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng","id":1,"options":{"out-width":"700px","output":"true","editor-font-scale":"1","fig-cap":"","warning":"true","editor-quick-suggestions":"false","out-height":"","classes":"","dpi":72,"read-only":"false","fig-width":7,"label":"unnamed-chunk-1","comment":"","editor-max-height":"","message":"true","fig-height":5,"results":"markup","context":"output","autorun":"true"}},{"code":"g + aes(color = factor(cyl))","id":2,"options":{"out-width":"700px","output":"true","editor-font-scale":"1","fig-cap":"","warning":"true","editor-quick-suggestions":"false","out-height":"","classes":"","dpi":72,"read-only":"false","fig-width":7,"label":"unnamed-chunk-2","comment":"","editor-max-height":"","message":"true","fig-height":5,"results":"markup","context":"interactive","autorun":"false"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","dpi":72,"read-only":"false","output":"true","fig-height":5,"editor-max-height":"","editor-quick-suggestions":"false","comment":"","classes":"","out-width":"700px","autorun":"true","label":"unnamed-chunk-1","fig-width":7,"editor-font-scale":"1","results":"markup","context":"output","fig-cap":"","out-height":"","message":"true"},"code":"library(\"ggplot2\")\ng <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()\ng"},{"id":2,"options":{"warning":"true","dpi":72,"read-only":"false","output":"true","fig-height":5,"editor-max-height":"","editor-quick-suggestions":"false","comment":"","classes":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-2","fig-width":7,"editor-font-scale":"1","results":"markup","context":"interactive","fig-cap":"","out-height":"","message":"true"},"code":"g + aes(color = factor(cyl))"}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

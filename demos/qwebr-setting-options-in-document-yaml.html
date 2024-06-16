@@ -334,7 +334,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"library(\"ggplot2\")\n\nggplot()","options":{"label":"unnamed-chunk-1","fig-height":5,"context":"interactive","editor-quick-suggestions":"false","read-only":"false","warning":"true","message":"true","output":"true","autorun":"false","out-height":"","fig-width":7,"editor-font-scale":"1","editor-max-height":"","comment":"","fig-cap":"","dpi":72,"out-width":"700px","classes":"","results":"markup"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"library(\"ggplot2\")\n\nggplot()","options":{"message":"true","fig-height":5,"editor-max-height":"","comment":"","fig-width":7,"context":"interactive","fig-cap":"","output":"true","out-height":"","read-only":"false","results":"markup","classes":"","warning":"true","autorun":"false","label":"unnamed-chunk-1","out-width":"700px","dpi":72,"editor-font-scale":"1","editor-quick-suggestions":"false"}}];
 
 </script>
 <script type="module">
@@ -689,6 +689,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');

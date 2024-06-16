@@ -325,7 +325,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"ggplot()","options":{"label":"unnamed-chunk-1","out-height":"","autorun":"false","fig-height":5,"dpi":72,"editor-font-scale":"1","comment":"","warning":"true","out-width":"700px","read-only":"false","fig-cap":"","context":"interactive","results":"markup","fig-width":7,"editor-max-height":"","output":"true","classes":"","editor-quick-suggestions":"false","message":"true"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"ggplot()","options":{"dpi":72,"fig-cap":"","out-height":"","editor-quick-suggestions":"false","autorun":"false","fig-width":7,"label":"unnamed-chunk-1","comment":"","output":"true","editor-max-height":"","editor-font-scale":"1","read-only":"false","results":"markup","context":"interactive","fig-height":5,"warning":"true","message":"true","classes":"","out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -680,6 +680,9 @@ function qwebrCodeLinks() {
   if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
+    // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+    // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+    sidebar.className = 'sidebar margin-sidebar';
   } else {
     // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');
