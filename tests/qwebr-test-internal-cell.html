@@ -243,6 +243,30 @@ body.quarto-dark .qwebr-button:hover {
   text-decoration: none !important;
 }
 
+/* Styling to download image that is created */
+
+.qwebr-canvas-image {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.qwebr-canvas-image-download-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+figure:hover .qwebr-canvas-image-download-btn {
+  display: block;
+}
+
 /* Custom styling for RevealJS Presentations*/
 
 /* Reset the style of the interactive area */
@@ -325,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"1 + 1","id":1,"options":{"output":"true","results":"markup","out-width":"700px","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-1","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","context":"interactive","dpi":72,"editor-font-scale":"1","comment":"","autorun":"false","fig-cap":"","out-height":"","fig-width":7}},{"code":"1 + 1","id":2,"options":{"output":"true","results":"markup","out-width":"700px","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-2","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","context":"interactive","dpi":72,"editor-font-scale":"1","comment":"","autorun":"true","fig-cap":"","out-height":"","fig-width":7}},{"code":"1 + 1","id":3,"options":{"output":"true","results":"markup","out-width":"700px","read-only":"true","editor-max-height":"","message":"true","label":"unnamed-chunk-3","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","context":"interactive","dpi":72,"editor-font-scale":"1","comment":"","autorun":"true","fig-cap":"","out-height":"","fig-width":7}},{"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","id":4,"options":{"output":"true","results":"markup","out-width":"700px","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-4","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","context":"setup","dpi":72,"editor-font-scale":"1","comment":"","autorun":"true","fig-cap":"","out-height":"","fig-width":7}},{"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","id":5,"options":{"output":"true","results":"markup","out-width":"700px","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-5","editor-quick-suggestions":"false","fig-height":5,"warning":"true","classes":"","context":"output","dpi":72,"editor-font-scale":"1","comment":"","autorun":"true","fig-cap":"","out-height":"","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","label":"unnamed-chunk-1","results":"markup","editor-font-scale":"1","fig-cap":"","classes":"","context":"interactive","fig-width":7,"output":"true","editor-max-height":"","message":"true","autorun":"false","editor-quick-suggestions":"false","fig-height":5,"read-only":"false","warning":"true","dpi":72,"out-width":"700px","out-height":""},"code":"1 + 1"},{"id":2,"options":{"comment":"","label":"unnamed-chunk-2","results":"markup","editor-font-scale":"1","fig-cap":"","classes":"","context":"interactive","fig-width":7,"output":"true","editor-max-height":"","message":"true","autorun":"true","editor-quick-suggestions":"false","fig-height":5,"read-only":"false","warning":"true","dpi":72,"out-width":"700px","out-height":""},"code":"1 + 1"},{"id":3,"options":{"comment":"","label":"unnamed-chunk-3","results":"markup","editor-font-scale":"1","fig-cap":"","classes":"","context":"interactive","fig-width":7,"output":"true","editor-max-height":"","message":"true","autorun":"true","editor-quick-suggestions":"false","fig-height":5,"read-only":"true","warning":"true","dpi":72,"out-width":"700px","out-height":""},"code":"1 + 1"},{"id":4,"options":{"comment":"","label":"unnamed-chunk-4","results":"markup","editor-font-scale":"1","fig-cap":"","classes":"","context":"setup","fig-width":7,"output":"true","editor-max-height":"","message":"true","autorun":"true","editor-quick-suggestions":"false","fig-height":5,"read-only":"false","warning":"true","dpi":72,"out-width":"700px","out-height":""},"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"id":5,"options":{"comment":"","label":"unnamed-chunk-5","results":"markup","editor-font-scale":"1","fig-cap":"","classes":"","context":"output","fig-width":7,"output":"true","editor-max-height":"","message":"true","autorun":"true","editor-quick-suggestions":"false","fig-height":5,"read-only":"false","warning":"true","dpi":72,"out-width":"700px","out-height":""},"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
 
 </script>
 <script type="module">
@@ -1217,6 +1241,27 @@ globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
     );
 }
 
+// Function to attach a download button onto the canvas
+// allowing the user to download the image.
+function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+    // Create the download button
+    const downloadButton = document.createElement('button');
+    downloadButton.className = 'qwebr-canvas-image-download-btn';
+    downloadButton.textContent = 'Download Image';
+    canvasContainer.appendChild(downloadButton);
+
+    // Trigger a download of the image when the button is clicked
+    downloadButton.addEventListener('click', function() {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'qwebr-canvas-image.png';
+        link.click();
+    });
+  }
+  
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1384,13 +1429,19 @@ globalThis.qwebrComputeEngine = async function(
 
         // Determine if we have graphs to display
         if (result.images.length > 0) {
+
             // Create figure element
-            const figureElement = document.createElement('figure');
+            const figureElement = document.createElement("figure");
+            figureElement.className = "qwebr-canvas-image";
 
             // Place each rendered graphic onto a canvas element
             result.images.forEach((img) => {
+
                 // Construct canvas for object
                 const canvas = document.createElement("canvas");
+
+                // Add an image download button
+                qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                 // Set canvas size to image
                 canvas.width = img.width;
@@ -1412,8 +1463,9 @@ globalThis.qwebrComputeEngine = async function(
           
                 // Append canvas to figure output area
                 figureElement.appendChild(canvas);
-            });
 
+            });
+            
             if (options['fig-cap']) {
                 // Create figcaption element
                 const figcaptionElement = document.createElement('figcaption');
@@ -1421,8 +1473,9 @@ globalThis.qwebrComputeEngine = async function(
                 // Append figcaption to figure
                 figureElement.appendChild(figcaptionElement);    
             }
-
+        
             elements.outputGraphDiv.appendChild(figureElement);
+
         }
 
         // Display the pager data

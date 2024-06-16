@@ -494,6 +494,30 @@
     text-decoration: none !important;
   }
 
+  /* Styling to download image that is created */
+
+  .qwebr-canvas-image {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .qwebr-canvas-image-download-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  figure:hover .qwebr-canvas-image-download-btn {
+    display: block;
+  }
+
   /* Custom styling for RevealJS Presentations*/
 
   /* Reset the style of the interactive area */
@@ -576,7 +600,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"classes":"","editor-quick-suggestions":"false","out-height":"","context":"interactive","editor-font-scale":"0.5","dpi":72,"output":"true","warning":"true","fig-cap":"","results":"markup","message":"true","label":"unnamed-chunk-1","out-width":"700px","editor-max-height":"","fig-width":7,"autorun":"false","read-only":"false","fig-height":5,"comment":""},"id":1},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"classes":"","editor-quick-suggestions":"false","out-height":"","context":"interactive","editor-font-scale":"0.5","dpi":72,"output":"true","warning":"true","fig-cap":"","results":"markup","message":"true","label":"unnamed-chunk-2","out-width":"700px","editor-max-height":"","fig-width":7,"autorun":"false","read-only":"false","fig-height":5,"comment":""},"id":2},{"code":"message(\"Hello World!\")","options":{"classes":"","editor-quick-suggestions":"false","out-height":"","context":"interactive","editor-font-scale":"0.5","dpi":72,"output":"true","warning":"true","fig-cap":"","results":"markup","message":"true","label":"unnamed-chunk-3","out-width":"700px","editor-max-height":"","fig-width":7,"autorun":"false","read-only":"false","fig-height":5,"comment":""},"id":3},{"code":"2 + 3","options":{"classes":"","editor-quick-suggestions":"false","out-height":"","context":"interactive","editor-font-scale":"0.5","dpi":72,"output":"true","warning":"true","fig-cap":"","results":"markup","message":"true","label":"unnamed-chunk-4","out-width":"700px","editor-max-height":"","fig-width":7,"autorun":"false","read-only":"false","fig-height":5,"comment":""},"id":4}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-quick-suggestions":"false","output":"true","read-only":"false","out-width":"700px","fig-height":5,"warning":"true","message":"true","fig-cap":"","context":"interactive","editor-max-height":"","autorun":"false","editor-font-scale":"0.5","results":"markup","label":"unnamed-chunk-1","comment":"","classes":"","fig-width":7,"out-height":"","dpi":72},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"editor-quick-suggestions":"false","output":"true","read-only":"false","out-width":"700px","fig-height":5,"warning":"true","message":"true","fig-cap":"","context":"interactive","editor-max-height":"","autorun":"false","editor-font-scale":"0.5","results":"markup","label":"unnamed-chunk-2","comment":"","classes":"","fig-width":7,"out-height":"","dpi":72},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"},{"id":3,"options":{"editor-quick-suggestions":"false","output":"true","read-only":"false","out-width":"700px","fig-height":5,"warning":"true","message":"true","fig-cap":"","context":"interactive","editor-max-height":"","autorun":"false","editor-font-scale":"0.5","results":"markup","label":"unnamed-chunk-3","comment":"","classes":"","fig-width":7,"out-height":"","dpi":72},"code":"message(\"Hello World!\")"},{"id":4,"options":{"editor-quick-suggestions":"false","output":"true","read-only":"false","out-width":"700px","fig-height":5,"warning":"true","message":"true","fig-cap":"","context":"interactive","editor-max-height":"","autorun":"false","editor-font-scale":"0.5","results":"markup","label":"unnamed-chunk-4","comment":"","classes":"","fig-width":7,"out-height":"","dpi":72},"code":"2 + 3"}];
 
   </script>
   <script type="module">
@@ -1468,6 +1492,27 @@
       );
   }
 
+  // Function to attach a download button onto the canvas
+  // allowing the user to download the image.
+  function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+      // Create the download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'qwebr-canvas-image-download-btn';
+      downloadButton.textContent = 'Download Image';
+      canvasContainer.appendChild(downloadButton);
+
+      // Trigger a download of the image when the button is clicked
+      downloadButton.addEventListener('click', function() {
+          const image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = image;
+          link.download = 'qwebr-canvas-image.png';
+          link.click();
+      });
+    }
+    
+
   // Function to parse the pager results
   globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1635,13 +1680,19 @@
 
           // Determine if we have graphs to display
           if (result.images.length > 0) {
+
               // Create figure element
-              const figureElement = document.createElement('figure');
+              const figureElement = document.createElement("figure");
+              figureElement.className = "qwebr-canvas-image";
 
               // Place each rendered graphic onto a canvas element
               result.images.forEach((img) => {
+
                   // Construct canvas for object
                   const canvas = document.createElement("canvas");
+
+                  // Add an image download button
+                  qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                   // Set canvas size to image
                   canvas.width = img.width;
@@ -1663,8 +1714,9 @@
             
                   // Append canvas to figure output area
                   figureElement.appendChild(canvas);
-              });
 
+              });
+              
               if (options['fig-cap']) {
                   // Create figcaption element
                   const figcaptionElement = document.createElement('figcaption');
@@ -1672,8 +1724,9 @@
                   // Append figcaption to figure
                   figureElement.appendChild(figcaptionElement);    
               }
-
+          
               elements.outputGraphDiv.appendChild(figureElement);
+
           }
 
           // Display the pager data

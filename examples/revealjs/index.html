@@ -559,6 +559,30 @@
     text-decoration: none !important;
   }
 
+  /* Styling to download image that is created */
+
+  .qwebr-canvas-image {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .qwebr-canvas-image-download-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  figure:hover .qwebr-canvas-image-download-btn {
+    display: block;
+  }
+
   /* Custom styling for RevealJS Presentations*/
 
   /* Reset the style of the interactive area */
@@ -641,7 +665,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-1","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":1},{"code":"plot(pressure)","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-2","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":2},{"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-3","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":3},{"code":"?mean","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-4","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":4},{"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-5","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":5},{"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"dpi":72,"fig-cap":"","classes":"","out-width":"700px","message":"true","output":"true","warning":"true","context":"interactive","out-height":"","editor-quick-suggestions":"false","read-only":"false","fig-width":7,"label":"unnamed-chunk-6","autorun":"false","results":"markup","comment":"","fig-height":5,"editor-font-scale":"0.5","editor-max-height":""},"id":6}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-1","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"id":2,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-2","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"plot(pressure)"},{"id":3,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-3","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"ggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()"},{"id":4,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-4","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"?mean"},{"id":5,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-5","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"cat(\"Hello there!\\n\")\n\nx = c(1, 2, 3)\nprint(x)\n\nwarning(\"Uh-oh, something is amiss\")\n\nstop(\"I'm sorry Dave, I'm afraid I can't do that\")"},{"id":6,"options":{"read-only":"false","out-width":"700px","editor-font-scale":"0.5","results":"markup","fig-width":7,"fig-height":5,"editor-max-height":"","warning":"true","classes":"","comment":"","autorun":"false","out-height":"","dpi":72,"label":"unnamed-chunk-6","context":"interactive","editor-quick-suggestions":"false","fig-cap":"","output":"true","message":"true"},"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"}];
 
   </script>
   <script type="module">
@@ -1533,6 +1557,27 @@
       );
   }
 
+  // Function to attach a download button onto the canvas
+  // allowing the user to download the image.
+  function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+      // Create the download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'qwebr-canvas-image-download-btn';
+      downloadButton.textContent = 'Download Image';
+      canvasContainer.appendChild(downloadButton);
+
+      // Trigger a download of the image when the button is clicked
+      downloadButton.addEventListener('click', function() {
+          const image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = image;
+          link.download = 'qwebr-canvas-image.png';
+          link.click();
+      });
+    }
+    
+
   // Function to parse the pager results
   globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1700,13 +1745,19 @@
 
           // Determine if we have graphs to display
           if (result.images.length > 0) {
+
               // Create figure element
-              const figureElement = document.createElement('figure');
+              const figureElement = document.createElement("figure");
+              figureElement.className = "qwebr-canvas-image";
 
               // Place each rendered graphic onto a canvas element
               result.images.forEach((img) => {
+
                   // Construct canvas for object
                   const canvas = document.createElement("canvas");
+
+                  // Add an image download button
+                  qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                   // Set canvas size to image
                   canvas.width = img.width;
@@ -1728,8 +1779,9 @@
             
                   // Append canvas to figure output area
                   figureElement.appendChild(canvas);
-              });
 
+              });
+              
               if (options['fig-cap']) {
                   // Create figcaption element
                   const figcaptionElement = document.createElement('figcaption');
@@ -1737,8 +1789,9 @@
                   // Append figcaption to figure
                   figureElement.appendChild(figcaptionElement);    
               }
-
+          
               elements.outputGraphDiv.appendChild(figureElement);
+
           }
 
           // Display the pager data

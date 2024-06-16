@@ -494,6 +494,30 @@
     text-decoration: none !important;
   }
 
+  /* Styling to download image that is created */
+
+  .qwebr-canvas-image {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .qwebr-canvas-image-download-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  figure:hover .qwebr-canvas-image-download-btn {
+    display: block;
+  }
+
   /* Custom styling for RevealJS Presentations*/
 
   /* Reset the style of the interactive area */
@@ -576,7 +600,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","output":"true","fig-width":7,"fig-height":5,"warning":"true","results":"markup","message":"true","autorun":"false","fig-cap":"","editor-font-scale":"0.5","classes":"","label":"unnamed-chunk-1","out-height":"","out-width":"700px","dpi":72,"read-only":"false","comment":"","editor-quick-suggestions":"false","editor-max-height":""},"code":"print(\"Hello hidden title world!\")"}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"dpi":72,"fig-width":7,"context":"interactive","out-height":"","comment":"","editor-max-height":"","editor-font-scale":"0.5","label":"unnamed-chunk-1","editor-quick-suggestions":"false","results":"markup","output":"true","classes":"","autorun":"false","out-width":"700px","warning":"true","message":"true","fig-cap":"","read-only":"false","fig-height":5},"code":"print(\"Hello hidden title world!\")"}];
 
   </script>
   <script type="module">
@@ -1468,6 +1492,27 @@
       );
   }
 
+  // Function to attach a download button onto the canvas
+  // allowing the user to download the image.
+  function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+      // Create the download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'qwebr-canvas-image-download-btn';
+      downloadButton.textContent = 'Download Image';
+      canvasContainer.appendChild(downloadButton);
+
+      // Trigger a download of the image when the button is clicked
+      downloadButton.addEventListener('click', function() {
+          const image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = image;
+          link.download = 'qwebr-canvas-image.png';
+          link.click();
+      });
+    }
+    
+
   // Function to parse the pager results
   globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1635,13 +1680,19 @@
 
           // Determine if we have graphs to display
           if (result.images.length > 0) {
+
               // Create figure element
-              const figureElement = document.createElement('figure');
+              const figureElement = document.createElement("figure");
+              figureElement.className = "qwebr-canvas-image";
 
               // Place each rendered graphic onto a canvas element
               result.images.forEach((img) => {
+
                   // Construct canvas for object
                   const canvas = document.createElement("canvas");
+
+                  // Add an image download button
+                  qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                   // Set canvas size to image
                   canvas.width = img.width;
@@ -1663,8 +1714,9 @@
             
                   // Append canvas to figure output area
                   figureElement.appendChild(canvas);
-              });
 
+              });
+              
               if (options['fig-cap']) {
                   // Create figcaption element
                   const figcaptionElement = document.createElement('figcaption');
@@ -1672,8 +1724,9 @@
                   // Append figcaption to figure
                   figureElement.appendChild(figcaptionElement);    
               }
-
+          
               elements.outputGraphDiv.appendChild(figureElement);
+
           }
 
           // Display the pager data

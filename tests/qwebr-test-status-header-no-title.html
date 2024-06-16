@@ -243,6 +243,30 @@ body.quarto-dark .qwebr-button:hover {
   text-decoration: none !important;
 }
 
+/* Styling to download image that is created */
+
+.qwebr-canvas-image {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.qwebr-canvas-image-download-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+figure:hover .qwebr-canvas-image-download-btn {
+  display: block;
+}
+
 /* Custom styling for RevealJS Presentations*/
 
 /* Reset the style of the interactive area */
@@ -325,7 +349,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"print(\"Hello hidden title world!\")","id":1,"options":{"message":"true","read-only":"false","editor-font-scale":"1","warning":"true","out-width":"700px","fig-height":5,"output":"true","comment":"","classes":"","out-height":"","editor-max-height":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","results":"markup","fig-cap":"","dpi":72,"context":"interactive","fig-width":7,"autorun":"false"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","fig-width":7,"dpi":72,"autorun":"false","read-only":"false","context":"interactive","fig-height":5,"label":"unnamed-chunk-1","editor-quick-suggestions":"false","fig-cap":"","results":"markup","classes":"","comment":"","out-width":"700px","editor-font-scale":"1","warning":"true","editor-max-height":"","out-height":"","output":"true"},"code":"print(\"Hello hidden title world!\")"}];
 
 </script>
 <script type="module">
@@ -1217,6 +1241,27 @@ globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
     );
 }
 
+// Function to attach a download button onto the canvas
+// allowing the user to download the image.
+function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+    // Create the download button
+    const downloadButton = document.createElement('button');
+    downloadButton.className = 'qwebr-canvas-image-download-btn';
+    downloadButton.textContent = 'Download Image';
+    canvasContainer.appendChild(downloadButton);
+
+    // Trigger a download of the image when the button is clicked
+    downloadButton.addEventListener('click', function() {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'qwebr-canvas-image.png';
+        link.click();
+    });
+  }
+  
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1384,13 +1429,19 @@ globalThis.qwebrComputeEngine = async function(
 
         // Determine if we have graphs to display
         if (result.images.length > 0) {
+
             // Create figure element
-            const figureElement = document.createElement('figure');
+            const figureElement = document.createElement("figure");
+            figureElement.className = "qwebr-canvas-image";
 
             // Place each rendered graphic onto a canvas element
             result.images.forEach((img) => {
+
                 // Construct canvas for object
                 const canvas = document.createElement("canvas");
+
+                // Add an image download button
+                qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                 // Set canvas size to image
                 canvas.width = img.width;
@@ -1412,8 +1463,9 @@ globalThis.qwebrComputeEngine = async function(
           
                 // Append canvas to figure output area
                 figureElement.appendChild(canvas);
-            });
 
+            });
+            
             if (options['fig-cap']) {
                 // Create figcaption element
                 const figcaptionElement = document.createElement('figcaption');
@@ -1421,8 +1473,9 @@ globalThis.qwebrComputeEngine = async function(
                 // Append figcaption to figure
                 figureElement.appendChild(figcaptionElement);    
             }
-
+        
             elements.outputGraphDiv.appendChild(figureElement);
+
         }
 
         // Display the pager data

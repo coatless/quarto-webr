@@ -288,6 +288,30 @@ body.quarto-dark .qwebr-button:hover {
   text-decoration: none !important;
 }
 
+/* Styling to download image that is created */
+
+.qwebr-canvas-image {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.qwebr-canvas-image-download-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+figure:hover .qwebr-canvas-image-download-btn {
+  display: block;
+}
+
 /* Custom styling for RevealJS Presentations*/
 
 /* Reset the style of the interactive area */
@@ -370,7 +394,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","results":"markup","warning":"true","fig-cap":"","dpi":72,"label":"unnamed-chunk-1","fig-height":5,"comment":"","message":"true","classes":"","out-height":"","read-only":"false","editor-max-height":"","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","autorun":"true","fig-width":7,"out-width":"700px"},"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
+globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"results":"markup","out-width":"700px","editor-max-height":"","warning":"true","editor-font-scale":"1","message":"true","dpi":72,"comment":"","out-height":"","context":"interactive","fig-height":5,"editor-quick-suggestions":"false","output":"true","read-only":"false","classes":"","autorun":"true","label":"unnamed-chunk-1","fig-cap":""},"id":1,"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
 
 </script>
 <script type="module">
@@ -1262,6 +1286,27 @@ globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
     );
 }
 
+// Function to attach a download button onto the canvas
+// allowing the user to download the image.
+function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+    // Create the download button
+    const downloadButton = document.createElement('button');
+    downloadButton.className = 'qwebr-canvas-image-download-btn';
+    downloadButton.textContent = 'Download Image';
+    canvasContainer.appendChild(downloadButton);
+
+    // Trigger a download of the image when the button is clicked
+    downloadButton.addEventListener('click', function() {
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'qwebr-canvas-image.png';
+        link.click();
+    });
+  }
+  
+
 // Function to parse the pager results
 globalThis.qwebrParseTypePager = async function (msg) { 
 
@@ -1429,13 +1474,19 @@ globalThis.qwebrComputeEngine = async function(
 
         // Determine if we have graphs to display
         if (result.images.length > 0) {
+
             // Create figure element
-            const figureElement = document.createElement('figure');
+            const figureElement = document.createElement("figure");
+            figureElement.className = "qwebr-canvas-image";
 
             // Place each rendered graphic onto a canvas element
             result.images.forEach((img) => {
+
                 // Construct canvas for object
                 const canvas = document.createElement("canvas");
+
+                // Add an image download button
+                qwebrImageCanvasDownloadButton(canvas, figureElement);
 
                 // Set canvas size to image
                 canvas.width = img.width;
@@ -1457,8 +1508,9 @@ globalThis.qwebrComputeEngine = async function(
           
                 // Append canvas to figure output area
                 figureElement.appendChild(canvas);
-            });
 
+            });
+            
             if (options['fig-cap']) {
                 // Create figcaption element
                 const figcaptionElement = document.createElement('figcaption');
@@ -1466,8 +1518,9 @@ globalThis.qwebrComputeEngine = async function(
                 // Append figcaption to figure
                 figureElement.appendChild(figcaptionElement);    
             }
-
+        
             elements.outputGraphDiv.appendChild(figureElement);
+
         }
 
         // Display the pager data
