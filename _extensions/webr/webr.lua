@@ -93,7 +93,8 @@ local qwebRDefaultCellOptions = {
   ["out-height"] = "",
   ["editor-font-scale"] = quarto.doc.is_format("revealjs") and "0.5" or "1",
   ["editor-max-height"] = "",
-  ["editor-quick-suggestions"] = "false"
+  ["editor-quick-suggestions"] = "false",
+  ["editor-word-wrap"] = "true"
 }
 
 -----

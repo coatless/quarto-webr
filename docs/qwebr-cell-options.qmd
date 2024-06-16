@@ -58,6 +58,8 @@ For details regarding run options, please see [Hiding and Executing Code](qwebr-
 | `editor-max-height`        | `0`           | Set a threshold to prevent infinite growth of the editor window.                                                                                                  |
 | `editor-quick-suggestions` | `false`       | Show a list of autocomplete variables and/or functions based on what was typed.                                                                                   |
 | `editor-font-scale`        | `1`           | Modify the size of code cell and output relative to the page font size. Values less than 1 shrink the text size and values greater than 1 increase the text size. |
+| `editor-word-wrap`         | `true`        | Allow long lines to be wrapped to avoid code going off the screen causing a scroll bar to appear.                                                                 |
+
 
 
 ## Attributes
