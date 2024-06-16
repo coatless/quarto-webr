@@ -14,7 +14,7 @@ globalThis.qwebrFormatRHistory = function() {
 const command_history_modal = document.getElementById("qwebr-history-modal");
 
 // Get the button that opens the command modal
-const command_history_btn = document.getElementById("qwebRRHistoryButton");
+const command_history_btn = document.getElementById("qwebrRHistoryButton");
 
 // Get the <span> element that closes the command modal
 const command_history_close_span = document.getElementById("qwebr-command-history-close-btn");

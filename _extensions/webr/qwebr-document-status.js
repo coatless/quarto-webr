@@ -265,7 +265,7 @@ function qwebrRegisterRevealJSCommandHistoryModal() {
   // Create the <a> element inside the <li>
   let newLink = document.createElement('a');
   newLink.href = '#';
-  newLink.id = 'qwebRRHistoryButton'; // Set the ID for the new link
+  newLink.id = 'qwebrRHistoryButton'; // Set the ID for the new link
   
   // Create the <kbd> element inside the <a>
   let newKbd = document.createElement('kbd');
@@ -299,7 +299,7 @@ function qwebrCodeLinks() {
 
   // Create the h2 element
   var h2 = document.createElement('h2');
-  h2.textContent = 'QWebR Code Links';
+  h2.textContent = 'webR Code Links';
 
   // Create the ul element
   var ul = document.createElement('ul');
@@ -310,7 +310,7 @@ function qwebrCodeLinks() {
   // Create the a_history_btn element
   var a_history_btn = document.createElement('a');
   a_history_btn.href = 'javascript:void(0)';
-  a_history_btn.setAttribute('id', 'qwebRRHistoryButton');
+  a_history_btn.setAttribute('id', 'qwebrRHistoryButton');
 
   // Create the i_history_btn element
   var i_history_btn = document.createElement('i');
@@ -340,15 +340,17 @@ function qwebrCodeLinks() {
   if(!sidebar) {
     qwebrPlaceQuartoSidebar();
   }
-    
+  
   // Re-select the sidebar element (if it was just created)
   sidebar = document.getElementById('quarto-margin-sidebar');   
-  
-  // Check if the sidebar element exists
-  if(!sidebar) {
+
+
+  // If the sidebar element exists, append the container div to it
+  if(sidebar) {
     // Append the container div to the sidebar
     sidebar.appendChild(containerDiv);
   } else {
+    // Get a debugger ...
     console.warn('Element with ID "quarto-margin-sidebar" not found.');
   }
 }
