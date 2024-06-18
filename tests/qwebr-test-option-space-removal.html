@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test: Run latest version – Test Suite for quarto-webr</title>
+<title>Test: Space Removal after Options – Test Suite for quarto-webr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -351,14 +351,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/latest/",
+  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"utils::packageVersion(\"webr\")","options":{"out-width":"700px","warning":"true","results":"markup","read-only":"false","message":"true","fig-height":5,"editor-font-scale":"1","label":"unnamed-chunk-1","fig-width":7,"context":"output","editor-max-height":"","editor-word-wrap":"true","dpi":72,"comment":"","autorun":"true","classes":"","fig-cap":"","output":"true","editor-quick-suggestions":"false","out-height":""},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"autorun":"true","classes":"","fig-width":7,"warning":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-1","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","out-width":"700px","out-height":"","comment":"","read-only":"false","dpi":72,"fig-cap":"","fig-height":5,"message":"true","editor-max-height":""},"id":1,"code":"print(\"test\")\n1 + 1"},{"options":{"autorun":"false","classes":"","fig-width":7,"warning":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-2","context":"interactive","output":"true","editor-code-line-numbers":"1,3-5,7","editor-font-scale":"1","editor-quick-suggestions":"false","out-width":"700px","out-height":"","comment":"","read-only":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","editor-max-height":""},"id":2,"code":"# This is a comment\n\n1 + 1\n2 + 2\n3 + 3\n\n# This is another comment"},{"options":{"autorun":"true","classes":"","fig-width":7,"warning":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-3","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","out-width":"700px","out-height":"","comment":"","read-only":"false","dpi":72,"fig-cap":"","fig-height":5,"message":"true","editor-max-height":""},"id":3,"code":"print(\"test\")\n\n1 + 1"},{"options":{"autorun":"true","classes":"","fig-width":7,"warning":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-4","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","out-width":"700px","out-height":"","comment":"","read-only":"false","dpi":72,"fig-cap":"","fig-height":5,"message":"true","editor-max-height":""},"id":4,"code":"print(\"test\")\n\n1 + 1"},{"options":{"autorun":"false","classes":"","fig-width":7,"warning":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-5","context":"interactive","output":"true","editor-font-scale":"1","editor-quick-suggestions":"false","out-width":"700px","out-height":"","comment":"","read-only":"false","dpi":72,"fig-cap":"","fig-height":5,"message":"true","editor-max-height":""},"id":5,"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)"}];
 
 </script>
 <script type="module">
@@ -1568,7 +1568,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-run-latest.html">Test: Run latest version</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-option-space-removal.html">Test: Space Removal after Options</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1690,7 +1690,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link">
+  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: Space Removal after Options</span></a>
   </div>
 </li>
@@ -1744,7 +1744,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link active">
+  <a href="./qwebr-test-run-latest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Run latest version</span></a>
   </div>
 </li>
@@ -2091,9 +2091,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-run-latest.html">Test: Run latest version</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-test-editor-options.html">Tests</a></li><li class="breadcrumb-item"><a href="./qwebr-test-option-space-removal.html">Test: Space Removal after Options</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Test: Run latest version</h1>
+<h1 class="title">Test: Space Removal after Options</h1>
 </div>
 
 
@@ -2110,11 +2110,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>Test to see if the version key works under the latest version:</p>
+<p>Check that the editor contents avoids retaining spaces after the options.</p>
+<section id="option-with-a-single-space" class="level2">
+<h2 class="anchored" data-anchor-id="option-with-a-single-space">Option with a Single Space</h2>
 <div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="multiple-options-with-a-single-space" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-options-with-a-single-space">Multiple Options with a Single Space</h2>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="multiple-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-spaces">Multiple Spaces</h2>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="no-space" class="level2">
+<h2 class="anchored" data-anchor-id="no-space">No Space</h2>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="no-options" class="level2">
+<h2 class="anchored" data-anchor-id="no-options">No Options</h2>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

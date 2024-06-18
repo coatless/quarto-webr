@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","dpi":72,"editor-word-wrap":"true","editor-font-scale":"1","context":"output","autorun":"true","label":"unnamed-chunk-1","message":"true","results":"markup","read-only":"false","out-width":"700px","output":"true","editor-max-height":"","comment":"","out-height":"","fig-height":5,"fig-width":7,"classes":"","fig-cap":"","editor-quick-suggestions":"false"},"id":1,"code":"\ncheck_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"check_pkg_installed <- function(x) {\n    x %in% installed.packages()[,\"Package\"]\n}\n\nprint(paste0(\"(Pre-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))\n\ninstall.packages(\"visualize\")\n\nprint(paste0(\"(Post-install) Is the package visualize installed? \", check_pkg_installed(\"visualize\")))","options":{"dpi":72,"comment":"","warning":"true","message":"true","output":"true","classes":"","fig-height":5,"label":"unnamed-chunk-1","fig-width":7,"out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","editor-word-wrap":"true","results":"markup","read-only":"false","autorun":"true","editor-font-scale":"1","context":"output","editor-max-height":"","out-height":""}}];
 
 </script>
 <script type="module">
@@ -1686,6 +1686,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Space Removal after Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

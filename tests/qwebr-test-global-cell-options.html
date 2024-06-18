@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"test\")","options":{"label":"unnamed-chunk-1","dpi":72,"editor-max-height":"","output":"true","fig-cap":"","comment":"##","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"interactive","message":"true","autorun":"true","fig-height":5,"warning":"true","results":"markup","out-width":"700px","out-height":"","editor-font-scale":"1","read-only":"false","classes":"","fig-width":7}},{"id":2,"code":"print(\"test\")","options":{"label":"unnamed-chunk-2","dpi":72,"editor-max-height":"","output":"true","fig-cap":"","comment":"","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"interactive","message":"true","autorun":"true","fig-height":5,"warning":"true","results":"markup","out-width":"700px","out-height":"","editor-font-scale":"1","read-only":"false","classes":"","fig-width":7}},{"id":3,"code":"print(\"test\")","options":{"label":"unnamed-chunk-3","dpi":72,"editor-max-height":"","output":"true","fig-cap":"","comment":"##","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"output","message":"true","autorun":"true","fig-height":5,"warning":"true","results":"markup","out-width":"700px","out-height":"","editor-font-scale":"1","read-only":"false","classes":"","fig-width":7}},{"id":4,"code":"print(\"test\")","options":{"label":"unnamed-chunk-4","dpi":72,"editor-max-height":"","output":"true","fig-cap":"","comment":"","editor-word-wrap":"true","editor-quick-suggestions":"false","context":"output","message":"true","autorun":"true","fig-height":5,"warning":"true","results":"markup","out-width":"700px","out-height":"","editor-font-scale":"1","read-only":"false","classes":"","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"code":"print(\"test\")","id":1,"options":{"out-width":"700px","classes":"","context":"interactive","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"##","editor-font-scale":"1","message":"true","fig-height":5,"label":"unnamed-chunk-1","autorun":"true","dpi":72,"output":"true","fig-cap":"","out-height":"","editor-word-wrap":"true","results":"markup","editor-max-height":""}},{"code":"print(\"test\")","id":2,"options":{"out-width":"700px","classes":"","context":"interactive","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"","editor-font-scale":"1","message":"true","fig-height":5,"label":"unnamed-chunk-2","autorun":"true","dpi":72,"output":"true","fig-cap":"","out-height":"","editor-word-wrap":"true","results":"markup","editor-max-height":""}},{"code":"print(\"test\")","id":3,"options":{"out-width":"700px","classes":"","context":"output","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"##","editor-font-scale":"1","message":"true","fig-height":5,"label":"unnamed-chunk-3","autorun":"true","dpi":72,"output":"true","fig-cap":"","out-height":"","editor-word-wrap":"true","results":"markup","editor-max-height":""}},{"code":"print(\"test\")","id":4,"options":{"out-width":"700px","classes":"","context":"output","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"","editor-font-scale":"1","message":"true","fig-height":5,"label":"unnamed-chunk-4","autorun":"true","dpi":72,"output":"true","fig-cap":"","out-height":"","editor-word-wrap":"true","results":"markup","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -1686,6 +1686,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Space Removal after Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

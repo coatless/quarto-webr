@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"comment":"","fig-cap":"","editor-font-scale":"1","out-height":"","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","message":"true","label":"unnamed-chunk-1","results":"markup","context":"setup","autorun":"true","classes":"","out-width":"700px","read-only":"false","dpi":72,"fig-height":5,"warning":"true","output":"true","fig-width":7},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1},{"options":{"comment":"","fig-cap":"","editor-font-scale":"1","out-height":"","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","message":"true","label":"unnamed-chunk-2","results":"markup","context":"output","autorun":"true","classes":"","out-width":"700px","read-only":"false","dpi":72,"fig-height":5,"warning":"true","output":"true","fig-width":7},"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2},{"options":{"comment":"","fig-cap":"","editor-font-scale":"1","out-height":"","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","message":"true","label":"unnamed-chunk-3","results":"markup","context":"output","autorun":"true","classes":"","out-width":"700px","read-only":"false","dpi":72,"fig-height":5,"warning":"true","output":"true","fig-width":7},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3},{"options":{"comment":"","fig-cap":"","editor-font-scale":"1","out-height":"","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","message":"true","label":"unnamed-chunk-4","results":"markup","context":"interactive","autorun":"false","classes":"","out-width":"700px","read-only":"false","dpi":72,"fig-height":5,"warning":"true","output":"true","fig-width":7},"code":"g","id":4}];
+globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.25)","id":1,"options":{"editor-font-scale":"1","classes":"","out-height":"","editor-quick-suggestions":"false","editor-max-height":"","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-1","context":"setup","results":"markup","comment":"","autorun":"true","fig-width":7,"fig-cap":"","read-only":"false","fig-height":5,"output":"true","dpi":72,"message":"true","out-width":"700px"}},{"code":"g + geom_point()\n\nSys.sleep(0.25)","id":2,"options":{"editor-font-scale":"1","classes":"","out-height":"","editor-quick-suggestions":"false","editor-max-height":"","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-2","context":"output","results":"markup","comment":"","autorun":"true","fig-width":7,"fig-cap":"","read-only":"false","fig-height":5,"output":"true","dpi":72,"message":"true","out-width":"700px"}},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.25)","id":3,"options":{"editor-font-scale":"1","classes":"","out-height":"","editor-quick-suggestions":"false","editor-max-height":"","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-3","context":"output","results":"markup","comment":"","autorun":"true","fig-width":7,"fig-cap":"","read-only":"false","fig-height":5,"output":"true","dpi":72,"message":"true","out-width":"700px"}},{"code":"g","id":4,"options":{"editor-font-scale":"1","classes":"","out-height":"","editor-quick-suggestions":"false","editor-max-height":"","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-4","context":"interactive","results":"markup","comment":"","autorun":"false","fig-width":7,"fig-cap":"","read-only":"false","fig-height":5,"output":"true","dpi":72,"message":"true","out-width":"700px"}}];
 
 </script>
 <script type="module">
@@ -1686,6 +1686,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Space Removal after Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">

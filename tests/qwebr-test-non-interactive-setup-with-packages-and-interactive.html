@@ -358,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"fig-cap":"","editor-max-height":"","out-width":"700px","autorun":"true","fig-height":5,"results":"markup","editor-word-wrap":"true","fig-width":7,"context":"setup","label":"unnamed-chunk-1","out-height":"","dpi":72,"editor-quick-suggestions":"false","comment":"","message":"true","classes":"","read-only":"false","output":"true","warning":"true","editor-font-scale":"1"}},{"id":2,"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"fig-cap":"","editor-max-height":"","out-width":"700px","autorun":"false","fig-height":5,"results":"markup","editor-word-wrap":"true","fig-width":7,"context":"interactive","label":"unnamed-chunk-2","out-height":"","dpi":72,"editor-quick-suggestions":"false","comment":"","message":"true","classes":"","read-only":"false","output":"true","warning":"true","editor-font-scale":"1"}}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","options":{"autorun":"true","results":"markup","read-only":"false","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-width":"700px","comment":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","editor-max-height":"","classes":"","editor-font-scale":"1","dpi":72,"fig-cap":"","warning":"true","context":"setup","message":"true","output":"true","out-height":""},"id":1},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","options":{"autorun":"false","results":"markup","read-only":"false","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-width":"700px","comment":"","editor-quick-suggestions":"false","label":"unnamed-chunk-2","editor-max-height":"","classes":"","editor-font-scale":"1","dpi":72,"fig-cap":"","warning":"true","context":"interactive","message":"true","output":"true","out-height":""},"id":2}];
 
 </script>
 <script type="module">
@@ -1686,6 +1686,12 @@ globalThis.qwebrExecuteCode = async function (
   <div class="sidebar-item-container"> 
   <a href="./qwebr-test-non-interactive-setup-with-packages-and-interactive.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Test: Setup Cell with Packages for Interactive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qwebr-test-option-space-removal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test: Space Removal after Options</span></a>
   </div>
 </li>
           <li class="sidebar-item">
