@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.7: ??????? (??-??-??)
+# 0.4.2-dev.8: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
@@ -25,21 +25,18 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 - Added ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs' "Tools" menu. ([#148](https://github.com/coatless/quarto-webr/issues/148))
 
-- Added a mouse over button to allow for downloading an image when generated. ([#147](https://github.com/coatless/quarto-webr/issues/147))
-
-- Added `cell-options` document-level option to specify global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
-
-- Added `version` document-level option to specify what version of webR should be used. Default embedded version. ([#211](https://github.com/coatless/quarto-webr/issues/211))
-
-- Added `editor-max-height` cell option to limit growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
-
-- Added `editor-font-scale` cell option to scale the code cell size relative to the page font size. Default is `1` for HTML Documents, Books, and Websites and `0.5` for Revealjs Slides. ([#172](https://github.com/coatless/quarto-webr/issues/172) & [#209](https://github.com/coatless/quarto-webr/pull/209), thanks [ute](https://github.com/ute)!)
-
-- Added `editor-quick-suggestions` cell option to enable autocomplete menu suggestions. Default `"false"`.([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
-
-- Added `editor-word-wrap` cell option to allow long lines to be wrapped inside of the code cell. Default `"true"`. ([#38](https://github.com/coatless/quarto-webr/issues/38))
-
 - Added the ability to have the monaco editor switch between Quarto's light and dark theme modes. ([#176](https://github.com/coatless/quarto-webr/issues/176))
+
+- Added two new document-level options:
+  - `cell-options` specifies global defaults for `{webr-r}` options ([#173](https://github.com/coatless/quarto-webr/pulls/173), thanks [ute](https://github.com/ute)!)
+  - `version` specifies what version of webR should be used. Default embedded version. ([#211](https://github.com/coatless/quarto-webr/issues/211))
+
+- Added the `editor-*` class of cell-level options to control the interactive code cell editor:
+  - `editor-code-line-numbers` allows highlighting code lines in the editor window. ([#204](https://github.com/coatless/quarto-webr/issues/204))
+  - `editor-word-wrap` allows long lines to be wrapped inside of the code cell. Default `"true"`. ([#38](https://github.com/coatless/quarto-webr/issues/38))
+  - `editor-quick-suggestions` enables autocomplete menu suggestions. Default `"false"`.([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
+  - `editor-max-height` limits growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
+  - `editor-font-scale` scales the code cell size relative to the page font size. Default is `1` for HTML Documents, Books, and Websites and `0.5` for Revealjs Slides. ([#172](https://github.com/coatless/quarto-webr/issues/172) & [#209](https://github.com/coatless/quarto-webr/pull/209), thanks [ute](https://github.com/ute)!)
 
 - Enabled non-graphical computation within a `webr-r` cell when `OffScreenCanvas` is not available. ([#155](https://github.com/coatless/quarto-webr/issues/155), thanks for raising it [@mccarthy-m-g](https://github.com/mccarthy-m-g))
   - If `OffScreenCanvas` is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.
@@ -47,6 +44,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 
 ## Changes
+
+- Added a mouse over button to allow for downloading an image when generated. ([#147](https://github.com/coatless/quarto-webr/issues/147))
 
 - Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
 - Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
