@@ -47,3 +47,56 @@ my_long_variable = 1
 
 prin
 ```
+
+
+## Highlight
+
+Opt-in to auto suggestions.
+
+### Only 1 line 
+```{webr-r}
+#| editor-code-line-numbers:1
+my_long_variable = 1
+
+1 + 1
+
+print("hello!")
+```
+
+### Line 1 and 5 
+```{webr-r}
+#| editor-code-line-numbers:1,5
+my_long_variable = 1
+
+1 + 1
+
+print("hello!")
+```
+
+### Line 1-3 and 5 
+
+```{webr-r}
+#| editor-code-line-numbers:1-3,5
+my_long_variable = 1
+
+1 + 1
+
+print("hello!")
+```
+
+
+## Word wrap
+
+### Enabled Wrap
+```{webr-r}
+#| editor-word-wrap: true
+
+my_extra_extra_extra_extra_extra_long_variable = 1
+```
+
+### Disabled Wrap
+```{webr-r}
+#| editor-word-wrap: false
+
+my_extra_extra_extra_extra_extra_long_variable = 1
+```
