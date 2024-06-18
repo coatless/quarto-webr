@@ -585,21 +585,9 @@ end
 ---@return table
 local function removeEmptyLinesUntilContent(codeLines)
 
-  -- Iterate through each line in the codeText table
-  for _, line in ipairs(codeLines) do
-
-      -- Detect leading whitespace (newline, return character, or empty space)
-      local detectedWhitespace = string.match(line, "^%s*$")
-
-      -- Check if the detectedWhitespace is either an empty string or nil
-      -- This indicates whitespace was detected
-      if isVariableEmpty(detectedWhitespace) then
-          -- Delete empty space
-          table.remove(codeLines, 1)
-      else
-          -- Stop the loop as we now have content
-          break
-      end
+  -- Remove empty lines at the beginning of the code block
+  while codeLines[1] and string.match(codeLines[1], "^%s*$") do
+    table.remove(codeLines, 1)
   end
 
   -- Return the modified table
@@ -639,8 +627,11 @@ local function extractCodeBlockOptions(block)
   -- Merge cell options with default options
   cellOptions = mergeCellOptions(cellOptions)
 
+  -- Remove empty lines at the beginning of the code block
+  local restructuredCodeCell = removeEmptyLinesUntilContent(newCodeLines)
+
   -- Return the code alongside options
-  return newCodeLines, cellOptions
+  return restructuredCodeCell, cellOptions
 end
 
 --- Replace the code cell with a webR-powered cell
@@ -705,11 +696,8 @@ local function enableWebRCodeCell(el)
     end
   end
 
-  -- Remove space left between options and code contents
-  local restructuredCodeCell = removeEmptyLinesUntilContent(cellCode)
-
-  -- Set the codeblock text to exclude the special comments.
-  local cellCodeMerged = table.concat(restructuredCodeCell, '\n')
+    -- Set the codeblock text to exclude the special comments.
+  local cellCodeMerged = table.concat(cellCode, '\n')
 
   -- Create a new table for the CodeBlock
   local codeBlockData = {
