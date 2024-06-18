@@ -96,6 +96,45 @@ This option can be paired with `autorun: true` to avoid having the user press th
 :::
 
 
+## Drawing Attention to Code
+
+Lines of code can be highlighted using `editor-code-line-numbers` to draw attention to specific parts of the code. For example:
+
+- `editor-code-line-numbers: 1-3` will highlight lines 1 to 3.
+- `editor-code-line-numbers: 1,3,6` will highlight lines 1, 3, and 6.
+- `editor-code-line-numbers: 1-3,6` will highlight lines 1 to 3 and 6.
+
+::: {.panel-tabset}
+## `{quarto-webr}` Output
+
+```{webr-r}
+#| read-only: true
+#| editor-code-line-numbers: 1-3, 6
+
+# This is a comment
+1 + 1
+2 + 2
+3 + 3
+
+# This is another comment
+```
+
+## Cell code
+
+```{{webr-r}}
+#| read-only: true
+#| editor-code-line-numbers: 1-3, 6
+
+# This is a comment
+1 + 1
+2 + 2
+3 + 3
+
+# This is another comment
+```
+:::
+
+
 ## Create a Graph with Base R
 
 For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore "What if ..." scenarios. For instance, what if we try changing the value `blue` to `orange` and run the code again.

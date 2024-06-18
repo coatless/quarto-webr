@@ -116,6 +116,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
