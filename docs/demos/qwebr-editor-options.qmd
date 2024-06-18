@@ -17,7 +17,7 @@ These features are currently experimental and are included in the 0.4.2-dev buil
 
 # Overview
 
-This feature demo introduces [new cell-level options](demos/qwebr-cell-options.qmd#monaco-editor-options) for styling the interactive editor associated with `{webr-r}` code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area. Options involving the editor are usually prefixed with `editor`. 
+This feature demo introduces [new cell-level options](qwebr-cell-options.qmd#monaco-editor-options) for styling the interactive editor associated with `{webr-r}` code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area. Options involving the editor are usually prefixed with `editor`. 
 
 :::{.callout-note}
 These options are only configurable during the document authoring stage.
@@ -27,7 +27,7 @@ These options are only configurable during the document authoring stage.
 
 Lines inside of the editor may be highlighted through the `editor-code-line-numbers` option. Specifying the highlighting of a line is done by providing a range of line numbers separated by a hyphen or a comma. For example:
 
-- `editor-code-line-numbers: 1-3` will highlight lines 1 to 3.
+- `editor-code-line-numbers: 2-6` will highlight lines 2 to 6.
 - `editor-code-line-numbers: 1,3,5` will highlight lines 1, 3, and 5.
 - `editor-code-line-numbers: 1-3,5` will highlight lines 1 to 3 and 5.
 
@@ -35,7 +35,7 @@ This feature is useful for drawing attention to specific line. You may wish to c
 
 ### Specifying Ranges
 
-The following cell demonstrates the use of the `editor-code-line-numbers` option to highlight a range of lines in the editor. Lines 1-3 should be highlighted in the editor below.
+The following cell demonstrates the use of the `editor-code-line-numbers` option to highlight a range of lines in the editor. Lines 2-6 should be highlighted in the editor below.
 
 :::{.panel-tabset}
 
@@ -43,13 +43,13 @@ The following cell demonstrates the use of the `editor-code-line-numbers` option
 
 ```{webr-r}
 #| label: editor-line-numbers
-#| editor-code-line-numbers: 1-3
+#| editor-code-line-numbers: 2-6
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
-	} else { 
-       print('You are young!')
-   }
+  if (age > 30) {
+    print('You are old')
+  } else { 
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -58,14 +58,14 @@ hello_age(22)
 
 ```{{webr-r}}
 #| label: editor-line-numbers
-#| editor-code-line-numbers: 1-3
+#| editor-code-line-numbers: 2-6
 
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
-	} else { 
-       print('You are young!')
-   }
+  if (age > 30) {
+    print('You are old')
+  } else { 
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -85,11 +85,11 @@ The following cell demonstrates the use of the `editor-code-line-numbers` option
 #| editor-code-line-numbers: 2
 
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
+  if (age > 30) {
+    print('You are old')
   } else { 
-       print('You are young!')
-   }
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -100,11 +100,11 @@ hello_age(22)
 #| editor-code-line-numbers: 2
 
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
+  if (age > 30) {
+    print('You are old')
   } else { 
-       print('You are young!')
-   }
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -124,11 +124,11 @@ The following cell demonstrates the use of the `editor-code-line-numbers` option
 #| editor-code-line-numbers: 1-3,5
 
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
+  if (age > 30) {
+    print('You are old')
   } else { 
-       print('You are young!')
-   }
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -140,11 +140,11 @@ hello_age(22)
 #| editor-code-line-numbers: 1-3,5
 
 hello_world <- function(age) {
-   if (age > 30) {
-       print('You are old')
+  if (age > 30) {
+    print('You are old')
   } else { 
-       print('You are young!')
-   }
+    print('You are young!')
+  }
 }
 hello_age(22)
 ```
@@ -255,14 +255,14 @@ The editor maximum line height is now controlable through the `editor-max-height
 
 ### Fixed Height
 
-The following editor has a fixed height of 50 pixels. 
+The following editor has a fixed height of 55 pixels. 
 
 :::{.panel-tabset}
 
 ### quarto-webr Output
 ```{webr-r}
 #| label: editor-fixed-growth
-#| editor-max-height: 50
+#| editor-max-height: 55
 1 + 1
 
 print("hello")
@@ -271,7 +271,7 @@ print("hello")
 ### Cell Code
 ```{{webr-r}}
 #| label: editor-fixed-growth
-#| editor-max-height: 50
+#| editor-max-height: 55
 1 + 1
 
 print("hello")
@@ -281,7 +281,7 @@ print("hello")
 
 ### Infinite Height
 
-The following editor has a fixed height of 200. 
+The following editor will automatically grow as new lines of code are added. 
 
 :::{.panel-tabset}
 
