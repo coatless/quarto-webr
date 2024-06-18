@@ -581,32 +581,34 @@ local function qwebrJSCellInsertionCode(counter)
 end 
 
 --- Remove lines with only whitespace until the first non-whitespace character is detected.
----@param codeText table
+---@param codeLines table
 ---@return table
-local function removeEmptyLinesUntilContent(codeText)
+local function removeEmptyLinesUntilContent(codeLines)
+
   -- Iterate through each line in the codeText table
-  for _, value in ipairs(codeText) do
+  for _, line in ipairs(codeLines) do
+
       -- Detect leading whitespace (newline, return character, or empty space)
-      local detectedWhitespace = string.match(value, "^%s*$")
+      local detectedWhitespace = string.match(line, "^%s*$")
 
       -- Check if the detectedWhitespace is either an empty string or nil
       -- This indicates whitespace was detected
       if isVariableEmpty(detectedWhitespace) then
           -- Delete empty space
-          table.remove(codeText, 1)
+          table.remove(codeLines, 1)
       else
-          -- Stop the loop as we've now have content
+          -- Stop the loop as we now have content
           break
       end
   end
 
   -- Return the modified table
-  return codeText
+  return codeLines
 end
 
 --- Extract Quarto code cell options from the block's text
 ---@param block pandoc.CodeBlock
----@return string
+---@return table
 ---@return table
 local function extractCodeBlockOptions(block)
   
@@ -637,11 +639,8 @@ local function extractCodeBlockOptions(block)
   -- Merge cell options with default options
   cellOptions = mergeCellOptions(cellOptions)
 
-  -- Set the codeblock text to exclude the special comments.
-  cellCode = table.concat(newCodeLines, '\n')
-
   -- Return the code alongside options
-  return cellCode, cellOptions
+  return newCodeLines, cellOptions
 end
 
 --- Replace the code cell with a webR-powered cell
@@ -688,7 +687,7 @@ local function enableWebRCodeCell(el)
 
   -- Local code cell storage
   local cellOptions = {}
-  local cellCode = ''
+  local cellCode = {}
 
   -- Convert webr-specific option commands into attributes
   cellCode, cellOptions = extractCodeBlockOptions(el)
@@ -707,12 +706,15 @@ local function enableWebRCodeCell(el)
   end
 
   -- Remove space left between options and code contents
-  cellCode = removeEmptyLinesUntilContent(cellCode)
+  local restructuredCodeCell = removeEmptyLinesUntilContent(cellCode)
+
+  -- Set the codeblock text to exclude the special comments.
+  local cellCodeMerged = table.concat(restructuredCodeCell, '\n')
 
   -- Create a new table for the CodeBlock
   local codeBlockData = {
     id = qwebrCounter,
-    code = cellCode,
+    code = cellCodeMerged,
     options = cellOptions
   }
 
