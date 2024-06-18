@@ -235,6 +235,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -394,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"fig-cap":"","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","autorun":"false","out-height":"","classes":"","warning":"true","results":"markup","output":"true","message":"true","comment":"","dpi":72,"label":"unnamed-chunk-1","editor-word-wrap":"true","fig-height":5,"editor-max-height":"","context":"interactive","fig-width":7}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"fig-cap":"","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","autorun":"false","out-height":"","classes":"","warning":"true","results":"markup","output":"true","message":"true","comment":"","dpi":72,"label":"unnamed-chunk-2","editor-word-wrap":"true","fig-height":5,"editor-max-height":"","context":"interactive","fig-width":7}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"fig-cap":"","editor-font-scale":"1","editor-quick-suggestions":"false","read-only":"false","out-width":"700px","autorun":"false","out-height":"","classes":"","warning":"true","results":"markup","output":"true","message":"true","comment":"","dpi":72,"label":"unnamed-chunk-3","editor-word-wrap":"true","fig-height":5,"editor-max-height":"","context":"interactive","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","fig-width":7,"out-height":"","read-only":"false","fig-height":5,"editor-word-wrap":"true","out-width":"700px","output":"true","label":"unnamed-chunk-1","message":"true","editor-quick-suggestions":"false","fig-cap":"","results":"markup","dpi":72,"context":"interactive","editor-font-scale":"1","comment":"","classes":"","autorun":"false","editor-max-height":""},"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1},{"options":{"warning":"true","fig-width":7,"out-height":"","read-only":"false","fig-height":5,"editor-word-wrap":"true","out-width":"700px","output":"true","label":"unnamed-chunk-2","message":"true","editor-quick-suggestions":"false","fig-cap":"","results":"markup","dpi":72,"context":"interactive","editor-font-scale":"1","comment":"","classes":"","autorun":"false","editor-max-height":""},"code":"webr::install(\"ggplot2\")","id":2},{"options":{"warning":"true","fig-width":7,"out-height":"","read-only":"false","fig-height":5,"editor-word-wrap":"true","out-width":"700px","output":"true","label":"unnamed-chunk-3","message":"true","editor-quick-suggestions":"false","fig-cap":"","results":"markup","dpi":72,"context":"interactive","editor-font-scale":"1","comment":"","classes":"","autorun":"false","editor-max-height":""},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3}];
 
 </script>
 <script type="module">
@@ -1904,6 +1913,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1957,7 +1972,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1982,6 +1997,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {
@@ -2102,7 +2167,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 16, 2024</p>
+      <p class="date-modified">June 18, 2024</p>
     </div>
   </div>
     

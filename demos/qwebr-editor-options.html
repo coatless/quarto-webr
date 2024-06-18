@@ -233,6 +233,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -392,7 +401,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"results":"markup","read-only":"false","editor-word-wrap":"true","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","classes":"","out-width":"700px","output":"true","comment":"","warning":"true","message":"true","dpi":72,"fig-cap":"","autorun":"true","editor-max-height":"","out-height":""}},{"id":2,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"results":"markup","read-only":"false","editor-word-wrap":"true","editor-font-scale":"0.5","editor-quick-suggestions":"false","context":"interactive","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","classes":"","out-width":"700px","output":"true","comment":"","warning":"true","message":"true","dpi":72,"fig-cap":"","autorun":"true","editor-max-height":"","out-height":""}},{"id":3,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"results":"markup","read-only":"false","editor-word-wrap":"true","editor-font-scale":"2","editor-quick-suggestions":"false","context":"interactive","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","classes":"","out-width":"700px","output":"true","comment":"","warning":"true","message":"true","dpi":72,"fig-cap":"","autorun":"true","editor-max-height":"","out-height":""}},{"id":4,"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)","options":{"results":"markup","read-only":"false","editor-word-wrap":"true","editor-font-scale":"0.95","editor-quick-suggestions":"false","context":"interactive","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","classes":"","out-width":"700px","output":"true","comment":"","warning":"true","message":"true","dpi":72,"fig-cap":"","autorun":"true","editor-max-height":"","out-height":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-line-numbers","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","editor-code-line-numbers":"2-6","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"hello_world <- function(age) {\n  if (age > 30) {\n    print('You are old')\n  } else { \n    print('You are young!')\n  }\n}\nhello_age(22)"},{"id":2,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-line-number","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","editor-code-line-numbers":"2","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"\nhello_world <- function(age) {\n  if (age > 30) {\n    print('You are old')\n  } else { \n    print('You are young!')\n  }\n}\nhello_age(22)"},{"id":3,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-multiple-line-numbers","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","editor-code-line-numbers":"1-3,5","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"\nhello_world <- function(age) {\n  if (age > 30) {\n    print('You are old')\n  } else { \n    print('You are young!')\n  }\n}\nhello_age(22)"},{"id":4,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-word-wrap-enabled","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"\n# A long line of code that will wrap to the next line in the editor window to avoid horizontal scrolling"},{"id":5,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-word-wrap-disabled","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"false","editor-font-scale":"0.95"},"code":"\n# A long line of code that will **NOT** wrap to the next line in the editor window and will require horizontal scrolling"},{"id":6,"options":{"editor-quick-suggestions":"true","classes":"","read-only":"false","label":"editor-suggestions-enabled","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"\nsupercalifragilisticexpialidocious = 42L\n\n# Try typing super ... \nsu"},{"id":7,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-fixed-growth","editor-max-height":"55","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"1 + 1\n\nprint(\"hello\")"},{"id":8,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"editor-infinite-growth","editor-max-height":"","message":"true","comment":"","autorun":"false","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"1 + 1\n\nprint(\"hello\")"},{"id":9,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"unnamed-chunk-9","editor-max-height":"","message":"true","comment":"","autorun":"true","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"1"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)"},{"id":10,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"unnamed-chunk-10","editor-max-height":"","message":"true","comment":"","autorun":"true","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.5"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)"},{"id":11,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"unnamed-chunk-11","editor-max-height":"","message":"true","comment":"","autorun":"true","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"2"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)"},{"id":12,"options":{"editor-quick-suggestions":"false","classes":"","read-only":"false","label":"unnamed-chunk-12","editor-max-height":"","message":"true","comment":"","autorun":"true","dpi":72,"out-width":"700px","fig-cap":"","warning":"true","fig-width":7,"context":"interactive","output":"true","fig-height":5,"out-height":"","results":"markup","editor-word-wrap":"true","editor-font-scale":"0.95"},"code":"fit = lm(mpg ~ am, data = mtcars)\n\nconfint(fit)"}];
 
 </script>
 <script type="module">
@@ -1836,6 +1845,26 @@ globalThis.qwebrExecuteCode = async function (
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
+  <li><a href="#editor-code-line-numbers-option" id="toc-editor-code-line-numbers-option" class="nav-link" data-scroll-target="#editor-code-line-numbers-option"><code>editor-code-line-numbers</code> Option</a>
+  <ul class="collapse">
+  <li><a href="#specifying-ranges" id="toc-specifying-ranges" class="nav-link" data-scroll-target="#specifying-ranges">Specifying Ranges</a></li>
+  <li><a href="#specifying-single-line" id="toc-specifying-single-line" class="nav-link" data-scroll-target="#specifying-single-line">Specifying Single Line</a></li>
+  <li><a href="#specifying-multiple-lines" id="toc-specifying-multiple-lines" class="nav-link" data-scroll-target="#specifying-multiple-lines">Specifying Multiple Lines</a></li>
+  </ul></li>
+  <li><a href="#editor-word-wrap-option" id="toc-editor-word-wrap-option" class="nav-link" data-scroll-target="#editor-word-wrap-option"><code>editor-word-wrap</code> Option</a>
+  <ul class="collapse">
+  <li><a href="#wrapped-long-code-lines" id="toc-wrapped-long-code-lines" class="nav-link" data-scroll-target="#wrapped-long-code-lines">Wrapped Long Code Lines</a></li>
+  <li><a href="#unwrapped-long-code-lines" id="toc-unwrapped-long-code-lines" class="nav-link" data-scroll-target="#unwrapped-long-code-lines">Unwrapped Long Code Lines</a></li>
+  </ul></li>
+  <li><a href="#editor-quick-suggestions-option" id="toc-editor-quick-suggestions-option" class="nav-link" data-scroll-target="#editor-quick-suggestions-option"><code>editor-quick-suggestions</code> Option</a>
+  <ul class="collapse">
+  <li><a href="#enabled-suggestions" id="toc-enabled-suggestions" class="nav-link" data-scroll-target="#enabled-suggestions">Enabled Suggestions</a></li>
+  </ul></li>
+  <li><a href="#editor-max-height-option" id="toc-editor-max-height-option" class="nav-link" data-scroll-target="#editor-max-height-option"><code>editor-max-height</code> Option</a>
+  <ul class="collapse">
+  <li><a href="#fixed-height" id="toc-fixed-height" class="nav-link" data-scroll-target="#fixed-height">Fixed Height</a></li>
+  <li><a href="#infinite-height" id="toc-infinite-height" class="nav-link" data-scroll-target="#infinite-height">Infinite Height</a></li>
+  </ul></li>
   <li><a href="#editor-font-scale-option" id="toc-editor-font-scale-option" class="nav-link" data-scroll-target="#editor-font-scale-option"><code>editor-font-scale</code> Option</a>
   <ul class="collapse">
   <li><a href="#default-size" id="toc-default-size" class="nav-link" data-scroll-target="#default-size">Default Size</a></li>
@@ -1908,6 +1937,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1961,7 +1996,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1986,6 +2021,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {
@@ -2108,12 +2193,12 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>These features are currently experimental and are included in the 0.4.2-dev.2 build of <code>{quarto-webr}</code>.</p>
+<p>These features are currently experimental and are included in the 0.4.2-dev build of <code>{quarto-webr}</code>.</p>
 </div>
 </div>
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>This feature demo introduces new options for styling the interactive editor associated with <code>{webr-r}</code> code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area.</p>
+<p>This feature demo introduces <a href="qwebr-cell-options.qmd#monaco-editor-options">new cell-level options</a> for styling the interactive editor associated with <code>{webr-r}</code> code blocks. These editor-specific options offer greater flexibility when working with the Monaco Editor integrated into the interactive area. Options involving the editor are usually prefixed with <code>editor</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2127,6 +2212,235 @@ Note
 <p>These options are only configurable during the document authoring stage.</p>
 </div>
 </div>
+<section id="editor-code-line-numbers-option" class="level2">
+<h2 class="anchored" data-anchor-id="editor-code-line-numbers-option"><code>editor-code-line-numbers</code> Option</h2>
+<p>Lines inside of the editor may be highlighted through the <code>editor-code-line-numbers</code> option. Specifying the highlighting of a line is done by providing a range of line numbers separated by a hyphen or a comma. For example:</p>
+<ul>
+<li><code>editor-code-line-numbers: 2-6</code> will highlight lines 2 to 6.</li>
+<li><code>editor-code-line-numbers: 1,3,5</code> will highlight lines 1, 3, and 5.</li>
+<li><code>editor-code-line-numbers: 1-3,5</code> will highlight lines 1 to 3 and 5.</li>
+</ul>
+<p>This feature is useful for drawing attention to specific line. You may wish to combine it with <code>readonly: true</code>.</p>
+<section id="specifying-ranges" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-ranges">Specifying Ranges</h3>
+<p>The following cell demonstrates the use of the <code>editor-code-line-numbers</code> option to highlight a range of lines in the editor. Lines 2-6 should be highlighted in the editor below.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-line-numbers</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-code-line-numbers: 2-6</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">hello_world &lt;- function(age) {</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">  if (age &gt; 30) {</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are old')</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">  } else { </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are young!')</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">hello_age(22)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="specifying-single-line" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-single-line">Specifying Single Line</h3>
+<p>The following cell demonstrates the use of the <code>editor-code-line-numbers</code> option to highlight a single line in the editor. Line 2 should be highlighted in the editor below.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-line-number</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-code-line-numbers: 2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">hello_world &lt;- function(age) {</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">  if (age &gt; 30) {</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are old')</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">  } else { </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are young!')</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">hello_age(22)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="specifying-multiple-lines" class="level3">
+<h3 class="anchored" data-anchor-id="specifying-multiple-lines">Specifying Multiple Lines</h3>
+<p>The following cell demonstrates the use of the <code>editor-code-line-numbers</code> option to highlight multiple lines in the editor. Lines 1 - 3 and 5 should be highlighted in the editor below.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-multiple-line-numbers</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-code-line-numbers: 1-3,5</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">hello_world &lt;- function(age) {</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">  if (age &gt; 30) {</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are old')</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">  } else { </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">    print('You are young!')</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">hello_age(22)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="editor-word-wrap-option" class="level2">
+<h2 class="anchored" data-anchor-id="editor-word-wrap-option"><code>editor-word-wrap</code> Option</h2>
+<p>The editor area allows for text to wrap to the next line when it reaches the end of the editor window. This feature is enabled by setting the <code>editor-word-wrap</code> option to <code>true</code>.</p>
+<section id="wrapped-long-code-lines" class="level3">
+<h3 class="anchored" data-anchor-id="wrapped-long-code-lines">Wrapped Long Code Lines</h3>
+<p>In the following cell, the editor window is set to wrap long lines of code to the next line.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-word-wrap-enabled</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-word-wrap: true</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in"># A long line of code that will wrap to the next line in the editor window to avoid horizontal scrolling</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unwrapped-long-code-lines" class="level3">
+<h3 class="anchored" data-anchor-id="unwrapped-long-code-lines">Unwrapped Long Code Lines</h3>
+<p>In the following cell, the editor window is set to not wrap long lines of code to the next line.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-word-wrap-disabled</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-word-wrap: false</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in"># A long line of code that will **NOT** wrap to the next line in the editor window and will require horizontal scrolling</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="editor-quick-suggestions-option" class="level2">
+<h2 class="anchored" data-anchor-id="editor-quick-suggestions-option"><code>editor-quick-suggestions</code> Option</h2>
+<p>Suggestions based on autocompletion can be enabled by setting the <code>editor-quick-suggestions</code> option to <code>true</code>. Enabling autocompletion means that the name of variables and functions will be viewable in a pop-up menu after pausing for a while on a line of code.</p>
+<section id="enabled-suggestions" class="level3">
+<h3 class="anchored" data-anchor-id="enabled-suggestions">Enabled Suggestions</h3>
+<p>In the following cell, you should be able to access on a new line of code the variable “supercalifragilisticexpialidocious” by pausing after typing <code>super</code>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-suggestions-enabled</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-quick-suggestions: true</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">supercalifragilisticexpialidocious = 42L</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in"># Try typing super ...</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">su</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ve temporarily disabled editor quick suggestions by default as the options presented were often more confusing than intended.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="editor-max-height-option" class="level2">
+<h2 class="anchored" data-anchor-id="editor-max-height-option"><code>editor-max-height</code> Option</h2>
+<p>The editor maximum line height is now controlable through the <code>editor-max-height</code> option. By default, the editor is set to grow infinitely as new lines of code are added. By specifying a pixel value, all lines up to the threshold will be shown while later lines will require the use of the scroll bar in the editor window to access.</p>
+<section id="fixed-height" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-height">Fixed Height</h3>
+<p>The following editor has a fixed height of 55 pixels.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-fixed-growth</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-max-height: 55</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">print("hello")</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="infinite-height" class="level3">
+<h3 class="anchored" data-anchor-id="infinite-height">Infinite Height</h3>
+<p>The following editor will automatically grow as new lines of code are added.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">quarto-webr Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Cell Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: editor-infinite-growth</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">print("hello")</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="editor-font-scale-option" class="level2">
 <h2 class="anchored" data-anchor-id="editor-font-scale-option"><code>editor-font-scale</code> Option</h2>
 <p>The editor area now inherits font size from Quarto’s <code>fontsize</code> theme option, ensuring consistency with other elements on the page. You can adjust the font size for the editor relative to Quarto’s output by setting the <code>editor-font-scale</code> option. When <code>editor-font-scale</code> is:</p>
@@ -2140,9 +2454,9 @@ Note
 <p>By default, we set <code>editor-font-scale</code> to 1, aligning the editor font size with the <code>fontsize</code> value.</p>
 <p>Let’s consider a standard code cell that fits a linear model and obtains the confidence intervals for one or more parameters in a fitted model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               2.5 %   97.5 %
 (Intercept) 14.85062 19.44411
@@ -2150,36 +2464,36 @@ am           3.64151 10.84837</code></pre>
 </div>
 </div>
 <p>Now, let’s observe the effect with <code>editor-font-scale: 1</code>:</p>
-<div id="qwebr-insertion-location-1"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Notice the consistency in font sizes.</p>
 </section>
 <section id="reducing-editor-size" class="level3">
 <h3 class="anchored" data-anchor-id="reducing-editor-size">Reducing Editor Size</h3>
 <p>To decrease the font size, we set a value between <code>0 &lt; editor-font-size &lt; 1</code>. For example, let’s set <code>editor-font-scale</code> to 0.5:</p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="increasing-editor-size" class="level3">
 <h3 class="anchored" data-anchor-id="increasing-editor-size">Increasing Editor Size</h3>
 <p>To increase the font size, we set a value between <code>editor-font-size &gt; 1</code>. For example, let’s set <code>editor-font-scale</code> to 2:</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="scaling-content-areas" class="level3">
 <h3 class="anchored" data-anchor-id="scaling-content-areas">Scaling Content Areas</h3>
 <p>In this example, we create a custom area using a <a href="https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans">Div block in Quarto</a> and set the div’s font size to 150%. Consequently, the editor inherits the font size within the area.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="scaledEditor">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><code>{quarto-webr}</code> Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cell Code</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><code>{quarto-webr}</code> Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Cell Code</a></li></ul>
 <div class="tab-content" data-group="scaledEditor">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div id="big-text" style="font-size: 150%">
 <section id="quarto-code-cell-for-r" class="level5">
 <h5 class="anchored" data-anchor-id="quarto-code-cell-for-r">Quarto code cell for R</h5>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               2.5 %   97.5 %
 (Intercept) 14.85062 19.44411
@@ -2189,46 +2503,46 @@ am           3.64151 10.84837</code></pre>
 </section>
 <section id="webr-code-cell-under-quarto-webr" class="level5">
 <h5 class="anchored" data-anchor-id="webr-code-cell-under-quarto-webr">webR code cell under quarto-webr</h5>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>::: {#big-text style="font-size: 150%"}</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Quarto code cell for R</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>::: {.cell-output .cell-output-stdout}</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="in">               2.5 %   97.5 %</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="in">(Intercept) 14.85062 19.44411</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="in">am           3.64151 10.84837</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>webR code cell under quarto-webr</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="sourceCode" id="cb13"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>::: {#big-text style="font-size: 150%"}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Quarto code cell for R</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>::: {.cell-output .cell-output-stdout}</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="in">               2.5 %   97.5 %</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="in">(Intercept) 14.85062 19.44411</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="in">am           3.64151 10.84837</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>webR code cell under quarto-webr</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="in">#| autorun: true</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="in">fit = lm(mpg ~ am, data = mtcars)</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="in">confint(fit)</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2237,7 +2551,7 @@ am           3.64151 10.84837</code></pre>
 </section>
 <section id="fin" class="level1">
 <h1>Fin</h1>
-<p>Just the beginning!</p>
+<p>We’re excited to see how you use these new editor specific options to enhance your interactive documents. If you have any feedback or suggestions, please let us know by <a href="https://github.com/coatless/quarto-webr/issues/new/choose">opening an issue</a> on the <code>{quarto-webr}</code> GitHub repository.</p>
 
 
 </section>

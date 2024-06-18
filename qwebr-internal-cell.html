@@ -235,6 +235,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -394,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"meaning_of_life = 42","id":1,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"setup","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-1"}},{"code":"meaning_of_life","id":2,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"interactive","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-2"}},{"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","id":3,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"output","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-3"}},{"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":4,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"output","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-4"}},{"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")","id":5,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"setup","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-5"}},{"code":"# Display the head of the data\nhead(df_penguins)","id":6,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"false","context":"interactive","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-6"}},{"code":"# Display the head of the data\nhead(df_penguins)","id":7,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"interactive","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-7"}},{"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","id":8,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"output","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-8"}},{"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","id":9,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"true","context":"setup","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-9"}},{"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","id":10,"options":{"editor-max-height":"","editor-font-scale":"1","warning":"true","dpi":72,"out-height":"","autorun":"false","context":"interactive","out-width":"700px","fig-height":5,"results":"markup","message":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","output":"true","read-only":"false","comment":"","classes":"","fig-cap":"","fig-width":7,"label":"unnamed-chunk-10"}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"meaning_of_life = 42","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-1","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"setup","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":2,"code":"meaning_of_life","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-2","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"interactive","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":3,"code":"mat2x2 <- matrix(c(1, 2, 3, 4), nrow = 2)\nmat2x2","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-3","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"output","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":4,"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-4","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"output","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":5,"code":"\n# Download a dataset\ndownload.file(\n  'https://raw.githubusercontent.com/coatless/raw-data/main/penguins.csv',\n  'penguins.csv'\n)\n\ndf_penguins = read.csv(\"penguins.csv\")","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-5","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"setup","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":6,"code":"# Display the head of the data\nhead(df_penguins)","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-6","autorun":"false","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"interactive","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":7,"code":"# Display the head of the data\nhead(df_penguins)","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-7","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"interactive","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":8,"code":"\nmtcars2 <- within(mtcars, {\n   vs <- factor(vs, labels = c(\"V\", \"S\"))\n   am <- factor(am, labels = c(\"automatic\", \"manual\"))\n   cyl  <- ordered(cyl)\n   gear <- ordered(gear)\n   carb <- ordered(carb)\n})\n\nsummary(mtcars2)","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-8","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"output","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":9,"code":"answer_frame <- data.frame(\n  problem = c(\"1a\", \"1b\", \"2\"),\n  answer = c(10, 2, 3/16),\n  tol = c(0.001, 0, 1/32)\n)\n\ncheck <- function(problem, answer) {\n  aframe <- answer_frame\n  if(!problem %in% aframe$problem) {\n    error_msg <- paste0(\"Please enter a valid problem. (\", paste0(aframe$problem, collapse = \",\"), \")\")\n    stop(error_msg)\n  }\n\n  solution <- aframe[which(aframe$problem == problem), \"answer\"]\n\n  ifelse(\n    all.equal(answer, solution, tolerance = 0.001) == TRUE,\n    \"Correct! Well done.\",\n    \"Incorrect! Good attempt. Let's try again?\"\n  )\n}","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-9","autorun":"true","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"setup","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}},{"id":10,"code":"student_solution = 11\n\ncheck(problem = \"1a\", answer = student_solution)","options":{"classes":"","results":"markup","comment":"","dpi":72,"fig-cap":"","output":"true","editor-max-height":"","label":"unnamed-chunk-10","autorun":"false","editor-font-scale":"1","warning":"true","out-width":"700px","message":"true","editor-quick-suggestions":"false","out-height":"","context":"interactive","fig-height":5,"editor-word-wrap":"true","read-only":"false","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -1909,6 +1918,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1962,7 +1977,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1987,6 +2002,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {
@@ -2107,7 +2172,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 16, 2024</p>
+      <p class="date-modified">June 18, 2024</p>
     </div>
   </div>
     

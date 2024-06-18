@@ -190,6 +190,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -349,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","fig-width":7,"classes":"","autorun":"false","out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px","results":"markup","fig-cap":"","context":"interactive","message":"true","comment":"","dpi":72,"editor-font-scale":"1","read-only":"false","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-1","editor-quick-suggestions":"false"},"id":1,"code":"1 + 1"},{"options":{"warning":"true","fig-width":7,"classes":"","autorun":"true","out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px","results":"markup","fig-cap":"","context":"interactive","message":"true","comment":"","dpi":72,"editor-font-scale":"1","read-only":"false","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-2","editor-quick-suggestions":"false"},"id":2,"code":"1 + 1"},{"options":{"warning":"true","fig-width":7,"classes":"","autorun":"true","out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px","results":"markup","fig-cap":"","context":"interactive","message":"true","comment":"","dpi":72,"editor-font-scale":"1","read-only":"true","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-3","editor-quick-suggestions":"false"},"id":3,"code":"1 + 1"},{"options":{"warning":"true","fig-width":7,"classes":"","autorun":"true","out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px","results":"markup","fig-cap":"","context":"setup","message":"true","comment":"","dpi":72,"editor-font-scale":"1","read-only":"false","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-4","editor-quick-suggestions":"false"},"id":4,"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)"},{"options":{"warning":"true","fig-width":7,"classes":"","autorun":"true","out-height":"","editor-word-wrap":"true","output":"true","out-width":"700px","results":"markup","fig-cap":"","context":"output","message":"true","comment":"","dpi":72,"editor-font-scale":"1","read-only":"false","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-5","editor-quick-suggestions":"false"},"id":5,"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)"}];
+globalThis.qwebrCellDetails = [{"code":"1 + 1","id":1,"options":{"comment":"","fig-width":7,"label":"unnamed-chunk-1","out-width":"700px","output":"true","warning":"true","read-only":"false","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-height":5,"message":"true","context":"interactive","classes":"","editor-word-wrap":"true","editor-max-height":"","autorun":"false","out-height":"","fig-cap":"","results":"markup"}},{"code":"1 + 1","id":2,"options":{"comment":"","fig-width":7,"label":"unnamed-chunk-2","out-width":"700px","output":"true","warning":"true","read-only":"false","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-height":5,"message":"true","context":"interactive","classes":"","editor-word-wrap":"true","editor-max-height":"","autorun":"true","out-height":"","fig-cap":"","results":"markup"}},{"code":"1 + 1","id":3,"options":{"comment":"","fig-width":7,"label":"unnamed-chunk-3","out-width":"700px","output":"true","warning":"true","read-only":"true","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-height":5,"message":"true","context":"interactive","classes":"","editor-word-wrap":"true","editor-max-height":"","autorun":"true","out-height":"","fig-cap":"","results":"markup"}},{"code":"x = c(1, 5, 3, -2)\ny = c(-5, 8, 9, 4)","id":4,"options":{"comment":"","fig-width":7,"label":"unnamed-chunk-4","out-width":"700px","output":"true","warning":"true","read-only":"false","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-height":5,"message":"true","context":"setup","classes":"","editor-word-wrap":"true","editor-max-height":"","autorun":"true","out-height":"","fig-cap":"","results":"markup"}},{"code":"cat(\"x: \")\nprint(x)\n\ncat(\"y: \")\nprint(y)\n\nplot(x, y)","id":5,"options":{"comment":"","fig-width":7,"label":"unnamed-chunk-5","out-width":"700px","output":"true","warning":"true","read-only":"false","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-height":5,"message":"true","context":"output","classes":"","editor-word-wrap":"true","editor-max-height":"","autorun":"true","out-height":"","fig-cap":"","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -1849,6 +1858,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1902,7 +1917,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1927,6 +1942,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {

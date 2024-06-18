@@ -190,6 +190,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -349,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"test\")","options":{"results":"markup","editor-quick-suggestions":"false","fig-height":5,"classes":"","out-width":"700px","editor-font-scale":"1","out-height":"","fig-width":7,"comment":"","warning":"true","autorun":"false","dpi":72,"editor-max-height":"","fig-cap":"","editor-word-wrap":"true","context":"interactive","output":"true","message":"true","read-only":"false","label":"unnamed-chunk-1"}},{"id":2,"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"results":"markup","editor-quick-suggestions":"false","fig-height":5,"classes":"","out-width":"700px","editor-font-scale":"1","out-height":"","fig-width":7,"comment":"","warning":"true","autorun":"false","dpi":72,"editor-max-height":"","fig-cap":"","editor-word-wrap":"true","context":"interactive","output":"true","message":"true","read-only":"false","label":"unnamed-chunk-2"}},{"id":3,"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")","options":{"results":"markup","editor-quick-suggestions":"false","fig-height":5,"classes":"","out-width":"700px","editor-font-scale":"1","out-height":"","fig-width":7,"comment":"","warning":"true","autorun":"false","dpi":72,"editor-max-height":"80","fig-cap":"","editor-word-wrap":"true","context":"interactive","output":"true","message":"true","read-only":"false","label":"unnamed-chunk-3"}},{"id":4,"code":"my_long_variable = 1\n\nprin","options":{"results":"markup","editor-quick-suggestions":"true","fig-height":5,"classes":"","out-width":"700px","editor-font-scale":"1","out-height":"","fig-width":7,"comment":"","warning":"true","autorun":"false","dpi":72,"editor-max-height":"","fig-cap":"","editor-word-wrap":"true","context":"interactive","output":"true","message":"true","read-only":"false","label":"unnamed-chunk-4"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"print(\"test\")"},{"id":2,"options":{"label":"unnamed-chunk-2","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")"},{"id":3,"options":{"label":"unnamed-chunk-3","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"true","editor-max-height":"80","editor-quick-suggestions":"false","out-width":"700px"},"code":"print(\"test\")\n59120\n1 + 1\nc(1, 3, 4)\nprint(\"line 5\")"},{"id":4,"options":{"label":"unnamed-chunk-4","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"true","out-width":"700px"},"code":"my_long_variable = 1\n\nprin"},{"id":5,"options":{"label":"unnamed-chunk-5","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-code-line-numbers":"1","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"my_long_variable = 1\n\n1 + 1\n\nprint(\"hello!\")"},{"id":6,"options":{"label":"unnamed-chunk-6","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-code-line-numbers":"1,5","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"my_long_variable = 1\n\n1 + 1\n\nprint(\"hello!\")"},{"id":7,"options":{"label":"unnamed-chunk-7","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-code-line-numbers":"1-3,5","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"my_long_variable = 1\n\n1 + 1\n\nprint(\"hello!\")"},{"id":8,"options":{"label":"unnamed-chunk-8","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"\nmy_extra_extra_extra_extra_extra_long_variable = 1"},{"id":9,"options":{"label":"unnamed-chunk-9","warning":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72,"comment":"","message":"true","output":"true","results":"markup","classes":"","fig-height":5,"autorun":"false","fig-width":7,"out-height":"","context":"interactive","editor-word-wrap":"false","editor-max-height":"","editor-quick-suggestions":"false","out-width":"700px"},"code":"\nmy_extra_extra_extra_extra_extra_long_variable = 1"}];
 
 </script>
 <script type="module">
@@ -1849,6 +1858,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1902,7 +1917,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1927,6 +1942,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {
@@ -2063,8 +2128,40 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Opt-in to auto suggestions.</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="highlight" class="level2">
+<h2 class="anchored" data-anchor-id="highlight">Highlight</h2>
+<p>Opt-in to auto suggestions.</p>
+<section id="only-1-line" class="level3">
+<h3 class="anchored" data-anchor-id="only-1-line">Only 1 line</h3>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="line-1-and-5" class="level3">
+<h3 class="anchored" data-anchor-id="line-1-and-5">Line 1 and 5</h3>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="line-1-3-and-5" class="level3">
+<h3 class="anchored" data-anchor-id="line-1-3-and-5">Line 1-3 and 5</h3>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</section>
+<section id="word-wrap" class="level2">
+<h2 class="anchored" data-anchor-id="word-wrap">Word wrap</h2>
+<section id="enabled-wrap" class="level3">
+<h3 class="anchored" data-anchor-id="enabled-wrap">Enabled Wrap</h3>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="disabled-wrap" class="level3">
+<h3 class="anchored" data-anchor-id="disabled-wrap">Disabled Wrap</h3>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

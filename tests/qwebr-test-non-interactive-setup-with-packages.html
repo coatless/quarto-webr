@@ -190,6 +190,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -349,7 +358,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"output":"true","comment":"","autorun":"true","fig-cap":"","editor-word-wrap":"true","warning":"true","classes":"","message":"true","results":"markup","context":"setup","editor-max-height":"","out-height":"","fig-height":5,"read-only":"false","out-width":"700px","dpi":72,"label":"spike-data","fig-width":7,"editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1},{"options":{"output":"true","comment":"","autorun":"false","fig-cap":"","editor-word-wrap":"true","warning":"true","classes":"","message":"true","results":"markup","context":"interactive","editor-max-height":"","out-height":"","fig-height":5,"read-only":"false","out-width":"700px","dpi":72,"label":"spike-data","fig-width":7,"editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"new_mtcars","id":2}];
+globalThis.qwebrCellDetails = [{"options":{"label":"spike-data","editor-quick-suggestions":"false","output":"true","warning":"true","comment":"","results":"markup","editor-font-scale":"1","classes":"","out-height":"","fig-height":5,"autorun":"true","out-width":"700px","editor-word-wrap":"true","message":"true","context":"setup","read-only":"false","editor-max-height":"","fig-width":7,"fig-cap":"","dpi":72},"id":1,"code":"\nnew_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))"},{"options":{"label":"spike-data","editor-quick-suggestions":"false","output":"true","warning":"true","comment":"","results":"markup","editor-font-scale":"1","classes":"","out-height":"","fig-height":5,"autorun":"false","out-width":"700px","editor-word-wrap":"true","message":"true","context":"interactive","read-only":"false","editor-max-height":"","fig-width":7,"fig-cap":"","dpi":72},"id":2,"code":"new_mtcars"}];
 
 </script>
 <script type="module">
@@ -1849,6 +1858,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1902,7 +1917,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1927,6 +1942,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {

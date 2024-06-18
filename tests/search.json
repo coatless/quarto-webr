@@ -143,6 +143,28 @@
     ]
   },
   {
+    "objectID": "qwebr-test-editor-options.html#highlight",
+    "href": "qwebr-test-editor-options.html#highlight",
+    "title": "Test: Editor Options",
+    "section": "Highlight",
+    "text": "Highlight\nOpt-in to auto suggestions.\n\nOnly 1 line\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nLine 1 and 5\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nLine 1-3 and 5\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Editor Options"
+    ]
+  },
+  {
+    "objectID": "qwebr-test-editor-options.html#word-wrap",
+    "href": "qwebr-test-editor-options.html#word-wrap",
+    "title": "Test: Editor Options",
+    "section": "Word wrap",
+    "text": "Word wrap\n\nEnabled Wrap\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nDisabled Wrap\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Tests",
+      "Test: Editor Options"
+    ]
+  },
+  {
     "objectID": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
     "href": "qwebr-test-status-header-suppressed-revealjs.html#webr-in-revealjs",
     "title": "Test: No Startup Status Present in RevealJS Presentations",

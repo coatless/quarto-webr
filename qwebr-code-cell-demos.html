@@ -235,6 +235,15 @@ body.quarto-dark .qwebr-button:hover {
   color: #696969;
 }
 
+/* Style the code highlight lines */
+body.quarto-light .qwebr-editor-highlight-line {
+  background-color: lightblue;
+}
+
+body.quarto-dark .qwebr-editor-highlight-line {
+  background-color: darkblue;
+}
+
 /* Style the modal pop-up */
 
 /* The Modal (background) */
@@ -394,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-1","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"1 + 1","id":1},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-2","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)","id":2},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-3","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩","id":3},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-4","classes":"","read-only":"true","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"1 + 1","id":4},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-5","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)","id":5},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-6","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"35 + ________","id":6},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-7","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)","id":7},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-8","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"webr::install(\"ggplot2\")","id":8},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-9","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()","id":9},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-10","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"name <- \"James\"\nage <- 42","id":10},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-11","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"message(name, \" is \", age, \" years old!\")","id":11},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-12","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")","id":12},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-13","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"say_hello(\"Hulya\")","id":13},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-14","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"stop(\"This is a hard error\")","id":14},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-15","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"variable_not_defined","id":15},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-16","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1","id":16},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-17","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)","id":17},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-18","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas","id":18},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-19","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"add_one <- \\(x) x + 1\nadd_one(2)","id":19},{"options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-20","classes":"","read-only":"false","dpi":72,"context":"interactive","autorun":"false","warning":"true","fig-height":5,"editor-word-wrap":"true","fig-width":7,"output":"true","out-height":"","editor-quick-suggestions":"false","message":"true","out-width":"700px","comment":"","results":"markup","fig-cap":""},"code":"","id":20}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-1","fig-height":5,"classes":"","message":"true"},"code":"1 + 1"},{"id":2,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-2","fig-height":5,"classes":"","message":"true"},"code":"fit <- lm(mpg ~ vs, data = mtcars)\n\nsummary(fit)"},{"id":3,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-3","fig-height":5,"classes":"","message":"true"},"code":"# Try running selected code at the start of the line\nprint(\"Hello quarto-webr World!\")\n\n# Try highlight only -3 or 5 and pressing the keys required\n# for the \"selected code\" approach\n-3 + 5\n\n# Finally, try running the entire code cell by using Shift + ↩"},{"id":4,"options":{"editor-font-scale":"1","read-only":"true","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-4","fig-height":5,"classes":"","message":"true"},"code":"1 + 1"},{"id":5,"options":{"editor-font-scale":"1","read-only":"true","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-code-line-numbers":"1-3,6","editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-5","fig-height":5,"classes":"","message":"true"},"code":"\n# This is a comment\n1 + 1\n2 + 2\n3 + 3\n\n# This is another comment"},{"id":6,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-6","fig-height":5,"classes":"","message":"true"},"code":"plot(\n  mpg ~ wt,\n  data = mtcars,\n  col = \"blue\", \n  xlab = \"Miles/(US) gallon\",\n  ylab = \"Weight (1000 lbs)\",\n  main = \"Miles per Gallon and Weight of Cars\",\n  sub = \"Source: 1974 Motor Trend US magazine.\"\n)"},{"id":7,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-7","fig-height":5,"classes":"","message":"true"},"code":"35 + ________"},{"id":8,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-8","fig-height":5,"classes":"","message":"true"},"code":"# Create a copy of the data\nmtcars2 <- mtcars\n\n# Change variable to a factor\nmtcars2$vs <- factor(mtcars2$vs, labels = c(\"V\", \"S\"))\n\nmodified_vs_data = data.frame(\n  \"original_vs\" = mtcars$vs,\n  \"modified_vs\" = mtcars2$vs\n)\n\nhead(modified_vs_data)"},{"id":9,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-9","fig-height":5,"classes":"","message":"true"},"code":"webr::install(\"ggplot2\")"},{"id":10,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-10","fig-height":5,"classes":"","message":"true"},"code":"library(ggplot2)\n\np <- ggplot(mpg, aes(class, hwy))\np + geom_boxplot()"},{"id":11,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-11","fig-height":5,"classes":"","message":"true"},"code":"name <- \"James\"\nage <- 42"},{"id":12,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-12","fig-height":5,"classes":"","message":"true"},"code":"message(name, \" is \", age, \" years old!\")"},{"id":13,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-13","fig-height":5,"classes":"","message":"true"},"code":"say_hello = function(name) {\n  msg = paste0(\"Hello \", name, \"! Welcome to webR :)\")\n  return(msg)\n}\n\nsay_hello(\"James\")"},{"id":14,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-14","fig-height":5,"classes":"","message":"true"},"code":"say_hello(\"Hulya\")"},{"id":15,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-15","fig-height":5,"classes":"","message":"true"},"code":"stop(\"This is a hard error\")"},{"id":16,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-16","fig-height":5,"classes":"","message":"true"},"code":"variable_not_defined"},{"id":17,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-17","fig-height":5,"classes":"","message":"true"},"code":"warning(\"Uh-oh, there's a warning!\")\n\n# Compute a value\n1 + 1"},{"id":18,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-18","fig-height":5,"classes":"","message":"true"},"code":"quadratic_roots <- function(a, b, c) {\n\n  cat(paste0(\"Analyzing the quadratic equation: \", a, \"x^2 + \", b, \"x + \", c, \".\"))\n\n  discriminant <- (b^2) - (4*a*c)\n\n  # Check if there are 2 solutions\n  if(discriminant != 0) {\n\n    # Are the solutions imaginary?\n    if(discriminant < 0) {\n      warning(\"There are no real-numbered roots for this quadratic equation.\")\n      discriminant <- as.complex(discriminant)\n    }\n    \n    # Compute the solutions\n    x_intercepts <- (-b + c(-1, 1) * sqrt(discriminant)) / (2*a)\n\n    return(x_intercepts)\n  } \n\n  # When the discriminant is 0, compute a single solution.\n  x_intercept <- (-b) / (2*a)\n\n  return(x_intercept)\n}\n\nquadratic_roots(1, 3, 7)"},{"id":19,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-19","fig-height":5,"classes":"","message":"true"},"code":"seven_seas <- \"Ahoy, matey!\\nLet's set sail for adventure!\\n\"\nseven_seas"},{"id":20,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-20","fig-height":5,"classes":"","message":"true"},"code":"add_one <- \\(x) x + 1\nadd_one(2)"},{"id":21,"options":{"editor-font-scale":"1","read-only":"false","results":"markup","comment":"","warning":"true","fig-cap":"","editor-word-wrap":"true","output":"true","out-width":"700px","dpi":72,"editor-max-height":"","out-height":"","context":"interactive","fig-width":7,"editor-quick-suggestions":"false","autorun":"false","label":"unnamed-chunk-21","fig-height":5,"classes":"","message":"true"},"code":""}];
 
 </script>
 <script type="module">
@@ -1840,6 +1849,7 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
   <li><a href="#line-by-line-execution" id="toc-line-by-line-execution" class="nav-link" data-scroll-target="#line-by-line-execution">Line-by-line Execution</a></li>
   <li><a href="#preventing-modifications-to-code" id="toc-preventing-modifications-to-code" class="nav-link" data-scroll-target="#preventing-modifications-to-code">Preventing Modifications to Code</a></li>
+  <li><a href="#drawing-attention-to-code" id="toc-drawing-attention-to-code" class="nav-link" data-scroll-target="#drawing-attention-to-code">Drawing Attention to Code</a></li>
   <li><a href="#create-a-graph-with-base-r" id="toc-create-a-graph-with-base-r" class="nav-link" data-scroll-target="#create-a-graph-with-base-r">Create a Graph with Base R</a></li>
   <li><a href="#fill-in-the-blanks" id="toc-fill-in-the-blanks" class="nav-link" data-scroll-target="#fill-in-the-blanks">Fill in the Blanks</a></li>
   <li><a href="#data-wrangle-in-real-time" id="toc-data-wrangle-in-real-time" class="nav-link" data-scroll-target="#data-wrangle-in-real-time">Data Wrangle in Real Time</a></li>
@@ -1916,6 +1926,12 @@ updateMonacoEditorsOnBodyClassChange();
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
 // Function that builds and registers a Monaco Editor instance    
 globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
@@ -1969,7 +1985,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     const model = editor.getModel();
     // Set EOL for the model
     model.setEOL(monaco.editor.EndOfLineSequence.LF);
-
+    
     // Dynamically modify the height of the editor window if new lines are added.
     let ignoreEvent = false;
     const updateHeight = () => {
@@ -1994,6 +2010,56 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ignoreEvent = false;
       }
     };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
 
     // Helper function to check if selected text is empty
     function isEmptyCodeText(selectedCodeText) {
@@ -2114,7 +2180,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 16, 2024</p>
+      <p class="date-modified">June 18, 2024</p>
     </div>
   </div>
     
@@ -2196,10 +2262,41 @@ Note
 </div>
 </div>
 </section>
+<section id="drawing-attention-to-code" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-attention-to-code">Drawing Attention to Code</h2>
+<p>Lines of code can be highlighted using <code>editor-code-line-numbers</code> to draw attention to specific parts of the code. For example:</p>
+<ul>
+<li><code>editor-code-line-numbers: 1-3</code> will highlight lines 1 to 3.</li>
+<li><code>editor-code-line-numbers: 1,3,6</code> will highlight lines 1, 3, and 6.</li>
+<li><code>editor-code-line-numbers: 1-3,6</code> will highlight lines 1 to 3 and 6.</li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><code>{quarto-webr}</code> Output</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Cell code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| read-only: true</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| editor-code-line-numbers: 1-3,6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in"># This is a comment</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">2 + 2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">3 + 3</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in"># This is another comment</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="create-a-graph-with-base-r" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-graph-with-base-r">Create a Graph with Base R</h2>
 <p>For this example, webR empowers us to create and visualize data plots interactively. We can tweak labels, colors, or even the variables being used on an as-needed basis to explore “What if …” scenarios. For instance, what if we try changing the value <code>blue</code> to <code>orange</code> and run the code again.</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="fill-in-the-blanks" class="level2">
@@ -2208,13 +2305,13 @@ Note
 <blockquote class="blockquote">
 <p>Fill in the blank to have the following expression add up to <strong>42</strong>.</p>
 </blockquote>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="data-wrangle-in-real-time" class="level2">
 <h2 class="anchored" data-anchor-id="data-wrangle-in-real-time">Data Wrangle in Real Time</h2>
 <p>Data manipulation is a crucial part of data analysis. In this example, we’ll modify a data set in real-time and view the results. It’s like changing ingredients while cooking to get the perfect dish!</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="working-with-r-packages" class="level2">
@@ -2234,26 +2331,26 @@ Note
 </div>
 </div>
 <p>Let’s take <code>ggplot2</code> as an example:</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>With <code>ggplot2</code> now installed, let’s create a graph with it!</p>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="variable-definitions-and-reuse" class="level2">
 <h2 class="anchored" data-anchor-id="variable-definitions-and-reuse">Variable Definitions and Reuse</h2>
 <p>Define variables in one code cell and reuse them in subsequent cells:</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <p>Functions can similarly be defined and used in one code cell or multiple code cells.</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2273,41 +2370,41 @@ Note
 <h2 class="anchored" data-anchor-id="handling-errors-and-warnings">Handling Errors and Warnings</h2>
 <p>When webR encounters an error while running R code, the error and warning messages are displayed to the user.</p>
 <p>For example, if the routine has a hard stop, the execution immediately ends, and the message is shared.</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Similarly, if a variable is not found, then the code stops being evaluated and returns an error.</p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Unlike errors, warning messages are allowed to propagate into the output without stopping the computation.</p>
+<p>Similarly, if a variable is not found, then the code stops being evaluated and returns an error.</p>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This is even the case inside of complex functions.</p>
+<p>Unlike errors, warning messages are allowed to propagate into the output without stopping the computation.</p>
 <div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>This is even the case inside of complex functions.</p>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="escaping-characters-in-a-string" class="level2">
 <h2 class="anchored" data-anchor-id="escaping-characters-in-a-string">Escaping Characters in a String</h2>
 <p>Handle special characters in strings with ease:</p>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="anonymous-function-definition" class="level2">
 <h2 class="anchored" data-anchor-id="anonymous-function-definition">Anonymous Function Definition</h2>
 <p>Define and use anonymous functions seamlessly:</p>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="empty-code-cell" class="level2">
 <h2 class="anchored" data-anchor-id="empty-code-cell">Empty Code Cell</h2>
 <p>Define an empty code cell by simply leaving it blank.</p>
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="pre-rendered-code-cell" class="level2">
 <h2 class="anchored" data-anchor-id="pre-rendered-code-cell">Pre-rendered Code Cell</h2>
 <p>Any code using the usual <code>{r}</code> tag will be executed, and its output saved, just as if you were rendering a Quarto document without the webR extension:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hello!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Hello!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Hello!</code></pre>
 </div>
