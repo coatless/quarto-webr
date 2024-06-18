@@ -1,0 +1,67 @@
+---
+title: "Test: Space Removal after Options"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+Check that the editor contents avoids retaining spaces after the options.
+
+
+## Option with a Single Space 
+
+```{webr-r}
+#| autorun: true
+
+print("test")
+1 + 1
+```
+
+## Multiple Options with a Single Space 
+
+```{webr-r}
+#| read-only: true
+#| editor-code-line-numbers: 1,3-5,7
+
+# This is a comment
+
+1 + 1
+2 + 2
+3 + 3
+
+# This is another comment
+```
+
+## Multiple Spaces
+
+```{webr-r}
+#| autorun: true
+
+
+
+
+print("test")
+
+1 + 1
+
+```
+
+
+## No Space 
+
+```{webr-r}
+#| autorun: true
+print("test")
+
+1 + 1
+```
+
+
+## No Options
+
+```{webr-r}
+fit <- lm(mpg ~ vs, data = mtcars)
+
+summary(fit)
+```

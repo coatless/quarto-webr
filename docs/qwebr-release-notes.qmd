@@ -57,6 +57,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Bug fixes
 
+- Newline characters that separate options from code lines are now removed. ([#217](https://github.com/coatless/quarto-webr/pulls/217))
 - Prevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor's content instead of being the exact amount. ([#164](https://github.com/coatless/quarto-webr/issues/164))
 
 ## Documentation
