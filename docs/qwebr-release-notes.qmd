@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.7: ??????? (??-??-??)
+# 0.4.2-dev.8: ??????? (??-??-??)
 
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
@@ -32,11 +32,11 @@ Features listed under the `-dev` version have not yet been solidified and may ch
   - `version` specifies what version of webR should be used. Default embedded version. ([#211](https://github.com/coatless/quarto-webr/issues/211))
 
 - Added the `editor-` class of cell-level options:
-  -  `editor-code-line-numbers` allows highlighting code lines in the editor window. ([#204](https://github.com/coatless/quarto-webr/issues/204))
+  - `editor-code-line-numbers` allows highlighting code lines in the editor window. ([#204](https://github.com/coatless/quarto-webr/issues/204))
+  - `editor-word-wrap` allows long lines to be wrapped inside of the code cell. Default `"true"`. ([#38](https://github.com/coatless/quarto-webr/issues/38))
+  - `editor-quick-suggestions` enables autocomplete menu suggestions. Default `"false"`.([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
   - `editor-max-height` limits growth of the editor window. ([#177](https://github.com/coatless/quarto-webr/issues/177), thanks [ute](https://github.com/ute)!)
   - `editor-font-scale` scales the code cell size relative to the page font size. Default is `1` for HTML Documents, Books, and Websites and `0.5` for Revealjs Slides. ([#172](https://github.com/coatless/quarto-webr/issues/172) & [#209](https://github.com/coatless/quarto-webr/pull/209), thanks [ute](https://github.com/ute)!)
-  -  `editor-quick-suggestions` enables autocomplete menu suggestions. Default `"false"`.([#182](https://github.com/coatless/quarto-webr/issues/182), thanks [egenn](https://github.com/egenn)!)
-  -  `editor-word-wrap` allows long lines to be wrapped inside of the code cell. Default `"true"`. ([#38](https://github.com/coatless/quarto-webr/issues/38))
 
 - Enabled non-graphical computation within a `webr-r` cell when `OffScreenCanvas` is not available. ([#155](https://github.com/coatless/quarto-webr/issues/155), thanks for raising it [@mccarthy-m-g](https://github.com/mccarthy-m-g))
   - If `OffScreenCanvas` is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.
