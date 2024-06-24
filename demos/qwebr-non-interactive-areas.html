@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","autorun":"true","fig-width":7,"output":"true","read-only":"false","comment":"","classes":"","label":"unnamed-chunk-1","dpi":72,"results":"markup","editor-word-wrap":"true","fig-height":5,"context":"setup","message":"true","warning":"true","fig-cap":"","out-height":"","editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false"},"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)"},{"id":2,"options":{"out-width":"700px","autorun":"true","fig-width":7,"output":"true","read-only":"false","comment":"","classes":"","label":"unnamed-chunk-2","dpi":72,"results":"markup","editor-word-wrap":"true","fig-height":5,"context":"output","message":"true","warning":"true","fig-cap":"","out-height":"","editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false"},"code":"g + geom_point()\n\nSys.sleep(0.5)"},{"id":3,"options":{"out-width":"700px","autorun":"true","fig-width":7,"output":"true","read-only":"false","comment":"","classes":"","label":"unnamed-chunk-3","dpi":72,"results":"markup","editor-word-wrap":"true","fig-height":5,"context":"output","message":"true","warning":"true","fig-cap":"","out-height":"","editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false"},"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)"},{"id":4,"options":{"out-width":"700px","autorun":"false","fig-width":7,"output":"true","read-only":"false","comment":"","classes":"","label":"unnamed-chunk-4","dpi":72,"results":"markup","editor-word-wrap":"true","fig-height":5,"context":"interactive","message":"true","warning":"true","fig-cap":"","out-height":"","editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false"},"code":"g"}];
+globalThis.qwebrCellDetails = [{"code":"g <- ggplot(mtcars, aes(x = wt, y = mpg)) \n\nSys.sleep(0.5)","options":{"context":"setup","results":"markup","message":"true","out-height":"","editor-font-scale":"1","dpi":72,"autorun":"true","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","read-only":"false","out-width":"700px","editor-word-wrap":"true","comment":"","classes":"","warning":"true","output":"true","fig-cap":"","label":"unnamed-chunk-1","editor-max-height":""},"id":1},{"code":"g + geom_point()\n\nSys.sleep(0.5)","options":{"context":"output","results":"markup","message":"true","out-height":"","editor-font-scale":"1","dpi":72,"autorun":"true","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","read-only":"false","out-width":"700px","editor-word-wrap":"true","comment":"","classes":"","warning":"true","output":"true","fig-cap":"","label":"unnamed-chunk-2","editor-max-height":""},"id":2},{"code":"g + geom_point(aes(colour = factor(cyl)))\nSys.sleep(0.5)","options":{"context":"output","results":"markup","message":"true","out-height":"","editor-font-scale":"1","dpi":72,"autorun":"true","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","read-only":"false","out-width":"700px","editor-word-wrap":"true","comment":"","classes":"","warning":"true","output":"true","fig-cap":"","label":"unnamed-chunk-3","editor-max-height":""},"id":3},{"code":"g","options":{"context":"interactive","results":"markup","message":"true","out-height":"","editor-font-scale":"1","dpi":72,"autorun":"false","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","read-only":"false","out-width":"700px","editor-word-wrap":"true","comment":"","classes":"","warning":"true","output":"true","fig-cap":"","label":"unnamed-chunk-4","editor-max-height":""},"id":4}];
 
 </script>
 <script type="module">
@@ -2180,7 +2180,19 @@ Note
 
 </section>
 
-</main> <!-- /main -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

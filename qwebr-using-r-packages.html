@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -403,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used by webR \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"message":"true","classes":"","read-only":"false","results":"markup","out-height":"","out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","dpi":72,"label":"unnamed-chunk-1","context":"interactive","editor-max-height":"","warning":"true","autorun":"false","editor-font-scale":"1","fig-width":7,"fig-height":5,"output":"true","editor-word-wrap":"true","comment":""}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"message":"true","classes":"","read-only":"false","results":"markup","out-height":"","out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","dpi":72,"label":"unnamed-chunk-2","context":"interactive","editor-max-height":"","warning":"true","autorun":"false","editor-font-scale":"1","fig-width":7,"fig-height":5,"output":"true","editor-word-wrap":"true","comment":""}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"message":"true","classes":"","read-only":"false","results":"markup","out-height":"","out-width":"700px","editor-quick-suggestions":"false","fig-cap":"","dpi":72,"label":"unnamed-chunk-3","context":"interactive","editor-max-height":"","warning":"true","autorun":"false","editor-font-scale":"1","fig-width":7,"fig-height":5,"output":"true","editor-word-wrap":"true","comment":""}}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","label":"unnamed-chunk-1","editor-quick-suggestions":"false","dpi":72,"read-only":"false","editor-font-scale":"1","warning":"true","editor-max-height":"","comment":"","fig-cap":"","fig-width":7,"context":"interactive","classes":"","autorun":"false","fig-height":5,"message":"true","out-width":"700px","out-height":"","results":"markup","editor-word-wrap":"true"},"code":"# Determine the version of R being used \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1},{"options":{"output":"true","label":"unnamed-chunk-2","editor-quick-suggestions":"false","dpi":72,"read-only":"false","editor-font-scale":"1","warning":"true","editor-max-height":"","comment":"","fig-cap":"","fig-width":7,"context":"interactive","classes":"","autorun":"false","fig-height":5,"message":"true","out-width":"700px","out-height":"","results":"markup","editor-word-wrap":"true"},"code":"webr::install(\"ggplot2\")","id":2},{"options":{"output":"true","label":"unnamed-chunk-3","editor-quick-suggestions":"false","dpi":72,"read-only":"false","editor-font-scale":"1","warning":"true","editor-max-height":"","comment":"","fig-cap":"","fig-width":7,"context":"interactive","classes":"","autorun":"false","fig-height":5,"message":"true","out-width":"700px","out-height":"","results":"markup","editor-word-wrap":"true"},"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3}];
 
 </script>
 <script type="module">
@@ -2167,7 +2167,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 18, 2024</p>
+      <p class="date-modified">June 24, 2024</p>
     </div>
   </div>
     
@@ -2178,13 +2178,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, <code>quarto-webr</code> avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.</p>
+<p>Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, the community <code>quarto-webr</code> extension avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.</p>
 <section id="available-r-packages" class="level1">
 <h1>Available R Packages</h1>
-<p>Before you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by executing the following R code, either with webR or just R:</p>
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Alternatively, you can navigate to the webR binary R repository <a href="https://repo.r-wasm.org/">here</a> for package listings.</p>
+<p>Before you use any R package with webR, it’s essential to check if it’s available. You can explore the available packages by navigating to the <a href="https://repo.r-wasm.org/">webR binary R repository</a> (link is not mobile friendly) for package listings.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2203,16 +2200,19 @@ Note
 <p>To achieve parity with base R, the <strong>Available R packages</strong> metric serves as an indicator of whether R scripts may require further modification to function properly within webR.</p>
 </div>
 </div>
+<p>Alternatively, you can run the following R code, either with webR or just R:</p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="custom-repositories" class="level2">
 <h2 class="anchored" data-anchor-id="custom-repositories">Custom Repositories</h2>
-<p>If an R package is not available on the <a href="https://repo.r-wasm.org">main webR repository</a> (note, this is a large shinylive app that should not be open on mobile), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.</p>
-<p>We have the following guides:</p>
+<p>If an R package is not available on the <a href="https://repo.r-wasm.org">main webR repository</a> (link is not mobile friendly), fear not! You can compile your own R package to an R WASM Package binary and setup a custom repository to share it.</p>
+<p>The quickest way is to opt into using the <strong><a href="https://ropensci.org/blog/2023/11/17/runiverse-wasm/">r-universe.dev</a> service</strong>. This is a free service that allows you to host R packages and binaries not just for webR, but also macOS, Linux, and Windows variants of R.</p>
+<p>If you want tighter integration with your development repository, we have the following guides:</p>
 <ul>
 <li><a href="https://github.com/coatless-tutorials/webr-org-gh-action">Org-focused webR/WASM Package Repository without a <code>{pkgdown}</code> website</a></li>
 <li><a href="https://github.com/coatless-tutorials/webr-unified-gh-workflow">Unified GitHub Action Deployment using artifacts of R WASM Package binaries and {pkgdown} website</a></li>
 <li><a href="https://github.com/coatless-tutorials/webr-github-action-wasm-binaries">Separate GitHub Action Deployment onto <code>gh-pages</code> branch of R WASM Package binaries and {pkgdown} website</a></li>
 </ul>
-<p>Another approach would be to use <a href="https://ropensci.org/blog/2023/11/17/runiverse-wasm/">r-universe.dev</a> to automatically build and supply R WASM package binaries.</p>
 <p>Once done, please make sure to specify where the custom repository is by using the <code>repos</code> key under the <code>webr</code> option in the document header. For example, we can add two custom repositories – one to a GitHub pages hosted repository and another to the <a href="https://r-universe.dev/search/">r-universe</a>, by using:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">webr</span><span class="kw">:</span></span>
@@ -2230,7 +2230,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>{quarto-webr}</code> extension is setup to always check whether an R package is available at the main repository even without it being specified in the <code>repos</code> key.</p>
+<p>The community <code>{quarto-webr}</code> extension is setup to always check whether an R package is available at the main repository even without it being specified in the <code>repos</code> key.</p>
 </div>
 </div>
 </section>
@@ -2252,7 +2252,7 @@ Note
 </section>
 <section id="installing-an-r-package-interactively" class="level1">
 <h1>Installing an R Package Interactively</h1>
-<p>If you need to install a package interactively within specific code cells, you can do so using the <code>webr::install()</code> function. This method allows you to install packages on-the-fly when needed.</p>
+<p>If you need to install a package interactively within specific code cells, you can do so using either the <code>webr::install()</code> or <code>install.packages()</code> function. This method allows you to install packages on-the-fly when needed.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2282,7 +2282,19 @@ Note
 
 </section>
 
-</main> <!-- /main -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

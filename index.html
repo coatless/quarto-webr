@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"results":"markup","output":"true","out-width":"700px","comment":"","fig-height":5,"autorun":"false","out-height":"","classes":"","warning":"true","message":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","read-only":"false","context":"interactive","editor-max-height":"","fig-width":7,"editor-word-wrap":"true","label":"unnamed-chunk-1","editor-quick-suggestions":"false"},"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","id":1}];
+globalThis.qwebrCellDetails = [{"code":"# Fit a linear model\nmodel = lm(mpg ~ wt, data = mtcars)\n\n# Obtain a summary\nsummary(model)","id":1,"options":{"read-only":"false","fig-cap":"","output":"true","editor-quick-suggestions":"false","autorun":"false","context":"interactive","out-height":"","comment":"","fig-width":7,"message":"true","out-width":"700px","label":"unnamed-chunk-1","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","warning":"true","fig-height":5,"editor-max-height":"","dpi":72,"classes":""}}];
 
 </script>
 <script type="module">
@@ -2114,12 +2114,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>Welcome to the documentation portal for the <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code></a> extension – your key to unlocking the endless possibilities of <a href="https://docs.r-wasm.org/webr/latest/">webR</a> within various <a href="https://quarto.org/">Quarto</a> formats, including <a href="https://quarto.org/docs/output-formats/html-basics.html">HTML</a>, <a href="https://quarto.org/docs/presentations/revealjs/">RevealJS</a>, <a href="https://quarto.org/docs/websites/">Websites</a>, <a href="https://quarto.org/docs/websites/website-blog.html">Blogs</a>, and <a href="https://quarto.org/docs/books">Books</a>.</p>
+<p>Welcome to the documentation portal for the community <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code></a> extension – your key to unlocking the endless possibilities of <a href="https://docs.r-wasm.org/webr/latest/">webR</a> within various <a href="https://quarto.org/">Quarto</a> formats, including <a href="https://quarto.org/docs/output-formats/html-basics.html">HTML</a>, <a href="https://quarto.org/docs/presentations/revealjs/">RevealJS</a>, <a href="https://quarto.org/docs/websites/">Websites</a>, <a href="https://quarto.org/docs/websites/website-blog.html">Blogs</a>, and <a href="https://quarto.org/docs/books">Books</a>.</p>
 <p>Ready for an exciting journey into the world of webR’s interactive code cells? Click the “Run Code” button below to experience it firsthand:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>At its core, the <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code> extension</a> is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using <a href="https://docs.r-wasm.org/webr/latest/evaluating.html">webR’s JavaScript API</a>, granting you unparalleled freedom to harness the power of R in innovative ways.</p>
+<p>At its core, the community <a href="https://github.com/coatless/quarto-webr"><code>quarto-webr</code> extension</a> is designed to empower you to run R code directly in your web browser using familiar reporting tools, all without the need for an external R server. Moreover, the extension abstracts away the need to know HTML or JavaScript to use webR. However, it’s worth noting that you can also choose to unlock the full potential of webR and create more complex applications independently by directly using <strong><a href="https://docs.r-wasm.org/webr/latest/evaluating.html">webR’s JavaScript API</a></strong>, granting you unparalleled freedom to harness the power of R in innovative ways.</p>
 <p>With this in mind, let’s dive in and kickstart your journey with interactive code cells by <a href="./qwebr-first-steps.html">creating our very first webR-powered Quarto document</a> or <a href="./qwebr-code-cell-demos.html">exploring some examples</a>!</p>
+
+
+
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2132,11 +2135,7 @@ Important
 <div class="callout-body-container callout-body">
 <p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
 </div>
-</div>
-
-
-
-</main> <!-- /main -->
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

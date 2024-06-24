@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="James Joseph Balamuta">
 <meta name="dcterms.date" content="2024-01-14">
 
-<title>Accessing and Using Data in webR – quarto-webr</title>
+<title>Accessing and Using Data – quarto-webr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -403,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)","options":{"dpi":72,"context":"interactive","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","results":"markup","classes":"","editor-font-scale":"1","message":"true","autorun":"true","warning":"true","out-width":"700px","comment":"","out-height":"","read-only":"false","label":"unnamed-chunk-1","fig-cap":"","editor-word-wrap":"true","output":"true","editor-max-height":""}}];
+globalThis.qwebrCellDetails = [{"options":{"out-height":"","results":"markup","classes":"","message":"true","editor-word-wrap":"true","fig-height":5,"out-width":"700px","output":"true","warning":"true","editor-quick-suggestions":"false","fig-width":7,"comment":"","autorun":"true","context":"interactive","label":"unnamed-chunk-1","editor-font-scale":"1","dpi":72,"editor-max-height":"","fig-cap":"","read-only":"false"},"id":1,"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
 
 </script>
 <script type="module">
@@ -2151,7 +2151,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qwebr-first-steps.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./qwebr-loading-data.html">Loading Data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Accessing and Using Data in webR</h1>
+<h1 class="title">Accessing and Using Data</h1>
+<p class="subtitle lead">Working with webR’s Virtual File System and Data</p>
 </div>
 
 
@@ -2175,7 +2176,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 18, 2024</p>
+      <p class="date-modified">June 24, 2024</p>
     </div>
   </div>
     
@@ -2188,14 +2189,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>When working with webR in a web environment, there are some modifications and considerations required for using data. This documentation entry guides you through a few changes related to accessing data.</p>
+<p>When working with webR in a web environment, there are some modifications and considerations required for using data. This documentation entry guides you through a few changes related to accessing data for the community Quarto extension.</p>
 <section id="background-virtual-file-system" class="level2">
 <h2 class="anchored" data-anchor-id="background-virtual-file-system">Background: Virtual File System</h2>
 <p>Given the browser-based nature of webR, accessing local files is restricted. To overcome this limitation, webR establishes a <a href="https://docs.r-wasm.org/webr/latest/communication.html#emscripten-virtual-filesystem"><strong>virtual</strong> file system</a> inside of your browser that is separate from your local file system. Consequently, webR does <strong>not</strong> have awareness of local file system and its paths. Thus, to use data we need to download it into the virtual file system either through: an R package, a URL using HTTPS, or a Web API.</p>
 <p>By default, the webR virtual file system’s home directory and initial working directory is <code>/home/web_user</code>. This can be changed using a built-in extension <a href="https://quarto-webr.thecoatlessprofessor.com/qwebr-meta-options.html#home-dir">document-level option <code>home-dir</code></a>.</p>
 <section id="aside" class="level3">
 <h3 class="anchored" data-anchor-id="aside">Aside</h3>
-<p>While there are methods for mounting pre-built images using the webR’s <a href="https://docs.r-wasm.org/webr/latest/mounting.html#the-virtual-filesystem">Mounting Filesystem</a> mechanic, the <code>quarto-webr</code> Extension does not support this option at the moment.</p>
+<p>While there are methods for mounting pre-built images using the webR’s <a href="https://docs.r-wasm.org/webr/latest/mounting.html#the-virtual-filesystem">Mounting Filesystem</a> mechanic, the community <code>quarto-webr</code> Extension does not support this option at the moment.</p>
 </section>
 </section>
 <section id="accessing-data-through-r-data-packages" class="level2">
@@ -2355,7 +2356,19 @@ Note
 </section>
 </section>
 
-</main> <!-- /main -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

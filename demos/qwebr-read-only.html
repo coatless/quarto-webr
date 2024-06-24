@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -401,7 +401,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"message":"true","label":"unnamed-chunk-1","out-height":"","results":"markup","read-only":"true","context":"interactive","comment":"","editor-max-height":"","warning":"true","editor-word-wrap":"true","fig-height":5,"classes":"","out-width":"700px","autorun":"false","output":"true","editor-font-scale":"1","dpi":72},"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)"},{"id":2,"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"message":"true","label":"unnamed-chunk-2","out-height":"","results":"markup","read-only":"false","context":"interactive","comment":"","editor-max-height":"","warning":"true","editor-word-wrap":"true","fig-height":5,"classes":"","out-width":"700px","autorun":"true","output":"true","editor-font-scale":"1","dpi":72},"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100"},{"id":3,"options":{"editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"message":"true","label":"unnamed-chunk-3","out-height":"","results":"markup","read-only":"true","context":"interactive","comment":"","editor-max-height":"","warning":"true","editor-word-wrap":"true","fig-height":5,"classes":"","out-width":"700px","autorun":"true","output":"true","editor-font-scale":"1","dpi":72},"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)"}];
+globalThis.qwebrCellDetails = [{"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","id":1,"options":{"read-only":"true","editor-font-scale":"1","context":"interactive","results":"markup","editor-max-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"out-width":"700px","warning":"true","output":"true","label":"unnamed-chunk-1","message":"true","autorun":"false","classes":"","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-width":7}},{"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","id":2,"options":{"read-only":"false","editor-font-scale":"1","context":"interactive","results":"markup","editor-max-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"out-width":"700px","warning":"true","output":"true","label":"unnamed-chunk-2","message":"true","autorun":"true","classes":"","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-width":7}},{"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","id":3,"options":{"read-only":"true","editor-font-scale":"1","context":"interactive","results":"markup","editor-max-height":"","comment":"","fig-height":5,"fig-cap":"","dpi":72,"out-width":"700px","warning":"true","output":"true","label":"unnamed-chunk-3","message":"true","autorun":"true","classes":"","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -2235,7 +2235,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </section>
 
-</main> <!-- /main -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Quarto extension is open source software and is <strong>not affiliated with</strong> Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.</p>
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
