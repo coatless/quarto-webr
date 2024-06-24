@@ -1,5 +1,6 @@
 ---
-title: "Accessing and Using Data in webR"
+title: "Accessing and Using Data"
+subtitle: "Working with webR's Virtual File System and Data"
 author: "James Joseph Balamuta"
 date: "01-14-2024"
 date-modified: last-modified
@@ -13,7 +14,7 @@ filters:
 
 # Overview
 
-When working with webR in a web environment, there are some modifications and considerations required for using data. This documentation entry guides you through a few changes related to accessing data.
+When working with webR in a web environment, there are some modifications and considerations required for using data. This documentation entry guides you through a few changes related to accessing data for the community Quarto extension.
 
 ## Background: Virtual File System
 
@@ -23,7 +24,7 @@ By default, the webR virtual file system's home directory and initial working di
 
 ### Aside
 
-While there are methods for mounting pre-built images using the webR's [Mounting Filesystem](https://docs.r-wasm.org/webr/latest/mounting.html#the-virtual-filesystem) mechanic, the `quarto-webr` Extension does not support this option at the moment.
+While there are methods for mounting pre-built images using the webR's [Mounting Filesystem](https://docs.r-wasm.org/webr/latest/mounting.html#the-virtual-filesystem) mechanic, the community `quarto-webr` Extension does not support this option at the moment.
 
 ## Accessing Data through R Data Packages
 
@@ -207,4 +208,3 @@ head(flights_from_csv)
 ```
 
 :::
-

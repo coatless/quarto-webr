@@ -7,21 +7,21 @@ aliases:
   - webr-acknowledgements.html
 ---
 
-We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing [`quarto-webR`](https://github.com/coatless/quarto-webr) to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.
+We would like to express our heartfelt gratitude to several individuals and teams who played a pivotal role in bringing [`quarto-webr`](https://github.com/coatless/quarto-webr) to life as an extension for Quarto. Without their dedication and contributions, this project would not have been possible.
 
 ## quarto-webr Extension Core Developers
 
 - [James Joseph Balamuta](https://github.com/coatless)
 - [JooYoung Seo](https://github.com/jooyoungseo) for accessibility improvements.
 
-Their relentless dedication have played a pivotal role in shaping the development of this extension.
+They played a pivotal role in shaping the development of this Quarto extension.
 
 ## webR Core Developers
 
 - [George Stagg](https://github.com/georgestagg)
 - [Lionel Henry](https://github.com/lionel-)
 
-Their tireless efforts and expertise in developing [webR](https://docs.r-wasm.org/webr/latest/) were instrumental in the development of this extension, and we are immensely grateful for their contributions.
+Their tireless efforts and expertise in developing [webR](https://docs.r-wasm.org/webr/latest/) were instrumental in being able to even develop this extension for Quarto. We are immensely grateful for their contribution of the webR project. Further, we greatly appreciate them answering our questions and providing guidance throughout the development process.
 
 ## Early Testing Feedback
 
@@ -40,7 +40,7 @@ We would like to acknowledge the Quarto team for their assistance in setting up 
 
 Our project built upon the initial proof of concept for a standalone Quarto HTML document, made possible by the work of the [coatless-r-n-d/webR-quarto-demos](https://github.com/coatless-r-n-d/webR-quarto-demos) repository.
 
-Additionally, we were inspired by the following public-facing examples from the webR Core developers:
+Additionally, we were inspired by the following public-facing examples from the webR Core developers that contributed to the initial standalone experiment:
 
 - [Source of Tidyverse Blog Post](https://github.com/tidyverse/tidyverse.org/pull/617/files) and [Minor fix](https://github.com/tidyverse/tidyverse.org/commit/72bb2dd7ca0b2f211498a891aa54f55ddcad5014)
 - [webR documentation landing page](https://github.com/r-wasm/webr/blob/53acd8861c44f1f167941d0a40f62b0cc23852da/src/docs/index.qmd#L23-L68) ([Live page](https://docs.r-wasm.org/webr/latest/))

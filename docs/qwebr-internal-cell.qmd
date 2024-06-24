@@ -1,6 +1,6 @@
 ---
 title: "Hiding and Executing Code"
-subtitle: "Perform Stealthy Computations with webR"
+subtitle: "Perform Non-interactive Computations"
 author: "James Joseph Balamuta with contributions from [Adam Loy](https://aloy.rbind.io/)"
 date: "09-14-2023"
 date-modified: last-modified
@@ -14,7 +14,7 @@ aliases:
   - webr-internal-cell.html
 ---
 
-In `quarto-webr`, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading datasets, creating visualizations, or checking student solutions without revealing the code to end users.
+In the community `quarto-webr` extension, you have the ability to execute code cells without displaying the code or its output. This feature can be particularly useful for preloading variables, loading and wrangling datasets, creating visualizations, or checking student solutions without revealing the code to end users.
 
 # Using the `context` Option
 
