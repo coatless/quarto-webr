@@ -12,7 +12,7 @@ filters:
 ---
 
 :::{.callout-important}
-These features are currently experimental and are included in the 0.4.2-dev build of `{quarto-webr}`.
+These features were implemented in 0.4.2 of `{quarto-webr}`.
 :::
 
 # Overview

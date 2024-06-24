@@ -8,11 +8,11 @@ format:
     toc: true
 ---
 
-# 0.4.2-dev.8: ??????? (??-??-??)
-
 :::{.callout-note}
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
 :::
+
+# 0.4.2: A Change Is Gonna Come (06-24-2024)
 
 ## Breaking Changes
 
@@ -46,7 +46,6 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 ## Changes
 
 - Added a mouse over button to allow for downloading an image when generated. ([#147](https://github.com/coatless/quarto-webr/issues/147))
-
 - Increase the minimum Quarto version requirement to 1.4.554.  ([#198](https://github.com/coatless/quarto-webr/issues/198)).
 - Upgraded to webR v0.3.2 ([#187](https://github.com/coatless/quarto-webr/issues/187))
 - Added [Lua type annotations](https://luals.github.io/wiki/annotations/) and function documentation into the Quarto extensions' Lua filter. ([#190](https://github.com/coatless/quarto-webr/pulls/190))
@@ -62,8 +61,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Documentation
 
+- Added new [editor options vignette](https://quarto-webr.thecoatlessprofessor.com/demos/qwebr-editor-options.html).
 - Updated community examples covering `quarto-webr` uses in 2024 Q1 ([#193](https://github.com/coatless/quarto-webr/issues/193)).
-
 - Improve the data loading documentation page by clarifying the virtual file system usage ([#201](https://github.com/coatless/quarto-webr/issues/201)).
 
 # 0.4.1: Vivid Montage (03-25-2024)
