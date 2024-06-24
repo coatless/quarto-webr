@@ -73,7 +73,7 @@ If an engine is not specified, Quarto will attempt to use the `jupyter` compute 
 
 # Fin
 
-In summary, this guide has provided an overview of how to incorporate the `quarto-webr` extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.
+In summary, this guide has provided an overview of how to incorporate the community `quarto-webr` extension into your Quarto HTML documents using RStudio. We began with a walkthrough video that offered an in-depth understanding of how this Quarto extension operates within the Quarto framework. Subsequently, we explored key workflow changes necessary for incorporating webR into your Quarto HTML documents, from installation to document rendering.
 
 For your next steps consider looking at different use cases for [interactive options](qwebr-code-cell-demos.qmd).
 

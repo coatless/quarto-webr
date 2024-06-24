@@ -10,11 +10,10 @@ aliases:
   - webr-community-examples.html
 ---
 
-Welcome to the Community Examples page for the `quarto-webr` extension. This section celebrates the diverse and innovative ways that members of our community are harnessing the power of the `quarto-webr` extension. These examples showcase real-world use cases, highlighting the extension's adaptability and functionality across various fields. You may also find references to examples from the [main webR project](https://webr.r-wasm.org/) here as well.
 
-Explore the projects, applications, educational materials, and more created by fellow users. Gain inspiration from the community's contributions and discover how you can leverage the full potential of `quarto-webr` in your own work. Whether your interests lie in data analysis, interactive reports, or educational resources, you'll find valuable insights and ideas within the community's projects.
+Welcome to the Community Examples page for the `quarto-webr` extension. Here, we showcase diverse and innovative ways that members of our community are using the extension. You'll find real-world examples of projects, applications, educational materials, and more created by fellow users.
 
-Do you have your own project or example that incorporates `quarto-webr`? We invite you to contribute to this growing collection of community-driven projects by submitting a [pull request](https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-community-examples.qmd) or [creating an issue](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=community-example&projects=&template=community-example.yml&title=%5BExample%5D%3A+). Your experiences and creativity can inspire others and promote collaboration within our community. Together, we can continue to expand the possibilities of `quarto-webr`.
+Have a project using `quarto-webr`? Contribute by submitting a [pull request](https://github.com/coatless/quarto-webr/edit/main/docs/qwebr-community-examples.qmd) or [creating an issue](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=community-example&projects=&template=community-example.yml&title=%5BExample%5D%3A+). Your contributions can inspire and foster collaboration within our community, expanding the possibilities of `quarto-webr`.
 
 # Videos
 
@@ -27,6 +26,10 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 **English**
 
+- [Andrew Heiss'](https://andrewheiss.com) conversion of [R Primers](https://r-primers.andrewheiss.com/). Spring 2024.
+  - [Source repository](https://github.com/andrewheiss/r-primers)
+- [Andrew Heiss'](https://andrewheiss.com)'s course [Data Visualization with R](https://datavizs24.classes.andrewheiss.com/lesson/06-lesson.html#histograms) at Georgia State University. Summer 2024.
+  - [Source repository](https://github.com/andrewheiss/r-primers)
 - [E.D. Gennatas](https://egenn.lambdamd.org/)'s tech demo with [progressive reveal tutorials](https://rtemis.org/pdsx/rdemo.html). Spring 2024.
 - Faculty of Medicine, University of Oslo's [MF9130E - Introductory Course in Statistics](https://www.uio.no/studier/emner/medisin/med/MF9130E/). Spring 2024.
   - [Sample Lab](https://ocbe-uio.github.io/teaching_mf9130e/lab/lab_distribution.html) and [source repo](https://github.com/ocbe-uio/teaching_mf9130e) announced on [Linkedin](https://www.linkedin.com/posts/andreaczhang_webr-rstats-quarto-activity-7183880219089334272-AZaq) 
@@ -54,6 +57,12 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 - [Javier Arántegui](https://github.com/runjaj)'s course [Calidad 2023-24](https://runjaj.quarto.pub/calidad-23-24-gcta) contained short R Tutorials with examples using `quarto-webr`
   - [Lecture: Introduction to R (Spanish)](https://runjaj.quarto.pub/calidad-23-24-gcta/intro_R.html), [Lecture: Acceptance Sampling](https://runjaj.quarto.pub/calidad-23-24-gcta/intro_AcceptanceSampling.html), and [mastodon tweet](https://mastodon.social/@runjaj/112241537253261459).
 
+
+**Turkish**
+
+- [Alper Yilmaz](https://github.com/alperyilmaz)'s lecture notes for [MBG1032 Biyoistatistik](https://alperyilmaz.github.io/biostats-webr). Spring 2024.
+  - [Source](https://github.com/alperyilmaz/biostats-webr)
+
 # Talks
 
 - [Nicola Rennie](https://nrennie.rbind.io/)'s talk on [Teaching statistics interactively with webR](https://nrennie.rbind.io/talks/rss-conference-teaching-webr/). Nov 22th, 2023 @ RSS/RoSE UK Statistics Education Meeting 2023
@@ -76,10 +85,6 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
   - [Slides](https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/5-teaching-materials/) and [Source code](https://github.com/mine-cetinkaya-rundel/teach-with-quarto/tree/main/talks/5-teaching-materials)
   - [WebR Demo](https://maria.quarto.pub/webr-demo/) on [Quarto Pub](https://quarto.pub)
 
-**Turkish**
-
-- [Alper Yilmaz](https://github.com/alperyilmaz)'s lecture notes for [MBG1032 Biyoistatistik](https://alperyilmaz.github.io/biostats-webr). Spring 2024.
-  - [Source](https://github.com/alperyilmaz/biostats-webr)
 
 # Textbooks
 
@@ -142,6 +147,8 @@ Do you have your own project or example that incorporates `quarto-webr`? We invi
 
 **English**
 
+- [Pawel Rucki](https://pawelru.github.io/cv/)'s post on the Pharmaverse blog [TLG Catalog 🤝 WebR](https://pharmaverse.github.io/blog/posts/2024-05-08_tlg_catalog_webr/tlg_catalog_webr.html).
+  - [Example page: ADAT01](https://insightsengineering.github.io/tlg-catalog/stable/tables/ADA/adat01.html#tabset-1-2) and [Source repository](https://github.com/insightsengineering/tlg-catalog).
 - Rodolfo Lourenzutti's tutorial post on [A/B Testing](https://lourenzutti.github.io/tutorials/AB-testing/ab-test.html). Apr 3rd, 2024.
   - [Source](https://github.com/Lourenzutti/lourenzutti.github.io/blob/master/tutorials/AB-testing/ab-test.qmd)
 - [Claudiu Papasteri](https://github.com/ClaudiuPapasteri)'s post on [Hugo blogdown posts with in-browser interactive code chunks using webR and Quarto?](https://claudiu.psychlab.eu/post/hugo-blogdown-interactive-code-chunk-webr-quarto/). Feb 5th, 2024.

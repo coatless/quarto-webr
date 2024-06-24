@@ -14,7 +14,7 @@ aliases:
   - webr-code-cell-demos.html
 ---
 
-Welcome to the world of interactive code cells, unlocked by the `quarto-webr` extension. These cells allow you to run R code directly within your Quarto HTML documents, enabling real-time computations, dynamic visualizations, and more. Let's explore the impressive capabilities webR offers.
+Welcome to the world of interactive code cells, unlocked by the community `quarto-webr` extension. These cells allow you to run R code directly within your Quarto HTML documents, enabling real-time computations, dynamic visualizations, and more. Let's explore the impressive capabilities webR offers.
 
 # Creating webR-Enabled Code Cells
 

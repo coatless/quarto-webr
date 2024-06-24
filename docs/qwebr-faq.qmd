@@ -1,6 +1,6 @@
 ---
 title: "Frequently Asked Questions"
-subtitle: "Find Answers to Common Queries About `quarto-webr` Extension"
+subtitle: "Find Answers to Common Queries About the community `quarto-webr` Extension"
 date: "10-01-2023"
 date-modified: last-modified
 engine: markdown
@@ -11,7 +11,7 @@ aliases:
   - webr-faq.html
 ---
 
-Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the `quarto-webr` extension.  If you can't find the answer you're looking for, don't hesitate to reach out to our community for additional support by opening a [question](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=q%26a&projects=&template=question.yml&title=%5BQ%26A%5D%3A+) or a [bug report](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=bug%2Ctriage-needed&projects=&template=bug-report.yml&title=%5BBug%5D%3A+) on the [issue tracker](https://github.com/coatless/quarto-webr/issues).
+Welcome to our Frequently Asked Questions (FAQ) page, your go-to resource for finding answers to common queries about the community `quarto-webr` extension.  If you can't find the answer you're looking for, don't hesitate to reach out to our community for additional support by opening a [question](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=q%26a&projects=&template=question.yml&title=%5BQ%26A%5D%3A+) or a [bug report](https://github.com/coatless/quarto-webr/issues/new?assignees=&labels=bug%2Ctriage-needed&projects=&template=bug-report.yml&title=%5BBug%5D%3A+) on the [issue tracker](https://github.com/coatless/quarto-webr/issues).
 
 # Stability and Long Term Support
 
