@@ -480,7 +480,7 @@
     "href": "qwebr-release-notes.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.\n\n\n\n\n\nWe’ve update the minimum Quarto requirement to 1.4.554.\n\nThis version of Quarto is apart of the latest RStudio IDE (Version: 2024.04.0, Date: 2024-04-29).\n\n\n\n\n\n\nUpgraded to webR v0.3.3 (#196)\nAdded ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs’ “Tools” menu. (#148)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nAdded two new document-level options:\n\ncell-options specifies global defaults for {webr-r} options (#173, thanks ute!)\nversion specifies what version of webR should be used. Default embedded version. (#211)\n\nAdded the editor-* class of cell-level options to control the interactive code cell editor:\n\neditor-code-line-numbers allows highlighting code lines in the editor window. (#204)\neditor-word-wrap allows long lines to be wrapped inside of the code cell. Default \"true\". (#38)\neditor-quick-suggestions enables autocomplete menu suggestions. Default \"false\".(#182, thanks egenn!)\neditor-max-height limits growth of the editor window. (#177, thanks ute!)\neditor-font-scale scales the code cell size relative to the page font size. Default is 1 for HTML Documents, Books, and Websites and 0.5 for Revealjs Slides. (#172 & #209, thanks ute!)\n\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).\n\n\n\n\n\n\nAdded a mouse over button to allow for downloading an image when generated. (#147)\nIncrease the minimum Quarto version requirement to 1.4.554. (#198).\nUpgraded to webR v0.3.2 (#187)\nAdded Lua type annotations and function documentation into the Quarto extensions’ Lua filter. (#190)\nAvoided distributing webr-serviceworker.js and webr-worker.js when channel-type is not service-worker. (#210)\nDynamically write webr-serviceworker.js and webr-worker.js files based on the version chosen (#212)\nUpdated the version of the FontAwesome from 6.5.1 to 6.5.2. (#191)\n\n\n\n\n\nNewline characters that separate options from code lines are now removed. (#217)\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)\n\n\n\n\n\nUpdated community examples covering quarto-webr uses in 2024 Q1 (#193).\nImprove the data loading documentation page by clarifying the virtual file system usage (#201).",
+    "text": "Note\n\n\n\nFeatures listed under the -dev version have not yet been solidified and may change at any point.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -490,8 +490,8 @@
     "objectID": "qwebr-release-notes.html#breaking-changes",
     "href": "qwebr-release-notes.html#breaking-changes",
     "title": "Release Notes",
-    "section": "",
-    "text": "We’ve update the minimum Quarto requirement to 1.4.554.\n\nThis version of Quarto is apart of the latest RStudio IDE (Version: 2024.04.0, Date: 2024-04-29).",
+    "section": "Breaking Changes",
+    "text": "Breaking Changes\n\nWe’ve update the minimum Quarto requirement to 1.4.554.\n\nThis version of Quarto is apart of the latest RStudio IDE (Version: 2024.04.0, Date: 2024-04-29).",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -501,8 +501,8 @@
     "objectID": "qwebr-release-notes.html#features",
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
-    "section": "",
-    "text": "Upgraded to webR v0.3.3 (#196)\nAdded ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs’ “Tools” menu. (#148)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nAdded two new document-level options:\n\ncell-options specifies global defaults for {webr-r} options (#173, thanks ute!)\nversion specifies what version of webR should be used. Default embedded version. (#211)\n\nAdded the editor-* class of cell-level options to control the interactive code cell editor:\n\neditor-code-line-numbers allows highlighting code lines in the editor window. (#204)\neditor-word-wrap allows long lines to be wrapped inside of the code cell. Default \"true\". (#38)\neditor-quick-suggestions enables autocomplete menu suggestions. Default \"false\".(#182, thanks egenn!)\neditor-max-height limits growth of the editor window. (#177, thanks ute!)\neditor-font-scale scales the code cell size relative to the page font size. Default is 1 for HTML Documents, Books, and Websites and 0.5 for Revealjs Slides. (#172 & #209, thanks ute!)\n\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).",
+    "section": "Features",
+    "text": "Features\n\nUpgraded to webR v0.3.3 (#196)\nAdded ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs’ “Tools” menu. (#148)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nAdded two new document-level options:\n\ncell-options specifies global defaults for {webr-r} options (#173, thanks ute!)\nversion specifies what version of webR should be used. Default embedded version. (#211)\n\nAdded the editor-* class of cell-level options to control the interactive code cell editor:\n\neditor-code-line-numbers allows highlighting code lines in the editor window. (#204)\neditor-word-wrap allows long lines to be wrapped inside of the code cell. Default \"true\". (#38)\neditor-quick-suggestions enables autocomplete menu suggestions. Default \"false\".(#182, thanks egenn!)\neditor-max-height limits growth of the editor window. (#177, thanks ute!)\neditor-font-scale scales the code cell size relative to the page font size. Default is 1 for HTML Documents, Books, and Websites and 0.5 for Revealjs Slides. (#172 & #209, thanks ute!)\n\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -512,8 +512,8 @@
     "objectID": "qwebr-release-notes.html#changes",
     "href": "qwebr-release-notes.html#changes",
     "title": "Release Notes",
-    "section": "",
-    "text": "Added a mouse over button to allow for downloading an image when generated. (#147)\nIncrease the minimum Quarto version requirement to 1.4.554. (#198).\nUpgraded to webR v0.3.2 (#187)\nAdded Lua type annotations and function documentation into the Quarto extensions’ Lua filter. (#190)\nAvoided distributing webr-serviceworker.js and webr-worker.js when channel-type is not service-worker. (#210)\nDynamically write webr-serviceworker.js and webr-worker.js files based on the version chosen (#212)\nUpdated the version of the FontAwesome from 6.5.1 to 6.5.2. (#191)",
+    "section": "Changes",
+    "text": "Changes\n\nAdded a mouse over button to allow for downloading an image when generated. (#147)\nIncrease the minimum Quarto version requirement to 1.4.554. (#198).\nUpgraded to webR v0.3.2 (#187)\nAdded Lua type annotations and function documentation into the Quarto extensions’ Lua filter. (#190)\nAvoided distributing webr-serviceworker.js and webr-worker.js when channel-type is not service-worker. (#210)\nDynamically write webr-serviceworker.js and webr-worker.js files based on the version chosen (#212)\nUpdated the version of the FontAwesome from 6.5.1 to 6.5.2. (#191)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -523,8 +523,8 @@
     "objectID": "qwebr-release-notes.html#bug-fixes",
     "href": "qwebr-release-notes.html#bug-fixes",
     "title": "Release Notes",
-    "section": "",
-    "text": "Newline characters that separate options from code lines are now removed. (#217)\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
+    "section": "Bug fixes",
+    "text": "Bug fixes\n\nNewline characters that separate options from code lines are now removed. (#217)\nPrevented vertical scroll bars from always being present by modifying the adaptive container of the editor to always be at least 2 pixels greater than the editor’s content instead of being the exact amount. (#164)",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -534,8 +534,8 @@
     "objectID": "qwebr-release-notes.html#documentation",
     "href": "qwebr-release-notes.html#documentation",
     "title": "Release Notes",
-    "section": "",
-    "text": "Updated community examples covering quarto-webr uses in 2024 Q1 (#193).\nImprove the data loading documentation page by clarifying the virtual file system usage (#201).",
+    "section": "Documentation",
+    "text": "Documentation\n\nAdded new editor options vignette.\nUpdated community examples covering quarto-webr uses in 2024 Q1 (#193).\nImprove the data loading documentation page by clarifying the virtual file system usage (#201).",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -1234,7 +1234,7 @@
     "href": "demos/qwebr-editor-options.html",
     "title": "Demo: Editor Options",
     "section": "",
-    "text": "Important\n\n\n\nThese features are currently experimental and are included in the 0.4.2-dev build of {quarto-webr}."
+    "text": "Important\n\n\n\nThese features were implemented in 0.4.2 of {quarto-webr}."
   },
   {
     "objectID": "demos/qwebr-editor-options.html#editor-code-line-numbers-option",
