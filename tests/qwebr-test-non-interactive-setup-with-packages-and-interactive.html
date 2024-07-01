@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.5.51">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -351,14 +351,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/v0.4.0/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","comment":"","fig-height":5,"fig-cap":"","out-height":"","dpi":72,"editor-word-wrap":"true","message":"true","results":"markup","editor-quick-suggestions":"false","read-only":"false","context":"setup","output":"true","fig-width":7,"autorun":"true","editor-max-height":"","out-width":"700px","warning":"true","classes":"","editor-font-scale":"1"},"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\""},{"id":2,"options":{"label":"unnamed-chunk-2","comment":"","fig-height":5,"fig-cap":"","out-height":"","dpi":72,"editor-word-wrap":"true","message":"true","results":"markup","editor-quick-suggestions":"false","read-only":"false","context":"interactive","output":"true","fig-width":7,"autorun":"false","editor-max-height":"","out-width":"700px","warning":"true","classes":"","editor-font-scale":"1"},"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )"}];
+globalThis.qwebrCellDetails = [{"code":"s <- 1000\ntheme_set(theme_minimal())\nblue <- \"#327291\"","id":1,"options":{"read-only":"false","editor-font-scale":"1","context":"setup","results":"markup","message":"true","output":"true","editor-max-height":"","comment":"","autorun":"true","fig-height":5,"dpi":72,"label":"unnamed-chunk-1","out-height":"","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"out-width":"700px","editor-word-wrap":"true","classes":"","warning":"true"}},{"code":"mean <- 5\nsd <- 2\nn <- 100\n\ndata <- tibble(x = rnorm(n = n, mean = mean, sd = sd))\n\nggplot(data, aes(x = x)) +\n  geom_histogram(\n    color = \"gray20\",\n    linewidth = 0.25,\n    fill = blue,\n    alpha = .85\n  )","id":2,"options":{"read-only":"false","editor-font-scale":"1","context":"interactive","results":"markup","message":"true","output":"true","editor-max-height":"","comment":"","autorun":"false","fig-height":5,"dpi":72,"label":"unnamed-chunk-2","out-height":"","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"out-width":"700px","editor-word-wrap":"true","classes":"","warning":"true"}}];
 
 </script>
 <script type="module">

@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.47">
+  <meta name="generator" content="quarto-1.5.51">
 
   <title>Test Suite for quarto-webr – Test: webR in RevealJS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -602,14 +602,14 @@
 
   // Describe the webR settings that should be used
   globalThis.qwebrCustomizedWebROptions = {
-    "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+    "baseURL": "https://webr.r-wasm.org/v0.4.0/",
     "serviceWorkerUrl": "",
     "homedir": "/home/web_user", 
     "channelType": "ChannelType.Automatic"
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"warning":"true","context":"interactive","editor-max-height":"","out-width":"700px","autorun":"false","editor-word-wrap":"true","fig-cap":"","message":"true","label":"unnamed-chunk-1","comment":"","out-height":"","results":"markup","read-only":"false","output":"true","dpi":72,"fig-height":5,"editor-font-scale":"0.5","fig-width":7,"classes":"","editor-quick-suggestions":"false"},"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)"},{"options":{"warning":"true","context":"interactive","editor-max-height":"","out-width":"700px","autorun":"false","editor-word-wrap":"true","fig-cap":"","message":"true","label":"unnamed-chunk-2","comment":"","out-height":"","results":"markup","read-only":"false","output":"true","dpi":72,"fig-height":5,"editor-font-scale":"0.5","fig-width":7,"classes":"","editor-quick-suggestions":"false"},"id":2,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5"},{"options":{"warning":"true","context":"interactive","editor-max-height":"","out-width":"700px","autorun":"false","editor-word-wrap":"true","fig-cap":"","message":"true","label":"unnamed-chunk-3","comment":"","out-height":"","results":"markup","read-only":"false","output":"true","dpi":72,"fig-height":5,"editor-font-scale":"0.5","fig-width":7,"classes":"","editor-quick-suggestions":"false"},"id":3,"code":"message(\"Hello World!\")"},{"options":{"warning":"true","context":"interactive","editor-max-height":"","out-width":"700px","autorun":"false","editor-word-wrap":"true","fig-cap":"","message":"true","label":"unnamed-chunk-4","comment":"","out-height":"","results":"markup","read-only":"false","output":"true","dpi":72,"fig-height":5,"editor-font-scale":"0.5","fig-width":7,"classes":"","editor-quick-suggestions":"false"},"id":4,"code":"2 + 3"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"fit = lm(mpg ~ wt, data = mtcars)\n\nsummary(fit)","options":{"out-height":"","classes":"","output":"true","label":"unnamed-chunk-1","fig-cap":"","message":"true","results":"markup","editor-word-wrap":"true","out-width":"700px","warning":"true","comment":"","fig-height":5,"read-only":"false","autorun":"false","fig-width":7,"editor-font-scale":"0.5","context":"interactive","dpi":72,"editor-quick-suggestions":"false","editor-max-height":""}},{"id":2,"code":"print(\"Hello quarto-webr RevealJS world!\")\n\n3 + 5","options":{"out-height":"","classes":"","output":"true","label":"unnamed-chunk-2","fig-cap":"","message":"true","results":"markup","editor-word-wrap":"true","out-width":"700px","warning":"true","comment":"","fig-height":5,"read-only":"false","autorun":"false","fig-width":7,"editor-font-scale":"0.5","context":"interactive","dpi":72,"editor-quick-suggestions":"false","editor-max-height":""}},{"id":3,"code":"message(\"Hello World!\")","options":{"out-height":"","classes":"","output":"true","label":"unnamed-chunk-3","fig-cap":"","message":"true","results":"markup","editor-word-wrap":"true","out-width":"700px","warning":"true","comment":"","fig-height":5,"read-only":"false","autorun":"false","fig-width":7,"editor-font-scale":"0.5","context":"interactive","dpi":72,"editor-quick-suggestions":"false","editor-max-height":""}},{"id":4,"code":"2 + 3","options":{"out-height":"","classes":"","output":"true","label":"unnamed-chunk-4","fig-cap":"","message":"true","results":"markup","editor-word-wrap":"true","out-width":"700px","warning":"true","comment":"","fig-height":5,"read-only":"false","autorun":"false","fig-width":7,"editor-font-scale":"0.5","context":"interactive","dpi":72,"editor-quick-suggestions":"false","editor-max-height":""}}];
 
   </script>
   <script type="module">

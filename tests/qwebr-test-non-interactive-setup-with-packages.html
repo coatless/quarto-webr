@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.5.51">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -351,14 +351,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/v0.4.0/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"new_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","options":{"out-height":"","message":"true","classes":"","fig-width":7,"output":"true","editor-word-wrap":"true","context":"setup","dpi":72,"editor-max-height":"","warning":"true","label":"spike-data","results":"markup","fig-height":5,"out-width":"700px","editor-font-scale":"1","editor-quick-suggestions":"false","autorun":"true","read-only":"false","comment":"","fig-cap":""}},{"id":2,"code":"new_mtcars","options":{"out-height":"","message":"true","classes":"","fig-width":7,"output":"true","editor-word-wrap":"true","context":"interactive","dpi":72,"editor-max-height":"","warning":"true","label":"spike-data","results":"markup","fig-height":5,"out-width":"700px","editor-font-scale":"1","editor-quick-suggestions":"false","autorun":"false","read-only":"false","comment":"","fig-cap":""}}];
+globalThis.qwebrCellDetails = [{"code":"new_mtcars <- mtcars |>\n  tibble::rownames_to_column(var = \"car\") |>\n  tibble::as_tibble() |>\n  dplyr::select(car, cyl, disp, wt) |>\n  dplyr::mutate(wt = dplyr::case_when(\n    wt < 2 ~ -wt,\n    TRUE ~ wt))","id":1,"options":{"message":"true","context":"setup","editor-word-wrap":"true","read-only":"false","classes":"","fig-width":7,"autorun":"true","comment":"","fig-height":5,"editor-font-scale":"1","results":"markup","label":"spike-data","warning":"true","fig-cap":"","editor-quick-suggestions":"false","out-width":"700px","dpi":72,"output":"true","editor-max-height":"","out-height":""}},{"code":"new_mtcars","id":2,"options":{"message":"true","context":"interactive","editor-word-wrap":"true","read-only":"false","classes":"","fig-width":7,"autorun":"false","comment":"","fig-height":5,"editor-font-scale":"1","results":"markup","label":"spike-data","warning":"true","fig-cap":"","editor-quick-suggestions":"false","out-width":"700px","dpi":72,"output":"true","editor-max-height":"","out-height":""}}];
 
 </script>
 <script type="module">

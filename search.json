@@ -487,6 +487,17 @@
     ]
   },
   {
+    "objectID": "qwebr-release-notes.html#features",
+    "href": "qwebr-release-notes.html#features",
+    "title": "Release Notes",
+    "section": "Features",
+    "text": "Features\n\nUpgraded the embedded version of webR to v0.4.0. (#219)",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
     "objectID": "qwebr-release-notes.html#breaking-changes",
     "href": "qwebr-release-notes.html#breaking-changes",
     "title": "Release Notes",
@@ -498,8 +509,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features",
-    "href": "qwebr-release-notes.html#features",
+    "objectID": "qwebr-release-notes.html#features-1",
+    "href": "qwebr-release-notes.html#features-1",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded to webR v0.3.3 (#196)\nAdded ability to download the R history of commands executed through a new global menu in the right column and underneath Revealjs’ “Tools” menu. (#148)\nAdded the ability to have the monaco editor switch between Quarto’s light and dark theme modes. (#176)\nAdded two new document-level options:\n\ncell-options specifies global defaults for {webr-r} options (#173, thanks ute!)\nversion specifies what version of webR should be used. Default embedded version. (#211)\n\nAdded the editor-* class of cell-level options to control the interactive code cell editor:\n\neditor-code-line-numbers allows highlighting code lines in the editor window. (#204)\neditor-word-wrap allows long lines to be wrapped inside of the code cell. Default \"true\". (#38)\neditor-quick-suggestions enables autocomplete menu suggestions. Default \"false\".(#182, thanks egenn!)\neditor-max-height limits growth of the editor window. (#177, thanks ute!)\neditor-font-scale scales the code cell size relative to the page font size. Default is 1 for HTML Documents, Books, and Websites and 0.5 for Revealjs Slides. (#172 & #209, thanks ute!)\n\nEnabled non-graphical computation within a webr-r cell when OffScreenCanvas is not available. (#155, thanks for raising it @mccarthy-m-g)\n\nIf OffScreenCanvas is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.\nThe majority of modern browsers now have support for OffScreenCanvas. This previously effected users still on iOS 16 (Safari 16 and earlier).",
@@ -542,8 +553,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-1",
-    "href": "qwebr-release-notes.html#features-1",
+    "objectID": "qwebr-release-notes.html#features-2",
+    "href": "qwebr-release-notes.html#features-2",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the embedded version of webR to v0.3.1. (#165)\nread-only is a new code cell option that prevents changes to code inside of an interactive context.",
@@ -597,8 +608,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-2",
-    "href": "qwebr-release-notes.html#features-2",
+    "objectID": "qwebr-release-notes.html#features-3",
+    "href": "qwebr-release-notes.html#features-3",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nOptimized the underlying code handling insertion and execution of R code. (#118)\nImplemented a custom JSON format for code cell data and option sharing between Quarto and webR. (#120)\nRedesigned non-interactive cells to provide improved reliability and visual cues. (#120)\nInteractive cells now have a toolbar above them that provides three actions: Run Code, Start Over, and Copy. (#91)\nInitial code cell option support (#104, #117, #125, #151):\n\nquarto-webR: context and autorun.\nAttributes: label and classes.\nFigures: fig-cap, dpi, fig-width, fig-height, out-width, & out-height.\nCell output: warning/message, results, and output\n\nAdded repos document meta option key to specify custom package repositories containing compiled R WASM Packages not found in the main webR repository (#124, #132).",
@@ -663,8 +674,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-3",
-    "href": "qwebr-release-notes.html#features-3",
+    "objectID": "qwebr-release-notes.html#features-4",
+    "href": "qwebr-release-notes.html#features-4",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the embedded version of webR to v0.2.2. (#96)",
@@ -696,8 +707,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-4",
-    "href": "qwebr-release-notes.html#features-4",
+    "objectID": "qwebr-release-notes.html#features-5",
+    "href": "qwebr-release-notes.html#features-5",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nAdded autoload-packages document meta option key that will automatically load packages specified in the packages key. The default value is true. (#75)\n\nThis feature simplifies the use of packages, eliminating the need to call library() in interactive code cells or setup code cells, as the specified packages will be loaded automatically.\n\nAdded new output classes to differentiate between STDOUT and STDERR text. (#60, #89)\n\nError and warning messages will now appear red and regular output will appear black.",
@@ -740,8 +751,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-5",
-    "href": "qwebr-release-notes.html#features-5",
+    "objectID": "qwebr-release-notes.html#features-6",
+    "href": "qwebr-release-notes.html#features-6",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nAdded a Global Interpreter Lock (GIL) to ensures that only one code cell runs at a time, preventing simultaneous execution conflicts.\n\nWith this enhancement, you can now enjoy smoother and more predictable execution of your code, without interference from concurrently running code cells.\n\nAdded a visual spinning indicator to emphasize what code cell is currently running. (#64, #17)\nImproved status updates about installing R packages specified in the document’s package key. (#68)\nFully supported pager event types. (#58)\n\nWith this update, looking at R help documentation for a function is now possible.",
@@ -828,8 +839,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-6",
-    "href": "qwebr-release-notes.html#features-6",
+    "objectID": "qwebr-release-notes.html#features-7",
+    "href": "qwebr-release-notes.html#features-7",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nNew documentation website is available at: https://quarto-webr.thecoatlessprofessor.com\nDocument option channel-type sets the communication channel webR uses.\n\nchannel-type: automatic (default): Communicates using either shared-array-buffer or service-worker.\nchannel-type: shared-buffer-array: Fastest communication option, but requires setting up HTTP headers.\nchannel-type: service-worker: Slower communication option and requires worker scripts to be next to the rendered document.\nchannel-type: post-message: Easiest setup option at the expense of being unable to interrupt the R process or accept user-input.\n\nCode cell option context controls whether the code and output are shown or suppressed.\n\ncontext: interactive(default) shows both code and output.\ncontext: setup suppresses both code and output.\ncontext: output suppresses code but shows its output.\nTo use the new hidden code cell feature, the code cell needs #| context: &lt;value&gt; like so:\n\n\n```{webr-r}\n#| context: setup\n\nmy_hidden_variable = 11\n```",
@@ -949,8 +960,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-7",
-    "href": "qwebr-release-notes.html#features-7",
+    "objectID": "qwebr-release-notes.html#features-8",
+    "href": "qwebr-release-notes.html#features-8",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nCode editing areas on the Quarto document now use the Monaco Editor for improved accessibility.\nExecute code using keyboard shortcuts:\n\nRun selected code using: [Cmd + Enter] on macOS or [Ctrl+Enter] on Windows\nRun the entire code area using: [Shift+Enter]\n\nDynamically growing code editor as new lines are added.\nAnnouncing the status changes of webR initialization states through arias.",
@@ -960,8 +971,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-8",
-    "href": "qwebr-release-notes.html#features-8",
+    "objectID": "qwebr-release-notes.html#features-9",
+    "href": "qwebr-release-notes.html#features-9",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nUpgraded the version of webR to use v0.1.1.\nSet options directly inside the document’s YAML header to control webR:\n\nSupport is available for setting the following WebR.WebROptions options:\n\nhome-dir: The WebAssembly user’s home directory and initial working directory (Documentation). Default: '/home/web_user'.\nbase-url: The base URL used for downloading R WebAssembly binaries. (Documentation). Default: 'https://webr.r-wasm.org/[version]/'.\nservice-worker-url: The base URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel mode (Documentation). Default: ''.\n\n\nwebR initialization status stages are now described and shown as stoplights (inspired by Bob Rudis)\n\nshow-startup-message: Display in the document header the state of WebR initialization. Default: true\nshow-header-message: Display in the document header whether COOP and COEP headers are in use for faster page loads. Default: false\n\n\n\n\n\nNew status lighting",
@@ -1015,8 +1026,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#features-9",
-    "href": "qwebr-release-notes.html#features-9",
+    "objectID": "qwebr-release-notes.html#features-10",
+    "href": "qwebr-release-notes.html#features-10",
     "title": "Release Notes",
     "section": "Features",
     "text": "Features\n\nEnable webR code cells inside of a Quarto document.\n\n\n\n\nquarto-webr Filter in Action",

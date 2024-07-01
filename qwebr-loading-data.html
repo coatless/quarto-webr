@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.5.51">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -396,14 +396,14 @@ globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
 globalThis.qwebrCustomizedWebROptions = {
-  "baseURL": "https://webr.r-wasm.org/v0.3.3/",
+  "baseURL": "https://webr.r-wasm.org/v0.4.0/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
   "channelType": "ChannelType.Automatic"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-height":"","read-only":"false","output":"true","label":"unnamed-chunk-1","context":"interactive","comment":"","message":"true","editor-max-height":"","results":"markup","fig-cap":"","editor-word-wrap":"true","editor-quick-suggestions":"false","autorun":"true","dpi":72,"fig-height":5,"out-width":"700px","warning":"true","fig-width":7,"classes":"","editor-font-scale":"1"},"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)"}];
+globalThis.qwebrCellDetails = [{"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)","options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-1","editor-word-wrap":"true","results":"markup","warning":"true","dpi":72,"context":"interactive","editor-quick-suggestions":"false","fig-cap":"","comment":"","out-width":"700px","read-only":"false","fig-height":5,"message":"true","autorun":"true","out-height":"","classes":"","fig-width":7,"output":"true"},"id":1}];
 
 </script>
 <script type="module">
@@ -2176,7 +2176,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 24, 2024</p>
+      <p class="date-modified">July 1, 2024</p>
     </div>
   </div>
     
