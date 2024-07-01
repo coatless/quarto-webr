@@ -12,6 +12,12 @@ format:
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
 :::
 
+# 0.4.3-dev: ???? (??-??-????)
+
+## Features
+
+- Upgraded the embedded version of webR to v0.4.0. ([#219](https://github.com/coatless/quarto-webr/pulls/219))
+
 # 0.4.2: A Change Is Gonna Come (06-24-2024)
 
 ## Breaking Changes
