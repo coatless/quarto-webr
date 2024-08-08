@@ -1,5 +1,9 @@
 # webR Extension for Quarto
 
+> [!IMPORTANT]
+>
+> Looking for the official Quarto WebAssembly backend? Check out [`quarto-live`](https://github.com/r-wasm/quarto-live)!
+
 This community developed Quarto extension enables the [webR](https://docs.r-wasm.org/webr/latest/) code cell within various [Quarto](https://quarto.org/) formats, including [HTML](https://quarto.org/docs/output-formats/html-basics.html), [RevealJS](https://quarto.org/docs/presentations/revealjs/), [Websites](https://quarto.org/docs/websites/), [Blogs](https://quarto.org/docs/websites/website-blog.html), and [Books](https://quarto.org/docs/books). 
 
 ![`quarto-webr` Filter in Action](https://i.imgur.com/JIQZIZ8.gif)
