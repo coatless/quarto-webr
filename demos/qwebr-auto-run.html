@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.51">
+<meta name="generator" content="quarto-1.6.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -401,7 +401,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":1,"options":{"results":"markup","editor-max-height":"","fig-cap":"","dpi":72,"output":"true","message":"true","editor-quick-suggestions":"false","out-width":"700px","warning":"true","classes":"","read-only":"false","editor-font-scale":"1","out-height":"","label":"unnamed-chunk-1","context":"interactive","fig-width":7,"fig-height":5,"comment":"","autorun":"false","editor-word-wrap":"true"}},{"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))","id":2,"options":{"results":"markup","editor-max-height":"","fig-cap":"","dpi":72,"output":"true","message":"true","editor-quick-suggestions":"false","out-width":"700px","warning":"true","classes":"","read-only":"false","editor-font-scale":"1","out-height":"","label":"unnamed-chunk-2","context":"interactive","fig-width":7,"fig-height":5,"comment":"","autorun":"true","editor-word-wrap":"true"}},{"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)","id":3,"options":{"results":"markup","editor-max-height":"","fig-cap":"","dpi":72,"output":"true","message":"true","editor-quick-suggestions":"false","out-width":"700px","warning":"true","classes":"","read-only":"false","editor-font-scale":"1","out-height":"","label":"unnamed-chunk-3","context":"output","fig-width":7,"fig-height":5,"comment":"","autorun":"true","editor-word-wrap":"true"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() ","id":4,"options":{"results":"markup","editor-max-height":"","fig-cap":"","dpi":72,"output":"true","message":"true","editor-quick-suggestions":"false","out-width":"500px","warning":"true","classes":"","read-only":"false","editor-font-scale":"1","out-height":"","label":"unnamed-chunk-4","context":"output","fig-width":"5","fig-height":"3","comment":"","autorun":"true","editor-word-wrap":"true"}},{"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() ","id":5,"options":{"results":"markup","editor-max-height":"","fig-cap":"","dpi":72,"output":"true","message":"true","editor-quick-suggestions":"false","out-width":"500px","warning":"true","classes":"","read-only":"false","editor-font-scale":"1","out-height":"","label":"unnamed-chunk-5","context":"interactive","fig-width":"5","fig-height":"3","comment":"","autorun":"true","editor-word-wrap":"true"}}];
+globalThis.qwebrCellDetails = [{"options":{"out-height":"","message":"true","comment":"","dpi":72,"fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive","editor-word-wrap":"true","autorun":"false","results":"markup","out-width":"700px","classes":"","fig-width":7,"fig-height":5,"label":"unnamed-chunk-1","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true"},"id":1,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"out-height":"","message":"true","comment":"","dpi":72,"fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive","editor-word-wrap":"true","autorun":"true","results":"markup","out-width":"700px","classes":"","fig-width":7,"fig-height":5,"label":"unnamed-chunk-2","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true"},"id":2,"code":"# Write your name here by replace ___\nname <- \"_____\"\nprint(paste0(\"Hello, \", name, \"!\"))"},{"options":{"out-height":"","message":"true","comment":"","dpi":72,"fig-cap":"","output":"true","editor-font-scale":"1","context":"output","editor-word-wrap":"true","autorun":"true","results":"markup","out-width":"700px","classes":"","fig-width":7,"fig-height":5,"label":"unnamed-chunk-3","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true"},"id":3,"code":"data(\"gapminder\", package = \"gapminder\")\nhead(gapminder)"},{"options":{"out-height":"","message":"true","comment":"","dpi":72,"fig-cap":"","output":"true","editor-font-scale":"1","context":"output","editor-word-wrap":"true","autorun":"true","results":"markup","out-width":"500px","classes":"","fig-width":"5","fig-height":"3","label":"unnamed-chunk-4","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true"},"id":4,"code":"ggplot(gapminder, aes(lifeExp)) + \n geom_density(aes(fill=continent), alpha=1/4) + theme_bw() "},{"options":{"out-height":"","message":"true","comment":"","dpi":72,"fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive","editor-word-wrap":"true","autorun":"true","results":"markup","out-width":"500px","classes":"","fig-width":"5","fig-height":"3","label":"unnamed-chunk-5","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true"},"id":5,"code":"ggplot(gapminder, aes(lifeExp)) + \n  theme_bw() "}];
 
 </script>
 <script type="module">
@@ -2157,7 +2157,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div>
+</div>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>This demo showcases the functionality of automatically executing code within an interactive area, revealing output before any modifications can be made to the document.</p>

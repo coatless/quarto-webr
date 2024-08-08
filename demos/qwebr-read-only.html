@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.51">
+<meta name="generator" content="quarto-1.6.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -401,7 +401,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)","options":{"comment":"","label":"unnamed-chunk-1","autorun":"false","out-height":"","read-only":"true","fig-height":5,"results":"markup","warning":"true","classes":"","editor-max-height":"","message":"true","editor-font-scale":"1","editor-word-wrap":"true","dpi":72,"fig-width":7,"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","output":"true"}},{"id":2,"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100","options":{"comment":"","label":"unnamed-chunk-2","autorun":"true","out-height":"","read-only":"false","fig-height":5,"results":"markup","warning":"true","classes":"","editor-max-height":"","message":"true","editor-font-scale":"1","editor-word-wrap":"true","dpi":72,"fig-width":7,"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","output":"true"}},{"id":3,"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)","options":{"comment":"","label":"unnamed-chunk-3","autorun":"true","out-height":"","read-only":"true","fig-height":5,"results":"markup","warning":"true","classes":"","editor-max-height":"","message":"true","editor-font-scale":"1","editor-word-wrap":"true","dpi":72,"fig-width":7,"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","output":"true"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"label":"unnamed-chunk-1","message":"true","read-only":"true","fig-height":5,"warning":"true","fig-cap":"","classes":"","out-width":"700px","comment":"","results":"markup","editor-word-wrap":"true","autorun":"false","out-height":"","output":"true","context":"interactive","dpi":72,"editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"# Try modifying the age variable\nage <- 42\ncat(\"Your age is: \", age, fill = TRUE)"},{"id":2,"options":{"fig-width":7,"label":"unnamed-chunk-2","message":"true","read-only":"false","fig-height":5,"warning":"true","fig-cap":"","classes":"","out-width":"700px","comment":"","results":"markup","editor-word-wrap":"true","autorun":"true","out-height":"","output":"true","context":"interactive","dpi":72,"editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"# Experiment with different sample sizes by\n# changing the n value and re-running the code\n# cell.\nn <- 100"},{"id":3,"options":{"fig-width":7,"label":"unnamed-chunk-3","message":"true","read-only":"true","fig-height":5,"warning":"true","fig-cap":"","classes":"","out-width":"700px","comment":"","results":"markup","editor-word-wrap":"true","autorun":"true","out-height":"","output":"true","context":"interactive","dpi":72,"editor-max-height":"","editor-quick-suggestions":"false","editor-font-scale":"1"},"code":"samples = rnorm(n)\nhist(samples,\n  main = \"Randomly Sampled Normal Distribution\",\n  sub = paste(\"Based on\", n, \"samples\"),\n  xlab = \"Sample Value\"\n)"}];
 
 </script>
 <script type="module">
@@ -2157,7 +2157,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div>
+</div>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>This demo shows how a code cell can be placed into a read-only mode.</p>

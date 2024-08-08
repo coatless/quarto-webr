@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.51">
+<meta name="generator" content="quarto-1.6.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -403,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)","options":{"editor-max-height":"","editor-font-scale":"1","label":"unnamed-chunk-1","editor-word-wrap":"true","results":"markup","warning":"true","dpi":72,"context":"interactive","editor-quick-suggestions":"false","fig-cap":"","comment":"","out-width":"700px","read-only":"false","fig-height":5,"message":"true","autorun":"true","out-height":"","classes":"","fig-width":7,"output":"true"},"id":1}];
+globalThis.qwebrCellDetails = [{"options":{"results":"markup","warning":"true","message":"true","dpi":72,"out-height":"","context":"interactive","editor-font-scale":"1","output":"true","comment":"","fig-cap":"","label":"unnamed-chunk-1","autorun":"true","read-only":"false","editor-max-height":"","classes":"","fig-width":7,"editor-word-wrap":"true","fig-height":5,"editor-quick-suggestions":"false","out-width":"700px"},"code":"# See where we are in the file system:\ncat(\"We're currently at:\\n\")\ngetwd()\n\n# View a list of files for the working directory.\ncat(\"We have the following files present:\\n\")\nlist.files()\n\n# Specify the data URL using HTTPS\nurl <- \"https://coatless.github.io/raw-data/flights.csv\"\n\n# Download the data file from the HTTPS URL and save it as\n# flights.csv\ncat(\"Download the data ...\\n\")\ndownload.file(url, \"flights.csv\")\n\n# Check for the data.\ncat(\"After downloading the data, we now have:\\n\")\nlist.files()\n\n# Read the flights data into R\nflights_from_csv <- read.csv(\"flights.csv\")\n\n# See the first few rows of the flights_from_csv data frame.\ncat(\"Let's view the first 6 observations of data:\\n\")\nhead(flights_from_csv)","id":1}];
 
 </script>
 <script type="module">
@@ -2176,7 +2176,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">July 1, 2024</p>
+      <p class="date-modified">August 8, 2024</p>
     </div>
   </div>
     
@@ -2186,7 +2186,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div>
+</div>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>When working with webR in a web environment, there are some modifications and considerations required for using data. This documentation entry guides you through a few changes related to accessing data for the community Quarto extension.</p>
