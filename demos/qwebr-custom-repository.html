@@ -401,7 +401,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"editor-word-wrap":"true","context":"interactive","read-only":"false","out-height":"","comment":"","editor-quick-suggestions":"false","autorun":"false","results":"markup","fig-height":5,"out-width":"700px","label":"unnamed-chunk-1","warning":"true","classes":"","dpi":72,"fig-width":7,"fig-cap":"","editor-max-height":"","output":"true","editor-font-scale":"1","message":"true"},"id":1,"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","editor-word-wrap":"true","output":"true","classes":"","editor-font-scale":"1","dpi":72,"out-width":"700px","read-only":"false","editor-max-height":"","context":"interactive","fig-height":5,"warning":"true","out-height":"","results":"markup","comment":"","fig-width":7,"label":"unnamed-chunk-1","fig-cap":"","editor-quick-suggestions":"false","autorun":"false"},"code":"# Check to see if the function works\ndemorwasmbinary::in_webr()\n\n# View help documentation\n?demorwasmbinary::in_webr"}];
 
 </script>
 <script type="module">
@@ -1606,6 +1606,9 @@ globalThis.qwebrExecuteCode = async function (
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="120d11d612021758b0207b437cf2dffd" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -2157,19 +2160,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
-</div>
-</div>
+
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>In this example, we add a custom R WASM Package repository that contains <code>demorwasmbinary</code> R WASM package. The package is not available from the <a href="https://repo.r-wasm.org/">main webR repository</a>.</p>

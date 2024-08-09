@@ -403,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Determine the version of R being used \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","id":1,"options":{"warning":"true","comment":"","out-width":"700px","out-height":"","autorun":"false","fig-cap":"","editor-quick-suggestions":"false","classes":"","results":"markup","fig-height":5,"context":"interactive","label":"unnamed-chunk-1","fig-width":7,"output":"true","editor-max-height":"","message":"true","editor-word-wrap":"true","read-only":"false","editor-font-scale":"1","dpi":72}},{"code":"webr::install(\"ggplot2\")","id":2,"options":{"warning":"true","comment":"","out-width":"700px","out-height":"","autorun":"false","fig-cap":"","editor-quick-suggestions":"false","classes":"","results":"markup","fig-height":5,"context":"interactive","label":"unnamed-chunk-2","fig-width":7,"output":"true","editor-max-height":"","message":"true","editor-word-wrap":"true","read-only":"false","editor-font-scale":"1","dpi":72}},{"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","id":3,"options":{"warning":"true","comment":"","out-width":"700px","out-height":"","autorun":"false","fig-cap":"","editor-quick-suggestions":"false","classes":"","results":"markup","fig-height":5,"context":"interactive","label":"unnamed-chunk-3","fig-width":7,"output":"true","editor-max-height":"","message":"true","editor-word-wrap":"true","read-only":"false","editor-font-scale":"1","dpi":72}}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Determine the version of R being used \nmajor_minor_version <- paste(\n  R.version$major, \n  strsplit(R.version$minor, \".\", fixed = TRUE)[[1L]][1L],\n  sep = \".\"\n)\n\n# Obtain a list of packages\nwebr_info <- as.data.frame(\n  available.packages(\n    contriburl = paste0(\n      \"https://repo.r-wasm.org/bin/emscripten/contrib/\", \n      major_minor_version\n    )\n  )\n)\n\n# Obtain the number of R packages built\nn_webr_pkgs <- nrow(webr_info)\n\n# Number of R packages available to webR\ncat(\"There are current\", n_webr_pkgs, \n    \"available to use with webR!\\n\")\n\n# Only view the first 6, there's a lot available!\nhead(webr_info[, c(\"Version\", \"License\")])","options":{"fig-width":7,"editor-max-height":"","out-height":"","dpi":72,"read-only":"false","output":"true","editor-word-wrap":"true","out-width":"700px","warning":"true","fig-height":5,"comment":"","context":"interactive","classes":"","label":"unnamed-chunk-1","autorun":"false","results":"markup","message":"true","editor-font-scale":"1","fig-cap":"","editor-quick-suggestions":"false"}},{"id":2,"code":"webr::install(\"ggplot2\")","options":{"fig-width":7,"editor-max-height":"","out-height":"","dpi":72,"read-only":"false","output":"true","editor-word-wrap":"true","out-width":"700px","warning":"true","fig-height":5,"comment":"","context":"interactive","classes":"","label":"unnamed-chunk-2","autorun":"false","results":"markup","message":"true","editor-font-scale":"1","fig-cap":"","editor-quick-suggestions":"false"}},{"id":3,"code":"library(\"ggplot2\")\n\nggplot(mpg, aes(displ, hwy, colour = class)) + \n  geom_point()","options":{"fig-width":7,"editor-max-height":"","out-height":"","dpi":72,"read-only":"false","output":"true","editor-word-wrap":"true","out-width":"700px","warning":"true","fig-height":5,"comment":"","context":"interactive","classes":"","label":"unnamed-chunk-3","autorun":"false","results":"markup","message":"true","editor-font-scale":"1","fig-cap":"","editor-quick-suggestions":"false"}}];
 
 </script>
 <script type="module">
@@ -1608,6 +1608,9 @@ globalThis.qwebrExecuteCode = async function (
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="120d11d612021758b0207b437cf2dffd" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -2167,7 +2170,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 8, 2024</p>
+      <p class="date-modified">August 9, 2024</p>
     </div>
   </div>
     
@@ -2177,19 +2180,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
-</div>
-</div>
+
 <p>Whether you need specialized statistical analysis, advanced visualization, or any other R-based functionality, you can harness the rich ecosystem of R packages directly within your documents. By default, the community <code>quarto-webr</code> extension avoids loading additional packages. However, you have two ways to incorporate packages into your document: one where packages are installed when the document opens, and the other where packages are installed interactively within specific code cells.</p>
 <section id="available-r-packages" class="level1">
 <h1>Available R Packages</h1>

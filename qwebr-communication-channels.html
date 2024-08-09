@@ -403,7 +403,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)","options":{"read-only":"false","autorun":"false","output":"true","message":"true","context":"interactive","label":"unnamed-chunk-1","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","fig-width":7,"out-height":"","fig-height":5,"editor-max-height":"","classes":"","warning":"true","editor-quick-suggestions":"false","dpi":72,"out-width":"700px","fig-cap":"","comment":""},"id":1}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-width":7,"comment":"","classes":"","fig-height":5,"editor-word-wrap":"true","out-height":"","editor-font-scale":"1","context":"interactive","read-only":"false","out-width":"700px","message":"true","label":"unnamed-chunk-1","editor-quick-suggestions":"false","autorun":"false","results":"markup","output":"true","warning":"true","dpi":72,"fig-cap":"","editor-max-height":""},"code":"# Attempt to used an input-blocked function\nx = readline(\"What is your favorite color?\")\n\n## View the value of x\n# print(x)"}];
 
 </script>
 <script type="module">
@@ -1608,6 +1608,9 @@ globalThis.qwebrExecuteCode = async function (
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="120d11d612021758b0207b437cf2dffd" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -2171,7 +2174,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 8, 2024</p>
+      <p class="date-modified">August 9, 2024</p>
     </div>
   </div>
     
@@ -2181,19 +2184,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
-</div>
-</div>
+
 <p>As you dive deeper into using webR, it’s crucial to grasp how webR manages communication between R and your web browser. Think of it as a conversation between two active workers or “threads”:</p>
 <ol type="1">
 <li><strong>Web Browser</strong>: This is your web browser, like Chrome or Firefox, which you use to surf the internet and interact with web pages.</li>

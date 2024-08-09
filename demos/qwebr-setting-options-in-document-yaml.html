@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(\"ggplot2\")\n\nggplot()","id":1,"options":{"dpi":72,"classes":"","message":"true","results":"markup","editor-max-height":"","warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-1","fig-cap":"","fig-height":5,"fig-width":7,"output":"true","out-width":"700px","context":"interactive","comment":"","out-height":"","read-only":"false","autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"library(\"ggplot2\")\n\nggplot()","options":{"fig-height":5,"read-only":"false","comment":"","autorun":"false","warning":"true","editor-quick-suggestions":"false","results":"markup","label":"unnamed-chunk-1","context":"interactive","editor-font-scale":"1","dpi":72,"classes":"","fig-cap":"","out-width":"700px","output":"true","fig-width":7,"editor-word-wrap":"true","editor-max-height":"","out-height":"","message":"true"},"id":1}];
 
 </script>
 <script type="module">
@@ -1572,6 +1572,9 @@ globalThis.qwebrExecuteCode = async function (
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="120d11d612021758b0207b437cf2dffd" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -2118,19 +2121,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Looking for the official Quarto WebAssembly backend? Check out <a href="https://github.com/r-wasm/quarto-live"><code>quarto-live</code></a>!</p>
-</div>
-</div>
+
 <section id="demo" class="level1">
 <h1>Demo</h1>
 <p>webR-enabled code cells are established by using <code>{webr-r}</code> in a Quarto HTML document.</p>
