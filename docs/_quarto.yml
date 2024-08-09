@@ -69,10 +69,11 @@ website:
             text: Extension Website Notes
           - href: https://quarto-webr.thecoatlessprofessor.com/tests/
             text: Test Suite
-  body-header: |
-    :::{.callout-important}
-    Looking for the official Quarto WebAssembly backend? Check out [`quarto-live`](https://github.com/r-wasm/quarto-live)!
-    :::
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "Looking for the official Quarto WebAssembly backend? Check out [`quarto-live`](https://github.com/r-wasm/quarto-live)!"
+    type: primary
   body-footer: |
     :::{.callout-important}
     This Quarto extension is open source software and is **not affiliated with** Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.
