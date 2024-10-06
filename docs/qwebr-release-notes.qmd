@@ -12,11 +12,12 @@ format:
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
 :::
 
-# 0.4.3-dev: ???? (??-??-????)
+# 0.4.3-dev.2: ???? (??-??-????)
 
 ## Features
 
 - Upgraded the embedded version of webR to v0.4.0. ([#219](https://github.com/coatless/quarto-webr/pulls/219))
+- Added support for the `browse` event ([#223](https://github.com/coatless/quarto-webr/pulls/223), credit to [@dipterix](https://github.com/dipterix))
 
 # 0.4.2: A Change Is Gonna Come (06-24-2024)
 
