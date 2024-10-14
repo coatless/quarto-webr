@@ -212,7 +212,7 @@ figure:hover .qwebr-canvas-image-download-btn {
   max-height: 100%;
   margin: 0;
   padding: 0;
-} 
+}
 
 /* Provide space to entries */
 .reveal div.qwebr-output-code-area pre div {
@@ -255,4 +255,14 @@ body.reveal.quarto-dark div.qwebr-console-area {
 .reveal div.qwebr-output-code-area pre {
   max-height: 400px;
   overflow: scroll;
+}
+
+iframe.qwebr-output-code-browse {
+  width: 100%;
+
+  /*
+    TODO: How to make the height automatic according to the widget size,
+    or respect the quarto code block options?
+  */
+  min-height: 500px;
 }
