@@ -25,7 +25,7 @@
     "href": "slide-embed.html",
     "title": "3  Embed Slides",
     "section": "",
-    "text": "3.1 Presentation",
+    "text": "3.1 Presentation\nOn this page, we show how we can embed a RevealJS Presentation inside of a Quarto Book.",
     "crumbs": [
       "Exploring R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Embed Slides</span>"
