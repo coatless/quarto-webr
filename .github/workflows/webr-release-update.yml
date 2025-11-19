@@ -1,0 +1,198 @@
+name: Check for New webR Release
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-webr-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      
+      - name: Get latest webR release
+        id: webr-release
+        run: |
+          # Get the latest release from r-wasm/webr
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/r-wasm/webr/releases/latest | jq -r '.tag_name')
+          echo "Latest webR release: $LATEST_RELEASE"
+          echo "latest_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
+          
+          # Remove 'v' prefix if present
+          LATEST_VERSION_CLEAN=${LATEST_RELEASE#v}
+          echo "latest_version_clean=$LATEST_VERSION_CLEAN" >> $GITHUB_OUTPUT
+      
+      - name: Get current webR version from extension
+        id: current-version
+        run: |
+          # Extract current version from webr.lua
+          CURRENT_VERSION=$(grep -oP 'local baseVersionWebR = "\K[^"]+' _extensions/webr/webr.lua)
+          echo "Current webR version in extension: $CURRENT_VERSION"
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+      
+      - name: Check if update is needed
+        id: check-update
+        run: |
+          LATEST="${{ steps.webr-release.outputs.latest_version_clean }}"
+          CURRENT="${{ steps.current-version.outputs.current_version }}"
+          
+          if [ "$LATEST" != "$CURRENT" ]; then
+            echo "Update needed: $CURRENT -> $LATEST"
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+          else
+            echo "No update needed. Current version ($CURRENT) is up to date."
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Get current extension version
+        if: steps.check-update.outputs.needs_update == 'true'
+        id: ext-version
+        run: |
+          # Extract current extension version from _extension.yml
+          CURRENT_EXT_VERSION=$(grep -oP 'version: \K[^\s]+' _extensions/webr/_extension.yml)
+          echo "Current extension version: $CURRENT_EXT_VERSION"
+          echo "current_ext_version=$CURRENT_EXT_VERSION" >> $GITHUB_OUTPUT
+          
+          # Parse version components
+          if [[ $CURRENT_EXT_VERSION =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)-dev\.([0-9]+)$ ]]; then
+            MAJOR="${BASH_REMATCH[1]}"
+            MINOR="${BASH_REMATCH[2]}"
+            PATCH="${BASH_REMATCH[3]}"
+            DEV="${BASH_REMATCH[4]}"
+            
+            # Increment dev version
+            NEW_DEV=$((DEV + 1))
+            NEW_EXT_VERSION="${MAJOR}.${MINOR}.${PATCH}-dev.${NEW_DEV}"
+          else
+            # If format doesn't match, just append .1
+            NEW_EXT_VERSION="${CURRENT_EXT_VERSION}.1"
+          fi
+          
+          echo "New extension version: $NEW_EXT_VERSION"
+          echo "new_ext_version=$NEW_EXT_VERSION" >> $GITHUB_OUTPUT
+      
+      - name: Update _extension.yml
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          CURRENT_VERSION="${{ steps.ext-version.outputs.current_ext_version }}"
+          NEW_VERSION="${{ steps.ext-version.outputs.new_ext_version }}"
+          
+          sed -i "s/version: $CURRENT_VERSION/version: $NEW_VERSION/" _extensions/webr/_extension.yml
+          
+          echo "Updated _extension.yml: $CURRENT_VERSION -> $NEW_VERSION"
+      
+      - name: Update webr.lua
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          CURRENT_WEBR="${{ steps.current-version.outputs.current_version }}"
+          NEW_WEBR="${{ steps.webr-release.outputs.latest_version_clean }}"
+          
+          sed -i "s/local baseVersionWebR = \"$CURRENT_WEBR\"/local baseVersionWebR = \"$NEW_WEBR\"/" _extensions/webr/webr.lua
+          
+          echo "Updated webr.lua: $CURRENT_WEBR -> $NEW_WEBR"
+      
+      - name: Add release note
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          CURRENT_WEBR="${{ steps.current-version.outputs.current_version }}"
+          NEW_WEBR="${{ steps.webr-release.outputs.latest_version_clean }}"
+          CURRENT_DATE=$(date +"%B %d, %Y")
+          NEW_EXT_VERSION="${{ steps.ext-version.outputs.new_ext_version }}"
+          
+          # Create the release note entry
+          RELEASE_NOTE="## ${NEW_EXT_VERSION} - ${CURRENT_DATE}
+
+## WebR Version Update
+
+- Updated default webR version from version \`${CURRENT_WEBR}\` to \`${NEW_WEBR}\`
+   - See the [webR release notes](https://github.com/r-wasm/webr/releases/tag/v${NEW_WEBR}) for full details
+
+"
+          
+          # Check if the release notes file exists
+          if [ ! -f "docs/qwebr-release-notes.qmd" ]; then
+            echo "Error: docs/qwebr-release-notes.qmd not found"
+            exit 1
+          fi
+          
+          # Find the line number after the YAML header and any initial content
+          # We'll insert after the first heading or at line 10 if no heading found
+          LINE_NUM=$(grep -n "^## " docs/qwebr-release-notes.qmd | head -1 | cut -d: -f1)
+          if [ -z "$LINE_NUM" ]; then
+            LINE_NUM=10
+          fi
+          
+          # Insert the release note
+          {
+            head -n $((LINE_NUM - 1)) docs/qwebr-release-notes.qmd
+            echo "$RELEASE_NOTE"
+            tail -n +$LINE_NUM docs/qwebr-release-notes.qmd
+          } > docs/qwebr-release-notes.qmd.tmp
+          
+          mv docs/qwebr-release-notes.qmd.tmp docs/qwebr-release-notes.qmd
+          
+          echo "Added release note for webR update"
+      
+      - name: Create Pull Request
+        if: steps.check-update.outputs.needs_update == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update webR to version ${{ steps.webr-release.outputs.latest_version_clean }}"
+          title: "Update webR to version ${{ steps.webr-release.outputs.latest_version_clean }}"
+          body: |
+            ## WebR Version Update
+            
+            This automated PR updates the quarto-webr extension to use the latest webR release.
+            
+            ### Changes
+            
+            - **Previous webR version:** `${{ steps.current-version.outputs.current_version }}`
+            - **New webR version:** `${{ steps.webr-release.outputs.latest_version_clean }}`
+            - **Extension version:** `${{ steps.ext-version.outputs.current_ext_version }}` → `${{ steps.ext-version.outputs.new_ext_version }}`
+            
+            ### Files Updated
+            
+            1. `_extensions/webr/_extension.yml` - Bumped extension version
+            2. `_extensions/webr/webr.lua` - Updated `baseVersionWebR`
+            3. `docs/qwebr-release-notes.qmd` - Added release note
+            
+            ### WebR Release Information
+            
+            See the full webR release notes at: https://github.com/r-wasm/webr/releases/tag/v${{ steps.webr-release.outputs.latest_version_clean }}
+            
+            ---
+            
+            @coatless Please review and merge if everything looks correct.
+          branch: "update-webr-${{ steps.webr-release.outputs.latest_version_clean }}"
+          base: main
+          delete-branch: true
+          labels: |
+            automated
+            webr-update
+            dependencies
+          reviewers: coatless
+          draft: false
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## WebR Version Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Current webR version:** ${{ steps.current-version.outputs.current_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Latest webR version:** ${{ steps.webr-release.outputs.latest_version_clean }}" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.check-update.outputs.needs_update }}" == "true" ]; then
+            echo "- **Status:** Update PR created" >> $GITHUB_STEP_SUMMARY
+            echo "- **New extension version:** ${{ steps.ext-version.outputs.new_ext_version }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Status:** No update needed" >> $GITHUB_STEP_SUMMARY
+          fi
