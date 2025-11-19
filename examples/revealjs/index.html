@@ -6,8 +6,8 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-8f1af79587c2686b78fe4e1fbadd71ab.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.14">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-cdaacfc258cb6f151192107f105ac881.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.12">
 
   <title>quarto-webr Demo RevealJS Document</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-ff18afce816b5ef2b7dbb5f63367f47a.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -479,7 +479,7 @@
 
   // Describe the webR settings that should be used
   globalThis.qwebrCustomizedWebROptions = {
-    "baseURL": "https://webr.r-wasm.org/v0.5.2/",
+    "baseURL": "https://webr.r-wasm.org/v0.5.7/",
     "serviceWorkerUrl": "",
     "homedir": "/home/web_user", 
     "channelType": "ChannelType.Automatic"
@@ -2095,7 +2095,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="embedded-slides" class="slide level2">
 <h2>Embedded Slides</h2>
 <p>You can embed the slide deck inside of a Quarto Website or Book by using:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">.slide-deck</span> {</span>
 <span id="cb1-3"><a href=""></a>    <span class="kw">border</span><span class="ch">:</span> <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#dee2e6</span><span class="op">;</span></span>
 <span id="cb1-4"><a href=""></a>    <span class="kw">width</span><span class="ch">:</span> <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
@@ -2107,7 +2107,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb1-10"><a href=""></a>```{=html}</span>
 <span id="cb1-11"><a href=""></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> class</span><span class="op">=</span><span class="st">"slide-deck"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"path/to/presentation/"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb1-12"><a href=""></a>```</span>
-<span id="cb1-13"><a href=""></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href=""></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2316,7 +2316,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2390,13 +2390,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
