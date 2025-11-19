@@ -106,17 +106,20 @@ jobs:
           NEW_WEBR="${{ steps.webr-release.outputs.latest_version_clean }}"
           CURRENT_DATE=$(date +"%B %d, %Y")
           NEW_EXT_VERSION="${{ steps.ext-version.outputs.new_ext_version }}"
+
           
           # Create the release note entry
-          RELEASE_NOTE="## ${NEW_EXT_VERSION} - ${CURRENT_DATE}
+          RELEASE_NOTE=$(cat << EOF
+            ## ${NEW_EXT_VERSION} - ${CURRENT_DATE}
 
-## WebR Version Update
+            ### WebR Version Update
 
-- Updated default webR version from version \`${CURRENT_WEBR}\` to \`${NEW_WEBR}\`
-   - See the [webR release notes](https://github.com/r-wasm/webr/releases/tag/v${NEW_WEBR}) for full details
+            - Updated base webR version from version \`${CURRENT_WEBR}\` to \`${NEW_WEBR}\`
+            - See the [webR release notes](https://github.com/r-wasm/webr/releases/tag/v${NEW_WEBR}) for full details
 
-"
-          
+            EOF
+            )
+   
           # Check if the release notes file exists
           if [ ! -f "docs/qwebr-release-notes.qmd" ]; then
             echo "Error: docs/qwebr-release-notes.qmd not found"
