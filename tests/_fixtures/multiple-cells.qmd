@@ -1,0 +1,19 @@
+---
+title: Multiple cells
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
+
+```{webr-r}
+2 + 2
+```
+
+```{webr-r}
+3 + 3
+```

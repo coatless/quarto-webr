@@ -1,0 +1,11 @@
+---
+title: Basic cell
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
