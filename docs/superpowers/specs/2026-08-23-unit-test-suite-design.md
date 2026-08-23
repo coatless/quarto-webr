@@ -105,9 +105,9 @@ Quarto coupling stays in the filter; the table shape becomes testable.
 | `convertMetaChannelTypeToWebROption` | move as-is |
 | `removeEmptyLinesUntilContent` | move as-is |
 | `extractCodeBlockOptions` | takes defaults as a parameter |
-| `substitute_in_file` | move as-is |
+| `substituteInFile` | move as-is |
 | `specifyBaseUrl` | becomes pure `buildBaseUrl(base, version)`; currently mutates module-local `baseUrl` |
-| *(new)* `buildQuotedList` | extracted from the duplicated repos/packages loops in `setWebRInitializationOptions` |
+| *(new)* `quoteAndJoin` | extracted from the duplicated repos/packages loops in `setWebRInitializationOptions` |
 
 Everything else stays in `webr.lua`. In particular `setWebRInitializationOptions`
 is deliberately **not** extracted: it mutates a dozen module locals and reads
@@ -175,10 +175,10 @@ Directly guards the value the release bot rewrites.
 **`removeEmptyLinesUntilContent`** — leading blanks, whitespace-only lines,
 an all-blank block, and a block with no leading blanks.
 
-**`substitute_in_file`** — substitution, whitespace tolerance inside `{{ }}`,
+**`substituteInFile`** — substitution, whitespace tolerance inside `{{ }}`,
 and the behaviour when a key is absent from the table.
 
-**`buildQuotedList`** — empty list, one item, several items.
+**`quoteAndJoin`** — empty list, one item, several items.
 
 ### Layer 2 — Render tests
 
