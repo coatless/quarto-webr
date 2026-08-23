@@ -49,7 +49,15 @@ describe('cell options', () => {
   })
 
   it('carries the declared context into the emitted config', () => {
-    expect(html).toContain('setup')
+    expect(html).toContain('"context":"setup"')
+  })
+
+  it('carries the declared autorun value into the emitted config', () => {
+    expect(html).toContain('"autorun":"true"')
+  })
+
+  it('carries the declared read-only value into the emitted config', () => {
+    expect(html).toContain('"read-only":"true"')
   })
 
   it('does not leak option comment lines into the rendered code', () => {

@@ -8,7 +8,7 @@ filters:
 
 ```{webr-r}
 #| context: setup
-#| autorun: false
+#| autorun: true
 #| read-only: true
 1 + 1
 ```
