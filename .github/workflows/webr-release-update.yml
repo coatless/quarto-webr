@@ -104,45 +104,36 @@ jobs:
         run: |
           CURRENT_WEBR="${{ steps.current-version.outputs.current_version }}"
           NEW_WEBR="${{ steps.webr-release.outputs.latest_version_clean }}"
-          CURRENT_DATE=$(date +"%B %d, %Y")
           NEW_EXT_VERSION="${{ steps.ext-version.outputs.new_ext_version }}"
+          CURRENT_DATE=$(date +"%m-%d-%Y")
+          NOTES_FILE="docs/qwebr-release-notes.qmd"
 
-          
-          # Create the release note entry
-          RELEASE_NOTE=$(cat << EOF
-            ## ${NEW_EXT_VERSION} - ${CURRENT_DATE}
-
-            ### WebR Version Update
-
-            - Updated base webR version from version \`${CURRENT_WEBR}\` to \`${NEW_WEBR}\`
-            - See the [webR release notes](https://github.com/r-wasm/webr/releases/tag/v${NEW_WEBR}) for full details
-
-            EOF
-            )
-   
-          # Check if the release notes file exists
-          if [ ! -f "docs/qwebr-release-notes.qmd" ]; then
-            echo "Error: docs/qwebr-release-notes.qmd not found"
+          if [ ! -f "$NOTES_FILE" ]; then
+            echo "Error: $NOTES_FILE not found"
             exit 1
           fi
-          
-          # Find the line number after the YAML header and any initial content
-          # We'll insert after the first heading or at line 10 if no heading found
-          LINE_NUM=$(grep -n "^## " docs/qwebr-release-notes.qmd | head -1 | cut -d: -f1)
+
+          # Insert above the newest entry, i.e. the first top-level version
+          # heading. Note: a heredoc cannot be used here because its terminator
+          # would have to sit at column zero, which ends the YAML block scalar.
+          LINE_NUM=$(grep -n '^# ' "$NOTES_FILE" | head -1 | cut -d: -f1)
           if [ -z "$LINE_NUM" ]; then
-            LINE_NUM=10
+            echo "Error: no version heading (^# ) found in $NOTES_FILE"
+            exit 1
           fi
-          
-          # Insert the release note
+
           {
-            head -n $((LINE_NUM - 1)) docs/qwebr-release-notes.qmd
-            echo "$RELEASE_NOTE"
-            tail -n +$LINE_NUM docs/qwebr-release-notes.qmd
-          } > docs/qwebr-release-notes.qmd.tmp
-          
-          mv docs/qwebr-release-notes.qmd.tmp docs/qwebr-release-notes.qmd
-          
-          echo "Added release note for webR update"
+            head -n "$((LINE_NUM - 1))" "$NOTES_FILE"
+            printf '# %s: ??? ??? (%s)\n\n' "$NEW_EXT_VERSION" "$CURRENT_DATE"
+            printf '## Features\n\n'
+            printf -- '- Upgraded the embedded version of webR from v%s to v%s. ([release notes](https://github.com/r-wasm/webr/releases/tag/v%s))\n\n' \
+              "$CURRENT_WEBR" "$NEW_WEBR" "$NEW_WEBR"
+            tail -n "+$LINE_NUM" "$NOTES_FILE"
+          } > "$NOTES_FILE.tmp"
+
+          mv "$NOTES_FILE.tmp" "$NOTES_FILE"
+
+          echo "Added release note for webR update: $CURRENT_WEBR -> $NEW_WEBR"
       
       - name: Create Pull Request
         if: steps.check-update.outputs.needs_update == 'true'
