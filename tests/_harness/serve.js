@@ -30,6 +30,6 @@ export function startServer(root) {
   })
 
   return new Promise((resolve) => {
-    server.listen(0, () => resolve({ server, port: server.address().port }))
+    server.listen(0, '127.0.0.1', () => resolve({ server, port: server.address().port }))
   })
 }

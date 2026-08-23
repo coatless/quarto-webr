@@ -28,7 +28,7 @@ test('webR boots and executes a cell', async ({ page }) => {
 
   await runButton.click()
 
-  await expect(page.locator('#qwebr-output-code-area-1')).toContainText('2', {
+  await expect(page.locator('#qwebr-output-code-area-1')).toContainText('[1] 2', {
     timeout: 60000,
   })
 })
