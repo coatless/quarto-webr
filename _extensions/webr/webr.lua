@@ -73,111 +73,28 @@ local qwebrCounter = 0
 --- Initialize a table to store the CodeBlock elements
 local qwebrCapturedCodeBlocks = {}
 
+local utils = require("qwebr-utils")
+
+-- Aliases keep every existing call site in this file unchanged.
+local isVariableEmpty = utils.isVariableEmpty
+local isVariablePopulated = utils.isVariablePopulated
+local shallowcopy = utils.shallowcopy
+local convertMetaChannelTypeToWebROption = utils.convertMetaChannelTypeToWebROption
+local removeEmptyLinesUntilContent = utils.removeEmptyLinesUntilContent
+local substitute_in_file = utils.substituteInFile
+
 --- Initialize a table that contains the default cell-level options
-local qwebRDefaultCellOptions = {
-  ["context"] = "interactive",
-  ["warning"] = "true",
-  ["message"] = "true",
-  ["results"] = "markup",
-  ["output"] = "true",
-  ["comment"] = "",
-  ["label"] = "",
-  ["autorun"] = "",
-  ["read-only"] = "false",
-  ["classes"] = "",
-  ["dpi"] = 72,
-  ["fig-cap"] = "",
-  ["fig-width"] = 7,
-  ["fig-height"] = 5,
-  ["out-width"] = "700px",
-  ["out-height"] = "",
-  ["editor-font-scale"] = quarto.doc.is_format("revealjs") and "0.5" or "1",
-  ["editor-max-height"] = "",
-  ["editor-quick-suggestions"] = "false",
-  ["editor-word-wrap"] = "true"
-}
+--- Mutable: document metadata (webr.cell-options) overwrites entries in place.
+local qwebRDefaultCellOptions = utils.buildDefaultCellOptions(quarto.doc.is_format("revealjs"))
 
 -----
 ---- Process initialization
 
---- Check if variable missing or an empty string
----@param s string | nil
----@return boolean
-local function isVariableEmpty(s)
-  return s == nil or s == ''
-end
-
---- Check if variable is present
----@param s string | nil
----@return boolean
-local function isVariablePopulated(s)
-  return not isVariableEmpty(s)
-end
-
---- Copy the top level value and its direct children
---- Details: http://lua-users.org/wiki/CopyTable
----@param original any
----@return any
-local function shallowcopy(original)
-  -- Determine if its a table
-  if type(original) == 'table' then
-    -- Copy the top level to remove references
-    local copy = {}
-    for key, value in pairs(original) do
-        copy[key] = value
-    end
-    -- Return the copy
-    return copy
-  else
-    -- If original is not a table, return it directly since it's already a copy
-    return original
-  end
-end
-
---- Custom method for cloning a table with a shallow copy.
----@param original table
----@return table
-function table.clone(original)
-  return shallowcopy(original)
-end
-
---- Merge local cell options with global cell options 
+--- Merge local cell options with global cell options
 ---@param localOptions any
 ---@return table
 local function mergeCellOptions(localOptions)
-  -- Copy default options to the mergedOptions table
-  local mergedOptions = table.clone(qwebRDefaultCellOptions)
-
-  -- Override default options with local options
-  for key, value in pairs(localOptions) do
-    if type(value) == "string" then
-      value = value:gsub("[\"']", "")
-    end
-    mergedOptions[key] = value
-  end
-
-  -- Return the customized options
-  return mergedOptions
-end
-
---- Convert the communication channel meta option into a WebROptions.channelType option
----@param input string | integer | nil
----@return string
-local function convertMetaChannelTypeToWebROption(input)
-  -- Create a table of conditions
-  local conditions = {
-    ["automatic"] = "ChannelType.Automatic",
-    [0] = "ChannelType.Automatic",
-    ["shared-array-buffer"] = "ChannelType.SharedArrayBuffer",
-    [1] = "ChannelType.SharedArrayBuffer",
-    ["service-worker"] = "ChannelType.ServiceWorker",
-    [2] = "ChannelType.ServiceWorker",
-    ["post-message"] = "ChannelType.PostMessage",
-    [3] = "ChannelType.PostMessage",
-  }
-  -- Subset the table to obtain the communication channel.
-  -- If the option isn't found, return automatic.
-  return conditions[input] or "ChannelType.Automatic"
+  return utils.mergeCellOptions(qwebRDefaultCellOptions, localOptions)
 end
 
 --- Write a file to disk
@@ -215,11 +132,7 @@ local function writeWebRWorker()
 end
 
 local function specifyBaseUrl()
-  if baseVersionWebR == "latest" then
-    baseUrl = baseUrl .. "latest/"
-  else 
-    baseUrl = baseUrl .. "v" .. baseVersionWebR .. "/"
-  end
+  baseUrl = utils.buildBaseUrl(baseUrl, baseVersionWebR)
 end
 
 --- Parse the different webr options set in the YAML frontmatter, e.g.
@@ -319,37 +232,24 @@ function setWebRInitializationOptions(meta)
 
   -- Attempt to install different packages.
   if isVariablePopulated(webr["repos"]) then
-    -- Create a custom list
     local repoURLList = {}
-
-    -- Iterate through each list item and enclose it in quotes
     for _, repoURL in pairs(webr["repos"]) do
-      table.insert(repoURLList, "'" .. pandoc.utils.stringify(repoURL) .. "'")
+      repoURLList[#repoURLList + 1] = pandoc.utils.stringify(repoURL)
     end
-    
-    -- Add default repo URL
-    table.insert(repoURLList, defaultRepoURL)
-
-    -- Combine URLs
-    rPackageRepoURLS = table.concat(repoURLList, ", ")
+    rPackageRepoURLS = utils.quoteAndJoin(repoURLList, defaultRepoURL)
   end
 
   -- Attempt to install different packages.
   if isVariablePopulated(webr["packages"]) then
-    -- Create a custom list
-    local package_list = {}
-
-    -- Iterate through each list item and enclose it in quotes
-    for _, package_name in pairs(webr["packages"]) do
-      table.insert(package_list, "'" .. pandoc.utils.stringify(package_name) .. "'")
+    local packageList = {}
+    for _, packageName in pairs(webr["packages"]) do
+      packageList[#packageList + 1] = pandoc.utils.stringify(packageName)
     end
-
-    installRPackagesList = table.concat(package_list, ", ")
+    installRPackagesList = utils.quoteAndJoin(packageList)
 
     if isVariablePopulated(webr['autoload-packages']) then
       autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
     end
-
   end
   
   return meta
@@ -390,22 +290,6 @@ local function readTemplateFile(template)
 
   -- Return contents
   return content
-end
-
------
-
---- Define a function to replace keywords given by {{ WORD }}
---- Is there a better lua-approach?
----@param contents string
----@param substitutions string
----@return string
-local function substitute_in_file(contents, substitutions)
-
-  -- Substitute values in the contents of the file
-  contents = contents:gsub("{{%s*(.-)%s*}}", substitutions)
-
-  -- Return the contents of the file with substitutions
-  return contents
 end
 
 -----
@@ -580,58 +464,12 @@ local function qwebrJSCellInsertionCode(counter)
   return insertionLocation .. noscriptWarning
 end 
 
---- Remove lines with only whitespace until the first non-whitespace character is detected.
----@param codeLines table
----@return table
-local function removeEmptyLinesUntilContent(codeLines)
-
-  -- Remove empty lines at the beginning of the code block
-  while codeLines[1] and string.match(codeLines[1], "^%s*$") do
-    table.remove(codeLines, 1)
-  end
-
-  -- Return the modified table
-  return codeLines
-end
-
 --- Extract Quarto code cell options from the block's text
 ---@param block pandoc.CodeBlock
 ---@return table
 ---@return table
 local function extractCodeBlockOptions(block)
-  
-  -- Access the text aspect of the code block
-  local code = block.text
-
-  -- Define two local tables:
-  --  the block's attributes
-  --  the block's code lines
-  local cellOptions = {}
-  local newCodeLines = {}
-
-  -- Iterate over each line in the code block 
-  for line in code:gmatch("([^\r\n]*)[\r\n]?") do
-    -- Check if the line starts with "#|" and extract the key-value pairing
-    -- e.g. #| key: value goes to cellOptions[key] -> value
-    local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
-
-    -- If a special comment is found, then add the key-value pairing to the cellOptions table
-    if key and value then
-      cellOptions[key] = value
-    else
-      -- Otherwise, it's not a special comment, keep the code line
-      table.insert(newCodeLines, line)
-    end
-  end
-
-  -- Merge cell options with default options
-  cellOptions = mergeCellOptions(cellOptions)
-
-  -- Remove empty lines at the beginning of the code block
-  local restructuredCodeCell = removeEmptyLinesUntilContent(newCodeLines)
-
-  -- Return the code alongside options
-  return restructuredCodeCell, cellOptions
+  return utils.extractCodeBlockOptions(block, qwebRDefaultCellOptions)
 end
 
 --- Replace the code cell with a webR-powered cell
