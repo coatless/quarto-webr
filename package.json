@@ -1,0 +1,17 @@
+{
+  "name": "quarto-webr-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:lua": "quarto pandoc lua tests/_harness/run-lua-tests.lua",
+    "test:fast": "vitest run --exclude '**/_e2e/**'",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "cheerio": "^1.0.0",
+    "jsdom": "^25.0.0",
+    "vitest": "^2.1.0"
+  }
+}

@@ -9,3 +9,10 @@ docs/_site/*
 tests/_site/*
 *.html
 !_extensions/*/*
+
+node_modules/
+tests/_fixtures/*.html
+tests/_fixtures/*_files/
+tests/_fixtures/.quarto/
+test-results/
+playwright-report/
