@@ -1,0 +1,44 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  fast:
+    name: Lua, render, and JS tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lua unit tests
+        run: npm run test:lua
+      - name: Render and JS tests
+        run: npm run test:fast
+
+  browser:
+    name: Browser smoke test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'webr-update')
+    steps:
+      - uses: actions/checkout@v5
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
