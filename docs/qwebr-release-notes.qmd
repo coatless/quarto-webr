@@ -13,6 +13,12 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 :::
 
 
+# 0.4.4-dev.2: ??? ??? (08-23-2026)
+
+## Features
+
+- Upgraded the embedded version of webR from v0.5.7 to v0.6.0. ([release notes](https://github.com/r-wasm/webr/releases/tag/v0.6.0))
+
 # 0.4.4-dev.1: ??? ??? (??-??-????)
 
 ## Features
