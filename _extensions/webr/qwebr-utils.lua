@@ -62,4 +62,79 @@ function M.removeEmptyLinesUntilContent(codeLines)
   return codeLines
 end
 
+--- Build a fresh table of cell-option defaults.
+--- `isRevealJS` is passed in because webr.lua owns the Quarto coupling.
+function M.buildDefaultCellOptions(isRevealJS)
+  return {
+    ["context"] = "interactive",
+    ["warning"] = "true",
+    ["message"] = "true",
+    ["results"] = "markup",
+    ["output"] = "true",
+    ["comment"] = "",
+    ["label"] = "",
+    ["autorun"] = "",
+    ["read-only"] = "false",
+    ["classes"] = "",
+    ["dpi"] = 72,
+    ["fig-cap"] = "",
+    ["fig-width"] = 7,
+    ["fig-height"] = 5,
+    ["out-width"] = "700px",
+    ["out-height"] = "",
+    ["editor-font-scale"] = isRevealJS and "0.5" or "1",
+    ["editor-max-height"] = "",
+    ["editor-quick-suggestions"] = "false",
+    ["editor-word-wrap"] = "true"
+  }
+end
+
+--- Convert the communication channel meta option into a WebROptions.channelType
+function M.convertMetaChannelTypeToWebROption(input)
+  local conditions = {
+    ["automatic"] = "ChannelType.Automatic",
+    [0] = "ChannelType.Automatic",
+    ["shared-array-buffer"] = "ChannelType.SharedArrayBuffer",
+    [1] = "ChannelType.SharedArrayBuffer",
+    ["service-worker"] = "ChannelType.ServiceWorker",
+    [2] = "ChannelType.ServiceWorker",
+    ["post-message"] = "ChannelType.PostMessage",
+    [3] = "ChannelType.PostMessage",
+  }
+  return conditions[input] or "ChannelType.Automatic"
+end
+
+--- Merge local cell options over a defaults table.
+function M.mergeCellOptions(defaults, localOptions)
+  local mergedOptions = M.shallowcopy(defaults)
+  for key, value in pairs(localOptions) do
+    if type(value) == "string" then
+      value = value:gsub("[\"']", "")
+    end
+    mergedOptions[key] = value
+  end
+  return mergedOptions
+end
+
+--- Extract Quarto code cell options from the block's text.
+function M.extractCodeBlockOptions(block, defaults)
+  local code = block.text
+  local cellOptions = {}
+  local newCodeLines = {}
+
+  for line in code:gmatch("([^\r\n]*)[\r\n]?") do
+    local key, value = line:match("^#|%s*(.-):%s*(.-)%s*$")
+    if key and value then
+      cellOptions[key] = value
+    else
+      table.insert(newCodeLines, line)
+    end
+  end
+
+  cellOptions = M.mergeCellOptions(defaults, cellOptions)
+  local restructuredCodeCell = M.removeEmptyLinesUntilContent(newCodeLines)
+
+  return restructuredCodeCell, cellOptions
+end
+
 return M
