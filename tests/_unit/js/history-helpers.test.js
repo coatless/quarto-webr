@@ -29,9 +29,13 @@ describe('formatDateTime', () => {
 
 describe('safeFileName', () => {
   it('replaces characters that are unsafe in a filename', () => {
-    context.document.title = 'Test: "webR"/demo?'
+    // Title exercises every character the source's replace class targets
+    // (_extensions/webr/qwebr-document-history.js: /[\\/:\*\?! "<>\|]/g),
+    // including the space, which is the most likely unsafe character to
+    // appear in a real page title.
+    context.document.title = 'Test: "webR"/demo? \\*!<>|'
     const result = context.safeFileName()
     expect(result).toMatch(/^Rhistory-/)
-    expect(result).not.toMatch(/[\\/:*?!"<>|]/)
+    expect(result).not.toMatch(/[\\/:*?! "<>|]/)
   })
 })
