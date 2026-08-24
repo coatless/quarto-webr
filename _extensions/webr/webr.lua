@@ -78,9 +78,7 @@ local utils = require("qwebr-utils")
 -- Aliases keep every existing call site in this file unchanged.
 local isVariableEmpty = utils.isVariableEmpty
 local isVariablePopulated = utils.isVariablePopulated
-local shallowcopy = utils.shallowcopy
 local convertMetaChannelTypeToWebROption = utils.convertMetaChannelTypeToWebROption
-local removeEmptyLinesUntilContent = utils.removeEmptyLinesUntilContent
 local substitute_in_file = utils.substituteInFile
 
 --- Initialize a table that contains the default cell-level options
@@ -89,13 +87,6 @@ local qwebRDefaultCellOptions = utils.buildDefaultCellOptions(quarto.doc.is_form
 
 -----
 ---- Process initialization
-
---- Merge local cell options with global cell options
----@param localOptions any
----@return table
-local function mergeCellOptions(localOptions)
-  return utils.mergeCellOptions(qwebRDefaultCellOptions, localOptions)
-end
 
 --- Write a file to disk
 ---@param contents string | nil
