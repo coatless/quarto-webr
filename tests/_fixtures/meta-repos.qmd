@@ -1,0 +1,15 @@
+---
+title: Custom repositories
+format: html
+engine: markdown
+webr:
+  repos:
+    - https://example.test/webr-repo-one/
+    - https://example.test/webr-repo-two/
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

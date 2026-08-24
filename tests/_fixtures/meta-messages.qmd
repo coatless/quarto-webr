@@ -1,0 +1,13 @@
+---
+title: Startup message off
+format: html
+engine: markdown
+webr:
+  show-startup-message: false
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

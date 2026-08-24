@@ -1,0 +1,14 @@
+---
+title: Header message on
+format: html
+engine: markdown
+webr:
+  show-startup-message: false
+  show-header-message: true
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

@@ -1,0 +1,14 @@
+---
+title: Autoload disabled
+format: html
+engine: markdown
+webr:
+  packages: ['ggplot2']
+  autoload-packages: false
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

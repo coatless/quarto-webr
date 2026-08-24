@@ -1,0 +1,14 @@
+---
+title: Cell options defaults
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+A bare cell that sets no options at all, so the filter's built-in defaults from
+`buildDefaultCellOptions` are observable in the emitted per-cell config.
+
+```{webr-r}
+1 + 1
+```

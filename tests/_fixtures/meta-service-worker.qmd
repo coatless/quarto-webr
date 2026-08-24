@@ -1,0 +1,14 @@
+---
+title: Metadata service worker
+format: html
+engine: markdown
+webr:
+  channel-type: service-worker
+  service-worker-url: https://cdn.example.test/webr-workers/
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

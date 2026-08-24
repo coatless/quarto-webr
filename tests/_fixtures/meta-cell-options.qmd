@@ -1,0 +1,22 @@
+---
+title: Document cell option defaults
+format: html
+engine: markdown
+webr:
+  cell-options:
+    autorun: true
+    read-only: true
+    out-width: 350px
+    dpi: 96
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
+
+```{webr-r}
+#| out-width: 900px
+2 + 2
+```

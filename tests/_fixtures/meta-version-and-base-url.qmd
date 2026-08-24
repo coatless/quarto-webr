@@ -1,0 +1,14 @@
+---
+title: Metadata version and base-url
+format: html
+engine: markdown
+webr:
+  version: 9.8.7
+  base-url: https://cdn.example.test/webr-mirror/
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```

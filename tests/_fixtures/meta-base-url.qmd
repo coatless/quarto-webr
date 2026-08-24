@@ -1,0 +1,13 @@
+---
+title: Metadata base-url
+format: html
+engine: markdown
+webr:
+  base-url: https://cdn.example.test/webr-mirror/
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
