@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest run",
+    "test": "npm run test:lua && npm run test:fast",
     "test:lua": "quarto pandoc lua tests/_harness/run-lua-tests.lua",
-    "test:fast": "vitest run --exclude '**/_e2e/**'",
+    "test:fast": "vitest run",
     "test:e2e": "playwright test"
   },
   "devDependencies": {

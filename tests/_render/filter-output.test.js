@@ -14,8 +14,8 @@ describe('basic cell', () => {
     expect($('[id^="qwebr-insertion-location-"]')).toHaveLength(1)
   })
 
-  it('emits a noscript fallback', () => {
-    expect($('noscript').length).toBeGreaterThan(0)
+  it('emits exactly one noscript fallback', () => {
+    expect($('noscript')).toHaveLength(1)
   })
 
   it('points at the versioned webR base URL', () => {
@@ -31,6 +31,10 @@ describe('multiple cells', () => {
 
   it('emits one insertion point per cell', () => {
     expect($('[id^="qwebr-insertion-location-"]')).toHaveLength(3)
+  })
+
+  it('emits one noscript fallback per cell', () => {
+    expect($('noscript')).toHaveLength(3)
   })
 
   it('numbers the insertion points consecutively', () => {

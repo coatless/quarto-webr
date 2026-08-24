@@ -89,6 +89,14 @@ To report a bug, please [add an issue](https://github.com/coatless/quarto-webr/i
 
 Want to contribute a feature? Please open an issue ticket to discuss the feature before sending a pull request. 
 
+## Tests
+
+Three commands, fastest first. The first needs only Quarto; the other two also need `npm ci`.
+
+- `npm run test:lua` — unit tests for the Lua filter's option parsing and merging, run through `quarto pandoc lua`.
+- `npm test` — the above plus the render tests (assertions against real rendered HTML) and the jsdom tests for the browser helpers.
+- `npm run test:e2e` — a Playwright smoke test that boots webR in a real browser and runs a code cell. Slow (a few minutes), so CI runs it nightly and on webR version bumps rather than on every push.
+
 ## Acknowledgements
 
 Please see our [acknowledgements page](https://quarto-webr.thecoatlessprofessor.com/qwebr-acknowledgements.html).
