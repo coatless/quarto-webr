@@ -1,5 +1,6 @@
 ---
 title: "Quarto Webr Demo Website"
+engine: knitr
 ---
 
 # Welcome

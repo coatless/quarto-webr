@@ -25,6 +25,10 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 - Moved the filter's pure helper functions into a new `qwebr-utils.lua` file, installed alongside `webr.lua`.
 - Removed the global `table.clone()` function the filter used to define. Pandoc shares one Lua state across every filter in a render, so this was visible to any other filter running in the same document; it is now a local helper in `qwebr-utils.lua`. Filters that relied on `quarto-webr` providing `table.clone()` will need to define their own.
 
+## Bugfixes
+
+- Pinned `engine: knitr` in the deployment templates and the documentation examples. Quarto 1.9.19 widened the scan it uses to work out which languages a document contains ([quarto-cli#13838](https://github.com/quarto-dev/quarto-cli/pull/13838)); from that release on, a document holding a `{webr-r}` cell but naming no engine resolved to `jupyter` and would not render without a Python installation. Nothing about the extension changed - if you hit this in your own document, adding `engine: knitr` to the header is the fix, as [Your first webR-powered Quarto document](qwebr-first-steps.qmd) has always described.
+
 # 0.4.4-dev.1: ??? ??? (??-??-????)
 
 ## Features

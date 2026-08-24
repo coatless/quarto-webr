@@ -1,6 +1,7 @@
 ---
 title: "quarto-webr Demo HTML Document"
 format: html
+engine: knitr
 webr:
   channel-type: "automatic"
 filters:

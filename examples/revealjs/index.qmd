@@ -1,6 +1,7 @@
 ---
 title: "quarto-webr Demo RevealJS Document"
 format: revealjs
+engine: knitr
 webr:
   packages: ['ggplot2', 'dplyr'] # Install R packages on document open
 # autoload-packages: false       # Disable automatic loading of packages

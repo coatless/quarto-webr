@@ -6,6 +6,7 @@ date-modified: last-modified
 format: 
   html:
     toc: true
+engine: knitr
 filters:
   - webr
 aliases:
