@@ -37,11 +37,22 @@ jobs:
             any::downlit
             any::xml2
 
-      # Back to our regularly scheduled Quarto output
+      # Back to our regularly scheduled Quarto output.
+      #
+      # Pinned to an exact version rather than tracking a channel. quarto-cli
+      # 1.9.19 widened the fenced-cell language scan (PR #13838), and from that
+      # release on, every `{webr-r}` document that did not name an `engine:` of
+      # its own resolved to jupyter and asked for a python3 kernel this runner
+      # does not have. `pre-release` is a moving target and this workflow only
+      # fires on push, so Quarto advanced 1.9.12 -> 1.11.1 across nine
+      # commit-free months and the breakage surfaced on an unrelated commit.
+      # The pin keeps the published site reproducible; test.yml deliberately
+      # stays unpinned, so the next upstream change turns the test suite red
+      # instead of the live site.
       - name: "Set up Quarto"
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "pre-release"
+          version: "1.10.18"
 
       # Generate the documentation website
       - name: Render Documentation website

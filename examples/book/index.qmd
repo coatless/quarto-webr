@@ -1,5 +1,6 @@
 ---
 title: "Quarto Webr Demo Book"
+engine: knitr
 ---
 
 # Welcome

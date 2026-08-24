@@ -1,6 +1,7 @@
 ---
 title: "quarto-webr Demo RevealJS Document"
 format: revealjs
+engine: knitr
 webr:
   packages: ['ggplot2', 'dplyr'] # Install R packages on document open
 # autoload-packages: false       # Disable automatic loading of packages
@@ -14,7 +15,7 @@ filters:
 Welcome to a demo RevealJS presentation that uses the [`quarto-webr`](https://github.com/coatless/quarto-webr) extension to generate interactive code cells with [Quarto](https://quarto.org) and [webR](https://docs.r-wasm.org/webr/latest/).
 
 :::{.callout-important}
-This template requires a [**pre-release** version of Quarto that is 1.4.502 or greater](https://quarto.org/docs/download/prerelease)  that contains an updated copy of `pandoc`. For more details, please see [Issue #14](https://github.com/coatless/quarto-webr/issues/14). 
+This template requires [Quarto 1.4.554 or greater](https://quarto.org/docs/download/), which carries the updated copy of `pandoc` it depends on. That copy first shipped in the 1.4.502 pre-release, so no pre-release download is needed any more; these examples are built with Quarto 1.10.18. For more details, please see [Issue #14](https://github.com/coatless/quarto-webr/issues/14).
 :::
 
 Not the right template? Let's go back to the [documentation portal](../../)

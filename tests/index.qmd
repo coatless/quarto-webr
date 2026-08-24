@@ -1,6 +1,7 @@
 ---
 title: "quarto-webr Test Website"
 subtitle: "Extension Test Suite"
+engine: knitr
 ---
 
 # Welcome

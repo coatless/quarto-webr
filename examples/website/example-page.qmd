@@ -1,5 +1,6 @@
 ---
 title: "Example page"
+engine: knitr
 webr:  
   show-startup-message: true    # Display status of webR initialization
   packages: ['ggplot2'] # Pre-install dependency

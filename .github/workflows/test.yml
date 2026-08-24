@@ -1,5 +1,11 @@
 name: Tests
 
+# Quarto is deliberately left unpinned here. publish-demo.yml pins an exact
+# version so the published site is reproducible, which leaves this workflow as
+# the canary: it runs against whatever Quarto ships next, so an upstream change
+# - like the 1.9.19 language-scan widening that sent every `{webr-r}` document
+# to the jupyter engine - turns the test suite red rather than the docs build.
+
 on:
   push:
   pull_request:
