@@ -1,0 +1,13 @@
+---
+title: Unpinned webR cell
+format: html
+---
+
+Deliberately names no `engine:`. Nothing renders this file - the leading
+underscore keeps it out of the project, and tests/_render/engine-resolution.js
+only inspects it - so it stays the one document in the repository that shows
+what Quarto does with a webR cell when the author says nothing.
+
+```{webr-r}
+1 + 1
+```
