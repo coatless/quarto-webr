@@ -1,0 +1,32 @@
+---
+title: Cell options full
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+Every cell option below is deliberately set to a value that differs from the
+filter's built-in default in `buildDefaultCellOptions`, so an assertion on the
+emitted value cannot pass by accident.
+
+```{webr-r}
+#| warning: false
+#| message: false
+#| results: asis
+#| output: false
+#| comment: ##
+#| label: my-custom-label
+#| classes: my-custom-class
+#| dpi: 300
+#| fig-cap: A custom figure caption
+#| fig-width: 9
+#| fig-height: 3
+#| out-width: 512px
+#| out-height: 480px
+#| editor-font-scale: 1.5
+#| editor-max-height: 400px
+#| editor-quick-suggestions: true
+#| editor-word-wrap: false
+1 + 1
+```

@@ -1,6 +1,12 @@
 project:
   type: website
-  resources: 
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "demos/**"
+    # Internal design and planning notes. Kept as a record, not published.
+    - "!superpowers/**"
+  resources:
     - CNAME
 
 website:

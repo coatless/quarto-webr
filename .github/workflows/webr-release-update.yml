@@ -134,8 +134,60 @@ jobs:
           mv "$NOTES_FILE.tmp" "$NOTES_FILE"
 
           echo "Added release note for webR update: $CURRENT_WEBR -> $NEW_WEBR"
-      
+
+      # ---------------------------------------------------------------------
+      # Test gate.
+      #
+      # This has to live here rather than in test.yml. GitHub does not fire
+      # workflow events for pushes or pull requests made with GITHUB_TOKEN, so
+      # test.yml never runs on the PR the next step opens - confirmed on PR
+      # #239, which has an empty status check rollup and no associated runs.
+      #
+      # The bumped webr.lua and _extension.yml are already on disk, and the
+      # fixtures render through tests/_fixtures/_extensions -> ../../_extensions,
+      # so the suite exercises the new webR version. A failure here stops the
+      # job before the PR is created: the steps below carry a plain `if:`
+      # condition, which GitHub implicitly ANDs with success().
+      # ---------------------------------------------------------------------
+
+      - name: Set up Quarto
+        if: steps.check-update.outputs.needs_update == 'true'
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Set up Node
+        if: steps.check-update.outputs.needs_update == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install test dependencies
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Lua unit tests
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: npm run test:lua
+
+      - name: Render and JS tests
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: npm run test:fast
+
+      - name: Browser smoke test
+        if: steps.check-update.outputs.needs_update == 'true'
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: failure() && steps.check-update.outputs.needs_update == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+
       - name: Create Pull Request
+        id: create-pr
         if: steps.check-update.outputs.needs_update == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -184,9 +236,12 @@ jobs:
           echo "- **Current webR version:** ${{ steps.current-version.outputs.current_version }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Latest webR version:** ${{ steps.webr-release.outputs.latest_version_clean }}" >> $GITHUB_STEP_SUMMARY
           
-          if [ "${{ steps.check-update.outputs.needs_update }}" == "true" ]; then
+          if [ "${{ steps.check-update.outputs.needs_update }}" != "true" ]; then
+            echo "- **Status:** No update needed" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.create-pr.outcome }}" == "success" ]; then
             echo "- **Status:** Update PR created" >> $GITHUB_STEP_SUMMARY
             echo "- **New extension version:** ${{ steps.ext-version.outputs.new_ext_version }}" >> $GITHUB_STEP_SUMMARY
           else
-            echo "- **Status:** No update needed" >> $GITHUB_STEP_SUMMARY
+            echo "- **Status:** Blocked. The test suite failed against webR v${{ steps.webr-release.outputs.latest_version_clean }}, so no PR was opened." >> $GITHUB_STEP_SUMMARY
+            echo "- **Proposed extension version:** ${{ steps.ext-version.outputs.new_ext_version }}" >> $GITHUB_STEP_SUMMARY
           fi

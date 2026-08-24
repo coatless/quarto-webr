@@ -1,0 +1,14 @@
+---
+title: Cell options
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+#| read-only: true
+1 + 1
+```

@@ -18,6 +18,12 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 ## Features
 
 - Upgraded the embedded version of webR from v0.5.7 to v0.6.0. ([release notes](https://github.com/r-wasm/webr/releases/tag/v0.6.0))
+- Added an automated test suite covering the Lua filter, the rendered HTML it emits, the browser helpers, and webR execution in a real browser.
+
+## Changes
+
+- Moved the filter's pure helper functions into a new `qwebr-utils.lua` file, installed alongside `webr.lua`.
+- Removed the global `table.clone()` function the filter used to define. Pandoc shares one Lua state across every filter in a render, so this was visible to any other filter running in the same document; it is now a local helper in `qwebr-utils.lua`. Filters that relied on `quarto-webr` providing `table.clone()` will need to define their own.
 
 # 0.4.4-dev.1: ??? ??? (??-??-????)
 

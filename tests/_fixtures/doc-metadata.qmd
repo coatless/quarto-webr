@@ -1,0 +1,15 @@
+---
+title: Document metadata
+format: html
+engine: markdown
+webr:
+  channel-type: post-message
+  home-dir: /home/rstudio
+  packages: ['ggplot2']
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
