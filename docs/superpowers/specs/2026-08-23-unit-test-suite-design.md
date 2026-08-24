@@ -237,7 +237,7 @@ A new `test.yml` workflow:
 
 ## 9. Latent bugs found during design
 
-Both are **recorded by tests, not fixed** by this work.
+All three are **recorded by tests, not fixed** by this work.
 
 ### 9.1 Quote stripping is global, not edge-trimming
 
@@ -259,6 +259,22 @@ The lookup table keys integers as integers. YAML `channel-type: 3` yields a
 number and resolves to `PostMessage`; `channel-type: '3'` yields the string
 `"3"`, misses the table, and falls back to `ChannelType.Automatic` with no
 warning. A fix would normalise the key, or warn on an unrecognised value.
+
+### 9.3 CRLF line endings inject blank lines into the code
+
+`extractCodeBlockOptions` splits with `code:gmatch("([^\r\n]*)[\r\n]?")`. The
+pattern consumes at most one line terminator, so a CRLF pair also matches the
+empty string sitting between the CR and the LF:
+
+| Input | Result |
+|---|---|
+| `1 + 1\n2 + 2` | `["1 + 1", "2 + 2"]` |
+| `1 + 1\r\n2 + 2` | `["1 + 1", "", "2 + 2"]` |
+
+One spurious blank line per CRLF pair. `removeEmptyLinesUntilContent` masks it
+at the top of a cell, so a document authored on Windows renders with the code
+double-spaced from the second line onwards rather than failing outright. A fix
+would match `\r?\n` as a unit, or strip CR before splitting.
 
 ## 10. Risks
 

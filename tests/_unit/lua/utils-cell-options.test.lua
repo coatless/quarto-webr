@@ -54,8 +54,20 @@ tap.eq(select(2, utils.extractCodeBlockOptions(
 local keptCode = utils.extractCodeBlockOptions({ text = "# a normal comment\n1 + 1" }, defaults)
 tap.eq(keptCode[1], "# a normal comment", "extract: ordinary comments stay in the code")
 
-local crlf = utils.extractCodeBlockOptions({ text = "#| context: setup\r\n1 + 1" }, defaults)
-tap.eq(crlf[1], "1 + 1", "extract: CRLF parses like LF")
+-- KNOWN BUG (spec 9.3): the `([^\r\n]*)[\r\n]?` gmatch matches the empty string
+-- between a CR and its LF, so every CRLF pair emits a spurious blank line.
+-- `removeEmptyLinesUntilContent` hides it at the top of a cell but not in the
+-- middle. Recorded, not fixed.
+local lfCode = utils.extractCodeBlockOptions({ text = "1 + 1\n2 + 2" }, defaults)
+tap.eq(lfCode, { "1 + 1", "2 + 2" }, "extract: LF separates lines cleanly")
+local crlfCode = utils.extractCodeBlockOptions({ text = "1 + 1\r\n2 + 2" }, defaults)
+tap.eq(crlfCode, { "1 + 1", "", "2 + 2" },
+       "extract: KNOWN BUG CRLF injects a blank line between every pair of lines")
+-- The leading-blank stripper masks the same bug when the CRLF follows an
+-- option line, which is why this only shows up mid-cell.
+local crlfAfterOption = utils.extractCodeBlockOptions({ text = "#| context: setup\r\n1 + 1" }, defaults)
+tap.eq(crlfAfterOption, { "1 + 1" },
+       "extract: CRLF after an option line is masked by the blank-line stripper")
 
 local blanks = utils.extractCodeBlockOptions({ text = "#| context: setup\n\n\n1 + 1" }, defaults)
 tap.eq(blanks[1], "1 + 1", "extract: leading blank lines are stripped")
