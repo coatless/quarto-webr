@@ -9,6 +9,10 @@ docs/_site/*
 tests/_site/*
 *.html
 !_extensions/*/*
+# ...but the filter generates these two into the extension dir at render time.
+# Re-ignore them so `git add -A` (release bot) never commits them into the shipped extension.
+_extensions/*/webr-worker.js
+_extensions/*/webr-serviceworker.js
 
 node_modules/
 tests/_fixtures/*.html

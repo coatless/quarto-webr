@@ -26,7 +26,6 @@ jobs:
   browser:
     name: Browser smoke test
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule' || contains(github.event.pull_request.labels.*.name, 'webr-update')
     steps:
       - uses: actions/checkout@v5
       - uses: quarto-dev/quarto-actions/setup@v2
