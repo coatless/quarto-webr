@@ -12,12 +12,23 @@ const CONTENT_TYPES = {
 }
 
 export function startServer(root) {
+  const servedRoot = path.resolve(root)
+
   const server = http.createServer(async (request, response) => {
     const urlPath = decodeURIComponent(new URL(request.url, 'http://localhost').pathname)
-    const filePath = path.join(root, urlPath === '/' ? '/index.html' : urlPath)
+    const filePath = path.resolve(servedRoot, '.' + (urlPath === '/' ? '/index.html' : urlPath))
 
     response.setHeader('Cross-Origin-Opener-Policy', 'same-origin')
     response.setHeader('Cross-Origin-Embedder-Policy', 'require-corp')
+
+    // `URL` only collapses `..` when the separator is a literal `/`; a
+    // percent-encoded slash survives normalisation and `decodeURIComponent`
+    // turns it back into one. Re-check the resolved path against the root.
+    if (filePath !== servedRoot && !filePath.startsWith(servedRoot + path.sep)) {
+      response.statusCode = 404
+      response.end('not found')
+      return
+    }
 
     try {
       const body = await readFile(filePath)

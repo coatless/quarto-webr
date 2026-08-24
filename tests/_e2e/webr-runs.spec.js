@@ -10,7 +10,9 @@ test.beforeAll(async () => {
   renderFixture('basic-cell')
   const started = await startServer(path.resolve('tests/_fixtures'))
   server = started.server
-  baseURL = `http://localhost:${started.port}`
+  // The server binds 127.0.0.1, so address it directly: `localhost` can resolve
+  // to ::1 first and fail to connect.
+  baseURL = `http://127.0.0.1:${started.port}`
 })
 
 test.afterAll(async () => {
