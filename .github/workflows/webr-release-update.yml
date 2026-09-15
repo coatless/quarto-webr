@@ -20,13 +20,28 @@ jobs:
       
       - name: Get latest webR release
         id: webr-release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get the latest release from r-wasm/webr
-          LATEST_RELEASE=$(curl -s https://api.github.com/repos/r-wasm/webr/releases/latest | jq -r '.tag_name')
+          # Get the latest release from r-wasm/webr. Authenticating keeps the
+          # call off the 60/hour unauthenticated limit, and unlike `curl -s`,
+          # gh exits non-zero on an HTTP error, so an error response cannot
+          # pass for a tag.
+          if ! LATEST_RELEASE=$(gh api repos/r-wasm/webr/releases/latest --jq '.tag_name'); then
+            echo "::error::Could not fetch the latest webR release from the GitHub API"
+            exit 1
+          fi
           echo "Latest webR release: $LATEST_RELEASE"
+
+          # Only a vX.Y.Z tag may reach webr.lua. An unchecked lookup once
+          # wrote "null" there as the embedded version.
+          if [[ ! "$LATEST_RELEASE" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Expected a vX.Y.Z tag for the latest webR release, got '$LATEST_RELEASE'"
+            exit 1
+          fi
           echo "latest_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
           
-          # Remove 'v' prefix if present
+          # Remove 'v' prefix
           LATEST_VERSION_CLEAN=${LATEST_RELEASE#v}
           echo "latest_version_clean=$LATEST_VERSION_CLEAN" >> $GITHUB_OUTPUT
       
@@ -236,7 +251,9 @@ jobs:
           echo "- **Current webR version:** ${{ steps.current-version.outputs.current_version }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Latest webR version:** ${{ steps.webr-release.outputs.latest_version_clean }}" >> $GITHUB_STEP_SUMMARY
           
-          if [ "${{ steps.check-update.outputs.needs_update }}" != "true" ]; then
+          if [ "${{ steps.check-update.outcome }}" != "success" ]; then
+            echo "- **Status:** Could not compare the embedded and latest webR versions, so no update was checked." >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.check-update.outputs.needs_update }}" != "true" ]; then
             echo "- **Status:** No update needed" >> $GITHUB_STEP_SUMMARY
           elif [ "${{ steps.create-pr.outcome }}" == "success" ]; then
             echo "- **Status:** Update PR created" >> $GITHUB_STEP_SUMMARY
