@@ -95,7 +95,7 @@ Three commands, fastest first. The first needs only Quarto; the other two also n
 
 - `npm run test:lua` — unit tests for the Lua filter's option parsing and merging, run through `quarto pandoc lua`.
 - `npm test` — the above plus the render tests (assertions against real rendered HTML) and the jsdom tests for the browser helpers.
-- `npm run test:e2e` — a Playwright smoke test that boots webR in a real browser and runs a code cell. Slow (a few minutes), so CI runs it nightly and on webR version bumps rather than on every push.
+- `npm run test:e2e` — a Playwright smoke test that boots webR in a real browser and runs a code cell. It also needs a browser for Playwright, installed once with `npx playwright install chromium`. CI runs it in its own job on every push and pull request, and nightly.
 
 ## Acknowledgements
 
