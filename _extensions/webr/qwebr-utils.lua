@@ -122,11 +122,12 @@ function M.convertMetaChannelTypeToWebROption(input)
 end
 
 --- Merge local cell options over a defaults table.
+--- A matched pair of surrounding quotes is removed; quotes inside the value stay.
 function M.mergeCellOptions(defaults, localOptions)
   local mergedOptions = M.shallowcopy(defaults)
   for key, value in pairs(localOptions) do
     if type(value) == "string" then
-      value = value:gsub("[\"']", "")
+      value = value:match('^"(.*)"$') or value:match("^'(.*)'$") or value
     end
     mergedOptions[key] = value
   end

@@ -132,3 +132,18 @@ describe('cell options: explicit values reach the emitted config', () => {
     },
   )
 })
+
+describe('cell options: quoting', () => {
+  let options
+  beforeAll(() => {
+    options = cellOptions(renderFixture('cell-options-quotes'))
+  })
+
+  it('removes a surrounding pair of quotes', () => {
+    expect(options.label).toBe('quoted-label')
+  })
+
+  it('keeps an apostrophe inside a quoted value', () => {
+    expect(options['fig-cap']).toBe("Tukey's test")
+  })
+})
