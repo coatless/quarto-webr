@@ -34,11 +34,21 @@ tap.eq(merged["context"], "setup", "merge: local overrides default")
 tap.eq(merged["dpi"], 72, "merge: untouched default survives")
 tap.eq(utils.mergeCellOptions({ a = 1 }, { unknown = "x" })["unknown"], "x",
        "merge: unknown keys pass through")
--- KNOWN BUG (spec 9.1): quote stripping is global, not edge-trimming.
+-- Spec 9.1: only a matched pair of surrounding quotes is removed.
 tap.eq(utils.mergeCellOptions({}, { label = '"quoted"' })["label"], "quoted",
-       "merge: surrounding quotes are stripped")
-tap.eq(utils.mergeCellOptions({}, { label = "It's here" })["label"], "Its here",
-       "merge: KNOWN BUG interior apostrophe is eaten")
+       "merge: surrounding double quotes are stripped")
+tap.eq(utils.mergeCellOptions({}, { label = "'quoted'" })["label"], "quoted",
+       "merge: surrounding single quotes are stripped")
+tap.eq(utils.mergeCellOptions({}, { label = "It's here" })["label"], "It's here",
+       "merge: interior apostrophe is kept")
+tap.eq(utils.mergeCellOptions({}, { ["fig-cap"] = "\"Tukey's test\"" })["fig-cap"], "Tukey's test",
+       "merge: apostrophe inside a double-quoted value is kept")
+tap.eq(utils.mergeCellOptions({}, { ["fig-cap"] = "'Say \"hi\"'" })["fig-cap"], 'Say "hi"',
+       "merge: double quotes inside a single-quoted value are kept")
+tap.eq(utils.mergeCellOptions({}, { label = "\"mismatched'" })["label"], "\"mismatched'",
+       "merge: mismatched quotes are left alone")
+tap.eq(utils.mergeCellOptions({}, { label = '"' })["label"], '"',
+       "merge: a lone quote is left alone")
 
 -- extractCodeBlockOptions
 local code, options = utils.extractCodeBlockOptions(

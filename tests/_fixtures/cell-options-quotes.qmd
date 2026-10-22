@@ -1,0 +1,13 @@
+---
+title: Cell options with quotes
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+```{webr-r}
+#| label: 'quoted-label'
+#| fig-cap: "Tukey's test"
+plot(1:10)
+```
