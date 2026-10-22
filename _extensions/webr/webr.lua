@@ -21,6 +21,10 @@ local baseVersionWebR = "0.6.0"
 ---@type string
 local baseUrl = "https://webr.r-wasm.org/"
 
+--- Define a custom location for webR, set by the `base-url` option
+---@type string|nil
+local customBaseUrl = nil
+
 --- Define where webR service workers are located
 ---@type string
 local serviceWorkerUrl = ""
@@ -63,6 +67,21 @@ local installRPackagesList = "''"
 local autoloadRPackages = "true"
 
 -----
+---- Types shared by the functions below
+
+--- Where Quarto can include text in the page
+---@alias IncludeLocation 'in-header'|'before-body'|'after-body'
+
+--- The kind of HTML element that wraps included content
+---@alias HtmlTag 'js'|'css'
+
+--- One webR cell, as the page's scripts receive it
+---@class QwebrCellData
+---@field id integer Position of the cell in the document, starting at 1
+---@field code string Cell code without the `#|` option lines
+---@field options QwebrCellOptions
+
+-----
 
 ---- Setup variables for tracking number of code cells
 
@@ -71,15 +90,10 @@ local autoloadRPackages = "true"
 local qwebrCounter = 0
 
 --- Initialize a table to store the CodeBlock elements
+---@type QwebrCellData[]
 local qwebrCapturedCodeBlocks = {}
 
 local utils = require("qwebr-utils")
-
--- Aliases keep every existing call site in this file unchanged.
-local isVariableEmpty = utils.isVariableEmpty
-local isVariablePopulated = utils.isVariablePopulated
-local convertMetaChannelTypeToWebROption = utils.convertMetaChannelTypeToWebROption
-local substitute_in_file = utils.substituteInFile
 
 --- Initialize a table that contains the default cell-level options
 --- Mutable: document metadata (webr.cell-options) overwrites entries in place.
@@ -88,10 +102,10 @@ local qwebRDefaultCellOptions = utils.buildDefaultCellOptions(quarto.doc.is_form
 -----
 ---- Process initialization
 
---- Write a file to disk
----@param contents string | nil
+--- Write a file next to this filter
+---@param contents string
 ---@param file_name string
-function writeFile(contents, file_name)
+local function writeFile(contents, file_name)
   -- Force resolve file name
   file_name = quarto.utils.resolve_path(file_name) 
 
@@ -101,6 +115,7 @@ function writeFile(contents, file_name)
   -- Check if the file was opened successfully
   if not file then
     quarto.log.error("Unable to open file for writing at '" .. file_name .. "'")
+    return
   end
 
   -- Write contents to the file
@@ -110,23 +125,18 @@ function writeFile(contents, file_name)
   file:close()
 end
 
---- Write a serviceworker file for webR to disk
-local function writeWebRServiceWorker()
-  local contents = "importScripts('" .. baseUrl .. "webr-serviceworker.js');"
-  writeFile(contents, "webr-serviceworker.js")
+--- Read every entry of a `webr:` list option as a string
+---@param value table
+---@return string[]
+local function stringifyEach(value)
+  local strings = {}
+  for _, entry in pairs(value) do
+    strings[#strings + 1] = pandoc.utils.stringify(entry)
+  end
+  return strings
 end
 
---- Write a worker file for webR to disk
-local function writeWebRWorker()
-  local contents = "importScripts('" .. baseUrl .. "webr-worker.js');"
-  writeFile(contents, "webr-worker.js")
-end
-
-local function specifyBaseUrl()
-  baseUrl = utils.buildBaseUrl(baseUrl, baseVersionWebR)
-end
-
---- Parse the different webr options set in the YAML frontmatter, e.g.
+--- Each option of the `webr` key in the YAML frontmatter, e.g.
 ---
 --- ```yaml
 --- ----
@@ -136,112 +146,115 @@ end
 --- ----
 --- ```
 ---
----
----@param meta any
----@return any 
-function setWebRInitializationOptions(meta)
-
-  -- Let's explore the meta variable data! 
-  -- quarto.log.output(meta)
-  
-  -- Retrieve the webr options from meta
-  local webr = meta.webr
-
-  -- Does this exist? If not, just return meta as we'll just use the defaults.
-  if isVariableEmpty(webr) then
-    specifyBaseUrl()
-    return meta
-  end
-
+--- with the function that applies it. Options are applied in this order, so
+--- `show-header-message` can switch on the startup message after
+--- `show-startup-message` is read.
+---@type { key: string, apply: fun(value: pandoc.MetaValue, webr: table) }[]
+local webrOptions = {
   -- Allow modification of code cells global defaults 
-  if isVariablePopulated(webr["cell-options"]) then
-    for index, value in pairs(webr["cell-options"]) do
-      qwebRDefaultCellOptions[index] = pandoc.utils.stringify(value)
-    end
-  end
-
+  { key = "cell-options",
+    ---@param value table
+    apply = function(value)
+      for index, option in pairs(value) do
+        qwebRDefaultCellOptions[index] = pandoc.utils.stringify(option)
+      end
+    end },
   
   -- The version number used to access the webr.mjs on the baseURL 
   -- https://webr.r-wasm.org/v[version]/webr.mjs
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
-  if isVariablePopulated(webr["version"]) then
-    baseVersionWebR = pandoc.utils.stringify(webr["version"])
-  end
+  { key = "version", apply = function(value)
+    baseVersionWebR = pandoc.utils.stringify(value)
+  end },
 
-  specifyBaseUrl()
-
-  -- The base URL used for downloading R WebAssembly binaries 
+  -- The base URL used for downloading R WebAssembly binaries, which replaces
+  -- the versioned default.
   -- https://webr.r-wasm.org/[version]/webr.mjs
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#baseurl
-  if isVariablePopulated(webr["base-url"]) then
-    baseUrl = pandoc.utils.stringify(webr["base-url"])
-    if isVariablePopulated(webr["version"]) then
+  { key = "base-url", apply = function(value, webr)
+    customBaseUrl = pandoc.utils.stringify(value)
+    if utils.isVariablePopulated(webr["version"]) then
       quarto.log.warning("Please do not specify both `base-url` and `version`. Using the `base-url` value to obtain webR.")
     end 
-  end
+  end },
 
   -- The communication channel mode webR uses to connect R with the web browser 
   -- Default: "ChannelType.Automatic"
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#channeltype
-  if isVariablePopulated(webr["channel-type"]) then
-    channelType = convertMetaChannelTypeToWebROption(pandoc.utils.stringify(webr["channel-type"]))
+  { key = "channel-type", apply = function(value)
+    channelType = utils.convertMetaChannelTypeToWebROption(pandoc.utils.stringify(value))
     
     -- Starting from webR v0.2.2, service workers are only deployed when explicitly requested.
     hasServiceWorkerFiles = (channelType == "ChannelType.ServiceWorker")
-  end
+  end },
 
   -- The base URL from where to load JavaScript worker scripts when loading webR
   -- with the ServiceWorker communication channel mode.
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#serviceworkerurl
-  if isVariablePopulated(webr["service-worker-url"]) then
-    serviceWorkerUrl = pandoc.utils.stringify(webr["service-worker-url"])
-  end
+  { key = "service-worker-url", apply = function(value)
+    serviceWorkerUrl = pandoc.utils.stringify(value)
+  end },
 
   -- The WebAssembly user's home directory and initial working directory. Default: '/home/web_user'
   -- Documentation:
   -- https://docs.r-wasm.org/webr/latest/api/js/interfaces/WebR.WebROptions.html#homedir
-  if isVariablePopulated(webr['home-dir']) then
-    homeDir = pandoc.utils.stringify(webr["home-dir"])
-  end
+  { key = "home-dir", apply = function(value)
+    homeDir = pandoc.utils.stringify(value)
+  end },
 
   -- Display a startup message indicating the WebR state at the top of the document.
-  if isVariablePopulated(webr['show-startup-message']) then
-    showStartUpMessage = pandoc.utils.stringify(webr["show-startup-message"])
-  end
+  { key = "show-startup-message", apply = function(value)
+    showStartUpMessage = pandoc.utils.stringify(value)
+  end },
 
-  -- Display a startup message indicating the WebR state at the top of the document.
-  if isVariablePopulated(webr['show-header-message']) then
-    showHeaderMessage = pandoc.utils.stringify(webr["show-header-message"])
+  -- Display a header message, which needs the startup message.
+  { key = "show-header-message", apply = function(value)
+    showHeaderMessage = pandoc.utils.stringify(value)
     if showHeaderMessage == "true" then
       showStartUpMessage = "true"
     end
+  end },
+
+  -- Search these repositories for packages, ahead of the default one.
+  { key = "repos",
+    ---@param value table
+    apply = function(value)
+      rPackageRepoURLS = utils.quoteAndJoin(stringifyEach(value), defaultRepoURL)
+    end },
+
+  -- Attempt to install different packages, and decide whether to load them.
+  { key = "packages",
+    ---@param value table
+    ---@param webr table
+    apply = function(value, webr)
+      installRPackagesList = utils.quoteAndJoin(stringifyEach(value))
+
+      if utils.isVariablePopulated(webr["autoload-packages"]) then
+        autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
+      end
+    end },
+}
+
+--- Parse the different webr options set in the YAML frontmatter.
+---@param meta pandoc.Meta
+---@return pandoc.Meta
+local function setWebRInitializationOptions(meta)
+
+  -- Retrieve the webr options from meta. Without them, the defaults apply.
+  local webr = meta.webr
+  if type(webr) == "table" then
+    for _, option in ipairs(webrOptions) do
+      if utils.isVariablePopulated(webr[option.key]) then
+        option.apply(webr[option.key], webr)
+      end
+    end
   end
 
-  -- Attempt to install different packages.
-  if isVariablePopulated(webr["repos"]) then
-    local repoURLList = {}
-    for _, repoURL in pairs(webr["repos"]) do
-      repoURLList[#repoURLList + 1] = pandoc.utils.stringify(repoURL)
-    end
-    rPackageRepoURLS = utils.quoteAndJoin(repoURLList, defaultRepoURL)
-  end
-
-  -- Attempt to install different packages.
-  if isVariablePopulated(webr["packages"]) then
-    local packageList = {}
-    for _, packageName in pairs(webr["packages"]) do
-      packageList[#packageList + 1] = pandoc.utils.stringify(packageName)
-    end
-    installRPackagesList = utils.quoteAndJoin(packageList)
-
-    if isVariablePopulated(webr['autoload-packages']) then
-      autoloadRPackages = pandoc.utils.stringify(webr["autoload-packages"])
-    end
-  end
+  baseUrl = customBaseUrl or utils.buildBaseUrl(baseUrl, baseVersionWebR)
   
   return meta
 end
@@ -249,7 +262,7 @@ end
 
 --- Obtain the contents in a template file
 ---@param template string
----@return string | nil
+---@return string
 local function readTemplateFile(template)
   -- Establish a hardcoded path to where the .html partial resides
   -- Note, this should be at the same level as the lua filter.
@@ -259,19 +272,15 @@ local function readTemplateFile(template)
 
   -- Let's hopefully read the template file... 
 
-  -- Open the template file
-  local file = io.open(path, "r")
-
-  -- Check if null pointer before grabbing content
-  if not file then        
-    error("\nWe were unable to read the template file `" .. template .. "` from the extension directory.\n\n" ..
+  -- Open the template file, and stop the render if that fails. Quarto's
+  -- error() only logs, and every caller needs the contents.
+  local file = assert(io.open(path, "r"),
+          "\nWe were unable to read the template file `" .. template .. "` from the extension directory.\n\n" ..
           "Double check that the extension is fully available by comparing the \n" ..
           "`_extensions/coatless/webr` directory with the main repository:\n" ..
           "https://github.com/coatless/quarto-webr/tree/main/_extensions/webr\n\n" ..
           "You may need to modify `.gitignore` to allow the extension files using:\n" ..
           "!_extensions/*/*/*\n")
-    return nil
-  end
 
   -- *a or *all reads the whole file
   local content = file:read "*a" 
@@ -301,74 +310,45 @@ local function initializationWebRDocumentSettings()
     ["AUTOLOADRPACKAGES"] = autoloadRPackages,
     ["RPACKAGEREPOURLS"] = rPackageRepoURLS,
     ["QWEBRCELLDETAILS"] = utils.escapeForInlineScript(quarto.json.encode(qwebrCapturedCodeBlocks))
-    -- ["VERSION"] = baseVersionWebR
   }
   
   -- Make sure we perform a copy
   local initializationTemplate = readTemplateFile("qwebr-document-settings.js")
 
   -- Make the necessary substitutions
-  local initializedWebRConfiguration = substitute_in_file(initializationTemplate, substitutions)
-
-  return initializedWebRConfiguration
+  return utils.substituteInFile(initializationTemplate, substitutions)
 end
 
----Obtain an opening and closing HTML tag for JS or CSS content
----@param tag any
----@return string | nil
----@return string | nil
-local function generateHTMLElement(tag)
-  -- Store a map containing opening and closing tabs
-  local tagMappings = {
-      js = { opening = "<script type=\"module\">\n", closing = "\n</script>" },
-      css = { opening = "<style type=\"text/css\">\n", closing = "\n</style>" }
-  }
-
-  -- Find the tag
-  local tagMapping = tagMappings[tag]
-
-  -- If present, extract tag and return
-  if tagMapping then
-      return tagMapping.opening, tagMapping.closing
-  else
-      quarto.log.error("Invalid tag specified")
-  end
-end
+--- Opening and closing HTML tags for JS or CSS content
+---@type table<HtmlTag, { opening: string, closing: string }>
+local htmlTags = {
+  js = { opening = "<script type=\"module\">\n", closing = "\n</script>" },
+  css = { opening = "<style type=\"text/css\">\n", closing = "\n</style>" }
+}
 
 ---- Custom functions to include values into Quarto
 ---- https://quarto.org/docs/extensions/lua-api.html#includes
 
 ---Place text content into an appropriate HTML element
 ---for the content.
----@param location any
----@param text any
----@param tag any
+---@param location IncludeLocation
+---@param text string
+---@param tag HtmlTag
 local function includeTextInHTMLTag(location, text, tag)
 
-  -- Obtain the HTML element opening and closing tag
-  local openingTag, closingTag = generateHTMLElement(tag)
-
-  -- Insert the file into the document using the correct opening and closing tags
-  quarto.doc.include_text(location, openingTag .. text .. closingTag)
+  -- Insert the text into the document using the correct opening and closing tags
+  local htmlTag = htmlTags[tag]
+  quarto.doc.include_text(location, htmlTag.opening .. text .. htmlTag.closing)
 
 end
 
 ---Read information from a template file and place it into the appropriate HTML element
 ---for the content.
----@param location string
+---@param location IncludeLocation
 ---@param file string
----@param tag string
+---@param tag HtmlTag
 local function includeFileInHTMLTag(location, file, tag)
-
-  -- Obtain the HTML element opening and closing tag
-  local openingTag, closingTag = generateHTMLElement(tag)
-
-  -- Retrieve the file contents
-  local fileContents = readTemplateFile(file)
-
-  -- Insert the file into the document using the correct opening and closing tags
-  quarto.doc.include_text(location, openingTag .. fileContents .. closingTag)
-
+  includeTextInHTMLTag(location, readTemplateFile(file), tag)
 end
 
 --- Setup WebR's pre-requisites once per document.
@@ -424,24 +404,19 @@ local function ensureWebRSetup()
   -- If the ChannelType requires service workers, register and copy them into the 
   -- output directory.
   if hasServiceWorkerFiles then 
-    -- Copy the two web workers into the directory
+    -- Dynamically create the webr worker and serviceworker, then register them
+    -- so Quarto copies them next to the document.
     -- https://quarto.org/docs/extensions/lua-api.html#dependencies
-    
-    -- Dynamically create the webr worker and serviceworker when needed.
-    writeWebRWorker() 
-    writeWebRServiceWorker()
-    
-    quarto.doc.add_html_dependency({
-      name = "webr-worker",
-      version = baseVersionWebR,
-      serviceworkers = {"webr-worker.js"}
-    })
+    for _, worker in ipairs({ "webr-worker", "webr-serviceworker" }) do
+      local workerFile = worker .. ".js"
+      writeFile("importScripts('" .. baseUrl .. workerFile .. "');", workerFile)
 
-    quarto.doc.add_html_dependency({
-      name = "webr-serviceworker",
-      version = baseVersionWebR,
-      serviceworkers = {"webr-serviceworker.js"}
-    })
+      quarto.doc.add_html_dependency({
+        name = worker,
+        version = baseVersionWebR,
+        serviceworkers = { workerFile }
+      })
+    end
   end
 
 end
@@ -455,17 +430,9 @@ local function qwebrJSCellInsertionCode(counter)
   return insertionLocation .. noscriptWarning
 end 
 
---- Extract Quarto code cell options from the block's text
----@param block pandoc.CodeBlock
----@return table
----@return table
-local function extractCodeBlockOptions(block)
-  return utils.extractCodeBlockOptions(block, qwebRDefaultCellOptions)
-end
-
 --- Replace the code cell with a webR-powered cell
 ---@param el pandoc.CodeBlock
----@return pandoc.CodeBlock | pandoc.RawInline
+---@return pandoc.Block
 local function enableWebRCodeCell(el)
       
   -- Let's see what's going on here:
@@ -504,12 +471,8 @@ local function enableWebRCodeCell(el)
   -- unique code cells
   qwebrCounter = qwebrCounter + 1
 
-  -- Local code cell storage
-  local cellOptions = {}
-  local cellCode = {}
-
   -- Convert webr-specific option commands into attributes
-  cellCode, cellOptions = extractCodeBlockOptions(el)
+  local cellCode, cellOptions = utils.extractCodeBlockOptions(el, qwebRDefaultCellOptions)
 
   -- Ensure we have a label representation
   if cellOptions["label"] == '' then
@@ -524,26 +487,22 @@ local function enableWebRCodeCell(el)
     end
   end
 
-    -- Set the codeblock text to exclude the special comments.
-  local cellCodeMerged = table.concat(cellCode, '\n')
-
-  -- Create a new table for the CodeBlock
-  local codeBlockData = {
+  -- Store the cell in the global table, with the codeblock text excluding
+  -- the special comments.
+  table.insert(qwebrCapturedCodeBlocks, {
     id = qwebrCounter,
-    code = cellCodeMerged,
+    code = table.concat(cellCode, '\n'),
     options = cellOptions
-  }
+  })
 
-  -- Store the CodeDiv in the global table
-  table.insert(qwebrCapturedCodeBlocks, codeBlockData)
-
-  -- Return an insertion point inside the document
-  return pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter))
+  -- Return an insertion point inside the document. Plain is what pandoc
+  -- would wrap a bare RawInline in; a RawBlock changes dashboard layout.
+  return pandoc.Plain({ pandoc.RawInline('html', qwebrJSCellInsertionCode(qwebrCounter)) })
 end
 
 ---Add webR setup into the Quarto document if cell is detected
----@param doc pandoc.Doc
----@return pandoc.Doc
+---@param doc pandoc.Pandoc
+---@return pandoc.Pandoc
 local function stitchDocument(doc)
 
   -- Do not attach webR as the page lacks any active webR cells
