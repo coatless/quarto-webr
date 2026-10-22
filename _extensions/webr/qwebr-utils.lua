@@ -106,6 +106,7 @@ function M.isWebRFormat(isFormat)
 end
 
 --- Convert the communication channel meta option into a WebROptions.channelType
+--- The filter stringifies metadata, so the integer forms arrive as "0" to "3".
 function M.convertMetaChannelTypeToWebROption(input)
   local conditions = {
     ["automatic"] = "ChannelType.Automatic",
@@ -117,7 +118,7 @@ function M.convertMetaChannelTypeToWebROption(input)
     ["post-message"] = "ChannelType.PostMessage",
     [3] = "ChannelType.PostMessage",
   }
-  return conditions[input] or "ChannelType.Automatic"
+  return conditions[input] or conditions[tonumber(input)] or "ChannelType.Automatic"
 end
 
 --- Merge local cell options over a defaults table.

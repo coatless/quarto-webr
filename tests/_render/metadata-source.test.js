@@ -126,6 +126,19 @@ describe('webr.version and webr.base-url together', () => {
   })
 })
 
+describe('webr.channel-type as a number', () => {
+  let html
+  beforeAll(() => {
+    html = renderFixture('meta-channel-number')
+  })
+
+  // The documented numeric form. The filter stringifies metadata, so the YAML
+  // integer reaches the lookup as the string "3".
+  it('maps 3 to the post-message channel type', () => {
+    expect(html).toContain('"channelType": "ChannelType.PostMessage"')
+  })
+})
+
 describe('webr.channel-type: service-worker', () => {
   let html
   beforeAll(() => {
