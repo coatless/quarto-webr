@@ -12,7 +12,6 @@ format:
 Features listed under the `-dev` version have not yet been solidified and may change at any point.
 :::
 
-
 # 0.4.4-dev.2: ??? ??? (08-23-2026)
 
 ## Breaking Changes
@@ -32,10 +31,8 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 ## Bugfixes
 
 - Pinned `engine: knitr` in the deployment templates and the documentation examples. Quarto 1.9.19 widened the scan it uses to work out which languages a document contains ([quarto-cli#13838](https://github.com/quarto-dev/quarto-cli/pull/13838)); from that release on, a document holding a `{webr-r}` cell but naming no engine resolved to `jupyter` and would not render without a Python installation. Nothing about the extension changed - if you hit this in your own document, adding `engine: knitr` to the header is the fix, as [Your first webR-powered Quarto document](qwebr-first-steps.qmd) has always described.
-- `quarto-webr` now keeps cell code that contains `</script>` or `<!-- <script>` intact. Previously, such a cell ended the page's cell data early: the rest of it showed up as text on the page and no cell loaded.
-- `quarto-webr` now leaves webR cells as plain code blocks in EPUB output. Previously, each cell was replaced by an empty placeholder and its code was lost.
-- `channel-type` now accepts the numbers 0 to 3 that the [Document Options](qwebr-meta-options.qmd#channel-type) list. Previously, every number fell back to `"automatic"`.
-- Cell options now keep apostrophes and quotes inside their values, so `#| fig-cap: "Tukey's test"` is shown as written. Only a matching pair of surrounding quotes is removed.
+- Cells whose code contains HTML such as `</script>` load normally, and EPUB output keeps each cell's code.
+- `channel-type` accepts its documented numeric values, and cell options keep apostrophes and quotes as written.
 
 # 0.4.4-dev.1: ??? ??? (??-??-????)
 
@@ -84,7 +81,6 @@ Features listed under the `-dev` version have not yet been solidified and may ch
   - If `OffScreenCanvas` is not available, we now display a Quarto warning callout at the start of the document that emphasizes only non-graphical computation is available and a gentle nudge to upgrade the web browser being used.
   - The [majority of modern browsers](https://caniuse.com/offscreencanvas) now have support for `OffScreenCanvas`. This previously effected users still on iOS 16 (Safari 16 and earlier).
 
-
 ## Changes
 
 - Added a mouse over button to allow for downloading an image when generated. ([#147](https://github.com/coatless/quarto-webr/issues/147))
@@ -94,7 +90,6 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 - Avoided distributing `webr-serviceworker.js` and `webr-worker.js` when `channel-type` is not `service-worker`. ([#210](https://github.com/coatless/quarto-webr/pulls/210))
 - Dynamically write `webr-serviceworker.js` and `webr-worker.js` files based on the version chosen ([#212](https://github.com/coatless/quarto-webr/pulls/212))
 - Updated the version of the FontAwesome from 6.5.1 to 6.5.2. ([#191](https://github.com/coatless/quarto-webr/pull/191))
-
 
 ## Bug fixes
 
@@ -338,7 +333,6 @@ my_hidden_variable = 11
 - Added issue templates for feature requests and bug fixes.
 - Symlink the `_extension` directory into `docs` to avoid needing to add the extension on each render.
 
-
 # 0.3.2: Rocking the Monaco (09-13-2023)
 
 ## Feature
@@ -390,7 +384,6 @@ my_hidden_variable = 11
 - Dynamically growing code editor as new lines are added.
 - Announcing the status changes of webR initialization states through arias. 
 
-
 # 0.1.0: Setting Options in Document YAML (04-11-2023)
 
 ## Features
@@ -407,8 +400,6 @@ my_hidden_variable = 11
  
 ![New status lighting](https://user-images.githubusercontent.com/833642/231114983-191c8944-f4ab-4024-abe0-089952ab1eaa.gif)
 
-
-
 # 0.0.4: Execute webr cells when developing in VS Code or RStudio (03-30-2023)
 
 ## Breaking Changes
@@ -416,7 +407,6 @@ my_hidden_variable = 11
 - We've transitioned to using the `{webr-r}` code cell designation from our original `{webr}` designation.
    - The `{webr-r}` tag allows for code cell evaluation prior to rendering the document
    - Moreover, the `{webr-r}` component does not need to be registered under the `knitr` compute engine.
-
 
 # 0.0.3: Escape Escape! (03-19-2023)
 
