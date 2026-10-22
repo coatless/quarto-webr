@@ -16,7 +16,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       
       - name: Get latest webR release
         id: webr-release
@@ -204,7 +204,7 @@ jobs:
       - name: Create Pull Request
         id: create-pr
         if: steps.check-update.outputs.needs_update == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update webR to version ${{ steps.webr-release.outputs.latest_version_clean }}"
