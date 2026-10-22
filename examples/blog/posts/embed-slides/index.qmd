@@ -11,7 +11,7 @@ This is a post that contains slides with interactive code on a [Quarto Blog](htt
 ## Presentation
 
 :::{.callout-important}
-For `quarto-webr` to work within RevealJS, you must use a [**pre-release** version of Quarto that is 1.4.502 or greater](https://quarto.org/docs/download/prerelease) that contains an updated copy of `pandoc`. For more details, please see [Issue #14](https://github.com/coatless/quarto-webr/issues/14). 
+For `quarto-webr` to work within RevealJS, you must use [Quarto 1.10 or later](https://quarto.org/docs/download/).
 :::
 
 <style>
