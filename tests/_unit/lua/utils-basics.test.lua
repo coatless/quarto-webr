@@ -44,3 +44,14 @@ tap.eq(utils.removeEmptyLinesUntilContent({ "code" }), { "code" },
        "removeEmptyLines: no leading blanks is a no-op")
 tap.eq(utils.removeEmptyLinesUntilContent({ "", "  " }), {},
        "removeEmptyLines: all-blank becomes empty")
+
+-- escapeForInlineScript: the cell JSON sits inside an inline <script>
+local scriptJson = '{"code":"cat(\\"</script>\\")\\ncat(\\"<!-- <script>\\")"}'
+local escapedJson = utils.escapeForInlineScript(scriptJson)
+tap.eq(escapedJson, '{"code":"cat(\\"\\u003c/script>\\")\\ncat(\\"\\u003c!-- \\u003cscript>\\")"}',
+       "escapeForInlineScript: every < becomes \\u003c")
+tap.ok(not escapedJson:find("<", 1, true), "escapeForInlineScript: no raw < survives")
+tap.eq(pandoc.json.decode(escapedJson), pandoc.json.decode(scriptJson),
+       "escapeForInlineScript: decodes to the same data")
+tap.eq(utils.escapeForInlineScript('{"code":"1 + 1"}'), '{"code":"1 + 1"}',
+       "escapeForInlineScript: JSON without < is unchanged")

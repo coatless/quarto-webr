@@ -87,3 +87,27 @@ describe('document metadata', () => {
     expect(html).toContain("'ggplot2'")
   })
 })
+
+describe('cell code holding HTML tags', () => {
+  let html
+  beforeAll(() => {
+    html = renderFixture('script-tag-in-code')
+  })
+
+  it('keeps every cell intact in the emitted JSON', () => {
+    const match = html.match(/globalThis\.qwebrCellDetails = (.*);$/m)
+    expect(match).not.toBeNull()
+    expect(JSON.parse(match[1]).map((cell) => cell.code)).toStrictEqual([
+      'cat("before </script> after")\ncat("<!-- <script>")',
+      'secret <- 42',
+    ])
+  })
+
+  it('keeps the cell data inside a single script element', () => {
+    const $ = load(html)
+    const holders = $('script').filter((_, el) => $(el).html().includes('globalThis.qwebrCellDetails'))
+    expect(holders).toHaveLength(1)
+    expect(holders.html()).toContain('globalThis.qwebrCellDetails')
+    expect(holders.html()).toMatch(/"context":"setup"/)
+  })
+})

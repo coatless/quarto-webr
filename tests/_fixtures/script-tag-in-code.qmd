@@ -1,0 +1,17 @@
+---
+title: HTML tags inside cell code
+format: html
+engine: markdown
+filters:
+  - webr
+---
+
+```{webr-r}
+cat("before </script> after")
+cat("<!-- <script>")
+```
+
+```{webr-r}
+#| context: setup
+secret <- 42
+```

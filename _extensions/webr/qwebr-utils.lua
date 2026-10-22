@@ -54,6 +54,14 @@ function M.substituteInFile(contents, substitutions)
   return (contents:gsub("{{%s*(.-)%s*}}", substitutions))
 end
 
+--- Make JSON safe to place inside an inline <script> element.
+--- `<` only appears inside JSON strings, so `\u003c` keeps the data identical
+--- while cell code such as `</script>` or `<!-- <script>` can no longer end
+--- the element early or switch the HTML parser into a script-escape state.
+function M.escapeForInlineScript(json)
+  return (json:gsub("<", "\\u003c"))
+end
+
 --- Remove lines with only whitespace until the first non-whitespace character.
 function M.removeEmptyLinesUntilContent(codeLines)
   while codeLines[1] and string.match(codeLines[1], "^%s*$") do
