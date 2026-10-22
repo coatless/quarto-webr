@@ -20,10 +20,13 @@ tap.eq(utils.convertMetaChannelTypeToWebROption("post-message"), "ChannelType.Po
 tap.eq(utils.convertMetaChannelTypeToWebROption(0), "ChannelType.Automatic", "channel: integer 0")
 tap.eq(utils.convertMetaChannelTypeToWebROption(3), "ChannelType.PostMessage", "channel: integer 3")
 tap.eq(utils.convertMetaChannelTypeToWebROption("nonsense"), "ChannelType.Automatic", "channel: unknown falls back")
--- KNOWN BUG (spec 9.2): a quoted integer in YAML arrives as a string and misses
--- the table. Recorded, not fixed.
-tap.eq(utils.convertMetaChannelTypeToWebROption("3"), "ChannelType.Automatic",
-       "channel: KNOWN BUG string '3' silently falls back to Automatic")
+-- Spec 9.2: the filter stringifies metadata, so `channel-type: 3` and
+-- `channel-type: '3'` both arrive as the string "3".
+tap.eq(utils.convertMetaChannelTypeToWebROption("0"), "ChannelType.Automatic", "channel: string '0'")
+tap.eq(utils.convertMetaChannelTypeToWebROption("1"), "ChannelType.SharedArrayBuffer", "channel: string '1'")
+tap.eq(utils.convertMetaChannelTypeToWebROption("2"), "ChannelType.ServiceWorker", "channel: string '2'")
+tap.eq(utils.convertMetaChannelTypeToWebROption("3"), "ChannelType.PostMessage", "channel: string '3'")
+tap.eq(utils.convertMetaChannelTypeToWebROption("4"), "ChannelType.Automatic", "channel: unknown number falls back")
 
 -- mergeCellOptions
 local merged = utils.mergeCellOptions({ context = "interactive", dpi = 72 }, { context = "setup" })

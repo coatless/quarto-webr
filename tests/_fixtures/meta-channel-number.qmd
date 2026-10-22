@@ -1,0 +1,13 @@
+---
+title: Metadata channel type as a number
+format: html
+engine: markdown
+webr:
+  channel-type: 3
+filters:
+  - webr
+---
+
+```{webr-r}
+1 + 1
+```
