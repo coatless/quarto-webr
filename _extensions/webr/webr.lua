@@ -300,7 +300,7 @@ local function initializationWebRDocumentSettings()
     ["INSTALLRPACKAGESLIST"] = installRPackagesList,
     ["AUTOLOADRPACKAGES"] = autoloadRPackages,
     ["RPACKAGEREPOURLS"] = rPackageRepoURLS,
-    ["QWEBRCELLDETAILS"] = quarto.json.encode(qwebrCapturedCodeBlocks)
+    ["QWEBRCELLDETAILS"] = utils.escapeForInlineScript(quarto.json.encode(qwebrCapturedCodeBlocks))
     -- ["VERSION"] = baseVersionWebR
   }
   
