@@ -97,6 +97,14 @@ function M.buildDefaultCellOptions(isRevealJS)
   }
 end
 
+--- Check whether the output format can host webR cells: HTML that runs
+--- JavaScript, or Markdown. EPUB counts as "html" but runs no scripts, so it
+--- keeps the plain code block.
+--- `isFormat` is passed in (quarto.doc.is_format) because webr.lua owns the Quarto coupling.
+function M.isWebRFormat(isFormat)
+  return isFormat("html:js") or isFormat("markdown")
+end
+
 --- Convert the communication channel meta option into a WebROptions.channelType
 function M.convertMetaChannelTypeToWebROption(input)
   local conditions = {

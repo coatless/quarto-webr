@@ -474,9 +474,8 @@ local function enableWebRCodeCell(el)
   -- Should display the following elements:
   -- https://pandoc.org/lua-filters.html#type-codeblock
   
-  -- Verify the element has attributes and the document type is HTML
-  -- not sure if this will work with an epub (may need html:js)
-  if not (el.attr and (quarto.doc.is_format("html") or quarto.doc.is_format("markdown"))) then
+  -- Verify the element has attributes and the document can run webR cells
+  if not (el.attr and utils.isWebRFormat(quarto.doc.is_format)) then
     return el
   end
 
