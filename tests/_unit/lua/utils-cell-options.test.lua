@@ -74,3 +74,21 @@ tap.eq(blanks[1], "1 + 1", "extract: leading blank lines are stripped")
 
 tap.eq(select(2, utils.extractCodeBlockOptions({ text = "1 + 1" }, defaults))["context"],
        "interactive", "extract: defaults apply when no options given")
+
+-- isWebRFormat: stand-ins for quarto.doc.is_format, using what Quarto 1.10
+-- reports for each output format
+local function formatAnswers(answers)
+  return function(name) return answers[name] == true end
+end
+tap.eq(utils.isWebRFormat(formatAnswers({ html = true, ["html:js"] = true })), true,
+       "format: html hosts webR cells")
+tap.eq(utils.isWebRFormat(formatAnswers({ html = true, ["html:js"] = true, revealjs = true })), true,
+       "format: revealjs hosts webR cells")
+tap.eq(utils.isWebRFormat(formatAnswers({ html = true, ["html:js"] = true, dashboard = true })), true,
+       "format: dashboard hosts webR cells")
+tap.eq(utils.isWebRFormat(formatAnswers({ markdown = true })), true,
+       "format: markdown hosts webR cells")
+tap.eq(utils.isWebRFormat(formatAnswers({ html = true, epub = true })), false,
+       "format: epub is html without JavaScript, so it keeps the code block")
+tap.eq(utils.isWebRFormat(formatAnswers({})), false,
+       "format: typst and pdf keep the code block")
