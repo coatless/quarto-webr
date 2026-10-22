@@ -17,7 +17,7 @@ jobs:
     name: Lua, render, and JS tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: quarto-dev/quarto-actions/setup@v2
       - uses: actions/setup-node@v7
         with:
@@ -33,7 +33,7 @@ jobs:
     name: Browser smoke test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: quarto-dev/quarto-actions/setup@v2
       - uses: actions/setup-node@v7
         with:
