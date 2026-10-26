@@ -31,6 +31,10 @@ jobs:
       - name: "Setup R dependencies for Quarto's knitr engine"
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          # The pinned "Set up Quarto" step below installs Quarto. Left on
+          # auto, this step installs the newest release first, and the pinned
+          # install then fails as a downgrade.
+          install-quarto: false
           packages:
             any::knitr
             any::rmarkdown
