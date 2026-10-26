@@ -67,6 +67,8 @@ website:
         contents:
           - href: qwebr-release-notes.qmd
             text: Release Notes
+          - href: https://blog.thecoatlessprofessor.com/projects/quarto-webr/
+            text: Blog posts
           - href: qwebr-acknowledgements.md
             text: Acknowledgements
           - href: qwebr-developer-resources.qmd
