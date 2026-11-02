@@ -56,7 +56,7 @@ jobs:
       - name: "Set up Quarto"
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.10.18"
+          version: "1.11.9"
 
       # Generate the documentation website
       - name: Render Documentation website
