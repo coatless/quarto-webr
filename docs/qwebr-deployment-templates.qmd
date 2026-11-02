@@ -18,7 +18,7 @@ This template is designed for creating standalone HTML documents with interactiv
 This template is designed for creating standalone RevealJS presentations with interactive webR functionality. It's suitable for creating lecture slides.
 
 :::{.callout-important}
-This template requires [Quarto 1.10 or later](https://quarto.org/docs/download/).
+This template requires [Quarto 1.11 or later](https://quarto.org/docs/download/).
 :::
 
 - **Example**: You can find an example of a RevealJS presentation template [here](https://quarto-webr.thecoatlessprofessor.com/examples/revealjs/).

@@ -16,7 +16,7 @@ Features listed under the `-dev` version have not yet been solidified and may ch
 
 ## Breaking Changes
 
-- `quarto-webr` now requires Quarto 1.10 or later.
+- `quarto-webr` now requires Quarto 1.11 or later.
 
 ## Features
 

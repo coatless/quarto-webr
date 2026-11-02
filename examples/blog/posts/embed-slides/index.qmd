@@ -11,7 +11,7 @@ This is a post that contains slides with interactive code on a [Quarto Blog](htt
 ## Presentation
 
 :::{.callout-important}
-For `quarto-webr` to work within RevealJS, you must use [Quarto 1.10 or later](https://quarto.org/docs/download/).
+For `quarto-webr` to work within RevealJS, you must use [Quarto 1.11 or later](https://quarto.org/docs/download/).
 :::
 
 <style>

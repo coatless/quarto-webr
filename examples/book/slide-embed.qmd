@@ -7,7 +7,7 @@ On this page, we show how we can embed a RevealJS Presentation inside of a Quart
 ## Presentation
 
 :::{.callout-important}
-For `quarto-webr` to work within RevealJS, you must use [Quarto 1.10 or later](https://quarto.org/docs/download/).
+For `quarto-webr` to work within RevealJS, you must use [Quarto 1.11 or later](https://quarto.org/docs/download/).
 :::
 
 <style>
