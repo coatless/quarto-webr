@@ -88,6 +88,17 @@
     ]
   },
   {
+    "objectID": "qwebr-release-notes.html#breaking-changes",
+    "href": "qwebr-release-notes.html#breaking-changes",
+    "title": "Release Notes",
+    "section": "Breaking Changes",
+    "text": "Breaking Changes\n\nquarto-webr now requires Quarto 1.11 or later.",
+    "crumbs": [
+      "Extra Information",
+      "Release Notes"
+    ]
+  },
+  {
     "objectID": "qwebr-release-notes.html#features",
     "href": "qwebr-release-notes.html#features",
     "title": "Release Notes",
@@ -114,7 +125,7 @@
     "href": "qwebr-release-notes.html#bugfixes",
     "title": "Release Notes",
     "section": "Bugfixes",
-    "text": "Bugfixes\n\nPinned engine: knitr in the deployment templates and the documentation examples. Quarto 1.9.19 widened the scan it uses to work out which languages a document contains (quarto-cli#13838); from that release on, a document holding a {webr-r} cell but naming no engine resolved to jupyter and would not render without a Python installation. Nothing about the extension changed - if you hit this in your own document, adding engine: knitr to the header is the fix, as Your first webR-powered Quarto document has always described.",
+    "text": "Bugfixes\n\nPinned engine: knitr in the deployment templates and the documentation examples. Quarto 1.9.19 widened the scan it uses to work out which languages a document contains (quarto-cli#13838); from that release on, a document holding a {webr-r} cell but naming no engine resolved to jupyter and would not render without a Python installation. Nothing about the extension changed - if you hit this in your own document, adding engine: knitr to the header is the fix, as Your first webR-powered Quarto document has always described.\nCells whose code contains HTML such as &lt;/script&gt; load normally, and EPUB output keeps each cell’s code.\nchannel-type accepts its documented numeric values, and cell options keep apostrophes and quotes as written.",
     "crumbs": [
       "Extra Information",
       "Release Notes"
@@ -154,8 +165,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#breaking-changes",
-    "href": "qwebr-release-notes.html#breaking-changes",
+    "objectID": "qwebr-release-notes.html#breaking-changes-1",
+    "href": "qwebr-release-notes.html#breaking-changes-1",
     "title": "Release Notes",
     "section": "Breaking Changes",
     "text": "Breaking Changes\n\nWe’ve update the minimum Quarto requirement to 1.4.554.\n\nThis version of Quarto is apart of the latest RStudio IDE (Version: 2024.04.0, Date: 2024-04-29).",
@@ -253,8 +264,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#breaking-changes-1",
-    "href": "qwebr-release-notes.html#breaking-changes-1",
+    "objectID": "qwebr-release-notes.html#breaking-changes-2",
+    "href": "qwebr-release-notes.html#breaking-changes-2",
     "title": "Release Notes",
     "section": "Breaking changes",
     "text": "Breaking changes\n\nInternal JavaScript functions used by the extension have been significantly changed.\nJavaScript initialization procedure has been further refined.",
@@ -319,8 +330,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#breaking-changes-2",
-    "href": "qwebr-release-notes.html#breaking-changes-2",
+    "objectID": "qwebr-release-notes.html#breaking-changes-3",
+    "href": "qwebr-release-notes.html#breaking-changes-3",
     "title": "Release Notes",
     "section": "Breaking changes",
     "text": "Breaking changes\n\nWith the update to webR v0.2.2, the webr-worker.js and webr-serviceworker.js files are no longer required to be present with the document under default options.",
@@ -605,8 +616,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#breaking-changes-3",
-    "href": "qwebr-release-notes.html#breaking-changes-3",
+    "objectID": "qwebr-release-notes.html#breaking-changes-4",
+    "href": "qwebr-release-notes.html#breaking-changes-4",
     "title": "Release Notes",
     "section": "Breaking Changes",
     "text": "Breaking Changes\n\nWe’ve transitioned the code editor used in the quarto-webr extension to Monaco Editor from CodeMirror for improved accessibility.\n\nSpecial thanks go out to JooYoung Seo (Website) for identifying the accessibility issue and submitting a pull request to incorporate the editor.",
@@ -638,8 +649,8 @@
     ]
   },
   {
-    "objectID": "qwebr-release-notes.html#breaking-changes-4",
-    "href": "qwebr-release-notes.html#breaking-changes-4",
+    "objectID": "qwebr-release-notes.html#breaking-changes-5",
+    "href": "qwebr-release-notes.html#breaking-changes-5",
     "title": "Release Notes",
     "section": "Breaking Changes",
     "text": "Breaking Changes\n\nWe’ve transitioned to using the {webr-r} code cell designation from our original {webr} designation.\n\nThe {webr-r} tag allows for code cell evaluation prior to rendering the document\nMoreover, the {webr-r} component does not need to be registered under the knitr compute engine.",
@@ -796,7 +807,7 @@
     "href": "qwebr-deployment-templates.html",
     "title": "Deployment Templates",
     "section": "",
-    "text": "Discover a range of sample deployment templates for the community quarto-webr extension at our GitHub repository. These templates serve as convenient starting points for various web-based projects that harness the power of the quarto-webr extension, enabling interactive data analysis inside of a web browser. Whether you’re embarking on an individual report, creating an interactive website, or compiling a digital book, these templates simplify the process, making it effortless to kickstart your own projects.\n\nHTML Document Template\nThis template is designed for creating standalone HTML documents with interactive webR functionality. It’s suitable for individual reports or interactive documents.\n\nExample: You can find an example of an HTML document template here.\nSource Code: Access the source code for this template here.\n\n\n\nRevealJS Presentation Template\nThis template is designed for creating standalone RevealJS presentations with interactive webR functionality. It’s suitable for creating lecture slides.\n\n\n\n\n\n\nImportant\n\n\n\nThis template requires a pre-release version of Quarto that is 1.4.502 or greater that contains an updated copy of pandoc. For more details, please see Issue #14.\n\n\n\nExample: You can find an example of a RevealJS presentation template here.\nSource Code: Access the source code for this template here.\n\n\n\nWebsite Template\nThis template is meant for building interactive websites with multiple webR-powered pages. It’s ideal for websites that have multiple piece of web content that requires interactive data analysis at the “top-level”.\n\nExample: Explore an example of a website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBlog Template\nFor users who want to periodically use webR on their Quarto blog, please use the following template.\n\nExample: Explore an example of a blog website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBook Template\nThe book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.\n\nExample: You can view an example of a book template here.\nSource Code: Access the source code for this template here.\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThis Quarto extension is open source software and is not affiliated with Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.",
+    "text": "Discover a range of sample deployment templates for the community quarto-webr extension at our GitHub repository. These templates serve as convenient starting points for various web-based projects that harness the power of the quarto-webr extension, enabling interactive data analysis inside of a web browser. Whether you’re embarking on an individual report, creating an interactive website, or compiling a digital book, these templates simplify the process, making it effortless to kickstart your own projects.\n\nHTML Document Template\nThis template is designed for creating standalone HTML documents with interactive webR functionality. It’s suitable for individual reports or interactive documents.\n\nExample: You can find an example of an HTML document template here.\nSource Code: Access the source code for this template here.\n\n\n\nRevealJS Presentation Template\nThis template is designed for creating standalone RevealJS presentations with interactive webR functionality. It’s suitable for creating lecture slides.\n\n\n\n\n\n\nImportant\n\n\n\nThis template requires Quarto 1.11 or later.\n\n\n\nExample: You can find an example of a RevealJS presentation template here.\nSource Code: Access the source code for this template here.\n\n\n\nWebsite Template\nThis template is meant for building interactive websites with multiple webR-powered pages. It’s ideal for websites that have multiple piece of web content that requires interactive data analysis at the “top-level”.\n\nExample: Explore an example of a website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBlog Template\nFor users who want to periodically use webR on their Quarto blog, please use the following template.\n\nExample: Explore an example of a blog website template here.\nSource Code: Access the source code for this template here.\n\n\n\nBook Template\nThe book template is designed for creating interactive web-based books or documentation. It allows you to compile a collection of chapters, sections, and interactive content into a cohesive digital book.\n\nExample: You can view an example of a book template here.\nSource Code: Access the source code for this template here.\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThis Quarto extension is open source software and is not affiliated with Posit, Quarto, or webR. The extension is at best a community effort to simplify the integration of webR inside of Quarto generated documents.",
     "crumbs": [
       "Deployment",
       "Templates"
