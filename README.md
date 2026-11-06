@@ -100,3 +100,9 @@ Three commands, fastest first. The first needs only Quarto; the other two also n
 ## Acknowledgements
 
 Please see our [acknowledgements page](https://quarto-webr.thecoatlessprofessor.com/qwebr-acknowledgements.html).
+
+## Learn more
+
+- [Documentation](https://quarto-webr.thecoatlessprofessor.com/)
+- [Release notes](https://quarto-webr.thecoatlessprofessor.com/qwebr-release-notes.html)
+- [Blog posts](https://blog.thecoatlessprofessor.com/projects/quarto-webr/)
