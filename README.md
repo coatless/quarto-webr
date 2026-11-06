@@ -106,3 +106,7 @@ Please see our [acknowledgements page](https://quarto-webr.thecoatlessprofessor.
 - [Documentation](https://quarto-webr.thecoatlessprofessor.com/)
 - [Release notes](https://quarto-webr.thecoatlessprofessor.com/qwebr-release-notes.html)
 - [Blog posts](https://blog.thecoatlessprofessor.com/projects/quarto-webr/)
+
+## License
+
+quarto-webr is licensed under AGPL-3.0-or-later with an exception: what you write and render with quarto-webr stays yours, along with the output, under any terms you like. See [LICENSE](LICENSE) and [LICENSE-EXCEPTION.md](LICENSE-EXCEPTION.md).
