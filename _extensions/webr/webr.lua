@@ -15,7 +15,7 @@ local hasDoneWebRSetup = false
 
 --- Define a base compatibile version
 ---@type string
-local baseVersionWebR = "0.6.0"
+local baseVersionWebR = "0.6.1"
 
 --- Define where webR can be found
 ---@type string
